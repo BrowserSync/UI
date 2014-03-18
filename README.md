@@ -5,8 +5,7 @@ Control Panel for BrowserSync
 ## Contributors
 
 ```
-    10	Shane Osbourne
-     1	Sergey Slipchenko
+     2	Shane Osbourne
 ```
 
 ## License
