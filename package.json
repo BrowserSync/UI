@@ -1,0 +1,42 @@
+{
+  "name": "browser-sync-control-panel",
+  "description": "Control Panel for BrowserSync",
+  "version": "0.0.3",
+  "homepage": "https://github.com/shakyshane/browser-sync-control-panel",
+  "author": {
+    "name": "Shane Osbourne",
+    "email": "shane.osbourne8@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shakyshane/browser-sync-control-panel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shakyshane/browser-sync-control-panel/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shakyshane/browser-sync-control-panel/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "gulp lint && karma start test/karma.conf.ci.js"
+  },
+  "devDependencies": {
+    "gulp": "~3.5.2",
+    "gulp-karma": "0.0.2",
+    "gulp-mocha": "~0.4.1",
+    "gulp-jshint": "~1.4.0",
+    "chai": "~1.9.0",
+    "sinon": "~1.8.2",
+    "karma-mocha": "~0.1.1",
+    "karma-sinon": "~1.0.0",
+    "gulp-contribs": "0.0.2"
+  },
+  "keywords": []
+}
