@@ -11,7 +11,7 @@ gulp.task('test', function() {
     // Be sure to return the stream
     return gulp.src(testFiles)
         .pipe(karma({
-            configFile: 'test/karma.conf.js',
+            configFile: 'test/karma.conf.ci.js',
             action: 'run'
         }));
 });
@@ -36,4 +36,5 @@ gulp.task('contribs', function () {
         .pipe(contribs())
         .pipe(gulp.dest("./"))
 });
+
 gulp.task('default', ["lint", "test"]);
