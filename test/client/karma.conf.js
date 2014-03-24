@@ -5,7 +5,7 @@ module.exports = function (config) {
     config.set({
 
         // base path, that will be used to resolve files and exclude
-        basePath: '../',
+        basePath: '../../',
 
         // frameworks to use
         frameworks: ['mocha'],
@@ -14,20 +14,19 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
 
-            // Angular + mocks
             "lib/js/vendor/angular.min.js",
-            "test/vendor/angular-mocks.js",
+            "test/client/vendor/angular-mocks.js",
 
             // Test Libs
             "node_modules/sinon/pkg/sinon.js",
             "node_modules/chai/chai.js",
 
             // Setup stuff
-            "test/setup.js",
+            "test/client/setup.js",
             "lib/js/scripts/app.js",
 
             // Specs
-            "test/specs/*.js"
+            "test/client/specs/*.js"
         ],
 
 

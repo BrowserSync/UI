@@ -11,7 +11,7 @@ gulp.task('test', function() {
     // Be sure to return the stream
     return gulp.src(testFiles)
         .pipe(karma({
-            configFile: 'test/karma.conf.ci.js',
+            configFile: 'test/client/karma.conf.ci.js',
             action: 'run'
         }));
 });
@@ -25,7 +25,7 @@ gulp.task('test:watch', function() {
 });
 
 gulp.task('lint', function () {
-    gulp.src(['test/client-script/*.js', 'lib/js/scripts/*.js'])
+    gulp.src(['test/client/specs/**/*.js', 'lib/js/scripts/*.js', 'index.js'])
         .pipe(jshint('test/.jshintrc'))
         .pipe(jshint.reporter("default"))
         .pipe(jshint.reporter("fail"))

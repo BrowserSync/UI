@@ -84,4 +84,21 @@ describe("Main Controller", function () {
         scope.socketEvents.addBrowsers([browser1, browser2, cpBrowser]);
         assert.equal(scope.browsers.length, 2);
     });
+
+    it("should set options on the scope", function () {
+        var options  = { name: "kittens" };
+        scope.socketEvents.connection(options);
+        var actual = scope.options.name;
+        var expected = "kittens";
+        assert.equal(actual, expected);
+    });
+
+    // Toggle Snippet
+    it("should initially have the snippet hidden", function () {
+        assert.equal(scope.ui.snippet, false);
+    });
+    it("should the snippet", function () {
+        scope.toggleSnippet();
+        assert.equal(scope.ui.snippet, true);
+    });
 });

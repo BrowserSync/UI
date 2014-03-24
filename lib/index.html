@@ -44,22 +44,37 @@
     </nav>
     <!-- END RIGHTBAR -->
     <div id="page-content" ng-controller="MainCtrl">
+
         <div id='wrap'>
             <div id="page-heading">
                 <ol class="breadcrumb">
                     <li>Dashboard</li>
                 </ol>
+
                 <url-info ng-if="options.server || options.proxy" options="options"></url-info>
+
                 <h1 ng-if="!options.server && !options.proxy"><small>Using: </small>
-                    <a href="" title="Show Snippet">Snippet</a>
+                    <a href="" title="Show Snippet" ng-click="toggleSnippet()">Snippet</a>
                 </h1>
+
             </div>
+
+            <div class="container" ng-if="ui.snippet">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Place this snippet somewhere before the closing <code>&lt;/body&gt;</code> tag</p>
+                        <pre><code>{{options.snippet}}</code></pre>
+                    </div>
+                </div>
+                <button ng-click="toggleSnippet()">Close</button>
+            </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h4>Control Panel - Coming Soon</h4>
+                                <h4>Control Panel - ComingSoon</h4>
                                 <div class="options">
 
                                 </div>
