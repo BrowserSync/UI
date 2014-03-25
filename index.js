@@ -20,7 +20,7 @@ function getMiddleware(snippet) {
 /**
  * @returns {Function}
  */
-module.exports = function () {
+module.exports.plugin = function () {
     return function (options, snippet, bs) {
         return {
             middleware: getMiddleware(snippet),
