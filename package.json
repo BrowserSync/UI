@@ -1,7 +1,7 @@
 {
   "name": "browser-sync-control-panel",
   "description": "Control Panel for BrowserSync",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/shakyshane/browser-sync-control-panel",
   "author": {
     "name": "Shane Osbourne",
@@ -26,6 +26,9 @@
   },
   "scripts": {
     "test": "gulp lint && mocha test/server && karma start test/client/karma.conf.ci.js"
+  },
+  "dependencies": {
+    "through": "2.3.4"
   },
   "devDependencies": {
     "gulp": "~3.5.2",
