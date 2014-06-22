@@ -1,28 +1,13 @@
-var gulp = require("gulp");
-var karma = require('gulp-karma');
-var jshint = require('gulp-jshint');
-var contribs = require('gulp-contribs');
+var gulp       = require("gulp");
+var karma      = require('gulp-karma');
+var jshint     = require('gulp-jshint');
+var contribs   = require('gulp-contribs');
+var browserify = require('gulp-browserify');
+var rename     = require('gulp-rename');
 
 var testFiles = [
     'test/todo.js'
 ];
-
-gulp.task('test', function() {
-    // Be sure to return the stream
-    return gulp.src(testFiles)
-        .pipe(karma({
-            configFile: 'test/client/karma.conf.ci.js',
-            action: 'run'
-        }));
-});
-
-gulp.task('test:watch', function() {
-    gulp.src(testFiles)
-        .pipe(karma({
-            configFile: 'test/karma.conf.js',
-            action: 'watch'
-        }));
-});
 
 gulp.task('lint', function () {
     gulp.src(['test/client/specs/**/*.js', 'lib/js/scripts/*.js', 'index.js'])
@@ -37,4 +22,17 @@ gulp.task('contribs', function () {
         .pipe(gulp.dest("./"))
 });
 
-gulp.task('default', ["lint", "test"]);
+gulp.task('browserify', function () {
+    gulp.src('lib/js/scripts/index.js')
+        .pipe(browserify())
+        .pipe(rename("app.js"))
+        .pipe(gulp.dest("./lib/js/dist"))
+});
+
+gulp.task('default', ["lint"]);
+
+gulp.task('build', ["browserify", "lint"]);
+
+gulp.task('dev', ["browserify"], function () {
+    gulp.watch("lib/js/scripts/*.js", ["browserify"]);
+});

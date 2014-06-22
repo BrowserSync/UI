@@ -23,7 +23,7 @@ module.exports = function (config) {
 
             // Setup stuff
             "test/client/setup.js",
-            "lib/js/scripts/app.js",
+            "lib/js/dist/app.js",
 
             // Specs
             "test/client/specs/*.js"
