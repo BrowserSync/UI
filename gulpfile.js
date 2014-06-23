@@ -34,5 +34,5 @@ gulp.task('default', ["lint"]);
 gulp.task('build', ["browserify", "lint"]);
 
 gulp.task('dev', ["browserify"], function () {
-    gulp.watch("lib/js/scripts/*.js", ["browserify"]);
+    gulp.watch("lib/js/scripts/**/*.js", ["browserify"]);
 });

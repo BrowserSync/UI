@@ -107,10 +107,37 @@ function plugin() {
     };
 }
 
+function clientScript() {
+    return function () {
+        return fs.readFileSync(__dirname + "/lib/js/includes/events.js");
+    }
+}
+
+function clientEvents() {
+    return function () {
+        return "cp:goTo";
+    }
+}
+
+function serverMiddleware () {
+    return function () {
+        return [function (req, res, next) {
+            console.log("middelware1" + req.url);
+            next();
+        },function (req, res, next) {
+            console.log("middelware2" + req.url);
+            next();
+        }]
+    }
+}
+
 /**
  * Module exports
  */
-module.exports.plugin        = plugin;
-module.exports.getInfoLogger = getInfoLogger;
-module.exports.startServer   = startServer;
+module.exports["client:js"]         = clientScript;
+module.exports["client:events"]     = clientEvents;
+module.exports["server:middleware"] = serverMiddleware;
+module.exports.plugin               = plugin;
+module.exports.getInfoLogger        = getInfoLogger;
+module.exports.startServer          = startServer;
 
