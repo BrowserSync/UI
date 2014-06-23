@@ -110,13 +110,13 @@ function plugin() {
 function clientScript() {
     return function () {
         return fs.readFileSync(__dirname + "/lib/js/includes/events.js");
-    }
+    };
 }
 
 function clientEvents() {
     return function () {
         return "cp:goTo";
-    }
+    };
 }
 
 function serverMiddleware () {
@@ -127,8 +127,8 @@ function serverMiddleware () {
         },function (req, res, next) {
             console.log("middelware2" + req.url);
             next();
-        }]
-    }
+        }];
+    };
 }
 
 /**
