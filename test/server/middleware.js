@@ -15,12 +15,7 @@ describe("Using the Control Panel", function () {
     var server;
     var stub;
     before(function () {
-        stub = sinon.stub(controlPanel, "getInfoLogger").returns(function(){});
         server = controlPanel.startServer({urls: {local: "http://localhost:8080"}});
-    });
-
-    after(function () {
-        stub.restore();
     });
 
     it("Should Serve static files", function (done) {

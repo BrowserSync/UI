@@ -5,7 +5,9 @@ var fs        = require("fs");
 var connect   = require("connect");
 var ports     = require("portscanner-plus");
 var http      = require("http");
+var tfunk     = require("tfunk");
 
+var PLUGIN_NAME = "Control Panel";
 
 /**
  * @param connector
@@ -24,26 +26,6 @@ function getScriptMiddleware(connector) {
                 this.queue(connector + buffer.toString());
             }))
             .pipe(res);
-    };
-}
-
-/**
- * @param {object} bs
- * @returns {Function}
- */
-function getInfoLogger(bs) {
-    return function (msg, vars) {
-        bs.events.emit("msg:info", {msg: "Control Panel: " + msg, vars: vars});
-    };
-}
-
-/**
- * @param {object} bs
- * @returns {Function}
- */
-function getDebugLogger(bs) {
-    return function (msg, vars) {
-        bs.events.emit("msg:debug", {msg: "Control Panel: " + msg, vars: vars});
     };
 }
 
@@ -72,63 +54,48 @@ function getConnector(url) {
 /**
  * @param ports
  */
-function start(ports) {
+function start(opts, ports) {
 
     var bs     = this; // jshint ignore:line
     var port   = ports[0];
-    var log    = getInfoLogger(bs);
-    var debug  = getDebugLogger(bs);
 
-    debug("Using port %s", port);
+    var log = bs.getLogger(PLUGIN_NAME);
 
-    debug("Starting Control panel server...");
+    log("debug", "Using port " + port);
+
+    log("debug", "Starting Control panel server...");
 
     var server = startServer(bs.options);
 
     server.listen(port);
 
-    log("Running at: http://localhost:" + port);
+    log("info", tfunk("Running at: %Ccyan:http://localhost:" + port));
 }
 
 /**
  * Interface required for BrowserSync
  * @returns {Function}
  */
-function plugin() {
-
-    /**
-     * @param {Object} bs
-     */
-    return function (bs) {
-
-        ports.getPorts(1).then(start.bind(bs));
-
-        return true;
-    };
+function plugin(bs, opts) {
+    ports.getPorts(1).then(start.bind(bs, opts));
 }
 
 function clientScript() {
-    return function () {
-        return fs.readFileSync(__dirname + "/lib/js/includes/events.js");
-    };
+    return fs.readFileSync(__dirname + "/lib/js/includes/events.js");
 }
 
 function clientEvents() {
-    return function () {
-        return "cp:goTo";
-    };
+    return ["cp:goTo", "cp:log", "options:set"];
 }
 
 function serverMiddleware () {
-    return function () {
-        return [function (req, res, next) {
-            console.log("middelware1" + req.url);
-            next();
-        },function (req, res, next) {
-            console.log("middelware2" + req.url);
-            next();
-        }];
-    };
+    return [function (req, res, next) {
+        console.log("middelware1" + req.url);
+        next();
+    },function (req, res, next) {
+        console.log("middelware2" + req.url);
+        next();
+    }];
 }
 
 /**
@@ -136,8 +103,8 @@ function serverMiddleware () {
  */
 module.exports["client:js"]         = clientScript;
 module.exports["client:events"]     = clientEvents;
-module.exports["server:middleware"] = serverMiddleware;
+//module.exports["server:middleware"] = serverMiddleware;
 module.exports.plugin               = plugin;
-module.exports.getInfoLogger        = getInfoLogger;
+module.exports.name                 = PLUGIN_NAME;
 module.exports.startServer          = startServer;
 

@@ -28,7 +28,9 @@
     "test": "gulp build && mocha test/server && ./node_modules/karma/bin/karma start test/client/karma.conf.ci.js"
   },
   "dependencies": {
-    "through": "2.3.4"
+    "through": "2.3.4",
+    "connect": "2.21.1",
+    "tfunk": "0.0.2"
   },
   "devDependencies": {
     "gulp": "~3.5.2",

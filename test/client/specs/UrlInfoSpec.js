@@ -17,7 +17,9 @@ describe("Directive: Tabs", function () {
                 server: {
                     baseDir: "./"
                 },
-                url: "http://0.0.0.0:3002"
+                urls: {
+                    local: "http://localhost:3000"
+                }
             };
 
             // Pass in the user object to the directive
@@ -31,7 +33,7 @@ describe("Directive: Tabs", function () {
         // This test will fail as we're looking at the parent scope here & not the directives' 'isolated' scope.
         it("should render the correct text with server", function () {
             var actual = element.text();
-            var expected = "Server running at: http://0.0.0.0:3002";
+            var expected = "Server running at: http://localhost:3000";
             assert.equal(actual, expected);
         });
     });
@@ -43,7 +45,9 @@ describe("Directive: Tabs", function () {
                 proxy: {
                     host: "0.0.0.0"
                 },
-                url: "http://0.0.0.0:3002"
+                urls: {
+                    local: "http://localhost:3000"
+                }
             };
 
             // Pass in the user object to the directive
@@ -55,9 +59,9 @@ describe("Directive: Tabs", function () {
         });
 
         // This test will fail as we're looking at the parent scope here & not the directives' 'isolated' scope.
-        it("should render the correct text with server", function () {
+        it("should render the correct text with Proxy", function () {
             var actual = element.text();
-            var expected = "Proxy running at: http://0.0.0.0:3002";
+            var expected = "Proxy running at: http://localhost:3000";
             assert.equal(actual, expected);
         });
     });
