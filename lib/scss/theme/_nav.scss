@@ -1,0 +1,51 @@
+/**
+ * Inline using floats
+ */
+.nav {
+
+    @extend .clearfix;
+
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+
+        + li {
+        }
+        > a {
+            display: block;
+        }
+        &.active > a {
+            cursor: default;
+        }
+    }
+}
+
+/**
+ * Horizontal using inline-block
+ */
+.nav--inline {
+
+    @extend .nav;
+
+    > li {
+        display: inline-block;
+
+        > a {
+            display: inline-block;
+        }
+    }
+}
+
+
+/**
+ * Horizontal using float
+ */
+.nav--float {
+
+    @extend .nav;
+
+    > li {
+        float: left;
+    }
+}

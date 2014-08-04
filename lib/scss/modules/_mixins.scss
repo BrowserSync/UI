@@ -1,0 +1,59 @@
+.clearfix {
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+    zoom: 1;
+}
+
+/**
+ * Output media query block
+ *
+   `@include media-query(min, 640px);`
+ *
+ */
+@mixin media-query($type, $breakpoint: $lap-start) {
+    @if $type == "min" {
+        @media only screen and (min-width: $breakpoint) { @content }
+    }
+    @else if $type == "max" {
+        @media only screen and (max-width: $breakpoint - 1px) { @content }
+    }
+    @else if $type == "palm" {
+        @media only screen and (max-width: $lap-start - 1px) { @content }
+    }
+    @else if $type == "lap" {
+        @media only screen and (min-width: $lap-start) and (max-width: $desk-start - 1px) { @content }
+    }
+    @else if $type == "desk" {
+        @media only screen and (min-width: $desk-start) { @content }
+    }
+    @else if $type == "wide" {
+        @media only screen and (min-width: $wide-start) { @content }
+    }
+    @else if $type == "retina" {
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (   min--moz-device-pixel-ratio: 2),
+        only screen and (     -o-min-device-pixel-ratio: 2/1),
+        only screen and (        min-device-pixel-ratio: 2),
+        only screen and (                min-resolution: 192dpi),
+        only screen and (                min-resolution: 2dppx) { @content }
+    }
+}
+
+/**
+ * Output font size using rem and px fallback
+ *
+   `@include font-size(10px);`
+ *
+ */
+@mixin font-size($font-size){
+    font-size: $font-size;
+    font-size: ($font-size / $base-font-size)*1rem;
+}

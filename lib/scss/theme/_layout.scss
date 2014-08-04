@@ -1,0 +1,35 @@
+.wrapper {
+
+    clear: both;
+    width: 100%;
+    padding-top: $base-spacing;
+    padding-bottom: $base-spacing;
+}
+    .wrapper--alt {
+
+        background: $smoke;
+    }
+
+.container {
+
+    @extend .clearfix;
+    margin: 0 auto;
+    padding-right: $half-spacing;
+    padding-left: $half-spacing;
+    width: auto;
+    max-width: $page-width;
+    list-style: none;
+
+    @include media-query(lap) {
+        padding-right: $base-spacing;
+        padding-left: $base-spacing;
+    }
+
+    @include media-query(min, ($page-width + 2*$base-spacing)) {
+        width: $page-width;
+    }
+}
+
+.text--center {
+    text-align: center;
+}

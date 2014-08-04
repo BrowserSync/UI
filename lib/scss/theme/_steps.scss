@@ -1,0 +1,28 @@
+.steps {
+
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+
+        position: relative;
+        border: 1px solid $silver;
+        padding: $half-spacing $base-spacing;
+        background: $white;
+        border-radius: $base-radius;
+
+        + li {
+            margin-top: $base-spacing;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: -1*($base-spacing + 1);
+                left: 50%;
+                width: 1px;
+                height: $base-spacing;
+                background: $silver;
+            }
+        }
+    }
+}

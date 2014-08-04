@@ -1,0 +1,50 @@
+.button {
+
+    display: inline-block;
+    border: 0;
+    padding: $half-spacing $base-spacing;
+    width: auto;
+    vertical-align: middle;
+    background: $silver;
+    color: $link;
+    font-weight: bold;
+    @include font-size($base-font-size);
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    border-radius: $half-radius;
+
+    &:hover,
+    &:focus {
+        background: $silver;
+        color: $link-hover;
+        text-decoration: none;
+    }
+
+    &:active {
+        background: $link-hover;
+        color: $white;
+    }
+
+    + .button,
+    + a {
+        margin-left: $half-spacing;
+    }
+}
+
+.button--primary {
+
+    background: $red;
+    color: $white;
+
+    &:hover,
+    &:focus {
+        background: lighten($red, 5%);
+        color: $white;
+    }
+
+    &:active {
+        background: darken($red, 10%);
+        color: $white;
+    }
+}

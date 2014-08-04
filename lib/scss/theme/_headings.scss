@@ -1,0 +1,55 @@
+/**
+ * Site Theme
+ */
+h1, h2, h3, h4, h5, h6, hgroup,
+p, blockquote, address,
+ul, ol, dl,
+table,
+fieldset, figure, figcaption, details,
+pre {
+    margin-bottom: $half-spacing;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+    color: $hn-color;
+    font-weight: $hn-font-weight;
+    line-height: $hn-line-height;
+    font-family: $hn-font-family;
+    -webkit-font-smoothing: antialiased;
+
+    small {
+        font-size: inherit;
+        font-weight: normal;
+    }
+}
+
+h1, .h1 {
+    margin-bottom: $base-spacing;
+    padding-top: $base-spacing;
+    @include font-size($h1-size);
+}
+h2, .h2 {
+    margin-bottom: $base-spacing;
+    padding-top: $base-spacing;
+    @include font-size($h2-size);
+}
+h3, .h3 {
+    padding-top: $half-spacing;
+    @include font-size($h3-size);
+}
+h4, .h4 {
+    margin-bottom: 0;
+    @include font-size($h4-size);
+    line-height: $base-line-height;
+}
+h5, .h5 {
+    @include font-size($h5-size);
+}
+h6, .h6 {
+    @include font-size($h6-size);
+}

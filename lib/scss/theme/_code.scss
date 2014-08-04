@@ -1,0 +1,257 @@
+/**
+ * Base typography styles
+ */
+code, samp {
+
+    @include font-size($mono-size);
+    font-family: $mono-font-family;
+    line-height: 1.25;
+    background: #f6f6f6;
+    padding: 0px 3px;
+    border-radius: 3px;
+    border: 1px solid darken(#f6f6f6, 5%);
+}
+pre code {
+    background: $navy;
+    padding: 0px;
+    border: 0;
+}
+
+$spacing: $base-spacing+$half-spacing;
+
+.doc-wrapper {
+
+    background: white;
+    padding: $half-spacing;
+    border-radius: 0px;
+
+    @media (min-width: $lap-start) {
+        border-radius: 5px;
+        border: 1px solid #CCC;
+        padding: $spacing $spacing 0;
+    }
+
+    h1 {
+
+        @include font-size(20px);
+        text-align: left;
+
+        @media (min-width: $lap-start) {
+            @include font-size(34px);
+            margin-bottom: $base-spacing*2;
+            text-align: center;
+        }
+    }
+
+    > pre {
+        margin-left: -$half-spacing;
+        margin-right: -$half-spacing;
+        border-radius: 0;
+        padding: $half-spacing;
+
+        @media (min-width: $lap-start) {
+            padding: $spacing;
+            margin-bottom: $base-spacing*2;
+            margin-left: -$spacing;
+            margin-right: -$spacing;
+        }
+    }
+}
+
+/**
+ * The wrapper that is provided by the syntax highlighter
+ */
+.highlight {
+
+    background: $navy;
+    padding: $half-spacing;
+    margin-left: -$half-spacing;
+    margin-right: -$half-spacing;
+    margin-bottom: $base-spacing;
+    border: 1px solid lighten($navy, 10%);
+    border-radius: 0;
+    margin-top: 40px;
+
+    &:last-child {
+
+        margin-bottom: 0;
+
+        @media (min-width: $lap-start) {
+
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    }
+
+    @media (min-width: $lap-start) {
+
+        padding: $spacing;
+        margin-left: -$spacing;
+        margin-right: -$spacing;
+        margin-bottom: $base-spacing*2;
+    }
+
+    pre {
+
+        padding: 0;
+        max-width: $page-width;
+        display: block;
+        white-space: pre;
+        word-wrap: normal;
+        margin: 0 auto;
+    }
+}
+
+/**
+ * Styles specific to pages that contain docs
+ */
+.code-example {
+
+    background: #F2F2F2;
+    padding-top: 0;
+
+    p, h2, h3 {
+
+        margin-bottom: $base-spacing;
+
+        @media (min-width: $lap-start) {
+
+            margin-bottom: $base-spacing;
+
+            &.flush {
+                margin-bottom: $base-spacing;
+            }
+        }
+
+        &.flush {
+
+            margin-bottom: $half-spacing;
+        }
+    }
+
+    @media (min-width: $lap-start) {
+        padding-top: $base-spacing;
+    }
+
+    .container {
+        padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    h3 {
+
+        @include font-size(22px);
+        padding-top: $half-spacing;
+        margin-bottom: $half-spacing;
+
+        @media (min-width: $lap-start) {
+
+            @include font-size(30px);
+            padding-top: $base-spacing+$half-spacing;
+            margin-bottom: $half-spacing;
+            border-top: 0;
+        }
+
+        .icon {
+            @include font-size(20px);
+            margin-left: $half-spacing/2;
+        }
+    }
+
+    h4 {
+        font-weight: normal;
+        @include font-size(20px);
+        color: $teal;
+        margin-bottom: $base-spacing;
+    }
+
+    &.docs {
+        text-align: center;
+
+        ul {
+
+//            margin-left: $base-spacing;
+            margin-bottom: $base-spacing*2;
+
+            li {
+                display: inline-block;
+                p {
+                    margin-bottom: 0;
+                }
+                a {
+                    display: block;
+                    padding: $half-spacing;
+                }
+            }
+
+            &:before {
+                content: "";
+                display: none;
+            }
+        }
+    }
+
+}
+
+/*
+ * Param list
+ */
+.param-list {
+
+    list-style: none;
+    margin-bottom: $base-spacing;
+    padding-left: $half-spacing;
+
+    li {
+
+        color: $black;
+
+        &.name, &.type {
+            line-height: 30px;
+
+            .icon {
+                @include font-size(14px);
+                margin-left: $half-spacing/3;
+            }
+        }
+
+        &.name {
+            @include font-size(20px);
+            color: black;
+            font-weight: $hn-font-weight;
+        }
+
+        &.type {
+            border-bottom: 1px solid #ebebeb;
+        }
+        &.since {
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        &.desc {
+            padding-top: $half-spacing;
+        }
+
+        .recede {
+            color: #9e9e9e;
+        }
+    }
+}
+
+.page-anchor {
+    .icon {
+        color: darken($lime, 10%);
+        position: relative;
+        top: 1px;
+    }
+}
+
+.color-teal {
+    color: $teal;
+}
+
+.subprops {
+    margin-top: $half-spacing;
+    padding-left: $half-spacing;
+}

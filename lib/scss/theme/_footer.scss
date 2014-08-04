@@ -1,0 +1,27 @@
+.site-footer {
+
+    background: $navy;
+    color: $white;
+    text-align: center;
+
+    a {
+        color: $white;
+        font-weight: bold;
+
+    }
+
+}
+
+.social-links {
+
+    @include font-size(30px);
+
+    a {
+        padding: 0 $half-spacing;
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $red;
+        }
+    }
+}

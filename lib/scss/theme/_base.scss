@@ -1,0 +1,52 @@
+hr {
+
+    clear: both;
+    margin-bottom: $base-spacing;
+    border: none;
+    border-bottom: 1px solid $silver;
+    padding-bottom: $half-spacing;
+    height: 1px;
+}
+
+html {
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+    min-height: 100%;
+    max-width: 100%;
+    font: #{($base-font-size/16px)*100%}/#{$base-line-height} $base-font-family;
+
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+
+    max-width: 100%;
+    overflow-x: hidden;
+    background: $white;
+    color: $base-color;
+    text-rendering: optimizeLegibility;
+}
+
+.lede {
+    @include font-size($lede-size);
+}
+
+table {
+    tr {
+        td:first-child {
+            white-space: nowrap;
+            font-weight: bold;
+        }
+    }
+    td {
+        padding: $half-spacing $half-spacing/2 ;
+    }
+    tbody {
+        tr:nth-child(odd) {
+            background: #fafafa;
+        }
+    }
+}

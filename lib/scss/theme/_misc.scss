@@ -1,0 +1,46 @@
+section + section {
+
+    border-top: 1px solid $silver-lt;
+}
+
+hr {
+    border-color: $silver;
+}
+
+h2 {
+    color: $red;
+}
+
+h3 {
+
+    i {
+
+        display: inline-block;
+        margin-right: $half-spacing/2;
+        width: 1em;
+        color: $red;
+        text-align: center;
+    }
+}
+
+code {
+
+    color: $teal;
+}
+
+pre {
+
+    overflow: auto;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: $half-spacing/2 $half-spacing;
+    color: $white;
+    background: $navy;
+    border-radius: $half-radius;
+
+    code {
+        color: $white;
+        line-height: 1.25;
+    }
+}
