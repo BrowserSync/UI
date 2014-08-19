@@ -80,10 +80,16 @@ function plugin(bs, opts) {
     ports.getPorts(1).then(start.bind(bs, opts));
 }
 
+/**
+ * @returns {*}
+ */
 function clientScript() {
     return fs.readFileSync(__dirname + "/lib/js/includes/events.js");
 }
 
+/**
+ * @returns {string[]}
+ */
 function clientEvents() {
     return ["cp:goTo", "cp:log", "options:set"];
 }

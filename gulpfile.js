@@ -1,5 +1,4 @@
 var gulp        = require("gulp");
-var karma       = require('gulp-karma');
 var jshint      = require('gulp-jshint');
 var contribs    = require('gulp-contribs');
 var sass        = require("gulp-ruby-sass");
