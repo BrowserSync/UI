@@ -5,6 +5,7 @@ var fs        = require("fs");
 var connect   = require("connect");
 var ports     = require("portscanner-plus");
 var http      = require("http");
+var Q         = require("q");
 var tfunk     = require("tfunk");
 
 var PLUGIN_NAME = "Control Panel";
@@ -28,6 +29,8 @@ function startServer(options, socketMw, connectorMw) {
  */
 function start(opts, ports) {
 
+    var deferred = Q.defer();
+
     var bs     = this; // jshint ignore:line
     var port   = ports[0];
 
@@ -43,6 +46,10 @@ function start(opts, ports) {
     server.listen(port);
 
     log("info", tfunk("Running at: %Ccyan:http://localhost:" + port));
+
+    deferred.resolve(server);
+
+    return deferred.promise;
 }
 
 /**
@@ -50,7 +57,33 @@ function start(opts, ports) {
  * @returns {Function}
  */
 function plugin(bs, opts) {
-    ports.getPorts(1).then(start.bind(bs, opts));
+    ports.getPorts(1)
+        .then(start.bind(bs, opts))
+        .then(registerEvents.bind(bs, opts))
+}
+
+/**
+ * @param opts
+ * @param ports
+ */
+function registerEvents(opts, ports) {
+
+    var bs = this;
+    var sockets     = bs.io.sockets;
+
+    sockets.on("connection", function (client) {
+
+        // Events for setting options
+        client.on("cp:option:set", setOption.bind(bs));
+    });
+}
+
+/**
+ * @param data
+ */
+function setOption(data) {
+    var bs = this;
+    bs.setOption(data.key, data.value);
 }
 
 /**
