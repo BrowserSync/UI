@@ -1571,7 +1571,7 @@ pre code {
     .doc-wrapper {
       border-radius: 5px;
       border: 1px solid #CCC;
-      padding: 36px 36px 0; } }
+      padding: 36px 36px; } }
   .doc-wrapper h1 {
     font-size: 20px;
     font-size: 1.25rem;
@@ -1625,6 +1625,8 @@ pre code {
     white-space: pre;
     word-wrap: normal;
     margin: 0 auto; }
+  .highlight.small pre, .highlight.small code {
+    font-size: 12px; }
 
 /**
  * Styles specific to pages that contain docs

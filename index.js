@@ -70,17 +70,13 @@ function start(opts, ports) {
 
     log("debug", "Starting Control panel server...");
 
-
     log("debug", "Wait for BrowserSync to complete setup...");
-
-    bs.events.on("async:complete", function (bs) {
 
         var server = startServer(bs.options);
 
         server.listen(port);
 
         log("info", tfunk("Running at: %Ccyan:http://localhost:" + port));
-    });
 }
 
 /**

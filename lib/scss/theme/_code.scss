@@ -28,7 +28,7 @@ $spacing: $base-spacing+$half-spacing;
     @media (min-width: $lap-start) {
         border-radius: 5px;
         border: 1px solid #CCC;
-        padding: $spacing $spacing 0;
+        padding: $spacing $spacing;
     }
 
     h1 {
@@ -99,6 +99,12 @@ $spacing: $base-spacing+$half-spacing;
         white-space: pre;
         word-wrap: normal;
         margin: 0 auto;
+    }
+
+    &.small {
+        pre, code {
+            font-size: 12px;
+        }
     }
 }
 

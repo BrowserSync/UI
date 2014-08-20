@@ -93,13 +93,4 @@ describe("Main Controller", function () {
         var expected = "kittens";
         assert.equal(actual, expected);
     });
-
-    // Toggle Snippet
-    it("should initially have the snippet hidden", function () {
-        assert.equal(scope.ui.snippet, false);
-    });
-    it("should the snippet", function () {
-        scope.toggleSnippet();
-        assert.equal(scope.ui.snippet, true);
-    });
 });
