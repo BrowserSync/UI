@@ -1,6 +1,5 @@
 "use strict";
 
-
 var browser1 = {
     id: "2323",
     name: "Chrome",
@@ -8,6 +7,7 @@ var browser1 = {
     width: 100,
     height: 200
 };
+
 var browser2 = {
     id: "23aa",
     name: "Firefox",

@@ -33,7 +33,8 @@
     "tfunk": "0.0.2",
     "portscanner-plus": "0.1.0",
     "q": "1.0.1",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "multiline": "^1.0.0"
   },
   "devDependencies": {
     "karma-sinon": "^1.0.3",

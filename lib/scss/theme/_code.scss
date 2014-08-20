@@ -165,33 +165,6 @@ $spacing: $base-spacing+$half-spacing;
         color: $teal;
         margin-bottom: $base-spacing;
     }
-
-    &.docs {
-        text-align: center;
-
-        ul {
-
-//            margin-left: $base-spacing;
-            margin-bottom: $base-spacing*2;
-
-            li {
-                display: inline-block;
-                p {
-                    margin-bottom: 0;
-                }
-                a {
-                    display: block;
-                    padding: $half-spacing;
-                }
-            }
-
-            &:before {
-                content: "";
-                display: none;
-            }
-        }
-    }
-
 }
 
 /*

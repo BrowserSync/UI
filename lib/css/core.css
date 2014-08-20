@@ -1268,6 +1268,12 @@ table td {
 table tbody tr:nth-child(odd) {
   background: #fafafa; }
 
+.flush--bottom {
+  margin-bottom: 0 !important; }
+
+.text--cap {
+  text-transform: capitalize; }
+
 /**
  * Inline using floats
  */
@@ -1292,6 +1298,9 @@ table tbody tr:nth-child(odd) {
  */
 .nav--float > li {
   float: left; }
+
+.url-nav li {
+  margin-bottom: 12px; }
 
 .button {
   display: inline-block;
@@ -1661,20 +1670,6 @@ pre code {
     font-size: 1.25rem;
     color: #256b8d;
     margin-bottom: 24px; }
-  .code-example.docs {
-    text-align: center; }
-    .code-example.docs ul {
-      margin-bottom: 48px; }
-      .code-example.docs ul li {
-        display: inline-block; }
-        .code-example.docs ul li p {
-          margin-bottom: 0; }
-        .code-example.docs ul li a {
-          display: block;
-          padding: 12px; }
-      .code-example.docs ul:before {
-        content: "";
-        display: none; }
 
 /*
  * Param list

@@ -17,8 +17,9 @@ describe("Directive: Tabs", function () {
                 server: {
                     baseDir: "./"
                 },
-                urls: {
-                    local: "http://localhost:3000"
+                "urls": {
+                    "local": "http://localhost:3000",
+                    "external": "http://192.168.0.2:3000"
                 }
             };
 
@@ -31,10 +32,13 @@ describe("Directive: Tabs", function () {
         });
 
         // This test will fail as we're looking at the parent scope here & not the directives' 'isolated' scope.
-        it("should render the correct text with server", function () {
-            var actual = element.text();
-            var expected = "Server running at: http://localhost:3000";
-            assert.equal(actual, expected);
+        it("should render the correct amount of links", function () {
+            var actual = element.find("li");
+            var links  = actual.find("a");
+
+            assert.equal(links[0].href, "http://localhost:3000/");
+            assert.equal(links[1].href, "http://192.168.0.2:3000/");
+            assert.equal(actual.length, 2);
         });
     });
     describe("Rendering the top title bar with URL info for proxy", function () {
@@ -42,11 +46,16 @@ describe("Directive: Tabs", function () {
 
             // Set the user on the parent scope to simulate how it'd happen in your app
             scope.options = {
-                proxy: {
-                    host: "0.0.0.0"
+                "proxy": {
+                    "protocol": "http",
+                    "host": "swoon.static",
+                    "port": 80,
+                    "target": "http://swoon.static",
+                    "startPath": "store-home.php"
                 },
-                urls: {
-                    local: "http://localhost:3000"
+                "urls": {
+                    "local": "http://localhost:3000",
+                    "external": "http://192.168.0.2:3000"
                 }
             };
 
@@ -60,9 +69,13 @@ describe("Directive: Tabs", function () {
 
         // This test will fail as we're looking at the parent scope here & not the directives' 'isolated' scope.
         it("should render the correct text with Proxy", function () {
-            var actual = element.text();
-            var expected = "Proxy running at: http://localhost:3000";
-            assert.equal(actual, expected);
+
+            var actual = element.find("li");
+            var links  = actual.find("a");
+
+            assert.equal(links[0].href, "http://localhost:3000/");
+            assert.equal(links[1].href, "http://192.168.0.2:3000/");
+            assert.equal(actual.length, 2);
         });
     });
 });

@@ -26,6 +26,8 @@
         <div class="container">
             <article class="doc-wrapper">
 
+                <h1>BrowserSync running mode: {{options.mode}}</h1>
+
                 <url-info ng-if="options.server || options.proxy" options="options"></url-info>
 
                 <h1 ng-if="!options.server && !options.proxy"><small>Using: </small>
