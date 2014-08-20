@@ -37,7 +37,12 @@ function startServer(options) {
 
     var app = connect();
 
-    app.use("/js/dist/app.js", getScriptMiddleware(getConnector(options.urls.local)));
+    app.use("/js/dist/app.js",      getScriptMiddleware(getConnector(options.urls.local)));
+    app.use("/js/vendor/socket.js", function (req, res, next) {
+        res.setHeader("Content-Type", "text/javascript");
+        res.end(options.socketJs);
+        next();
+    });
     app.use(connect.static(__dirname + "/lib"));
 
     return http.createServer(app);
