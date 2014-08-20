@@ -19,7 +19,8 @@ describe("Directive: Tabs", function () {
                 },
                 "urls": {
                     "local": "http://localhost:3000",
-                    "external": "http://192.168.0.2:3000"
+                    "external": "http://192.168.0.2:3000",
+                    "tunnel": "https://trjjcleffl.localtunnel.me"
                 }
             };
 
@@ -31,14 +32,14 @@ describe("Directive: Tabs", function () {
             scope.$digest();
         });
 
-        // This test will fail as we're looking at the parent scope here & not the directives' 'isolated' scope.
         it("should render the correct amount of links", function () {
             var actual = element.find("li");
             var links  = actual.find("a");
 
             assert.equal(links[0].href, "http://localhost:3000/");
             assert.equal(links[1].href, "http://192.168.0.2:3000/");
-            assert.equal(actual.length, 2);
+            assert.equal(links[2].href, "https://trjjcleffl.localtunnel.me/");
+            assert.equal(actual.length, 3);
         });
     });
     describe("Rendering the top title bar with URL info for proxy", function () {
