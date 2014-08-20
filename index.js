@@ -10,50 +10,17 @@ var tfunk     = require("tfunk");
 var PLUGIN_NAME = "Control Panel";
 
 /**
- * @param connector
- * @returns {Function}
- */
-function getScriptMiddleware(connector) {
-
-    var jsFile    = "/lib/js/dist/app.js";
-
-    return function (req, res, next) {
-
-        res.setHeader("Content-Type", "text/javascript");
-
-        return fs.createReadStream(__dirname + jsFile)
-            .pipe(through(function (buffer) {
-                this.queue(connector + buffer.toString());
-            }))
-            .pipe(res);
-    };
-}
-
-/**
  * @param options
  * @returns {*}
  */
-function startServer(options) {
+function startServer(options, socketMw, connectorMw) {
 
     var app = connect();
-
-    app.use("/js/dist/app.js",      getScriptMiddleware(getConnector(options.urls.local)));
-    app.use("/js/vendor/socket.js", function (req, res, next) {
-        res.setHeader("Content-Type", "text/javascript");
-        res.end(options.socketJs);
-        next();
-    });
+    app.use("/js/vendor/socket.js", socketMw);
+    app.use("/js/connector", connectorMw);
     app.use(connect.static(__dirname + "/lib"));
 
     return http.createServer(app);
-}
-
-/**
- * @param url
- * @returns {string}
- */
-function getConnector(url) {
-    return "var ___socket___ = io.connect('%s');".replace("%s", url);
 }
 
 /**
@@ -68,15 +35,14 @@ function start(opts, ports) {
 
     log("debug", "Using port " + port);
 
-    log("debug", "Starting Control panel server...");
+    var socketMw    = bs.getMiddleware("socket-js");
+    var connectorMw = bs.getMiddleware("connector");
 
-    log("debug", "Wait for BrowserSync to complete setup...");
+    var server = startServer(bs.options, socketMw, connectorMw);
 
-        var server = startServer(bs.options);
+    server.listen(port);
 
-        server.listen(port);
-
-        log("info", tfunk("Running at: %Ccyan:http://localhost:" + port));
+    log("info", tfunk("Running at: %Ccyan:http://localhost:" + port));
 }
 
 /**
@@ -88,33 +54,16 @@ function plugin(bs, opts) {
 }
 
 /**
- * @returns {*}
- */
-function clientScript() {
-    return fs.readFileSync(__dirname + "/lib/js/includes/events.js");
-}
-
-/**
  * @returns {string[]}
  */
 function clientEvents() {
     return ["cp:goTo", "cp:log", "options:set"];
 }
 
-function serverMiddleware () {
-    return [function (req, res, next) {
-        console.log("middelware1" + req.url);
-        next();
-    },function (req, res, next) {
-        console.log("middelware2" + req.url);
-        next();
-    }];
-}
-
 /**
  * Module exports
  */
-module.exports["client:js"]         = clientScript;
+module.exports["client:js"]         = fs.readFileSync(__dirname + "/lib/js/includes/events.js");
 module.exports["client:events"]     = clientEvents;
 //module.exports["server:middleware"] = serverMiddleware;
 module.exports.plugin               = plugin;
