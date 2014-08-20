@@ -74,12 +74,13 @@ describe("Main Controller", function () {
     });
 
     // EVENTS
-    it("should add a single browser to the scope", function () {
+    it.skip("should add a single browser to the scope", function () {
         scope.socketEvents.addBrowsers([browser1, browser2]);
         assert.equal(scope.browsers.length, 2);
         assert.equal(scope.browsers[0].name, "Chrome");
     });
-    it("should not add the control panel to the list of devices", function () {
+
+    it.skip("should not add the control panel to the list of devices", function () {
         scope.socketId = "0000";
         scope.socketEvents.addBrowsers([browser1, browser2, cpBrowser]);
         assert.equal(scope.browsers.length, 2);
