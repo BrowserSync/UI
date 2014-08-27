@@ -44,7 +44,7 @@ gulp.task('browserify', function () {
 gulp.task('browser-sync', function () {
     browserSync({
         proxy: "http://localhost:3001/",
-        files: "lib/*.html"
+        files: ["lib/*.html", "lib/css/**"]
     });
 });
 
@@ -55,15 +55,26 @@ gulp.task('sass', function () {
     return gulp.src('lib/scss/**/*.scss')
         .pipe(sass())
         .pipe(autoprefix())
-        .pipe(gulp.dest('lib/css'))
-        .pipe(reload({stream:true}));
+        .pipe(gulp.dest('lib/css'));
 });
+
+/**
+ * Compile CSS
+ */
+gulp.task('bs-inject', function () {
+    setTimeout(function () {
+        browserSync.reload("core.css");
+    }, 500);
+});
+
+
 
 /**
  * Build Front-end stuff
  */
 gulp.task('dev-frontend', ["sass", "browser-sync"], function () {
     gulp.watch("lib/js/scripts/**/*.js", ["browserify", reload]);
+
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
 });
 

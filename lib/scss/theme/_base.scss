@@ -50,3 +50,7 @@ table {
         }
     }
 }
+
+.grid {
+    @extend .clearfix;
+}

@@ -48,3 +48,16 @@
         color: $white;
     }
 }
+
+.button--alt {
+
+    background: $navy;
+    color: white;
+    font-weight: normal;
+
+    &:hover, &:active, &:focus {
+
+        background: lighten($navy, 5%);
+        color: white;
+    }
+}

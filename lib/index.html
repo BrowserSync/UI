@@ -24,14 +24,11 @@
 <div class="site-body" role="main" ng-controller="MainCtrl">
     <section id="page-top" class="wrapper code-example docs">
         <div class="container">
+
             <article class="doc-wrapper">
-
                 <h1>BrowserSync running mode: {{options.mode}}</h1>
-
                 <url-info ng-if="options.server || options.proxy" options="options"></url-info>
-
                 <snippet-info ng-if="ui.snippet" options="options"></snippet-info>
-
             </article>
 
             <article class="doc-wrapper">

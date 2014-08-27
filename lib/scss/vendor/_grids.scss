@@ -15,9 +15,6 @@
  */
 
 
-
-
-
 /*------------------------------------*\
     $INTRODUCTION
 \*------------------------------------*/
@@ -104,7 +101,7 @@ $pull:                  false!default;
 /**
  * Would you like to use 'float: left' instead of 'display: inline-block'?
  */
-$float:                 false!default;
+$float:                 true!default;
 
 /**
  * Using `inline-block` means that the grid items need their whitespace removing

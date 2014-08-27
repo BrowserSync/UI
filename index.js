@@ -75,7 +75,16 @@ function registerEvents(opts, ports) {
 
         // Events for setting options
         client.on("cp:option:set", setOption.bind(bs));
+        client.on("cp:browser:reload", reloadAll.bind(bs));
     });
+}
+
+/**
+ * Simple Browser reload
+ */
+function reloadAll() {
+    var bs = this;
+    bs.io.sockets.emit("browser:reload");
 }
 
 /**
@@ -90,7 +99,7 @@ function setOption(data) {
  * @returns {string[]}
  */
 function clientEvents() {
-    return ["cp:goTo", "cp:log", "options:set"];
+    return ["cp:url-sync", "cp:log", "options:set"];
 }
 
 /**

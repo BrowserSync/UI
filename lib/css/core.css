@@ -44,12 +44,12 @@ LAYOUT
 /**
  * Grids
  */
-.clearfix, .nav, .nav--inline, .nav--float, .container {
+.clearfix, .grid, .nav, .nav--inline, .nav--float, .container {
   zoom: 1; }
-  .clearfix:before, .nav:before, .nav--inline:before, .nav--float:before, .container:before, .clearfix:after, .nav:after, .nav--inline:after, .nav--float:after, .container:after {
+  .clearfix:before, .grid:before, .nav:before, .nav--inline:before, .nav--float:before, .container:before, .clearfix:after, .grid:after, .nav:after, .nav--inline:after, .nav--float:after, .container:after {
     content: "";
     display: table; }
-  .clearfix:after, .nav:after, .nav--inline:after, .nav--float:after, .container:after {
+  .clearfix:after, .grid:after, .nav:after, .nav--inline:after, .nav--float:after, .container:after {
     clear: both; }
 
 /**
@@ -1336,6 +1336,14 @@ table tbody tr:nth-child(odd) {
     color: white; }
   .button--primary:active {
     background: #c42737;
+    color: white; }
+
+.button--alt {
+  background: #1b2032;
+  color: white;
+  font-weight: normal; }
+  .button--alt:hover, .button--alt:active, .button--alt:focus {
+    background: #242b43;
     color: white; }
 
 /**
