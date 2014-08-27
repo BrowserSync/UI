@@ -1571,7 +1571,8 @@ pre code {
     .doc-wrapper {
       border-radius: 5px;
       border: 1px solid #CCC;
-      padding: 36px 36px; } }
+      padding: 36px 36px;
+      margin-bottom: 24px; } }
   .doc-wrapper h1 {
     font-size: 20px;
     font-size: 1.25rem;

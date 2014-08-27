@@ -15,7 +15,7 @@ gulp.task('lint', function () {
     return gulp.src(['test/client/specs/**/*.js', 'lib/js/scripts/*.js', 'index.js'])
         .pipe(jshint('test/.jshintrc'))
         .pipe(jshint.reporter("default"))
-        .pipe(jshint.reporter("fail"))
+        .pipe(jshint.reporter("fail"));
 });
 
 /**
@@ -24,7 +24,7 @@ gulp.task('lint', function () {
 gulp.task('contribs', function () {
     gulp.src('README.md')
         .pipe(contribs())
-        .pipe(gulp.dest("./"))
+        .pipe(gulp.dest("./"));
 });
 
 
@@ -35,7 +35,7 @@ gulp.task('browserify', function () {
     return gulp.src('lib/js/scripts/index.js')
         .pipe(browserify())
         .pipe(rename("app.js"))
-        .pipe(gulp.dest("./lib/js/dist"))
+        .pipe(gulp.dest("./lib/js/dist"));
 });
 
 /**
@@ -45,7 +45,7 @@ gulp.task('browser-sync', function () {
     browserSync({
         proxy: "http://localhost:3001/",
         files: "lib/*.html"
-    })
+    });
 });
 
 /**
@@ -59,6 +59,14 @@ gulp.task('sass', function () {
         .pipe(reload({stream:true}));
 });
 
+/**
+ * Build Front-end stuff
+ */
+gulp.task('dev-frontend', ["sass", "browser-sync"], function () {
+    gulp.watch("lib/js/scripts/**/*.js", ["browserify", reload]);
+    gulp.watch("lib/scss/**/*.scss", ["sass"]);
+});
+
 gulp.task('default', ["lint"]);
 
 gulp.task('build', ["browserify", "lint"]);
@@ -67,7 +75,3 @@ gulp.task('dev', ["browserify"], function () {
     gulp.watch("lib/js/scripts/**/*.js", ["browserify"]);
 });
 
-gulp.task('dev-frontend', ["browser-sync"], function () {
-    gulp.watch("lib/js/scripts/**/*.js", ["browserify", reload]);
-    gulp.watch("lib/scss/**/*.scss", ["sass"]);
-});

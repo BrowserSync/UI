@@ -26,9 +26,11 @@ $spacing: $base-spacing+$half-spacing;
     border-radius: 0px;
 
     @media (min-width: $lap-start) {
+
         border-radius: 5px;
         border: 1px solid #CCC;
         padding: $spacing $spacing;
+        margin-bottom: $base-spacing;
     }
 
     h1 {

@@ -11,7 +11,7 @@
 
 
 $float: true;
-@import "../bower_components/csswizardry-grids-with-floats/csswizardry-grids";
+@import "vendor/grids";
 
 @import "theme/base";
 @import "theme/helpers";
