@@ -1,0 +1,15 @@
+<div class="grid text--center">
+    <div class="grid__item one-half">
+        <form ng-submit="urlSync(urls.current)">
+            <p>Send all browsers to the following:</p>
+            <label for="url-sync"><small>{{urls.local}}/ </small><input type="text" name="url-sync" ng-model="urls.current"></label>
+        </form>
+    </div>
+    <div class="grid__item one-half">
+        <p>Refresh all browsers:</p>
+        <div class="loader">
+            <button class="button button--alt" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
+            <span class="small progress" ng-if="ui.loading">Loading</span>
+        </div>
+    </div>
+</div>

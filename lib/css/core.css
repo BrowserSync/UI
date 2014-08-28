@@ -1274,6 +1274,82 @@ table tbody tr:nth-child(odd) {
 .text--cap {
   text-transform: capitalize; }
 
+.color--lime {
+  color: #d3ed13; }
+
+/**
+ * (C)Leanest CSS spinner ever
+ */
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn); } }
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn); } }
+.loader {
+  display: inline-block;
+  position: relative; }
+
+.progress {
+  position: absolute;
+  display: inline-block;
+  left: 105%;
+  top: 5px;
+  width: 5em;
+  height: 5em;
+  margin: 0 .5em;
+  font-size: 12px;
+  text-indent: 999em;
+  overflow: hidden;
+  -webkit-animation: spin 1s infinite steps(8);
+          animation: spin 1s infinite steps(8); }
+
+.small.progress {
+  font-size: 4px; }
+
+.progress:before,
+.progress:after,
+.progress > div:before,
+.progress > div:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2.25em;
+  /* (container width - part width)/2  */
+  width: .5em;
+  height: 1.5em;
+  border-radius: .2em;
+  background: #eee;
+  box-shadow: 0 3.5em #eee;
+  /* container height - part height */
+  -webkit-transform-origin: 50% 2.5em;
+      -ms-transform-origin: 50% 2.5em;
+          transform-origin: 50% 2.5em;
+  /* container height / 2 */ }
+
+.progress:before {
+  background: #555; }
+
+.progress:after {
+  -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  background: #777; }
+
+.progress > div:before {
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  background: #999; }
+
+.progress > div:after {
+  -webkit-transform: rotate(-135deg);
+      -ms-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  background: #bbb; }
+
 /**
  * Inline using floats
  */
@@ -1344,6 +1420,12 @@ table tbody tr:nth-child(odd) {
   font-weight: normal; }
   .button--alt:hover, .button--alt:active, .button--alt:focus {
     background: #242b43;
+    color: white; }
+
+.button--loading {
+  background: red; }
+  .button--loading:hover, .button--loading:active, .button--loading:focus {
+    background: #666666;
     color: white; }
 
 /**
@@ -1774,3 +1856,28 @@ pre {
   pre code {
     color: white;
     line-height: 1.25; }
+
+.notification {
+  position: fixed;
+  width: 100%;
+  background: #1b2032;
+  color: white;
+  text-align: center;
+  padding: 24px 12px;
+  border-bottom: 1px solid #1b2032;
+  box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-110%);
+      -ms-transform: translateY(-110%);
+          transform: translateY(-110%);
+  -webkit-transition: all .3s;
+          transition: all .3s; }
+  .notification.active {
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0); }
+  .notification p {
+    margin-bottom: 0; }
+  .notification.success {
+    background: #d3ed13; }
+  .notification.error {
+    background: #ED6A13; }

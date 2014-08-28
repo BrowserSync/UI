@@ -63,6 +63,7 @@ function plugin(bs, opts) {
 }
 
 /**
+ * This is where we handle events sent back from
  * @param opts
  * @param ports
  */
@@ -83,8 +84,7 @@ function registerEvents(opts, ports) {
  * Simple Browser reload
  */
 function reloadAll() {
-    var bs = this;
-    bs.io.sockets.emit("browser:reload");
+    this.io.sockets.emit("browser:reload");
 }
 
 /**

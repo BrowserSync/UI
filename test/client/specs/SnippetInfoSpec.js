@@ -2,6 +2,7 @@ describe("Directive: Snippet info", function () {
 
     var scope, element, compile;
     beforeEach(module("BrowserSync"));
+    beforeEach(module("test.templates"));
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($compile, $rootScope) {

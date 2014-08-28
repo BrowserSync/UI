@@ -26,7 +26,11 @@ module.exports = function (config) {
             "lib/js/dist/app.js",
 
             // Specs
+            "lib/js/templates/**/*.html",
+
             "test/client/specs/*.js"
+
+            // Templates
         ],
 
 
@@ -51,7 +55,7 @@ module.exports = function (config) {
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_WARN,
 
 
         // enable / disable watching file and executing tests whenever any file changes
@@ -71,8 +75,21 @@ module.exports = function (config) {
         // If browser does not capture in given timeout [ms], kill it
         captureTimeout: 60000,
 
+        //preprocessors: {
+        //    'lib/js/templates/**/*.html' : ['html2js']
+        //},
         preprocessors: {
-            'fixtures/*.html' : ['html2js']
+            "lib/js/templates/**/*.html": ["ng-html2js"]
+        },
+
+        ngHtml2JsPreprocessor: {
+
+            // If your build process changes the path to your templates,
+            // use stripPrefix and prependPrefix to adjust it.
+            stripPrefix: "lib/",
+
+            // the name of the Angular module to create
+            moduleName: "test.templates"
         },
 
         // Continuous Integration mode

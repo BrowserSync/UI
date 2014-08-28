@@ -2,6 +2,7 @@ describe("Directive: Go To URL", function () {
 
     var scope, element, compile;
     beforeEach(module("BrowserSync"));
+    beforeEach(module("test.templates"));
 
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($compile, $rootScope) {
@@ -10,7 +11,7 @@ describe("Directive: Go To URL", function () {
     }));
 
     describe("Syncing URLS", function () {
-        beforeEach(function () {
+        beforeEach(inject(function ($templateCache) {
 
             // Set the user on the parent scope to simulate how it'd happen in your app
             scope.options = {
@@ -30,7 +31,7 @@ describe("Directive: Go To URL", function () {
             // Compile & Digest as normal
             compile(element)(scope);
             scope.$digest();
-        });
+        }));
 
         it("should render the input box", function () {
             assert.equal(element.find("input").length, 1);

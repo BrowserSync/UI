@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<notify-elem></notify-elem>
+
 <header class="wrapper site-header alt" role="banner">
     <div class="container">
         <h1 class="site-title alt"><a href="/">BrowserSync</a> / <span><a href="/docs">Control Panel</a></span></h1>
@@ -28,7 +30,7 @@
             <article class="doc-wrapper">
                 <h1>BrowserSync running mode: {{options.mode}}</h1>
                 <url-info ng-if="options.server || options.proxy" options="options"></url-info>
-                <snippet-info ng-if="ui.snippet" options="options"></snippet-info>
+                <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
             </article>
 
             <article class="doc-wrapper">
@@ -41,14 +43,13 @@
             <article class="doc-wrapper">
                 <header>
                     <h1>Locations</h1>
-                    <url-sync options="options"></url-sync>
+                    <url-sync ng-if="options" options="options"></url-sync>
                 </header>
             </article>
 
         </div>
     </section>
 </div>
-
 <div id="page-container">
     <!-- END RIGHTBAR -->
     <footer class="wrapper site-footer" role="contentinfo">

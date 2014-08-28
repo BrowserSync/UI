@@ -16,6 +16,8 @@ $float: true;
 @import "theme/base";
 @import "theme/helpers";
 
+@import "theme/animations";
+
 @import "theme/nav";
 @import "theme/url-nav";
 @import "theme/buttons";
@@ -27,3 +29,4 @@ $float: true;
 @import "theme/code";
 @import "theme/steps";
 @import "theme/misc";
+@import "theme/notifications";

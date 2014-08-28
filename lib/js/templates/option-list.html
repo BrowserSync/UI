@@ -1,0 +1,10 @@
+<ul class="nav">
+    <li ng-repeat="(key, value) in items">
+        <input type="checkbox" ng-model="value" ng-click="toggle(key, value)"> {{key}} ({{value}})
+    </li>
+    <li><br></li>
+    <li><b>Forms:</b></li>
+    <li ng-repeat="item in formItems">
+        <input type="checkbox" ng-model="item.value" ng-click="formToggle(item)"> {{item.name}} ({{item.value}})
+    </li>
+</ul>

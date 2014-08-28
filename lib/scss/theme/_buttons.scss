@@ -61,3 +61,14 @@
         color: white;
     }
 }
+
+.button--loading {
+
+    background: red;
+
+    &:hover, &:active, &:focus {
+
+        background: $grey-lt;
+        color: white;
+    }
+}

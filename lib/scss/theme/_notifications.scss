@@ -1,0 +1,31 @@
+.notification {
+
+    position: fixed;
+    width: 100%;
+    background: $navy;
+    color: white;
+    text-align: center;
+    padding: $base-spacing $half-spacing;
+    border-bottom: 1px solid $navy;
+    box-shadow: 0 5px 5px 0px rgba(0, 0, 0, .2);
+
+    transform: translateY(-110%);
+
+    transition: all .3s;
+
+    &.active {
+        transform: translateY(0);
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+
+    &.success {
+        background: $lime;
+    }
+
+    &.error {
+        background: #ED6A13;
+    }
+}
