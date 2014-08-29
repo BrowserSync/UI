@@ -12,6 +12,7 @@
     "boss": true,
     "eqnull": true,
     "node": true,
+    "validthis": true,
     "globals": {
         "describe" : false,
         "it" : false,

@@ -26,7 +26,8 @@ module.exports = function (config) {
             "lib/js/dist/app.js",
 
             // Specs
-            "test/client/specs/*.js"
+            "lib/js/templates/**/*.html",
+            "test/client/specs/**/*.js"
         ],
 
 
@@ -71,8 +72,20 @@ module.exports = function (config) {
         // If browser does not capture in given timeout [ms], kill it
         captureTimeout: 60000,
 
+        //    'lib/js/templates/**/*.html' : ['html2js']
+        //},
         preprocessors: {
-            'fixtures/*.html' : ['html2js']
+            "lib/js/templates/**/*.html": ["ng-html2js"]
+        },
+
+        ngHtml2JsPreprocessor: {
+
+            // If your build process changes the path to your templates,
+            // use stripPrefix and prependPrefix to adjust it.
+            stripPrefix: "lib/",
+
+                // the name of the Angular module to create
+                moduleName: "test.templates"
         },
 
         // Continuous Integration mode

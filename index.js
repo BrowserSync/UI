@@ -59,7 +59,7 @@ function start(opts, ports) {
 function plugin(bs, opts) {
     ports.getPorts(1)
         .then(start.bind(bs, opts))
-        .then(registerEvents.bind(bs, opts))
+        .then(registerEvents.bind(bs, opts));
 }
 
 /**
@@ -92,6 +92,7 @@ function reloadAll() {
  */
 function setOption(data) {
     var bs = this;
+    console.log(data);
     bs.setOption(data.key, data.value);
 }
 
