@@ -1,6 +1,6 @@
-describe("Directive: Go To URL", function () {
+describe("Directive: url-sync.reloadAll()", function () {
 
-    var scope, element, compile;
+    var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));
     beforeEach(module("test.templates"));
 
@@ -8,10 +8,21 @@ describe("Directive: Go To URL", function () {
     beforeEach(inject(function ($compile, $rootScope) {
         scope = $rootScope;
         compile = $compile;
+        clock = sinon.useFakeTimers();
     }));
 
+    after(function () {
+        clock.restore();
+    });
+
     describe("Syncing URLS", function () {
-        beforeEach(inject(function ($templateCache) {
+
+        var socket, rootScope;
+
+        beforeEach(inject(function (Socket, $rootScope) {
+
+            socket = Socket;
+            rootScope = $rootScope;
 
             // Set the user on the parent scope to simulate how it'd happen in your app
             scope.options = {
@@ -50,18 +61,30 @@ describe("Directive: Go To URL", function () {
             var isolatedScope = scope.$$childHead;
             assert.deepEqual(typeof isolatedScope.reloadAll, "function");
         });
-        it("Emits the reload-all event", inject(function ($injector) {
+        it("Emits the reload-all event", function (done) {
 
-            var socket = $injector.get("Socket");
-            var stub   = sinon.stub(socket, "emit");
-
+            var stub = sinon.spy(socket, "emit");
             var isolatedScope = scope.$$childHead;
 
+            // Tests finished if this event happens
+            rootScope.$on("notify:flash", function () {
+                done();
+            });
+
+            // Run the method
             isolatedScope.reloadAll();
 
+            // Should set the UI
+            assert.equal(isolatedScope.ui.loading, true);
+
+            // Ensure socket event is called
             sinon.assert.calledWithExactly(stub, "cp:browser:reload");
 
-            stub.restore();
-        }));
+            // Restore the clock
+            clock.tick(600);
+
+            // Ensure UI is reset
+            assert.equal(isolatedScope.ui.loading, false);
+        });
     });
 });
