@@ -28,7 +28,7 @@ module.exports = function (config) {
             // Specs
             "lib/js/templates/**/*.html",
 
-            "test/client/specs/*.js"
+            "test/client/specs/**/*.js"
 
             // Templates
         ],

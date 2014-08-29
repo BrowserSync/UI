@@ -67,12 +67,10 @@ gulp.task('bs-inject', function () {
     }, 500);
 });
 
-
-
 /**
  * Build Front-end stuff
  */
-gulp.task('dev-frontend', ["sass", "browser-sync"], function () {
+gulp.task('dev-frontend', ["browserify", "sass", "browser-sync"], function () {
     gulp.watch("lib/js/scripts/**/*.js", ["browserify", reload]);
 
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
