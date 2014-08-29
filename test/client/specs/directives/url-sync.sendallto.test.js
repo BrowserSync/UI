@@ -1,4 +1,4 @@
-describe("Directive: url-sync.reloadAll()", function () {
+describe("Directive: url-sync.sendAllTo()", function () {
 
     var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));
@@ -15,7 +15,7 @@ describe("Directive: url-sync.reloadAll()", function () {
         clock.restore();
     });
 
-    describe("Syncing URLS", function () {
+    describe("Syncing Browsers to a URL", function () {
 
         var socket, rootScope;
 

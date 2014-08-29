@@ -1,6 +1,6 @@
 <div class="grid text--center">
     <div class="grid__item one-half">
-        <form ng-submit="urlSync(urls.current)">
+        <form ng-submit="sendAllTo(urls.current)">
             <p>Send all browsers to the following:</p>
             <label for="url-sync"><small>{{urls.local}}/ </small><input type="text" name="url-sync" ng-model="urls.current"></label>
         </form>

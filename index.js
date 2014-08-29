@@ -75,9 +75,18 @@ function registerEvents(opts, ports) {
     sockets.on("connection", function (client) {
 
         // Events for setting options
-        client.on("cp:option:set", setOption.bind(bs));
+        client.on("cp:option:set",     setOption.bind(bs));
         client.on("cp:browser:reload", reloadAll.bind(bs));
+        client.on("cp:browser:url",    sendToUrl.bind(bs));
     });
+}
+
+/**
+ * Send all browsers to a URL
+ */
+function sendToUrl (data) {
+    data.override = true;
+    this.io.sockets.emit("browser:location", data);
 }
 
 /**
