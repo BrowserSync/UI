@@ -44,47 +44,34 @@ describe("Directive: url-sync.reloadAll()", function () {
             scope.$digest();
         }));
 
-        it("has a sendAllTo() method", function () {
+        it("has a reloadAll() method", function () {
             var isolatedScope = scope.$$childHead;
-            assert.deepEqual(typeof isolatedScope.sendAllTo, "function");
+            assert.deepEqual(typeof isolatedScope.reloadAll, "function");
         });
-        it("Emits the browser:url event", function () {
-            var isolatedScope = scope.$$childHead;
+        it("Emits the reload-all event", function (done) {
 
             var stub = sinon.spy(socket, "emit");
+            var isolatedScope = scope.$$childHead;
 
-            isolatedScope.sendAllTo("about-us.html");
-
-            sinon.assert.calledWithExactly(stub, "cp:browser:url", {
-                url: "about-us.html"
+            // Tests finished if this event happens
+            rootScope.$on("notify:flash", function () {
+                done();
             });
 
-            stub.reset();
+            // Run the method
+            isolatedScope.reloadAll();
+
+            // Should set the UI
+            assert.equal(isolatedScope.ui.loading, true);
+
+            // Ensure socket event is called
+            sinon.assert.calledWithExactly(stub, "cp:browser:reload");
+
+            // Restore the clock
+            clock.tick(600);
+
+            // Ensure UI is reset
+            assert.equal(isolatedScope.ui.loading, false);
         });
-//        it("Emits the reload-all event", function (done) {
-//
-//            var stub = sinon.spy(socket, "emit");
-//            var isolatedScope = scope.$$childHead;
-//
-//            // Tests finished if this event happens
-//            rootScope.$on("notify:flash", function () {
-//                done();
-//            });
-//
-//            // Run the method
-//            isolatedScope.reloadAll();
-//
-//            // Should set the UI
-//            assert.equal(isolatedScope.ui.loading, true);
-//
-//            // Ensure socket event is called
-//            sinon.assert.calledWithExactly(stub, "cp:browser:reload");
-//
-//            // Restore the clock
-//            clock.tick(600);
-//
-//            // Ensure UI is reset
-//            assert.equal(isolatedScope.ui.loading, false);
-//        });
     });
 });

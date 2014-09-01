@@ -1,12 +1,15 @@
 "use strict";
 
-var through   = require("through");
-var fs        = require("fs");
-var connect   = require("connect");
-var ports     = require("portscanner-plus");
-var http      = require("http");
-var Q         = require("q");
-var tfunk     = require("tfunk");
+var through     = require("through");
+var fs          = require("fs");
+var connect     = require("connect");
+var ports       = require("portscanner-plus");
+var http        = require("http");
+var serveStatic = require("serve-static");
+var Q           = require("q");
+var path        = require("path");
+var tfunk       = require("tfunk");
+var utils       = require("./server/utils");
 
 var PLUGIN_NAME = "Control Panel";
 
@@ -19,10 +22,12 @@ function startServer(options, socketMw, connectorMw) {
     var app = connect();
     app.use("/js/vendor/socket.js", socketMw);
     app.use("/js/connector", connectorMw);
-    app.use(connect.static(__dirname + "/lib"));
+    app.use(serveStatic(__dirname + "/lib"));
 
     return http.createServer(app);
 }
+
+var log;
 
 /**
  * @param ports
@@ -34,7 +39,7 @@ function start(opts, ports) {
     var bs     = this; // jshint ignore:line
     var port   = ports[0];
 
-    var log = bs.getLogger(PLUGIN_NAME);
+    log = bs.getLogger(PLUGIN_NAME);
 
     log("debug", "Using port " + port);
 
@@ -77,16 +82,29 @@ function registerEvents(opts, ports) {
         // Events for setting options
         client.on("cp:option:set",     setOption.bind(bs));
         client.on("cp:browser:reload", reloadAll.bind(bs));
-        client.on("cp:browser:url",    sendToUrl.bind(bs));
+        client.on("cp:browser:url",    sendToUrl.bind(bs, bs.options.urls.local));
     });
 }
 
 /**
  * Send all browsers to a URL
  */
-function sendToUrl (data) {
-    data.override = true;
-    this.io.sockets.emit("browser:location", data);
+function sendToUrl (localUrl, data) {
+    
+    //var url = path.join(localUrl, data.url);
+
+    utils.verifyUrl(
+        utils.createUrl(
+            localUrl, data.path), function (err, status) {
+
+        if (err) {
+            return log("info", err);
+        }
+
+        data.override = true;
+        this.io.sockets.emit("browser:location", data);
+
+    });
 }
 
 /**
@@ -101,7 +119,6 @@ function reloadAll() {
  */
 function setOption(data) {
     var bs = this;
-    console.log(data);
     bs.setOption(data.key, data.value);
 }
 
@@ -121,4 +138,5 @@ module.exports["client:events"]     = clientEvents;
 module.exports.plugin               = plugin;
 module.exports.name                 = PLUGIN_NAME;
 module.exports.startServer          = startServer;
+module.exports.sendToUrl            = sendToUrl;
 
