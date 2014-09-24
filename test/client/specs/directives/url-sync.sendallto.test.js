@@ -43,48 +43,36 @@ describe("Directive: url-sync.sendAllTo()", function () {
             compile(element)(scope);
             scope.$digest();
         }));
-
-        it("should render the input box", function () {
-            assert.equal(element.find("input").length, 1);
-        });
-        it("should render the input box", function () {
-            assert.equal(element.find("input").length, 1);
-        });
-        it("should render the reload all button", function () {
-            assert.equal(element.find("button").length, 1);
-        });
         it("should have the url property at start, but be empty", function () {
             var isolatedScope = scope.$$childHead;
             assert.deepEqual(isolatedScope.urls.current, "");
         });
-        it("has a reload all method", function () {
+        it("has the sendAllTo() method", function () {
             var isolatedScope = scope.$$childHead;
-            assert.deepEqual(typeof isolatedScope.reloadAll, "function");
+            assert.deepEqual(typeof isolatedScope.sendAllTo, "function");
         });
-        it("Emits the reload-all event", function (done) {
+        it("Emits the browser:url event", function () {
+            var isolatedScope = scope.$$childHead;
 
             var stub = sinon.spy(socket, "emit");
-            var isolatedScope = scope.$$childHead;
 
-            // Tests finished if this event happens
-            rootScope.$on("notify:flash", function () {
-                done();
-            });
+            isolatedScope.ui.current = "about-us.html";
 
-            // Run the method
-            isolatedScope.reloadAll();
+            isolatedScope.sendAllTo("about-us.html");
 
-            // Should set the UI
             assert.equal(isolatedScope.ui.loading, true);
 
-            // Ensure socket event is called
-            sinon.assert.calledWithExactly(stub, "cp:browser:reload");
+            assert.equal(isolatedScope.urls.current, "");
 
-            // Restore the clock
+            sinon.assert.calledWithExactly(stub, "cp:browser:url", {
+                url: "about-us.html"
+            });
+
             clock.tick(600);
 
-            // Ensure UI is reset
             assert.equal(isolatedScope.ui.loading, false);
+
+            stub.reset();
         });
     });
 });

@@ -35,7 +35,7 @@ function startServer(options, socketMw, connectorMw) {
     var app = connect();
     app.use("/js/vendor/socket.js", socketMw);
     app.use("/js/connector", connectorMw);
-    app.use(connect.static(__dirname + "/lib"));
+    app.use(serveStatic(__dirname + "/lib"));
 
     return http.createServer(app);
 }
@@ -93,16 +93,29 @@ function registerEvents(opts, ports) {
         // Events for setting options
         client.on("cp:option:set",     setOption.bind(bs));
         client.on("cp:browser:reload", reloadAll.bind(bs));
-        client.on("cp:browser:url",    sendToUrl.bind(bs));
+        client.on("cp:browser:url",    sendToUrl.bind(bs, bs.options.urls.local));
     });
 }
 
 /**
  * Send all browsers to a URL
  */
-function sendToUrl (data) {
-    data.override = true;
-    this.io.sockets.emit("browser:location", data);
+function sendToUrl (localUrl, data) {
+
+    //var url = path.join(localUrl, data.url);
+
+    utils.verifyUrl(
+        utils.createUrl(
+            localUrl, data.path), function (err, status) {
+
+        if (err) {
+            return log("info", err);
+        }
+
+        data.override = true;
+        this.io.sockets.emit("browser:location", data);
+
+    });
 }
 
 /**
@@ -136,4 +149,5 @@ module.exports["client:events"]     = clientEvents;
 module.exports.plugin               = plugin;
 module.exports["plugin:name"]       = PLUGIN_NAME;
 module.exports.startServer          = startServer;
+module.exports.sendToUrl            = sendToUrl;
 
