@@ -6,9 +6,25 @@ var connect   = require("connect");
 var ports     = require("portscanner-plus");
 var http      = require("http");
 var Q         = require("q");
-var tfunk     = require("tfunk");
 
 var PLUGIN_NAME = "Control Panel";
+
+/**
+ * @constructor
+ */
+var ControlPanel = function (opts, bs) {
+
+    this.logger = bs.getLogger(PLUGIN_NAME);
+    return this;
+};
+
+ControlPanel.prototype.init = function () {
+
+    return this;
+    //ports.getPorts(1)
+    //    .then(this.start.bind(this, opts, bs))
+    //    .then(this.registerEvents.bind(this, opts, bs));
+};
 
 /**
  * @param options
@@ -45,7 +61,7 @@ function start(opts, ports) {
 
     server.listen(port);
 
-    log("info", tfunk("Running at: %Ccyan:http://localhost:" + port));
+    log.info("Running at: {cyan:http://localhost:%s", port);
 
     deferred.resolve(server);
 
@@ -56,10 +72,10 @@ function start(opts, ports) {
  * Interface required for BrowserSync
  * @returns {Function}
  */
-function plugin(bs, opts) {
-    ports.getPorts(1)
-        .then(start.bind(bs, opts))
-        .then(registerEvents.bind(bs, opts));
+function plugin(opts, bs) {
+
+    var controlPanel = new ControlPanel(opts, bs);
+    return controlPanel;
 }
 
 /**
@@ -101,7 +117,6 @@ function reloadAll() {
  */
 function setOption(data) {
     var bs = this;
-    console.log(data);
     bs.setOption(data.key, data.value);
 }
 
@@ -119,6 +134,6 @@ module.exports["client:js"]         = fs.readFileSync(__dirname + "/lib/js/inclu
 module.exports["client:events"]     = clientEvents;
 //module.exports["server:middleware"] = serverMiddleware;
 module.exports.plugin               = plugin;
-module.exports.name                 = PLUGIN_NAME;
+module.exports["plugin:name"]       = PLUGIN_NAME;
 module.exports.startServer          = startServer;
 
