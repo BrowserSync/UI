@@ -3,7 +3,7 @@
         <select ng-model="selectedUrl" ng-options="url.path for url in urls.visited">
             <option value="">-- Choose Previous --</option>
         </select>
-        <button ng-click="sendAllTo(selectedUrl.path)"></button>
+        <button ng-click="sendAllTo(selectedUrl.path)">Go!</button>
     </div>
     <div class="grid__item one-half">
         <form ng-submit="sendAllTo(urls.current)">

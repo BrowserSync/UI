@@ -65,7 +65,7 @@ describe("Directive: url-sync.reloadAll()", function () {
             assert.equal(isolatedScope.ui.loading, true);
 
             // Ensure socket event is called
-            sinon.assert.calledWithExactly(stub, "cp:browser:reload");
+            sinon.assert.calledWithExactly(stub, "urls:browser:reload");
 
             // Restore the clock
             clock.tick(600);

@@ -65,8 +65,8 @@ describe("Directive: url-sync.sendAllTo()", function () {
 
             assert.equal(isolatedScope.urls.current, "");
 
-            sinon.assert.calledWithExactly(stub, "cp:browser:url", {
-                url: "about-us.html"
+            sinon.assert.calledWithExactly(stub, "urls:browser:url", {
+                path: "about-us.html"
             });
 
             clock.tick(600);

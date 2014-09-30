@@ -7,7 +7,10 @@ var ports       = require("portscanner-plus");
 var http        = require("http");
 var serveStatic = require("serve-static");
 var Q           = require("q");
+var url         = require("url");
 var utils       = require("./server/utils");
+var urls        = require("./server/urls");
+
 
 var PLUGIN_NAME = "Control Panel";
 var validUrls   = [{
@@ -38,9 +41,6 @@ var ControlPanel = function (opts, bs) {
 };
 
 ControlPanel.prototype.init = function () {
-
-//    return this;
-
     return this;
 };
 
@@ -106,45 +106,21 @@ ControlPanel.prototype.registerEvents = function (opts, ports) {
         sendUpdatedUrls(sockets, validUrls);
 
         // Events for setting options
-        client.on("cp:option:set",       setOption.bind(bs));
-        client.on("cp:browser:reload",   reloadAll.bind(bs));
-        client.on("cp:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
-        client.on("cp:client:connected", exports.trackUrls.bind(null, bs, validUrls));
+        client.on("urls:option:set",       setOption.bind(bs));
+        client.on("urls:browser:reload",   reloadAll.bind(bs));
+        client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
+        client.on("urls:client:connected", function (data) {
+            sendUpdatedUrls(sockets, urls.trackUrls(validUrls, data));
+        });
     });
-};
-
-/**
- * Track valid urls
- * @param data
- * @param paths
- */
-module.exports.addPath = function (paths, data) {
-    if (!_.find(paths, {path: data.path})) {
-        paths.push({path: data.path});
-        return paths;
-    }
-    return paths;
-};
-
-/**
- * @param bs
- * @param urls
- * @param data
- */
-module.exports.trackUrls = function (bs, urls, data) {
-
-    var updated;
-    if (updated = exports.addPath(urls, data)) {
-        exports.sendUpdatedUrls(bs.io.sockets, updated);
-    }
 };
 
 /**
  *
  */
-module.exports.sendUpdatedUrls = function (sockets, urls) {
-    sockets.emit("cp:urls:update", urls);
-};
+function sendUpdatedUrls (sockets, urls) {
+    sockets.emit("urls:urls:update", urls);
+}
 
 /**
  * Send all browsers to a URL
@@ -152,15 +128,9 @@ module.exports.sendUpdatedUrls = function (sockets, urls) {
 function sendToUrl (localUrl, data) {
 
     var bs = this;
-
-    utils.verifyUrl(
-        utils.createUrl(
-            localUrl, data.url), function (err, status) {
-            if (!err) {
-                data.override = true;
-                bs.io.sockets.emit("browser:location", data);
-            }
-    });
+    data.override = true;
+    data.url = data.path;
+    bs.io.sockets.emit("browser:location", data);
 }
 
 /**
@@ -182,7 +152,7 @@ function setOption(data) {
  * @returns {string[]}
  */
 function clientEvents() {
-    return ["cp:url-sync", "cp:log", "options:set"];
+    return ["urls:url-sync", "urls:log", "options:set"];
 }
 
 /**
@@ -196,7 +166,7 @@ module.exports.hooks = {
     "server:middleware": function () {
         return function (req, res, next) {
             next();
-        }
+        };
     }
 };
 

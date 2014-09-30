@@ -1,6 +1,7 @@
+var path = "/Users/shaneobsourne/sites/browser-sync";
 var cp = require("./index");
-var bs        = require("/Users/shakyshane/sites/os-browser-sync");
-var client    = require("/Users/shakyshane/sites/browser-sync-modules/browser-sync-client");
+var bs        = require(path);
+var client    = require("/Users/shaneobsourne/sites/browser-sync-client");
 
 client["plugin:name"] = "client:script";
 
@@ -9,10 +10,7 @@ bs.use(client);
 
 bs({
     server: {
-        baseDir: "/Users/shakyshane/sites/os-browser-sync/test/fixtures"
+        baseDir: path + "/test/fixtures"
     },
-    open: false,
-    online: false
+    open: false
 });
-//gulp.task("serve", function () {
-//});

@@ -1,40 +1,30 @@
-var cp    = require("../../index");
-var sinon = require("sinon");
+var urls    = require("../../server/urls");
 var assert = require("chai").assert;
 
 describe.only("Adding Urls", function() {
 
-    var validUrls;
+    var validUrls, bsSpy;
 
     beforeEach(function () {
         validUrls   = [{
             path: "/"
         }];
-        //var bsStub = sinon.spy();
-        //
-        //var bs = {
-        //    io: {
-        //        sockets: {
-        //            emit: bsStub
-        //        }
-        //    }
-        //};
     });
 
     it("Adds a new url", function() {
-        var actual   = cp.addPath(validUrls, {path: "forms.html"});
+        var actual   = urls.addPath(validUrls, {path: "forms.html"});
         var expected = 2;
         assert.equal(actual.length, expected);
     });
     it("Adds a new url (2)", function() {
-        var updated  = cp.addPath(validUrls, {path: "forms.html"});
-        var actual   = cp.addPath(updated, {path: "scrolling.html"});
+        var updated  = urls.addPath(validUrls, {path: "forms.html"});
+        var actual   = urls.addPath(updated, {path: "scrolling.html"});
         var expected = 3;
         assert.equal(actual.length, expected);
     });
     it("Does not add a dupe", function() {
-        var updated  = cp.addPath(validUrls, {path: "forms.html"});
-        var actual   = cp.addPath(updated, {path: "forms.html"});
+        var updated  = urls.addPath(validUrls, {path: "forms.html"});
+        var actual   = urls.addPath(updated, {path: "forms.html"});
         var expected = 2;
         assert.equal(actual.length, expected);
     });

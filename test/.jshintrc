@@ -26,7 +26,6 @@
         "sinon" : false,
         "inject" : false,
         "assert" : false,
-        "___socket___" : false
+        "___browserSync___" : false
     }
-
 }
