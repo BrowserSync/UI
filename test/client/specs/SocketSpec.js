@@ -9,8 +9,8 @@ describe("Socket Factory", function () {
     var offSpy;
 
     before(function () {
-        onSpy = sinon.spy(___socket___, "on");
-        offSpy = sinon.spy(___socket___, "removeListener");
+        onSpy = sinon.spy(___browserSync___.socket, "on");
+        offSpy = sinon.spy(___browserSync___.socket, "removeListener");
     });
 
     beforeEach(inject(function ($injector) {

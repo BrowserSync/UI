@@ -52,6 +52,7 @@ describe("Directive: url-sync.sendAllTo()", function () {
             assert.deepEqual(typeof isolatedScope.sendAllTo, "function");
         });
         it("Emits the browser:url event", function () {
+
             var isolatedScope = scope.$$childHead;
 
             var stub = sinon.spy(socket, "emit");
@@ -73,6 +74,30 @@ describe("Directive: url-sync.sendAllTo()", function () {
             assert.equal(isolatedScope.ui.loading, false);
 
             stub.reset();
+        });
+        it("populates the dropdown of visited urls", function () {
+
+            var isolatedScope = scope.$$childHead;
+
+            isolatedScope.updateVisited([{
+                path: "/"
+            }]);
+
+            assert.equal(isolatedScope.urls.visited.length, 1);
+
+            isolatedScope.updateVisited([
+                {
+                    path: "/"
+                },
+                {
+                    path: "/index.html"
+                }
+            ]);
+
+            assert.equal(isolatedScope.urls.visited.length, 2);
+            assert.equal(element.find("select").find("option").length, 3);
+            assert.equal(element.find("select").find("option")[1].innerHTML, "/");
+            assert.equal(element.find("select").find("option")[2].innerHTML, "/index.html");
         });
     });
 });

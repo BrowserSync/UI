@@ -3,15 +3,11 @@
  * @type {{on: on, emit: emit}}
  * @private
  */
-var ___socket___ = {
-    on: function () {
-
-    },
-    removeListener: function () {
-
-    },
-    emit: function () {
-
+var ___browserSync___ = {
+    socket: {
+        on: function () {},
+        removeListener: function () {},
+        emit: function () {}
     }
 };
 
