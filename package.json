@@ -36,7 +36,8 @@
     "lodash": "^2.4.1",
     "multiline": "^1.0.0",
     "serve-static": "^1.5.3",
-    "through2": "^0.6.1"
+    "through2": "^0.6.1",
+    "easy-extender": "^1.1.0"
   },
   "devDependencies": {
     "karma-sinon": "^1.0.3",

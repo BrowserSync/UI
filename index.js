@@ -3,6 +3,7 @@
 var fs          = require("fs");
 var connect     = require("connect");
 var _           = require("lodash");
+var through     = require("through");
 var ports       = require("portscanner-plus");
 var http        = require("http");
 var serveStatic = require("serve-static");
@@ -10,7 +11,12 @@ var Q           = require("q");
 var url         = require("url");
 var utils       = require("./server/utils");
 var urls        = require("./server/urls");
+var EE          = require("easy-extender");
+var tmpl        = fs.readFileSync(__dirname + "/server/templates/plugin.tmpl", "utf-8");
 
+var defaultPlugins = {
+    "ghostmode": require("./server/plugins/ghostmode/ghostMode")
+};
 
 var PLUGIN_NAME = "Control Panel";
 var validUrls   = [{
@@ -28,9 +34,23 @@ var ControlPanel = function (opts, bs) {
     this.bs     = bs;
     this.opts   = opts;
 
+    this.pluginManager = new EE(defaultPlugins, {
+        "markup": function (hooks, initial) {
+            var out = hooks.reduce(function (combined, item) {
+                return combined += tmpl.replace("%markup%", item);
+            }, "");
+            return out;
+        }
+    });
+
+    this.pluginManager.init();
+
+    this.pageMarkup = this.pluginManager.hook("markup");
+
     ports.getPorts(1)
         .then(this.start.bind(this))
         .then(this.registerEvents.bind(this))
+        .then(this.registerPlugins.bind(this))
         .catch(function (e) {
             this.logger
                 .setOnce("useLevelPrefixes", true)
@@ -48,12 +68,28 @@ ControlPanel.prototype.init = function () {
  * @param options
  * @returns {*}
  */
-function startServer(options, socketMw, connectorMw) {
-
+function startServer(options, socketMw, connectorMw, markup) {
+    
     var app = connect();
     app.use("/js/vendor/socket.js", socketMw);
     app.use("/js/connector", connectorMw);
+    app.use(function (req, res, next) {
+
+        if (req.url === "/") {
+
+            res.setHeader("Content-Type", "text/html");
+            return fs.createReadStream(__dirname + "/lib/index.html")
+                .pipe(through(function (buffer) {
+                    var file = buffer.toString();
+                    this.queue(file.replace(/%hooks%/g, markup));
+                }))
+                .pipe(res);
+        } else {
+            next();
+        }
+    });
     app.use(serveStatic(__dirname + "/lib"));
+
 
     return http.createServer(app);
 }
@@ -71,7 +107,7 @@ ControlPanel.prototype.start = function (ports) {
     var socketMw    = this.bs.getMiddleware("socket-js");
     var connectorMw = this.bs.getMiddleware("connector");
 
-    var server = startServer(this.bs.options, socketMw, connectorMw);
+    var server = startServer(this.bs.options, socketMw, connectorMw, this.pageMarkup);
 
     server.listen(port);
 
@@ -92,6 +128,14 @@ function plugin(opts, bs) {
 }
 
 /**
+ * @param opts
+ * @param ports
+ */
+ControlPanel.prototype.registerPlugins = function (opts, ports) {
+    this.pluginManager.get("ghostmode")(this, this.bs)
+};
+
+/**
  * This is where we handle events sent back from
  * @param opts
  * @param ports
@@ -105,8 +149,6 @@ ControlPanel.prototype.registerEvents = function (opts, ports) {
 
         sendUpdatedUrls(sockets, validUrls);
 
-        // Events for setting options
-        client.on("urls:option:set",       setOption.bind(bs));
         client.on("urls:browser:reload",   reloadAll.bind(bs));
         client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
         client.on("urls:client:connected", function (data) {
@@ -119,7 +161,7 @@ ControlPanel.prototype.registerEvents = function (opts, ports) {
  *
  */
 function sendUpdatedUrls (sockets, urls) {
-    sockets.emit("urls:urls:update", urls);
+    sockets.emit("cp:urls:update", urls);
 }
 
 /**
@@ -138,21 +180,6 @@ function sendToUrl (localUrl, data) {
  */
 function reloadAll() {
     this.io.sockets.emit("browser:reload");
-}
-
-/**
- * @param data
- */
-function setOption(data) {
-    var bs = this;
-    bs.setOption(data.key, data.value);
-}
-
-/**
- * @returns {string[]}
- */
-function clientEvents() {
-    return ["urls:url-sync", "urls:log", "options:set"];
 }
 
 /**
