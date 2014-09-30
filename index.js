@@ -5,7 +5,7 @@ var connect     = require("connect");
 var _           = require("lodash");
 var ports       = require("portscanner-plus");
 var http        = require("http");
-var serveStatic = require("/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/node_modules/browser-sync/node_modules/serve-static");
+var serveStatic = require("serve-static");
 var Q           = require("q");
 var utils       = require("./server/utils");
 
@@ -109,21 +109,33 @@ ControlPanel.prototype.registerEvents = function (opts, ports) {
         client.on("cp:option:set",       setOption.bind(bs));
         client.on("cp:browser:reload",   reloadAll.bind(bs));
         client.on("cp:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
-        client.on("cp:client:connected", trackUrls.bind(null, bs, validUrls));
+        client.on("cp:client:connected", exports.trackUrls.bind(null, bs, validUrls));
     });
 };
 
 /**
  * Track valid urls
  * @param data
+ * @param paths
+ */
+module.exports.addPath = function (paths, data) {
+    if (!_.find(paths, {path: data.path})) {
+        paths.push({path: data.path});
+        return paths;
+    }
+    return paths;
+};
+
+/**
  * @param bs
  * @param urls
+ * @param data
  */
 module.exports.trackUrls = function (bs, urls, data) {
 
-    if (!_.find(urls, "path", data.url)) {
-        validUrls.push({path: data.url});
-        exports.sendUpdatedUrls(bs.io.sockets, urls);
+    var updated;
+    if (updated = exports.addPath(urls, data)) {
+        exports.sendUpdatedUrls(bs.io.sockets, updated);
     }
 };
 

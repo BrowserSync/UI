@@ -57,7 +57,8 @@
     "supertest": "^0.13.0",
     "ng-html2js": "^1.2.0",
     "karma-ng-html2js-preprocessor": "^0.1.0",
-    "karma-html2js-preprocessor": "^0.1.0"
+    "karma-html2js-preprocessor": "^0.1.0",
+    "serve-static": "^1.6.3"
   },
   "keywords": []
 }
