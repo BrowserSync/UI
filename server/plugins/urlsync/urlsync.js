@@ -1,24 +1,66 @@
+var urls        = require("../../urls");
+
+var validUrls   = [{
+    path: "/"
+}];
+
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
 module.exports = {
+    /**
+     * @param cp
+     * @param bs
+     */
     "plugin": function (cp, bs) {
-        var sockets = bs.io.sockets;
+
+        var sockets = bs.io;
+
         sockets.on("connection", function (client) {
-            client.on("cp:option:set", setOption.bind(null, bs));
+
+            sendUpdatedUrls(sockets, validUrls);
+
+            client.on("urls:browser:reload",   reloadAll.bind(bs));
+            client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
+            client.on("urls:client:connected", function (data) {
+                sendUpdatedUrls(sockets, urls.trackUrls(validUrls, data));
+            });
         });
     },
+    /**
+     * Hooks
+     */
     "hooks": {
-        "markup": "<h1>Ghostmode options</h1><option-list ng-if=\"options\" options=\"options\"></option-list>",
-        "client:js": require("fs").readFileSync(__dirname + "/ghostmode.client.js", "utf-8")
+        "markup": "<h1>Locations</h1><url-sync ng-if=\"options\" options=\"options\"></url-sync>",
+        "client:js": require("fs").readFileSync(__dirname + "/urlsync.client.js", "utf-8")
     },
-    "plugin:name": "Ghostmode Options"
+    /**
+     * Plugin name
+     */
+    "plugin:name": "Locations"
 };
 
 /**
- * @param bs
- * @param data
+ *
  */
-function setOption(bs, data) {
-    bs.setOption(data.key, data.value);
+function sendUpdatedUrls (sockets, urls) {
+    sockets.emit("cp:urls:update", urls);
+}
+
+/**
+ * Send all browsers to a URL
+ */
+function sendToUrl (localUrl, data) {
+
+    var bs = this;
+    data.override = true;
+    data.url = data.path;
+    bs.io.sockets.emit("browser:location", data);
+}
+
+/**
+ * Simple Browser reload
+ */
+function reloadAll() {
+    this.io.sockets.emit("browser:reload");
 }

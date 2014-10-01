@@ -8,14 +8,12 @@ var ports       = require("portscanner-plus");
 var http        = require("http");
 var serveStatic = require("serve-static");
 var Q           = require("q");
-var url         = require("url");
-var utils       = require("./server/utils");
-var urls        = require("./server/urls");
 var EE          = require("easy-extender");
 var tmpl        = fs.readFileSync(__dirname + "/server/templates/plugin.tmpl", "utf-8");
 
 var defaultPlugins = {
-    "ghostmode": require("./server/plugins/ghostmode/ghostMode")
+    "ghostmode": require("./server/plugins/ghostmode/ghostMode"),
+    "urlsync": require("./server/plugins/urlsync/urlsync")
 };
 
 var PLUGIN_NAME = "Control Panel";
@@ -34,7 +32,7 @@ var ControlPanel = function (opts, bs) {
     this.pluginManager = new EE(defaultPlugins, {
         "markup": function (hooks, initial) {
             var out = hooks.reduce(function (combined, item) {
-                return combined += tmpl.replace("%markup%", item);
+                return [combined, tmpl.replace("%markup%", item)].join("\n");
             }, "");
             return out;
         },
@@ -51,7 +49,6 @@ var ControlPanel = function (opts, bs) {
 
     ports.getPorts(1)
         .then(this.start.bind(this))
-        .then(this.registerEvents.bind(this))
         .then(this.registerPlugins.bind(this))
         .catch(function (e) {
             this.logger
@@ -136,53 +133,13 @@ function plugin(opts, bs) {
  * @param ports
  */
 ControlPanel.prototype.registerPlugins = function (opts, ports) {
-    this.pluginManager.get("ghostmode")(this, this.bs)
+    this.pluginManager.get("ghostmode")(this, this.bs);
+    this.pluginManager.get("urlsync")(this, this.bs);
 };
-
-/**
- * This is where we handle events sent back from
- * @param opts
- * @param ports
- */
-ControlPanel.prototype.registerEvents = function (opts, ports) {
-
-    var bs          = this.bs;
-    var sockets     = bs.io.sockets;
-
-    sockets.on("connection", function (client) {
-
-        sendUpdatedUrls(sockets, validUrls);
-
-        client.on("urls:browser:reload",   reloadAll.bind(bs));
-        client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
-    });
-};
-
-
-/**
- * Send all browsers to a URL
- */
-function sendToUrl (localUrl, data) {
-
-    var bs = this;
-    data.override = true;
-    data.url = data.path;
-    bs.io.sockets.emit("browser:location", data);
-}
-
-/**
- * Simple Browser reload
- */
-function reloadAll() {
-    this.io.sockets.emit("browser:reload");
-}
 
 /**
  * Module exports
  */
-module.exports["client:js"]         =
-//module.exports["client:events"]     = clientEvents;
-
 module.exports.hooks = {
     "client:js":         fs.readFileSync(__dirname + "/lib/js/includes/events.js"),
     "server:middleware": function () {
@@ -195,5 +152,4 @@ module.exports.hooks = {
 module.exports.plugin               = plugin;
 module.exports["plugin:name"]       = PLUGIN_NAME;
 module.exports.startServer          = startServer;
-module.exports.sendToUrl            = sendToUrl;
 
