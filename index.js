@@ -19,9 +19,6 @@ var defaultPlugins = {
 };
 
 var PLUGIN_NAME = "Control Panel";
-var validUrls   = [{
-    path: "/"
-}];
 
 /**
  * @constructor
@@ -40,12 +37,17 @@ var ControlPanel = function (opts, bs) {
                 return combined += tmpl.replace("%markup%", item);
             }, "");
             return out;
+        },
+        "client:js": function (hooks) {
+            var js = fs.readFileSync(__dirname + "/lib/js/dist/app.js", "utf-8");
+            return [js, hooks.join(";")].join(";");
         }
     });
 
     this.pluginManager.init();
 
     this.pageMarkup = this.pluginManager.hook("markup");
+    this.clientJs   = this.pluginManager.hook("client:js");
 
     ports.getPorts(1)
         .then(this.start.bind(this))
@@ -68,15 +70,17 @@ ControlPanel.prototype.init = function () {
  * @param options
  * @returns {*}
  */
-function startServer(options, socketMw, connectorMw, markup) {
+function startServer(options, socketMw, connectorMw, markup, clientJs) {
     
     var app = connect();
     app.use("/js/vendor/socket.js", socketMw);
     app.use("/js/connector", connectorMw);
+    app.use("/js/app.js", function (req, res, next) {
+        res.setHeader("Content-Type", "application/javascript");
+        res.end(clientJs);
+    });
     app.use(function (req, res, next) {
-
         if (req.url === "/") {
-
             res.setHeader("Content-Type", "text/html");
             return fs.createReadStream(__dirname + "/lib/index.html")
                 .pipe(through(function (buffer) {
@@ -107,7 +111,7 @@ ControlPanel.prototype.start = function (ports) {
     var socketMw    = this.bs.getMiddleware("socket-js");
     var connectorMw = this.bs.getMiddleware("connector");
 
-    var server = startServer(this.bs.options, socketMw, connectorMw, this.pageMarkup);
+    var server = startServer(this.bs.options, socketMw, connectorMw, this.pageMarkup, this.clientJs);
 
     server.listen(port);
 
@@ -151,18 +155,9 @@ ControlPanel.prototype.registerEvents = function (opts, ports) {
 
         client.on("urls:browser:reload",   reloadAll.bind(bs));
         client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
-        client.on("urls:client:connected", function (data) {
-            sendUpdatedUrls(sockets, urls.trackUrls(validUrls, data));
-        });
     });
 };
 
-/**
- *
- */
-function sendUpdatedUrls (sockets, urls) {
-    sockets.emit("cp:urls:update", urls);
-}
 
 /**
  * Send all browsers to a URL
