@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "csswizardry-grids-with-floats": "~2.2.1"
+    "csswizardry-grids-with-floats": "~2.2.1",
+    "angular-order-object-by": "~1.0.0"
   }
 }
