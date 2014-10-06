@@ -11,6 +11,7 @@
 
 
 $float: true;
+
 @import "vendor/grids";
 
 @import "theme/base";
@@ -19,8 +20,10 @@ $float: true;
 @import "theme/animations";
 
 @import "theme/nav";
+@import "theme/forms";
 @import "theme/url-nav";
 @import "theme/buttons";
+@import "theme/main";
 @import "theme/headings";
 @import "theme/links";
 @import "theme/header";

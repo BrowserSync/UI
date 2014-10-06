@@ -1,29 +1,25 @@
-.button {
+$button-bg: #283152;
+%button {
 
     display: inline-block;
     border: 0;
     padding: $half-spacing $base-spacing;
     width: auto;
     vertical-align: middle;
-    background: $silver;
-    color: $link;
-    font-weight: bold;
+    background: $button-bg;
+    color: white;
     @include font-size($base-font-size);
-    line-height: 1;
+    border-bottom: 1px solid lighten($navy, 15%);
+
+    line-height: 1.2;
     text-align: center;
     cursor: pointer;
-    border-radius: $half-radius;
 
     &:hover,
     &:focus {
-        background: $silver;
-        color: $link-hover;
-        text-decoration: none;
     }
 
     &:active {
-        background: $link-hover;
-        color: $white;
     }
 
     + .button,
@@ -32,43 +28,35 @@
     }
 }
 
-.button--primary {
+.button {
+    @extend %button;
 
-    background: $red;
-    color: $white;
-
-    &:hover,
-    &:focus {
-        background: lighten($red, 5%);
-        color: $white;
-    }
-
-    &:active {
-        background: darken($red, 10%);
-        color: $white;
+    span {
+        color: grey;
     }
 }
 
-.button--alt {
+.menu-button {
 
-    background: $navy;
-    color: white;
-    font-weight: normal;
+    @extend %button;
+    width: 100%;
 
-    &:hover, &:active, &:focus {
-
-        background: lighten($navy, 5%);
-        color: white;
+    span {
+        color: grey;
     }
 }
 
-.button--loading {
+.section-button {
 
-    background: red;
+    @extend %button;
+    text-align: left;
 
-    &:hover, &:active, &:focus {
-
-        background: $grey-lt;
-        color: white;
+    span {
+        color: grey;
     }
+}
+
+.menu-close {
+    color: grey;
+    background: darken($button-bg, 2%);
 }
