@@ -44,12 +44,12 @@ LAYOUT
 /**
  * Grids
  */
-.clearfix, .grid, .nav, .nav--inline, .nav--float, .options-list, .nav-toggle, .container {
+.clearfix, .grid, .nav, .nav--inline, .nav--float, .options-list, .main, .nav-toggle, .container {
   zoom: 1; }
-  .clearfix:before, .grid:before, .nav:before, .nav--inline:before, .nav--float:before, .options-list:before, .nav-toggle:before, .container:before, .clearfix:after, .grid:after, .nav:after, .nav--inline:after, .nav--float:after, .options-list:after, .nav-toggle:after, .container:after {
+  .clearfix:before, .grid:before, .nav:before, .nav--inline:before, .nav--float:before, .options-list:before, .main:before, .nav-toggle:before, .container:before, .clearfix:after, .grid:after, .nav:after, .nav--inline:after, .nav--float:after, .options-list:after, .main:after, .nav-toggle:after, .container:after {
     content: "";
     display: table; }
-  .clearfix:after, .grid:after, .nav:after, .nav--inline:after, .nav--float:after, .options-list:after, .nav-toggle:after, .container:after {
+  .clearfix:after, .grid:after, .nav:after, .nav--inline:after, .nav--float:after, .options-list:after, .main:after, .nav-toggle:after, .container:after {
     clear: both; }
 
 /**
@@ -1413,10 +1413,19 @@ input {
   text-align: left; }
   .section-button span {
     color: grey; }
+  .section-button.active {
+    background: #1b2032;
+    font-weight: 700; }
+  @media only screen and (min-width: 800px) {
+    .section-button:hover {
+      background: #1b2032; } }
 
 .menu-close {
   color: grey;
   background: #252d4b; }
+  @media only screen and (min-width: 800px) {
+    .menu-close {
+      display: none; } }
 
 .hidden {
   display: none; }
@@ -1431,15 +1440,25 @@ input {
 .section-nav {
   position: absolute;
   width: 100%;
-  -webkit-transform: translateX(-100%) translateY(20px) scale(1.2);
-      -ms-transform: translateX(-100%) translateY(20px) scale(1.2);
-          transform: translateX(-100%) translateY(20px) scale(1.2);
+  -webkit-transform: translateX(-200%) translateY(20px) scale(1.2);
+      -ms-transform: translateX(-200%) translateY(20px) scale(1.2);
+          transform: translateX(-200%) translateY(20px) scale(1.2);
   -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
           transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
   -webkit-transition: all .3s;
           transition: all .3s;
   opacity: 0;
   z-index: 1; }
+  @media only screen and (min-width: 800px) {
+    .section-nav {
+      opacity: 1;
+      position: relative;
+      -webkit-transform: translateX(0) translateY(0) scale(1);
+          -ms-transform: translateX(0) translateY(0) scale(1);
+              transform: translateX(0) translateY(0) scale(1);
+      float: left;
+      width: 25%;
+      padding: 12px; } }
   .section-nav ul {
     margin-bottom: 0; }
   .section-nav.active {
@@ -1468,13 +1487,12 @@ input {
     opacity: .5;
     -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
             transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3); }
+@media only screen and (min-width: 800px) {
+  .nav-toggle {
+    display: none; } }
 
 .menu-button {
   border-left: 1px solid #364064; }
-
-.content {
-  color: white;
-  padding: 12px; }
 
 .options-list {
   font-size: 18px;
@@ -1504,11 +1522,6 @@ input {
 
 .server-info p {
   margin-bottom: 0; }
-
-.main-section {
-  display: none; }
-  .main-section.active {
-    display: block; }
 
 /**
  * Site Theme
@@ -1638,7 +1651,7 @@ a {
   width: auto;
   max-width: 740px;
   list-style: none; }
-  @media only screen and (min-width: 600px) and (max-width: 899px) {
+  @media only screen and (min-width: 600px) and (max-width: 799px) {
     .container {
       padding-right: 24px;
       padding-left: 24px; } }
@@ -1648,6 +1661,19 @@ a {
 
 .text--center {
   text-align: center; }
+
+.content {
+  color: white;
+  padding: 12px; }
+  @media only screen and (min-width: 800px) {
+    .content {
+      float: left;
+      width: 75%; } }
+
+.main-section {
+  display: none; }
+  .main-section.active {
+    display: block; }
 
 /**
  * Base typography styles

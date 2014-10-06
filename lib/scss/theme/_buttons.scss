@@ -54,9 +54,25 @@ $button-bg: #283152;
     span {
         color: grey;
     }
+
+    &.active {
+        background: $navy;
+        font-weight: 700;
+    }
+
+    @include media-query(min, $desk-start) {
+        &:hover {
+            background: $navy;
+        }
+    }
 }
 
 .menu-close {
+
     color: grey;
     background: darken($button-bg, 2%);
+
+    @include media-query(min, $desk-start) {
+        display: none;
+    }
 }

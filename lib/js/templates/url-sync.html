@@ -1,21 +1,28 @@
-<div class="grid text--center">
-    <div class="grid__item">
-        <select ng-model="selectedUrl" ng-options="url.path for url in urls.visited">
-            <option value="">-- Choose Previous --</option>
-        </select>
-        <button ng-click="sendAllTo(selectedUrl.path)">Go!</button>
-    </div>
-    <div class="grid__item one-half">
-        <form ng-submit="sendAllTo(urls.current)">
-            <p>Send all browsers to the following:</p>
-            <label for="url-sync"><small>{{urls.local}}/ </small><input type="text" name="url-sync" ng-model="urls.current"></label>
-        </form>
-    </div>
-    <div class="grid__item one-half">
-        <p>Refresh all browsers:</p>
+<ul class="options-list">
+    <li>
+        <p class="lede">Refresh all connected Browsers</p>
         <div class="loader">
-            <button class="button button--alt" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
+            <button class="button" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
             <span class="small progress" ng-if="ui.loading">Loading</span>
         </div>
-    </div>
-</div>
+    </li>
+    <li>
+        <p class="lede">Visit a previous URL</p>
+        <p>
+            <select ng-model="selectedUrl" ng-options="url.path for url in urls.visited">
+                <option value="">-- Choose Previous --</option>
+            </select>
+        </p>
+        <p>
+            <button class="button" ng-click="sendAllTo(selectedUrl.path)">Go!</button>
+        </p>
+    </li>
+    <li>
+        <p class="lede">Sync all to a new url:</p>
+        <p>{{urls.local}}/<p>
+        <form ng-submit="sendAllTo(urls.current)">
+            <p><input type="text" name="url-sync" ng-model="urls.current"></p>
+            <button class="button">Go</button>
+        </form>
+    </li>
+</ul>

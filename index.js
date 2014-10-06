@@ -68,7 +68,7 @@ ControlPanel.prototype.init = function () {
  * @returns {*}
  */
 function startServer(options, socketMw, connectorMw, markup, clientJs) {
-    
+
     var app = connect();
     app.use("/js/vendor/socket.js", socketMw);
     app.use("/js/connector", connectorMw);

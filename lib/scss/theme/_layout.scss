@@ -33,3 +33,24 @@
 .text--center {
     text-align: center;
 }
+
+
+.content {
+
+    color: $white;
+    padding: $half-spacing;
+
+    @include media-query(min, $desk-start) {
+        float: left;
+        width: 75%;
+    }
+}
+
+.main-section {
+
+    display: none;
+
+    &.active {
+        display: block;
+    }
+}

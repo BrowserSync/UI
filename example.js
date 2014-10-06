@@ -1,12 +1,12 @@
-var path = "/Users/shaneobsourne/sites/browser-sync";
-var cp = require("./index");
-var bs        = require(path);
-var client    = require("/Users/shaneobsourne/sites/browser-sync-client");
-
-client["plugin:name"] = "client:script";
+var path   = "/Users/shakyshane/sites/os-browser-sync";
+var cp     = require("./index");
+var bs     = require(path);
+//var client = require("/Users/shakyshane/sites/browser-sync-modules/browser-sync-client");
+//
+//client["plugin:name"] = "client:script";
 
 bs.use(cp);
-bs.use(client);
+//bs.use(client);
 
 bs({
     server: {

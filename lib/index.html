@@ -14,30 +14,45 @@
 
 <notify-elem></notify-elem>
 
-<header class="wrapper site-header alt" role="banner">
-    <div class="container">
-        <h1 class="site-title alt"><a href="/">BrowserSync</a> / <span><a href="/docs">Control Panel</a></span></h1>
-        <ul class="nav--inline docs-nav">
-            <li><a href="http://www.browsersync.io/docs/" class="">Documentation</a></li>
-        </ul>
-    </div>
+<header class="site-header" role="banner">
+    <h1 class="site-title alt">
+        <a href="/">BrowserSync</a> - <span><a href="/">Control Panel</a></span>
+    </h1>
 </header>
 
-<div class="site-body" role="main" ng-controller="MainCtrl">
-    <section id="page-top" class="wrapper code-example docs">
-        <div class="container">
-
-            <article class="doc-wrapper">
-                <h1>BrowserSync running mode: {{options.mode}}</h1>
-                <url-info ng-if="options.server || options.proxy" options="options"></url-info>
-                <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
-            </article>
-
-            %hooks%
-
-        </div>
+<main class="main" ng-controller="MainCtrl">
+    <nav class="section-nav" id="section-nav">
+        <ul class="">
+            <li>
+                <button class="section-button active">{{options.mode}} Info</button>
+            </li>
+            <li>
+                <button class="section-button">GhostMode Options</button>
+            </li>
+            <li>
+                <button class="section-button">Locations</button>
+            </li>
+            <li>
+                <button class="section-button">Plugins <span>(2)</span></button>
+            </li>
+            <li>
+                <button class="section-button menu-close">CLOSE</button>
+            </li>
+        </ul>
+    </nav>
+    <div class="nav-toggle">
+        <button class="button menu-button">Menu</button>
+    </div>
+    <section class="content">
+        <article class="main-section active">
+            <h1>{{options.mode}} Info</h1>
+            <url-info ng-if="options.server || options.proxy" options="options"></url-info>
+            <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
+        </article>
+        %hooks%
     </section>
-</div>
+</main>
+
 <div id="page-container">
     <!-- END RIGHTBAR -->
     <footer class="wrapper site-footer" role="contentinfo">
