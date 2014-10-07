@@ -1,4 +1,6 @@
-var urls        = require("../../urls");
+var urls = require("../../urls");
+var path = require("path");
+var fs   = require("fs");
 
 var validUrls   = [{
     path: "/"
@@ -32,7 +34,10 @@ module.exports = {
      */
     "hooks": {
         "markup": "<locations ng-if=\"options\" options=\"options\"></locations>",
-        "client:js": require("fs").readFileSync(__dirname + "/locations.client.js", "utf-8")
+        "templates": {
+            "templates/locations.html": fs.readFileSync(path.join(__dirname, "locations.html"))
+        },
+        "client:js": require("fs").readFileSync(__dirname + "/locations.client.js")
     },
     /**
      * Plugin name

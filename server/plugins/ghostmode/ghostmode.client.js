@@ -12,7 +12,7 @@
                 scope: {
                     options: "="
                 },
-                templateUrl: "js/templates/ghostmode.html",
+                templateUrl: "templates/ghostmode.html",
                 controller: ["$scope", "Socket", "contentSections", ghostModeController]
             };
         });

@@ -1,3 +1,6 @@
+var path = require("path");
+var fs   = require("fs");
+
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
@@ -10,7 +13,10 @@ module.exports = {
     },
     "hooks": {
         "markup": "<ghostmode ng-if=\"options\" options=\"options\"></ghostmode>",
-        "client:js": require("fs").readFileSync(__dirname + "/ghostmode.client.js", "utf-8")
+        "templates": {
+            "templates/ghostmode.html": fs.readFileSync(path.join(__dirname, "ghostmode.html"))
+        },
+        "client:js": fs.readFileSync(path.join(__dirname, "ghostmode.client.js"))
     },
     "plugin:name": "Ghostmode Options"
 };

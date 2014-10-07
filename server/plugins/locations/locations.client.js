@@ -11,7 +11,7 @@
                 scope: {
                     options: "="
                 },
-                templateUrl: "js/templates/locations.html",
+                templateUrl: "templates/locations.html",
                 controller: ["$scope", "$rootScope", "Socket", "contentSections", locationsController]
             };
         });

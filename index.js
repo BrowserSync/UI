@@ -12,8 +12,8 @@ var EE          = require("easy-extender");
 var tmpl        = fs.readFileSync(__dirname + "/server/templates/plugin.tmpl", "utf-8");
 
 var defaultPlugins = {
-    "ghostmode": require("./server/plugins/ghostmode/ghostMode"),
-    "locations": require("./server/plugins/locations/locations"),
+    "ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
+    "locations":   require("./server/plugins/locations/locations"),
     "server-info": require("./server/plugins/server-info/server-info")
 };
 
@@ -40,6 +40,30 @@ var ControlPanel = function (opts, bs) {
         "client:js": function (hooks) {
             var js = fs.readFileSync(__dirname + "/lib/js/dist/app.js", "utf-8");
             return [js, hooks.join(";")].join(";");
+        },
+        "templates": function (hooks) {
+            return hooks.reduce(function (combined, item) {
+
+                if (Object.keys(item).length > 1) {
+
+                    _.each(item, function (value, key) {
+                        if (!combined[key]) {
+                            combined[key] = value
+                        }
+                    });
+
+                } else {
+
+                    var key   = Object.keys(item)[0];
+                    var value = item[key];
+
+                    if (!combined[key]) {
+                        combined[key] = value
+                    }
+                }
+
+                return combined;
+            }, {});
         }
     });
 
@@ -47,6 +71,7 @@ var ControlPanel = function (opts, bs) {
 
     this.pageMarkup = this.pluginManager.hook("markup");
     this.clientJs   = this.pluginManager.hook("client:js");
+    this.templates  = this.pluginManager.hook("templates");
 
     ports.getPorts(1)
         .then(this.start.bind(this))
@@ -64,26 +89,34 @@ ControlPanel.prototype.init = function () {
     return this;
 };
 
-/**
- * @param options
- * @returns {*}
- */
-function startServer(options, socketMw, connectorMw, markup, clientJs) {
 
-    var app = connect();
+function startServer(controlPanel, socketMw, connectorMw) {
+
+    var app     = connect();
+    var options = controlPanel.bs.options;
+
+    _.each(controlPanel.templates, function (template, path) {
+        app.use("/" + path, function (req, res, next) {
+            res.setHeader("Content-Type", "text/html");
+            res.end(template);
+        });
+    });
+
     app.use("/js/vendor/socket.js", socketMw);
     app.use("/js/connector", connectorMw);
+
     app.use("/js/app.js", function (req, res, next) {
         res.setHeader("Content-Type", "application/javascript");
-        res.end(clientJs);
+        res.end(controlPanel.clientJs);
     });
+
     app.use(function (req, res, next) {
         if (req.url === "/") {
             res.setHeader("Content-Type", "text/html");
             return fs.createReadStream(__dirname + "/lib/index.html")
                 .pipe(through(function (buffer) {
                     var file = buffer.toString();
-                    this.queue(file.replace(/%hooks%/g, markup));
+                    this.queue(file.replace(/%hooks%/g, controlPanel.pageMarkup));
                 }))
                 .pipe(res);
         } else {
@@ -109,7 +142,10 @@ ControlPanel.prototype.start = function (ports) {
     var socketMw    = this.bs.getMiddleware("socket-js");
     var connectorMw = this.bs.getMiddleware("connector");
 
-    var server = startServer(this.bs.options, socketMw, connectorMw, this.pageMarkup, this.clientJs);
+    var server = startServer(
+        this,
+        socketMw,
+        connectorMw);
 
     server.listen(port);
 

@@ -1,3 +1,5 @@
+var path = require("path");
+var fs   = require("fs");
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
@@ -13,7 +15,12 @@ module.exports = {
      */
     "hooks": {
         "markup": "<server-info ng-if=\"options\" options=\"options\"></server-info>",
-        "client:js": require("fs").readFileSync(__dirname + "/server-info.client.js", "utf-8")
+        "client:js": fs.readFileSync(__dirname + "/server-info.client.js"),
+        "templates": {
+            "templates/server-info.html":  fs.readFileSync(__dirname + "/server-info.html"),
+            "templates/snippet-info.html": fs.readFileSync(__dirname + "/snippet-info.html"),
+            "templates/url-info.html":     fs.readFileSync(__dirname + "/url-info.html")
+        }
     },
     /**
      * Plugin name

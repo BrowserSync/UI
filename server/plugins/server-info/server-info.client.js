@@ -12,7 +12,7 @@
                     options: "="
                 },
                 replace: true,
-                templateUrl: "js/templates/url-info.html",
+                templateUrl: "templates/url-info.html",
                 controller: ["$scope", "contentSections", urlInfoController]
             };
         })
@@ -24,7 +24,7 @@
                     options: "="
                 },
                 replace: true,
-                templateUrl: "js/templates/server-info.html",
+                templateUrl: "templates/server-info.html",
                 controller: ["$scope", "contentSections", serverInfoController]
             };
         })
@@ -36,7 +36,7 @@
                     options: "="
                 },
                 replace: true,
-                templateUrl: "js/templates/snippet-info.html",
+                templateUrl: "templates/snippet-info.html",
                 controller: ["$scope", snippetInfoController]
             };
         });
