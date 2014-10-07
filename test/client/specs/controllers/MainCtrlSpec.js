@@ -1,28 +1,5 @@
 "use strict";
 
-var browser1 = {
-    id: "2323",
-    name: "Chrome",
-    version: "32.0.1700.107",
-    width: 100,
-    height: 200
-};
-
-var browser2 = {
-    id: "23aa",
-    name: "Firefox",
-    version: "12.322",
-    width: 800,
-    height: 212
-};
-var cpBrowser = {
-    id: "0000",
-    name: "Firefox",
-    version: "12.322",
-    width: 800,
-    height: 212
-};
-
 describe("Main Controller", function () {
 
     beforeEach(module("BrowserSync"));
@@ -32,23 +9,17 @@ describe("Main Controller", function () {
     var socket;
     var spy;
 
-    before(function () {
-//        spy = sinon.spy();
-    });
-
     beforeEach(inject(function ($rootScope, $controller, $injector) {
         scope = $rootScope.$new();
-
         socket = $injector.get("Socket");
         spy = sinon.spy(socket, "addEvent");
         mainCtrl = $controller("MainCtrl", {
             $scope: scope
         });
-
     }));
 
     afterEach(function () {
-//        spy.reset();
+        socket.addEvent.restore();
     });
 
     it("should be available", function () {
@@ -72,20 +43,6 @@ describe("Main Controller", function () {
     it("should add the connection event", function () {
         sinon.assert.calledWithExactly(spy, "connection", scope.socketEvents.connection);
     });
-
-    // EVENTS
-    it.skip("should add a single browser to the scope", function () {
-        scope.socketEvents.addBrowsers([browser1, browser2]);
-        assert.equal(scope.browsers.length, 2);
-        assert.equal(scope.browsers[0].name, "Chrome");
-    });
-
-    it.skip("should not add the control panel to the list of devices", function () {
-        scope.socketId = "0000";
-        scope.socketEvents.addBrowsers([browser1, browser2, cpBrowser]);
-        assert.equal(scope.browsers.length, 2);
-    });
-
     it("should set options on the scope", function () {
         var options  = { name: "kittens" };
         scope.socketEvents.connection(options);
