@@ -5,55 +5,76 @@
 
     angular.module("BrowserSync")
 
-    .directive("optionList", function () {
-        return {
-            restrict: "E",
-            scope: {
-                options: "="
-            },
-            templateUrl: "js/templates/option-list.html",
-            controller: function ($scope, Socket) {
+        .directive("optionList", function () {
 
-                var ghostMode = $scope.options.ghostMode;
+            return {
+                restrict: "E",
+                scope: {
+                    options: "="
+                },
+                templateUrl: "js/templates/option-list.html",
+                controller: ["$scope", "Socket", "contentSections", ghostModeController]
+            };
+        });
 
-                $scope.items     = {};
-                $scope.formItems = [];
+    /**
+     * @param $scope
+     * @param Socket
+     * @param contentSections
+     */
+    function ghostModeController($scope, Socket, contentSections) {
 
-                for (var item in ghostMode) {
-                    if (item !== "forms") {
-                        $scope.items[item] = ghostMode[item];
-                    }
-                }
+        var ghostMode = $scope.options.ghostMode;
 
-                for (item in ghostMode.forms) {
-                    $scope.formItems.push({
-                        name: item,
-                        key: "forms."+item,
-                        value: ghostMode.forms[item]
-                    })
-                }
+        /**
+         *
+         */
+        $scope.$watch(function () {
+            return contentSections["ghostmode"].active
+        }, function (data) {
+            $scope.ui.active = data;
+        });
 
-                /**
-                 * Toggle Options
-                 * @param key
-                 * @param value
-                 */
-                $scope.toggle = function (key, value) {
-                    Socket.emit("cp:option:set", {key: prefixOption(key), value: value});
-                };
-
-                /**
-                 * Toggle Options
-                 */
-                $scope.formToggle = function (item) {
-                    Socket.emit("cp:option:set", {key: prefixOption(item.key), value: item.value});
-                };
-
-                function prefixOption(key) {
-                    return "ghostMode." + key;
-                }
-            }
+        $scope.ui = {
+            active: contentSections["ghostmode"].active
         };
-    });
+
+        $scope.items = {};
+        $scope.formItems = [];
+
+        for (var item in ghostMode) {
+            if (item !== "forms") {
+                $scope.items[item] = ghostMode[item];
+            }
+        }
+
+        for (item in ghostMode.forms) {
+            $scope.formItems.push({
+                name: item,
+                key: "forms." + item,
+                value: ghostMode.forms[item]
+            })
+        }
+
+        /**
+         * Toggle Options
+         * @param key
+         * @param value
+         */
+        $scope.toggle = function (key, value) {
+            Socket.emit("cp:option:set", {key: prefixOption(key), value: value});
+        };
+
+        /**
+         * Toggle Options
+         */
+        $scope.formToggle = function (item) {
+            Socket.emit("cp:option:set", {key: prefixOption(item.key), value: item.value});
+        };
+
+        function prefixOption(key) {
+            return "ghostMode." + key;
+        }
+    }
 
 })(angular);

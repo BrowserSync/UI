@@ -31,7 +31,7 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": "<h1>Locations</h1><url-sync ng-if=\"options\" options=\"options\"></url-sync>",
+        "markup": "<url-sync ng-if=\"options\" options=\"options\"></url-sync>",
         "client:js": require("fs").readFileSync(__dirname + "/urlsync.client.js", "utf-8")
     },
     /**

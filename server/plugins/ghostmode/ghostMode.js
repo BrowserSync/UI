@@ -9,7 +9,7 @@ module.exports = {
         });
     },
     "hooks": {
-        "markup": "<h1>Ghostmode options</h1><option-list ng-if=\"options\" options=\"options\"></option-list>",
+        "markup": "<option-list ng-if=\"options\" options=\"options\"></option-list>",
         "client:js": require("fs").readFileSync(__dirname + "/ghostmode.client.js", "utf-8")
     },
     "plugin:name": "Ghostmode Options"

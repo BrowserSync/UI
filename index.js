@@ -13,7 +13,8 @@ var tmpl        = fs.readFileSync(__dirname + "/server/templates/plugin.tmpl", "
 
 var defaultPlugins = {
     "ghostmode": require("./server/plugins/ghostmode/ghostMode"),
-    "urlsync": require("./server/plugins/urlsync/urlsync")
+    "urlsync": require("./server/plugins/urlsync/urlsync"),
+    "urlinfo": require("./server/plugins/urlinfo/url-info")
 };
 
 var PLUGIN_NAME = "Control Panel";
@@ -135,6 +136,7 @@ function plugin(opts, bs) {
 ControlPanel.prototype.registerPlugins = function (opts, ports) {
     this.pluginManager.get("ghostmode")(this, this.bs);
     this.pluginManager.get("urlsync")(this, this.bs);
+    this.pluginManager.get("urlinfo")(this, this.bs);
 };
 
 /**

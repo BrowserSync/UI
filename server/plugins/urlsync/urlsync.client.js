@@ -12,7 +12,7 @@
                     options: "="
                 },
                 templateUrl: "js/templates/url-sync.html",
-                controller: ["$scope", "$rootScope", "Socket", urlSyncController]
+                controller: ["$scope", "$rootScope", "Socket", "contentSections", urlSyncController]
             };
         });
 
@@ -21,14 +21,23 @@
      * @param $scope
      * @param $rootScope
      * @param Socket
+     * @param contentSections
      */
-    function urlSyncController($scope, $rootScope, Socket) {
+    function urlSyncController($scope, $rootScope, Socket, contentSections) {
+
+        /**
+         *
+         */
+        $scope.$watch(function() { return contentSections["locations"].active }, function (data) {
+            $scope.ui.active = data;
+        });
 
         /**
          * @type {{loading: boolean}}
          */
         $scope.ui = {
-            loading: false
+            loading: false,
+            active: contentSections["locations"].active
         };
 
         /**
