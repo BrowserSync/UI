@@ -21,8 +21,9 @@ module.exports = {
         // Setup stuff
         "test/client/setup.js",
         "lib/js/dist/app.js",
-        "server/plugins/urlsync/urlsync.client.js",
         "server/plugins/ghostmode/ghostmode.client.js",
+        "server/plugins/locations/locations.client.js",
+        "server/plugins/server-info/server-info.client.js",
 
         // Specs
         "lib/js/templates/**/*.html",

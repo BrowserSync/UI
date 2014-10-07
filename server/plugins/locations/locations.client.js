@@ -5,14 +5,14 @@
 
     angular.module("BrowserSync")
 
-        .directive("urlSync", function () {
+        .directive("locations", function () {
             return {
                 restrict: "E",
                 scope: {
                     options: "="
                 },
-                templateUrl: "js/templates/url-sync.html",
-                controller: ["$scope", "$rootScope", "Socket", "contentSections", urlSyncController]
+                templateUrl: "js/templates/locations.html",
+                controller: ["$scope", "$rootScope", "Socket", "contentSections", locationsController]
             };
         });
 
@@ -23,7 +23,7 @@
      * @param Socket
      * @param contentSections
      */
-    function urlSyncController($scope, $rootScope, Socket, contentSections) {
+    function locationsController($scope, $rootScope, Socket, contentSections) {
 
         /**
          *

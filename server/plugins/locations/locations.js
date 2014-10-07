@@ -31,8 +31,8 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": "<url-sync ng-if=\"options\" options=\"options\"></url-sync>",
-        "client:js": require("fs").readFileSync(__dirname + "/urlsync.client.js", "utf-8")
+        "markup": "<locations ng-if=\"options\" options=\"options\"></locations>",
+        "client:js": require("fs").readFileSync(__dirname + "/locations.client.js", "utf-8")
     },
     /**
      * Plugin name

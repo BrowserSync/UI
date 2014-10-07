@@ -5,14 +5,14 @@
 
     angular.module("BrowserSync")
 
-        .directive("optionList", function () {
+        .directive("ghostmode", function () {
 
             return {
                 restrict: "E",
                 scope: {
                     options: "="
                 },
-                templateUrl: "js/templates/option-list.html",
+                templateUrl: "js/templates/ghostmode.html",
                 controller: ["$scope", "Socket", "contentSections", ghostModeController]
             };
         });

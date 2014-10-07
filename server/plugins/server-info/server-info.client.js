@@ -36,7 +36,7 @@
                     options: "="
                 },
                 replace: true,
-                templateUrl: "js/templates/url-info.html",
+                templateUrl: "js/templates/snippet-info.html",
                 controller: ["$scope", snippetInfoController]
             };
         });

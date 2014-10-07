@@ -13,7 +13,7 @@ module.exports = {
      */
     "hooks": {
         "markup": "<server-info ng-if=\"options\" options=\"options\"></server-info>",
-        "client:js": require("fs").readFileSync(__dirname + "/url-info.client.js", "utf-8")
+        "client:js": require("fs").readFileSync(__dirname + "/server-info.client.js", "utf-8")
     },
     /**
      * Plugin name
