@@ -37,7 +37,7 @@ describe("Directive: url-sync.sendAllTo()", function () {
             };
 
             // Pass in the user object to the directive
-            element = angular.element("<url-sync options=\"options\"></url-sync>");
+            element = angular.element("<locations options=\"options\"></locations>");
 
             // Compile & Digest as normal
             compile(element)(scope);
