@@ -39,16 +39,14 @@
                  * @param value
                  */
                 $scope.toggle = function (key, value) {
-                    var newValue = !value;
-                    Socket.emit("cp:option:set", {key: prefixOption(key), value: newValue});
+                    Socket.emit("cp:option:set", {key: prefixOption(key), value: value});
                 };
 
                 /**
                  * Toggle Options
                  */
                 $scope.formToggle = function (item) {
-                    var newValue = !item.value;
-                    Socket.emit("cp:option:set", {key: prefixOption(item.key), value: newValue});
+                    Socket.emit("cp:option:set", {key: prefixOption(item.key), value: item.value});
                 };
 
                 function prefixOption(key) {

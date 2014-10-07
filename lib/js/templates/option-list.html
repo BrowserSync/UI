@@ -1,16 +1,16 @@
 <p class="lede">Actions:</p>
 <ul class="options-list">
     <li ng-repeat="(key, value) in items" class="tight">
-        <label ng-click="toggle(key, value)">
-            <input type="checkbox" ng-model="value"> {{key}} ({{value}})
+        <label>
+            <input type="checkbox" ng-model="value" ng-change="toggle(key, value)"> {{key}} ({{value}})
         </label>
     </li>
 </ul>
 <p class="lede">Forms:</p>
 <ul class="options-list">
     <li ng-repeat="item in formItems" class="tight">
-        <label ng-click="formToggle(item)">
-            <input type="checkbox" ng-model="item.value"> {{item.name}} ({{item.value}})
+        <label>
+            <input type="checkbox" ng-model="item.value" ng-change="formToggle(item)"> {{item.name}} ({{item.value}})
         </label>
     </li>
 </ul>
