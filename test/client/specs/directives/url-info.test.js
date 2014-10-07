@@ -1,4 +1,4 @@
-describe("Directive: Tabs", function () {
+describe("Directive: URL Info", function () {
 
     var scope, element, compile;
     beforeEach(module("BrowserSync"));
