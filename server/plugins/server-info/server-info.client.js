@@ -56,6 +56,13 @@
         };
 
         /**
+         * Watch the running mode for changes
+         */
+        $scope.$watch("options.mode", function (data) {
+            $scope.ui.snippet = data === "Snippet";
+        });
+
+        /**
          *
          */
         $scope.$watch(function () {
@@ -63,18 +70,12 @@
         }, function (data) {
             $scope.ui.active = data;
         });
-
     }
 
     /**
      * @param $scope
      */
-    function snippetInfoController($scope) {
-
-        $scope.ui = {
-            snippet: true
-        };
-    }
+    function snippetInfoController($scope) {/*noop*/}
 
     /**
      * @param $scope

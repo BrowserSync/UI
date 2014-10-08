@@ -8,15 +8,9 @@ var bs     = require("browser-sync");
 bs.use(cp);
 //bs.use(client);
 
-//bs({
-//    server: {
-//        baseDir: "./test/fixtures"
-//    },
-//    open: false
-//});
-//bs({
-//    proxy: "swoon.static",
-//    open: false
-//});
-
-bs();
+bs({
+    server: {
+        baseDir: "./test/fixtures"
+    },
+    open: false
+});
