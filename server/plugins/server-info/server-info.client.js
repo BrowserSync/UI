@@ -48,6 +48,14 @@
     function serverInfoController ($scope, contentSections) {
 
         /**
+         * @type {{active: *, snippet: boolean}}
+         */
+        $scope.ui = {
+            active: contentSections["server-info"].active,
+            snippet: $scope.options.mode === "Snippet"
+        };
+
+        /**
          *
          */
         $scope.$watch(function () {
@@ -56,9 +64,6 @@
             $scope.ui.active = data;
         });
 
-        $scope.ui = {
-            active: contentSections["server-info"].active
-        };
     }
 
     /**
@@ -67,14 +72,7 @@
     function snippetInfoController($scope) {
 
         $scope.ui = {
-            snippet: false
-        };
-
-        /**
-         *
-         */
-        $scope.toggleSnippet = function () {
-            $scope.ui.snippet = !$scope.ui.snippet;
+            snippet: true
         };
     }
 

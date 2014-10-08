@@ -17,8 +17,6 @@ describe("Directive: Snippet info", function () {
                 snippet: "SNIPPET"
             };
 
-            // Set the user on the parent scope to simulate how it'd happen in your app
-            // Pass in the user object to the directive
             element = angular.element("<snippet-info options=\"options\"></snippet-info>");
 
             // Compile & Digest as normal
@@ -26,14 +24,8 @@ describe("Directive: Snippet info", function () {
             scope.$digest();
         });
 
-        it("Should not be shown be default", function () {
+        it("Should be shown be default", function () {
             var localScope = scope.$$childHead;
-            assert.equal(localScope.ui.snippet, false);
-        });
-
-        it("should be shown when toggle", function () {
-            var localScope = scope.$$childHead;
-            localScope.toggleSnippet();
             assert.equal(localScope.ui.snippet, true);
         });
     });

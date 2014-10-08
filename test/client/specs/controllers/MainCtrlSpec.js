@@ -50,4 +50,25 @@ describe("Main Controller", function () {
         var expected = "kittens";
         assert.equal(actual, expected);
     });
+    it("should set the Server mode on the options", function () {
+        var options  = { server: "test/fixtures" };
+        scope.socketEvents.connection(options);
+        var actual = scope.options.mode;
+        var expected = "Server";
+        assert.equal(actual, expected);
+    });
+    it("should set the Proxy mode on the options", function () {
+        var options  = { proxy: "local.dev" };
+        scope.socketEvents.connection(options);
+        var actual = scope.options.mode;
+        var expected = "Proxy";
+        assert.equal(actual, expected);
+    });
+    it("should set the Snippet mode on the options", function () {
+        var options  = {};
+        scope.socketEvents.connection(options);
+        var actual = scope.options.mode;
+        var expected = "Snippet";
+        assert.equal(actual, expected);
+    });
 });

@@ -45,4 +45,19 @@ describe("Main Controller", function () {
         assert.equal(scope.ui.menu["server-info"].active, false);
         assert.equal(scope.ui.menu["locations"].active,   false);
     });
+    it("should set the server-info title based on the options (SERVER)", function () {
+        var options  = { server: {} };
+        scope.socketEvents.connection(options);
+        assert.equal(scope.ui.menu["server-info"].title,   "Server Info");
+    });
+    it("should set the server-info title based on the options (PROXY)", function () {
+        var options  = { proxy: {} };
+        scope.socketEvents.connection(options);
+        assert.equal(scope.ui.menu["server-info"].title,   "Proxy Info");
+    });
+    it("should set the server-info title based on the options (SNIPPET)", function () {
+        var options  = {};
+        scope.socketEvents.connection(options);
+        assert.equal(scope.ui.menu["server-info"].title,   "Snippet Info");
+    });
 });
