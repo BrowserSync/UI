@@ -43,7 +43,7 @@
         $scope.formItems = [];
 
         for (var item in ghostMode) {
-            if (item !== "forms") {
+            if (item !== "forms" && item !== "location") {
                 $scope.items[item] = ghostMode[item];
             }
         }

@@ -12,5 +12,7 @@ bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    open: false
+    open: false,
+    tunnel: true
+//    online: false
 });

@@ -28,12 +28,10 @@ describe("Content Sections Value/Service", function () {
         assert.equal(values["locations"].active, false);
     });
     it("should be able to transform a value", function () {
-//        console.log(sections);
         var transformed = sections.transform(values["ghostmode"], function (item) {
             item.title = "Shane";
             return item;
         });
-        
         assert.equal(values["ghostmode"].title, "Shane");
     });
 });

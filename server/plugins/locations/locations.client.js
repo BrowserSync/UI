@@ -37,7 +37,12 @@
          */
         $scope.ui = {
             loading: false,
-            active: contentSections["locations"].active
+            active: contentSections["locations"].active,
+            loaders: {
+                "reloadAll": false,
+                "sendAllTo": false,
+                "newUrl": false
+            }
         };
 
         /**
@@ -54,13 +59,13 @@
         /**
          * Emit the socket event
          */
-        $scope.sendAllTo = function (path) {
+        $scope.sendAllTo = function (path, trigger) {
 
-            $scope.ui.loading   = true;
+            $scope.setLoading(trigger);
             $scope.urls.current = "";
 
             if (!path || path === "undefined") {
-                $scope.ui.loading = false;
+                $scope.resetLoaders();
                 return;
             }
 
@@ -76,7 +81,7 @@
                         status: "success",
                         timeout: 2000
                     });
-                    $scope.ui.loading = false;
+                    $scope.resetLoaders();
                 })
             }, 200);
         };
@@ -86,10 +91,8 @@
          */
         $scope.reloadAll = function () {
 
-            $scope.ui.loading = true;
-
+            $scope.setLoading("reloadAll");
             Socket.emit("urls:browser:reload");
-
             window.setTimeout(notify.bind(null, $scope, $rootScope), 200);
         };
 
@@ -102,6 +105,25 @@
             });
         };
 
+        /**
+         * Set the loading state
+         * @param name
+         */
+        $scope.setLoading = function (name) {
+            $scope.ui.loading       = true;
+            $scope.ui.loaders[name] = true;
+        };
+
+        /**
+         * Reset the loading state
+         */
+        $scope.resetLoaders = function () {
+            $scope.ui.loading = false;
+            $scope.ui.loaders.reloadAll = false;
+            $scope.ui.loaders.sendAllTo = false;
+            $scope.ui.loaders.newUrl    = false;
+        };
+
         Socket.addEvent("cp:urls:update", $scope.updateVisited);
     }
 
@@ -112,7 +134,7 @@
 
         $scope.$apply(function () {
 
-            $scope.ui.loading = false;
+            $scope.resetLoaders();
 
             $rootScope.$broadcast("notify:flash", {
                 heading: "Instruction Sent:",

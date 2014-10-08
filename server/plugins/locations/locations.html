@@ -6,7 +6,7 @@
 
             <div class="loader">
                 <button class="button" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
-                <span class="small progress" ng-if="ui.loading">Loading</span>
+                <span class="small progress" ng-if="ui.loaders.reloadAll">Loading</span>
             </div>
         </li>
         <li>
@@ -17,20 +17,24 @@
                     <option value="">-- Choose Previous --</option>
                 </select>
             </p>
-            <p>
-                <button class="button" ng-click="sendAllTo(selectedUrl.path)">Go!</button>
-            </p>
+            <div class="loader">
+                <button class="button" ng-click="sendAllTo(selectedUrl.path, 'sendAllTo')">Go!</button>
+                <span class="small progress" ng-if="ui.loaders.sendAllTo">Loading</span>
+            </div>
         </li>
         <li>
-            <p class="lede">Sync all to a new url:</p>
+            <p class="lede">Sync all to a new url: </p>
 
             <p>{{urls.local}}/
 
             <p>
 
-            <form ng-submit="sendAllTo(urls.current)">
+            <form ng-submit="sendAllTo(urls.current, 'newUrl')">
                 <p><input type="text" name="url-sync" ng-model="urls.current"></p>
-                <button class="button">Go</button>
+                <div class="loader">
+                    <button class="button">Go</button>
+                    <span class="small progress" ng-if="ui.loaders.newUrl">Loading</span>
+                </div>
             </form>
         </li>
     </ul>
