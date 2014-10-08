@@ -27,6 +27,7 @@ module.exports = {
 
         // Specs
         "lib/js/templates/**/*.html",
+        "server/plugins/**/*.html",
 
         "test/client/specs/**/*.js"
 
@@ -74,14 +75,18 @@ module.exports = {
     //    'lib/js/templates/**/*.html' : ['html2js']
     //},
     preprocessors: {
-        "lib/js/templates/**/*.html": ["ng-html2js"]
+        "lib/js/templates/**/*.html": ["ng-html2js"],
+        "server/plugins/**/*.html": ["ng-html2js"]
     },
 
     ngHtml2JsPreprocessor: {
 
         // If your build process changes the path to your templates,
         // use stripPrefix and prependPrefix to adjust it.
-        stripPrefix: "lib/",
+        cacheIdFromPath: function(filepath) {
+            var path = require("path");
+            return "templates/" + path.basename(filepath);
+        },
 
         // the name of the Angular module to create
         moduleName: "test.templates"
