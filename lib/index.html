@@ -21,18 +21,18 @@
 </header>
 
 <main class="main" ng-controller="MainCtrl">
-    <nav class="section-nav" id="section-nav">
+    <nav class="section-nav" id="section-nav" ng-class="{'active': ui.sectionMenu}">
         <ul class="">
             <li ng-repeat="(key, item) in ui.menu | orderObjectBy: 'order'">
                 <button class="section-button" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">{{item.title}}</button>
             </li>
             <li>
-                <button class="section-button menu-close">CLOSE</button>
+                <button class="section-button menu-close" ng-click="toggleMenu()">CLOSE</button>
             </li>
         </ul>
     </nav>
     <div class="nav-toggle">
-        <button class="button menu-button">Menu</button>
+        <button class="button menu-button" ng-click="toggleMenu()">Menu</button>
     </div>
     <section class="content">
         %hooks%
