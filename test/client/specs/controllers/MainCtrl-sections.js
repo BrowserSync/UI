@@ -39,7 +39,9 @@ describe("Main Controller", function () {
         assert.equal(scope.ui.menu["locations"].active,   false);
 
         // act
+        scope.ui.sectionMenu = true;
         scope.setActiveSection(scope.ui.menu["ghostmode"]);
+        assert.equal(scope.ui.sectionMenu, false);
 
         assert.equal(scope.ui.menu["ghostmode"].active,   true);
         assert.equal(scope.ui.menu["server-info"].active, false);
