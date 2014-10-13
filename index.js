@@ -3,6 +3,7 @@
 var fs          = require("fs");
 var connect     = require("connect");
 var _           = require("lodash");
+var path        = require("path");
 var through     = require("through");
 var ports       = require("portscanner-plus");
 var http        = require("http");
@@ -142,6 +143,8 @@ ControlPanel.prototype.start = function (ports) {
     var socketMw    = this.bs.getMiddleware("socket-js");
     var connectorMw = this.bs.getMiddleware("connector");
 
+    transformOptions(this.bs);
+    
     var server = startServer(
         this,
         socketMw,
@@ -163,6 +166,27 @@ ControlPanel.prototype.start = function (ports) {
 function plugin(opts, bs) {
     var controlPanel = new ControlPanel(opts, bs).init();
     return controlPanel;
+}
+
+/**
+ * Transform server options to offer additional functionality
+ * @param bs
+ */
+function transformOptions(bs) {
+
+    var options = bs.options;
+    var server  = options.server;
+    var cwd     = bs.cwd;
+
+    if (server) {
+        if (Array.isArray(server.baseDir)) {
+            server.baseDirs = options.server.baseDir.map(function (item) {
+                return path.join(cwd, item);
+            });
+        } else {
+            server.baseDirs = [path.join(cwd, server.baseDir)];
+        }
+    }
 }
 
 /**

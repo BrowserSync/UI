@@ -1,5 +1,19 @@
 <div>
+
+    <p class="lede">Access Information:</p>
     <ul class="options-list server-info">
         <li ng-repeat="url in urls"><span>{{url.name}}</span>: <a href="{{url.url}}" target="_blank">{{url.url}}</a></li>
     </ul>
+    <section ng-if="ui.server">
+        <p class="lede">Serving files from:<p>
+        <ul class="options-list">
+            <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
+        </ul>
+    </section>
+    <section ng-if="ui.proxy">
+        <p class="lede">Proxying:<p>
+        <ul class="options-list">
+            <li><a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a></li>
+        </ul>
+    </section>
 </div>

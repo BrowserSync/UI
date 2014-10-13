@@ -40,7 +40,7 @@ describe("Directive: URL Info", function () {
             assert.equal(links[0].href, "http://localhost:3000/");
             assert.equal(links[1].href, "http://192.168.0.2:3000/");
             assert.equal(links[2].href, "https://trjjcleffl.localtunnel.me/");
-            assert.equal(actual.length, 3);
+            assert.equal(links.length, 3);
         });
     });
     describe("Rendering the top title bar with URL info for proxy", function () {

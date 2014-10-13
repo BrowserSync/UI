@@ -85,7 +85,18 @@
 
         var urls = $scope.options.urls;
 
-        $scope.type = $scope.options.server ? "Server" : "Proxy";
+        $scope.ui = {
+            server: false,
+            proxy: false
+        };
+
+        if ($scope.options.mode === "Server") {
+            $scope.ui.server = true;
+        }
+
+        if ($scope.options.mode === "Proxy") {
+            $scope.ui.proxy = true;
+        }
 
         $scope.urls = [];
 
