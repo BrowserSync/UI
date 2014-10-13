@@ -48,7 +48,7 @@ var ControlPanel = function (opts, bs) {
 
                     _.each(item, function (value, key) {
                         if (!combined[key]) {
-                            combined[key] = value
+                            combined[key] = value;
                         }
                     });
 
@@ -58,7 +58,7 @@ var ControlPanel = function (opts, bs) {
                     var value = item[key];
 
                     if (!combined[key]) {
-                        combined[key] = value
+                        combined[key] = value;
                     }
                 }
 
