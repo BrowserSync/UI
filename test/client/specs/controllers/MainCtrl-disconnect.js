@@ -21,7 +21,6 @@ describe("Main Controller - Handling disconnections", function () {
     afterEach(function () {
         socket.addEvent.restore();
     });
-
     it("should have a ui.disconnect property set at false", function () {
         assert.isFalse(scope.ui.disconnected);
     });
