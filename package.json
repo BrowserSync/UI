@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "browser-sync": "^1.5.3",
+    "bs-html-injector": "^1.1.0",
     "chai": "^1.9.1",
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.8",
