@@ -15,7 +15,8 @@ var tmpl        = fs.readFileSync(__dirname + "/server/templates/plugin.tmpl", "
 var defaultPlugins = {
     "ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
     "locations":   require("./server/plugins/locations/locations"),
-    "server-info": require("./server/plugins/server-info/server-info")
+    "server-info": require("./server/plugins/server-info/server-info"),
+    "plugins":     require("./server/plugins/plugins/plugins")
 };
 
 var PLUGIN_NAME = "Control Panel";
@@ -89,7 +90,6 @@ var ControlPanel = function (opts, bs) {
 ControlPanel.prototype.init = function () {
     return this;
 };
-
 
 function startServer(controlPanel, socketMw, connectorMw) {
 
@@ -178,6 +178,11 @@ function transformOptions(bs) {
     var server  = options.server;
     var cwd     = bs.cwd;
 
+    /**
+     *
+     * Transform server option
+     *
+     */
     if (server) {
         if (Array.isArray(server.baseDir)) {
             server.baseDirs = options.server.baseDir.map(function (item) {
@@ -187,6 +192,20 @@ function transformOptions(bs) {
             server.baseDirs = [path.join(cwd, server.baseDir)];
         }
     }
+
+    /**
+     *
+     * Transform Plugins option
+     *
+     */
+    options.userPlugins = bs.getUserPlugins().filter(function (item) {
+        return item !== PLUGIN_NAME;
+    }).map(function (item) {
+        return {
+            name: item,
+            active: true
+        }
+    });
 }
 
 /**
@@ -197,6 +216,7 @@ ControlPanel.prototype.registerPlugins = function (opts, ports) {
     this.pluginManager.get("ghostmode")(this, this.bs);
     this.pluginManager.get("locations")(this, this.bs);
     this.pluginManager.get("server-info")(this, this.bs);
+    this.pluginManager.get("plugins")(this, this.bs);
 };
 
 /**
