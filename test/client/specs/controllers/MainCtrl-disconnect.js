@@ -12,14 +12,14 @@ describe("Main Controller - Handling disconnections", function () {
     beforeEach(inject(function ($rootScope, $controller, $injector) {
         scope = $rootScope.$new();
         socket = $injector.get("Socket");
-        spy = sinon.spy(socket, "addEvent");
+        spy = sinon.spy(socket, "on");
         mainCtrl = $controller("MainCtrl", {
             $scope: scope
         });
     }));
 
     afterEach(function () {
-        socket.addEvent.restore();
+        socket.on.restore();
     });
     it("should have a ui.disconnect property set at false", function () {
         assert.isFalse(scope.ui.disconnected);

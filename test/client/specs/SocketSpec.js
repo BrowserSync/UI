@@ -25,11 +25,11 @@ describe("Socket Factory", function () {
         assert.isDefined(socket);
     });
     it("should have a registerEvent Function", function () {
-        assert.isDefined(socket.addEvent);
+        assert.isDefined(socket.on);
     });
     it("should add an event", function () {
         var cb = sinon.stub();
-        socket.addEvent("event", cb);
+        socket.on("event", cb);
         sinon.assert.calledWithExactly(onSpy, "event", cb);
     });
     it("should remove an event", function () {

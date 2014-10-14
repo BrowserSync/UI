@@ -12,14 +12,14 @@ describe("Main Controller", function () {
     beforeEach(inject(function ($rootScope, $controller, $injector) {
         scope = $rootScope.$new();
         socket = $injector.get("Socket");
-        spy = sinon.spy(socket, "addEvent");
+        spy = sinon.spy(socket, "on");
         mainCtrl = $controller("MainCtrl", {
             $scope: scope
         });
     }));
 
     afterEach(function () {
-        socket.addEvent.restore();
+        socket.on.restore();
     });
 
     it("should be available", function () {

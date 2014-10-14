@@ -124,7 +124,7 @@
             $scope.ui.loaders.newUrl    = false;
         };
 
-        Socket.addEvent("cp:urls:update", $scope.updateVisited);
+        Socket.on("cp:urls:update", $scope.updateVisited);
     }
 
     /**
