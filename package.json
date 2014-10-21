@@ -25,7 +25,8 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "gulp build && mocha test/server && ./node_modules/karma/bin/karma start test/client/karma.conf.ci.js"
+    "server": "gulp build && mocha test/server",
+    "test": "npm run server && ./node_modules/karma/bin/karma start test/client/karma.conf.ci.js"
   },
   "dependencies": {
     "through": "2.3.4",

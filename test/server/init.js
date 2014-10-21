@@ -54,7 +54,10 @@ describe.only("Can be started with browserSync instance", function() {
     it("can serve the main App JS file", function (done) {
         request(cp.server)
             .get("/js/app.js")
-            .expect(200, done);
+            .expect(200, function (err, res) {
+                assert.include(res.text, 'angular');
+                done();
+            });
     });
     it("can add the pagemarkup", function (done) {
         request(cp.server)
@@ -69,7 +72,7 @@ describe.only("Can be started with browserSync instance", function() {
         var templates = cp.instance.templates;
         var template = Object.keys(templates)[0];
         request(cp.server)
-            .get("/"+template)
+            .get("/" + template)
             .expect(200)
             .end(function (err, res) {
                 assert.include(res.text, templates[template].toString());
