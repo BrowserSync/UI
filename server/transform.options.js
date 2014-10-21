@@ -8,8 +8,8 @@ module.exports = function (bs) {
      */
 
     var options = bs.options;
-    var server = options.server;
-    var cwd = bs.cwd;
+    var server  = options.server;
+    var cwd     = bs.cwd;
 
     /**
      * Transform server option
@@ -23,16 +23,4 @@ module.exports = function (bs) {
             server.baseDirs = [path.join(cwd, server.baseDir)];
         }
     }
-
-    /**
-     * Transform Plugins option
-     */
-    options.userPlugins = bs.getUserPlugins().filter(function (item) {
-        return item !== config.pluginName;
-    }).map(function (item) {
-        return {
-            name: item,
-            active: true
-        };
-    });
 }

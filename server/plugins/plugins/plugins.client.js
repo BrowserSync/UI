@@ -42,7 +42,7 @@
         $scope.ui = {
             loading: false,
             plugins: $scope.options.userPlugins,
-            active: contentSections["plugins"].active
+            active:  contentSections["plugins"].active
         };
 
         /**

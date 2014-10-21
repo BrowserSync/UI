@@ -8,7 +8,7 @@ module.exports = {
      * @param cp
      * @param bs
      */
-    "plugin": function (cp, bs) { /* noop */},
+    "plugin": function (cp, bs) { /* noop */ },
 
     /**
      * Hooks
