@@ -10,7 +10,8 @@ var http        = require("http");
 var serveStatic = require("serve-static");
 var Q           = require("q");
 var EE          = require("easy-extender");
-var tmpl        = fs.readFileSync(__dirname + "/server/templates/plugin.tmpl", "utf-8");
+
+var hooks       = require("./server/hooks");
 
 var defaultPlugins = {
     "ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
@@ -32,42 +33,7 @@ var ControlPanel = function (opts, bs) {
     this.bs     = bs;
     this.opts   = opts;
 
-    this.pluginManager = new EE(defaultPlugins, {
-        "markup": function (hooks, initial) {
-            var out = hooks.reduce(function (combined, item) {
-                return [combined, tmpl.replace("%markup%", item)].join("\n");
-            }, "");
-            return out;
-        },
-        "client:js": function (hooks) {
-            var js = fs.readFileSync(__dirname + "/lib/js/dist/app.js", "utf-8");
-            return [js, hooks.join(";")].join(";");
-        },
-        "templates": function (hooks) {
-            return hooks.reduce(function (combined, item) {
-
-                if (Object.keys(item).length > 1) {
-
-                    _.each(item, function (value, key) {
-                        if (!combined[key]) {
-                            combined[key] = value;
-                        }
-                    });
-
-                } else {
-
-                    var key   = Object.keys(item)[0];
-                    var value = item[key];
-
-                    if (!combined[key]) {
-                        combined[key] = value;
-                    }
-                }
-
-                return combined;
-            }, {});
-        }
-    });
+    this.pluginManager = new EE(defaultPlugins, hooks);
 
     this.pluginManager.init();
 
