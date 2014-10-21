@@ -1,17 +1,15 @@
 "use strict";
 
 var fs          = require("fs");
-var connect     = require("connect");
 var _           = require("lodash");
 var path        = require("path");
-var through     = require("through");
 var ports       = require("portscanner-plus");
 var http        = require("http");
-var serveStatic = require("serve-static");
 var Q           = require("q");
 var EE          = require("easy-extender");
 
 var hooks       = require("./server/hooks");
+var server      = require("./server/server");
 
 var defaultPlugins = {
     "ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
@@ -47,7 +45,7 @@ var ControlPanel = function (opts, bs) {
         .catch(function (e) {
             this.logger
                 .setOnce("useLevelPrefixes", true)
-                .error("{red:%s", e);
+                .error("{red:%s", e.stack);
         }.bind(this));
 
     return this;
@@ -56,45 +54,6 @@ var ControlPanel = function (opts, bs) {
 ControlPanel.prototype.init = function () {
     return this;
 };
-
-function startServer(controlPanel, socketMw, connectorMw) {
-
-    var app     = connect();
-    var options = controlPanel.bs.options;
-
-    _.each(controlPanel.templates, function (template, path) {
-        app.use("/" + path, function (req, res, next) {
-            res.setHeader("Content-Type", "text/html");
-            res.end(template);
-        });
-    });
-
-    app.use("/js/vendor/socket.js", socketMw);
-    app.use("/js/connector", connectorMw);
-
-    app.use("/js/app.js", function (req, res, next) {
-        res.setHeader("Content-Type", "application/javascript");
-        res.end(controlPanel.clientJs);
-    });
-
-    app.use(function (req, res, next) {
-        if (req.url === "/") {
-            res.setHeader("Content-Type", "text/html");
-            return fs.createReadStream(__dirname + "/lib/index.html")
-                .pipe(through(function (buffer) {
-                    var file = buffer.toString();
-                    this.queue(file.replace(/%hooks%/g, controlPanel.pageMarkup));
-                }))
-                .pipe(res);
-        } else {
-            next();
-        }
-    });
-    app.use(serveStatic(__dirname + "/lib"));
-
-
-    return http.createServer(app);
-}
 
 /**
  *
@@ -111,16 +70,13 @@ ControlPanel.prototype.start = function (ports) {
 
     transformOptions(this.bs);
     
-    var server = startServer(
-        this,
-        socketMw,
-        connectorMw);
+    var appServer = server(this, socketMw, connectorMw);
 
-    server.listen(port);
+    appServer.listen(port);
 
     this.logger.info("Running at: {cyan:http://localhost:%s", port);
 
-    deferred.resolve(server);
+    deferred.resolve(appServer);
 
     return deferred.promise;
 };
@@ -199,5 +155,3 @@ module.exports.hooks = {
 
 module.exports.plugin               = plugin;
 module.exports["plugin:name"]       = PLUGIN_NAME;
-module.exports.startServer          = startServer;
-
