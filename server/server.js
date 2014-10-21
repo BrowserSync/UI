@@ -14,11 +14,14 @@ function startServer(controlPanel, socketMw, connectorMw) {
     serveTemplates(controlPanel.templates, app);
     
     app.use("/js/vendor/socket.js", socketMw);
-    app.use("/js/connector", connectorMw);
+    app.use("/js/connector.js", connectorMw);
     app.use("/js/app.js", function (req, res, next) {
         res.setHeader("Content-Type", "application/javascript");
         res.end(controlPanel.clientJs);
     });
+    
+    
+    
     app.use(function (req, res, next) {
         if (req.url === "/") {
             res.setHeader("Content-Type", "text/html");
@@ -32,6 +35,7 @@ function startServer(controlPanel, socketMw, connectorMw) {
             next();
         }
     });
+    
     app.use(serveStatic(__dirname + "/../lib"));
     return http.createServer(app);
 }

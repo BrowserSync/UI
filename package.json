@@ -60,7 +60,7 @@
     "ng-html2js": "^1.2.0",
     "serve-static": "^1.6.3",
     "sinon": "^1.10.3",
-    "supertest": "^0.13.0"
+    "supertest": "^0.14.0"
   },
   "keywords": []
 }

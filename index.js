@@ -3,6 +3,8 @@
 var fs          = require("fs");
 var _           = require("lodash");
 var path        = require("path");
+var Events      = require("events").EventEmitter;
+var events      = new Events();
 var ports       = require("portscanner-plus");
 var http        = require("http");
 var Q           = require("q");
@@ -70,9 +72,11 @@ ControlPanel.prototype.start = function (ports) {
 
     transformOptions(this.bs);
     
-    var appServer = server(this, socketMw, connectorMw);
+    var appServer = module.exports.server = this.server = server(this, socketMw, connectorMw);
 
     appServer.listen(port);
+    
+    events.emit("cp:running", this);
 
     this.logger.info("Running at: {cyan:http://localhost:%s", port);
 
@@ -86,7 +90,7 @@ ControlPanel.prototype.start = function (ports) {
  * @returns {Function}
  */
 function plugin(opts, bs) {
-    var controlPanel = new ControlPanel(opts, bs).init();
+    var controlPanel = module.exports.instance = new ControlPanel(opts, bs).init();
     return controlPanel;
 }
 
@@ -155,3 +159,4 @@ module.exports.hooks = {
 
 module.exports.plugin               = plugin;
 module.exports["plugin:name"]       = PLUGIN_NAME;
+module.exports.events               = events;

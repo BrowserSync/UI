@@ -1,7 +1,7 @@
 var urls    = require("../../server/urls");
 var assert = require("chai").assert;
 
-describe.only("Adding Urls", function() {
+describe("Adding Urls", function() {
 
     var validUrls, bsSpy;
 
