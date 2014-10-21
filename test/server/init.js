@@ -3,12 +3,12 @@ var browserSync = require("/Users/shakyshane/sites/os-browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
 var sinon       = require("sinon");
+var config      = require("../../server/config");
 var request     = require("supertest");
 
-describe.only("Can be started with browserSync instance", function() {
+describe("Can be started with browserSync instance", function() {
     
     var bsInstance;
-    var cpInstance;
     
     before(function (done) {
         
@@ -43,17 +43,17 @@ describe.only("Can be started with browserSync instance", function() {
     });
     it("can serve the Socket JS file", function (done) {
         request(cp.server)
-            .get("/js/vendor/socket.js")
+            .get(config.socketJs)
             .expect(200, done);
     });
     it("can serve the Connector JS file", function (done) {
         request(cp.server)
-            .get("/js/connector.js")
+            .get(config.connector)
             .expect(200, done);
     });
     it("can serve the main App JS file", function (done) {
         request(cp.server)
-            .get("/js/app.js")
+            .get(config.appJs)
             .expect(200, function (err, res) {
                 assert.include(res.text, 'angular');
                 done();
@@ -65,6 +65,15 @@ describe.only("Can be started with browserSync instance", function() {
             .expect(200)
             .end(function (err, res) {
                 assert.include(res.text, cp.instance.pageMarkup);
+                done();
+            });
+    });
+    it("can serve random files", function (done) {
+        request(cp.server)
+            .get(config.appCss)
+            .expect(200)
+            .end(function (err, res) {
+                assert.include(res.text, "html");
                 done();
             });
     });

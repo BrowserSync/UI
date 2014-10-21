@@ -6,11 +6,11 @@ var path        = require("path");
 var Events      = require("events").EventEmitter;
 var events      = new Events();
 var ports       = require("portscanner-plus");
-var http        = require("http");
 var Q           = require("q");
 var EE          = require("easy-extender");
 
 var hooks       = require("./server/hooks");
+var config      = require("./server/config");
 var server      = require("./server/server");
 
 var defaultPlugins = {
@@ -20,47 +20,72 @@ var defaultPlugins = {
     "plugins":     require("./server/plugins/plugins/plugins")
 };
 
-var PLUGIN_NAME = "Control Panel";
-
 /**
+ * @param {Object} opts - Any options specifically 
+ *                        passed to the control panel
+ * @param {BrowserSync} bs
+ * @returns {ControlPanel}
  * @constructor
  */
 var ControlPanel = function (opts, bs) {
 
     opts = opts || {};
 
-    this.logger = bs.getLogger(PLUGIN_NAME);
+    this.logger = bs.getLogger(config.pluginName);
     this.bs     = bs;
     this.opts   = opts;
 
-    this.pluginManager = new EE(defaultPlugins, hooks);
+    this.pluginManager = new EE(defaultPlugins, hooks).init();
 
-    this.pluginManager.init();
+    this.initDefaultHooks()
+        .detectPorts();
 
+    return this;
+};
+
+/**
+ * Init default hooks and save
+ * @returns {ControlPanel}
+ */
+ControlPanel.prototype.initDefaultHooks = function () {
+    
     this.pageMarkup = this.pluginManager.hook("markup");
     this.clientJs   = this.pluginManager.hook("client:js");
     this.templates  = this.pluginManager.hook("templates");
+    
+    return this;
+};
 
+/**
+ * Detect an available port
+ * @returns {ControlPanel}
+ */
+ControlPanel.prototype.detectPorts = function () {
+    
     ports.getPorts(1)
-        .then(this.start.bind(this))
+        .then(this.startServer.bind(this))
         .then(this.registerPlugins.bind(this))
         .catch(function (e) {
             this.logger
                 .setOnce("useLevelPrefixes", true)
                 .error("{red:%s", e.stack);
         }.bind(this));
-
+    
     return this;
 };
 
+/**
+ * @returns {ControlPanel}
+ */
 ControlPanel.prototype.init = function () {
     return this;
 };
 
 /**
- *
+ * @param ports
+ * @returns {promise|*|Q.promise}
  */
-ControlPanel.prototype.start = function (ports) {
+ControlPanel.prototype.startServer = function (ports) {
 
     var deferred = Q.defer();
     var port     = ports[0];
@@ -70,14 +95,17 @@ ControlPanel.prototype.start = function (ports) {
     var socketMw    = this.bs.getMiddleware("socket-js");
     var connectorMw = this.bs.getMiddleware("connector");
 
-    transformOptions(this.bs);
+    require("./server/transform.options")(this.bs);
     
-    var appServer = module.exports.server = this.server = server(this, socketMw, connectorMw);
+    var appServer 
+        = module.exports.server 
+        = this.server 
+        = server(this, socketMw, connectorMw);
 
     appServer.listen(port);
     
     events.emit("cp:running", this);
-
+    
     this.logger.info("Running at: {cyan:http://localhost:%s", port);
 
     deferred.resolve(appServer);
@@ -95,46 +123,6 @@ function plugin(opts, bs) {
 }
 
 /**
- * Transform server options to offer additional functionality
- * @param bs
- */
-function transformOptions(bs) {
-
-    var options = bs.options;
-    var server  = options.server;
-    var cwd     = bs.cwd;
-
-    /**
-     *
-     * Transform server option
-     *
-     */
-    if (server) {
-        if (Array.isArray(server.baseDir)) {
-            server.baseDirs = options.server.baseDir.map(function (item) {
-                return path.join(cwd, item);
-            });
-        } else {
-            server.baseDirs = [path.join(cwd, server.baseDir)];
-        }
-    }
-
-    /**
-     *
-     * Transform Plugins option
-     *
-     */
-    options.userPlugins = bs.getUserPlugins().filter(function (item) {
-        return item !== PLUGIN_NAME;
-    }).map(function (item) {
-        return {
-            name: item,
-            active: true
-        };
-    });
-}
-
-/**
  * @param opts
  * @param ports
  */
@@ -146,17 +134,15 @@ ControlPanel.prototype.registerPlugins = function (opts, ports) {
 };
 
 /**
- * Module exports
+ * These hooks are for attaching functionality to BrowserSync
  */
 module.exports.hooks = {
+    /**
+     * Client JS is added to each connected client
+     */
     "client:js":         fs.readFileSync(__dirname + "/lib/js/includes/events.js"),
-    "server:middleware": function () {
-        return function (req, res, next) {
-            next();
-        };
-    }
 };
 
 module.exports.plugin               = plugin;
-module.exports["plugin:name"]       = PLUGIN_NAME;
+module.exports["plugin:name"]       = config.pluginName;
 module.exports.events               = events;

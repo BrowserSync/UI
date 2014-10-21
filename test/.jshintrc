@@ -5,6 +5,7 @@
     "latedef": "nofunc",
     "newcap": true,
     "noarg": true,
+    "laxbreak": true,
     "sub": true,
     "undef": false,
     "unused": false,

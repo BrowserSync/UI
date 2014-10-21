@@ -5,6 +5,8 @@ var http        = require("http");
 var fs          = require("fs");
 var serveStatic = require("serve-static");
 
+var config      = require("./config");
+
 /**
  * CWD directory helper for static dir
  * @param {String|undefined} [path]
@@ -50,7 +52,7 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Serve static directory
      */
-    app.use(serveStatic(cwd()));
+    app.use(serveStatic(cwd("")));
 
     /**
      * Return the server.
@@ -65,8 +67,23 @@ function startServer(controlPanel, socketMw, connectorMw) {
  * @param {ControlPanel} controlPanel
  */
 function serveJsFiles(app, socketMw, connectorMw) {
-    app.use("/js/vendor/socket.js", socketMw);
-    app.use("/js/connector.js", connectorMw);
+    app.use(config.socketJs, socketMw);
+    app.use(config.connector, connectorMw);
+}
+
+/**
+ * @param res
+ * @param pageMarkup
+ * @returns {*}
+ */
+function combineMarkup(res, pageMarkup) {
+    res.setHeader("Content-Type", "text/html");
+    return fs.createReadStream(cwd(config.indexPage))
+        .pipe(through(function (buffer) {
+            var file = buffer.toString();
+            this.queue(file.replace(/%hooks%/g, pageMarkup));
+        }))
+        .pipe(res);
 }
 
 /**
@@ -76,13 +93,7 @@ function serveJsFiles(app, socketMw, connectorMw) {
 function insertPageMarkupFromHooks(app, pageMarkup) {
     app.use(function (req, res, next) {
         if (req.url === "/") {
-            res.setHeader("Content-Type", "text/html");
-            return fs.createReadStream(cwd("/index.html"))
-                .pipe(through(function (buffer) {
-                    var file = buffer.toString();
-                    this.queue(file.replace(/%hooks%/g, pageMarkup));
-                }))
-                .pipe(res);
+            return combineMarkup(res, pageMarkup);
         } else {
             next();
         }
@@ -94,7 +105,7 @@ function insertPageMarkupFromHooks(app, pageMarkup) {
  * @param clientJs
  */
 function serveMainAppFile(app, clientJs) {
-    app.use("/js/app.js", function (req, res) {
+    app.use(config.appJs, function (req, res) {
         res.setHeader("Content-Type", "application/javascript");
         res.end(clientJs);
     });
