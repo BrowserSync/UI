@@ -4,3 +4,6 @@ npm-debug.log
 .DS_Store
 .sass-cache
 lib/bower_components
+example.server.js
+example.proxy.js
+example.snippet.js

@@ -204,7 +204,7 @@ function transformOptions(bs) {
         return {
             name: item,
             active: true
-        }
+        };
     });
 }
 
