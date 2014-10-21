@@ -1,6 +1,5 @@
 "use strict";
 
-var fs          = require("fs");
 var _           = require("lodash");
 var path        = require("path");
 var Events      = require("events").EventEmitter;
@@ -128,14 +127,13 @@ function plugin(opts, bs) {
 }
 
 /**
- * @param opts
- * @param ports
+ * Initialise the default plugins
  */
-ControlPanel.prototype.registerPlugins = function (opts, ports) {
-    this.pluginManager.get("ghostmode")(this, this.bs);
-    this.pluginManager.get("locations")(this, this.bs);
-    this.pluginManager.get("server-info")(this, this.bs);
-    this.pluginManager.get("plugins")(this, this.bs);
+ControlPanel.prototype.registerPlugins = function () {
+    var defaults = Object.keys(defaultPlugins);
+    _.each(defaults, function (name) {
+        this.pluginManager.get(name)(this, this.bs);
+    }, this);
 };
 
 /**
@@ -145,7 +143,7 @@ module.exports.hooks = {
     /**
      * Client JS is added to each connected client
      */
-    "client:js":         fs.readFileSync(__dirname + "/lib/js/includes/events.js"),
+    "client:js":         require("fs").readFileSync(__dirname + config.clientJs)
 };
 
 module.exports.plugin               = plugin;

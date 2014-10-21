@@ -8,5 +8,6 @@ module.exports = {
     socketJs:   "/js/vendor/socket.js",
     appJs:      "/js/app.js",
     connector:  "/js/connector.js",
-    appCss:     "/css/core.css"
+    appCss:     "/css/core.css",
+    clientJs:   "/lib/js/includes/events.js"
 }
