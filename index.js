@@ -57,6 +57,14 @@ ControlPanel.prototype.initDefaultHooks = function () {
 };
 
 /**
+ * Emit running event and log.
+ */
+ControlPanel.prototype.inform = function () {
+    events.emit("cp:running", this);
+    this.logger.info("Running at: {cyan:http://localhost:%s", this.port);
+}
+
+/**
  * Detect an available port
  * @returns {ControlPanel}
  */
@@ -65,6 +73,7 @@ ControlPanel.prototype.detectPorts = function () {
     ports.getPorts(1)
         .then(this.startServer.bind(this))
         .then(this.registerPlugins.bind(this))
+        .then(this.inform.bind(this))
         .catch(function (e) {
             this.logger
                 .setOnce("useLevelPrefixes", true)
@@ -88,7 +97,7 @@ ControlPanel.prototype.init = function () {
 ControlPanel.prototype.startServer = function (ports) {
 
     var deferred = Q.defer();
-    var port     = ports[0];
+    var port     = this.port = ports[0];
 
     this.logger.info("Using port %s", port);
 
@@ -103,10 +112,6 @@ ControlPanel.prototype.startServer = function (ports) {
         = server(this, socketMw, connectorMw);
 
     appServer.listen(port);
-    
-    events.emit("cp:running", this);
-    
-    this.logger.info("Running at: {cyan:http://localhost:%s", port);
 
     deferred.resolve(appServer);
 
