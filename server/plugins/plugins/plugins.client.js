@@ -28,7 +28,7 @@
         var CONFIGURE_EVENT  = "plugins:configure";
 
         /**
-         *
+         * Watch the active property to show/hide
          */
         $scope.$watch(function () {
             return contentSections["plugins"].active
@@ -37,11 +37,18 @@
         });
 
         /**
+         * Don't show control panel as user plugin
+         */
+        var filtered = $scope.options.userPlugins.filter(function (item) {
+            return item.name !== "Control Panel";
+        });
+
+        /**
          * @type {{loading: boolean}}
          */
         $scope.ui = {
             loading: false,
-            plugins: $scope.options.userPlugins,
+            plugins: filtered,
             active:  contentSections["plugins"].active
         };
 

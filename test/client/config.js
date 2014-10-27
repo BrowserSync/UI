@@ -23,6 +23,7 @@ module.exports = {
         "lib/js/dist/app.js",
         "server/plugins/ghostmode/ghostmode.client.js",
         "server/plugins/locations/locations.client.js",
+        "server/plugins/plugins/plugins.client.js",
         "server/plugins/server-info/server-info.client.js",
 
         // Specs

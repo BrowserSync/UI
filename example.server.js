@@ -13,7 +13,10 @@ var htmlInjector = require("/Users/shaneobsourne/code/html-injector");
 //client["plugin:name"] = "client:script";
 
 bs.use(htmlInjector, {
-    logLevel: "debug"
+    logLevel: "debug",
+    files: [
+        "test/fixtures/*.html"
+    ]
 });
 
 bs.use(cp);
@@ -25,8 +28,3 @@ bs({
     open: false,
     online: false
 });
-
-setInterval(function () {
-    console.log("Calling HTML injector");
-    htmlInjector();
-}, 5000);
