@@ -61,7 +61,7 @@ ControlPanel.prototype.initDefaultHooks = function () {
 ControlPanel.prototype.inform = function () {
     events.emit("cp:running", this);
     this.logger.info("Running at: {cyan:http://localhost:%s", this.port);
-}
+};
 
 /**
  * Detect an available port
@@ -122,8 +122,7 @@ ControlPanel.prototype.startServer = function (ports) {
  * @returns {Function}
  */
 function plugin(opts, bs) {
-    var controlPanel = module.exports.instance = new ControlPanel(opts, bs).init();
-    return controlPanel;
+
 }
 
 /**
@@ -146,6 +145,16 @@ module.exports.hooks = {
     "client:js":         require("fs").readFileSync(__dirname + config.clientJs)
 };
 
-module.exports.plugin               = plugin;
+/**
+ * BrowserSync Plugin interface
+ * @param opts
+ * @param bs
+ * @returns {ControlPanel}
+ */
+module.exports["plugin"] = function (opts, bs) {
+    var controlPanel = module.exports.instance = new ControlPanel(opts, bs).init();
+    return controlPanel;
+};
+
 module.exports["plugin:name"]       = config.pluginName;
 module.exports.events               = events;
