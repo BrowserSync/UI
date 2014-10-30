@@ -101,8 +101,9 @@ function combineMarkup(res, pageMarkup) {
  * @param pageMarkup
  */
 function insertPageMarkupFromHooks(app, pageMarkup, pages) {
+
     app.use(function (req, res, next) {
-        if (_.find(pages, {path: req.url})) {
+        if (req.url === "/" || pages[req.url.slice(1)]) {
             return combineMarkup(res, pageMarkup);
         } else {
             next();

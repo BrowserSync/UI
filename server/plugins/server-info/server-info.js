@@ -1,5 +1,8 @@
 var path = require("path");
 var fs   = require("fs");
+
+var NAME = "Server Info";
+
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
@@ -22,8 +25,10 @@ module.exports = {
         },
         "page": {
             path: "/",
+            title: "Server Info",
             template: "server-info.html",
-            controller: "ServerController"
+            controller: "ServerController",
+            order: 1
         }
     },
     /**

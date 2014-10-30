@@ -16,8 +16,10 @@ module.exports = {
         "client:js": fs.readFileSync(path.join(__dirname, "sync-options.client.js")),
         "page": {
             path: "/sync-options",
+            title: "Sync Options",
             template: "sync-options.html",
-            controller: "SyncOptionsController"
+            controller: "SyncOptionsController",
+            order: 2
         }
     },
     "plugin:name": "Sync Options"

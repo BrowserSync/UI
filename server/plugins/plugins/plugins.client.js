@@ -3,6 +3,8 @@
  */
 (function (angular) {
 
+    var SECTION_NAME = "plugins";
+
     angular.module("BrowserSync")
         .controller("PluginsController",
             ["$scope", "$rootScope", "Socket", "contentSections", pluginsController])
@@ -58,7 +60,7 @@
      * @param contentSections
      */
     function pluginsController($scope, $rootScope, Socket, contentSections) {
-
+        $scope.section = contentSections[SECTION_NAME];
     }
 
     /**

@@ -37,8 +37,10 @@ module.exports = {
         "client:js": require("fs").readFileSync(__dirname + "/history.client.js"),
         "page": {
             path: "/history",
+            title: "History",
             template: "history.html",
-            controller: "HistoryController"
+            controller: "HistoryController",
+            order: 3
         }
     },
     /**

@@ -25,8 +25,10 @@ module.exports = {
         "client:js": require("fs").readFileSync(__dirname + "/plugins.client.js"),
         "page": {
             path: "/plugins",
+            title: "Plugins",
             template: "plugins.html",
-            controller: "PluginsController"
+            controller: "PluginsController",
+            order: 4
         }
     },
     /**

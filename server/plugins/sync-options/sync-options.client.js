@@ -3,6 +3,8 @@
  */
 (function (angular) {
 
+    var SECTION_NAME = "sync-options";
+
     angular.module("BrowserSync")
         .controller("SyncOptionsController",
             ["$scope", "Socket", "contentSections", syncOptionsController])
@@ -70,6 +72,8 @@
      * @param Socket
      * @param contentSections
      */
-    function syncOptionsController($scope, Socket, contentSections) { /* noop */ }
+    function syncOptionsController($scope, Socket, contentSections) {
+        $scope.section = contentSections[SECTION_NAME];
+    }
 
 })(angular);

@@ -7,6 +7,8 @@
 
     .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
         $routeProvider%when%
-    }]);
+    }])
+
+    .value("contentSections", %pages%);
 
 })(angular);

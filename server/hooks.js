@@ -23,8 +23,20 @@ module.exports = {
                 }
             });
         }, "");
-        cb(null, hooks);
-        return configTmpl.replace("%when%", items);
+
+        var pagesConfig = hooks.reduce(function (joined, item) {
+            if (item.path === "/") {
+                joined["server-info"] = item;
+            } else {
+                joined[item.path.slice(1)] = item;
+            }
+            return joined;
+        }, {});
+
+        cb(null, pagesConfig);
+
+        return configTmpl.replace("%when%", items)
+            .replace("%pages%", JSON.stringify(pagesConfig, null, 4));
     },
     "markup": function (hooks, initial) {
         var out = hooks.reduce(function (combined, item) {

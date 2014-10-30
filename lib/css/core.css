@@ -1252,7 +1252,7 @@ html {
 body {
   max-width: 100%;
   overflow-x: hidden;
-  background: white;
+  background: #fff;
   color: #333333;
   text-rendering: optimizeLegibility; }
 
@@ -1275,7 +1275,7 @@ table tbody tr:nth-child(odd) {
   text-transform: capitalize; }
 
 .color--lime {
-  color: #d3ed13; }
+  color: #D3ED13; }
 
 /**
  * (C)Leanest CSS spinner ever
@@ -1516,7 +1516,7 @@ input {
     line-height: 12px; }
   .options-list a {
     display: block;
-    color: #d3ed13; }
+    color: #D3ED13; }
   .options-list .recede {
     color: #e6e6e6; }
 
@@ -1540,7 +1540,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  color: white;
+  color: #fff;
   font-weight: 400;
   line-height: 1;
   font-family: "Titillium Web", "Lucida Grande", "Lucida Sans", sans-serif;
@@ -1591,14 +1591,14 @@ a {
           transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     text-decoration: underline;
-    color: black; }
+    color: #000; }
   a [class^="icon-"],
   a [class*=" icon-"] {
     text-decoration: none; }
 
 .site-header {
   background: #1b2032;
-  color: white;
+  color: #fff;
   border-bottom: 1px solid #516095;
   text-align: center;
   z-index: 2; }
@@ -1613,17 +1613,17 @@ a {
   margin: 0;
   padding: 12px; }
   .site-title, .site-title a {
-    color: white; }
+    color: #fff; }
   .site-title span a {
-    color: #d3ed13; }
+    color: #D3ED13; }
 
 .site-footer {
   background: #1b2032;
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 24px 0; }
   .site-footer a {
-    color: white;
+    color: #fff;
     font-weight: bold; }
 
 .social-links {
@@ -1663,17 +1663,12 @@ a {
   text-align: center; }
 
 .content {
-  color: white;
+  color: #fff;
   padding: 12px; }
   @media only screen and (min-width: 800px) {
     .content {
       float: left;
       width: 75%; } }
-
-.main-section {
-  display: none; }
-  .main-section.active {
-    display: block; }
 
 /**
  * Base typography styles
@@ -1812,7 +1807,7 @@ pre code {
   margin-bottom: 24px;
   padding-left: 12px; }
   .param-list li {
-    color: black; }
+    color: #000; }
     .param-list li.name, .param-list li.type {
       line-height: 30px; }
       .param-list li.name .icon, .param-list li.type .icon {
@@ -1852,7 +1847,7 @@ pre code {
     position: relative;
     border: 1px solid #cccccc;
     padding: 12px 24px;
-    background: white;
+    background: #fff;
     border-radius: 5px; }
     .steps > li + li {
       margin-top: 24px; }
@@ -1877,11 +1872,11 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   padding: 6px 12px;
-  color: white;
+  color: #fff;
   background: #1b2032;
   border-radius: 3px; }
   pre code {
-    color: white;
+    color: #fff;
     line-height: 1.25; }
 
 .notification {
@@ -1905,6 +1900,6 @@ pre {
   .notification p {
     margin-bottom: 0; }
   .notification.success {
-    background: #d3ed13; }
+    background: #D3ED13; }
   .notification.error {
     background: #ED6A13; }

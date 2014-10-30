@@ -3,6 +3,8 @@
  */
 (function (angular) {
 
+    var SECTION_NAME = "history";
+
     angular.module("BrowserSync")
 
         .controller("HistoryController",
@@ -26,7 +28,7 @@
      * @param contentSections
      */
     function historyController($scope, $rootScope, Socket, contentSections) {
-
+        $scope.section = contentSections[SECTION_NAME];
     }
 
     /**
