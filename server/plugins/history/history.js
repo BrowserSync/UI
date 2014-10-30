@@ -36,7 +36,7 @@ module.exports = {
         "markup": fs.readFileSync(path.join(__dirname, "history.html")),
         "client:js": require("fs").readFileSync(__dirname + "/history.client.js"),
         "templates": {
-            "templates/history.directive.html": fs.readFileSync(path.join(__dirname, "history.directive.html"))
+            "templates/history.directive.html": fs.readFileSync(path.join(__dirname, "history.directive.html"), "utf-8")
         },
         "page": {
             path: "/history",

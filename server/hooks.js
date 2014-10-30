@@ -3,6 +3,7 @@ var fs         = require("fs");
 var tmpl       = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
 var configTmpl = fs.readFileSync(__dirname + "/templates/config.tmpl", "utf-8");
 var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf-8");
+var inlineTemp = fs.readFileSync(__dirname + "/templates/inline.template.tmpl", "utf-8");
 
 /**
  //*
@@ -47,28 +48,28 @@ module.exports = {
     "client:js": function (hooks) {
         return hooks.join(";");
     },
-    "templates": function (hooks) {
-        return hooks.reduce(function (combined, item) {
+    "templates": function (hooks, cb) {
 
-            if (Object.keys(item).length > 1) {
-
-                _.each(item, function (value, key) {
-                    if (!combined[key]) {
-                        combined[key] = value;
-                    }
-                });
-
-            } else {
-
-                var key   = Object.keys(item)[0];
-                var value = item[key];
-
-                if (!combined[key]) {
-                    combined[key] = value;
-                }
-            }
-
-            return combined;
-        }, {});
+        var inlineTemplates = createInlineTemplates(hooks);
+        return inlineTemplates;
     }
+}
+
+/**
+ *
+ */
+function createInlineTemplates (hooks) {
+    var out = hooks.reduce(function (combined, item) {
+
+        var keys = Object.keys(item);
+        var string = "";
+
+        keys.forEach(function (key) {
+            string += inlineTemp.replace("%id%", key).replace("%content%", item[key]);
+        });
+
+        return combined += string;
+    }, "");
+
+    return out;
 }

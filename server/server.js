@@ -30,11 +30,6 @@ function startServer(controlPanel, socketMw, connectorMw) {
     var app = connect();
 
     /**
-     * Serve Template files for directives
-     */
-    serveTemplates(app, controlPanel.templates);
-
-    /**
      * Serve JS files
      */
     serveJsFiles(app, socketMw, connectorMw);
@@ -52,7 +47,7 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Add any markup from plugins/hooks
      */
-    insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages);
+    insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages, controlPanel.templates);
 
     /**
      * History API fallback
@@ -100,11 +95,11 @@ function combineMarkup(res, pageMarkup) {
  * @param app
  * @param pageMarkup
  */
-function insertPageMarkupFromHooks(app, pageMarkup, pages) {
+function insertPageMarkupFromHooks(app, pageMarkup, pages, templates) {
 
     app.use(function (req, res, next) {
         if (req.url === "/" || pages[req.url.slice(1)]) {
-            return combineMarkup(res, pageMarkup);
+            return combineMarkup(res, pageMarkup + templates);
         } else {
             next();
         }
@@ -137,13 +132,13 @@ function serveMainAppConfigurationFile(app, pagesConfig) {
  * @param controlPanel
  * @param app
  */
-function serveTemplates(app, templates) {
-    _.each(templates, function (template, path) {
-        app.use("/" + path, function (req, res, next) {
-            res.setHeader("Content-Type", "text/html");
-            res.end(template);
-        });
-    });
-}
+//function serveTemplates(app, templates) {
+//    _.each(templates, function (template, path) {
+//        app.use("/" + path, function (req, res, next) {
+//            res.setHeader("Content-Type", "text/html");
+//            res.end(template);
+//        });
+//    });
+//}
 
 module.exports = startServer;
