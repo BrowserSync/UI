@@ -27,17 +27,6 @@
      */
     function historyController($scope, $rootScope, Socket, contentSections) {
 
-        var SECTION_NAME = "history";
-
-        // TODO - cleanup this watcher
-        $scope.$watch(function() { return contentSections[SECTION_NAME].active }, function (data) {
-            $scope.ui.active = data;
-        });
-
-        $scope.ui = {
-            loading: false,
-            active: contentSections[SECTION_NAME].active
-        }
     }
 
     /**

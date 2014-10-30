@@ -53,7 +53,6 @@
          * @type {{active: *, snippet: boolean}}
          */
         $scope.ui = {
-            active: contentSections["server-info"].active,
             snippet: $scope.options.mode === "Snippet"
         };
 
@@ -62,15 +61,6 @@
          */
         $scope.$watch("options.mode", function (data) {
             $scope.ui.snippet = data === "Snippet";
-        });
-
-        /**
-         *
-         */
-        $scope.$watch(function () {
-            return contentSections["server-info"].active
-        }, function (data) {
-            $scope.ui.active = data;
         });
     }
 

@@ -22,8 +22,8 @@ module.exports = {
         // Setup stuff
         "test/client/setup.js",
         "lib/js/dist/app.js",
-        "server/plugins/ghostmode/ghostmode.client.js",
-        "server/plugins/locations/locations.client.js",
+        "server/plugins/sync-options/sync-options.client.js",
+        "server/plugins/history/history.client.js",
         "server/plugins/plugins/plugins.client.js",
         "server/plugins/server-info/server-info.client.js",
 

@@ -12,15 +12,15 @@ module.exports = {
         });
     },
     "hooks": {
-        "markup": fs.readFileSync(path.join(__dirname, "ghostmode.html")),
-        "client:js": fs.readFileSync(path.join(__dirname, "ghostmode.client.js")),
+        "markup": fs.readFileSync(path.join(__dirname, "sync-options.html")),
+        "client:js": fs.readFileSync(path.join(__dirname, "sync-options.client.js")),
         "page": {
             path: "/sync-options",
             template: "sync-options.html",
-            controller: "GhostModeController"
+            controller: "SyncOptionsController"
         }
     },
-    "plugin:name": "Ghostmode Options"
+    "plugin:name": "Sync Options"
 };
 
 /**

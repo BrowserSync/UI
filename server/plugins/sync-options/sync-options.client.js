@@ -4,8 +4,9 @@
 (function (angular) {
 
     angular.module("BrowserSync")
-        .controller("GhostModeController",
-            ["$scope", "Socket", "contentSections", ghostModeController])
+        .controller("SyncOptionsController",
+            ["$scope", "Socket", "contentSections", syncOptionsController])
+
         .directive("syncOptions", function () {
             return {
                 restrict: "E",
@@ -13,7 +14,7 @@
                     options: "="
                 },
                 templateUrl: "sync-options-list.html",
-                controller: ["$scope", "Socket", "contentSections", ghostModeDirective]
+                controller: ["$scope", "Socket", "contentSections", syncOptionsDirective]
             };
         });
 
@@ -22,7 +23,7 @@
      * @param Socket
      * @param contentSections
      */
-    function ghostModeDirective($scope, Socket, contentSections) {
+    function syncOptionsDirective($scope, Socket, contentSections) {
 
         var ghostMode = $scope.options.ghostMode;
 
@@ -69,20 +70,6 @@
      * @param Socket
      * @param contentSections
      */
-    function ghostModeController($scope, Socket, contentSections) {
-
-        var SECTION_NAME = "sync-options";
-
-        /**
-         * Enable/disable based on options
-         */
-        $scope.$watch(function () { return contentSections[SECTION_NAME].active }, function (data) {
-            $scope.ui.active = data;
-        });
-
-        $scope.ui = {
-            active: contentSections[SECTION_NAME].active
-        };
-    }
+    function syncOptionsController($scope, Socket, contentSections) { /* noop */ }
 
 })(angular);

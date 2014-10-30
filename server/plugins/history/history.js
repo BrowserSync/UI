@@ -33,8 +33,8 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": fs.readFileSync(path.join(__dirname, "locations.html")),
-        "client:js": require("fs").readFileSync(__dirname + "/locations.client.js"),
+        "markup": fs.readFileSync(path.join(__dirname, "history.html")),
+        "client:js": require("fs").readFileSync(__dirname + "/history.client.js"),
         "page": {
             path: "/history",
             template: "history.html",
@@ -44,7 +44,7 @@ module.exports = {
     /**
      * Plugin name
      */
-    "plugin:name": "Locations"
+    "plugin:name": "History"
 };
 
 /**

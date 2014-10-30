@@ -59,19 +59,6 @@
      */
     function pluginsController($scope, $rootScope, Socket, contentSections) {
 
-        /**
-         * Watch the active property to show/hide
-         */
-        $scope.$watch(function () { return contentSections["plugins"].active }, function (data) {
-            $scope.ui.active = data;
-        });
-
-        /**
-         * @type {{loading: boolean}}
-         */
-        $scope.ui = {
-            active:  contentSections["plugins"].active
-        };
     }
 
     /**
