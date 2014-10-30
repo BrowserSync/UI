@@ -1,6 +1,7 @@
 //var browserSync = require("browser-sync");
 //var browserSync = require("/Users/shakyshane/sites/os-browser-sync");
-var browserSync = require("/Users/shaneobsourne/sites/browser-sync");
+//var browserSync = require("/Users/shaneobsourne/sites/browser-sync");
+var browserSync = require("/Users/shakyshane/sites/os-browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
 var sinon       = require("sinon");
@@ -8,13 +9,13 @@ var config      = require("../../server/config");
 var request     = require("supertest");
 
 describe("Can be started with browserSync instance", function() {
-    
+
     var bsInstance;
-    
+
     before(function (done) {
-        
+
         browserSync.use(cp);
-        
+
         var config = {
             online: false,
             logLevel: "silent"
@@ -24,12 +25,12 @@ describe("Can be started with browserSync instance", function() {
         });
         bsInstance = browserSync(config);
     });
-    
+
     after(function () {
         bsInstance.cleanup();
         cp.server.close();
     });
-    
+
     it("can register as plugin", function() {
         assert.ok(bsInstance.pluginManager.getPlugin(cp["plugin:name"]));
     });
