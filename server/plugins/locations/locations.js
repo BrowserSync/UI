@@ -33,10 +33,7 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": "<locations ng-if=\"options\" options=\"options\"></locations>",
-        "templates": {
-            "templates/locations.html": fs.readFileSync(path.join(__dirname, "locations.html"))
-        },
+        "markup": fs.readFileSync(path.join(__dirname, "locations.html")),
         "client:js": require("fs").readFileSync(__dirname + "/locations.client.js")
     },
     /**

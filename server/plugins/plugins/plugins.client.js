@@ -5,16 +5,15 @@
 
     angular.module("BrowserSync")
 
-        .directive("plugins", function () {
-            return {
-                restrict: "E",
-                scope: {
-                    options: "="
-                },
-                templateUrl: "templates/plugins.html",
-                controller: ["$scope", "$rootScope", "Socket", "contentSections", pluginsController]
-            };
-        });
+        .controller("PluginsController", ["$scope", "$rootScope", "Socket", "contentSections", pluginsController])
+
+        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
+            $routeProvider
+                .when('/plugins', {
+                    templateUrl:  'plugins.html',
+                    controller:   'PluginsController'
+                });
+        }]);
 
     /**
      * Controller for the URL sync

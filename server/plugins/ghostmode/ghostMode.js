@@ -12,10 +12,7 @@ module.exports = {
         });
     },
     "hooks": {
-        "markup": "<ghostmode ng-if=\"options\" options=\"options\"></ghostmode>",
-        "templates": {
-            "templates/ghostmode.html": fs.readFileSync(path.join(__dirname, "ghostmode.html"))
-        },
+        "markup": fs.readFileSync(path.join(__dirname, "ghostmode.html")),
         "client:js": fs.readFileSync(path.join(__dirname, "ghostmode.client.js"))
     },
     "plugin:name": "Ghostmode Options"

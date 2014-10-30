@@ -13,10 +13,10 @@ var config      = require("./server/config");
 var server      = require("./server/server");
 
 var defaultPlugins = {
-    //"ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
-    //"locations":   require("./server/plugins/locations/locations"),
-    "server-info": require("./server/plugins/server-info/server-info")
-    //"plugins":     require("./server/plugins/plugins/plugins")
+    "ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
+    "locations":   require("./server/plugins/locations/locations"),
+    "server-info": require("./server/plugins/server-info/server-info"),
+    "plugins":     require("./server/plugins/plugins/plugins")
 };
 
 /**

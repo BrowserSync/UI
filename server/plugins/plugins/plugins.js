@@ -21,10 +21,7 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": "<plugins ng-if=\"options\" options=\"options\"></plugins>",
-        "templates": {
-            "templates/plugins.html": fs.readFileSync(path.join(__dirname, "plugins.html"))
-        },
+        "markup": fs.readFileSync(path.join(__dirname, "plugins.html")),
         "client:js": require("fs").readFileSync(__dirname + "/plugins.client.js")
     },
     /**

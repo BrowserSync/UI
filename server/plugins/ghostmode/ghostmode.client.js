@@ -5,17 +5,15 @@
 
     angular.module("BrowserSync")
 
-        .directive("ghostmode", function () {
+        .controller("GhostModeController", ["$scope", "Socket", "contentSections", ghostModeController])
 
-            return {
-                restrict: "E",
-                scope: {
-                    options: "="
-                },
-                templateUrl: "templates/ghostmode.html",
-                controller: ["$scope", "Socket", "contentSections", ghostModeController]
-            };
-        });
+        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
+            $routeProvider
+                .when('/sync-options', {
+                    templateUrl:  'sync-options.html',
+                    controller:   'GhostModeController'
+                });
+        }])
 
     /**
      * @param $scope

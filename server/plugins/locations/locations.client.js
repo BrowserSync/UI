@@ -5,16 +5,16 @@
 
     angular.module("BrowserSync")
 
-        .directive("locations", function () {
-            return {
-                restrict: "E",
-                scope: {
-                    options: "="
-                },
-                templateUrl: "templates/locations.html",
-                controller: ["$scope", "$rootScope", "Socket", "contentSections", locationsController]
-            };
-        });
+        .controller("LocationsController", ["$scope", "$rootScope", "Socket", "contentSections", locationsController])
+
+        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
+            $routeProvider
+                .when('/history', {
+                    templateUrl:  'history.html',
+                    controller:   'LocationsController'
+                });
+        }]);
+
 
     /**
      * Controller for the URL sync
