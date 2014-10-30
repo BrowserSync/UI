@@ -12,8 +12,8 @@ module.exports = {
         });
     },
     "hooks": {
-        "markup": fs.readFileSync(path.join(__dirname, "sync-options.html")),
-        "client:js": fs.readFileSync(path.join(__dirname, "sync-options.client.js")),
+        "markup": file("sync-options.html"),
+        "client:js": file("sync-options.client.js"),
         "page": {
             path: "/sync-options",
             title: "Sync Options",
@@ -31,4 +31,13 @@ module.exports = {
  */
 function setOption(bs, data) {
     bs.setOption(data.key, data.value);
+}
+
+
+function getPath (filepath) {
+    return path.join(__dirname, filepath);
+}
+
+function file (filepath) {
+    return fs.readFileSync(getPath(filepath));
 }

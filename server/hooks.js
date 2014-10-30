@@ -1,5 +1,6 @@
 var _          = require("lodash");
 var fs         = require("fs");
+var path       = require("path");
 var tmpl       = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
 var configTmpl = fs.readFileSync(__dirname + "/templates/config.tmpl", "utf-8");
 var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf-8");
@@ -59,15 +60,20 @@ module.exports = {
  *
  */
 function createInlineTemplates (hooks) {
+
     var out = hooks.reduce(function (combined, item) {
 
-        var keys = Object.keys(item);
         var string = "";
-
-        keys.forEach(function (key) {
-            string += inlineTemp.replace("%id%", key).replace("%content%", item[key]);
+        item.forEach(function (filepath) {
+            var filecontents;
+            try {
+                filecontents = fs.readFileSync(filepath);
+                filepath     = path.basename(filepath);
+                string += inlineTemp.replace("%id%", filepath).replace("%content%", filecontents);
+            } catch (e) {
+                throw e;
+            }
         });
-
         return combined += string;
     }, "");
 

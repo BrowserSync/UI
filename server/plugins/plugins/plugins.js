@@ -21,11 +21,11 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": fs.readFileSync(path.join(__dirname, "plugins.html")),
-        "client:js": require("fs").readFileSync(__dirname + "/plugins.client.js"),
-        "templates": {
-            "templates/plugins.directive.html": fs.readFileSync(path.join(__dirname, "plugins.directive.html"))
-        },
+        "markup": file("plugins.html"),
+        "client:js": file("/plugins.client.js"),
+        "templates": [
+            getPath("plugins.directive.html")
+        ],
         "page": {
             path: "/plugins",
             title: "Plugins",
@@ -45,4 +45,12 @@ module.exports = {
  */
 function pluginConfigure (bs, data) {
     bs.events.emit("plugins:configure", data);
+}
+
+function getPath (filepath) {
+    return path.join(__dirname, filepath);
+}
+
+function file (filepath) {
+    return fs.readFileSync(getPath(filepath));
 }

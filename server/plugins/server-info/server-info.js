@@ -17,12 +17,12 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": fs.readFileSync(__dirname + "/server-info.html"),
-        "client:js": fs.readFileSync(__dirname + "/server-info.client.js"),
-        "templates": {
-            "templates/snippet-info.html": fs.readFileSync(__dirname + "/snippet-info.html"),
-            "templates/url-info.html":     fs.readFileSync(__dirname + "/url-info.html")
-        },
+        "markup": file("/server-info.html"),
+        "client:js": file("/server-info.client.js"),
+        "templates": [
+            getPath("/snippet-info.html"),
+            getPath("/url-info.html")
+        ],
         "page": {
             path: "/",
             title: "Server Info",
@@ -36,3 +36,11 @@ module.exports = {
      */
     "plugin:name": "Server Information"
 };
+
+function getPath (filepath) {
+    return path.join(__dirname, filepath);
+}
+
+function file (filepath) {
+    return fs.readFileSync(getPath(filepath));
+}

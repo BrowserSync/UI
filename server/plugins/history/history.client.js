@@ -16,7 +16,7 @@
                 scope: {
                     options: "="
                 },
-                templateUrl: "templates/history.directive.html",
+                templateUrl: "history.directive.html",
                 controller: ["$scope", "$rootScope", "Socket", "contentSections", historyDirective]
             }
         });
