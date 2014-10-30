@@ -79,15 +79,4 @@ describe("Can be started with browserSync instance", function() {
                 done();
             });
     });
-    it("can serve the templates", function (done) {
-        var templates = cp.instance.templates;
-        var template = Object.keys(templates)[0];
-        request(cp.server)
-            .get("/" + template)
-            .expect(200)
-            .end(function (err, res) {
-                assert.include(res.text, templates[template].toString());
-                done();
-            });
-    });
 });
