@@ -22,6 +22,7 @@ module.exports = {
         // Setup stuff
         "test/client/setup.js",
         "lib/js/dist/app.js",
+        "test/client/setup-config.js",
         "server/plugins/sync-options/sync-options.client.js",
         "server/plugins/history/history.client.js",
         "server/plugins/plugins/plugins.client.js",

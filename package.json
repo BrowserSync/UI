@@ -60,6 +60,7 @@
     "karma-sinon": "^1.0.3",
     "mocha": "^1.21.4",
     "ng-html2js": "^1.2.0",
+    "pretty-js": "^0.1.5",
     "serve-static": "^1.6.3",
     "sinon": "^1.10.3",
     "supertest": "^0.14.0"

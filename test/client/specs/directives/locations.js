@@ -36,7 +36,7 @@ describe.only("Directive: Locations", function () {
             };
 
             // Pass in the user object to the directive
-            element = angular.element("<locations options=\"options\"></locations>");
+            element = angular.element("<history-list options=\"options\"></history-list>");
 
             // Compile & Digest as normal
             compile(element)(scope);
@@ -48,7 +48,6 @@ describe.only("Directive: Locations", function () {
             assert.isFalse(isolatedScope.ui.loaders.reloadAll);
             assert.isFalse(isolatedScope.ui.loaders.sendAllTo);
         });
-
         it("shows loader for reloadAll()", function () {
             var isolatedScope = scope.$$childHead;
             isolatedScope.reloadAll();
@@ -56,7 +55,6 @@ describe.only("Directive: Locations", function () {
             clock.tick(600);
             assert.isFalse(isolatedScope.ui.loaders.reloadAll);
         });
-
         it("shows loader for reloadAll()", function () {
             var isolatedScope = scope.$$childHead;
             isolatedScope.sendAllTo("/forms", "sendAllTo");
