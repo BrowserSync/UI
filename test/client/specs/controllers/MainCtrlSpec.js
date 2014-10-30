@@ -40,7 +40,7 @@ describe("Main Controller", function () {
     it("should have a socketEvents.connection callback", function () {
         assert.isDefined(scope.socketEvents.connection);
     });
-    it("should add the connection event", function () {
+    it.skip("should add the connection event", function () {
         sinon.assert.calledWithExactly(spy, "connection", scope.socketEvents.connection);
     });
     it("should set options on the scope", function () {

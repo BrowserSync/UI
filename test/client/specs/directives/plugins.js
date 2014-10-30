@@ -1,4 +1,4 @@
-describe.only("Directive: Plugins", function () {
+describe("Directive: Plugins", function () {
 
     var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));
@@ -50,7 +50,6 @@ describe.only("Directive: Plugins", function () {
             scope.$digest();
         }));
         it("renders the correct markup elements", function () {
-            console.log(element);
             var listElem = element.find("ul").find("li");
             assert.equal(listElem.length, 1);
             assert.isTrue(listElem.find("input")[0].checked);
