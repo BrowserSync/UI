@@ -105,14 +105,14 @@ function insertPageMarkupFromHooks(app, pageMarkup) {
  * @param clientJs
  */
 function serveMainAppFile(app, clientJs) {
-    app.use(config.appJs, function (req, res) {
+    app.use(config.appExtraJs, function (req, res) {
         res.setHeader("Content-Type", "application/javascript");
         res.end(clientJs);
     });
 }
 
 /**
- * 
+ *
  * @param controlPanel
  * @param app
  */

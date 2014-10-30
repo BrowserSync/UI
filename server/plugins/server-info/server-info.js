@@ -14,10 +14,9 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": "<server-info ng-if=\"options\" options=\"options\"></server-info>",
+        "markup": fs.readFileSync(__dirname + "/server-info.html"),
         "client:js": fs.readFileSync(__dirname + "/server-info.client.js"),
         "templates": {
-            "templates/server-info.html":  fs.readFileSync(__dirname + "/server-info.html"),
             "templates/snippet-info.html": fs.readFileSync(__dirname + "/snippet-info.html"),
             "templates/url-info.html":     fs.readFileSync(__dirname + "/url-info.html")
         }

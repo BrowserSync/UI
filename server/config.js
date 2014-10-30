@@ -7,6 +7,7 @@ module.exports = {
     indexPage:  "/index.html",
     socketJs:   "/js/vendor/socket.js",
     appJs:      "/js/app.js",
+    appExtraJs: "/js/app-extra.js",
     connector:  "/js/connector.js",
     appCss:     "/css/core.css",
     clientJs:   "/lib/js/includes/events.js"

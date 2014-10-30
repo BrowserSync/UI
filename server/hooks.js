@@ -1,10 +1,10 @@
 var _       = require("lodash");
 var fs      = require("fs");
 var tmpl    = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
-var js      = fs.readFileSync(__dirname + "/../lib/js/dist/app.js", "utf-8");
+//var js      = fs.readFileSync(__dirname + "/../lib/js/dist/app.js", "utf-8");
 
 /**
- //* 
+ //*
  * @type {{markup: Function, client:js: Function, templates: Function}}
  */
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
         return out;
     },
     "client:js": function (hooks) {
-        return [js, hooks.join(";")].join(";");
+        return hooks.join(";");
     },
     "templates": function (hooks) {
         return hooks.reduce(function (combined, item) {

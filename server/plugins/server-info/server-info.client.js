@@ -5,6 +5,16 @@
 
     angular.module("BrowserSync")
 
+        .controller("ServerController", ["$scope", "contentSections", serverInfoController])
+
+        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl:  'server-info.html',
+                    controller:   'ServerController'
+                });
+        }])
+
         .directive("urlInfo", function () {
             return {
                 restrict: "E",

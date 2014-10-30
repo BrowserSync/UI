@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="BrowserSync">
+<html>
 <head>
     <title>Browser Sync - Control Panel</title>
     <meta charset="utf-8" />
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/core.css"/>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700">
 </head>
-<body>
+<body ng-app="BrowserSync">
 
 <notify-elem></notify-elem>
 
@@ -36,6 +36,8 @@
     </div>
     <section class="content">
         %hooks%
+        <div ng-view>
+        </div>
     </section>
 </main>
 
@@ -66,11 +68,12 @@
 </div>
 
 <script src="/js/vendor/socket.js"></script>
-<script src="/js/vendor/angular.min.js"></script>
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-route/angular-route.min.js"></script>
 <script src="/bower_components/angular-order-object-by/src/ng-order-object-by.js"></script>
 <script src="/js/connector.js"></script>
-<script src="/js/app.js"></script>
-
+<script src="/js/dist/app.js"></script>
+<script src="/js/app-extra.js"></script>
 
 </body>
 </html>

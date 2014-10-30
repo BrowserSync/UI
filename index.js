@@ -13,14 +13,14 @@ var config      = require("./server/config");
 var server      = require("./server/server");
 
 var defaultPlugins = {
-    "ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
-    "locations":   require("./server/plugins/locations/locations"),
-    "server-info": require("./server/plugins/server-info/server-info"),
-    "plugins":     require("./server/plugins/plugins/plugins")
+    //"ghostmode":   require("./server/plugins/ghostmode/ghostMode"),
+    //"locations":   require("./server/plugins/locations/locations"),
+    "server-info": require("./server/plugins/server-info/server-info")
+    //"plugins":     require("./server/plugins/plugins/plugins")
 };
 
 /**
- * @param {Object} opts - Any options specifically 
+ * @param {Object} opts - Any options specifically
  *                        passed to the control panel
  * @param {BrowserSync} bs
  * @returns {ControlPanel}
@@ -47,11 +47,11 @@ var ControlPanel = function (opts, bs) {
  * @returns {ControlPanel}
  */
 ControlPanel.prototype.initDefaultHooks = function () {
-    
+
     this.pageMarkup = this.pluginManager.hook("markup");
     this.clientJs   = this.pluginManager.hook("client:js");
     this.templates  = this.pluginManager.hook("templates");
-    
+
     return this;
 };
 
@@ -68,7 +68,7 @@ ControlPanel.prototype.inform = function () {
  * @returns {ControlPanel}
  */
 ControlPanel.prototype.detectPorts = function () {
-    
+
     ports.getPorts(1)
         .then(this.startServer.bind(this))
         .then(this.registerPlugins.bind(this))
@@ -78,7 +78,7 @@ ControlPanel.prototype.detectPorts = function () {
                 .setOnce("useLevelPrefixes", true)
                 .error("{red:%s", e.stack);
         }.bind(this));
-    
+
     return this;
 };
 
@@ -104,10 +104,10 @@ ControlPanel.prototype.startServer = function (ports) {
     var connectorMw = this.bs.getMiddleware("connector");
 
     require("./server/transform.options")(this.bs);
-    
-    var appServer 
-        = module.exports.server 
-        = this.server 
+
+    var appServer
+        = module.exports.server
+        = this.server
         = server(this, socketMw, connectorMw);
 
     appServer.listen(port);
