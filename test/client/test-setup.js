@@ -11,7 +11,7 @@ cp.events.on("cp:running", function () {
     request(cp.server)
         .get("/js/pages-config.js")
         .end(function (err, res) {
-            fs.writeFileSync("./test/client/setup-config.js", prettyJs(res.text));
+            fs.writeFileSync(__dirname + "/setup-config.js", prettyJs(res.text));
             process.exit();
         });
 });

@@ -1,4 +1,4 @@
-describe.only("Directive: Locations", function () {
+describe("Directive: Locations", function () {
 
     var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));

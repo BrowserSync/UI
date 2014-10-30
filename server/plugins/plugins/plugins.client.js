@@ -14,7 +14,7 @@
                 scope: {
                     options: "="
                 },
-                templateUrl: "plugins-list.html",
+                templateUrl: "templates/plugins.directive.html",
                 controller: ["$scope", "Socket", "contentSections", pluginsDirective]
             };
         });

@@ -1,0 +1,10 @@
+<section ng-repeat="plugin in ui.plugins" ng-if="ui.plugins">
+    <ul class="options-list">
+        <li>
+            <p class="lede">{{plugin.name}}</p>
+            <label>
+                <input type="checkbox" ng-model="plugin.active" ng-change="togglePlugin(plugin)"> Enabled
+            </label>
+        </li>
+    </ul>
+</section>

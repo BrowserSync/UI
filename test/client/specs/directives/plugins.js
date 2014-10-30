@@ -1,4 +1,4 @@
-describe("Directive: Plugins", function () {
+describe.only("Directive: Plugins", function () {
 
     var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));
@@ -43,13 +43,14 @@ describe("Directive: Plugins", function () {
             };
 
             // Pass in the user object to the directive
-            element = angular.element("<plugins options=\"options\"></plugins>");
+            element = angular.element("<plugin-list options=\"options\"></plugin-list>");
 
             // Compile & Digest as normal
             compile(element)(scope);
             scope.$digest();
         }));
         it("renders the correct markup elements", function () {
+            console.log(element);
             var listElem = element.find("ul").find("li");
             assert.equal(listElem.length, 1);
             assert.isTrue(listElem.find("input")[0].checked);

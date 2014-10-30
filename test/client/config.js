@@ -23,10 +23,7 @@ module.exports = {
         "test/client/setup.js",
         "lib/js/dist/app.js",
         "test/client/setup-config.js",
-        "server/plugins/sync-options/sync-options.client.js",
-        "server/plugins/history/history.client.js",
-        "server/plugins/plugins/plugins.client.js",
-        "server/plugins/server-info/server-info.client.js",
+        "server/plugins/**/*.client.js",
 
         // Specs
         "lib/js/templates/**/*.html",

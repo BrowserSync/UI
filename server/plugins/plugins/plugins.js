@@ -23,6 +23,9 @@ module.exports = {
     "hooks": {
         "markup": fs.readFileSync(path.join(__dirname, "plugins.html")),
         "client:js": require("fs").readFileSync(__dirname + "/plugins.client.js"),
+        "templates": {
+            "templates/plugins.directive.html": fs.readFileSync(path.join(__dirname, "plugins.directive.html"))
+        },
         "page": {
             path: "/plugins",
             title: "Plugins",
