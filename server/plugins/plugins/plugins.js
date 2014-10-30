@@ -22,7 +22,12 @@ module.exports = {
      */
     "hooks": {
         "markup": fs.readFileSync(path.join(__dirname, "plugins.html")),
-        "client:js": require("fs").readFileSync(__dirname + "/plugins.client.js")
+        "client:js": require("fs").readFileSync(__dirname + "/plugins.client.js"),
+        "page": {
+            path: "/plugins",
+            template: "plugins.html",
+            controller: "PluginsController"
+        }
     },
     /**
      * Plugin name

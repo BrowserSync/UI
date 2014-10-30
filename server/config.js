@@ -3,12 +3,13 @@
  * @type {{pluginName: string, indexPage: string, socketJs: string, appJs: string, connector: string}}
  */
 module.exports = {
-    pluginName: "Control Panel",
-    indexPage:  "/index.html",
-    socketJs:   "/js/vendor/socket.js",
-    appJs:      "/js/app.js",
-    appExtraJs: "/js/app-extra.js",
-    connector:  "/js/connector.js",
-    appCss:     "/css/core.css",
-    clientJs:   "/lib/js/includes/events.js"
+    pluginName:  "Control Panel",
+    indexPage:   "/index.html",
+    socketJs:    "/js/vendor/socket.js",
+    appJs:       "/js/app.js",
+    appExtraJs:  "/js/app-extra.js",
+    connector:   "/js/connector.js",
+    pagesConfig: "/js/pages-config.js",
+    appCss:      "/css/core.css",
+    clientJs:    "/lib/js/includes/events.js"
 }

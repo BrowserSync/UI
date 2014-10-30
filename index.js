@@ -48,9 +48,10 @@ var ControlPanel = function (opts, bs) {
  */
 ControlPanel.prototype.initDefaultHooks = function () {
 
-    this.pageMarkup = this.pluginManager.hook("markup");
-    this.clientJs   = this.pluginManager.hook("client:js");
-    this.templates  = this.pluginManager.hook("templates");
+    this.pageMarkup  = this.pluginManager.hook("markup");
+    this.clientJs    = this.pluginManager.hook("client:js");
+    this.templates   = this.pluginManager.hook("templates");
+    this.pagesConfig = this.pluginManager.hook("page");
 
     return this;
 };

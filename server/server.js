@@ -45,6 +45,11 @@ function startServer(controlPanel, socketMw, connectorMw) {
     serveMainAppFile(app, controlPanel.clientJs);
 
     /**
+     * Serve the Page configuration file
+     */
+    serveMainAppConfigurationFile(app, controlPanel.pagesConfig);
+
+    /**
      * Add any markup from plugins/hooks
      */
     insertPageMarkupFromHooks(app, controlPanel.pageMarkup);
@@ -108,6 +113,16 @@ function serveMainAppFile(app, clientJs) {
     app.use(config.appExtraJs, function (req, res) {
         res.setHeader("Content-Type", "application/javascript");
         res.end(clientJs);
+    });
+}
+/**
+ * @param app
+ * @param clientJs
+ */
+function serveMainAppConfigurationFile(app, pagesConfig) {
+    app.use(config.pagesConfig, function (req, res) {
+        res.setHeader("Content-Type", "application/javascript");
+        res.end(pagesConfig);
     });
 }
 

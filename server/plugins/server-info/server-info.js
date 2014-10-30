@@ -19,6 +19,11 @@ module.exports = {
         "templates": {
             "templates/snippet-info.html": fs.readFileSync(__dirname + "/snippet-info.html"),
             "templates/url-info.html":     fs.readFileSync(__dirname + "/url-info.html")
+        },
+        "page": {
+            path: "/",
+            template: "server-info.html",
+            controller: "ServerController"
         }
     },
     /**

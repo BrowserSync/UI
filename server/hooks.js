@@ -1,13 +1,31 @@
-var _       = require("lodash");
-var fs      = require("fs");
-var tmpl    = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
-//var js      = fs.readFileSync(__dirname + "/../lib/js/dist/app.js", "utf-8");
+var _          = require("lodash");
+var fs         = require("fs");
+var tmpl       = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
+var configTmpl = fs.readFileSync(__dirname + "/templates/config.tmpl", "utf-8");
+var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf-8");
 
 /**
  //*
  * @type {{markup: Function, client:js: Function, templates: Function}}
  */
 module.exports = {
+    /**
+     * Create the url config for each section of the ui
+     * @param hooks
+     * @param initial
+     */
+    "page": function (hooks, initial) {
+        var items = hooks.reduce(function (all, item) {
+            return all + configItem.replace(/%(.+)%/g, function () {
+                var key = arguments[1];
+                if (item[key]) {
+                    return item[key];
+                }
+            });
+        }, "");
+
+        return configTmpl.replace("%when%", items);
+    },
     "markup": function (hooks, initial) {
         var out = hooks.reduce(function (combined, item) {
             return [combined, tmpl.replace("%markup%", item)].join("\n");

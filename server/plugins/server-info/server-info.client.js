@@ -1,19 +1,11 @@
 /**
- *
+ * Server information plugin
  */
 (function (angular) {
 
     angular.module("BrowserSync")
-
-        .controller("ServerController", ["$scope", "contentSections", serverInfoController])
-
-        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
-            $routeProvider
-                .when('/', {
-                    templateUrl:  'server-info.html',
-                    controller:   'ServerController'
-                });
-        }])
+        .controller("ServerController",
+            ["$scope", "contentSections", serverInfoController])
 
         .directive("urlInfo", function () {
             return {

@@ -4,16 +4,8 @@
 (function (angular) {
 
     angular.module("BrowserSync")
-
-        .controller("GhostModeController", ["$scope", "Socket", "contentSections", ghostModeController])
-
-        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
-            $routeProvider
-                .when('/sync-options', {
-                    templateUrl:  'sync-options.html',
-                    controller:   'GhostModeController'
-                });
-        }])
+        .controller("GhostModeController",
+            ["$scope", "Socket", "contentSections", ghostModeController]);
 
     /**
      * @param $scope

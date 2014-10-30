@@ -13,7 +13,12 @@ module.exports = {
     },
     "hooks": {
         "markup": fs.readFileSync(path.join(__dirname, "ghostmode.html")),
-        "client:js": fs.readFileSync(path.join(__dirname, "ghostmode.client.js"))
+        "client:js": fs.readFileSync(path.join(__dirname, "ghostmode.client.js")),
+        "page": {
+            path: "/sync-options",
+            template: "sync-options.html",
+            controller: "GhostModeController"
+        }
     },
     "plugin:name": "Ghostmode Options"
 };

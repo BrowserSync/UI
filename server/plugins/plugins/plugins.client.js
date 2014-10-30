@@ -4,16 +4,8 @@
 (function (angular) {
 
     angular.module("BrowserSync")
-
-        .controller("PluginsController", ["$scope", "$rootScope", "Socket", "contentSections", pluginsController])
-
-        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
-            $routeProvider
-                .when('/plugins', {
-                    templateUrl:  'plugins.html',
-                    controller:   'PluginsController'
-                });
-        }]);
+        .controller("PluginsController",
+            ["$scope", "$rootScope", "Socket", "contentSections", pluginsController]);
 
     /**
      * Controller for the URL sync

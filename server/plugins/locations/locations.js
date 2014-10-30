@@ -34,7 +34,12 @@ module.exports = {
      */
     "hooks": {
         "markup": fs.readFileSync(path.join(__dirname, "locations.html")),
-        "client:js": require("fs").readFileSync(__dirname + "/locations.client.js")
+        "client:js": require("fs").readFileSync(__dirname + "/locations.client.js"),
+        "page": {
+            path: "/history",
+            template: "history.html",
+            controller: "HistoryController"
+        }
     },
     /**
      * Plugin name

@@ -4,17 +4,8 @@
 (function (angular) {
 
     angular.module("BrowserSync")
-
-        .controller("LocationsController", ["$scope", "$rootScope", "Socket", "contentSections", locationsController])
-
-        .config(["$routeProvider", "$locationProvider", function ($routeProvider) {
-            $routeProvider
-                .when('/history', {
-                    templateUrl:  'history.html',
-                    controller:   'LocationsController'
-                });
-        }]);
-
+        .controller("HistoryController",
+            ["$scope", "$rootScope", "Socket", "contentSections", historyController]);
 
     /**
      * Controller for the URL sync
@@ -23,7 +14,7 @@
      * @param Socket
      * @param contentSections
      */
-    function locationsController($scope, $rootScope, Socket, contentSections) {
+    function historyController($scope, $rootScope, Socket, contentSections) {
 
         /**
          *
