@@ -1,15 +1,19 @@
+<script type="text/ng-template" id="plugins-list.html">
+    <section ng-repeat="plugin in ui.plugins" ng-if="ui.plugins">
+        <ul class="options-list">
+            <li>
+                <p class="lede">{{plugin.name}}</p>
+                <label>
+                    <input type="checkbox" ng-model="plugin.active" ng-change="togglePlugin(plugin)"> Enabled
+                </label>
+            </li>
+        </ul>
+    </section>
+</script>
+
 <script type="text/ng-template" id="plugins.html">
     <article class="main-section" ng-class="{'active': ui.active}">
         <h1>Plugins</h1>
-        <section ng-repeat="plugin in ui.plugins" ng-if="ui.plugins">
-            <ul class="options-list">
-                <li>
-                    <p class="lede">{{plugin.name}}</p>
-                    <label>
-                        <input type="checkbox" ng-model="plugin.active" ng-change="togglePlugin(plugin)"> Enabled
-                    </label>
-                </li>
-            </ul>
-        </section>
+        <plugin-list ng-if="options" options="options"></plugin-list>
     </article>
 </script>

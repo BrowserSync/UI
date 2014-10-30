@@ -5,27 +5,27 @@
 
     angular.module("BrowserSync")
         .controller("PluginsController",
-            ["$scope", "$rootScope", "Socket", "contentSections", pluginsController]);
+            ["$scope", "$rootScope", "Socket", "contentSections", pluginsController])
+        .directive("pluginList", function () {
+            return {
+                restrict: "E",
+                scope: {
+                    options: "="
+                },
+                templateUrl: "plugins-list.html",
+                controller: ["$scope", "Socket", "contentSections", pluginsDirective]
+            };
+        });
 
     /**
-     * Controller for the URL sync
      * @param $scope
      * @param $rootScope
      * @param Socket
      * @param contentSections
      */
-    function pluginsController($scope, $rootScope, Socket, contentSections) {
+    function pluginsDirective($scope, Socket, contentSections) {
 
         var CONFIGURE_EVENT  = "plugins:configure";
-
-        /**
-         * Watch the active property to show/hide
-         */
-        $scope.$watch(function () {
-            return contentSections["plugins"].active
-        }, function (data) {
-            $scope.ui.active = data;
-        });
 
         /**
          * Don't show control panel as user plugin
@@ -39,8 +39,7 @@
          */
         $scope.ui = {
             loading: false,
-            plugins: filtered,
-            active:  contentSections["plugins"].active
+            plugins: filtered
         };
 
         /**
@@ -48,6 +47,30 @@
          */
         $scope.togglePlugin = function (plugin) {
             Socket.emit(CONFIGURE_EVENT, plugin);
+        };
+    }
+
+    /**
+     * Controller for the URL sync
+     * @param $scope
+     * @param $rootScope
+     * @param Socket
+     * @param contentSections
+     */
+    function pluginsController($scope, $rootScope, Socket, contentSections) {
+
+        /**
+         * Watch the active property to show/hide
+         */
+        $scope.$watch(function () { return contentSections["plugins"].active }, function (data) {
+            $scope.ui.active = data;
+        });
+
+        /**
+         * @type {{loading: boolean}}
+         */
+        $scope.ui = {
+            active:  contentSections["plugins"].active
         };
     }
 

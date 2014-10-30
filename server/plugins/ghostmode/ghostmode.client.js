@@ -5,29 +5,26 @@
 
     angular.module("BrowserSync")
         .controller("GhostModeController",
-            ["$scope", "Socket", "contentSections", ghostModeController]);
+            ["$scope", "Socket", "contentSections", ghostModeController])
+        .directive("syncOptions", function () {
+            return {
+                restrict: "E",
+                scope: {
+                    options: "="
+                },
+                templateUrl: "sync-options-list.html",
+                controller: ["$scope", "Socket", "contentSections", ghostModeDirective]
+            };
+        });
 
     /**
      * @param $scope
      * @param Socket
      * @param contentSections
      */
-    function ghostModeController($scope, Socket, contentSections) {
+    function ghostModeDirective($scope, Socket, contentSections) {
 
         var ghostMode = $scope.options.ghostMode;
-
-        /**
-         *
-         */
-        $scope.$watch(function () {
-            return contentSections["ghostmode"].active
-        }, function (data) {
-            $scope.ui.active = data;
-        });
-
-        $scope.ui = {
-            active: contentSections["ghostmode"].active
-        };
 
         $scope.items = {};
         $scope.formItems = [];
@@ -65,6 +62,27 @@
         function prefixOption(key) {
             return "ghostMode." + key;
         }
+    }
+
+    /**
+     * @param $scope
+     * @param Socket
+     * @param contentSections
+     */
+    function ghostModeController($scope, Socket, contentSections) {
+
+        var SECTION_NAME = "sync-options";
+
+        /**
+         * Enable/disable based on options
+         */
+        $scope.$watch(function () { return contentSections[SECTION_NAME].active }, function (data) {
+            $scope.ui.active = data;
+        });
+
+        $scope.ui = {
+            active: contentSections[SECTION_NAME].active
+        };
     }
 
 })(angular);

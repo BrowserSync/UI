@@ -1,22 +1,27 @@
+<!-- Directive for sync-actions -->
+<script type="text/ng-template" id="sync-options-list.html">
+    <p class="lede">Actions:</p>
+    <ul class="options-list">
+        <li ng-repeat="(key, value) in items" class="tight">
+            <label>
+                <input type="checkbox" ng-model="value" ng-change="toggle(key, value)"> {{key}} ({{value}})
+            </label>
+        </li>
+    </ul>
+    <p class="lede">Forms:</p>
+    <ul class="options-list">
+        <li ng-repeat="item in formItems" class="tight">
+            <label>
+                <input type="checkbox" ng-model="item.value" ng-change="formToggle(item)"> {{item.name}} ({{item.value}})
+            </label>
+        </li>
+    </ul>
+</script>
+
+<!-- Controller for sync-actions -->
 <script type="text/ng-template" id="sync-options.html">
     <article class="main-section" ng-class="{'active': ui.active}">
         <h1>Ghostmode Options</h1>
-
-        <p class="lede">Actions:</p>
-        <ul class="options-list">
-            <li ng-repeat="(key, value) in items" class="tight">
-                <label>
-                    <input type="checkbox" ng-model="value" ng-change="toggle(key, value)"> {{key}} ({{value}})
-                </label>
-            </li>
-        </ul>
-        <p class="lede">Forms:</p>
-        <ul class="options-list">
-            <li ng-repeat="item in formItems" class="tight">
-                <label>
-                    <input type="checkbox" ng-model="item.value" ng-change="formToggle(item)"> {{item.name}} ({{item.value}})
-                </label>
-            </li>
-        </ul>
+        <sync-options ng-if="options" options="options"></sync-options>
     </article>
 </script>

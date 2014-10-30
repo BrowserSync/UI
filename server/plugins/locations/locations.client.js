@@ -4,8 +4,41 @@
 (function (angular) {
 
     angular.module("BrowserSync")
+
         .controller("HistoryController",
-            ["$scope", "$rootScope", "Socket", "contentSections", historyController]);
+            ["$scope", "$rootScope", "Socket", "contentSections", historyController])
+
+        .directive("historyList", function () {
+            return {
+                restrict: "E",
+                scope: {
+                    options: "="
+                },
+                templateUrl: "history-list.html",
+                controller: ["$scope", "$rootScope", "Socket", "contentSections", historyDirective]
+            }
+        });
+
+    /**
+     * @param $scope
+     * @param $rootScope
+     * @param Socket
+     * @param contentSections
+     */
+    function historyController($scope, $rootScope, Socket, contentSections) {
+
+        var SECTION_NAME = "history";
+
+        // TODO - cleanup this watcher
+        $scope.$watch(function() { return contentSections[SECTION_NAME].active }, function (data) {
+            $scope.ui.active = data;
+        });
+
+        $scope.ui = {
+            loading: false,
+            active: contentSections[SECTION_NAME].active
+        }
+    }
 
     /**
      * Controller for the URL sync
@@ -14,21 +47,13 @@
      * @param Socket
      * @param contentSections
      */
-    function historyController($scope, $rootScope, Socket, contentSections) {
-
-        /**
-         *
-         */
-        $scope.$watch(function() { return contentSections["locations"].active }, function (data) {
-            $scope.ui.active = data;
-        });
+    function historyDirective($scope, $rootScope, Socket) {
 
         /**
          * @type {{loading: boolean}}
          */
         $scope.ui = {
             loading: false,
-            active: contentSections["locations"].active,
             loaders: {
                 "reloadAll": false,
                 "sendAllTo": false,

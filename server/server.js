@@ -52,7 +52,12 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Add any markup from plugins/hooks
      */
-    insertPageMarkupFromHooks(app, controlPanel.pageMarkup);
+    insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages);
+
+    /**
+     * History API fallback
+     */
+    app.use(require("connect-history-api-fallback"));
 
     /**
      * Serve static directory
@@ -95,9 +100,9 @@ function combineMarkup(res, pageMarkup) {
  * @param app
  * @param pageMarkup
  */
-function insertPageMarkupFromHooks(app, pageMarkup) {
+function insertPageMarkupFromHooks(app, pageMarkup, pages) {
     app.use(function (req, res, next) {
-        if (req.url === "/") {
+        if (_.find(pages, {path: req.url})) {
             return combineMarkup(res, pageMarkup);
         } else {
             next();

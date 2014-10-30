@@ -10,8 +10,9 @@ module.exports = {
     // list of files / patterns to load in the browser
     files: [
 
-        "lib/js/vendor/angular.min.js",
-        "test/client/vendor/angular-mocks.js",
+        "lib/bower_components/angular/angular.min.js",
+        "lib/bower_components/angular-route/angular-route.min.js",
+        "lib/bower_components/angular-mocks/angular-mocks.js",
         "lib/bower_components/angular-order-object-by/src/ng-order-object-by.js",
 
         // Test Libs
@@ -31,7 +32,6 @@ module.exports = {
         "server/plugins/**/*.html",
 
         "test/client/specs/**/*.js"
-
         // Templates
     ],
 

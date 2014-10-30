@@ -29,16 +29,17 @@
     "test": "npm run server && ./node_modules/karma/bin/karma start test/client/karma.conf.ci.js"
   },
   "dependencies": {
-    "through": "2.3.4",
     "connect": "^3.1.1",
-    "tfunk": "0.0.2",
-    "portscanner-plus": "0.1.0",
-    "q": "1.0.1",
+    "connect-history-api-fallback": "0.0.5",
+    "easy-extender": "^1.1.0",
     "lodash": "^2.4.1",
     "multiline": "^1.0.0",
+    "portscanner-plus": "0.1.0",
+    "q": "1.0.1",
     "serve-static": "^1.5.3",
-    "through2": "^0.6.1",
-    "easy-extender": "^1.1.0"
+    "tfunk": "0.0.2",
+    "through": "2.3.4",
+    "through2": "^0.6.1"
   },
   "devDependencies": {
     "browser-sync": "^1.5.3",

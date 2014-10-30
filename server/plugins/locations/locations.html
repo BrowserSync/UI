@@ -1,44 +1,50 @@
+<!-- Directive for history-list -->
+<script type="text/ng-template" id="history-list.html">
+    <ul class="options-list">
+        <li>
+            <p class="lede">Refresh all connected Browsers</p>
+
+            <div class="loader">
+                <button class="button" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
+                <span class="small progress" ng-if="ui.loaders.reloadAll">Loading</span>
+            </div>
+        </li>
+        <li>
+            <p class="lede">Visit a previous URL</p>
+
+            <p>
+                <select ng-model="selectedUrl" ng-options="url.path for url in urls.visited">
+                    <option value="">-- Choose Previous --</option>
+                </select>
+            </p>
+            <div class="loader">
+                <button class="button" ng-click="sendAllTo(selectedUrl.path, 'sendAllTo')">Go!</button>
+                <span class="small progress" ng-if="ui.loaders.sendAllTo">Loading</span>
+            </div>
+        </li>
+        <li>
+            <p class="lede">Sync all to a new url: </p>
+
+            <p>{{urls.local}}/
+
+            <p>
+
+            <form ng-submit="sendAllTo(urls.current, 'newUrl')">
+                <p><input type="text" name="url-sync" ng-model="urls.current"></p>
+
+                <div class="loader">
+                    <button class="button">Go</button>
+                    <span class="small progress" ng-if="ui.loaders.newUrl">Loading</span>
+                </div>
+            </form>
+        </li>
+    </ul>
+</script>
+
+<!-- Controller for history-list -->
 <script type="text/ng-template" id="history.html">
     <article class="main-section" ng-class="{'active': ui.active}">
         <h1>Locations</h1>
-        <ul class="options-list">
-            <li>
-                <p class="lede">Refresh all connected Browsers</p>
-
-                <div class="loader">
-                    <button class="button" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
-                    <span class="small progress" ng-if="ui.loaders.reloadAll">Loading</span>
-                </div>
-            </li>
-            <li>
-                <p class="lede">Visit a previous URL</p>
-
-                <p>
-                    <select ng-model="selectedUrl" ng-options="url.path for url in urls.visited">
-                        <option value="">-- Choose Previous --</option>
-                    </select>
-                </p>
-                <div class="loader">
-                    <button class="button" ng-click="sendAllTo(selectedUrl.path, 'sendAllTo')">Go!</button>
-                    <span class="small progress" ng-if="ui.loaders.sendAllTo">Loading</span>
-                </div>
-            </li>
-            <li>
-                <p class="lede">Sync all to a new url: </p>
-
-                <p>{{urls.local}}/
-
-                <p>
-
-                <form ng-submit="sendAllTo(urls.current, 'newUrl')">
-                    <p><input type="text" name="url-sync" ng-model="urls.current"></p>
-
-                    <div class="loader">
-                        <button class="button">Go</button>
-                        <span class="small progress" ng-if="ui.loaders.newUrl">Loading</span>
-                    </div>
-                </form>
-            </li>
-        </ul>
+        <history-list ng-if="options" options="options"></history-list>
     </article>
 </script>

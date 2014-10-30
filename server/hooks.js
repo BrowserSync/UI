@@ -14,7 +14,7 @@ module.exports = {
      * @param hooks
      * @param initial
      */
-    "page": function (hooks, initial) {
+    "page": function (hooks, cb) {
         var items = hooks.reduce(function (all, item) {
             return all + configItem.replace(/%(.+)%/g, function () {
                 var key = arguments[1];
@@ -23,7 +23,7 @@ module.exports = {
                 }
             });
         }, "");
-
+        cb(null, hooks);
         return configTmpl.replace("%when%", items);
     },
     "markup": function (hooks, initial) {
