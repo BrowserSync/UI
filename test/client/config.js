@@ -83,7 +83,6 @@ module.exports = {
         // If your build process changes the path to your templates,
         // use stripPrefix and prependPrefix to adjust it.
         cacheIdFromPath: function(filepath) {
-            console.log(filepath);
             if (filepath.match(/^lib/)) {
                 return filepath.replace(/^lib\//, "");
             }
