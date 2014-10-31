@@ -10,16 +10,19 @@
  *
  */
 
+var assert = require("chai").assert;
+
 describe('Section Navigation', function() {
 
-    var expected, selector, menu;
+    var expectedItems, selector, menu, headerSelector
     var ptor = protractor.getInstance();
 
     beforeEach(function () {
         browser.ignoreSynchronization = true;
         browser.get("/");
-        expected  = 4;
-        selector  = '(key, item) in ui.menu | orderObjectBy: \'order\'';
+        expectedItems  = 4;
+        selector       = '(key, item) in ui.menu | orderObjectBy: \'order\'';
+        headerSelector = ".bs-main-section h1";
     });
     /**
      *
@@ -35,7 +38,7 @@ describe('Section Navigation', function() {
         element.all(by.repeater(selector)).then(function (elems) {
 
             // Check the correct amount of links
-            expect(elems.length).toEqual(expected);
+            expect(elems.length).toEqual(expectedItems);
 
             // Check the text of the first item matches
             elems[0].getText().then(function (name) {
@@ -48,25 +51,39 @@ describe('Section Navigation', function() {
      *
      * Check that when a side-bar item is clicked,
      * The header of the main section is updated correctly
+     * Meaning that the section was swapped as you intend
      *
      */
-    it("should switch sections", function () {
-
-        // get the second item in the menu
-        var menuItem = element(by.repeater(selector).row(2));
-
-        menuItem.getText().then(function (menuTitle) {
-
-            // Click the menu button
-            menuItem.click();
-
-            element(by.css(".bs-main-section h1"))
-                // Get the main heading and check it
-                .getText()
-                // Assert that it matches the text of the button was clicked
-                .then(function (headerTitle) {
-                    expect(menuTitle).toEqual(headerTitle);
-            });
-        });
+    it("should switch to server info section", function () {
+        var menuItem = element.all(by.repeater(selector)).get(0);
+        matchClickToTitle(menuItem, headerSelector);
+    });
+    it("should switch to Sync options section", function () {
+        var menuItem = element.all(by.repeater(selector)).get(1);
+        matchClickToTitle(menuItem, headerSelector);
+    });
+    it("should switch to History section", function () {
+        var menuItem = element.all(by.repeater(selector)).get(2);
+        matchClickToTitle(menuItem, headerSelector);
+    });
+    it("should switch to Plugins section", function () {
+        var menuItem = element.all(by.repeater(selector)).get(3);
+        matchClickToTitle(menuItem, headerSelector);
     });
 });
+
+/**
+ * @param item
+ * @param selector
+ */
+function matchClickToTitle (item, selector) {
+    item.getText().then(function (text) {
+        return item.click().then(function () {
+            element(by.css(selector))
+                .getText()
+                .then(function (texts) {
+                    assert.equal(texts, text);
+                })
+        });
+    });
+}

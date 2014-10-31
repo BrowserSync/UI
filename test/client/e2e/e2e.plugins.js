@@ -3,6 +3,8 @@
  * E2E tests for the History plugin
  *
  */
+var assert = require("chai").assert;
+
 describe('History section', function() {
 
     var expected, selector, menu, bsUrl;
@@ -17,11 +19,11 @@ describe('History section', function() {
     it("should list the form sync options", function () {
 
         element.all(by.repeater("plugin in ui.plugins")).count().then(function (count) {
-            expect(count).toEqual(1);
+            assert.equal(1, count);
         });
 
         element.all(by.css(".bs-main-section ul li")).count().then(function (count) {
-            expect(count).toEqual(1);
+            assert.equal(1, count);
         });
     });
 });
