@@ -33,7 +33,7 @@ var defaults = {
  */
 var ControlPanel = function (opts, bs) {
 
-    opts = merge(defaults, opts, true);
+    opts = merge(defaults, opts || {}, true);
 
     this.logger = bs.getLogger(config.pluginName);
     this.bs     = bs;

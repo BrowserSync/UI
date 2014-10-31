@@ -11,9 +11,7 @@
  */
 
 describe('angularjs homepage todo list', function() {
-
     it('should add a todo', function() {
-
         browser.ignoreSynchronization = true;
         browser.get(process.env["BS_CP"]);
         expect(element(by.id('section-nav')).isPresent()).toBeTruthy();
