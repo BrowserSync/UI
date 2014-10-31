@@ -23,12 +23,12 @@ var bs           = require(bspath);
 
 var htmlInjector = require(htmlpath);
 
-//bs.use(htmlInjector, {
-//    logLevel: "debug",
-//    files: [
-//        "test/fixtures/*.html"
-//    ]
-//});
+bs.use({
+    "plugin:name": "e2e test plugin",
+    "plugin": function () {
+        /* noop */
+    }
+});
 
 bs.use(cp, {logLevel: "silent"});
 
