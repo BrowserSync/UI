@@ -1,27 +1,64 @@
-var bspath       = "/Users/shakyshane/sites/os-browser-sync";
+var path           = require("path");
+var bspath         = "/Users/shakyshane/sites/os-browser-sync";
+var config         = path.resolve("./test/client/e2e/config.js");
 //var bspath       = "/Users/shaneobsourne/sites/browser-sync";
 
 var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
 //var htmlpath     = "/Users/shaneobsourne/code/html-injector";
+var cp   = require("child_process");
+var exec = require("child_process").exec;
+var logger   = require("eazy-logger").Logger({
+    prefix: "{magenta:[BS E2E] ",
+    useLevelPrefixes: true,
+    custom: {
+        "i": function (string) {
+            return this.compile("{cyan:" + string + "}");
+        }
+    }
+});
 
 var cp           = require("./index");
 var bs           = require(bspath);
 
 var htmlInjector = require(htmlpath);
 
-bs.use(htmlInjector, {
-    logLevel: "debug",
-    files: [
-        "test/fixtures/*.html"
-    ]
+//bs.use(htmlInjector, {
+//    logLevel: "debug",
+//    files: [
+//        "test/fixtures/*.html"
+//    ]
+//});
+
+bs.use(cp, {logLevel: "silent"});
+
+cp.events.on("cp:running", function (data) {
+    var address = data.instance.server.address();
+    var url = "http://localhost:" + address.port;
+    process.env["BS_CP"] = url;
+    logger.info("Testing Control Panel at {i:%s", url);
+    var out = "";
+    exec("protractor " + config, function (err, stdout) {
+        out += stdout;
+    }).on("close", function (code) {
+        if (code !== 0) {
+            logger.error("Protractor tests failed, Details below");
+            console.log(out);
+            process.exit(code);
+        } else {
+            logger.info("{green:Success!} The {yellow:Protractor} test suite ran without error");
+            logger.debug("Configuration file used: " + config);
+            process.exit();
+        }
+    });
 });
 
-bs.use(cp);
-
-bs({
+var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
+    logLevel: "silent",
     open: false,
     online: false
+}, function (err, bs) {
+    logger.info("BrowserSync running at {i:" + bs.getOption("urls.local"));
 });

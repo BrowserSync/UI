@@ -6,6 +6,7 @@ var Events      = require("events").EventEmitter;
 var events      = new Events();
 var ports       = require("portscanner-plus");
 var Q           = require("q");
+var merge       = require("opt-merger").merge;
 var EE          = require("easy-extender");
 
 var hooks       = require("./server/hooks");
@@ -19,6 +20,10 @@ var defaultPlugins = {
     "plugins":      require("./server/plugins/plugins/plugins")
 };
 
+var defaults = {
+
+};
+
 /**
  * @param {Object} opts - Any options specifically
  *                        passed to the control panel
@@ -28,11 +33,15 @@ var defaultPlugins = {
  */
 var ControlPanel = function (opts, bs) {
 
-    opts = opts || {};
+    opts = merge(defaults, opts, true);
 
     this.logger = bs.getLogger(config.pluginName);
     this.bs     = bs;
     this.opts   = opts;
+
+    if (this.opts.logLevel === "silent") {
+        this.logger.mute(true);
+    }
 
     this.pluginManager = new EE(defaultPlugins, hooks).init();
 
@@ -64,7 +73,7 @@ ControlPanel.prototype.initDefaultHooks = function () {
  * Emit running event and log.
  */
 ControlPanel.prototype.inform = function () {
-    events.emit("cp:running", this);
+    events.emit("cp:running", {instance: this, options: this.opts});
     this.logger.info("Running at: {cyan:http://localhost:%s", this.port);
 };
 
