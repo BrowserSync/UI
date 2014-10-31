@@ -10,10 +10,20 @@
  *
  */
 
-describe('angularjs homepage todo list', function() {
-    it('should add a todo', function() {
+describe('Section Navigation', function() {
+    beforeEach(function () {
         browser.ignoreSynchronization = true;
         browser.get(process.env["BS_CP"]);
-        expect(element(by.id('section-nav')).isPresent()).toBeTruthy();
+    });
+    it('should render the correct amount of links', function() {
+
+        var expected  = 4;
+        var selector  = '(key, item) in ui.menu | orderObjectBy: \'order\'';
+
+        expect(element(by.id('bs-section-nav')).isPresent()).toBeTruthy();
+
+        element.all(by.repeater(selector)).then(function (elems) {
+            expect(elems.length).toEqual(expected);
+        });
     });
 });
