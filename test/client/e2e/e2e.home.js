@@ -17,7 +17,7 @@ describe('Section Navigation', function() {
 
     beforeEach(function () {
         browser.ignoreSynchronization = true;
-        browser.get(process.env["BS_CP"]);
+        browser.get("/");
         expected  = 4;
         selector  = '(key, item) in ui.menu | orderObjectBy: \'order\'';
     });

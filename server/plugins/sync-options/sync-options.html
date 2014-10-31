@@ -2,7 +2,7 @@
 <script type="text/ng-template" id="sync-options-list.html">
     <p class="lede">Actions:</p>
     <ul class="options-list">
-        <li ng-repeat="(key, value) in items" class="tight">
+        <li ng-repeat="(key, value) in syncItems" class="tight">
             <label>
                 <input type="checkbox" ng-model="value" ng-change="toggle(key, value)"> {{key}} ({{value}})
             </label>

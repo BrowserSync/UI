@@ -29,12 +29,12 @@
 
         var ghostMode = $scope.options.ghostMode;
 
-        $scope.items = {};
+        $scope.syncItems = {};
         $scope.formItems = [];
 
         for (var item in ghostMode) {
             if (item !== "forms" && item !== "location") {
-                $scope.items[item] = ghostMode[item];
+                $scope.syncItems[item] = ghostMode[item];
             }
         }
 

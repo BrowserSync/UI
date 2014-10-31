@@ -2,7 +2,7 @@
 
     <p class="lede">Access Information:</p>
     <ul class="options-list server-info">
-        <li ng-repeat="url in urls"><span>{{url.name}}</span>: <a href="{{url.url}}" target="_blank">{{url.url}}</a></li>
+        <li ng-repeat="url in urls" class="bs-url"><span>{{url.name}}</span>: <a href="{{url.url}}" target="_blank">{{url.url}}</a></li>
     </ul>
     <section ng-if="ui.server">
         <p class="lede">Serving files from:<p>

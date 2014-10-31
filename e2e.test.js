@@ -36,6 +36,7 @@ cp.events.on("cp:running", function (data) {
     var address = data.instance.server.address();
     var url = "http://localhost:" + address.port;
     process.env["BS_CP"] = url;
+    process.env["BS_CP_BASE"] = url;
     logger.info("Testing Control Panel at {i:%s", url);
     var out = "";
     exec("protractor " + config, function (err, stdout) {
@@ -62,5 +63,7 @@ var instance = bs({
     open: false,
     online: false
 }, function (err, bs) {
+    process.env["BS_URL"]  = bs.getOption("urls.local");
+    process.env["BS_BASE"] = bs.getOption("urls.local");
     logger.info("BrowserSync running at {i:" + bs.getOption("urls.local"));
 });
