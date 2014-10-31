@@ -17,7 +17,7 @@ describe("Module: Notify", function () {
 
     describe("When using the notify element", function () {
 
-        var socket, rootScope;
+        var socket, rootScope, isolatedScope;
 
         beforeEach(inject(function (Socket, $rootScope) {
 
@@ -30,63 +30,63 @@ describe("Module: Notify", function () {
             // Compile & Digest as normal
             compile(element)(scope);
             scope.$digest();
+            isolatedScope = scope.$$childHead;
         }));
         it("has ui properties", function () {
-            assert.isDefined(scope.ui.visible);
-            assert.isDefined(scope.ui.status);
-            assert.isDefined(scope.ui.heading);
-            assert.isDefined(scope.ui.message);
+            assert.isDefined(isolatedScope.ui.status);
+            assert.isDefined(isolatedScope.ui.heading);
+            assert.isDefined(isolatedScope.ui.message);
         });
         it("can be activated with only a message", function () {
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Hi there"
             });
-            assert.isTrue(scope.ui.visible);
-            assert.equal(scope.ui.message, "Hi there");
-            assert.equal(scope.ui.status, "info");
+            assert.isTrue(isolatedScope.ui.visible);
+            assert.equal(isolatedScope.ui.message, "Hi there");
+            assert.equal(isolatedScope.ui.status, "info");
         });
         it("can be activated with a status", function () {
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Hi there",
                 status: "error"
             });
-            assert.isTrue(scope.ui.visible);
-            assert.equal(scope.ui.message, "Hi there");
-            assert.equal(scope.ui.status, "error");
+            assert.isTrue(isolatedScope.ui.visible);
+            assert.equal(isolatedScope.ui.message, "Hi there");
+            assert.equal(isolatedScope.ui.status, "error");
         });
         it("can be activated with a heading", function () {
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Hi there",
                 status: "error",
                 heading: "SORRY!!!"
             });
-            assert.equal(scope.ui.heading, "SORRY!!!");
+            assert.equal(isolatedScope.ui.heading, "SORRY!!!");
         });
         it("can be deactivated after default timeout", function () {
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Hi there"
             });
             clock.tick(3000);
-            assert.equal(scope.ui.visible, false);
+            assert.equal(isolatedScope.ui.visible, false);
         });
         it("can be deactivated after given timeout", function () {
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Hi there",
                 timeout: 5000
             });
             clock.tick(5010);
-            assert.equal(scope.ui.visible, false);
+            assert.equal(isolatedScope.ui.visible, false);
         });
         it("overide current message", function () {
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Hi there"
             });
             clock.tick(1000);
-            scope.show({}, {
+            isolatedScope.show({}, {
                 message: "Shane"
             });
             clock.tick(1900);
-            assert.equal(scope.ui.message, "Shane");
+            assert.equal(isolatedScope.ui.message, "Shane");
         });
     });
 });

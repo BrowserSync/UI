@@ -72,7 +72,10 @@ gulp.task('bs-inject', function () {
  */
 gulp.task('dev-frontend', ["browserify", "sass", "browser-sync"], function () {
     gulp.watch("lib/js/scripts/**/*.js", ["browserify", reload]);
+    gulp.watch("lib/scss/**/*.scss", ["sass"]);
+});
 
+gulp.task('watch-css', ["sass"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
 });
 
