@@ -1,6 +1,6 @@
 <script type="text/ng-template" id="server-info.html">
     <div ng-controller="ServerController">
-        <article class="main-section">
+        <article class="bs-main-section">
             <h1>{{options.mode}} Info</h1>
             <url-info ng-if="options.server || options.proxy" options="options"></url-info>
             <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>

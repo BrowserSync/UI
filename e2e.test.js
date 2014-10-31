@@ -46,6 +46,7 @@ cp.events.on("cp:running", function (data) {
             console.log(out);
             process.exit(code);
         } else {
+            console.log(out);
             logger.info("{green:Success!} The {yellow:Protractor} test suite ran without error");
             logger.debug("Configuration file used: " + config);
             process.exit();
