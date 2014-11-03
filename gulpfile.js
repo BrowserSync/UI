@@ -5,6 +5,7 @@ var sass        = require("gulp-ruby-sass");
 var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require('gulp-browserify');
 var rename      = require('gulp-rename');
+var filter      = require('gulp-filter');
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
 
@@ -44,7 +45,7 @@ gulp.task('browserify', function () {
 gulp.task('browser-sync', function () {
     browserSync({
         proxy: "http://localhost:3001/",
-        files: ["lib/*.html", "lib/css/**"]
+        files: ["lib/*.html"]
     });
 });
 
@@ -54,8 +55,11 @@ gulp.task('browser-sync', function () {
 gulp.task('sass', function () {
     return gulp.src('lib/scss/**/*.scss')
         .pipe(sass())
+        .on('error', function (err) { browserSync.notify(err.message); console.log(err.message) })
         .pipe(autoprefix())
-        .pipe(gulp.dest('lib/css'));
+        .pipe(gulp.dest('lib/css'))
+        .pipe(filter("**/*.css"))
+        .pipe(reload({stream:true}));
 });
 
 /**
@@ -70,8 +74,7 @@ gulp.task('bs-inject', function () {
 /**
  * Build Front-end stuff
  */
-gulp.task('dev-frontend', ["browserify", "sass", "browser-sync"], function () {
-    gulp.watch("lib/js/scripts/**/*.js", ["browserify", reload]);
+gulp.task('dev-frontend', ["sass", "browser-sync"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
 });
 

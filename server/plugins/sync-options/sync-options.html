@@ -1,7 +1,7 @@
 <!-- Directive for sync-actions -->
 <script type="text/ng-template" id="sync-options-list.html">
     <p class="lede">Actions:</p>
-    <ul class="options-list">
+    <ul class="bs-list">
         <li ng-repeat="(key, value) in syncItems" class="tight">
             <label>
                 <input type="checkbox" ng-model="value" ng-change="toggle(key, value)"> {{key}} ({{value}})
@@ -9,7 +9,7 @@
         </li>
     </ul>
     <p class="lede">Forms:</p>
-    <ul class="options-list">
+    <ul class="bs-list">
         <li ng-repeat="item in formItems" class="tight">
             <label>
                 <input type="checkbox" ng-model="item.value" ng-change="formToggle(item)"> {{item.name}} ({{item.value}})

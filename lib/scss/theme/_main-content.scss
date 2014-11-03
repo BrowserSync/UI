@@ -1,0 +1,9 @@
+.#{$ns}-content {
+
+    width: 100%;
+
+    @include media-query(min, $lap-start) {
+        width: 75%;
+    }
+    background: lightgoldenrodyellow;
+}

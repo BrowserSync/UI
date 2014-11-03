@@ -32,7 +32,6 @@ bs.use(htmlInjector, {
 
 bs.use(cp);
 
-
 var instance = bs({
     server: {
         baseDir: "./test/fixtures"

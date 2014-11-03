@@ -1,7 +1,7 @@
 /**
  * Inline using floats
  */
-.nav {
+.#{$ns}-list {
 
     @extend .clearfix;
 
@@ -24,9 +24,9 @@
 /**
  * Horizontal using inline-block
  */
-.nav--inline {
+.list--inline {
 
-    @extend .nav;
+    @extend .#{$ns}-list;
 
     > li {
         display: inline-block;
@@ -41,9 +41,9 @@
 /**
  * Horizontal using float
  */
-.nav--float {
+.list--float {
 
-    @extend .nav;
+    @extend .#{$ns}-list;
 
     > li {
         float: left;

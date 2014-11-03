@@ -12,25 +12,28 @@
 
 $float: true;
 
-@import "vendor/grids";
+@import "theme/main";
+@import "theme/sidebar";
+@import "theme/main-content";
 
 @import "theme/base";
 @import "theme/helpers";
 
 @import "theme/animations";
-
-@import "theme/nav";
-@import "theme/forms";
-@import "theme/url-nav";
 @import "theme/buttons";
-@import "theme/main";
-@import "theme/headings";
-@import "theme/links";
-@import "theme/header";
-@import "theme/footer";
-@import "theme/layout";
-@import "theme/code";
-@import "theme/steps";
-@import "theme/misc";
+@import "theme/nav";
+
+//@import "theme/header";
+//@import "theme/url-nav";
+
+//@import "theme/forms";
+//@import "theme/main";
+//@import "theme/headings";
+//@import "theme/links";
+//@import "theme/footer";
+//@import "theme/layout";
+//@import "theme/code";
+//@import "theme/steps";
+//@import "theme/misc";
 @import "theme/notifications";
 @import "theme/disconnect";
