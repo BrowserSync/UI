@@ -43,7 +43,8 @@ module.exports = {
             title: "History",
             template: "history.html",
             controller: "HistoryController",
-            order: 3
+            order: 3,
+            icon: "history"
         }
     },
     /**

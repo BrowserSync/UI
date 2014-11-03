@@ -1,12 +1,5 @@
 /**
  *
- NONE Angular site
- browser.ignoreSynchronization = true;
- browser.get('http://localhost:8000/login.html');
-
- element(by.id('username')).sendKeys('Jane');
- element(by.id('password')).sendKeys('1234');
- element(by.id('clickme')).click();
  *
  */
 
@@ -44,6 +37,26 @@ describe('Section Navigation', function() {
             elems[0].getText().then(function (name) {
                expect(name).toEqual("Server Info");
             });
+        });
+    });
+
+    /**
+     *
+     * Check that each menu item has an icon element
+     * of links/sections
+     *
+     */
+    it('should render an icon for each link item', function() {
+
+        // Get all the items
+        element.all(by.repeater(selector)).then(function (elems) {
+            elems.forEach(function (item) {
+                item.getInnerHtml().then(function (html) {
+                    // check the item's inner HTML to ensure icon is present
+                    var match = html.match(/ icon-([a-z]+)/ig);
+                    assert.isNotNull(match);
+                });
+            })
         });
     });
 

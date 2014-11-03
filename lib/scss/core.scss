@@ -6,8 +6,9 @@
 @import "vars";
 
 @import "modules/mixins";
-@import "vendor/normalize";
 @import "modules/reset";
+@import "vendor/normalize";
+@import "vendor/fonts";
 
 
 $float: true;
@@ -38,3 +39,5 @@ $float: true;
 //@import "theme/misc";
 @import "theme/notifications";
 @import "theme/disconnect";
+
+@import "../fonts/font-awesome/scss/font-awesome.scss";

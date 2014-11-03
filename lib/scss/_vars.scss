@@ -11,6 +11,7 @@ PALETTE
  */
 $red: #da4453;//#f33;
 $green: #033339;
+$green-lt: #2BA595;
 $green-dk: #02262B;
 $yellow: #e9ac00;
 $teal: #256b8d;//#009882;#5fb342
@@ -50,7 +51,8 @@ $twitter: #00ACEE;
 TYPOGRAPHY
 ================================================================================*/
 
-$sans: "Titillium Web", "Lucida Grande", "Lucida Sans",sans-serif;
+$sans: "source_sans_proregular", "Lucida Grande", "Lucida Sans",sans-serif;
+$sans-light: "source_sans_proextralight", "Lucida Grande", "Lucida Sans",sans-serif;
 $serif: Georgia, serif;
 $mono: Consolas, Monaco, monospace;
 
@@ -69,7 +71,7 @@ $base-color: $green;
  */
 $hn-font-weight: 400;
 $hn-line-height: 1;
-$hn-font-family: $sans;
+$hn-font-family: "titillium_webbold";
 $hn-color: $base-color;
 $h1-size: 30px;
 $h2-size: 32px;

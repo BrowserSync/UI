@@ -19,7 +19,8 @@ module.exports = {
             title: "Sync Options",
             template: "sync-options.html",
             controller: "SyncOptionsController",
-            order: 2
+            order: 2,
+            icon: "refresh"
         }
     },
     "plugin:name": "Sync Options"

@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/core.css"/>
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700">
 </head>
 <body ng-app="BrowserSync">
 
@@ -25,15 +24,17 @@
         <nav class="bs-section-nav" id="bs-section-nav" ng-class="{'active': ui.sectionMenu}">
             <ul class="bs-list">
                 <li ng-repeat="(key, item) in ui.menu | orderObjectBy: 'order'">
-                    <button class="bs-button" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">{{item.title}}</button>
+                    <button class="bs-nav-button" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">
+                        <i class="icon icon-{{item.icon}}"></i> {{item.title}}
+                    </button>
                 </li>
-                <li>
-                    <button class="bs-button bs-menu-close" ng-click="toggleMenu()">CLOSE</button>
+                <li class="bs-menu-close">
+                    <button class="bs-nav-button" ng-click="toggleMenu()">CLOSE</button>
                 </li>
             </ul>
         </nav>
         <div class="bs-nav-toggle">
-            <button class="button menu-button" ng-click="toggleMenu()">Menu</button>
+            <button class="button menu-button bs-button" ng-click="toggleMenu()">Menu</button>
         </div>
     </section>
     <section class="bs-content">

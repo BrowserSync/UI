@@ -27,6 +27,36 @@
     }
 }
 
-.#{$ns}-button {
+.#{$ns}-nav-button {
+
     @extend %button;
+    width: 100%;
+    text-align: left;
+
+    &:hover {
+        background: $green-dk;
+    }
+
+    &.active {
+        color: $base-color;
+        background: $grey-bg;
+        .icon {
+            color: $green-lt;
+        }
+    }
+    .icon {
+        margin-right: $half-spacing;
+    }
+}
+
+.bs-nav-toggle {
+    @include media-query(min, $lap-start) {
+        display: none;
+    }
+}
+
+.bs-menu-close {
+    @include media-query(min, $lap-start) {
+        display: none;
+    }
 }

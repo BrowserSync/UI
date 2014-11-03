@@ -31,7 +31,8 @@ module.exports = {
             title: "Plugins",
             template: "plugins.html",
             controller: "PluginsController",
-            order: 4
+            order: 4,
+            icon: "plug"
         }
     },
     /**
