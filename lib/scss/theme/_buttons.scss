@@ -2,13 +2,13 @@
 
     display: inline-block;
     border: 0;
-    padding: $half-spacing $base-spacing;
+    padding: 8px $base-spacing;
     width: auto;
     vertical-align: middle;
     background: $green;
     color: white;
     @include font-size($base-font-size);
-
+    border-radius: 3px;
     line-height: 1.2;
     text-align: center;
     cursor: pointer;
@@ -61,6 +61,11 @@
             color: $green-lt;
         }
     }
+}
+
+.#{$ns}-button {
+    @extend %button;
+    border: 1px solid #095A65;
 }
 
 .bs-nav-toggle {

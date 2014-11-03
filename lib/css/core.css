@@ -640,7 +640,30 @@ th {
       width: 25%; } }
 
 .bs-input {
-  padding: 12px 24px; }
+  padding: 0 27px; }
+
+.bs-split-buttons {
+  padding: 0 27px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
+  .bs-split-buttons .bs-button {
+    background: #064F58;
+    width: 48%;
+    margin-left: 4%; }
+    .bs-split-buttons .bs-button:first-child {
+      margin-left: 0; }
+    .bs-split-buttons .bs-button:hover {
+      background: #086470;
+      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1) inset; }
+    .bs-split-buttons .bs-button:active {
+      background: #064F58; }
+
+.bs-stack {
+  margin-bottom: 14px; }
 
 .bs-section-nav {
   position: absolute;
@@ -666,22 +689,26 @@ th {
         -ms-transform: translateX(0) translateY(0) scale(1);
             transform: translateX(0) translateY(0) scale(1);
     opacity: 1; }
+  .bs-section-nav .bs-nav-button {
+    border-radius: 0;
+    padding-top: 14px;
+    padding-bottom: 14px; }
 
 .bs-content {
   width: 100%;
-  padding: 24px;
+  padding: 27px;
   background: #F2F2F2; }
   @media only screen and (min-width: 600px) {
     .bs-content {
-      padding: 24px 48px;
+      padding: 27px 54px;
       width: 75%; } }
 
 hr {
   clear: both;
-  margin-bottom: 24px;
+  margin-bottom: 27px;
   border: none;
   border-bottom: 1px solid #cccccc;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
   height: 1px; }
 
 html {
@@ -689,7 +716,7 @@ html {
   overflow-x: hidden;
   min-height: 100%;
   max-width: 100%;
-  font: 100%/1.5 "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
+  font: 112.5%/1.5 "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased; }
@@ -703,13 +730,13 @@ body {
 
 .lede {
   font-size: 20px;
-  font-size: 1.25rem; }
+  font-size: 1.11111rem; }
 
 table tr td:first-child {
   white-space: nowrap;
   font-weight: bold; }
 table td {
-  padding: 12px 6px; }
+  padding: 14px 7px; }
 table tbody tr:nth-child(odd) {
   background: #fafafa; }
 
@@ -722,7 +749,7 @@ ul, ol, dl,
 table,
 fieldset, figure, figcaption, details,
 pre {
-  margin-bottom: 12px; }
+  margin-bottom: 14px; }
 
 h1, .h1,
 h2, .h2,
@@ -745,32 +772,32 @@ h6, .h6 {
     font-weight: normal; }
 
 h1, .h1 {
-  margin-bottom: 24px;
+  margin-bottom: 27px;
   font-size: 30px;
-  font-size: 1.875rem; }
+  font-size: 1.66667rem; }
 
 h2, .h2 {
-  margin-bottom: 24px;
+  margin-bottom: 27px;
   font-size: 32px;
-  font-size: 2rem; }
+  font-size: 1.77778rem; }
 
 h3, .h3 {
   font-size: 20px;
-  font-size: 1.25rem; }
+  font-size: 1.11111rem; }
 
 h4, .h4 {
   margin-bottom: 0;
   font-size: 16px;
-  font-size: 1rem;
+  font-size: 0.88889rem;
   line-height: 1.5; }
 
 h5, .h5 {
   font-size: 16px;
-  font-size: 1rem; }
+  font-size: 0.88889rem; }
 
 h6, .h6 {
   font-size: 16px;
-  font-size: 1rem; }
+  font-size: 0.88889rem; }
 
 .flush--bottom {
   margin-bottom: 0 !important; }
@@ -785,6 +812,9 @@ h6, .h6 {
   display: none; }
   .hidden.active {
     display: block; }
+
+.bs-input, .bs-split-buttons, .bs-site-title {
+  margin-bottom: 14px; }
 
 /**
  * (C)Leanest CSS spinner ever
@@ -859,42 +889,44 @@ h6, .h6 {
           transform: rotate(-135deg);
   background: #bbb; }
 
-.bs-nav-button {
+.bs-nav-button, .bs-button {
   display: inline-block;
   border: 0;
-  padding: 12px 24px;
+  padding: 8px 27px;
   width: auto;
   vertical-align: middle;
   background: #033339;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-size: 1rem;
+  border-radius: 3px;
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
   outline: none; }
-  .bs-nav-button + .button,
-  .bs-nav-button + a {
-    margin-left: 12px; }
+  .bs-nav-button + .button, .bs-button + .button,
+  .bs-nav-button + a,
+  .bs-button + a {
+    margin-left: 14px; }
 
 .bs-nav-button {
   position: relative;
   width: 100%;
   text-align: left;
   font-size: 18px;
-  font-size: 1.125rem;
-  padding-left: 60px;
+  font-size: 1rem;
+  padding-left: 68px;
   font-family: "source_sans_prolight"; }
   .bs-nav-button .icon {
     position: absolute;
-    left: 24px;
+    left: 27px;
     font-size: 22px;
-    font-size: 1.375rem;
-    margin-right: 12px; }
+    font-size: 1.22222rem;
+    margin-right: 14px; }
     .bs-nav-button .icon.icon-plug {
       font-size: 28px;
-      font-size: 1.75rem;
-      left: 20px;
+      font-size: 1.55556rem;
+      left: 22px;
       top: 8px; }
   .bs-nav-button:hover {
     background: #02262B; }
@@ -903,6 +935,9 @@ h6, .h6 {
     background: #F2F2F2; }
     .bs-nav-button.active .icon {
       color: #2BA595; }
+
+.bs-button {
+  border: 1px solid #095A65; }
 
 @media only screen and (min-width: 600px) {
   .bs-nav-toggle {
@@ -939,12 +974,12 @@ h6, .h6 {
 
 .bs-site-title {
   background: #02262B;
-  margin: 0;
+  margin-top: 0;
   padding: 0;
   font-family: "titillium_weblight";
   font-size: 24px;
-  font-size: 1.5rem;
-  padding: 12px 24px; }
+  font-size: 1.33333rem;
+  padding: 14px 27px; }
   .bs-site-title a {
     display: block;
     color: #fff; }
@@ -953,14 +988,15 @@ h6, .h6 {
   border: 0;
   width: 100%;
   border-radius: 3px;
-  padding: 12px;
-  outline: 0; }
+  padding: 8px 14px;
+  outline: 0;
+  line-height: 1.2; }
 
 .form--inverted .bs-text-input {
   background: #02262B;
   color: #d6d6d6;
   font-size: 18px;
-  font-size: 1.125rem; }
+  font-size: 1rem; }
 
 .notification {
   position: fixed;
@@ -968,7 +1004,7 @@ h6, .h6 {
   background: #033339;
   color: white;
   text-align: center;
-  padding: 24px 12px;
+  padding: 27px 14px;
   border-bottom: 1px solid #033339;
   box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-transform: translateY(-110%);
@@ -998,7 +1034,7 @@ h6, .h6 {
   background: rgba(0, 0, 0, 0.6);
   color: white;
   text-align: center;
-  padding: 24px 12px;
+  padding: 27px 14px;
   display: none;
   z-index: 2000; }
   .bs-disconnect.active {

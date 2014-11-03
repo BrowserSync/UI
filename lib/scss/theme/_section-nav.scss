@@ -18,4 +18,11 @@
         transform: translateX(0) translateY(0) scale(1);
         opacity: 1;
     }
+
+    .#{$ns}-nav-button {
+
+        border-radius: 0;
+        padding-top: $half-spacing;
+        padding-bottom: $half-spacing;
+    }
 }
