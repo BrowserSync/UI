@@ -1,4 +1,5 @@
 .#{$ns}-sidebar {
+
     width: 100%;
 
     @include media-query(min, $lap-start) {

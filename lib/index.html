@@ -15,21 +15,20 @@
 <notify-elem></notify-elem>
 <disconnect-elem></disconnect-elem>
 
-<!--<header class="bs-site-header" role="banner">
-    <h1 class="bs-site-title alt">
-        <a href="/">BrowserSync</a> - <span><a href="/">Control Panel</a></span>
-    </h1>
-</header>-->
-
 <main class="bs-main" ng-controller="MainCtrl">
     <section class="bs-sidebar">
+        <header class="bs-site-header" role="banner">
+            <h1 class="bs-site-title alt">
+                <a href="/">BrowserSync</a>
+            </h1>
+        </header>
         <nav class="bs-section-nav" id="bs-section-nav" ng-class="{'active': ui.sectionMenu}">
             <ul class="bs-list">
                 <li ng-repeat="(key, item) in ui.menu | orderObjectBy: 'order'">
-                    <button class="bs-section-button" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">{{item.title}}</button>
+                    <button class="bs-button" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">{{item.title}}</button>
                 </li>
                 <li>
-                    <button class="bs-section-button bs-menu-close" ng-click="toggleMenu()">CLOSE</button>
+                    <button class="bs-button bs-menu-close" ng-click="toggleMenu()">CLOSE</button>
                 </li>
             </ul>
         </nav>

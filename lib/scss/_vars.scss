@@ -10,11 +10,14 @@ PALETTE
  * Brand
  */
 $red: #da4453;//#f33;
-$navy: #1b2032;
+$green: #033339;
+$green-dk: #02262B;
 $yellow: #e9ac00;
 $teal: #256b8d;//#009882;#5fb342
 $bg: #da4453;
 $lime: #D3ED13;
+
+$grey-bg: #F2F2F2;
 
 
 /**
@@ -29,6 +32,7 @@ $silver-dk: lighten($black, 60%); // 999999
 $silver: lighten($black, 80%); // cccccc
 $silver-lt: lighten($black, 90%); // e6e6e6
 $smoke: lighten($black, 95%); // f2f2f2
+
 
 /**
  * Special
@@ -57,7 +61,7 @@ $mono: Consolas, Monaco, monospace;
 $base-font-size: 16px;
 $base-line-height: 1.5;
 $base-font-family: $sans;
-$base-color: $grey;
+$base-color: $green;
 
 
 /**
@@ -66,7 +70,7 @@ $base-color: $grey;
 $hn-font-weight: 400;
 $hn-line-height: 1;
 $hn-font-family: $sans;
-$hn-color: $white;
+$hn-color: $base-color;
 $h1-size: 30px;
 $h2-size: 32px;
 $h3-size: 20px;

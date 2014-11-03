@@ -1,0 +1,17 @@
+.#{$ns}-section-nav {
+
+    .#{$ns}-button {
+
+        width: 100%;
+        text-align: left;
+
+        &:hover {
+            background: $green-dk;
+        }
+
+        &.active {
+            color: $base-color;
+            background: $grey-bg;
+        }
+    }
+}
