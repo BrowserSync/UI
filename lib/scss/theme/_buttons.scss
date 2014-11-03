@@ -29,10 +29,26 @@
 
 .#{$ns}-nav-button {
 
+    position: relative;
     @extend %button;
     width: 100%;
     text-align: left;
-    line-height: 24px;
+    @include font-size(18px);
+    padding-left: $base-spacing*2 + $half-spacing;
+    font-family: "source_sans_prolight";
+
+    .icon {
+        position: absolute;
+        left: $base-spacing;
+        @include font-size(22px);
+        margin-right: $half-spacing;
+
+        &.icon-plug {
+            @include font-size(28px);
+            left: $half-spacing + 8px;
+            top: 8px;
+        }
+    }
 
     &:hover {
         background: $green-dk;
@@ -44,10 +60,6 @@
         .icon {
             color: $green-lt;
         }
-    }
-    .icon {
-        @include font-size(24px);
-        margin-right: $half-spacing;
     }
 }
 
