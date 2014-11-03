@@ -27,8 +27,9 @@
   "scripts": {
     "server": "gulp build && mocha test/server",
     "e2e": "node e2e.test.js",
-    "test-e2e": "npm run server && npm run e2e && ./node_modules/karma/bin/karma start test/client/karma.conf.ci.js",
-    "test": "npm run server && ./node_modules/karma/bin/karma start test/client/karma.conf.ci.js"
+    "client": "./node_modules/karma/bin/karma start test/client/karma.conf.ci.js",
+    "pre-release": "npm run server && npm run e2e && npm run client",
+    "test": "npm run server && npm run client"
   },
   "dependencies": {
     "connect": "^3.1.1",
