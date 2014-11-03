@@ -639,6 +639,9 @@ th {
     .bs-sidebar {
       width: 25%; } }
 
+.bs-input {
+  padding: 12px 24px; }
+
 .bs-section-nav {
   position: absolute;
   width: 100%;
@@ -934,10 +937,8 @@ h6, .h6 {
 .list--float > li {
   float: left; }
 
-.bs-site-header {
-  background: #02262B; }
-
 .bs-site-title {
+  background: #02262B;
   margin: 0;
   padding: 0;
   font-family: "titillium_weblight";
@@ -947,6 +948,19 @@ h6, .h6 {
   .bs-site-title a {
     display: block;
     color: #fff; }
+
+.bs-text-input {
+  border: 0;
+  width: 100%;
+  border-radius: 3px;
+  padding: 12px;
+  outline: 0; }
+
+.form--inverted .bs-text-input {
+  background: #02262B;
+  color: #d6d6d6;
+  font-size: 18px;
+  font-size: 1.125rem; }
 
 .notification {
   position: fixed;

@@ -1,3 +1,18 @@
-input {
-    color: $navy;
+%base-input {
+    border: 0;
+    width: 100%;
+    border-radius: 3px;
+    padding: $half-spacing;
+    outline: 0;
+}
+
+.#{bs}-text-input {
+
+    @extend %base-input;
+    
+    .form--inverted & {
+        background: $green-dk;
+        color: #d6d6d6;
+        @include font-size(18px);
+    }
 }

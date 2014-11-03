@@ -1,10 +1,16 @@
 .#{$ns}-sidebar {
-
     width: 100%;
-
+    background: $green;
     @include media-query(min, $lap-start) {
         width: 25%;
     }
-
-    background: $green;
 }
+
+.#{$ns}-input {
+    padding: $half-spacing $base-spacing;
+}
+
+.#{$ns}-text-input {
+
+}
+
