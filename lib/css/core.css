@@ -730,7 +730,7 @@ h6, .h6 {
   color: #033339;
   font-weight: 400;
   line-height: 1;
-  font-family: "titillium_weblight";
+  font-family: "titillium_webbold";
   -webkit-font-smoothing: antialiased; }
   h1 small, .h1 small,
   h2 small, .h2 small,
@@ -940,6 +940,7 @@ h6, .h6 {
 .bs-site-title {
   margin: 0;
   padding: 0;
+  font-family: "titillium_weblight";
   font-size: 24px;
   font-size: 1.5rem;
   padding: 12px 24px; }

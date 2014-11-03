@@ -30,16 +30,13 @@ h6, .h6 {
 
 h1, .h1 {
     margin-bottom: $base-spacing;
-//    padding-top: $base-spacing;
     @include font-size($h1-size);
 }
 h2, .h2 {
     margin-bottom: $base-spacing;
-//    padding-top: $base-spacing;
     @include font-size($h2-size);
 }
 h3, .h3 {
-//    padding-top: $half-spacing;
     @include font-size($h3-size);
 }
 h4, .h4 {
