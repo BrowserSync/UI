@@ -1,9 +1,11 @@
 .#{$ns}-content {
 
     width: 100%;
+    padding: $base-spacing $base-spacing*2;
 
     @include media-query(min, $lap-start) {
         width: 75%;
     }
-    background: lightgoldenrodyellow;
+
+    background: $grey-bg;
 }

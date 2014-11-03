@@ -32,6 +32,7 @@
     @extend %button;
     width: 100%;
     text-align: left;
+    line-height: 24px;
 
     &:hover {
         background: $green-dk;
@@ -45,6 +46,7 @@
         }
     }
     .icon {
+        @include font-size(24px);
         margin-right: $half-spacing;
     }
 }
