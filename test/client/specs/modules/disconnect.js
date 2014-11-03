@@ -43,5 +43,11 @@ describe("Module: Disconnect", function () {
         it("should have the correct message", function () {
             assert.equal(element.find("h2").text(), "Disconnected");
         });
+        it("should respond to connection/disconnect events", function () {
+            rootScope.$emit("cp:disconnect");
+            assert.equal(isolatedScope.ui.visible, true);
+            rootScope.$emit("cp:connection");
+            assert.equal(isolatedScope.ui.visible, false);
+        });
     });
 });
