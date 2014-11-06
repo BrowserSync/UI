@@ -27,6 +27,7 @@
     border: 0;
     background: transparent;
     padding-left: 0;
+    padding-right: 0;
 }
 
 .bs-callout__icon {
@@ -59,16 +60,23 @@
     width: 100%;
     @include media-query(min, $lap-start) {
         width: 60%;
+        &.one-half {
+            width: 50%;
+        }
     }
 }
+
 .bs-flexy-action {
     width: 100%;
     @include media-query(min, $lap-start) {
         width: 40%;
+        &.one-half {
+            width: 50%;
+        }
     }
     padding-top: $half-spacing/2;
 
     input {
-        color: $green-lt;
+        width: 100%;
     }
 }

@@ -865,7 +865,8 @@ textarea, .bs-text-input {
 .bs-trans {
   border: 0;
   background: transparent;
-  padding-left: 0; }
+  padding-left: 0;
+  padding-right: 0; }
 
 .bs-callout__icon {
   position: absolute;
@@ -894,16 +895,20 @@ textarea, .bs-text-input {
   width: 100%; }
   @media only screen and (min-width: 600px) {
     .bs-flexy-text {
-      width: 60%; } }
+      width: 60%; }
+      .bs-flexy-text.one-half {
+        width: 50%; } }
 
 .bs-flexy-action {
   width: 100%;
   padding-top: 7px; }
   @media only screen and (min-width: 600px) {
     .bs-flexy-action {
-      width: 40%; } }
+      width: 40%; }
+      .bs-flexy-action.one-half {
+        width: 50%; } }
   .bs-flexy-action input {
-    color: #21A695; }
+    width: 100%; }
 
 /**
  * (C)Leanest CSS spinner ever

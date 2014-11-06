@@ -17,7 +17,7 @@
 
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
     </style>
@@ -39,6 +39,8 @@
             <p>
                 <a href="#links">Link</a> <span class="bs-sep">|</span> <a href="#">Another link</a>
             </p>
+
+            <hr/>
 
             <h1>Buttons & Inputs</h1>
             <p>
@@ -71,21 +73,36 @@
                 </div>
             </div>
 
+            <hr/>
             <h1>Callouts</h1>
-            <h2>Locations</h2>
-            <div class="bs-callout bs-trans">
-
-
-                <p class="lede">Refresh Browsers</p>
-                <p>Refresh all connected browsers</p>
-            </div>
 
             <div class="bs-callout bs-trans">
-                <p class="lede">Sync to URL</p>
-                <p>Sync all Browsers to one URL</p>
+                <div class="bs-flexy">
+                    <div class="bs-flexy-text one-half">
+                        <p class="lede">Refresh Browsers</p>
+                        <p>Refresh all connected browsers</p>
+                    </div>
+                    <div class="bs-flexy-action one-half">
+                        <button class="bs-button bs-with-icon"><i class="icon icon-repeat_2"></i></button>
+                    </div>
+                </div>
             </div>
-            <br/>
+            <div class="bs-callout bs-trans">
+                <div class="bs-flexy">
+                    <div class="bs-flexy-text one-half">
+                        <p class="lede">Sync to URL</p>
+                        <p>Sync all browser to one URL</p>
+                    </div>
+                    <div class="bs-flexy-action one-half">
+                        <div class="bs-input-overlay">
+                            <input type="text" value="http://localhost">
+                            <button class="bs-button bs-with-icon"><i class="icon icon-repeat_2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <hr/>
             <h1>Callouts on white</h1>
 
             <div class="bs-callout">
@@ -125,12 +142,6 @@
                     <div class="bs-flexy-action">
                         <input type="text" value="http://192.168.0.1.xip.ioaas" />
                     </div>
-                    <!--
-                    <p class="lede">Callout with large-icon</p>
-                    <p>URL for the machine you are running BrowserSync on Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aspernatur cum dolores earum fugit id illum iste laborum.</p>
-                    <p>
-                        <button class="bs-button bs-with-icon-right">With icon RIGHT <i class="icon icon-layers"></i></button>
-                    </p>-->
                 </div>
             </div>
 
