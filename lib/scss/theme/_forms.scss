@@ -1,13 +1,17 @@
 $input-height: 40px;
 
 %base-input {
+
     outline: none;
     vertical-align: middle;
-    border: 0;
     border-radius: 3px;
     outline: 0;
     height: $input-height;
     padding-left: $half-spacing;
+    padding-right: $half-spacing;
+    max-width: 100%;
+
+    @extend %callout;
 }
 
 /*
@@ -22,8 +26,6 @@ textarea {
 
 input {
     @extend %base-input;
-    color: $input-text;
-    border: 1px solid $grey-border;
 }
 
 .#{$ns}-text-input {
@@ -38,11 +40,14 @@ input {
 }
 
 .#{$ns}-input-overlay {
+
     width: 100%;
     position: relative;
+
     input {
         width: 100%;
     }
+
     button {
         top: 0;
         right: 0;
@@ -52,6 +57,7 @@ input {
         border-top-left-radius: 0;
         top: 1px;
         height: $input-height - 2px;
+
         .icon {
             top: -2px;
         }

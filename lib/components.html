@@ -60,17 +60,89 @@
             <p>
                 <input type="text" value="http://localhost:3000"/>
             </p>
-            <div class="bs-input-overlay">
+            <div class="bs-input-overlay bs-stack">
                 <input type="text" value="http://localhost:3000"/>
                 <button class="bs-button bs-with-icon"><i class="icon icon-login"></i></button>
             </div>
-            <div style="width: 300px; background: white;">
+            <div style="max-width: 300px; background: white;" class="bs-stack">
                 <div class="bs-input-overlay">
                     <input type="text" value="hi there"/>
                     <button class="bs-button bs-with-icon"><i class="icon icon-magnifying_glass"></i></button>
                 </div>
             </div>
+
+            <h1>Callouts</h1>
+            <h2>Locations</h2>
+            <div class="bs-callout bs-trans">
+
+
+                <p class="lede">Refresh Browsers</p>
+                <p>Refresh all connected browsers</p>
+            </div>
+
+            <div class="bs-callout bs-trans">
+                <p class="lede">Sync to URL</p>
+                <p>Sync all Browsers to one URL</p>
+            </div>
+            <br/>
+
+            <h1>Callouts on white</h1>
+
+            <div class="bs-callout">
+                <p class="lede">Just a callout</p>
+                <p>This can contain multiple blocks of text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem blanditiis debitis deleniti deserunt dicta dolore dolores eligendi impedit in ipsa, ipsum nisi placeat quam quas quibusdam saepe velit!</p>
+            </div>
+
+            <div class="bs-callout">
+                <div class="bs-callout__icon">
+                    <i class="icon icon-wifi_3"></i>
+                </div>
+                <div class="bs-callout__content">
+                    <p class="lede">Callout with large-icon</p>
+                    <p>URL for the machine you are running BrowserSync on</p>
+                </div>
+            </div>
+            <div class="bs-callout">
+                <div class="bs-callout__icon">
+                    <i class="icon icon-power"></i>
+                </div>
+                <div class="bs-callout__content">
+                    <p class="lede">Callout with large-icon</p>
+                    <p>URL for the machine you are running BrowserSync on</p>
+                </div>
+            </div>
+            <div class="bs-callout">
+                <div class="bs-callout__content bs-flexy">
+                    <div>
+                        <div class="bs-callout__icon">
+                            <i class="icon icon-globe"></i>
+                        </div>
+                    </div>
+                    <div class="bs-flexy-text">
+                        <p class="lede">Callout with large-icon</p>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="bs-flexy-action">
+                        <input type="text" value="http://192.168.0.1.xip.ioaas" />
+                    </div>
+                    <!--
+                    <p class="lede">Callout with large-icon</p>
+                    <p>URL for the machine you are running BrowserSync on Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aspernatur cum dolores earum fugit id illum iste laborum.</p>
+                    <p>
+                        <button class="bs-button bs-with-icon-right">With icon RIGHT <i class="icon icon-layers"></i></button>
+                    </p>-->
+                </div>
+            </div>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </div>
+
     </div>
 </body>
 </html>

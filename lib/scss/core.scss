@@ -6,10 +6,6 @@
  */
 @import "vars";
 
-* + * {
-    margin-bottom: $half-spacing;
-}
-
 @import "modules/mixins";
 @import "modules/reset";
 @import "vendor/normalize";
@@ -29,6 +25,7 @@ $float: true;
 @import "theme/links";
 @import "theme/helpers";
 
+@import "theme/callout";
 @import "theme/animations";
 @import "theme/buttons";
 @import "theme/nav";

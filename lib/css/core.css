@@ -43,9 +43,6 @@ LAYOUT
 /**
  * Grids
  */
-* + * {
-  margin-bottom: 14px; }
-
 .clearfix, .grid, .bs-list, .list--inline, .list--float {
   zoom: 1; }
   .clearfix:before, .grid:before, .bs-list:before, .list--inline:before, .list--float:before, .clearfix:after, .grid:after, .bs-list:after, .list--inline:after, .list--float:after {
@@ -834,8 +831,79 @@ a {
   .hidden.active {
     display: block; }
 
-.bs-input, .bs-split-buttons, .bs-site-title {
+.bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, .bs-site-title {
   margin-bottom: 14px; }
+
+.bs-callout, button,
+input,
+select,
+textarea, .bs-text-input {
+  background: #fff;
+  color: #999999;
+  border-radius: 3px;
+  border: 1px solid #E3E3E3;
+  position: relative; }
+  .bs-callout p, button p,
+  input p,
+  select p,
+  textarea p, .bs-text-input p {
+    font-size: 16px;
+    font-size: 0.88889rem; }
+  .bs-callout .lede, button .lede,
+  input .lede,
+  select .lede,
+  textarea .lede, .bs-text-input .lede {
+    font-size: 18px;
+    font-size: 1rem;
+    margin-bottom: 0;
+    color: #00333A; }
+
+.bs-callout {
+  padding: 14px 27px;
+  padding-bottom: 0; }
+
+.bs-trans {
+  border: 0;
+  background: transparent;
+  padding-left: 0; }
+
+.bs-callout__icon {
+  position: absolute;
+  left: 24px;
+  top: 24px; }
+  .bs-callout__icon .icon {
+    color: #21A695;
+    font-size: 34px;
+    font-size: 1.88889rem; }
+
+.bs-callout__content {
+  padding-left: 54px; }
+
+.bs-flexy {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
+  @media only screen and (min-width: 600px) {
+    .bs-flexy {
+      margin-bottom: 0; } }
+
+.bs-flexy-text {
+  width: 100%; }
+  @media only screen and (min-width: 600px) {
+    .bs-flexy-text {
+      width: 60%; } }
+
+.bs-flexy-action {
+  width: 100%;
+  padding-top: 7px; }
+  @media only screen and (min-width: 600px) {
+    .bs-flexy-action {
+      width: 40%; } }
+  .bs-flexy-action input {
+    color: #21A695; }
 
 /**
  * (C)Leanest CSS spinner ever
@@ -1031,19 +1099,16 @@ select,
 textarea, .bs-text-input {
   outline: none;
   vertical-align: middle;
-  border: 0;
   border-radius: 3px;
   outline: 0;
   height: 40px;
-  padding-left: 14px; }
+  padding-left: 14px;
+  padding-right: 14px;
+  max-width: 100%; }
 
 /*
  * Basic Inputs
  */
-input {
-  color: #999999;
-  border: 1px solid #E3E3E3; }
-
 .bs-input-overlay {
   width: 100%;
   position: relative; }

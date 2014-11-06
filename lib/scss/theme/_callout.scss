@@ -1,0 +1,74 @@
+%callout {
+    background: $white;
+    color: $input-text;
+    border-radius: 3px;
+    border: 1px solid $grey-border;
+    position: relative;
+
+    p {
+        @include font-size(16px);
+    }
+
+    .lede {
+        @include font-size(18px);
+        margin-bottom: 0;
+        color: $green;
+    }
+}
+
+.bs-callout {
+    @extend %callout;
+    @extend %item-stack;
+    padding: $half-spacing $base-spacing;
+    padding-bottom: 0;
+}
+
+.bs-trans {
+    border: 0;
+    background: transparent;
+    padding-left: 0;
+}
+
+.bs-callout__icon {
+    position: absolute;
+    left: $base-spacing - 3px;
+    top: $half-spacing + 10px;
+    .icon {
+        color: $green-lt;
+        @include font-size(34px);
+    }
+}
+
+.bs-callout__content {
+    @extend %item-stack;
+    padding-left: $base-spacing*2;
+}
+
+.bs-flexy {
+    display: flex;
+    flex-flow: row wrap;
+    @include media-query(min, $lap-start) {
+        margin-bottom: 0;
+    }
+}
+
+.bs-flexy-icon {
+
+}
+.bs-flexy-text {
+    width: 100%;
+    @include media-query(min, $lap-start) {
+        width: 60%;
+    }
+}
+.bs-flexy-action {
+    width: 100%;
+    @include media-query(min, $lap-start) {
+        width: 40%;
+    }
+    padding-top: $half-spacing/2;
+
+    input {
+        color: $green-lt;
+    }
+}
