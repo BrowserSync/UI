@@ -1,9 +1,14 @@
 @charset "UTF-8";
 
+
 /**
  * Project variables
  */
 @import "vars";
+
+* + * {
+    margin-bottom: $half-spacing;
+}
 
 @import "modules/mixins";
 @import "modules/reset";

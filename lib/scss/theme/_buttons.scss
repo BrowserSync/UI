@@ -1,5 +1,7 @@
 %button {
 
+    @include font-size($base-font-size);
+
     display: inline-block;
     border: 0;
     padding: 8px $base-spacing;
@@ -7,7 +9,6 @@
     vertical-align: middle;
     background: $green;
     color: white;
-    @include font-size($base-font-size);
     border-radius: 3px;
     line-height: 1.2;
     text-align: center;
@@ -16,6 +17,7 @@
 
     &:hover,
     &:focus {
+        background: darken($green, 5%);
     }
 
     &:active {
@@ -24,6 +26,45 @@
     + .button,
     + a {
         margin-left: $half-spacing;
+    }
+}
+
+/**
+ * Default button styles
+ * <button class="bs-button">Click me!</button>
+ */
+.#{$ns}-button {
+    @extend %button;
+    background: $link;
+    &:hover,
+    &:focus {
+        background: darken($link, 5%);
+    }
+    &:active {
+        background: darken($link, 10%);
+    }
+}
+
+%with-icon {
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+}
+
+.#{$ns}-with-icon {
+    @extend %with-icon;
+}
+
+.#{$ns}-with-icon-left {
+    @extend %with-icon;
+    .icon {
+        margin-right: $half-spacing/2;
+    }
+}
+
+.#{$ns}-with-icon-right {
+    @extend %with-icon;
+    .icon {
+        margin-left: $half-spacing/2;
     }
 }
 
@@ -61,11 +102,6 @@
             color: $green-lt;
         }
     }
-}
-
-.#{$ns}-button {
-    @extend %button;
-    border: 1px solid #095A65;
 }
 
 .bs-nav-toggle {

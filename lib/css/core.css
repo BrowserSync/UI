@@ -43,6 +43,9 @@ LAYOUT
 /**
  * Grids
  */
+* + * {
+  margin-bottom: 14px; }
+
 .clearfix, .grid, .bs-list, .list--inline, .list--float {
   zoom: 1; }
   .clearfix:before, .grid:before, .bs-list:before, .list--inline:before, .list--float:before, .clearfix:after, .grid:after, .bs-list:after, .list--inline:after, .list--float:after {
@@ -634,7 +637,7 @@ th {
 
 .bs-sidebar {
   width: 100%;
-  background: #033339; }
+  background: #00333A; }
   @media only screen and (min-width: 600px) {
     .bs-sidebar {
       width: 25%; } }
@@ -725,7 +728,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background: #F2F2F2;
-  color: #033339;
+  color: #00333A;
   text-rendering: optimizeLegibility; }
 
 .lede {
@@ -757,7 +760,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  color: #033339;
+  color: #00333A;
   font-weight: 400;
   line-height: 1;
   font-family: "titillium_webbold";
@@ -807,12 +810,12 @@ h6, .h6 {
   font-size: 0.66667rem; }
 
 a {
-  color: #4bb5a8;
+  color: #21A695;
   -webkit-transition: background 0.3s ease, color 0.3s ease;
           transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     text-decoration: underline;
-    color: #000; }
+    color: #00262C; }
   a [class^="icon-"],
   a [class*=" icon-"] {
     text-decoration: none; }
@@ -907,25 +910,48 @@ a {
           transform: rotate(-135deg);
   background: #bbb; }
 
-.bs-nav-button, .bs-button {
+.bs-button, .bs-nav-button {
+  font-size: 18px;
+  font-size: 1rem;
   display: inline-block;
   border: 0;
   padding: 8px 27px;
   width: auto;
   vertical-align: middle;
-  background: #033339;
+  background: #00333A;
   color: white;
-  font-size: 18px;
-  font-size: 1rem;
   border-radius: 3px;
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
   outline: none; }
-  .bs-nav-button + .button, .bs-button + .button,
-  .bs-nav-button + a,
-  .bs-button + a {
+  .bs-button:hover, .bs-nav-button:hover, .bs-button:focus, .bs-nav-button:focus {
+    background: #001d21; }
+  .bs-button + .button, .bs-nav-button + .button,
+  .bs-button + a,
+  .bs-nav-button + a {
     margin-left: 14px; }
+
+/**
+ * Default button styles
+ * <button class="bs-button">Click me!</button>
+ */
+.bs-button {
+  background: #21A695; }
+  .bs-button:hover, .bs-button:focus {
+    background: #1d9182; }
+  .bs-button:active {
+    background: #197b6f; }
+
+.bs-with-icon, .bs-with-icon-left, .bs-with-icon-right {
+  padding-left: 14px;
+  padding-right: 14px; }
+
+.bs-with-icon-left .icon {
+  margin-right: 7px; }
+
+.bs-with-icon-right .icon {
+  margin-left: 7px; }
 
 .bs-nav-button {
   position: relative;
@@ -947,15 +973,12 @@ a {
       left: 22px;
       top: 8px; }
   .bs-nav-button:hover {
-    background: #02262B; }
+    background: #00262C; }
   .bs-nav-button.active {
-    color: #033339;
+    color: #00333A;
     background: #F2F2F2; }
     .bs-nav-button.active .icon {
-      color: #2BA595; }
-
-.bs-button {
-  border: 1px solid #095A65; }
+      color: #21A695; }
 
 @media only screen and (min-width: 600px) {
   .bs-nav-toggle {
@@ -991,7 +1014,7 @@ a {
   float: left; }
 
 .bs-site-title {
-  background: #02262B;
+  background: #00262C;
   margin-top: 0;
   padding: 0;
   font-family: "titillium_weblight";
@@ -1002,28 +1025,50 @@ a {
     display: block;
     color: #fff; }
 
-.bs-text-input {
+button,
+input,
+select,
+textarea, .bs-text-input {
+  outline: none;
+  vertical-align: middle;
   border: 0;
-  width: 100%;
   border-radius: 3px;
-  padding: 8px 14px;
   outline: 0;
-  line-height: 1.2; }
+  height: 40px;
+  padding-left: 14px; }
 
-.form--inverted .bs-text-input {
-  background: #02262B;
-  color: #d6d6d6;
-  font-size: 18px;
-  font-size: 1rem; }
+/*
+ * Basic Inputs
+ */
+input {
+  color: #999999;
+  border: 1px solid #E3E3E3; }
+
+.bs-input-overlay {
+  width: 100%;
+  position: relative; }
+  .bs-input-overlay input {
+    width: 100%; }
+  .bs-input-overlay button {
+    top: 0;
+    right: 0;
+    z-index: 1;
+    position: absolute;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    top: 1px;
+    height: 38px; }
+    .bs-input-overlay button .icon {
+      top: -2px; }
 
 .notification {
   position: fixed;
   width: 100%;
-  background: #033339;
+  background: #00333A;
   color: white;
   text-align: center;
   padding: 27px 14px;
-  border-bottom: 1px solid #033339;
+  border-bottom: 1px solid #00333A;
   box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-transform: translateY(-110%);
       -ms-transform: translateY(-110%);
@@ -1072,6 +1117,9 @@ a {
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }

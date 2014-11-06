@@ -9,11 +9,15 @@
 
     <link rel="stylesheet" href="/css/core.css" />
     <style type="text/css">
+        html, body {
+            max-height: none;
+            overflow: visible;
+        }
         .wrapper {
 
         }
         .container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
         }
     </style>
@@ -35,6 +39,37 @@
             <p>
                 <a href="#links">Link</a> <span class="bs-sep">|</span> <a href="#">Another link</a>
             </p>
+
+            <h1>Buttons & Inputs</h1>
+            <p>
+                <button class="bs-button bs-with-icon">
+                    <i class="icon icon-bin"></i>
+                </button>
+                <button class="bs-button bs-with-icon">
+                    <i class="icon icon-bluetooth"></i>
+                </button>
+                <button class="bs-button bs-with-icon">
+                    <i class="icon icon-browser"></i>
+                </button>
+            </p>
+            <p>
+                <button class="bs-button">Button 1</button>
+                <button class="bs-button bs-with-icon-left"><i class="icon icon-mail_incoming"></i> With icon LEFT</button>
+                <button class="bs-button bs-with-icon-right">With icon RIGHT <i class="icon icon-ipad"></i></button>
+            </p>
+            <p>
+                <input type="text" value="http://localhost:3000"/>
+            </p>
+            <div class="bs-input-overlay">
+                <input type="text" value="http://localhost:3000"/>
+                <button class="bs-button bs-with-icon"><i class="icon icon-login"></i></button>
+            </div>
+            <div style="width: 300px; background: white;">
+                <div class="bs-input-overlay">
+                    <input type="text" value="hi there"/>
+                    <button class="bs-button bs-with-icon"><i class="icon icon-magnifying_glass"></i></button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

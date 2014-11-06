@@ -9,18 +9,21 @@ PALETTE
 /**
  * Brand
  */
-$red: #da4453;//#f33;
-$green: #033339;
-$green-lt: #2BA595;
-$green-dk: #02262B;
+$red:       #FF4453;
+
+$green:     #00333A;
+$green-dk:  #00262C;
+$green-lt:  #21A695;
 $green-alt: #064F58;
+
+
+$lime:          #D3ED13;
+$grey-bg:       #F2F2F2;
+$grey-border:   #E3E3E3;
+
+$input-text:    #999999;
+
 $yellow: #e9ac00;
-$teal: #256b8d;//#009882;#5fb342
-$bg: #da4453;
-$lime: #D3ED13;
-
-$grey-bg: #F2F2F2;
-
 
 /**
  * Neutrals
@@ -39,8 +42,8 @@ $smoke: lighten($black, 95%); // f2f2f2
 /**
  * Special
  */
-$link: #4bb5a8;
-$link-hover: $black;
+$link: $green-lt;
+$link-hover: $green-dk;
 $alert: #cccc00;
 $success: #00cc66;
 $failure: #cc0000;

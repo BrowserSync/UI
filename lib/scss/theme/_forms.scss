@@ -1,19 +1,59 @@
+$input-height: 40px;
+
 %base-input {
+    outline: none;
+    vertical-align: middle;
     border: 0;
-    width: 100%;
     border-radius: 3px;
-    padding: 8px $half-spacing;
     outline: 0;
-    line-height: 1.2;
+    height: $input-height;
+    padding-left: $half-spacing;
 }
 
-.#{bs}-text-input {
+/*
+ * Basic Inputs
+ */
+button,
+input,
+select,
+textarea {
+    @extend %base-input
+}
+
+input {
+    @extend %base-input;
+    color: $input-text;
+    border: 1px solid $grey-border;
+}
+
+.#{$ns}-text-input {
 
     @extend %base-input;
-    
+
     .form--inverted & {
-        background: $green-dk;
-        color: #d6d6d6;
-        @include font-size(18px);
+//        background: $green-dk;
+//        color: #d6d6d6;
+//        @include font-size(18px);
+    }
+}
+
+.#{$ns}-input-overlay {
+    width: 100%;
+    position: relative;
+    input {
+        width: 100%;
+    }
+    button {
+        top: 0;
+        right: 0;
+        z-index: 1;
+        position: absolute;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        top: 1px;
+        height: $input-height - 2px;
+        .icon {
+            top: -2px;
+        }
     }
 }
