@@ -38,11 +38,19 @@
         color: $green-lt;
         @include font-size(34px);
     }
+    &.flush {
+        top: $half-spacing + 6px;
+        left: 0;
+    }
 }
 
 .bs-callout__content {
     @extend %item-stack;
     padding-left: $base-spacing*2;
+
+    .bs-trans & {
+        padding-left: $base-spacing*2 + $half-spacing;
+    }
 }
 
 .bs-flexy {

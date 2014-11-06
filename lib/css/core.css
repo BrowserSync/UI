@@ -876,9 +876,14 @@ textarea, .bs-text-input {
     color: #21A695;
     font-size: 34px;
     font-size: 1.88889rem; }
+  .bs-callout__icon.flush {
+    top: 20px;
+    left: 0; }
 
 .bs-callout__content {
   padding-left: 54px; }
+  .bs-trans .bs-callout__content {
+    padding-left: 68px; }
 
 .bs-flexy {
   display: -webkit-flex;
@@ -1130,6 +1135,64 @@ textarea, .bs-text-input {
     height: 38px; }
     .bs-input-overlay button .icon {
       top: -2px; }
+
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden; }
+
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: #AAAAAA; }
+
+input.cmn-toggle-round + label {
+  padding: 2px;
+  width: 40px;
+  height: 20px;
+  border-radius: 2px; }
+
+input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: ""; }
+
+input.cmn-toggle-round + label:before {
+  right: 1px;
+  background-color: #AAAAAA;
+  border-radius: 2px;
+  -webkit-transition: background 0.2s;
+          transition: background 0.2s; }
+
+input.cmn-toggle-round + label:after {
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border-radius: 2px;
+  -webkit-transition: margin 0.2s;
+          transition: margin 0.2s; }
+
+input.cmn-toggle-round:checked + label:before {
+  background-color: #3FA74B; }
+
+input.cmn-toggle-round + label:after {
+  margin-left: 1px; }
+
+input.cmn-toggle-round:checked + label:after {
+  margin-left: 21px; }
+
+input.cmn-toggle-round:checked + label {
+  background-color: #3FA74B; }
 
 .notification {
   position: fixed;
