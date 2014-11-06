@@ -724,7 +724,7 @@ html {
 body {
   max-width: 100%;
   overflow-x: hidden;
-  background: #fff;
+  background: #F2F2F2;
   color: #033339;
   text-rendering: optimizeLegibility; }
 
@@ -761,6 +761,7 @@ h6, .h6 {
   font-weight: 400;
   line-height: 1;
   font-family: "titillium_webbold";
+  margin-bottom: 27px;
   -webkit-font-smoothing: antialiased; }
   h1 small, .h1 small,
   h2 small, .h2 small,
@@ -772,24 +773,21 @@ h6, .h6 {
     font-weight: normal; }
 
 h1, .h1 {
-  margin-bottom: 27px;
   font-size: 30px;
   font-size: 1.66667rem; }
 
 h2, .h2 {
-  margin-bottom: 27px;
-  font-size: 32px;
-  font-size: 1.77778rem; }
+  font-family: "titillium_webregular";
+  font-size: 24px;
+  font-size: 1.33333rem; }
 
 h3, .h3 {
   font-size: 20px;
   font-size: 1.11111rem; }
 
 h4, .h4 {
-  margin-bottom: 0;
   font-size: 16px;
-  font-size: 0.88889rem;
-  line-height: 1.5; }
+  font-size: 0.88889rem; }
 
 h5, .h5 {
   font-size: 16px;
@@ -798,6 +796,26 @@ h5, .h5 {
 h6, .h6 {
   font-size: 16px;
   font-size: 0.88889rem; }
+
+.lede {
+  margin-bottom: 27px;
+  font-size: 20px;
+  font-size: 1.11111rem; }
+
+.small {
+  font-size: 12px;
+  font-size: 0.66667rem; }
+
+a {
+  color: #4bb5a8;
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+          transition: background 0.3s ease, color 0.3s ease; }
+  a:hover, a:active, a:focus {
+    text-decoration: underline;
+    color: #000; }
+  a [class^="icon-"],
+  a [class*=" icon-"] {
+    text-decoration: none; }
 
 .flush--bottom {
   margin-bottom: 0 !important; }

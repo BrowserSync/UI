@@ -48,6 +48,17 @@ gulp.task('browser-sync', function () {
         files: ["lib/*.html"]
     });
 });
+/**
+ * Start BrowserSync
+ */
+gulp.task('browser-sync-dev', function () {
+    var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
+    browserSync.use(require(htmlpath), {files: "lib/*.html"});
+    browserSync({
+        server: "lib",
+        startPath: "components.html"
+    });
+});
 
 /**
  * Compile CSS
@@ -74,7 +85,7 @@ gulp.task('bs-inject', function () {
 /**
  * Build Front-end stuff
  */
-gulp.task('dev-frontend', ["sass", "browser-sync"], function () {
+gulp.task('dev-frontend', ["sass", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
 });
 

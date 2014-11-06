@@ -20,6 +20,7 @@ h6, .h6 {
     font-weight: $hn-font-weight;
     line-height: $hn-line-height;
     font-family: $hn-font-family;
+    margin-bottom: $base-spacing;
     -webkit-font-smoothing: antialiased;
 
     small {
@@ -29,20 +30,18 @@ h6, .h6 {
 }
 
 h1, .h1 {
-    margin-bottom: $base-spacing;
     @include font-size($h1-size);
 }
 h2, .h2 {
-    margin-bottom: $base-spacing;
+    font-family: $hn-font-family-thin;
     @include font-size($h2-size);
 }
+
 h3, .h3 {
     @include font-size($h3-size);
 }
 h4, .h4 {
-    margin-bottom: 0;
     @include font-size($h4-size);
-    line-height: $base-line-height;
 }
 h5, .h5 {
     @include font-size($h5-size);

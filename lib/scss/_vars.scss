@@ -39,7 +39,7 @@ $smoke: lighten($black, 95%); // f2f2f2
 /**
  * Special
  */
-$link: $red;
+$link: #4bb5a8;
 $link-hover: $black;
 $alert: #cccc00;
 $success: #00cc66;
@@ -73,9 +73,10 @@ $base-color: $green;
 $hn-font-weight: 400;
 $hn-line-height: 1;
 $hn-font-family: "titillium_webbold";
+$hn-font-family-thin: "titillium_webregular";
 $hn-color: $base-color;
 $h1-size: 30px;
-$h2-size: 32px;
+$h2-size: 24px;
 $h3-size: 20px;
 $h4-size: 16px;
 $h5-size: 16px;
