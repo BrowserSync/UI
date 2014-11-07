@@ -17,30 +17,24 @@
 /**
  * Messages
  */
-.bs-msgs {
-
-    .bs-msg__line {
-        @extend %msg-line;
+[bs-Msg] {
+    @extend %msg-line;
+}
+[bs-Msg~="success"] {
+    &:before {
+        color: $green-lt;
+        content: "\e6e7";
     }
-
-    .bs-success {
-        &:before {
-            color: $green-lt;
-            content: "\e6e7";
-        }
+}
+[bs-Msg~="info"] {
+    &:before {
+        color: $yellow;
+        content: "\e6ef";
     }
-
-    .bs-info {
-        &:before {
-            color: $yellow;
-            content: "\e6ef";
-        }
-    }
-
-    .bs-error {
-        &:before {
-            color: $red;
-            content: "\e6eb";
-        }
+}
+[bs-Msg~="error"] {
+    &:before {
+        color: $red;
+        content: "\e6eb";
     }
 }

@@ -43,12 +43,12 @@ LAYOUT
 /**
  * Grids
  */
-.clearfix, .grid, .bs-list, .list--inline, .list--float {
+.clearfix, .grid, [bs-List] {
   zoom: 1; }
-  .clearfix:before, .grid:before, .bs-list:before, .list--inline:before, .list--float:before, .clearfix:after, .grid:after, .bs-list:after, .list--inline:after, .list--float:after {
+  .clearfix:before, .grid:before, [bs-List]:before, .clearfix:after, .grid:after, [bs-List]:after {
     content: "";
     display: table; }
-  .clearfix:after, .grid:after, .bs-list:after, .list--inline:after, .list--float:after {
+  .clearfix:after, .grid:after, [bs-List]:after {
     clear: both; }
 
 /**
@@ -665,7 +665,7 @@ th {
 .bs-stack {
   margin-bottom: 14px; }
 
-.bs-section-nav {
+[bs-Section-Nav] {
   position: absolute;
   width: 100%;
   -webkit-transform: translateX(-200%) translateY(20px) scale(1.2);
@@ -678,13 +678,13 @@ th {
   opacity: 0;
   z-index: 1; }
   @media only screen and (min-width: 800px) {
-    .bs-section-nav {
+    [bs-Section-Nav] {
       opacity: 1;
       position: relative;
       -webkit-transform: translateX(0) translateY(0) scale(1);
           -ms-transform: translateX(0) translateY(0) scale(1);
               transform: translateX(0) translateY(0) scale(1); } }
-  .bs-section-nav.active {
+  [bs-Section-Nav].active {
     -webkit-transform: translateX(0) translateY(0) scale(1);
         -ms-transform: translateX(0) translateY(0) scale(1);
             transform: translateX(0) translateY(0) scale(1);
@@ -827,7 +827,7 @@ a {
   .hidden.active {
     display: block; }
 
-.bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, [bs-Button-Bar], .bs-site-title {
+.bs-input, .bs-split-buttons, [bs-Callout], [bs-Callout-Content], [bs-Button-Bar], .bs-site-title {
   margin-bottom: 14px; }
 
 span.sep {
@@ -861,7 +861,7 @@ span.sep {
 
   .width-20 {
     width: 20% !important; } }
-.bs-callout, button,
+[bs-Callout], button,
 input,
 select,
 textarea, .bs-text-input {
@@ -870,13 +870,13 @@ textarea, .bs-text-input {
   border-radius: 3px;
   border: 1px solid #E3E3E3;
   position: relative; }
-  .bs-callout p, button p,
+  [bs-Callout] p, button p,
   input p,
   select p,
   textarea p, .bs-text-input p {
     font-size: 16px;
     font-size: 0.88889rem; }
-  .bs-callout .lede, button .lede,
+  [bs-Callout] .lede, button .lede,
   input .lede,
   select .lede,
   textarea .lede, .bs-text-input .lede {
@@ -885,33 +885,33 @@ textarea, .bs-text-input {
     margin-bottom: 0;
     color: #00333A; }
 
-.bs-callout {
+[bs-Callout] {
   padding: 14px 27px;
   padding-bottom: 0; }
 
-.bs-trans {
+[bs-Callout~="trans"] {
   border: 0;
   background: transparent;
   padding-left: 0;
   padding-right: 0; }
 
-.bs-callout__icon {
+[bs-Callout-Icon] {
   position: absolute;
   left: 24px;
   top: 24px; }
-  .bs-callout__icon [bs-Icon] {
+  [bs-Callout-Icon] [bs-Icon] {
     color: #21A695;
     font-size: 34px;
     font-size: 1.88889rem; }
-  .bs-callout__icon.flush {
+  [bs-Callout-Icon].flush {
     top: 20px;
     left: 0; }
-  .bs-callout__icon.flush-top {
+  [bs-Callout-Icon].flush-top {
     top: 20px; }
 
-.bs-callout__content {
+[bs-Callout-Content] {
   padding-left: 54px; }
-  .bs-trans .bs-callout__content {
+  .bs-trans [bs-Callout-Content] {
     padding-left: 68px; }
 
 .bs-flexy, [bs-Button-Bar] {
@@ -1112,27 +1112,13 @@ textarea, .bs-text-input {
 /**
  * Inline using floats
  */
-.bs-list, .list--inline, .list--float {
+[bs-List] {
   margin-left: 0;
   list-style: none; }
-  .bs-list > li > a, .list--inline > li > a, .list--float > li > a {
+  [bs-List] > li > a {
     display: block; }
-  .bs-list > li.active > a, .list--inline > li.active > a, .list--float > li.active > a {
+  [bs-List] > li.active > a {
     cursor: default; }
-
-/**
- * Horizontal using inline-block
- */
-.list--inline > li {
-  display: inline-block; }
-  .list--inline > li > a {
-    display: inline-block; }
-
-/**
- * Horizontal using float
- */
-.list--float > li {
-  float: left; }
 
 .bs-site-title {
   background: #00262C;
@@ -1246,12 +1232,12 @@ input.cmn-toggle-round:checked + label:after {
 input.cmn-toggle-round:checked + label {
   background-color: #3FA74B; }
 
-.bs-msgs .bs-msg__line {
+[bs-Msg] {
   padding-left: 41px;
   padding-top: 4px;
   padding-bottom: 4px;
   position: relative; }
-  .bs-msgs .bs-msg__line:before {
+  [bs-Msg]:before {
     font-family: "icomoon";
     content: " ";
     position: absolute;
@@ -1263,13 +1249,15 @@ input.cmn-toggle-round:checked + label {
 /**
  * Messages
  */
-.bs-msgs .bs-success:before {
+[bs-Msg~="success"]:before {
   color: #21A695;
   content: "\e6e7"; }
-.bs-msgs .bs-info:before {
+
+[bs-Msg~="info"]:before {
   color: #e9ac00;
   content: "\e6ef"; }
-.bs-msgs .bs-error:before {
+
+[bs-Msg~="error"]:before {
   color: #FF4453;
   content: "\e6eb"; }
 

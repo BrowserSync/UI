@@ -99,7 +99,7 @@
             <hr/>
             <h1>Callouts</h1>
 
-            <div class="bs-callout bs-trans">
+            <div bs-Callout="trans">
                 <div class="bs-flexy">
                     <div class="bs-flexy-text one-half">
                         <p class="lede">Refresh Browsers</p>
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="bs-callout bs-trans">
+            <div bs-Callout="trans">
                 <div class="bs-flexy">
                     <div class="bs-flexy-text one-half">
                         <p class="lede">Sync to URL</p>
@@ -129,33 +129,33 @@
             <hr/>
             <h1>Callouts on white</h1>
 
-            <div class="bs-callout">
+            <div bs-Callout>
                 <p class="lede">Just a callout</p>
                 <p>This can contain multiple blocks of text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem blanditiis debitis deleniti deserunt dicta dolore dolores eligendi impedit in ipsa, ipsum nisi placeat quam quas quibusdam saepe velit!</p>
             </div>
 
-            <div class="bs-callout">
-                <div class="bs-callout__icon">
+            <div bs-Callout>
+                <div bs-Callout-Icon>
                     <i bs-Icon="wifi_3"></i>
                 </div>
-                <div class="bs-callout__content">
+                <div bs-Callout-Content>
                     <p class="lede">Callout with large-icon</p>
                     <p>URL for the machine you are running BrowserSync</p>
                 </div>
             </div>
-            <div class="bs-callout">
-                <div class="bs-callout__icon">
+            <div bs-Callout>
+                <div bs-Callout-Icon>
                     <i bs-Icon="power"></i>
                 </div>
-                <div class="bs-callout__content">
+                <div bs-Callout-Content>
                     <p class="lede">Callout with large-icon</p>
                     <p>URL for the machine you are running BrowserSync</p>
                 </div>
             </div>
-            <div class="bs-callout">
-                <div class="bs-callout__content bs-flexy">
+            <div bs-Callout>
+                <div bs-Callout-Content class="bs-flexy">
                     <div>
-                        <div class="bs-callout__icon">
+                        <div bs-Callout-Icon>
                             <i bs-Icon="globe"></i>
                         </div>
                     </div>
@@ -172,26 +172,26 @@
             <!-- Switches -->
             <hr/>
             <h1>Switches</h1>
-            <div class="bs-callout bs-trans">
-                <div class="bs-callout__icon flush">
+            <div bs-Callout="trans">
+                <div bs-Callout-Icon class="flush">
                     <div class="switch">
                         <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                         <label for="cmn-toggle-1"></label>
                     </div>
                 </div>
-                <div class="bs-callout__content">
+                <div bs-Callout-Content>
                     <p class="lede">Clicks</p>
                     <p>Any actions that need a mouse click will not sync between browsers </p>
                 </div>
             </div>
-            <div class="bs-callout bs-trans">
-                <div class="bs-callout__icon flush">
+            <div bs-Callout="trans">
+                <div bs-Callout-Icon class="flush">
                     <div class="switch">
                         <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                         <label for="cmn-toggle-2"></label>
                     </div>
                 </div>
-                <div class="bs-callout__content">
+                <div bs-Callout-Content>
                     <p class="lede">Scroll</p>
                     <p>Sync scroll position between browsers</p>
                 </div>
@@ -200,22 +200,22 @@
             <!-- Switches inside callouts -->
             <hr/>
             <h1>Swiches in Callouts</h1>
-            <div class="bs-callout">
-                <div class="bs-callout__icon flush-top">
+            <div bs-Callout>
+                <div bs-Callout-Icon class="flush-top">
                     <div class="switch">
                         <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                         <label for="cmn-toggle-3"></label>
                     </div>
                 </div>
-                <div class="bs-callout__content">
+                <div bs-Callout-Content>
                     <p class="lede">HTML Injector</p>
                     <p>Version 1.6.1</p>
                 </div>
             </div>
-            <div class="bs-callout">
-                <div class="bs-callout__content bs-flexy">
+            <div bs-Callout>
+                <div bs-Callout-Content class="bs-flexy">
                     <div>
-                        <div class="bs-callout__icon flush-top">
+                        <div bs-Callout-Icon class="flush-top">
                             <div class="switch">
                                 <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                                 <label for="cmn-toggle-4"></label>
@@ -241,15 +241,15 @@
                     <i bs-Icon="bin"></i>
                 </button>
             </p>
-            <ul bs-List class="bs-list bs-msgs">
-                <li class="bs-msg__line bs-success">File changed: core.css</li>
-                <li class="bs-msg__line bs-success">File changed: index.php</li>
-                <li class="bs-msg__line bs-success">File changed: ie.css</li>
-                <li class="bs-msg__line bs-info">Some information line, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi beatae deleniti doloremque eum excepturi fugit incidunt, laborum maxime molestiae nesciunt perferendis perspiciatis quaerat quia quidem quod sapiente suscipit totam!</li>
-                <li class="bs-msg__line bs-info">BrowserSync connected!</li>
-                <li class="bs-msg__line bs-info">BrowserSync disconnected!</li>
-                <li class="bs-msg__line bs-error">On line 23 of assets/css/theme/_store-page.scss</li>
-                <li class="bs-msg__line bs-error">On line 40 of assets/css/theme/_store-page.scss</li>
+            <ul bs-List>
+                <li bs-Msg="success">File changed: core.css</li>
+                <li bs-Msg="success">File changed: index.php</li>
+                <li bs-Msg="success">File changed: ie.css</li>
+                <li bs-Msg="info">Some information line, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi beatae deleniti doloremque eum excepturi fugit incidunt, laborum maxime molestiae nesciunt perferendis perspiciatis quaerat quia quidem quod sapiente suscipit totam!</li>
+                <li bs-Msg="info">BrowserSync connected!</li>
+                <li bs-Msg="info">BrowserSync disconnected!</li>
+                <li bs-Msg="error">On line 23 of assets/css/theme/_store-page.scss</li>
+                <li bs-Msg="error">On line 40 of assets/css/theme/_store-page.scss</li>
             </ul>
 
             <hr/>
@@ -257,8 +257,8 @@
 
             <div class="psbg">
                 <div style="width: 300px; text-align: center;">
-                    <nav class="bs-section-nav" id="bs-section-nav">
-                        <ul class="bs-list">
+                    <nav bs-Section-Nav id="bs-section-nav">
+                        <ul bs-List>
                             <li>
                                 <button bs-Button="nav" class="active">
                                     <i bs-Icon="cog"></i> Server Info

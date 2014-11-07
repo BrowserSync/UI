@@ -1,7 +1,7 @@
 /**
  * Inline using floats
  */
-.#{$ns}-list {
+[bs-List] {
 
     @extend .clearfix;
 
@@ -18,34 +18,5 @@
         &.active > a {
             cursor: default;
         }
-    }
-}
-
-/**
- * Horizontal using inline-block
- */
-.list--inline {
-
-    @extend .#{$ns}-list;
-
-    > li {
-        display: inline-block;
-
-        > a {
-            display: inline-block;
-        }
-    }
-}
-
-
-/**
- * Horizontal using float
- */
-.list--float {
-
-    @extend .#{$ns}-list;
-
-    > li {
-        float: left;
     }
 }

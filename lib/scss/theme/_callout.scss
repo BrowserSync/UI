@@ -16,21 +16,21 @@
     }
 }
 
-.bs-callout {
+[bs-Callout] {
     @extend %callout;
     @extend %item-stack;
     padding: $half-spacing $base-spacing;
     padding-bottom: 0;
 }
 
-.bs-trans {
+[bs-Callout~="trans"] {
     border: 0;
     background: transparent;
     padding-left: 0;
     padding-right: 0;
 }
 
-.bs-callout__icon {
+[bs-Callout-Icon] {
 
     position: absolute;
     left: $base-spacing - 3px;
@@ -50,7 +50,7 @@
     }
 }
 
-.bs-callout__content {
+[bs-Callout-Content] {
     @extend %item-stack;
     padding-left: $base-spacing*2;
     .bs-trans & {
