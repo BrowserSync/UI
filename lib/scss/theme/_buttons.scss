@@ -95,13 +95,13 @@
 }
 
 [bs-Button~="icon-left"] {
-    .icon {
+    [bs-Icon] {
         margin-right: $half-spacing/2;
     }
 }
 
 [bs-Button~="icon-right"] {
-    .icon {
+    [bs-Icon] {
         margin-left: $half-spacing/2;
     }
 }
@@ -124,7 +124,6 @@
         }
     }
 }
-
 
 .bs-nav-toggle {
     @include media-query(min, $lap-start) {

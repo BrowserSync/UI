@@ -68,12 +68,12 @@
             <p>
                 <input type="text" value="http://localhost:3000"/>
             </p>
-            <div class="bs-input-overlay bs-stack">
+            <div bs-Input-Overlay class="bs-stack">
                 <input type="text" value="http://localhost:3000"/>
                 <button bs-Button="icon"><i bs-Icon="login"></i></button>
             </div>
             <div style="max-width: 300px; background: white;" class="bs-stack">
-                <div class="bs-input-overlay">
+                <div bs-Input-Overlay>
                     <input type="text" value="Search input"/>
                     <button bs-Button="icon"><i bs-Icon="magnifying_glass"></i></button>
                 </div>
@@ -86,7 +86,7 @@
             </div>
 
             <div style="max-width: 350px; background: white;" class="bs-stack">
-                <div class="bs-input-overlay">
+                <div bs-Input-Overlay>
                     <input type="text" value="http://192.168.0.1:3000" />
                     <div bs-Button-Bar>
                         <button bs-Button="icon"><i bs-Icon="copy_2"></i></button>
@@ -100,25 +100,25 @@
             <h1>Callouts</h1>
 
             <div bs-Callout="trans">
-                <div class="bs-flexy">
-                    <div class="bs-flexy-text one-half">
+                <div bs-Flex>
+                    <div bs-Flex-Item="text">
                         <p class="lede">Refresh Browsers</p>
                         <p>Refresh all connected browsers</p>
                     </div>
-                    <div class="bs-flexy-action one-half">
+                    <div bs-Flex-Item="action">
                         <button bs-Button="icon"><i bs-Icon="repeat_2"></i></button>
                     </div>
                 </div>
             </div>
 
             <div bs-Callout="trans">
-                <div class="bs-flexy">
-                    <div class="bs-flexy-text one-half">
+                <div bs-Flex>
+                    <div bs-Flex-Item="text">
                         <p class="lede">Sync to URL</p>
                         <p>Sync all browser to one URL</p>
                     </div>
-                    <div class="bs-flexy-action one-half">
-                        <div class="bs-input-overlay">
+                    <div bs-Flex-Item="action">
+                        <div bs-Input-Overlay>
                             <input type="text" value="http://localhost">
                             <button bs-Button="icon"><i bs-Icon="repeat_2"></i></button>
                         </div>
@@ -153,17 +153,17 @@
                 </div>
             </div>
             <div bs-Callout>
-                <div bs-Callout-Content class="bs-flexy">
+                <div bs-Callout-Content bs-Flex>
                     <div>
                         <div bs-Callout-Icon>
                             <i bs-Icon="globe"></i>
                         </div>
                     </div>
-                    <div class="bs-flexy-text">
+                    <div bs-Flex-Item="text">
                         <p class="lede">Callout with large-icon</p>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
-                    <div class="bs-flexy-action">
+                    <div bs-Flex-Item="action">
                         <input type="text" value="http://192.168.0.1.xip.ioaas" />
                     </div>
                 </div>
@@ -173,7 +173,7 @@
             <hr/>
             <h1>Switches</h1>
             <div bs-Callout="trans">
-                <div bs-Callout-Icon class="flush">
+                <div bs-Callout-Icon="flush">
                     <div class="switch">
                         <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                         <label for="cmn-toggle-1"></label>
@@ -185,7 +185,7 @@
                 </div>
             </div>
             <div bs-Callout="trans">
-                <div bs-Callout-Icon class="flush">
+                <div bs-Callout-Icon="flush">
                     <div class="switch">
                         <input id="cmn-toggle-2" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                         <label for="cmn-toggle-2"></label>
@@ -201,7 +201,7 @@
             <hr/>
             <h1>Swiches in Callouts</h1>
             <div bs-Callout>
-                <div bs-Callout-Icon class="flush-top">
+                <div bs-Callout-Icon="flush-top">
                     <div class="switch">
                         <input id="cmn-toggle-3" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                         <label for="cmn-toggle-3"></label>
@@ -213,20 +213,20 @@
                 </div>
             </div>
             <div bs-Callout>
-                <div bs-Callout-Content class="bs-flexy">
+                <div bs-Callout-Content bs-Flex>
                     <div>
-                        <div bs-Callout-Icon class="flush-top">
+                        <div bs-Callout-Icon="flush-top">
                             <div class="switch">
                                 <input id="cmn-toggle-4" class="cmn-toggle cmn-toggle-round" type="checkbox" checked>
                                 <label for="cmn-toggle-4"></label>
                             </div>
                         </div>
                     </div>
-                    <div class="bs-flexy-col width-40">
+                    <div bs-Flex-Item="text" bs-Width="40">
                         <p class="lede">Callout with large-icon</p>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
-                    <div class="bs-flexy-col width-60">
+                    <div bs-Flex-Item="action" bs-Width="60">
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab deleniti dolor expedita fugit illum in incidunt natus numquam officiis perferendis, quos, sapiente. Animi beatae incidunt non perspiciatis recusandae ullam voluptatum.</p>
                         <p>Author: <a href="#">BrowserSync</a> <span class="sep">|</span> Website: <a href="#">http://npmjs.org</a></p>
                     </div>
@@ -236,11 +236,13 @@
             <!-- Notifications -->
             <hr/>
             <h1>Notifications</h1>
+
             <p>
                 <button bs-Button="icon" title="Clear all notifications">
                     <i bs-Icon="bin"></i>
                 </button>
             </p>
+
             <ul bs-List>
                 <li bs-Msg="success">File changed: core.css</li>
                 <li bs-Msg="success">File changed: index.php</li>

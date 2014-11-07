@@ -21,6 +21,7 @@
     margin-bottom: $half-spacing;
 }
 
+
 span.sep {
     margin-left:  5px;
     margin-right: 5px;
@@ -36,4 +37,16 @@ span.sep {
     .width-40  { width: 40%!important; }
     .width-30  { width: 30%!important; }
     .width-20  { width: 20%!important; }
+}
+
+@include media-query(min, $lap-start) {
+    [bs-Width~="100"] { width: 100%!important; }
+    [bs-Width~="90"]  { width: 90%!important; }
+    [bs-Width~="80"]  { width: 80%!important; }
+    [bs-Width~="70"]  { width: 70%!important; }
+    [bs-Width~="60"]  { width: 60%!important; }
+    [bs-Width~="50"]  { width: 50%!important; }
+    [bs-Width~="40"]  { width: 40%!important; }
+    [bs-Width~="30"]  { width: 30%!important; }
+    [bs-Width~="20"]  { width: 20%!important; }
 }

@@ -40,14 +40,15 @@
         color: $green-lt;
         @include font-size(34px);
     }
+}
 
-    &.flush {
-        top: $half-spacing + 6px;
-        left: 0;
-    }
-    &.flush-top {
-        top: $half-spacing + 6px;
-    }
+[bs-Callout-Icon~="flush"] {
+    top: $half-spacing + 6px;
+    left: 0;
+}
+
+[bs-Callout-Icon~="flush-top"] {
+    top: $half-spacing + 6px;
 }
 
 [bs-Callout-Content] {
@@ -63,33 +64,34 @@
     flex-flow: row wrap;
 }
 
-.bs-flexy {
+[bs-Flex] {
     @extend %flexy;
     @include media-query(min, $lap-start) {
         margin-bottom: 0;
     }
 }
 
-.bs-flexy-text {
+[bs-Flex-Item] {
     width: 100%;
-    @include media-query(min, $lap-start) {
-        width: 60%;
-        &.one-half {
-            width: 50%;
-        }
-    }
 }
 
-.bs-flexy-action {
+[bs-Flex-Item~="text"] {
+    @include media-query(min, $lap-start) {
+        width: 50%;
+    }
+}
+[bs-Flex-Item~="action"] {
     width: 100%;
     @include media-query(min, $lap-start) {
-        width: 40%;
-        &.one-half {
-            width: 50%;
-        }
+        width: 50%;
     }
     padding-top: $half-spacing/2;
     input {
         width: 100%;
+    }
+}
+[bs-Flex-Item~="one-half"] {
+    @include media-query(min, $lap-start) {
+        width: 50%;
     }
 }

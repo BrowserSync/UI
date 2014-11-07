@@ -861,6 +861,33 @@ span.sep {
 
   .width-20 {
     width: 20% !important; } }
+@media only screen and (min-width: 600px) {
+  [bs-Width~="100"] {
+    width: 100% !important; }
+
+  [bs-Width~="90"] {
+    width: 90% !important; }
+
+  [bs-Width~="80"] {
+    width: 80% !important; }
+
+  [bs-Width~="70"] {
+    width: 70% !important; }
+
+  [bs-Width~="60"] {
+    width: 60% !important; }
+
+  [bs-Width~="50"] {
+    width: 50% !important; }
+
+  [bs-Width~="40"] {
+    width: 40% !important; }
+
+  [bs-Width~="30"] {
+    width: 30% !important; }
+
+  [bs-Width~="20"] {
+    width: 20% !important; } }
 [bs-Callout], button,
 input,
 select,
@@ -903,18 +930,20 @@ textarea, .bs-text-input {
     color: #21A695;
     font-size: 34px;
     font-size: 1.88889rem; }
-  [bs-Callout-Icon].flush {
-    top: 20px;
-    left: 0; }
-  [bs-Callout-Icon].flush-top {
-    top: 20px; }
+
+[bs-Callout-Icon~="flush"] {
+  top: 20px;
+  left: 0; }
+
+[bs-Callout-Icon~="flush-top"] {
+  top: 20px; }
 
 [bs-Callout-Content] {
   padding-left: 54px; }
   .bs-trans [bs-Callout-Content] {
     padding-left: 68px; }
 
-.bs-flexy, [bs-Button-Bar] {
+[bs-Flex], [bs-Button-Bar] {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -923,27 +952,28 @@ textarea, .bs-text-input {
           flex-flow: row wrap; }
 
 @media only screen and (min-width: 600px) {
-  .bs-flexy {
+  [bs-Flex] {
     margin-bottom: 0; } }
 
-.bs-flexy-text {
+[bs-Flex-Item] {
   width: 100%; }
-  @media only screen and (min-width: 600px) {
-    .bs-flexy-text {
-      width: 60%; }
-      .bs-flexy-text.one-half {
-        width: 50%; } }
 
-.bs-flexy-action {
+@media only screen and (min-width: 600px) {
+  [bs-Flex-Item~="text"] {
+    width: 50%; } }
+
+[bs-Flex-Item~="action"] {
   width: 100%;
   padding-top: 7px; }
   @media only screen and (min-width: 600px) {
-    .bs-flexy-action {
-      width: 40%; }
-      .bs-flexy-action.one-half {
-        width: 50%; } }
-  .bs-flexy-action input {
+    [bs-Flex-Item~="action"] {
+      width: 50%; } }
+  [bs-Flex-Item~="action"] input {
     width: 100%; }
+
+@media only screen and (min-width: 600px) {
+  [bs-Flex-Item~="one-half"] {
+    width: 50%; } }
 
 /**
  * (C)Leanest CSS spinner ever
@@ -1085,10 +1115,10 @@ textarea, .bs-text-input {
       left: 22px;
       top: 8px; }
 
-[bs-Button~="icon-left"] .icon {
+[bs-Button~="icon-left"] [bs-Icon] {
   margin-right: 7px; }
 
-[bs-Button~="icon-right"] .icon {
+[bs-Button~="icon-right"] [bs-Icon] {
   margin-left: 7px; }
 
 [bs-Button-Bar] button {
@@ -1148,12 +1178,12 @@ textarea, .bs-text-input {
 /*
  * Basic Inputs
  */
-.bs-input-overlay {
+[bs-Input-Overlay] {
   width: 100%;
   position: relative; }
-  .bs-input-overlay input {
+  [bs-Input-Overlay] input {
     width: 100%; }
-  .bs-input-overlay [bs-Button] {
+  [bs-Input-Overlay] [bs-Button] {
     top: 0;
     right: 0;
     z-index: 1;
@@ -1162,15 +1192,15 @@ textarea, .bs-text-input {
     border-top-left-radius: 0;
     top: 1px;
     height: 38px; }
-    .bs-input-overlay [bs-Button] .icon {
+    [bs-Input-Overlay] [bs-Button] .icon {
       top: -2px; }
-  .bs-input-overlay [bs-Button-Bar] {
+  [bs-Input-Overlay] [bs-Button-Bar] {
     position: absolute;
     top: 0;
     right: 0; }
-    .bs-input-overlay [bs-Button-Bar] [bs-Button] {
+    [bs-Input-Overlay] [bs-Button-Bar] [bs-Button] {
       position: relative; }
-      .bs-input-overlay [bs-Button-Bar] [bs-Button]:first-child {
+      [bs-Input-Overlay] [bs-Button-Bar] [bs-Button]:first-child {
         border-bottom-left-radius: 0;
         border-top-left-radius: 0; }
 
