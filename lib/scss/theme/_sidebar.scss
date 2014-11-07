@@ -1,41 +1,9 @@
-.#{$ns}-sidebar {
-    width: 100%;
+[bs-Sidebar] {
     background: $green;
+    width: 100%;
+
     @include media-query(min, $lap-start) {
         width: 25%;
-    }
-}
-
-.#{$ns}-input {
-    @extend %item-stack;
-    padding: 0 $base-spacing;
-}
-
-.#{$ns}-split-buttons {
-
-    @extend %item-stack;
-    padding: 0 $base-spacing;
-    display: flex;
-    flex-flow: row wrap;
-
-    .#{$ns}-button {
-
-        background: $green-alt;
-        width: 48%;
-        margin-left: 4%;
-
-        &:first-child {
-            margin-left: 0;
-        }
-
-        &:hover {
-            background: lighten($green-alt, 5%);
-            box-shadow: 0 0 5px 5px rgba(0, 0, 0, .1) inset;
-        }
-
-        &:active {
-            background: $green-alt;
-        }
     }
 }
 

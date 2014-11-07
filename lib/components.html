@@ -90,11 +90,38 @@
                     <input type="text" value="http://192.168.0.1:3000" />
                     <div bs-Button-Bar>
                         <button bs-Button="icon"><i bs-Icon="copy_2"></i></button>
-                        <button bs-Button="icon" title="Sync all devices here"><i bs-Icon="repeat_2"></i></button>
+                        <button bs-Button="icon" title="Sync all devices here"><i bs-Icon="repeat_2" class="spin"></i></button>
                     </div>
                 </div>
             </div>
 
+            <hr/>
+            <h1>Inverted Buttons/Inputs</h1>
+
+            <p>
+                <button bs-Button="inverted">Inverted Button</button>
+                <button bs-Button="inverted icon"><i bs-Icon="globe"></i></button>
+            </p>
+
+            <p>
+                <button bs-Button="icon inverted icon-left"><i bs-Icon="mail_incoming"></i> With icon LEFT</button>
+                <button bs-Button="icon inverted icon-right">With icon RIGHT <i bs-Icon="ipad"></i></button>
+            </p>
+
+            <div bs-Button-Bar>
+                <button bs-Button="inverted icon"><i bs-Icon="volume_up"></i></button>
+                <button bs-Button="inverted icon"><i bs-Icon="magnifying_glass"></i></button>
+                <button bs-Button="inverted icon"><i bs-Icon="zoom_in"></i></button>
+            </div>
+
+            <div bs-Button-Bar="split">
+                <button bs-Button="inverted">Resync</button>
+                <button bs-Button="inverted">New Tab</button>
+            </div>
+
+            <p>
+                <input bs-Input="inverted" type="text" value="http://localhost:8000" />
+            </p>
 
             <hr/>
             <h1>Callouts</h1>
@@ -106,7 +133,9 @@
                         <p>Refresh all connected browsers</p>
                     </div>
                     <div bs-Flex-Item="action">
-                        <button bs-Button="icon"><i bs-Icon="repeat_2"></i></button>
+                        <button bs-Button="icon">
+                            <i bs-Icon="repeat_2"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -245,6 +274,7 @@
 
             <ul bs-List>
                 <li bs-Msg="success">File changed: core.css</li>
+                <li bs-Msg="success">File changed: core.css</li>
                 <li bs-Msg="success">File changed: index.php</li>
                 <li bs-Msg="success">File changed: ie.css</li>
                 <li bs-Msg="info">Some information line, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi beatae deleniti doloremque eum excepturi fugit incidunt, laborum maxime molestiae nesciunt perferendis perspiciatis quaerat quia quidem quod sapiente suscipit totam!</li>
@@ -281,13 +311,14 @@
                                     <i bs-Icon="plug"></i> Plugins
                                 </button>
                             </li>
-                            <li class="bs-menu-close">
-                                <button class="bs-nav-button" ng-click="toggleMenu()">CLOSE</button>
+                            <li bs-Button="nav" bs-Action="menu-close">
+                                <button bs-Button="nav" ng-click="toggleMenu()">CLOSE</button>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
+
             <br/>
             <br/>
             <br/>

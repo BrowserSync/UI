@@ -14,8 +14,8 @@
 <notify-elem></notify-elem>
 <disconnect-elem></disconnect-elem>
 
-<main class="bs-main" ng-controller="MainCtrl">
-    <section class="bs-sidebar">
+<main bs-Flex class="bs-main" ng-controller="MainCtrl">
+    <section bs-Sidebar>
         <header class="bs-site-header" role="banner">
             <h1 class="bs-site-title alt">
                 <a href="/">BrowserSync</a>
@@ -44,7 +44,7 @@
             <button class="button menu-button bs-nav-button" ng-click="toggleMenu()"><i class="icon icon-list"></i>Menu</button>
         </div>
     </section>
-    <section class="bs-content">
+    <section bs-Content>
         %hooks%
         <div ng-view>
         </div>

@@ -10,6 +10,7 @@ $input-height: 40px;
     padding-left: $half-spacing;
     padding-right: $half-spacing;
     max-width: 100%;
+    font-family: $sans-light;
 
     @extend %callout;
 }
@@ -24,19 +25,11 @@ textarea {
     @extend %base-input
 }
 
-input {
-    @extend %base-input;
-}
-
-.#{$ns}-text-input {
-
-    @extend %base-input;
-
-    .form--inverted & {
-//        background: $green-dk;
-//        color: #d6d6d6;
-//        @include font-size(18px);
-    }
+[bs-Input] { } 
+[bs-Input~="inverted"] {
+    background: $green;
+    color: $white;
+    border-color: $green;
 }
 
 [bs-Input-Overlay] {

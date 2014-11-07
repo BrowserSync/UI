@@ -1,0 +1,39 @@
+
+%flexy {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+[bs-Flex] {
+    @extend %flexy;
+    @include media-query(min, $lap-start) {
+        margin-bottom: 0;
+    }
+}
+
+[bs-Flex-Item] {
+    width: 100%;
+}
+
+[bs-Flex-Item~="text"] {
+    @include media-query(min, $lap-start) {
+        width: 50%;
+    }
+}
+
+[bs-Flex-Item~="action"] {
+    width: 100%;
+    @include media-query(min, $lap-start) {
+        width: 50%;
+    }
+    padding-top: $half-spacing/2;
+    input {
+        width: 100%;
+    }
+}
+
+[bs-Flex-Item~="one-half"] {
+    @include media-query(min, $lap-start) {
+        width: 50%;
+    }
+}

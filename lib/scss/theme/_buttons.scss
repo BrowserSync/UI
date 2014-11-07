@@ -29,11 +29,6 @@
     }
 }
 
-%with-icon {
-    padding-left: $half-spacing;
-    padding-right: $half-spacing;
-}
-
 /**
  * Default button styles
  * <button bs-Button>Click me!</button>
@@ -50,6 +45,10 @@
     }
 }
 
+/**
+ * Default NAV button styles
+ * <button bs-Button="nav">Click me!</button>
+ */
 [bs-Button="nav"] {
 
     background: $green;
@@ -76,13 +75,14 @@
     }
 
     [bs-Icon] {
+
         position: absolute;
         left: $base-spacing;
         @include font-size(22px);
         margin-right: $half-spacing;
         top: 8px;
 
-        &.icon-plug {
+        [bs-Icon="plug"] {
             @include font-size(28px);
             left: $half-spacing + 8px;
             top: 8px;
@@ -90,28 +90,16 @@
     }
 }
 
-[bs-Button~="icon"] {
-    @extend %with-icon;
-}
-
-[bs-Button~="icon-left"] {
-    [bs-Icon] {
-        margin-right: $half-spacing/2;
-    }
-}
-
-[bs-Button~="icon-right"] {
-    [bs-Icon] {
-        margin-left: $half-spacing/2;
-    }
-}
-
+/**
+ * Button bar
+ * <div bs-Button-Bar> ... </div>
+ */
 [bs-Button-Bar] {
 
     @extend %flexy;
     @extend %item-stack;
 
-    button {
+    [bs-Button] {
         border-radius: 0;
         border-right: 1px solid lighten($green-lt, 3%);
         &:first-child {
@@ -121,17 +109,75 @@
         &:last-child {
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
+            border-right: 0;
+        }
+    }
+
+    [bs-Button~="inverted"] {
+        border-right: 1px solid lighten($green, 10%);
+    }
+}
+
+[bs-Button-Bar~="split"] {
+    width: 100%;
+
+    [bs-Button] {
+        width: 49%;
+        border-radius: 3px;
+        &:first-child {
+            margin-right: 2%;
         }
     }
 }
 
-.bs-nav-toggle {
+/**
+ * Icons
+ * <i bs-Icon="repeat"></i>
+ */
+[bs-Button~="icon"] {
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+}
+
+[bs-Button~="icon-left"] {
+
+    [bs-Icon] {
+        margin-right: $half-spacing/2;
+    }
+}
+
+[bs-Button~="icon-right"] {
+
+    [bs-Icon] {
+        margin-left: $half-spacing/2;
+    }
+}
+
+/**
+ * Inverted button
+ */
+[bs-Button~="inverted"] {
+    background: $green-alt;
+
+    &:hover, &:focus {
+        background: lighten($green-alt, 5%);
+        box-shadow: 0 0 5px 5px rgba(0, 0, 0, .1) inset;
+    }
+
+    &:active {
+        background: $green-alt;
+    }
+}
+
+[bs-Action="menu-toggle"] {
+
     @include media-query(min, $lap-start) {
         display: none;
     }
 }
 
-.bs-menu-close {
+[bs-Action="menu-close"] {
+
     @include media-query(min, $lap-start) {
         display: none;
     }

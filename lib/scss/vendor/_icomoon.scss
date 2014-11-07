@@ -19,8 +19,9 @@
     line-height: 1;
     vertical-align: middle;
     position: relative;
+    transform-origin: center center;
     top: -2px;
-
+    display: inline-block;
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
