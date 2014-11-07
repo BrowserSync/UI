@@ -63,11 +63,13 @@ input {
         }
     }
 
-    .bs-button-bar {
+    [bs-Button-Bar] {
+
         position: absolute;
         top: 0;
         right: 0;
-        .bs-button {
+
+        [bs-Button] {
             position: relative;
             &:first-child {
                 border-bottom-left-radius: 0;

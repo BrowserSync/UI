@@ -31,13 +31,16 @@
 }
 
 .bs-callout__icon {
+
     position: absolute;
     left: $base-spacing - 3px;
     top: $half-spacing + 10px;
-    .icon {
+
+    [bs-Icon] {
         color: $green-lt;
         @include font-size(34px);
     }
+
     &.flush {
         top: $half-spacing + 6px;
         left: 0;

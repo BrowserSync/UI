@@ -29,6 +29,11 @@
     }
 }
 
+%with-icon {
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+}
+
 /**
  * Default button styles
  * <button bs-Button>Click me!</button>
@@ -45,9 +50,44 @@
     }
 }
 
-%with-icon {
-    padding-left: $half-spacing;
-    padding-right: $half-spacing;
+[bs-Button="nav"] {
+
+    background: $green;
+    color: $white;
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    padding-left: $base-spacing*2 + $half-spacing;
+    @include font-size(18px);
+    font-family: "source_sans_prolight";
+    border: 0;
+
+    &:hover {
+        background: $green-dk;
+    }
+
+    &.active {
+        color: $base-color;
+        background: $grey-bg;
+
+        [bs-Icon] {
+            color: $green-lt;
+        }
+    }
+
+    [bs-Icon] {
+        position: absolute;
+        left: $base-spacing;
+        @include font-size(22px);
+        margin-right: $half-spacing;
+        top: 8px;
+
+        &.icon-plug {
+            @include font-size(28px);
+            left: $half-spacing + 8px;
+            top: 8px;
+        }
+    }
 }
 
 [bs-Button~="icon"] {
