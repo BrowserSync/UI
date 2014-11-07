@@ -1214,6 +1214,33 @@ input.cmn-toggle-round:checked + label:after {
 input.cmn-toggle-round:checked + label {
   background-color: #3FA74B; }
 
+.bs-msgs .bs-msg__line {
+  padding-left: 41px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  position: relative; }
+  .bs-msgs .bs-msg__line:before {
+    font-family: "icomoon";
+    content: " ";
+    position: absolute;
+    top: 2px;
+    left: 0;
+    font-size: 20px;
+    font-size: 1.11111rem; }
+
+/**
+ * Messages
+ */
+.bs-msgs .bs-success:before {
+  color: #21A695;
+  content: "\e6e7"; }
+.bs-msgs .bs-info:before {
+  color: #e9ac00;
+  content: "\e6ef"; }
+.bs-msgs .bs-error:before {
+  color: #FF4453;
+  content: "\e6eb"; }
+
 .notification {
   position: fixed;
   width: 100%;

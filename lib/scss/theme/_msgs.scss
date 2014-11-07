@@ -1,0 +1,46 @@
+%msg-line {
+    padding-left: $base-spacing + $half-spacing;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    position: relative;
+
+    &:before {
+        font-family: "icomoon";
+        content: " ";
+        position: absolute;
+        top: 2px;
+        left: 0;
+        @include font-size(20px);
+    }
+}
+
+/**
+ * Messages
+ */
+.bs-msgs {
+
+    .bs-msg__line {
+        @extend %msg-line;
+    }
+
+    .bs-success {
+        &:before {
+            color: $green-lt;
+            content: "\e6e7";
+        }
+    }
+
+    .bs-info {
+        &:before {
+            color: $yellow;
+            content: "\e6ef";
+        }
+    }
+
+    .bs-error {
+        &:before {
+            color: $red;
+            content: "\e6eb";
+        }
+    }
+}
