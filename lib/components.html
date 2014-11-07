@@ -21,6 +21,11 @@
             margin: 0 auto;
             padding: 0 12px;
         }
+        .psbg {
+            background: url("img/ps-bg.gif");
+            padding: 50px;
+            border: 1px solid lightgray;
+        }
     </style>
 </head>
 <body>
@@ -45,47 +50,47 @@
 
             <h1>Buttons & Inputs</h1>
             <p>
-                <button class="bs-button bs-with-icon">
+                <button bs-Button="icon">
                     <i class="icon icon-bin"></i>
                 </button>
-                <button class="bs-button bs-with-icon">
+                <button bs-Button="icon">
                     <i class="icon icon-bluetooth"></i>
                 </button>
-                <button class="bs-button bs-with-icon">
+                <button bs-Button="icon">
                     <i class="icon icon-browser"></i>
                 </button>
             </p>
             <p>
-                <button class="bs-button">Button 1</button>
-                <button class="bs-button bs-with-icon-left"><i class="icon icon-mail_incoming"></i> With icon LEFT</button>
-                <button class="bs-button bs-with-icon-right">With icon RIGHT <i class="icon icon-ipad"></i></button>
+                <button bs-Button="icon">Button 1</button>
+                <button bs-Button="icon icon-left"><i class="icon icon-mail_incoming"></i> With icon LEFT</button>
+                <button bs-Button="icon icon-right">With icon RIGHT <i class="icon icon-ipad"></i></button>
             </p>
             <p>
                 <input type="text" value="http://localhost:3000"/>
             </p>
             <div class="bs-input-overlay bs-stack">
                 <input type="text" value="http://localhost:3000"/>
-                <button class="bs-button bs-with-icon"><i class="icon icon-login"></i></button>
+                <button bs-Button="icon"><i class="icon icon-login"></i></button>
             </div>
             <div style="max-width: 300px; background: white;" class="bs-stack">
                 <div class="bs-input-overlay">
                     <input type="text" value="Search input"/>
-                    <button class="bs-button bs-with-icon"><i class="icon icon-magnifying_glass"></i></button>
+                    <button bs-Button="icon"><i class="icon icon-magnifying_glass"></i></button>
                 </div>
             </div>
 
-            <div class="bs-button-bar">
-                <button class="bs-button bs-with-icon"><i class="icon icon-volume_up"></i></button>
-                <button class="bs-button bs-with-icon"><i class="icon icon-magnifying_glass"></i></button>
-                <button class="bs-button bs-with-icon"><i class="icon icon-zoom_in"></i></button>
+            <div bs-Button-Bar>
+                <button bs-Button="icon"><i class="icon icon-volume_up"></i></button>
+                <button bs-Button="icon"><i class="icon icon-magnifying_glass"></i></button>
+                <button bs-Button="icon"><i class="icon icon-zoom_in"></i></button>
             </div>
 
             <div style="max-width: 350px; background: white;" class="bs-stack">
                 <div class="bs-input-overlay">
                     <input type="text" value="http://192.168.0.1:3000" />
-                    <div class="bs-button-bar">
-                        <button class="bs-button bs-with-icon"><i class="icon icon-copy_2"></i></button>
-                        <button class="bs-button bs-with-icon" title="Sync all devices here"><i class="icon icon-repeat_2"></i></button>
+                    <div bs-Button-Bar>
+                        <button bs-Button="icon"><i class="icon icon-copy_2"></i></button>
+                        <button bs-Button="icon" title="Sync all devices here"><i class="icon icon-repeat_2"></i></button>
                     </div>
                 </div>
             </div>
@@ -101,10 +106,11 @@
                         <p>Refresh all connected browsers</p>
                     </div>
                     <div class="bs-flexy-action one-half">
-                        <button class="bs-button bs-with-icon"><i class="icon icon-repeat_2"></i></button>
+                        <button bs-Button="icon"><i class="icon icon-repeat_2"></i></button>
                     </div>
                 </div>
             </div>
+
             <div class="bs-callout bs-trans">
                 <div class="bs-flexy">
                     <div class="bs-flexy-text one-half">
@@ -114,7 +120,7 @@
                     <div class="bs-flexy-action one-half">
                         <div class="bs-input-overlay">
                             <input type="text" value="http://localhost">
-                            <button class="bs-button bs-with-icon"><i class="icon icon-repeat_2"></i></button>
+                            <button bs-Button="icon"><i class="icon icon-repeat_2"></i></button>
                         </div>
                     </div>
                 </div>
@@ -163,6 +169,7 @@
                 </div>
             </div>
 
+            <!-- Switches -->
             <hr/>
             <h1>Switches</h1>
             <div class="bs-callout bs-trans">
@@ -230,11 +237,11 @@
             <hr/>
             <h1>Notifications</h1>
             <p>
-                <button class="bs-button bs-with-icon" title="Clear all notifications">
+                <button bs-Button="icon" title="Clear all notifications">
                     <i class="icon icon-bin"></i>
                 </button>
             </p>
-            <ul class="bs-list bs-msgs">
+            <ul bs-List class="bs-list bs-msgs">
                 <li class="bs-msg__line bs-success">File changed: core.css</li>
                 <li class="bs-msg__line bs-success">File changed: index.php</li>
                 <li class="bs-msg__line bs-success">File changed: ie.css</li>
@@ -244,6 +251,41 @@
                 <li class="bs-msg__line bs-error">On line 23 of assets/css/theme/_store-page.scss</li>
                 <li class="bs-msg__line bs-error">On line 40 of assets/css/theme/_store-page.scss</li>
             </ul>
+
+            <hr/>
+            <h1>Side bar nav</h1>
+
+            <div class="psbg">
+                <div style="width: 300px; text-align: center;">
+                    <nav class="bs-section-nav" id="bs-section-nav">
+                        <ul class="bs-list">
+                            <li>
+                                <button bs-Button="nav" class="active">
+                                    <i class="icon icon-cog"></i> Server Info
+                                </button>
+                            </li>
+                            <li>
+                                <button bs-Button="nav">
+                                    <i class="icon icon-repeat_2"></i> Sync Options
+                                </button>
+                            </li>
+                            <li>
+                                <button bs-Button="nav">
+                                    <i class="icon icon-book_2"></i> History
+                                </button>
+                            </li>
+                            <li>
+                                <button bs-Button="nav">
+                                    <i class="icon icon-plug"></i> Plugins
+                                </button>
+                            </li>
+                            <li class="bs-menu-close">
+                                <button class="bs-nav-button" ng-click="toggleMenu()">CLOSE</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
             <br/>
             <br/>
             <br/>

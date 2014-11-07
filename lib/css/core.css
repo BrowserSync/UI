@@ -689,10 +689,37 @@ th {
         -ms-transform: translateX(0) translateY(0) scale(1);
             transform: translateX(0) translateY(0) scale(1);
     opacity: 1; }
-  .bs-section-nav .bs-nav-button {
-    border-radius: 0;
-    padding-top: 14px;
-    padding-bottom: 14px; }
+
+[bs-Button="nav"] {
+  background: #00333A;
+  color: #fff;
+  width: 100%;
+  border-radius: 0;
+  text-align: left;
+  padding-left: 68px;
+  font-size: 18px;
+  font-size: 1rem;
+  font-family: "source_sans_prolight";
+  border: 0; }
+  [bs-Button="nav"]:hover {
+    background: #00262C; }
+  [bs-Button="nav"].active {
+    color: #00333A;
+    background: #F2F2F2; }
+    [bs-Button="nav"].active .icon {
+      color: #21A695; }
+  [bs-Button="nav"] .icon {
+    position: absolute;
+    left: 27px;
+    font-size: 22px;
+    font-size: 1.22222rem;
+    margin-right: 14px;
+    top: 8px; }
+    [bs-Button="nav"] .icon.icon-plug {
+      font-size: 28px;
+      font-size: 1.55556rem;
+      left: 22px;
+      top: 8px; }
 
 .bs-content {
   width: 100%;
@@ -831,7 +858,7 @@ a {
   .hidden.active {
     display: block; }
 
-.bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, .bs-button-bar, .bs-site-title {
+.bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, [bs-Button-Bar], .bs-site-title {
   margin-bottom: 14px; }
 
 span.sep {
@@ -918,7 +945,7 @@ textarea, .bs-text-input {
   .bs-trans .bs-callout__content {
     padding-left: 68px; }
 
-.bs-flexy, .bs-button-bar {
+.bs-flexy, [bs-Button-Bar] {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1022,7 +1049,7 @@ textarea, .bs-text-input {
           transform: rotate(-135deg);
   background: #bbb; }
 
-.bs-button, .bs-nav-button {
+[bs-Button] {
   font-size: 18px;
   font-size: 1rem;
   display: inline-block;
@@ -1037,68 +1064,40 @@ textarea, .bs-text-input {
   text-align: center;
   cursor: pointer;
   outline: none; }
-  .bs-button:hover, .bs-nav-button:hover, .bs-button:focus, .bs-nav-button:focus {
+  [bs-Button]:hover, [bs-Button]:focus {
     background: #001d21; }
-  .bs-button + .button, .bs-nav-button + .button,
-  .bs-button + a,
-  .bs-nav-button + a {
+  [bs-Button] + .button,
+  [bs-Button] + a {
     margin-left: 14px; }
 
 /**
  * Default button styles
- * <button class="bs-button">Click me!</button>
+ * <button bs-Button>Click me!</button>
  */
-.bs-button {
+[bs-Button] {
   background: #21A695; }
-  .bs-button:hover, .bs-button:focus {
+  [bs-Button]:hover, [bs-Button]:focus {
     background: #1d9182; }
-  .bs-button:active {
+  [bs-Button]:active {
     background: #197b6f; }
 
-.bs-with-icon, .bs-with-icon-left, .bs-with-icon-right {
+[bs-Button~="icon"] {
   padding-left: 14px;
   padding-right: 14px; }
 
-.bs-with-icon-left .icon {
+[bs-Button~="icon-left"] .icon {
   margin-right: 7px; }
 
-.bs-with-icon-right .icon {
+[bs-Button~="icon-right"] .icon {
   margin-left: 7px; }
 
-.bs-nav-button {
-  position: relative;
-  width: 100%;
-  text-align: left;
-  font-size: 18px;
-  font-size: 1rem;
-  padding-left: 68px;
-  font-family: "source_sans_prolight"; }
-  .bs-nav-button .icon {
-    position: absolute;
-    left: 27px;
-    font-size: 22px;
-    font-size: 1.22222rem;
-    margin-right: 14px; }
-    .bs-nav-button .icon.icon-plug {
-      font-size: 28px;
-      font-size: 1.55556rem;
-      left: 22px;
-      top: 8px; }
-  .bs-nav-button:hover {
-    background: #00262C; }
-  .bs-nav-button.active {
-    color: #00333A;
-    background: #F2F2F2; }
-    .bs-nav-button.active .icon {
-      color: #21A695; }
-
-.bs-button-bar button {
+[bs-Button-Bar] button {
   border-radius: 0;
   border-right: 1px solid #24b3a0; }
-  .bs-button-bar button:first-child {
+  [bs-Button-Bar] button:first-child {
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px; }
-  .bs-button-bar button:last-child {
+  [bs-Button-Bar] button:last-child {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px; }
 
@@ -1168,7 +1167,7 @@ textarea, .bs-text-input {
   position: relative; }
   .bs-input-overlay input {
     width: 100%; }
-  .bs-input-overlay .bs-button {
+  .bs-input-overlay [bs-Button] {
     top: 0;
     right: 0;
     z-index: 1;
@@ -1177,7 +1176,7 @@ textarea, .bs-text-input {
     border-top-left-radius: 0;
     top: 1px;
     height: 38px; }
-    .bs-input-overlay .bs-button .icon {
+    .bs-input-overlay [bs-Button] .icon {
       top: -2px; }
   .bs-input-overlay .bs-button-bar {
     position: absolute;

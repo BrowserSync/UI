@@ -1,10 +1,10 @@
 var path           = require("path");
 
-var bspath         = "/Users/shakyshane/sites/os-browser-sync";
+//var bspath         = "/Users/shakyshane/sites/os-browser-sync";
 var config         = path.resolve("./test/client/e2e/config.js");
-//var bspath       = "/Users/shaneobsourne/sites/browser-sync";
-var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
-//var htmlpath     = "/Users/shaneobsourne/code/html-injector";
+var bspath       = "/Users/shaneobsourne/sites/browser-sync";
+//var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
+var htmlpath     = "/Users/shaneobsourne/code/html-injector";
 
 var cp   = require("child_process");
 var exec = require("child_process").exec;
@@ -38,4 +38,6 @@ var instance = bs({
     },
     open: false,
     online: false
+}, function (err, out) {
+    bs.reload("thing.css");
 });

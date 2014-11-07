@@ -18,11 +18,44 @@
         transform: translateX(0) translateY(0) scale(1);
         opacity: 1;
     }
+}
 
-    .#{$ns}-nav-button {
 
-        border-radius: 0;
-        padding-top: $half-spacing;
-        padding-bottom: $half-spacing;
+[bs-Button="nav"] {
+    background: $green;
+    color: $white;
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    padding-left: $base-spacing*2 + $half-spacing;
+    @include font-size(18px);
+    font-family: "source_sans_prolight";
+    border: 0;
+
+    &:hover {
+        background: $green-dk;
+    }
+
+    &.active {
+        color: $base-color;
+        background: $grey-bg;
+        .icon {
+            color: $green-lt;
+        }
+    }
+
+    .icon {
+        position: absolute;
+        left: $base-spacing;
+        @include font-size(22px);
+        margin-right: $half-spacing;
+        top: 8px;
+
+        &.icon-plug {
+            @include font-size(28px);
+            left: $half-spacing + 8px;
+            top: 8px;
+        }
     }
 }
+

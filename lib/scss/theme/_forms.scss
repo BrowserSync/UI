@@ -48,7 +48,7 @@ input {
         width: 100%;
     }
 
-    .bs-button {
+    [bs-Button] {
         top: 0;
         right: 0;
         z-index: 1;
@@ -62,6 +62,7 @@ input {
             top: -2px;
         }
     }
+
     .bs-button-bar {
         position: absolute;
         top: 0;
