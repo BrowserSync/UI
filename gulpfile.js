@@ -52,8 +52,8 @@ gulp.task('browser-sync', function () {
  * Start BrowserSync
  */
 gulp.task('browser-sync-dev', function () {
-    var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
-    browserSync.use(require(htmlpath), {files: "lib/*.html"});
+    var htmlpath     = "/Users/shan/code/bs-plugins/html-injector";
+    browserSync.use(require("/Users/shaneobsourne/code/html-injector"), {files: "lib/*.html"});
     browserSync({
         server: "lib",
         startPath: "components.html"

@@ -53,17 +53,18 @@
     }
 }
 
-.bs-flexy {
+%flexy {
     display: flex;
     flex-flow: row wrap;
+}
+
+.bs-flexy {
+    @extend %flexy;
     @include media-query(min, $lap-start) {
         margin-bottom: 0;
     }
 }
 
-.bs-flexy-icon {
-
-}
 .bs-flexy-text {
     width: 100%;
     @include media-query(min, $lap-start) {

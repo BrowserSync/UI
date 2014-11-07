@@ -48,7 +48,7 @@ input {
         width: 100%;
     }
 
-    button {
+    .bs-button {
         top: 0;
         right: 0;
         z-index: 1;
@@ -60,6 +60,18 @@ input {
 
         .icon {
             top: -2px;
+        }
+    }
+    .bs-button-bar {
+        position: absolute;
+        top: 0;
+        right: 0;
+        .bs-button {
+            position: relative;
+            &:first-child {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+            }
         }
     }
 }

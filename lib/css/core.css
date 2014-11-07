@@ -831,7 +831,7 @@ a {
   .hidden.active {
     display: block; }
 
-.bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, .bs-site-title {
+.bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, .bs-button-bar, .bs-site-title {
   margin-bottom: 14px; }
 
 .bs-callout, button,
@@ -885,16 +885,17 @@ textarea, .bs-text-input {
   .bs-trans .bs-callout__content {
     padding-left: 68px; }
 
-.bs-flexy {
+.bs-flexy, .bs-button-bar {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap; }
-  @media only screen and (min-width: 600px) {
-    .bs-flexy {
-      margin-bottom: 0; } }
+
+@media only screen and (min-width: 600px) {
+  .bs-flexy {
+    margin-bottom: 0; } }
 
 .bs-flexy-text {
   width: 100%; }
@@ -1058,6 +1059,16 @@ textarea, .bs-text-input {
     .bs-nav-button.active .icon {
       color: #21A695; }
 
+.bs-button-bar button {
+  border-radius: 0;
+  border-right: 1px solid #24b3a0; }
+  .bs-button-bar button:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px; }
+  .bs-button-bar button:last-child {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px; }
+
 @media only screen and (min-width: 600px) {
   .bs-nav-toggle {
     display: none; } }
@@ -1124,7 +1135,7 @@ textarea, .bs-text-input {
   position: relative; }
   .bs-input-overlay input {
     width: 100%; }
-  .bs-input-overlay button {
+  .bs-input-overlay .bs-button {
     top: 0;
     right: 0;
     z-index: 1;
@@ -1133,8 +1144,17 @@ textarea, .bs-text-input {
     border-top-left-radius: 0;
     top: 1px;
     height: 38px; }
-    .bs-input-overlay button .icon {
+    .bs-input-overlay .bs-button .icon {
       top: -2px; }
+  .bs-input-overlay .bs-button-bar {
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .bs-input-overlay .bs-button-bar .bs-button {
+      position: relative; }
+      .bs-input-overlay .bs-button-bar .bs-button:first-child {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0; }
 
 .cmn-toggle {
   position: absolute;
