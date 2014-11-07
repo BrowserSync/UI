@@ -42,12 +42,14 @@
         top: $half-spacing + 6px;
         left: 0;
     }
+    &.flush-top {
+        top: $half-spacing + 6px;
+    }
 }
 
 .bs-callout__content {
     @extend %item-stack;
     padding-left: $base-spacing*2;
-
     .bs-trans & {
         padding-left: $base-spacing*2 + $half-spacing;
     }
@@ -84,7 +86,6 @@
         }
     }
     padding-top: $half-spacing/2;
-
     input {
         width: 100%;
     }

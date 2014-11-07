@@ -834,6 +834,37 @@ a {
 .bs-input, .bs-split-buttons, .bs-callout, .bs-callout__content, .bs-button-bar, .bs-site-title {
   margin-bottom: 14px; }
 
+span.sep {
+  margin-left: 5px;
+  margin-right: 5px; }
+
+@media only screen and (min-width: 600px) {
+  .width-100 {
+    width: 100% !important; }
+
+  .width-90 {
+    width: 90% !important; }
+
+  .width-80 {
+    width: 80% !important; }
+
+  .width-70 {
+    width: 70% !important; }
+
+  .width-60 {
+    width: 60% !important; }
+
+  .width-50 {
+    width: 50% !important; }
+
+  .width-40 {
+    width: 40% !important; }
+
+  .width-30 {
+    width: 30% !important; }
+
+  .width-20 {
+    width: 20% !important; } }
 .bs-callout, button,
 input,
 select,
@@ -879,6 +910,8 @@ textarea, .bs-text-input {
   .bs-callout__icon.flush {
     top: 20px;
     left: 0; }
+  .bs-callout__icon.flush-top {
+    top: 20px; }
 
 .bs-callout__content {
   padding-left: 54px; }
