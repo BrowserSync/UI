@@ -627,7 +627,7 @@ th {
   height: 100%; }
 
 [bs-Sidebar] {
-  background: #00333A;
+  background: #033339;
   width: 100%; }
   @media only screen and (min-width: 600px) {
     [bs-Sidebar] {
@@ -692,7 +692,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background: #F2F2F2;
-  color: #00333A;
+  color: #033339;
   text-rendering: optimizeLegibility; }
 
 .lede {
@@ -724,7 +724,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  color: #00333A;
+  color: #033339;
   font-weight: 400;
   line-height: 1;
   font-family: "titillium_webbold";
@@ -798,7 +798,7 @@ a {
   .hidden.active {
     display: block; }
 
-[bs-Callout], [bs-Callout-Content], [bs-Button-Bar], .bs-site-title {
+[bs-Stack], [bs-Callout], [bs-Callout-Content], [bs-Button-Bar], .bs-site-title {
   margin-bottom: 14px; }
 
 span.sep {
@@ -862,6 +862,14 @@ span.sep {
 
   [bs-Width~="20"] {
     width: 20% !important; } }
+@media only screen and (min-width: 600px) {
+  [bs-Visible~="not-desk"] {
+    display: none; } }
+
+@media only screen and (min-width: 600px) {
+  [bs-Visible~="palm"] {
+    display: none; } }
+
 [bs-Flex], [bs-Button-Bar] {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -916,7 +924,7 @@ textarea {
     font-size: 18px;
     font-size: 1rem;
     margin-bottom: 0;
-    color: #00333A; }
+    color: #033339; }
 
 [bs-Callout] {
   padding: 14px 27px;
@@ -976,7 +984,7 @@ textarea {
   padding: 8px 27px;
   width: auto;
   vertical-align: middle;
-  background: #00333A;
+  background: #033339;
   color: white;
   border-radius: 3px;
   line-height: 1.2;
@@ -984,7 +992,7 @@ textarea {
   cursor: pointer;
   outline: none; }
   [bs-Button]:hover, [bs-Button]:focus {
-    background: #001d21; }
+    background: #021d21; }
   [bs-Button] + .button,
   [bs-Button] + a {
     margin-left: 14px; }
@@ -1005,7 +1013,7 @@ textarea {
  * <button bs-Button="nav">Click me!</button>
  */
 [bs-Button="nav"] {
-  background: #00333A;
+  background: #033339;
   color: #fff;
   width: 100%;
   border-radius: 0;
@@ -1018,7 +1026,7 @@ textarea {
   [bs-Button="nav"]:hover {
     background: #00262C; }
   [bs-Button="nav"].active {
-    color: #00333A;
+    color: #033339;
     background: #F2F2F2; }
     [bs-Button="nav"].active [bs-Icon] {
       color: #21A695; }
@@ -1050,7 +1058,7 @@ textarea {
     border-bottom-right-radius: 3px;
     border-right: 0; }
 [bs-Button-Bar] [bs-Button~="inverted"] {
-  border-right: 1px solid #00606d; }
+  border-right: 1px solid #065e69; }
 
 [bs-Button-Bar~="split"] {
   width: 100%; }
@@ -1134,9 +1142,9 @@ textarea {
  * Basic Inputs
  */
 [bs-Input~="inverted"] {
-  background: #00333A;
+  background: #00262C;
   color: #fff;
-  border-color: #00333A; }
+  border-color: #00262C; }
 
 [bs-Input-Overlay] {
   width: 100%;
@@ -1254,11 +1262,11 @@ input.cmn-toggle-round:checked + label {
 .notification {
   position: fixed;
   width: 100%;
-  background: #00333A;
+  background: #033339;
   color: white;
   text-align: center;
   padding: 27px 14px;
-  border-bottom: 1px solid #00333A;
+  border-bottom: 1px solid #033339;
   box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-transform: translateY(-110%);
       -ms-transform: translateY(-110%);

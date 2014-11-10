@@ -20,28 +20,28 @@
             <h1 class="bs-site-title alt">
                 <a href="/">BrowserSync</a>
             </h1>
-            <div class="bs-input form--inverted">
-                <input type="text" value="http://192.168.1.63" class="bs-text-input"/>
+            <div bs-Stack>
+                <input bs-Input="inverted" bs-Width="100" type="text" ng-model="options.displayUrl" ng-if="options.displayUrl">
             </div>
-            <div class="bs-split-buttons">
-                <button class="bs-button">Resync</button>
-                <button class="bs-button">New Tab</button>
+            <div bs-Button-Bar="split">
+                <button bs-Button="inverted">Resync</button>
+                <button bs-Button="inverted">New Tab</button>
             </div>
         </header>
-        <nav class="bs-section-nav" id="bs-section-nav" ng-class="{'active': ui.sectionMenu}">
-            <ul class="bs-list">
+        <nav bs-Section-Nav ng-class="{'active': ui.sectionMenu}">
+            <ul bs-List>
                 <li ng-repeat="(key, item) in ui.menu | orderObjectBy: 'order'">
-                    <button class="bs-nav-button" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">
-                        <i class="icon icon-{{item.icon}}"></i> {{item.title}}
+                    <button bs-Button="nav" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">
+                        <i bs-Icon="{{item.icon}}"></i> {{item.title}}
                     </button>
                 </li>
-                <li class="bs-menu-close">
-                    <button class="bs-nav-button" ng-click="toggleMenu()">CLOSE</button>
+                <li bs-Action="menu-close" bs-Visible="palm">
+                    <button bs-Button="nav" ng-click="toggleMenu()"><i bs-Icon="close"></i> CLOSE</button>
                 </li>
             </ul>
         </nav>
-        <div class="bs-nav-toggle">
-            <button class="button menu-button bs-nav-button" ng-click="toggleMenu()"><i class="icon icon-list"></i>Menu</button>
+        <div class="bs-nav-toggle" bs-Visible="palm">
+            <button bs-Button="nav" ng-click="toggleMenu()"><i bs-Icon="list"></i> Menu</button>
         </div>
     </section>
     <section bs-Content>

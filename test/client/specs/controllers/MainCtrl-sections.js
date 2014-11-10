@@ -8,8 +8,16 @@ describe("Main Controller", function () {
     var scope;
     var sections;
     var values;
+    var config;
+
 
     beforeEach(inject(function ($rootScope, $controller, $injector) {
+        config = {
+            urls: {
+                local:    "http://localhost:3000",
+                external: "http://192.168.0.1:3000"
+            }
+        };
         scope = $rootScope.$new();
         sections = $injector.get("ContentSections");
         values = $injector.get("contentSections");
@@ -19,13 +27,13 @@ describe("Main Controller", function () {
         scope.$digest();
     }));
     it("should set the server-info title based on the options (SERVER)", function () {
-        var options  = { server: {} };
-        scope.socketEvents.connection(options);
+        config.server = true;
+        scope.update(config);
         assert.equal(scope.ui.menu["server-info"].title,   "Server Info");
     });
     it("should set the server-info title based on the options (PROXY)", function () {
-        var options  = { proxy: {} };
-        scope.socketEvents.connection(options);
+        config.proxy = true;
+        scope.socketEvents.connection(config);
         assert.equal(scope.ui.menu["server-info"].title,   "Proxy Info");
     });
     it("should set the server-info title based on the options (SNIPPET)", function () {

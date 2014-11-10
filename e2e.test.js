@@ -1,10 +1,10 @@
 var path           = require("path");
 
-var bspath         = "/Users/shakyshane/sites/os-browser-sync";
+//var bspath         = "/Users/shakyshane/sites/os-browser-sync";
+var bspath       = "/Users/shaneobsourne/sites/browser-sync";
 var config         = path.resolve("./test/client/e2e/config.js");
-//var bspath       = "/Users/shaneobsourne/sites/browser-sync";
-var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
-//var htmlpath     = "/Users/shaneobsourne/code/html-injector";
+//var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
+var htmlpath     = "/Users/shaneobsourne/code/html-injector";
 
 var cp   = require("child_process");
 var exec = require("child_process").exec;

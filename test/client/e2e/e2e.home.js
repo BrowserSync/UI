@@ -25,9 +25,6 @@ describe('Section Navigation', function() {
      */
     it('should render the correct amount of links', function() {
 
-        // Assert the navigation exists
-        expect(element(by.id('bs-section-nav')).isPresent()).toBeTruthy();
-
         element.all(by.repeater(selector)).then(function (elems) {
 
             // Check the correct amount of links
@@ -53,7 +50,7 @@ describe('Section Navigation', function() {
             elems.forEach(function (item) {
                 item.getInnerHtml().then(function (html) {
                     // check the item's inner HTML to ensure icon is present
-                    var match = html.match(/ icon-([a-z]+)/ig);
+                    var match = html.match(/ bs-icon="(.+?)"/ig);
                     assert.isNotNull(match);
                 });
             })

@@ -36,8 +36,6 @@ var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    open: false,
-    online: false
-}, function (err, out) {
-    bs.reload("thing.css");
+    open: false
+    //online: false
 });

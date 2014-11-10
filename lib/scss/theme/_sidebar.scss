@@ -10,3 +10,7 @@
 .#{$ns}-stack {
     margin-bottom: $half-spacing;
 }
+
+[bs-Stack] {
+    @extend %item-stack;
+}
