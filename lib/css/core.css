@@ -1061,10 +1061,13 @@ textarea {
     border-bottom-left-radius: 3px; }
   [bs-Button-Bar] [bs-Button]:last-child {
     border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
-    border-right: 0; }
-[bs-Button-Bar] [bs-Button~="inverted"] {
+    border-bottom-right-radius: 3px; }
+[bs-Button-Bar] [bs-Button~="darker"] {
   border-right: 1px solid #065e69; }
+[bs-Button-Bar] [bs-Button~="inverted"] {
+  border-right: 0; }
+  [bs-Button-Bar] [bs-Button~="inverted"]:last-child {
+    border-right: 1px solid #E3E3E3; }
 
 [bs-Button-Bar~="split"] {
   width: 100%; }
@@ -1089,15 +1092,28 @@ textarea {
   margin-left: 7px; }
 
 /**
- * Inverted button
+ * Darker button
  */
-[bs-Button~="inverted"] {
+[bs-Button~="darker"] {
   background: #064F58; }
-  [bs-Button~="inverted"]:hover, [bs-Button~="inverted"]:focus {
+  [bs-Button~="darker"]:hover, [bs-Button~="darker"]:focus {
     background: #086470;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1) inset; }
-  [bs-Button~="inverted"]:active {
+  [bs-Button~="darker"]:active {
     background: #064F58; }
+
+/**
+ * Darker button
+ */
+[bs-Button~="inverted"] {
+  color: #979797;
+  background: #fff;
+  border: 1px solid #E3E3E3; }
+  [bs-Button~="inverted"]:hover, [bs-Button~="inverted"]:focus {
+    background: #fafafa; }
+  [bs-Button~="inverted"]:active {
+    background: whitesmoke;
+    box-shadow: 0 0 2px 2px rgba(227, 227, 227, 0.5) inset; }
 
 @media only screen and (min-width: 600px) {
   [bs-Action="menu-toggle"] {
@@ -1147,7 +1163,7 @@ textarea {
 /*
  * Basic Inputs
  */
-[bs-Input~="inverted"] {
+[bs-Input~="darker"] {
   background: #00262C;
   color: #fff;
   border-color: #00262C; }
@@ -1168,6 +1184,9 @@ textarea {
     height: 38px; }
     [bs-Input-Overlay] [bs-Button] .icon {
       top: -2px; }
+  [bs-Input-Overlay] [bs-Button~="inverted"] {
+    border-top: 0;
+    border-bottom: 0; }
   [bs-Input-Overlay] [bs-Button-Bar] {
     position: absolute;
     top: 0;

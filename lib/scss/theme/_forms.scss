@@ -26,7 +26,7 @@ textarea {
 }
 
 [bs-Input] { } 
-[bs-Input~="inverted"] {
+[bs-Input~="darker"] {
     background: $green-dk;
     color: $white;
     border-color: $green-dk;
@@ -54,6 +54,11 @@ textarea {
         .icon {
             top: -2px;
         }
+    }
+
+    [bs-Button~="inverted"] {
+        border-top: 0;
+        border-bottom: 0;
     }
 
     [bs-Button-Bar] {

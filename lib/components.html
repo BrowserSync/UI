@@ -96,31 +96,67 @@
             </div>
 
             <hr/>
-            <h1>Inverted Buttons/Inputs</h1>
+            <h1>Inverted Buttons</h1>
 
             <p>
                 <button bs-Button="inverted">Inverted Button</button>
                 <button bs-Button="inverted icon"><i bs-Icon="globe"></i></button>
             </p>
-
-            <p>
-                <button bs-Button="icon inverted icon-left"><i bs-Icon="mail_incoming"></i> With icon LEFT</button>
-                <button bs-Button="icon inverted icon-right">With icon RIGHT <i bs-Icon="ipad"></i></button>
-            </p>
-
             <div bs-Button-Bar>
                 <button bs-Button="inverted icon"><i bs-Icon="volume_up"></i></button>
                 <button bs-Button="inverted icon"><i bs-Icon="magnifying_glass"></i></button>
                 <button bs-Button="inverted icon"><i bs-Icon="zoom_in"></i></button>
             </div>
 
+            <div bs-Callout>
+                <div bs-Callout-Content bs-Flex>
+                    <div>
+                        <div bs-Callout-Icon>
+                            <i bs-Icon="globe"></i>
+                        </div>
+                    </div>
+                    <div bs-Flex-Item="text">
+                        <p class="lede">Callout with large-icon</p>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div bs-Flex-Item="action">
+                        <div bs-input-overlay>
+                            <input type="text" value="http://192.168.0.1:3000">
+                            <div bs-button-bar>
+                                <button bs-button="inverted icon"><i bs-icon="copy_2"></i></button>
+                                <button bs-button="inverted icon" title="Sync all devices here"><i bs-icon="repeat_2" class="spin"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+            <h1>Darker</h1>
+
+            <p>
+                <button bs-Button="darker">Inverted Button</button>
+                <button bs-Button="darker icon"><i bs-Icon="globe"></i></button>
+            </p>
+
+            <p>
+                <button bs-Button="icon darker icon-left"><i bs-Icon="mail_incoming"></i> With icon LEFT</button>
+                <button bs-Button="icon darker icon-right">With icon RIGHT <i bs-Icon="ipad"></i></button>
+            </p>
+
+            <div bs-Button-Bar>
+                <button bs-Button="darker icon"><i bs-Icon="volume_up"></i></button>
+                <button bs-Button="darker icon"><i bs-Icon="magnifying_glass"></i></button>
+                <button bs-Button="darker icon"><i bs-Icon="zoom_in"></i></button>
+            </div>
+
             <div bs-Button-Bar="split">
-                <button bs-Button="inverted">Resync</button>
-                <button bs-Button="inverted">New Tab</button>
+                <button bs-Button="darker">Resync</button>
+                <button bs-Button="darker">New Tab</button>
             </div>
 
             <p>
-                <input bs-Input="inverted" type="text" value="http://localhost:8000" />
+                <input bs-Input="darker" type="text" value="http://localhost:8000" />
             </p>
 
             <hr/>
