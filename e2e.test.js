@@ -65,5 +65,6 @@ var instance = bs({
 }, function (err, bs) {
     process.env["BS_URL"]  = bs.getOption("urls.local");
     process.env["BS_BASE"] = bs.getOption("urls.local");
+    process.env["BS_URL_EXTERNAL"] = bs.getOption("urls.external");
     logger.info("BrowserSync running at {i:" + bs.getOption("urls.local"));
 });

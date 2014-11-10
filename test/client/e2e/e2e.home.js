@@ -39,6 +39,16 @@ describe('Section Navigation', function() {
 
     /**
      *
+     * Check that a display url is present in the input underneath the header
+     *
+     */
+    it('should render the URL in the input under header', function() {
+        var input = element(by.model('options.displayUrl'));
+        expect(input.getAttribute('value')).toBe(process.env["BS_URL"]);
+    });
+
+    /**
+     *
      * Check that each menu item has an icon element
      * of links/sections
      *
