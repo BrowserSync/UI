@@ -1,13 +1,18 @@
-.bs-disconnect {
-    position: fixed;
+%cover-all {
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     right: 0;
     left: 0;
+}
+
+.bs-disconnect {
+
+    @extend %cover-all;
     background: rgba(black, .6);
-    color: white;
+    color: $white;
     text-align: center;
     padding: $base-spacing $half-spacing;
 
@@ -16,5 +21,24 @@
 
     &.active {
         display: inherit;
+    }
+}
+
+[bs-Overlay] {
+
+    @extend %cover-all;
+    background: rgba(black, .6);
+    padding: $base-spacing*2 $half-spacing;
+    color: $white;
+    text-align: center;
+    visibility: hidden;
+    z-index: 2000;
+    
+    &.active {
+        visibility: visible;
+    }
+
+    * {
+        color: $white;
     }
 }

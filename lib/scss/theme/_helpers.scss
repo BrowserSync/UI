@@ -52,6 +52,14 @@ span.sep {
     [bs-Width~="20"]  { width: 20%!important; }
 }
 
+[bs-Color~="white"] {
+    color: $white;
+}
+
+[bs-Weight~="light"] {
+    font-family: $hn-font-family-thin;
+}
+
 [bs-Visible] {
 
 }

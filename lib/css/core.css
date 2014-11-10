@@ -862,6 +862,12 @@ span.sep {
 
   [bs-Width~="20"] {
     width: 20% !important; } }
+[bs-Color~="white"] {
+  color: #fff; }
+
+[bs-Weight~="light"] {
+  font-family: "titillium_webregular"; }
+
 @media only screen and (min-width: 600px) {
   [bs-Visible~="not-desk"] {
     display: none; } }
@@ -1284,22 +1290,36 @@ input.cmn-toggle-round:checked + label {
   .notification.error {
     background: #ED6A13; }
 
-.bs-disconnect {
-  position: fixed;
+.bs-disconnect, [bs-Overlay] {
+  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   right: 0;
-  left: 0;
+  left: 0; }
+
+.bs-disconnect {
   background: rgba(0, 0, 0, 0.6);
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 27px 14px;
   display: none;
   z-index: 2000; }
   .bs-disconnect.active {
     display: inherit; }
+
+[bs-Overlay] {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 54px 14px;
+  color: #fff;
+  text-align: center;
+  visibility: hidden;
+  z-index: 2000; }
+  [bs-Overlay].active {
+    visibility: visible; }
+  [bs-Overlay] * {
+    color: #fff; }
 
 @font-face {
   font-family: 'icomoon';
@@ -1325,6 +1345,13 @@ input.cmn-toggle-round:checked + label {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+/**
+ * Icon sizes
+ */
+[bs-Icon-Size~="jumbo"] {
+  font-size: 108px;
+  line-height: 108px; }
 
 [bs-Icon~="zoom_out"]:before {
   content: "\e600"; }

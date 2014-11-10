@@ -38,10 +38,7 @@ describe("Module: Disconnect", function () {
             assert.isDefined(isolatedScope.ui.message);
         });
         it("should have the correct heading", function () {
-            assert.equal(element.find("h1").text(), "BrowserSync");
-        });
-        it("should have the correct message", function () {
-            assert.equal(element.find("h2").text(), "Disconnected");
+            assert.equal(element.find("h1").text(), "BrowserSync Disconnected");
         });
         it("should respond to connection/disconnect events", function () {
             rootScope.$emit("cp:disconnect");

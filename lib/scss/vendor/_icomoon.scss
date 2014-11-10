@@ -27,6 +27,14 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/**
+ * Icon sizes
+ */
+[bs-Icon-Size~="jumbo"] {
+    font-size:   $base-spacing*4;
+    line-height: $base-spacing*4;
+}
+
 [bs-Icon~="zoom_out"]:before {
     content: "\e600";
 }
