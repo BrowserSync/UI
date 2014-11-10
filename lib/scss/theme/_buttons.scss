@@ -14,18 +14,21 @@
     text-align: center;
     cursor: pointer;
     outline: none;
+    transition: color .3s, background .3s;
 
     &:hover,
     &:focus {
+        text-decoration: none;
         background: darken($green, 5%);
     }
 
     &:active {
+
     }
 
     + .button,
     + a {
-        margin-left: $half-spacing;
+//        margin-left: $half-spacing;
     }
 }
 
@@ -100,6 +103,8 @@
     @extend %item-stack;
 
     [bs-Button] {
+        margin-left: 0;
+        margin-right: 0;
         border-radius: 0;
         border-right: 1px solid lighten($green-lt, 3%);
         &:first-child {
@@ -186,6 +191,7 @@
 
     &:hover, &:focus {
         background: darken($white, 2%);
+        color: $black;
     }
 
     &:active {

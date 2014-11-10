@@ -48,4 +48,15 @@ describe('Server Info section', function() {
             expect(count).toEqual(1);
         });
     });
+    it("should have a link for opening new tab", function () {
+
+        var elements = element.all(by.css("[bs-Content] a[title='Launch new tab here'")).then(function (links) {
+            links[0].getAttribute("href").then(function (out) {
+                expect(out.indexOf(bsUrl) > -1).toBeTruthy();
+            });
+            links[0].getAttribute("target").then(function (out) {
+                expect(out).toEqual("_blank");
+            });
+        });
+    });
 });

@@ -996,12 +996,12 @@ textarea {
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
-  outline: none; }
+  outline: none;
+  -webkit-transition: color .3s, background .3s;
+          transition: color .3s, background .3s; }
   [bs-Button]:hover, [bs-Button]:focus {
+    text-decoration: none;
     background: #021d21; }
-  [bs-Button] + .button,
-  [bs-Button] + a {
-    margin-left: 14px; }
 
 /**
  * Default button styles
@@ -1054,6 +1054,8 @@ textarea {
  * <div bs-Button-Bar> ... </div>
  */
 [bs-Button-Bar] [bs-Button] {
+  margin-left: 0;
+  margin-right: 0;
   border-radius: 0;
   border-right: 1px solid #24b3a0; }
   [bs-Button-Bar] [bs-Button]:first-child {
@@ -1110,7 +1112,8 @@ textarea {
   background: #fff;
   border: 1px solid #E3E3E3; }
   [bs-Button~="inverted"]:hover, [bs-Button~="inverted"]:focus {
-    background: #fafafa; }
+    background: #fafafa;
+    color: #000; }
   [bs-Button~="inverted"]:active {
     background: whitesmoke;
     box-shadow: 0 0 2px 2px rgba(227, 227, 227, 0.5) inset; }
