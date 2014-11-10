@@ -7,10 +7,12 @@ describe("Main Controller - Handling disconnections", function () {
     var mainCtrl;
     var scope;
     var socket;
+    var rootScope;
     var spy;
 
     beforeEach(inject(function ($rootScope, $controller, $injector) {
         scope = $rootScope.$new();
+        rootScope = $rootScope;
         socket = $injector.get("Socket");
         spy = sinon.spy(socket, "on");
         mainCtrl = $controller("MainCtrl", {
@@ -31,5 +33,12 @@ describe("Main Controller - Handling disconnections", function () {
     it("should set the ui.disconnect property back to false following re-connection", function () {
         scope.socketEvents.connection({});
         assert.isFalse(scope.ui.disconnected);
+    });
+    it("should respond to connection/disconnect events", function () {
+        rootScope.$emit("cp:disconnect");
+        assert.isTrue(scope.ui.disconnected);
+        rootScope.$emit("cp:connection", {name: "shane"});
+        assert.isFalse(scope.ui.disconnected);
+        assert.equal(scope.options.name, "shane");
     });
 });
