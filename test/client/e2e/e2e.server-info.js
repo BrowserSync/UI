@@ -40,4 +40,12 @@ describe('Server Info section', function() {
             expect(out.indexOf(bsUrl) > -1).toBeTruthy();
         });
     });
+    it("should render the icon", function () {
+
+        var elements = element.all(by.css("[bs-callout] [bs-icon='computer_download']"));
+
+        elements.count().then(function (count) {
+            expect(count).toEqual(1);
+        });
+    });
 });

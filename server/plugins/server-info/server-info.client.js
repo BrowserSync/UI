@@ -93,21 +93,27 @@
         $scope.urls = [];
 
         $scope.urls.push({
-            name: "Local (your machine)",
-            url: urls.local
+            title: "Local",
+            tagline: "URL for the machine you are running BrowserSync on",
+            url: urls.local,
+            icon: "computer_download"
         });
 
         if (urls.external) {
             $scope.urls.push({
-                name: "External (other devices on your wifi network)",
-                url: urls.external
+                title: "External",
+                tagline: "Other devices on the same wifi network",
+                url: urls.external,
+                icon: "wifi_3"
             });
         }
 
         if (urls.tunnel) {
             $scope.urls.push({
-                name: "Public URL",
-                url: urls.tunnel
+                title: "Tunnel",
+                tagline: "Secure HTTPS public url",
+                url: urls.tunnel,
+                icon: "globe"
             });
         }
     }

@@ -9,8 +9,46 @@ describe("Directive: URL Info", function () {
         scope = $rootScope;
         compile = $compile;
     }));
+    describe("Setting up the url data for view rendering", function () {
+        beforeEach(function () {
 
-    describe("Rendering the top title bar with URL info for server", function () {
+            // Set the user on the parent scope to simulate how it'd happen in your app
+            scope.options = {
+                server: {
+                    baseDir: "./"
+                },
+                "urls": {
+                    "local": "http://localhost:3000",
+                    "external": "http://192.168.0.2:3000",
+                    "tunnel": "https://trjjcleffl.localtunnel.me"
+                }
+            };
+
+            // Pass in the user object to the directive
+            element = angular.element("<url-info options=\"options\"></url-info>");
+
+            // Compile & Digest as normal
+            compile(element)(scope);
+            scope.$digest();
+        });
+
+        it("sets up the url data for rendering", function () {
+            var isolatedScope = scope.$$childHead;
+            var urls          = isolatedScope.urls;
+
+            assert.equal(urls[0].title, "Local");
+            assert.equal(urls[0].icon,  "computer_download");
+            assert.equal(urls[1].title, "External");
+            assert.equal(urls[1].icon,  "wifi_3");
+            assert.equal(urls[2].title, "Tunnel");
+            assert.equal(urls[2].icon,  "globe");
+
+            assert.isTrue(urls[0].tagline.length > 1);
+            assert.isTrue(urls[1].tagline.length > 1);
+            assert.isTrue(urls[2].tagline.length > 1);
+        });
+    });
+    describe("Rendering the URL info for server", function () {
         beforeEach(function () {
 
             // Set the user on the parent scope to simulate how it'd happen in your app
@@ -41,7 +79,7 @@ describe("Directive: URL Info", function () {
             assert.equal(inputs.length, 3);
         });
     });
-    describe("Rendering the top title bar with URL info for proxy", function () {
+    describe("Rendering URL info for proxy", function () {
         beforeEach(function () {
 
             // Set the user on the parent scope to simulate how it'd happen in your app
