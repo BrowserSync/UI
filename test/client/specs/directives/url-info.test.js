@@ -34,13 +34,11 @@ describe("Directive: URL Info", function () {
         });
 
         it("should render the correct amount of links", function () {
-            var actual = element.find("li");
-            var links  = actual.find("a");
-
-            assert.equal(links[0].href, "http://localhost:3000/");
-            assert.equal(links[1].href, "http://192.168.0.2:3000/");
-            assert.equal(links[2].href, "https://trjjcleffl.localtunnel.me/");
-            assert.equal(links.length, 3);
+            var inputs = element.find("input");
+            assert.equal(inputs[0].value, "http://localhost:3000");
+            assert.equal(inputs[1].value, "http://192.168.0.2:3000");
+            assert.equal(inputs[2].value, "https://trjjcleffl.localtunnel.me");
+            assert.equal(inputs.length, 3);
         });
     });
     describe("Rendering the top title bar with URL info for proxy", function () {
@@ -72,12 +70,11 @@ describe("Directive: URL Info", function () {
         // This test will fail as we're looking at the parent scope here & not the directives' 'isolated' scope.
         it("should render the correct text with Proxy", function () {
 
-            var actual = element.find("li");
-            var links  = actual.find("a");
+            var inputs = element.find("input");
 
-            assert.equal(links[0].href, "http://localhost:3000/");
-            assert.equal(links[1].href, "http://192.168.0.2:3000/");
-            assert.equal(actual.length, 2);
+            assert.equal(inputs[0].value, "http://localhost:3000");
+            assert.equal(inputs[1].value, "http://192.168.0.2:3000");
+            assert.equal(inputs.length, 2);
         });
     });
 });

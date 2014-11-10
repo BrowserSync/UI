@@ -1,18 +1,37 @@
 <div>
 
-    <p class="lede">Access Information:</p>
-    <ul class="bs-list server-info">
-        <li ng-repeat="url in urls" class="bs-url"><span>{{url.name}}</span>: <a href="{{url.url}}" target="_blank">{{url.url}}</a></li>
-    </ul>
+    <h2>Access Information:</h2>
+    <section bs-callout ng-repeat="url in urls">
+        <div bs-callout-content bs-flex>
+            <div>
+                <div bs-callout-icon>
+                    <i bs-icon="globe"></i>
+                </div>
+            </div>
+            <div bs-flex-item="text" bs-Width="50">
+                <p class="lede">{{url.name}}</p>
+                <p>Lorem ipsum dolor sit amet</p>
+            </div>
+            <div bs-flex-item="action" bs-Width="50">
+                <div bs-input-overlay="">
+                    <input type="text" value="{{url.url}}">
+                    <div bs-button-bar>
+                        <button bs-button="inverted icon" title="Sync all devices here"><i bs-icon="repeat_2"></i></button>
+                        <button bs-button="inverted icon" title="Launch new tab here"><i bs-icon="share"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section ng-if="ui.server">
-        <p class="lede">Serving files from:<p>
-        <ul class="bs-list">
+        <h2>Serving files from</h2>
+        <ul bs-List>
             <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
         </ul>
     </section>
     <section ng-if="ui.proxy">
         <p class="lede">Proxying:<p>
-        <ul class="bs-list">
+        <ul bs-List>
             <li><a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a></li>
         </ul>
     </section>

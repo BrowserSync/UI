@@ -15,7 +15,7 @@ describe('Section Navigation', function() {
         browser.get("/");
         expectedItems  = 4;
         selector       = '(key, item) in ui.menu | orderObjectBy: \'order\'';
-        headerSelector = ".bs-main-section h1";
+        headerSelector = "[bs-content] h1";
     });
     /**
      *
