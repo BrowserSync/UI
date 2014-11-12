@@ -1141,10 +1141,36 @@ textarea {
 [bs-List] {
   margin-left: 0;
   list-style: none; }
-  [bs-List] > li > a {
-    display: block; }
-  [bs-List] > li.active > a {
-    cursor: default; }
+
+[bs-List~="bordered"] > li {
+  padding: 7px 14px;
+  border-bottom: 1px solid #E3E3E3; }
+  [bs-List~="bordered"] > li:first-child {
+    border-top: 1px solid #E3E3E3; }
+
+[bs-List~="actions"] > li {
+  -webkit-transition: background .3s;
+          transition: background .3s;
+  color: #666666; }
+  [bs-List~="actions"] > li:hover {
+    background: #fff; }
+    [bs-List~="actions"] > li:hover [bs-Actions] {
+      opacity: 1; }
+[bs-List~="actions"] [bs-Actions] {
+  opacity: 0; }
+
+[bs-Actions~="inline"] {
+  -webkit-transition: opacity .2s;
+          transition: opacity .2s;
+  margin-left: 14px; }
+  [bs-Actions~="inline"] a {
+    color: #FF4453;
+    font-size: 12px;
+    font-size: 0.66667rem;
+    display: inline-block; }
+
+[bs-Sep] {
+  color: #b3b3b3; }
 
 .bs-site-title {
   background: #00262C;
