@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div bs-flex-item="text" bs-Width="50">
-                <p class="lede">{{url.title}}</p>
+                <p bs-Text="lede">{{url.title}}</p>
                 <p>{{url.tagline}}</p>
             </div>
             <div bs-flex-item="action" bs-Width="50">
@@ -24,13 +24,20 @@
         </div>
     </section>
     <section ng-if="ui.server">
-        <h2>Serving files from</h2>
-        <ul bs-List>
-            <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
-        </ul>
+        <div bs-Callout>
+            <div bs-Callout-Icon>
+                <i bs-Icon="terminal"></i>
+            </div>
+            <div bs-Callout-Content>
+                <p bs-Text="lede">Serving files from</p>
+                <ul bs-List>
+                    <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
+                </ul>
+            </div>
+        </div>
     </section>
     <section ng-if="ui.proxy">
-        <p class="lede">Proxying:<p>
+        <p bs-Text="lede">Proxying:<p>
         <ul bs-List>
             <li><a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a></li>
         </ul>

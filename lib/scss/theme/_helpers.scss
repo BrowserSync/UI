@@ -52,6 +52,10 @@ span.sep {
     [bs-Width~="20"]  { width: 20%!important; }
 }
 
+[bs-Text~="lede"] {
+    @include font-size(18px);
+}
+
 [bs-Color~="white"] {
     color: $white;
 }

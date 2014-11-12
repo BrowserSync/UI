@@ -862,6 +862,10 @@ span.sep {
 
   [bs-Width~="20"] {
     width: 20% !important; } }
+[bs-Text~="lede"] {
+  font-size: 18px;
+  font-size: 1rem; }
+
 [bs-Color~="white"] {
   color: #fff; }
 
@@ -923,10 +927,10 @@ textarea {
   textarea p {
     font-size: 16px;
     font-size: 0.88889rem; }
-  [bs-Callout] .lede, button .lede,
-  input .lede,
-  select .lede,
-  textarea .lede {
+  [bs-Callout] [bs-Text~="lede"], button [bs-Text~="lede"],
+  input [bs-Text~="lede"],
+  select [bs-Text~="lede"],
+  textarea [bs-Text~="lede"] {
     font-size: 18px;
     font-size: 1rem;
     margin-bottom: 0;
@@ -935,6 +939,11 @@ textarea {
 [bs-Callout] {
   padding: 14px 27px;
   padding-bottom: 0; }
+  [bs-Callout] [bs-List] {
+    font-size: 16px;
+    font-size: 0.88889rem; }
+    [bs-Callout] [bs-List] [bs-Msg]:before {
+      top: 1px; }
 
 [bs-Callout~="trans"] {
   border: 0;

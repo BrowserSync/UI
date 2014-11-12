@@ -9,7 +9,7 @@
         @include font-size(16px);
     }
 
-    .lede {
+    [bs-Text~="lede"] {
         @include font-size(18px);
         margin-bottom: 0;
         color: $green;
@@ -21,6 +21,15 @@
     @extend %item-stack;
     padding: $half-spacing $base-spacing;
     padding-bottom: 0;
+
+    [bs-List] {
+        @include font-size(16px);
+        [bs-Msg] {
+            &:before {
+                top: 1px;
+            }
+        }
+    }
 }
 
 [bs-Callout~="trans"] {

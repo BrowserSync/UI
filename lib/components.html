@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div bs-Flex-Item="text">
-                        <p class="lede">Callout with large-icon</p>
+                        <p bs-Text="lede">Callout with large-icon</p>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
                     <div bs-Flex-Item="action">
@@ -182,7 +182,7 @@
             <div bs-Callout="trans">
                 <div bs-Flex>
                     <div bs-Flex-Item="text">
-                        <p class="lede">Refresh Browsers</p>
+                        <p bs-Text="lede">Refresh Browsers</p>
                         <p>Refresh all connected browsers</p>
                     </div>
                     <div bs-Flex-Item="action">
@@ -196,7 +196,7 @@
             <div bs-Callout="trans">
                 <div bs-Flex>
                     <div bs-Flex-Item="text">
-                        <p class="lede">Sync to URL</p>
+                        <p bs-Text="lede">Sync to URL</p>
                         <p>Sync all browser to one URL</p>
                     </div>
                     <div bs-Flex-Item="action">
@@ -212,7 +212,20 @@
             <h1>Callouts on white</h1>
 
             <div bs-Callout>
-                <p class="lede">Just a callout</p>
+                <div bs-Callout-Icon>
+                    <i bs-Icon="terminal"></i>
+                </div>
+                <div bs-Callout-Content>
+                    <p bs-Text="lede">Serving files from:</p>
+                    <ul bs-List>
+                        <li>/Users/shaneobsourne/code/browser-sync-control-panel</li>
+                        <li>/Users/shaneobsourne/code/browser-sync-control-panel/test</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div bs-Callout>
+                <p bs-Text="lede">Just a callout</p>
                 <p>This can contain multiple blocks of text. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad animi autem blanditiis debitis deleniti deserunt dicta dolore dolores eligendi impedit in ipsa, ipsum nisi placeat quam quas quibusdam saepe velit!</p>
             </div>
 
@@ -221,7 +234,7 @@
                     <i bs-Icon="wifi_3"></i>
                 </div>
                 <div bs-Callout-Content>
-                    <p class="lede">Callout with large-icon</p>
+                    <p bs-Text="lede">Callout with large-icon</p>
                     <p>URL for the machine you are running BrowserSync</p>
                 </div>
             </div>
@@ -230,7 +243,7 @@
                     <i bs-Icon="power"></i>
                 </div>
                 <div bs-Callout-Content>
-                    <p class="lede">Callout with large-icon</p>
+                    <p bs-Text="lede">Callout with large-icon</p>
                     <p>URL for the machine you are running BrowserSync</p>
                 </div>
             </div>
@@ -242,7 +255,7 @@
                         </div>
                     </div>
                     <div bs-Flex-Item="text">
-                        <p class="lede">Callout with large-icon</p>
+                        <p bs-Text="lede">Callout with large-icon</p>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
                     <div bs-Flex-Item="action">
@@ -262,7 +275,7 @@
                     </div>
                 </div>
                 <div bs-Callout-Content>
-                    <p class="lede">Clicks</p>
+                    <p bs-Text="lede">Clicks</p>
                     <p>Any actions that need a mouse click will not sync between browsers </p>
                 </div>
             </div>
@@ -274,7 +287,7 @@
                     </div>
                 </div>
                 <div bs-Callout-Content>
-                    <p class="lede">Scroll</p>
+                    <p bs-Text="lede">Scroll</p>
                     <p>Sync scroll position between browsers</p>
                 </div>
             </div>
@@ -290,7 +303,7 @@
                     </div>
                 </div>
                 <div bs-Callout-Content>
-                    <p class="lede">HTML Injector</p>
+                    <p bs-Text="lede">HTML Injector</p>
                     <p>Version 1.6.1</p>
                 </div>
             </div>
@@ -305,7 +318,7 @@
                         </div>
                     </div>
                     <div bs-Flex-Item="text" bs-Width="40">
-                        <p class="lede">Callout with large-icon</p>
+                        <p bs-Text="lede">Callout with large-icon</p>
                         <p>Lorem ipsum dolor sit amet</p>
                     </div>
                     <div bs-Flex-Item="action" bs-Width="60">
@@ -316,8 +329,19 @@
             </div>
 
             <hr/>
-            <h1>Lists</h1>
-
+            <h1>Lists on white</h1>
+            <div bs-Callout>
+                <ul bs-List>
+                    <li bs-Msg="success">File changed: core.css</li>
+                    <li bs-Msg="info">Some information...</li>
+                    <li bs-Msg="error">Error!</li>
+                </ul>
+                <p bs-Text="lede">Serving files from:</p>
+                <ul bs-List>
+                    <li>/Users/shaneobsourne/code/browser-sync-control-panel/lib/</li>
+                    <li>/Users/shaneobsourne/code/browser-sync-control-panel/</li>
+                </ul>
+            </div>
 
             <!-- Notifications -->
             <hr/>
