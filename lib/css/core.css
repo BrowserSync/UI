@@ -664,7 +664,8 @@ th {
 [bs-Content] {
   width: 100%;
   padding: 27px;
-  background: #F2F2F2; }
+  background: #F2F2F2;
+  overflow-y: scroll; }
   @media only screen and (min-width: 600px) {
     [bs-Content] {
       padding: 27px 54px;

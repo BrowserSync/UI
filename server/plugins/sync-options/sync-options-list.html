@@ -1,0 +1,69 @@
+<h2>Location:</h2>
+<div bs-callout="trans">
+    <div bs-flex="">
+        <div bs-flex-item="text">
+            <p bs-text="lede">Refresh Browsers</p>
+            <p>Refresh all connected browsers</p>
+        </div>
+        <div bs-flex-item="action">
+            <button bs-button="icon" ng-click="reloadAll()">
+                <i bs-icon="repeat_2"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div bs-callout="trans">
+    <div bs-flex="">
+        <div bs-flex-item="text">
+            <p bs-text="lede">Sync to URL</p>
+            <p>Sync all browser to one URL</p>
+        </div>
+        <div bs-flex-item="action">
+            <div bs-input-overlay="">
+                <form ng-submit="sendAllTo(urls.current)">
+                    <input type="text" value="" ng-model="urls.current">
+                    <button bs-button="icon"><i bs-icon="repeat_2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<h2>Actions:</h2>
+<div bs-callout="trans" ng-repeat="item in syncItems">
+    <div bs-callout-icon="flush">
+        <div class="switch">
+            <input
+                id="cmn-sync-{{$index}}"
+                ng-model="item.value"
+                ng-change="toggle(item)"
+                class="cmn-toggle cmn-toggle-round"
+                type="checkbox"
+                checked="">
+            <label for="cmn-sync-{{$index}}"></label>
+        </div>
+    </div>
+    <div bs-callout-content>
+        <p bs-text="lede">{{item.title}}</p>
+        <p>{{item.tagline}}</p>
+    </div>
+</div>
+<hr/>
+<h2>Forms:</h2>
+<div bs-callout="trans" ng-repeat="item in formItems">
+    <div bs-callout-icon="flush">
+        <div class="switch">
+            <input id="cmn-form-{{$index}}"
+                   ng-model="item.value"
+                   ng-change="formToggle(item)"
+                   class="cmn-toggle cmn-toggle-round"
+                   type="checkbox"
+                   checked="">
+            <label for="cmn-form-{{$index}}"></label>
+        </div>
+    </div>
+    <div bs-callout-content>
+        <p bs-text="lede">{{item.title}}</p>
+        <p>{{item.tagline}}</p>
+    </div>
+</div>

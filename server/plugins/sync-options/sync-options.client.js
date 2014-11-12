@@ -6,6 +6,7 @@
     var SECTION_NAME = "sync-options";
 
     angular.module("BrowserSync")
+
         .controller("SyncOptionsController",
             ["$scope", "Socket", "contentSections", syncOptionsController])
 
@@ -16,7 +17,7 @@
                     options: "="
                 },
                 templateUrl: "sync-options-list.html",
-                controller: ["$scope", "Socket", "contentSections", syncOptionsDirective]
+                controller: ["$scope", "Socket", "Location", "contentSections", syncOptionsDirective]
             };
         });
 
@@ -25,24 +26,44 @@
      * @param Socket
      * @param contentSections
      */
-    function syncOptionsDirective($scope, Socket, contentSections) {
+    function syncOptionsDirective($scope, Socket, Location, contentSections) {
 
         var ghostMode = $scope.options.ghostMode;
 
-        $scope.syncItems = {};
+        $scope.syncItems = [];
         $scope.formItems = [];
+
+        $scope.urls = {
+            local: $scope.options.urls.local,
+            current: $scope.options.urls.local + "/"
+        };
+
+        var taglines = {
+            clicks:  "Clicks will be synced",
+            scroll:  "Scroll position will be synced",
+            submit:  "Form Submissions will be synced",
+            inputs:  "Text inputs (including text-areas) will be synced",
+            toggles: "Radio + Checkboxes changes will be synced"
+        };
 
         for (var item in ghostMode) {
             if (item !== "forms" && item !== "location") {
-                $scope.syncItems[item] = ghostMode[item];
+                $scope.syncItems.push({
+                    value: ghostMode[item],
+                    name: item,
+                    title: ucfirst(item),
+                    tagline: taglines[item]
+                });
             }
         }
 
         for (item in ghostMode.forms) {
             $scope.formItems.push({
                 name: item,
+                title: ucfirst(item),
                 key: "forms." + item,
-                value: ghostMode.forms[item]
+                value: ghostMode.forms[item],
+                tagline: taglines[item]
             })
         }
 
@@ -65,6 +86,21 @@
         function prefixOption(key) {
             return "ghostMode." + key;
         }
+
+        /**
+         * Emit the reload-all event
+         */
+        $scope.reloadAll = function () {
+            Location.refreshAll();
+        };
+
+        /**
+         * Emit the socket event
+         */
+        $scope.sendAllTo = function (path) {
+            $scope.urls.current = $scope.options.urls.local + "/";
+            Location.sendAllTo(path);
+        };
     }
 
     /**
@@ -74,6 +110,10 @@
      */
     function syncOptionsController($scope, Socket, contentSections) {
         $scope.section = contentSections[SECTION_NAME];
+    }
+
+    function ucfirst (string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
 })(angular);

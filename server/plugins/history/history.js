@@ -1,4 +1,5 @@
 var urls = require("../../urls");
+var url  = require("url");
 var path = require("path");
 var fs   = require("fs");
 
@@ -65,9 +66,11 @@ function sendUpdatedUrls (sockets, urls) {
  */
 function sendToUrl (localUrl, data) {
 
+    var parsed = url.parse(data.path);
     var bs = this;
+    data.path = parsed.path;
     data.override = true;
-    data.url = data.path;
+    data.url = parsed.href;
     bs.io.sockets.emit("browser:location", data);
 }
 
