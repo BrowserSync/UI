@@ -5,5 +5,6 @@ exports.config = {
     baseUrl: process.env["BS_CP_BASE"],
     specs: [
         '*.js',
+        //'e2e.history.js',
     ]
 };

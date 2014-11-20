@@ -17,7 +17,7 @@
                     options: "="
                 },
                 templateUrl: "history.directive.html",
-                controller: ["$scope", "$rootScope", "Socket", "contentSections", historyDirective]
+                controller: ["$scope", "$rootScope", "Location", "Socket", "contentSections", historyDirective]
             }
         });
 
@@ -38,7 +38,7 @@
      * @param Socket
      * @param contentSections
      */
-    function historyDirective($scope, $rootScope, Socket) {
+    function historyDirective($scope, $rootScope, Location, Socket) {
 
         /**
          * @type {{loading: boolean}}
@@ -58,58 +58,35 @@
         $scope.urls = {
             local: $scope.options.urls.local,
             current: "",
-            visited: $scope.options._visited
+            visited: []
         };
+
+        Location.getHistory().then(function (items) {
+            $scope.urls.visited = items;
+        });
 
         $scope.selectedUrl = null;
 
         /**
          * Emit the socket event
          */
-        $scope.sendAllTo = function (path, trigger) {
-
-            $scope.setLoading(trigger);
-            $scope.urls.current = "";
-
-            if (!path || path === "undefined") {
-                $scope.resetLoaders();
-                return;
-            }
-
-            Socket.emit("urls:browser:url", {
-                path: path
-            });
-
-            window.setTimeout(function () {
-                $scope.$apply(function () {
-                    $rootScope.$broadcast("notify:flash", {
-                        heading: "Instruction Sent:",
-                        message: "Send all browsers to " + path,
-                        status: "success",
-                        timeout: 2000
-                    });
-                    $scope.resetLoaders();
-                })
-            }, 200);
+        $scope.sendAllTo = function (url) {
+            Location.sendAllTo(url.path);
         };
 
         /**
          * Emit the reload-all event
          */
-        $scope.reloadAll = function () {
+        $scope.reloadAll = function (url) {
 
-            $scope.setLoading("reloadAll");
-            Socket.emit("urls:browser:reload");
-            window.setTimeout(notify.bind(null, $scope, $rootScope), 200);
         };
 
         /**
          *
          */
         $scope.updateVisited = function (data) {
-            $scope.$apply(function () {
-                $scope.urls.visited = data;
-            });
+            $scope.urls.visited = data;
+            $scope.$digest();
         };
 
         /**
@@ -120,36 +97,6 @@
             $scope.ui.loading       = true;
             $scope.ui.loaders[name] = true;
         };
-
-        /**
-         * Reset the loading state
-         */
-        $scope.resetLoaders = function () {
-            $scope.ui.loading = false;
-            $scope.ui.loaders.reloadAll = false;
-            $scope.ui.loaders.sendAllTo = false;
-            $scope.ui.loaders.newUrl    = false;
-        };
-
-        Socket.on("cp:urls:update", $scope.updateVisited);
-    }
-
-    /**
-     * Let the user know shit is happening
-     */
-    function notify($scope, $rootScope) {
-
-        $scope.$apply(function () {
-
-            $scope.resetLoaders();
-
-            $rootScope.$broadcast("notify:flash", {
-                heading: "Instruction Sent:",
-                message: "Reload all browsers..",
-                status: "error",
-                timeout: 2000
-            });
-        });
     }
 
 })(angular);

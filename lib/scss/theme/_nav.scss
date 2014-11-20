@@ -29,19 +29,26 @@
             background: $white;
             [bs-Actions] {
                 opacity: 1;
+                a {
+                    color: $green-lt;
+                }
             }
         }
     }
     [bs-Actions] {
-        opacity: 0;
+        opacity: .5;
     }
 }
 
 [bs-Actions~="inline"] {
+
     transition: opacity .2s;
     margin-left: $half-spacing;
+    display: inline-block;
+    float: right;
+
     a {
-        color: $red;
+        color: $grey-lt;
         @include font-size(12px);
         display: inline-block;
     }

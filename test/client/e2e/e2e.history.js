@@ -14,9 +14,23 @@ describe('History section', function() {
         browser.get("/history");
         bsUrl     = process.env["BS_URL"];
     });
-    it("should list the form sync options", function () {
-        element.all(by.css(".bs-main-section ul li")).count().then(function (count) {
-            expect(count).toEqual(3);
+    it("should list visited urls", function () {
+
+        var elems;
+        openWindow(ptor, bsUrl);
+        browser.getAllWindowHandles().then(function (handles) {
+
+            browser.switchTo().window(handles[1]);
+            browser.get(bsUrl + "/scrolling.html");
+
+            browser.switchTo().window(handles[0]);
+            elems = element.all(by.repeater('url in urls.visited'));
+            expect(elems.count()).toEqual(1);
+            expect(elems.get(0).getText()).toContain(bsUrl + "/");
         });
     });
 });
+
+function openWindow (ptor, url) {
+    ptor.executeScript("window.open('%s')".replace("%s", url));
+}

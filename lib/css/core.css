@@ -1157,15 +1157,19 @@ textarea {
     background: #fff; }
     [bs-List~="actions"] > li:hover [bs-Actions] {
       opacity: 1; }
+      [bs-List~="actions"] > li:hover [bs-Actions] a {
+        color: #21A695; }
 [bs-List~="actions"] [bs-Actions] {
-  opacity: 0; }
+  opacity: .5; }
 
 [bs-Actions~="inline"] {
   -webkit-transition: opacity .2s;
           transition: opacity .2s;
-  margin-left: 14px; }
+  margin-left: 14px;
+  display: inline-block;
+  float: right; }
   [bs-Actions~="inline"] a {
-    color: #FF4453;
+    color: #666666;
     font-size: 12px;
     font-size: 0.66667rem;
     display: inline-block; }

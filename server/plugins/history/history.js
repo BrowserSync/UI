@@ -26,7 +26,10 @@ module.exports = {
             client.on("urls:browser:reload",   reloadAll.bind(bs));
             client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
             client.on("urls:client:connected", function (data) {
-                sendUpdatedUrls(sockets, urls.trackUrls(validUrls, data));
+                sendUpdatedUrls(sockets, urls.trackUrls(validUrls, data.path));
+            });
+            client.on("cp:get:visited", function (req) {
+                sockets.emit("cp:receive:visited", validUrls);
             });
         });
     },
@@ -58,6 +61,7 @@ module.exports = {
  *
  */
 function sendUpdatedUrls (sockets, urls) {
+
     sockets.emit("cp:urls:update", urls);
 }
 

@@ -32,7 +32,7 @@ var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    open: false,
-    tunnel: true
+    open: false
+    //tunnel: true
     //online: false
 });

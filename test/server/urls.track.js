@@ -23,8 +23,8 @@ describe("Adding Urls", function() {
     });
 
     it("Adds a new url & emits to socket", function () {
-        var actual   = urls.trackUrls(validUrls, {path: "forms.html"});
-        var expected = 2;
+        var actual   = urls.trackUrls(validUrls, validUrls[0].path);
+        var expected = 1;
         assert.equal(actual.length, expected);
     });
 });

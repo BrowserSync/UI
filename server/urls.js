@@ -1,5 +1,5 @@
 var _           = require("lodash");
-var url           = require("url");
+var url         = require("url");
 
 /**
  * @param {Array} paths
@@ -17,10 +17,10 @@ module.exports.addPath = function (paths, path) {
  * @param {Array} paths
  * @param {Object} data
  */
-module.exports.trackUrls = function (paths, data) {
+module.exports.trackUrls = function (paths, path) {
 
     var len     = paths.length;
-    var updated = exports.addPath(paths, url.parse(data.path).pathname);
+    var updated = exports.addPath(paths, url.parse(path).pathname);
 
     return updated;
 

@@ -48,7 +48,7 @@ describe("Directive: url-sync.reloadAll()", function () {
             var isolatedScope = scope.$$childHead;
             assert.deepEqual(typeof isolatedScope.reloadAll, "function");
         });
-        it("Emits the reload-all event", function (done) {
+        it.skip("Emits the reload-all event", function (done) {
 
             var stub = sinon.spy(socket, "emit");
             var isolatedScope = scope.$$childHead;

@@ -1,39 +1,6 @@
-<ul class="bs-list">
-    <li>
-        <p class="lede">Refresh all connected Browsers</p>
-
-        <div class="loader">
-            <button class="button" ng-class="{'button--loading': ui.loading}" ng-click="reloadAll()">Refresh All</button>
-            <span class="small progress" ng-if="ui.loaders.reloadAll">Loading</span>
-        </div>
-    </li>
-    <li>
-        <p class="lede">Visit a previous URL</p>
-
-        <p>
-            <select ng-model="selectedUrl" ng-options="url.path for url in urls.visited">
-                <option value="">-- Choose Previous --</option>
-            </select>
-        </p>
-        <div class="loader">
-            <button class="button" ng-click="sendAllTo(selectedUrl.path, 'sendAllTo')">Go!</button>
-            <span class="small progress" ng-if="ui.loaders.sendAllTo">Loading</span>
-        </div>
-    </li>
-    <li>
-        <p class="lede">Sync all to a new url: </p>
-
-        <p>{{urls.local}}/
-
-        <p>
-
-        <form ng-submit="sendAllTo(urls.current, 'newUrl')">
-            <p><input type="text" name="url-sync" ng-model="urls.current"></p>
-
-            <div class="loader">
-                <button class="button">Go</button>
-                <span class="small progress" ng-if="ui.loaders.newUrl">Loading</span>
-            </div>
-        </form>
+<h2>These are pages you've visited recently</h2>
+<ul bs-List="bordered actions" ng-if="urls.visited">
+    <li ng-repeat="url in urls.visited"><span>{{urls.local}}</span>{{url.path}}
+        <span bs-Actions="inline"><a href="{{urls.local}}{{url.path}}" target="_blank">New Tab</a> <span bs-Sep>|</span> <a href="#" ng-click="sendAllTo(url)">Sync all</a> </span>
     </li>
 </ul>
