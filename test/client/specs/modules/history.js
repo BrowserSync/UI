@@ -12,8 +12,11 @@ describe("Module: History", function () {
             Location = _Location_;
             rootScope = $rootScope;
         }));
-        it.only("has reloadAll method", function () {
+        it("has reloadAll method", function () {
             assert.isFunction(Location.refreshAll);
+        });
+        it("has sendAllto method", function () {
+            assert.isFunction(Location.sendAllTo);
         });
     });
 });

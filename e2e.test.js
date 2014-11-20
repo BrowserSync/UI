@@ -1,10 +1,5 @@
 var path           = require("path");
-
-//var bspath         = "/Users/shakyshane/sites/os-browser-sync";
-var bspath       = "/Users/shaneobsourne/sites/browser-sync";
 var config         = path.resolve("./test/client/e2e/config.js");
-//var htmlpath     = "/Users/shakyshane/code/bs-plugins/html-injector";
-var htmlpath     = "/Users/shaneobsourne/code/html-injector";
 
 var cp   = require("child_process");
 var exec = require("child_process").exec;
@@ -19,9 +14,9 @@ var logger   = require("eazy-logger").Logger({
 });
 
 var cp           = require("./index");
-var bs           = require(bspath);
+var bs           = require("browser-sync");
 
-var htmlInjector = require(htmlpath);
+var htmlInjector = require("bs-html-injector");
 
 bs.use({
     "plugin:name": "e2e test plugin",

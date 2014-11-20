@@ -1,9 +1,5 @@
-var path   = "/Users/shakyshane/sites/os-browser-sync";
-var path   = "/Users/shakyshane/sites/os-browser-sync";
-var bspath = "/Users/shaneobsourne/sites/browser-sync";
-
 var cp     = require("./index");
-var bs     = require(bspath);
+var bs     = require("browser-sync");
 
 bs.use(cp);
 

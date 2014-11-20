@@ -17,6 +17,9 @@ describe("Directive: Sync options", function () {
                 server: {
                     baseDir: "./"
                 },
+                urls: {
+                    local: "http://localhost:3000"
+                },
                 ghostMode: {
                     clicks: true,
                     scroll: true,
@@ -47,8 +50,6 @@ describe("Directive: Sync options", function () {
             var formItems = isolatedScope.formItems;
             assert.equal(formItems[0].title, "Toggle");
             assert.equal(formItems[1].title, "Submit");
-
-
         });
     });
 });
