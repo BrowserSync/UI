@@ -5,7 +5,7 @@
  */
 var assert = require("chai").assert;
 
-describe('History section', function() {
+describe('Plugins section', function() {
 
     var expected, selector, menu, bsUrl;
     var ptor = protractor.getInstance();
@@ -18,12 +18,7 @@ describe('History section', function() {
     });
     it("should list the form sync options", function () {
 
-        element.all(by.repeater("plugin in ui.plugins")).count().then(function (count) {
-            assert.equal(1, count);
-        });
-
-        element.all(by.css(".bs-main-section ul li")).count().then(function (count) {
-            assert.equal(1, count);
-        });
+        expect(element.all(by.repeater("plugin in ui.plugins")).count()).toBe(1);
+        expect(element.all(by.css(".bs-main-section ul li")).count()).toBe(1);
     });
 });
