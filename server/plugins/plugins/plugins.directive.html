@@ -1,10 +1,19 @@
-<section ng-repeat="plugin in ui.plugins" ng-if="ui.plugins">
-    <ul class="bs-list">
-        <li>
-            <p class="lede">{{plugin.name}}</p>
-            <label>
-                <input type="checkbox" ng-model="plugin.active" ng-change="togglePlugin(plugin)"> Enabled
-            </label>
-        </li>
-    </ul>
+<section ng-if="ui.plugins">
+    <div bs-Callout ng-repeat="plugin in ui.plugins">
+        <div bs-callout-icon="flush-top">
+            <div class="switch">
+                <input id="cmn-form-{{$index}}"
+                       ng-model="plugin.active"
+                       ng-change="togglePlugin(plugin)"
+                       class="cmn-toggle cmn-toggle-round"
+                       type="checkbox"
+                       checked="">
+                <label for="cmn-form-{{$index}}"></label>
+            </div>
+        </div>
+        <div bs-Callout-Content>
+            <p bs-Text="lede">{{ plugin.name }}</p>
+            <p></p>
+        </div>
+    </div>
 </section>
