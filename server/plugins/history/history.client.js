@@ -35,8 +35,8 @@
      * Controller for the URL sync
      * @param $scope
      * @param $rootScope
+     * @param Location
      * @param Socket
-     * @param contentSections
      */
     function historyDirective($scope, $rootScope, Location, Socket) {
 
@@ -97,6 +97,8 @@
             $scope.ui.loading       = true;
             $scope.ui.loaders[name] = true;
         };
+
+        Socket.on("cp:urls:update", $scope.updateVisited);
     }
 
 })(angular);
