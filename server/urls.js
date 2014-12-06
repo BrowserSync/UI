@@ -15,20 +15,8 @@ module.exports.addPath = function (paths, path) {
 
 /**
  * @param {Array} paths
- * @param {Object} data
+ * @param {String} path
  */
 module.exports.trackUrls = function (paths, path) {
-
-    var len     = paths.length;
-    var updated = exports.addPath(paths, url.parse(path).pathname);
-
-    return updated;
-
-    //
-    //return updated;
-    //if (updated.length !== len) {
-    //    return updated;
-    //}
-    //
-    //return false;
+    return exports.addPath(paths, url.parse(path).path);
 };

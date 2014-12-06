@@ -8,32 +8,16 @@
     left: 0;
 }
 
-.bs-disconnect {
-
-    @extend %cover-all;
-    background: rgba(black, .6);
-    color: $white;
-    text-align: center;
-    padding: $base-spacing $half-spacing;
-
-    display: none;
-    z-index: 2000;
-
-    &.active {
-        display: inherit;
-    }
-}
-
 [bs-Overlay] {
 
     @extend %cover-all;
-    background: rgba(black, .6);
+    background: rgba(black, .9);
     padding: $base-spacing*2 $half-spacing;
     color: $white;
     text-align: center;
     visibility: hidden;
     z-index: 2000;
-    
+
     &.active {
         visibility: visible;
     }

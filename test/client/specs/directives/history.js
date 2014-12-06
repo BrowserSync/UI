@@ -1,4 +1,4 @@
-describe("Directive: Locations", function () {
+describe("Directive: History", function () {
 
     var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));
@@ -43,11 +43,25 @@ describe("Directive: Locations", function () {
             scope.$digest();
         }));
 
-        it("has all loaders disabled on load", function () {
+        it("sets the base url as first item in list", function () {
 
-            //var isolatedScope = scope.$$childHead;
-            //assert.isFalse(isolatedScope.ui.loaders.reloadAll);
-            //assert.isFalse(isolatedScope.ui.loaders.sendAllTo);
+            //console.log(element);
+
+            var isolatedScope = scope.$$childHead;
+
+            isolatedScope.updateVisited([
+                {
+                    path: "/"
+                },
+                {
+                    path: "scrolling.html"
+                },
+                {
+                    path: "scrolling.html?hello=shane"
+                }
+            ]);
+
+            assert.equal(isolatedScope.urls.visited[2].path, "scrolling.html?hello=shane");
         });
     });
 });

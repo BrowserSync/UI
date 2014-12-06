@@ -27,7 +27,6 @@ describe('History section', function() {
             browser.switchTo().window(handles[0]);
             elems = element.all(by.repeater('url in urls.visited'));
             expect(elems.count()).toEqual(2);
-            //expect(elems.get(0).getText()).toContain(bsUrl + "/");
         });
     });
 });

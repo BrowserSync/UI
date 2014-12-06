@@ -1,10 +1,18 @@
 var cp     = require("./index");
 var bs     = require("browser-sync");
 
+var client = require("/Users/shakyshane/Sites/browser-sync-modules/browser-sync-client");
+
+client["plugin:name"] = "client:script";
+
+bs.use(client);
+
 bs.use(cp);
 
 bs({
-    proxy: "swoon.static",
+    proxy: "grenade.static",
     open: false,
-    port: 3000
+    minify: false,
+    tunnel: true
+    //port: 3000
 });
