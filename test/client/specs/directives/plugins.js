@@ -50,7 +50,7 @@ describe("Directive: Plugins", function () {
             scope.$digest();
         }));
         it("renders the correct markup elements", function () {
-            var listElem = element.find("ul").find("li");
+            var listElem = element.find("[bs-callout]");
             assert.equal(listElem.length, 1);
             assert.isTrue(listElem.find("input")[0].checked);
         });

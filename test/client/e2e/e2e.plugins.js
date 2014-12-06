@@ -1,6 +1,6 @@
 /**
  *
- * E2E tests for the History plugin
+ * E2E tests for the plugins page
  *
  */
 var assert = require("chai").assert;
@@ -17,8 +17,6 @@ describe('Plugins section', function() {
         bsUrl     = process.env["BS_URL"];
     });
     it("should list the form sync options", function () {
-
         expect(element.all(by.repeater("plugin in ui.plugins")).count()).toBe(1);
-        expect(element.all(by.css(".bs-main-section ul li")).count()).toBe(1);
     });
 });
