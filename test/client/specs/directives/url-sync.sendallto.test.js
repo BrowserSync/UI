@@ -97,8 +97,6 @@ describe("Directive: url-sync.sendAllTo()", function () {
             var lis = element.find("ul").find("li");
             assert.equal(isolatedScope.urls.visited.length, 2);
             assert.equal(lis.length, 2);
-            assert.include(lis.eq(0).text(), "http://localhost:3000/");
-            assert.include(lis.eq(1).text(), "http://localhost:3000/index.html");
         });
     });
 });

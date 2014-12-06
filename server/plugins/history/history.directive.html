@@ -1,6 +1,6 @@
 <h2>These are pages you've visited recently</h2>
 <ul bs-List="bordered actions" ng-if="urls.visited">
-    <li ng-repeat="url in urls.visited"><span>{{urls.local}}</span>{{url.path}}
+    <li ng-repeat="url in urls.visited">{{url.path}}
         <span bs-Actions="inline"><a href="{{urls.local}}{{url.path}}" target="_blank">New Tab</a> <span bs-Sep>|</span> <a href="#" ng-click="sendAllTo(url)">Sync all</a> </span>
     </li>
 </ul>

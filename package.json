@@ -46,7 +46,7 @@
     "through2": "^0.6.1"
   },
   "devDependencies": {
-    "browser-sync": "^1.5.3",
+    "browser-sync": "^1.7.2",
     "bs-html-injector": "^1.1.0",
     "chai": "^1.9.1",
     "eazy-logger": "^1.5.0",
