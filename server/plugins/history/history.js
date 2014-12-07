@@ -2,10 +2,12 @@ var urls = require("../../urls");
 var url  = require("url");
 var path = require("path");
 var fs   = require("fs");
+var Immutable   = require("immutable");
 
-var validUrls   = [{
-    path: "/"
-}];
+/**
+ * @type {Immutable.Set}
+ */
+var validUrls   = Immutable.OrderedSet('/');
 
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
@@ -26,10 +28,11 @@ module.exports = {
             client.on("urls:browser:reload",   reloadAll.bind(bs));
             client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
             client.on("urls:client:connected", function (data) {
-                sendUpdatedUrls(sockets, urls.trackUrls(validUrls, data.path));
+                validUrls = validUrls.add(url.parse(data.path).path);
+                sendUpdatedUrls(sockets, validUrls);
             });
             client.on("cp:get:visited", function (req) {
-                sockets.emit("cp:receive:visited", validUrls);
+                sockets.emit("cp:receive:visited", decorateUrls(validUrls));
             });
         });
     },
@@ -61,8 +64,19 @@ module.exports = {
  *
  */
 function sendUpdatedUrls (sockets, urls) {
+    sockets.emit("cp:urls:update", decorateUrls(urls));
+}
 
-    sockets.emit("cp:urls:update", urls);
+/**
+ * @param {Immutable.Set} urls
+ * @returns {Array}
+ */
+function decorateUrls (urls) {
+    return urls.map(function (value) {
+        return {
+            path: value
+        }
+    }).toJS();
 }
 
 /**
