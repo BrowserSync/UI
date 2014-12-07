@@ -37,9 +37,16 @@
         </div>
     </section>
     <section ng-if="ui.proxy">
-        <p bs-Text="lede">Proxying:<p>
-        <ul bs-List>
-            <li><a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a></li>
-        </ul>
+        <div bs-Callout>
+            <div bs-Callout-Icon>
+                <i bs-Icon="target"></i>
+            </div>
+            <div bs-Callout-Content>
+                <p bs-Text="lede">Proxying:</p>
+                <p>
+                    <a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a>
+                </p>
+            </div>
+        </div>
     </section>
 </div>

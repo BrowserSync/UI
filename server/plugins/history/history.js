@@ -1,8 +1,8 @@
-var urls = require("../../urls");
-var url  = require("url");
-var path = require("path");
-var fs   = require("fs");
-var Immutable   = require("immutable");
+var urls      = require("../../urls");
+var url       = require("url");
+var path      = require("path");
+var fs        = require("fs");
+var Immutable = require("immutable");
 
 /**
  * @type {Immutable.Set}
