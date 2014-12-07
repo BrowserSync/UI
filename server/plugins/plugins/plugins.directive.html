@@ -1,4 +1,4 @@
-<section ng-if="ui.plugins">
+<section ng-if="ui.plugins.length">
     <div bs-callout ng-repeat="plugin in ui.plugins">
         <div bs-callout-icon="flush-top">
             <div class="switch">
@@ -17,3 +17,13 @@
         </div>
     </div>
 </section>
+<section ng-if="!ui.plugins.length">
+    <div bs-callout>
+        <p bs-text="lede">Sorry, no plugins were loaded</p>
+        <p>You can either write your own plugin (guide coming soon!) or <a href="https://www.npmjs.org/search?q=browser%20sync%20plugin" target="_blank">Search NPM</a>
+            for packagess that contain the keywords <code>browser sync plugin</code>
+        </p>
+    </div>
+
+</section>
+
