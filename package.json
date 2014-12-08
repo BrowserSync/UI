@@ -59,6 +59,7 @@
     "gulp-jshint": "^1.8.4",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^1.2.4",
+    "gulp-svg-sprites": "^1.1.0",
     "karma": "^0.12.22",
     "karma-firefox-launcher": "^0.1.3",
     "karma-html2js-preprocessor": "^0.1.0",

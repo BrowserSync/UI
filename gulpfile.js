@@ -6,7 +6,9 @@ var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require('gulp-browserify');
 var rename      = require('gulp-rename');
 var filter      = require('gulp-filter');
+var sprites     = require('gulp-svg-sprites');
 var browserSync = require('browser-sync');
+var crossbow    = require("/Users/shakyshane/code/crossbow.js/plugins/blog");
 var reload      = browserSync.reload;
 
 /**
@@ -55,7 +57,7 @@ gulp.task('browser-sync-dev', function () {
     //browserSync.use(require("bs-html-injector"), {files: "lib/*.html"});
     browserSync({
         server: "lib",
-        startPath: "_server-info.html"
+        startPath: "server-info.html"
     });
 });
 
@@ -82,10 +84,49 @@ gulp.task('bs-inject', function () {
 });
 
 /**
+ * Compile HTML
+ */
+gulp.task('build-src', function () {
+    return gulp.src("lib/src/**/*")
+        .pipe(crossbow({
+            cwd: "lib/src",
+            defaultLayout: '_layouts/parent.hbs'
+        }))
+        .pipe(gulp.dest("./lib"))
+});
+
+/**
+ * Compile SVG Symbols
+ */
+gulp.task('svg', function () {
+    return gulp.src("lib/img/svg/*.svg")
+        .pipe(sprites({
+            mode: "symbols",
+            svgId: "svg-%f",
+            templates: {
+                symbols: require("fs").readFileSync("lib/img/svg-template.tmpl", "utf-8")
+            },
+            afterTransform: function (data) {
+                data.svg = data.svg.map(function (item) {
+                    item.raw = item.raw.replace(/ fill="(.+?)"/g, function () {
+                        return "";
+                    });
+                    return item;
+                });
+
+                return data;
+            }
+        }))
+        .pipe(gulp.dest("lib/img/icons"))
+});
+
+/**
  * Build Front-end stuff
  */
-gulp.task('dev-frontend', ["sass", "browser-sync-dev"], function () {
+gulp.task('dev-frontend', ["sass", "build-src", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
+    gulp.watch("lib/src/**/*", ["build-src", browserSync.reload]);
+    //gulp.watch("lib/*.html", browserSync.reload);
 });
 
 gulp.task('watch-css', ["sass"], function () {

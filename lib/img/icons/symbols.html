@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="cache-control" content="max-age=0"/>
+    <meta http-equiv="cache-control" content="no-cache"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT"/>
+    <meta http-equiv="pragma" content="no-cache"/>
+    <title>Icon kit preview | gulp-svg-sprites</title>
+    <link href="css/sprite.css" rel="stylesheet" type="text/css" media="all"/>
+    <style type="text/css">@CHARSET "UTF-8";
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        color: #666;
+        background: #fafafa;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1em;
+        line-height: 1.4
+    }
+
+    header {
+        display: block;
+        padding: 3em 3em 2em 3em;
+        background-color: #fff
+    }
+
+    header p {
+        margin: 0 0 0 0;
+    }
+
+    nav {
+        font-size: .7em;
+        display: block;
+        width: 100%;
+        margin: 0 0 2em 0
+    }
+
+    nav a {
+        display: inline-block;
+        text-decoration: none;
+        margin-left: 2em;
+        color: #0f7595;
+        white-space: nowrap
+    }
+
+    nav a:hover {
+        text-decoration: underline
+    }
+
+    nav a.current {
+        font-weight: bold;
+        text-decoration: underline;
+        color: #666
+    }
+
+    section {
+        border-top: 1px solid #eee;
+        padding: 2em 3em 0 3em
+    }
+
+    ul {
+        margin: 0;
+        padding: 0
+    }
+
+    .icon-boxes li {
+        display: inline-block;
+        background-color: #fff;
+        position: relative;
+        margin: 0 2em 2em 0;
+        vertical-align: top;
+        border: 1px solid #ccc;
+        padding: 1em 1em 1em 1em;
+        cursor: default
+    }
+
+    .icon-box {
+        margin: 0;
+        width: 144px;
+        height: 144px;
+        position: relative;
+        background: #ccc url(data:image/gif;base64,R0lGODlhDAAMAIAAAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4wLWMwNjEgNjQuMTQwOTQ5LCAyMDEwLzEyLzA3LTEwOjU3OjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozQjk4OTI0MUY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozQjk4OTI0MkY5NTIxMUUyQkJDMEI5NEFEM0Y1QTYwQyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjNCOTg5MjNGRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjNCOTg5MjQwRjk1MjExRTJCQkMwQjk0QUQzRjVBNjBDIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+Af/+/fz7+vn49/b19PPy8fDv7u3s6+rp6Ofm5eTj4uHg397d3Nva2djX1tXU09LR0M/OzczLysnIx8bFxMPCwcC/vr28u7q5uLe2tbSzsrGwr66trKuqqainpqWko6KhoJ+enZybmpmYl5aVlJOSkZCPjo2Mi4qJiIeGhYSDgoGAf359fHt6eXh3dnV0c3JxcG9ubWxramloZ2ZlZGNiYWBfXl1cW1pZWFdWVVRTUlFQT05NTEtKSUhHRkVEQ0JBQD8+PTw7Ojk4NzY1NDMyMTAvLi0sKyopKCcmJSQjIiEgHx4dHBsaGRgXFhUUExIREA8ODQwLCgkIBwYFBAMCAQAAIfkEAAAAAAAsAAAAAAwADAAAAhaEH6mHmmzcgzJAUG/NVGrfOZ8YLlABADs=) top left repeat;
+        border: 1px solid #ccc;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center
+    }
+    .icon-box.inverted {
+        background: black;
+    }
+
+    .icon {
+        display: inline;
+        display: inline-block
+    }
+
+    .snippet-popover {
+        position: absolute;
+        display: none;
+        opacity: 0;
+        bottom: 0;
+        left: 0;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 16px;
+        z-index: 1;
+        transition: all .3s;
+    }
+    .snippet-popover.active {
+        display: block;
+        opacity: 1;
+    }
+
+    pre {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin: 0;
+        padding: 5px 0;
+        font-size: 1em;
+        font-weight: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    h4 {
+        margin: 0;
+    }
+
+    footer {
+        display: block;
+        margin: 0;
+        padding: 0 3em 3em 3em
+    }
+
+    footer p {
+        margin: 0;
+        font-size: .7em
+    }
+
+    footer a {
+        color: #0f7595;
+        margin-left: 0
+    }
+    </style>
+
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
+
+<symbol id="svg-logo" viewBox="0 0 38 38">
+    <path d="M18.9 35.2h-.2L6.9 30.3c-.1 0-.2-.1-.3-.3l-5-11.8c-.1-.1-.1-.3 0-.4l5-11.7c0-.1.1-.2.3-.3L18.7 1h.4l11.8 4.9c.1 0 .2.1.3.3l5 11.8c.1.1.1.3 0 .4l-4.9 11.8c0 .1-.1.2-.3.3l-11.9 4.8c-.1-.1-.1-.1-.2-.1zM7.5 29.5l11.4 4.7 11.5-4.6 4.7-11.4-4.8-11.5L18.9 2 7.4 6.7 2.7 18.1l4.8 11.4zM18.5 35.3c-.3 0-.5-.2-.5-.5V2.4c0-.3.2-.5.5-.5s.5.3.5.5v32.4c0 .3-.2.5-.5.5zM35.7 18.9c-.1 0-.2 0-.3-.1L6.7 7c-.3-.2-.5-.6-.4-1 .2-.4.6-.6 1-.4L36 17.5c.4.2.6.6.4 1-.1.3-.4.4-.7.4zM18.9 35.3c-.2 0-.3-.1-.4-.2-.2-.2-.2-.6 0-.8l16.8-16.6c.2-.2.6-.2.8 0 .2.2.2.6 0 .8L19.3 35.1c-.1.2-.2.2-.4.2zM30.8 30.5h-.2l-11.9-4.9c-.2-.1-.4-.4-.3-.6.1-.2.4-.4.6-.3l12 4.8c.2.1.4.4.3.6-.1.2-.3.4-.5.4zM18.9 35c-.1 0-.1 0-.2-.1L2 18.3c-.1-.1-.1-.3 0-.4.1-.1.3-.1.4 0l16.7 16.6c.1.1.1.3 0 .4 0 .1-.1.1-.2.1zM2.2 18.1M1.7 18.3"/><circle cx="18.3" cy="24.7" r="1.2"/><circle cx="7.1" cy="6.2" r="1.2"/><circle cx="35.8" cy="18" r="1.2"/><circle cx="18.3" cy="34.6" r="1.2"/><circle cx="2.2" cy="18" r="1.2"/>
+</symbol>
+<symbol id="svg-logo-word" viewBox="0 0 194 40">
+    <g><path d="M15 6.6c4.3 0 6.6 1.7 6.6 5.7 0 2.9-1.1 4.3-2.9 5.1 2 .7 3.5 2 3.5 5.2 0 4.7-2.7 6.2-6.9 6.2H6.9V6.6H15zM9.4 8.8v7.7h5.7c2.8 0 4-1.3 4-4 0-2.6-1.4-3.7-4.2-3.7H9.4zm0 9.8v8h5.9c2.7 0 4.5-.9 4.5-4.2 0-3.4-2.9-3.9-4.6-3.9H9.4zM26.9 12.8h2.4V15s2.8-1.9 5.9-2.5v2.4c-3 .6-5.9 2.2-5.9 2.2v11.8h-2.4V12.8zM51.5 20.6c0 5.9-1.4 8.6-6.9 8.6-5.4 0-6.9-2.7-6.9-8.6 0-5.5 1.8-8.2 6.9-8.2 5.1 0 6.9 2.7 6.9 8.2zm-2.5 0c0-4.5-1-6.1-4.4-6.1-3.4 0-4.4 1.6-4.4 6.1 0 4.6.6 6.5 4.4 6.5 3.8 0 4.4-1.9 4.4-6.5zM57 12.8l3.3 14h.5l3.8-13.7h2.5l3.8 13.7h.5l3.2-14H77l-3.8 16.1h-4l-3.4-12.6-3.4 12.6h-4l-3.8-16.1H57zM91.6 15.1s-3.6-.5-5.6-.5c-2 0-3.5.5-3.5 2.4 0 1.5.8 1.9 4.2 2.5 4 .7 5.5 1.5 5.5 4.6 0 3.8-2.4 5-6.2 5-2.1 0-5.7-.6-5.7-.6l.1-2.1s3.7.5 5.3.5c2.6 0 4.1-.6 4.1-2.8 0-1.7-.8-2.1-4.3-2.6-3.6-.6-5.4-1.3-5.4-4.5 0-3.5 2.9-4.7 5.8-4.7 2.4 0 5.8.6 5.8.6l-.1 2.2zM108.4 26.8l.1 1.9s-3.7.5-6.3.5c-4.8 0-6.4-2.8-6.4-8.3 0-6.1 2.6-8.5 6.7-8.5 4.3 0 6.5 2.3 6.5 7.5l-.1 1.8H98.3c0 3.4 1.1 5.2 4.2 5.2 2.4.1 5.9-.1 5.9-.1zm-1.8-6.9c0-4-1.2-5.4-4.1-5.4-2.7 0-4.3 1.5-4.3 5.4h8.4zM113.5 12.8h2.4V15s2.8-1.9 5.9-2.5v2.4c-3 .6-5.9 2.2-5.9 2.2v11.8h-2.4V12.8zM138.2 9s-4.5-.5-6.3-.5c-3.2 0-4.8 1.1-4.8 3.6 0 2.9 1.5 3.4 5.4 4.2 4.4 1 6.4 2.1 6.4 6 0 4.9-2.7 6.9-7.1 6.9-2.6 0-7.1-.7-7.1-.7l.3-2.1s4.4.6 6.7.6c3.2 0 4.8-1.4 4.8-4.5 0-2.5-1.3-3.2-5-3.9-4.6-1-6.9-2.1-6.9-6.3 0-4.3 2.8-6 7.2-6 2.6 0 6.7.6 6.7.6l-.3 2.1zM143.9 12.8l4 14h1.1l4.1-14h2.4L148.8 36h-2.4l2.1-7.1h-2.4l-4.6-16.1h2.4zM159.2 28.9V12.8h2.4v1.1s2.6-1.4 5-1.4c4.4 0 5.4 2.2 5.4 7.9v8.5h-2.4v-8.4c0-4.2-.5-5.8-3.5-5.8-2.3 0-4.5 1.2-4.5 1.2V29h-2.4zM187.6 12.9l-.1 2s-2.6-.3-3.8-.3c-3.7 0-4.7 1.6-4.7 5.9 0 4.8.7 6.5 4.7 6.5 1.2 0 3.8-.3 3.8-.3l.1 2s-3 .5-4.5.5c-5.1 0-6.6-2.4-6.6-8.7 0-5.8 1.9-8.1 6.7-8.1 1.5 0 4.4.5 4.4.5z"/></g>
+</symbol>
+</svg>
+<header>
+    <h1 id="logo">Gulp SVG Sprites <small>(2 icons in &lt;symbol&gt; mode)</small></h1>
+    <h4>Files Generated:</h4>
+    <ol>
+        <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
+    </ol>
+    <h4>Usage:</h4>
+    <ol>
+        <li>
+            Include the <strong>contents</strong> of the <a href="svg/symbols.svg">SVG file</a> just after the opening <code>&lt;body&gt;</code> tag.
+        </li>
+        <li>
+            Paste one of the snippets anywhere into your website.
+        </li>
+    </ol>
+
+</header>
+<section>
+    <ul class="icon-boxes">
+        
+<li title="svg-logo">
+            <div class="icon-box" id="icon-box-svg-logo">
+                <svg class="icon">
+                    <use xlink:href="#svg-logo" />
+                </svg>
+            </div>
+            <h2>svg-logo</h2>
+            <button onclick="showPopover('snippet-svg-logo')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-svg-logo')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-svg-logo">
+                <pre><code>&lt;svg class=&quot;icon&quot;&gt;&lt;use xlink:href=&quot;#svg-logo&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+<li title="svg-logo-word">
+            <div class="icon-box" id="icon-box-svg-logo-word">
+                <svg class="icon">
+                    <use xlink:href="#svg-logo-word" />
+                </svg>
+            </div>
+            <h2>svg-logo-word</h2>
+            <button onclick="showPopover('snippet-svg-logo-word')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-svg-logo-word')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-svg-logo-word">
+                <pre><code>&lt;svg class=&quot;icon&quot;&gt;&lt;use xlink:href=&quot;#svg-logo-word&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+</ul>
+</section>
+<footer>
+    <p>Generated by <a href="https://github.com/shakyshane/gulp-svg-sprites">Gulp Svg Sprites</a> - Preview page courtesy of <a href="http://iconizr.com" target="_blank">iconizr</a>.</p>
+</footer>
+<script type="text/javascript">
+    var openSnippet;
+    function showPopover(id) {
+        openSnippet = document.getElementById(id);
+        openSnippet.classList.add("active");
+    }
+    function hidePopover() {
+
+        openSnippet.classList.remove("active");
+    }
+    function invertBackground(id) {
+        var elem = document.getElementById(id);
+        elem.classList.toggle("inverted");
+    }
+</script>
+</body>
+</html>

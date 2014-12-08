@@ -1,13 +1,8 @@
 [bs-Sidebar] {
-    background: $green;
-    width: 100%;
-
-    @include media-query(min, $lap-start) {
-        width: 25%;
-    }
+    background: $sidebar;
 }
 
-.#{$ns}-stack {
+.bs-stack {
     margin-bottom: $half-spacing;
 }
 

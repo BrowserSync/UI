@@ -1,14 +1,14 @@
 %button {
 
-    @include font-size($base-font-size);
+    @include font-size(14px);
 
     display: inline-block;
     border: 0;
     padding: 8px $base-spacing;
     width: auto;
     vertical-align: middle;
-    background: $green;
-    color: white;
+    background: $sidebar;
+    color: $grey-text;
     border-radius: 3px;
     line-height: 1.2;
     text-align: center;
@@ -19,7 +19,8 @@
     &:hover,
     &:focus {
         text-decoration: none;
-        background: darken($green, 5%);
+        background: $sidebar-lt;
+        color: $white;
     }
 
     &:active {
@@ -38,14 +39,6 @@
  */
 [bs-Button] {
     @extend %button;
-    background: $link;
-    &:hover,
-    &:focus {
-        background: darken($link, 5%);
-    }
-    &:active {
-        background: darken($link, 10%);
-    }
 }
 
 /**
@@ -54,36 +47,41 @@
  */
 [bs-Button="nav"] {
 
-    background: $green;
-    color: $white;
     width: 100%;
     border-radius: 0;
     text-align: left;
     padding-left: $base-spacing*2 + $half-spacing;
-    @include font-size(18px);
-    font-family: "source_sans_prolight";
+    height: 52px;
     border: 0;
-
-    &:hover {
-        background: $green-dk;
-    }
+    position: relative;
+//    z-index: 5;
 
     &.active {
-        color: $base-color;
-        background: $grey-bg;
-
+        background: $sidebar-lt;
+        box-shadow: -2px 3px 2px darken($sidebar, 3%);
+        z-index: 5;
+        color:      $white;
         [bs-Icon] {
             color: $green-lt;
+        }
+    }
+    &:hover {
+        border-bottom: 1px solid lighten($sidebar-lt, 3%);
+        border-top: 1px solid lighten($sidebar-lt, 3%);
+        [bs-Icon] {
+            color: $white;
         }
     }
 
     [bs-Icon] {
 
         position: absolute;
-        left: $base-spacing;
+        transition: all .3s;
+        color: $grey-icon;
+        left: $half-spacing + 2px;
         @include font-size(22px);
         margin-right: $half-spacing;
-        top: 8px;
+        top: 14px;
 
         [bs-Icon="plug"] {
             @include font-size(28px);

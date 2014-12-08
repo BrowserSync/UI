@@ -1,7 +1,10 @@
 /**
  * Brand
  */
-$red:       #FF4453;
+$red:        #FF4453;
+$sidebar:    #272A33;
+$sidebar-lt: #2F323E;
+
 
 $green:     #033339;
 $green-dk:  #00262C;
@@ -9,8 +12,10 @@ $green-lt:  #21A695;
 $green-alt: #064F58;
 
 $lime:          #D3ED13;
+$grey-text:     #BBBBBB;
 $grey-bg:       #F2F2F2;
 $grey-border:   #E3E3E3;
+$grey-icon:     #4A4A4A;
 
 $input-text:    #999999;
 
@@ -104,6 +109,8 @@ $border-box: true;
  */
 $base-spacing: $base-font-size * $base-line-height;
 $half-spacing: ceil($base-spacing / 2);
+$gutter: 20px;
+$icon-gutter: 55px;
 
 
 /**
