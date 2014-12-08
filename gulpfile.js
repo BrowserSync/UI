@@ -1,7 +1,7 @@
 var gulp        = require("gulp");
 var jshint      = require('gulp-jshint');
 var contribs    = require('gulp-contribs');
-var sass        = require("gulp-ruby-sass");
+var sass        = require("gulp-sass");
 var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require('gulp-browserify');
 var rename      = require('gulp-rename');
@@ -52,10 +52,10 @@ gulp.task('browser-sync', function () {
  * Start BrowserSync
  */
 gulp.task('browser-sync-dev', function () {
-    browserSync.use(require("bs-html-injector"), {files: "lib/*.html"});
+    //browserSync.use(require("bs-html-injector"), {files: "lib/*.html"});
     browserSync({
         server: "lib",
-        startPath: "components.html"
+        startPath: "_server-info.html"
     });
 });
 

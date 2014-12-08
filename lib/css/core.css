@@ -66,7 +66,7 @@ LAYOUT
 /**
  * RESET
  */
-    /**
+/**
 
     */
 *, *:before, *:after {
@@ -76,12 +76,7 @@ LAYOUT
 /**
  * The usual...
  */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-dl, dd, ol, ul,
-form, fieldset, legend,
-table, th, td, caption,
-hr {
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, form, fieldset, legend, table, th, td, caption, hr {
   margin: 0;
   padding: 0; }
 
@@ -112,18 +107,10 @@ img {
 /**
  * Give form elements some cursor interactions...
  */
-label,
-input,
-textarea,
-button,
-select,
-option {
+label, input, textarea, button, select, option {
   cursor: pointer; }
 
-.text-input:active,
-.text-input:focus,
-textarea:active,
-textarea:focus {
+.text-input:active, .text-input:focus, textarea:active, textarea:focus {
   cursor: text;
   outline: none; }
 
@@ -154,28 +141,14 @@ body {
  * Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
  * Correct `block` display not defined for `main` in IE 11.
  */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
   display: block; }
 
 /**
  * 1. Correct `inline-block` display not defined in IE 8/9.
  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
  */
-audio,
-canvas,
-progress,
-video {
+audio, canvas, progress, video {
   display: inline-block;
   /* 1 */
   vertical-align: baseline;
@@ -193,8 +166,7 @@ audio:not([controls]) {
  * Address `[hidden]` styling not present in IE 8/9/10.
  * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
  */
-[hidden],
-template {
+[hidden], template {
   display: none; }
 
 /* Links
@@ -208,8 +180,7 @@ a {
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
-a:active,
-a:hover {
+a:active, a:hover {
   outline: 0; }
 
 /* Text-level semantics
@@ -223,8 +194,7 @@ abbr[title] {
 /**
  * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
  */
-b,
-strong {
+b, strong {
   font-weight: bold; }
 
 /**
@@ -257,8 +227,7 @@ small {
 /**
  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
  */
-sub,
-sup {
+sub, sup {
   font-size: 75%;
   line-height: 0;
   position: relative;
@@ -309,10 +278,7 @@ pre {
 /**
  * Address odd `em`-unit font size rendering in all browsers.
  */
-code,
-kbd,
-pre,
-samp {
+code, kbd, pre, samp {
   font-family: monospace, monospace;
   font-size: 1em; }
 
@@ -328,11 +294,7 @@ samp {
  * 2. Correct font properties not being inherited.
  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
-button,
-input,
-optgroup,
-select,
-textarea {
+button, input, optgroup, select, textarea {
   color: inherit;
   /* 1 */
   font: inherit;
@@ -352,8 +314,7 @@ button {
  * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
  * Correct `select` style inheritance in Firefox.
  */
-button,
-select {
+button, select {
   text-transform: none; }
 
 /**
@@ -363,10 +324,7 @@ select {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -375,15 +333,13 @@ input[type="submit"] {
 /**
  * Re-set default cursor for disabled elements.
  */
-button[disabled],
-html input[disabled] {
+button[disabled], html input[disabled] {
   cursor: default; }
 
 /**
  * Remove inner padding and border in Firefox 4+.
  */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
+button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
@@ -401,8 +357,7 @@ input {
  * 1. Address box sizing set to `content-box` in IE 8/9/10.
  * 2. Remove excess padding in IE 8/9/10.
  */
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"], input[type="radio"] {
   -moz-box-sizing: border-box;
        box-sizing: border-box;
   /* 1 */
@@ -414,8 +369,7 @@ input[type="radio"] {
  * `font-size` values of the `input`, it causes the cursor style of the
  * decrement button to change from `default` to `text`.
  */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
   height: auto; }
 
 /**
@@ -435,8 +389,7 @@ input[type="search"] {
  * Safari (but not Chrome) clips the cancel button when the search input has
  * padding (and `textfield` appearance).
  */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
 /**
@@ -479,148 +432,170 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-td,
-th {
+td, th {
   padding: 0; }
 
 @font-face {
   font-family: 'source_sans_problack_italic';
-  src: url("../fonts/source-sans/sourcesanspro-blackit-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-blackit-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-blackit-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-blackit-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-blackit-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-blackit-webfont.svg#source_sans_problack_italic") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-blackit-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-blackit-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-blackit-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-blackit-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-blackit-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-blackit-webfont.svg#source_sans_problack_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_problack';
-  src: url("../fonts/source-sans/sourcesanspro-black-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-black-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-black-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-black-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-black-webfont.svg#source_sans_problack") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-black-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-black-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-black-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-black-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-black-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-black-webfont.svg#source_sans_problack') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_probold_italic';
-  src: url("../fonts/source-sans/sourcesanspro-boldit-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-boldit-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-boldit-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-boldit-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-boldit-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-boldit-webfont.svg#source_sans_probold_italic") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-boldit-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-boldit-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-boldit-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-boldit-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-boldit-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-boldit-webfont.svg#source_sans_probold_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_prolight_italic';
-  src: url("../fonts/source-sans/sourcesanspro-lightit-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-lightit-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-lightit-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-lightit-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-lightit-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-lightit-webfont.svg#source_sans_prolight_italic") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-lightit-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-lightit-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-lightit-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-lightit-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-lightit-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-lightit-webfont.svg#source_sans_prolight_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_proextralight';
-  src: url("../fonts/source-sans/sourcesanspro-extralight-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-extralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-extralight-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-extralight-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-extralight-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-extralight-webfont.svg#source_sans_proextralight") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-extralight-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-extralight-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-extralight-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-extralight-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-extralight-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-extralight-webfont.svg#source_sans_proextralight') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_prolight';
-  src: url("../fonts/source-sans/sourcesanspro-light-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-light-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-light-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-light-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-light-webfont.svg#source_sans_prolight") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-light-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-light-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-light-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-light-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-light-webfont.svg#source_sans_prolight') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_proitalic';
-  src: url("../fonts/source-sans/sourcesanspro-it-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-it-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-it-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-it-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-it-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-it-webfont.svg#source_sans_proitalic") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-it-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-it-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-it-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-it-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-it-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-it-webfont.svg#source_sans_proitalic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_proXLtIt';
-  src: url("../fonts/source-sans/sourcesanspro-extralightit-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-extralightit-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-extralightit-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-extralightit-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-extralightit-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-extralightit-webfont.svg#source_sans_proXLtIt") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-extralightit-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-extralightit-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-extralightit-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-extralightit-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-extralightit-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-extralightit-webfont.svg#source_sans_proXLtIt') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_prosemibold';
-  src: url("../fonts/source-sans/sourcesanspro-semibold-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-semibold-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-semibold-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-semibold-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-semibold-webfont.svg#source_sans_prosemibold") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-semibold-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-semibold-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-semibold-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-semibold-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-semibold-webfont.svg#source_sans_prosemibold') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_proSBdIt';
-  src: url("../fonts/source-sans/sourcesanspro-semiboldit-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-semiboldit-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-semiboldit-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-semiboldit-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-semiboldit-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-semiboldit-webfont.svg#source_sans_proSBdIt") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-semiboldit-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-semiboldit-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-semiboldit-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-semiboldit-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-semiboldit-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-semiboldit-webfont.svg#source_sans_proSBdIt') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_probold';
-  src: url("../fonts/source-sans/sourcesanspro-bold-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-bold-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-bold-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-bold-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-bold-webfont.svg#source_sans_probold") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-bold-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-bold-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-bold-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-bold-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-bold-webfont.svg#source_sans_probold') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'source_sans_proregular';
-  src: url("../fonts/source-sans/sourcesanspro-regular-webfont.eot");
-  src: url("../fonts/source-sans/sourcesanspro-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans/sourcesanspro-regular-webfont.woff2") format("woff2"), url("../fonts/source-sans/sourcesanspro-regular-webfont.woff") format("woff"), url("../fonts/source-sans/sourcesanspro-regular-webfont.ttf") format("truetype"), url("../fonts/source-sans/sourcesanspro-regular-webfont.svg#source_sans_proregular") format("svg");
+  src: url('../fonts/source-sans/sourcesanspro-regular-webfont.eot');
+  src: url('../fonts/source-sans/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/source-sans/sourcesanspro-regular-webfont.woff2') format('woff2'), url('../fonts/source-sans/sourcesanspro-regular-webfont.woff') format('woff'), url('../fonts/source-sans/sourcesanspro-regular-webfont.ttf') format('truetype'), url('../fonts/source-sans/sourcesanspro-regular-webfont.svg#source_sans_proregular') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webthin_italic';
-  src: url("../fonts/titillium/titilliumweb-extralightitalic-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-extralightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-extralightitalic-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-extralightitalic-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-extralightitalic-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-extralightitalic-webfont.svg#titillium_webthin_italic") format("svg");
+  src: url('../fonts/titillium/titilliumweb-extralightitalic-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-extralightitalic-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-extralightitalic-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-extralightitalic-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-extralightitalic-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-extralightitalic-webfont.svg#titillium_webthin_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webitalic';
-  src: url("../fonts/titillium/titilliumweb-italic-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-italic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-italic-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-italic-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-italic-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-italic-webfont.svg#titillium_webitalic") format("svg");
+  src: url('../fonts/titillium/titilliumweb-italic-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-italic-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-italic-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-italic-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-italic-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-italic-webfont.svg#titillium_webitalic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webbold_italic';
-  src: url("../fonts/titillium/titilliumweb-bolditalic-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-bolditalic-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-bolditalic-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-bolditalic-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-bolditalic-webfont.svg#titillium_webbold_italic") format("svg");
+  src: url('../fonts/titillium/titilliumweb-bolditalic-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-bolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-bolditalic-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-bolditalic-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-bolditalic-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-bolditalic-webfont.svg#titillium_webbold_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webbold';
-  src: url("../fonts/titillium/titilliumweb-bold-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-bold-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-bold-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-bold-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-bold-webfont.svg#titillium_webbold") format("svg");
+  src: url('../fonts/titillium/titilliumweb-bold-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-bold-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-bold-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-bold-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-bold-webfont.svg#titillium_webbold') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webthin';
-  src: url("../fonts/titillium/titilliumweb-extralight-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-extralight-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-extralight-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-extralight-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-extralight-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-extralight-webfont.svg#titillium_webthin") format("svg");
+  src: url('../fonts/titillium/titilliumweb-extralight-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-extralight-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-extralight-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-extralight-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-extralight-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-extralight-webfont.svg#titillium_webthin') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_weblight';
-  src: url("../fonts/titillium/titilliumweb-light-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-light-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-light-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-light-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-light-webfont.svg#titillium_weblight") format("svg");
+  src: url('../fonts/titillium/titilliumweb-light-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-light-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-light-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-light-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-light-webfont.svg#titillium_weblight') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webblack';
-  src: url("../fonts/titillium/titilliumweb-black-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-black-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-black-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-black-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-black-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-black-webfont.svg#titillium_webblack") format("svg");
+  src: url('../fonts/titillium/titilliumweb-black-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-black-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-black-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-black-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-black-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-black-webfont.svg#titillium_webblack') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_websemibold_italic';
-  src: url("../fonts/titillium/titilliumweb-semibolditalic-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-semibolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-semibolditalic-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-semibolditalic-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-semibolditalic-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-semibolditalic-webfont.svg#titillium_websemibold_italic") format("svg");
+  src: url('../fonts/titillium/titilliumweb-semibolditalic-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-semibolditalic-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-semibolditalic-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-semibolditalic-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-semibolditalic-webfont.svg#titillium_websemibold_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_webregular';
-  src: url("../fonts/titillium/titilliumweb-regular-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-regular-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-regular-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-regular-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-regular-webfont.svg#titillium_webregular") format("svg");
+  src: url('../fonts/titillium/titilliumweb-regular-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-regular-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-regular-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-regular-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-regular-webfont.svg#titillium_webregular') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_websemibold';
-  src: url("../fonts/titillium/titilliumweb-semibold-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-semibold-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-semibold-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-semibold-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-semibold-webfont.svg#titillium_websemibold") format("svg");
+  src: url('../fonts/titillium/titilliumweb-semibold-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-semibold-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-semibold-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-semibold-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-semibold-webfont.svg#titillium_websemibold') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 @font-face {
   font-family: 'titillium_weblight_italic';
-  src: url("../fonts/titillium/titilliumweb-lightitalic-webfont.eot");
-  src: url("../fonts/titillium/titilliumweb-lightitalic-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/titillium/titilliumweb-lightitalic-webfont.woff2") format("woff2"), url("../fonts/titillium/titilliumweb-lightitalic-webfont.woff") format("woff"), url("../fonts/titillium/titilliumweb-lightitalic-webfont.ttf") format("truetype"), url("../fonts/titillium/titilliumweb-lightitalic-webfont.svg#titillium_weblight_italic") format("svg");
+  src: url('../fonts/titillium/titilliumweb-lightitalic-webfont.eot');
+  src: url('../fonts/titillium/titilliumweb-lightitalic-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/titillium/titilliumweb-lightitalic-webfont.woff2') format('woff2'), url('../fonts/titillium/titilliumweb-lightitalic-webfont.woff') format('woff'), url('../fonts/titillium/titilliumweb-lightitalic-webfont.ttf') format('truetype'), url('../fonts/titillium/titilliumweb-lightitalic-webfont.svg#titillium_weblight_italic') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 .bs-main {
   position: absolute;
   width: 100%;
@@ -644,8 +619,8 @@ th {
           transform: translateX(-200%) translateY(20px) scale(1.2);
   -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
           transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-  -webkit-transition: all .3s;
-          transition: all .3s;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
   opacity: 0;
   z-index: 1; }
   @media only screen and (min-width: 800px) {
@@ -711,32 +686,17 @@ table tbody tr:nth-child(odd) {
 /**
  * Site Theme
  */
-h1, h2, h3, h4, h5, h6, hgroup,
-p, blockquote, address,
-ul, ol, dl,
-table,
-fieldset, figure, figcaption, details,
-pre {
+h1, h2, h3, h4, h5, h6, hgroup, p, blockquote, address, ul, ol, dl, table, fieldset, figure, figcaption, details, pre {
   margin-bottom: 14px; }
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #033339;
   font-weight: 400;
   line-height: 1;
   font-family: "titillium_webbold";
   margin-bottom: 27px;
   -webkit-font-smoothing: antialiased; }
-  h1 small, .h1 small,
-  h2 small, .h2 small,
-  h3 small, .h3 small,
-  h4 small, .h4 small,
-  h5 small, .h5 small,
-  h6 small, .h6 small {
+  h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small {
     font-size: inherit;
     font-weight: normal; }
 
@@ -781,8 +741,7 @@ a {
   a:hover, a:active, a:focus {
     text-decoration: underline;
     color: #00262C; }
-  a [class^="icon-"],
-  a [class*=" icon-"] {
+  a [class^="icon-"], a [class*=" icon-"] {
     text-decoration: none; }
 
 .flush--bottom {
@@ -832,7 +791,9 @@ span.sep {
     width: 30% !important; }
 
   .width-20 {
-    width: 20% !important; } }
+    width: 20% !important; }
+ }
+
 @media only screen and (min-width: 600px) {
   [bs-Width~="100"] {
     width: 100% !important; }
@@ -862,7 +823,9 @@ span.sep {
     width: 25% !important; }
 
   [bs-Width~="20"] {
-    width: 20% !important; } }
+    width: 20% !important; }
+ }
+
 [bs-Text~="lede"] {
   font-size: 18px;
   font-size: 1rem; }
@@ -913,25 +876,16 @@ span.sep {
   [bs-Flex-Item~="one-half"] {
     width: 50%; } }
 
-[bs-Callout], button,
-input,
-select,
-textarea {
+[bs-Callout], button, input, select, textarea {
   background: #fff;
   color: #999999;
   border-radius: 3px;
   border: 1px solid #E3E3E3;
   position: relative; }
-  [bs-Callout] p, button p,
-  input p,
-  select p,
-  textarea p {
+  [bs-Callout] p, button p, input p, select p, textarea p {
     font-size: 16px;
     font-size: 0.88889rem; }
-  [bs-Callout] [bs-Text~="lede"], button [bs-Text~="lede"],
-  input [bs-Text~="lede"],
-  select [bs-Text~="lede"],
-  textarea [bs-Text~="lede"] {
+  [bs-Callout] [bs-Text~="lede"], button [bs-Text~="lede"], input [bs-Text~="lede"], select [bs-Text~="lede"], textarea [bs-Text~="lede"] {
     font-size: 18px;
     font-size: 1rem;
     margin-bottom: 0;
@@ -981,6 +935,7 @@ textarea {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg); }
+
   100% {
     -webkit-transform: rotate(359deg);
             transform: rotate(359deg); } }
@@ -989,9 +944,11 @@ textarea {
   0% {
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg); }
+
   100% {
     -webkit-transform: rotate(359deg);
             transform: rotate(359deg); } }
+
 [bs-Button] {
   font-size: 18px;
   font-size: 1rem;
@@ -1007,8 +964,8 @@ textarea {
   text-align: center;
   cursor: pointer;
   outline: none;
-  -webkit-transition: color .3s, background .3s;
-          transition: color .3s, background .3s; }
+  -webkit-transition: color 0.3s, background 0.3s;
+          transition: color 0.3s, background 0.3s; }
   [bs-Button]:hover, [bs-Button]:focus {
     text-decoration: none;
     background: #021d21; }
@@ -1150,8 +1107,8 @@ textarea {
     border-top: 1px solid #E3E3E3; }
 
 [bs-List~="actions"] > li {
-  -webkit-transition: background .3s;
-          transition: background .3s;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
   color: #666666; }
   [bs-List~="actions"] > li:hover {
     background: #fff; }
@@ -1160,11 +1117,11 @@ textarea {
       [bs-List~="actions"] > li:hover [bs-Actions] a {
         color: #21A695; }
 [bs-List~="actions"] [bs-Actions] {
-  opacity: .5; }
+  opacity: 0.5; }
 
 [bs-Actions~="inline"] {
-  -webkit-transition: opacity .2s;
-          transition: opacity .2s;
+  -webkit-transition: opacity 0.2s;
+          transition: opacity 0.2s;
   margin-left: 14px;
   display: inline-block;
   float: right; }
@@ -1189,10 +1146,7 @@ textarea {
     display: block;
     color: #fff; }
 
-button,
-input,
-select,
-textarea {
+button, input, select, textarea {
   outline: none;
   vertical-align: middle;
   border-radius: 3px;
@@ -1339,8 +1293,8 @@ input.cmn-toggle-round:checked + label {
   -webkit-transform: translateY(-110%);
       -ms-transform: translateY(-110%);
           transform: translateY(-110%);
-  -webkit-transition: all .3s;
-          transition: all .3s; }
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
   .notification.active {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
@@ -1375,10 +1329,11 @@ input.cmn-toggle-round:checked + label {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("../icomoon/fonts/icomoon.eot?6n696w");
-  src: url("../icomoon/fonts/icomoon.eot?#iefix6n696w") format("embedded-opentype"), url("../icomoon/fonts/icomoon.woff?6n696w") format("woff"), url("../icomoon/fonts/icomoon.ttf?6n696w") format("truetype"), url("../icomoon/fonts/icomoon.svg?6n696w#icomoon") format("svg");
+  src: url('../icomoon/fonts/icomoon.eot?6n696w');
+  src: url('../icomoon/fonts/icomoon.eot?#iefix6n696w') format('embedded-opentype'), url('../icomoon/fonts/icomoon.woff?6n696w') format('woff'), url('../icomoon/fonts/icomoon.ttf?6n696w') format('truetype'), url('../icomoon/fonts/icomoon.svg?6n696w#icomoon') format('svg');
   font-weight: normal;
   font-style: normal; }
+
 [bs-Icon] {
   font-family: 'icomoon';
   speak: none;
