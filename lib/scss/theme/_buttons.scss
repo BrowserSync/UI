@@ -102,11 +102,34 @@
     padding-bottom: 0;
 
     background: $sidebar;
-    font-family: $hn-font-family-thin;
     @extend %sidebar-style;
 
     [bs-icon] {
         color: $green-lt;
+    }
+}
+
+[bs-button~="inline"] {
+
+    position: relative;
+    background: transparent;
+    padding-left: $base-spacing + $half-spacing/2;
+    padding-right: $half-spacing;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 30px;
+    line-height: 30px;
+//    background: yellow;
+
+    &:hover, &:focus {
+        background: transparent;
+        color: $black;
+    }
+
+    .icon {
+        position: absolute;
+        left: 0;
+        top: 2px;
     }
 }
 

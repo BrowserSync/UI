@@ -683,7 +683,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: #033339;
   font-weight: 400;
   line-height: 1;
-  font-family: "titillium_webbold";
+  font-family: "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
   margin-bottom: 27px;
   -webkit-font-smoothing: antialiased; }
   h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h4 small, .h4 small, h5 small, .h5 small, h6 small, .h6 small {
@@ -908,10 +908,26 @@ span.sep {
   line-height: 52px;
   padding-top: 0;
   padding-bottom: 0;
-  background: #272A33;
-  font-family: "titillium_webregular"; }
+  background: #272A33; }
   [bs-Button~="heading"] [bs-icon] {
     color: #21A695; }
+
+[bs-button~="inline"] {
+  position: relative;
+  background: transparent;
+  padding-left: 34px;
+  padding-right: 14px;
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 30px;
+  line-height: 30px; }
+  [bs-button~="inline"]:hover, [bs-button~="inline"]:focus {
+    background: transparent;
+    color: #000; }
+  [bs-button~="inline"] .icon {
+    position: absolute;
+    left: 0;
+    top: 2px; }
 
 /**
  * Button bar
@@ -990,6 +1006,54 @@ span.sep {
   [bs-Action="menu-close"] {
     display: none; } }
 
+[bs-Callout] {
+  color: #999999;
+  position: relative; }
+  [bs-Callout] [bs-Text~="lede"] {
+    font-size: 20px;
+    font-size: 1.11111rem;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: #4A90E2; }
+
+[bs-Callout] {
+  background: white;
+  padding: 27px 0 14px;
+  border-bottom: 1px solid #E3E3E3; }
+
+[bs-Callout~="controls"] {
+  padding: 14px 14px;
+  background: #F2F2F2;
+  border-bottom: 1px solid #E3E3E3; }
+
+[bs-Callout~="trans"] {
+  border: 0;
+  background: transparent;
+  padding-left: 0;
+  padding-right: 0; }
+
+[bs-Callout-Icon] {
+  position: absolute;
+  left: 14px;
+  top: 29px; }
+  [bs-Callout-Icon] [bs-Icon] {
+    color: #4A90E2;
+    font-size: 24px;
+    font-size: 1.33333rem; }
+
+[bs-Callout-Icon~="flush"] {
+  top: 20px;
+  left: 0; }
+
+[bs-Callout-Icon~="flush-top"] {
+  top: 20px; }
+
+[bs-Callout-Content] {
+  padding-left: 54px;
+  padding-right: 14px; }
+  [bs-Callout="trans"] [bs-Callout-Content] {
+    padding-left: 68px; }
+
 [bs-header] {
   background: #21A695;
   height: 60px;
@@ -1019,6 +1083,11 @@ span.sep {
 
 .icon {
   display: inline-block; }
+
+.icon-trash {
+  width: 100%;
+  max-width: 26px;
+  height: 26px; }
 
 .icon-word {
   width: 100%;

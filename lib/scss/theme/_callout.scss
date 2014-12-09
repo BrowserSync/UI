@@ -1,35 +1,40 @@
 %callout {
-    background: $white;
     color: $input-text;
-    border-radius: 3px;
-    border: 1px solid $grey-border;
     position: relative;
 
-    p {
-        @include font-size(16px);
-    }
-
     [bs-Text~="lede"] {
-        @include font-size(18px);
+        @include font-size(20px);
+        text-transform: uppercase;
         margin-bottom: 0;
-        color: $green;
+        color: $blue;
     }
 }
 
-[bs-Callout] {
-    @extend %callout;
-    @extend %item-stack;
-    padding: $half-spacing $base-spacing;
-    padding-bottom: 0;
 
-    [bs-List] {
-        @include font-size(16px);
-        [bs-Msg] {
-            &:before {
-                top: 1px;
-            }
-        }
-    }
+[bs-Callout] {
+
+    @extend %callout;
+    background: white;
+    padding: $base-spacing 0 $half-spacing;
+    border-bottom: 1px solid $grey-border;
+//    @extend %item-stack;
+//    padding: $half-spacing $base-spacing;
+//    padding-bottom: 0;
+//
+//    [bs-List] {
+//        @include font-size(16px);
+//        [bs-Msg] {
+//            &:before {
+//                top: 1px;
+//            }
+//        }
+//    }
+}
+
+[bs-Callout~="controls"] {
+    padding: $half-spacing $half-spacing;
+    background: $grey-bg;
+    border-bottom: 1px solid $grey-border;
 }
 
 [bs-Callout~="trans"] {
@@ -41,12 +46,12 @@
 
 [bs-Callout-Icon] {
     position: absolute;
-    left: $base-spacing - 3px;
-    top: $half-spacing + 10px;
+    left: $half-spacing;
+    top: $base-spacing + 2px;
 
     [bs-Icon] {
-        color: $green-lt;
-        @include font-size(34px);
+        color: $blue;
+        @include font-size(24px);
     }
 }
 
@@ -60,9 +65,8 @@
 }
 
 [bs-Callout-Content] {
-    @extend %item-stack;
     padding-left: $base-spacing*2;
-
+    padding-right: $half-spacing;
     [bs-Callout="trans"] & {
         padding-left: $base-spacing*2 + $half-spacing;
     }

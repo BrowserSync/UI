@@ -11,6 +11,8 @@ $green-dk:  #00262C;
 $green-lt:  #21A695;
 $green-alt: #064F58;
 
+$blue:      #4A90E2;
+
 $lime:          #D3ED13;
 $grey-text:     #BBBBBB;
 $grey-bg:       #F2F2F2;
@@ -71,7 +73,9 @@ $base-color: $green;
  */
 $hn-font-weight: 400;
 $hn-line-height: 1;
-$hn-font-family: "titillium_webbold";
+$hn-font-family: $sans;
+//$hn-font-family: "titillium_webbold";
+
 $hn-font-family-thin: "titillium_webregular";
 $hn-color: $base-color;
 $h1-size: 30px;
