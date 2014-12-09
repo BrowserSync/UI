@@ -50,11 +50,11 @@
     width: 100%;
     border-radius: 0;
     text-align: left;
-    padding-left: $base-spacing*2 + $half-spacing;
+    padding-left: $icon-gutter + $gutter;
     height: 52px;
     border: 0;
     position: relative;
-//    z-index: 5;
+    background: transparent;
 
     &.active {
         background: $sidebar-lt;
@@ -65,9 +65,8 @@
             color: $green-lt;
         }
     }
+
     &:hover {
-        border-bottom: 1px solid lighten($sidebar-lt, 3%);
-        border-top: 1px solid lighten($sidebar-lt, 3%);
         [bs-Icon] {
             color: $white;
         }

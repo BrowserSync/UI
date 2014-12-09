@@ -21,7 +21,7 @@
     width: 100%;
     max-width: 134px;
     height: 100%;
-    margin-left: $gutter/2;
+    margin-left: $gutter - 4px;
     color: white;
 
     svg {

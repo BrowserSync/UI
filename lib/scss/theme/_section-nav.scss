@@ -11,6 +11,16 @@
     opacity: 0;
     z-index: 1;
 
+    &:before {
+        content: " ";
+        height: 100%;
+        width: 1px;
+        background: $sidebar-lt;
+        position: absolute;
+        top: 0;
+        left: $icon-gutter;
+    }
+
     ul {
         margin-bottom: 0;
     }
