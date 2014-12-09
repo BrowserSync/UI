@@ -1,0 +1,40 @@
+---
+layout: main.hbs
+title: "Plugins"
+icon: "plug"
+plugins: ['HTML Injector', 'Console Logger']
+---
+<h1 bs-button="nav heading"><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
+<div bs-callout="controls outline">
+    <button bs-button="inline">
+        <i bs-icon="circle_ok"></i>
+        Enable All
+    </button>
+    <button bs-button="inline">
+        <i bs-icon="circle_delete"></i>
+        Disable all
+    </button>
+</div>
+<div>
+    {{#each page.plugins}}
+    <section bs-callout="switch {{#if @last}}last{{/if}}">
+        <div bs-callout-content="" bs-flex="">
+            <div bs-callout-icon="switch">
+                <div class="switch">
+                    <input id="cmn-form-{{@index}}"
+                           ng-model="plugin.active"
+                           ng-change="togglePlugin(plugin)"
+                           class="cmn-toggle cmn-toggle-round"
+                           type="checkbox"
+                           checked="">
+                    <label for="cmn-form-{{@index}}"></label>
+                </div>
+            </div>
+            <div bs-flex-item="text" bs-width="50">
+                <p bs-text="lede">{{this}}</p>
+            </div>
+        </div>
+    </section>
+    {{/each}}
+    <br/>
+</div>

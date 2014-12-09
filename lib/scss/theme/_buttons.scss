@@ -113,21 +113,27 @@
 
     position: relative;
     background: transparent;
-    padding-left: $base-spacing + $half-spacing;
+    padding-left: 17px;
     padding-right: $half-spacing;
     padding-top: 0;
     padding-bottom: 0;
     height: 28px;
     line-height: 28px;
+    color: $black;
+    @include font-size(16px);
+
+    [bs-icon] {
+        @include font-size(20px);
+        margin-right: $half-spacing/2;
+    }
+
+    [bs-icon="circle_ok"] {
+        color: $lime;
+    }
 
     &:hover, &:focus {
         background: transparent;
         color: $black;
-    }
-
-    .icon {
-        position: absolute;
-        left: 0;
     }
 }
 
