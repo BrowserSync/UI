@@ -587,11 +587,24 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
+[bs-Sidebar], [bs-Section-Nav] {
+  background: #272A33; }
+  [bs-Sidebar]:before, [bs-Section-Nav]:before {
+    content: " ";
+    height: 100%;
+    width: 1px;
+    background: #2F323E;
+    position: absolute;
+    top: 0;
+    left: 55px; }
+
+[bs-Sidebar] {
+  position: relative; }
+
 .bs-stack {
   margin-bottom: 14px; }
 
 [bs-Section-Nav] {
-  background: #272A33;
   position: absolute;
   width: 100%;
   padding-top: 14px;
@@ -605,14 +618,6 @@ td, th {
           transition: all 0.3s;
   opacity: 0;
   z-index: 1; }
-  [bs-Section-Nav]:before {
-    content: " ";
-    height: 100%;
-    width: 1px;
-    background: #2F323E;
-    position: absolute;
-    top: 0;
-    left: 55px; }
   [bs-Section-Nav] ul {
     margin-bottom: 0; }
   @media only screen and (min-width: 800px) {
