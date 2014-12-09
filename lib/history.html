@@ -70,8 +70,8 @@
             <div ng-view="">
                 <div>
                     <article>
-                        <h1 bs-button="nav heading"><i bs-icon="cog"></i> Server Info</h1>
-                        <div bs-callout="controls" class="hidden">
+                        <h1 bs-button="nav heading"><i bs-icon="cog"></i> History</h1>
+                        <div bs-callout="controls outline">
                             <button bs-button="inline">
                                 <span class="icon icon-trash">
                                     <svg>
@@ -82,76 +82,33 @@
                             </button>
                         </div>
                         <div>
-                            <section bs-callout="">
-                                <div bs-callout-content="" bs-flex="">
-                                    <div>
-                                        <div bs-callout-icon="">
-                                            <i bs-icon="imac"></i>
-                                        </div>
-                                    </div>
-                                    <div bs-flex-item="text" bs-width="50">
-                                        <p bs-text="lede">Local</p>
-                                        <p bs-text="controls">
-                                            <a href="#">new tab</a> |
-                                            <a href="#">sync all</a>
-                                        </p>
-                                    </div>
-                                    <div bs-flex-item="action" bs-width="50">
-                                        <p>http://localhost:3000</p>
-                                    </div>
-                                </div>
-                            </section>
-                            <section bs-callout="">
-                                <div bs-callout-content="" bs-flex="">
-                                    <div>
-                                        <div bs-callout-icon="">
-                                            <i bs-icon="wifi_3"></i>
-                                        </div>
-                                    </div>
-                                    <div bs-flex-item="text" bs-width="50">
-                                        <p bs-text="lede">External</p>
-                                        <p bs-text="controls">
-                                            <a href="#">new tab</a> |
-                                            <a href="#">sync all</a>
-                                        </p>
-                                    </div>
-                                    <div bs-flex-item="action" bs-width="50">
-                                        <p>http://192.168.0.1:3000</p>
-                                    </div>
-                                </div>
-                            </section>
-                            <section bs-callout="last">
-                                <div bs-callout-content="" bs-flex="">
-                                    <div>
-                                        <div bs-callout-icon="">
-                                            <i bs-icon="globe"></i>
-                                        </div>
-                                    </div>
-                                    <div bs-flex-item="text" bs-width="50">
-                                        <p bs-text="lede">Tunnel</p>
-                                        <p bs-text="controls">
-                                            <a href="#">new tab</a> |
-                                            <a href="#">sync all</a>
-                                        </p>
-                                    </div>
-                                    <div bs-flex-item="action" bs-width="50">
-                                        <p>http://htgweed.localtunnel.me</p>
-                                    </div>
-                                </div>
-                            </section>
-                            <section>
-                                <div bs-callout="">
-                                    <div bs-callout-icon="">
-                                        <i bs-icon="terminal"></i>
-                                    </div>
-                                    <div bs-callout-content="">
-                                        <p bs-text="lede">Serving files from</p>
-                                        <ul bs-list="">
-                                            <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </section>
+                            <ul bs-list="bordered swipe">
+                                <li>/</li>
+                                <li>
+                                    <button bs-remove><i bs-icon="bin"></i></button>
+                                    /store-home.php
+                                    <span bs-multi="right">
+                                        <button>new tab</button>
+                                        <button>sync all</button>
+                                    </span>
+                                </li>
+                                <li>
+                                    <button bs-remove><i bs-icon="bin"></i></button>
+                                    /blog/building-browser-sync-ui/javascript/nodejs/2014
+                                    <span bs-multi="right">
+                                        <button>new tab</button>
+                                        <button>sync all</button>
+                                    </span>
+                                </li>
+                                <li class="active">
+                                    <button bs-remove><i bs-icon="bin"></i></button>
+                                    /store-product.php
+                                    <span bs-multi="right">
+                                        <button>new tab</button>
+                                        <button>sync all</button>
+                                    </span>
+                                </li>
+                            </ul>
                         </div>
                     </article>
                 </div>

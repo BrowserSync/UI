@@ -89,10 +89,12 @@ gulp.task('bs-inject', function () {
  * Compile HTML
  */
 gulp.task('build-src', function (done) {
-    var file = fs.readFileSync("lib/src/server-info.hbs", "utf-8");
+    //var file = fs.readFileSync("lib/src/server-info.hbs", "utf-8");
+    var file = fs.readFileSync("lib/src/history.hbs", "utf-8");
     crossbow.clearCache();
-    crossbow.addPage("server-info.hbs", file);
-    crossbow.compileOne("server-info.hbs", {cwd: "lib/src"}, function (err, out) {
+    //crossbow.addPage("server-info.hbs", file);
+    crossbow.addPage("history.hbs", file);
+    crossbow.compileOne("history.hbs", {cwd: "lib/src"}, function (err, out) {
         if (!err) {
             fs.writeFileSync("lib/"  + out.paths.filePath, out.compiled);
         }

@@ -2,11 +2,36 @@
     color: $input-text;
     position: relative;
 
-    [bs-Text~="lede"] {
+    [bs-text~="lede"] {
         @include font-size(20px);
+        position: relative;
         text-transform: uppercase;
         margin-bottom: 0;
+        font-weight: bold;
         color: $blue;
+
+        span {
+            @include font-size(14px);
+            vertical-align: bottom;
+            position: absolute;
+            right: 0;
+            top: 5px;
+            text-transform: none;
+        }
+    }
+    [bs-text~="controls"] {
+//        position: absolute;
+//        top: $base-spacing;
+//        right: $half-spacing;
+//        white-space: nowrap;
+        [bs-icon] {
+            @include font-size(12px);
+            position: relative;
+            top: -1px;
+        }
+        a {
+            color: $black;
+        }
     }
 }
 
@@ -17,10 +42,9 @@
     background: white;
     padding: $base-spacing 0 $half-spacing;
     border-bottom: 1px solid $grey-border;
-//    @extend %item-stack;
-//    padding: $half-spacing $base-spacing;
-//    padding-bottom: 0;
-//
+
+
+
 //    [bs-List] {
 //        @include font-size(16px);
 //        [bs-Msg] {
@@ -31,10 +55,46 @@
 //    }
 }
 
+[bs-callout~="last"] {
+
+    border-bottom: 2px solid $grey-border;
+    position: relative;
+
+    &:after {
+        content: " ";
+        width: 100%;
+        height: 1px;
+        display: block;
+        background: $grey-border;
+        position: absolute;
+        bottom: -4px;
+        z-index: 2;
+    }
+}
+
+
+
 [bs-Callout~="controls"] {
     padding: $half-spacing $half-spacing;
     background: $grey-bg;
     border-bottom: 1px solid $grey-border;
+}
+
+[bs-callout~="outline"] {
+
+    border-bottom: 0;
+
+    &:after {
+        content: " ";
+        width: 100%;
+        left: 0;
+        height: 1px;
+        display: block;
+        background: $grey-border;
+        position: absolute;
+        bottom: -2px;
+        z-index: 2;
+    }
 }
 
 [bs-Callout~="trans"] {

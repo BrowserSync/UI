@@ -40,6 +40,67 @@
     }
 }
 
+[bs-list~="swipe"] {
+
+    color: $green-lt;
+
+    li {
+        position: relative;
+        padding-left: $base-spacing*2 + 3px;
+    }
+}
+
+%inline-btn {
+    border: 0;
+    background: $green-lt;
+    color: white;
+    height: 100%;
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+}
+
+[bs-remove] {
+
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 4px;
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+    background: transparent;
+    color: $grey-border;
+    transition: .2s all;
+    border: 0;
+    &:hover {
+        color: $grey;
+    }
+}
+
+[bs-multi~="right"] {
+
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0;
+    transition: transform .3s;
+    transform: translateX(100%);
+    display: flex;
+
+    .active > & {
+        transform: translateX(0);
+    }
+
+    button {
+        &:last-child {
+            border-left: 1px solid darken($green-lt, 5%);
+        }
+        &:hover {
+            background: darken($green-lt, 2%);
+        }
+        @extend %inline-btn;
+    }
+}
+
 [bs-Actions~="inline"] {
 
     transition: opacity .2s;
