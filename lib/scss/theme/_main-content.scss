@@ -1,12 +1,11 @@
 [bs-Content] {
 
+    background: $white;
     width:      100%;
-    padding:    $base-spacing;
-    background: $grey-bg;
-    overflow-y: scroll;
+//    padding:    $half-spacing;
 
-    @include media-query(min, $lap-start) {
-        padding: $base-spacing $base-spacing*2;
-        width: 75%;
-    }
+//    @include media-query(min, $lap-start) {
+//        padding: $base-spacing $base-spacing*2;
+//        width: 75%;
+//    }
 }

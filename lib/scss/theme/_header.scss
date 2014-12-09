@@ -1,14 +1,34 @@
+$header-height: 60px;
+$border-height: 4px;
+$inner-height: $header-height - $border-height;
 
 [bs-header] {
 
     background: $green-lt;
-    height: 60px;
+    height: $header-height;
     display: flex;
-    border-bottom: 4px solid $sidebar-lt;
+    border-bottom: $border-height solid $sidebar-lt;
+    position: relative;
 
     * {
         margin-top: auto;
         margin-bottom: auto;
+    }
+
+    [bs-toggle] {
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        width: 55px;
+        text-align: center;
+        height: $inner-height;
+        line-height: $inner-height;
+        @include font-size(24px);
+        color: white;
+        transition: background .2s;
+        &:hover {
+            background: $sidebar;
+        }
     }
 }
 

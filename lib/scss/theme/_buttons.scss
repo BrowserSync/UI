@@ -45,7 +45,7 @@
  * Default NAV button styles
  * <button bs-Button="nav">Click me!</button>
  */
-[bs-Button="nav"] {
+[bs-Button~="nav"] {
 
     width: 100%;
     border-radius: 0;
@@ -89,6 +89,27 @@
         }
     }
 }
+
+[bs-Button~="heading"] {
+
+    margin-top: 0;
+    margin-bottom: 0;
+    @include font-size(24px);
+    font-weight: 400;
+    color: #E8E8E8;
+    line-height: 52px;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    background: $sidebar;
+    font-family: $hn-font-family-thin;
+    @extend %sidebar-style;
+
+    [bs-icon] {
+        color: $green-lt;
+    }
+}
+
 
 /**
  * Button bar

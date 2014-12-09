@@ -587,9 +587,9 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-[bs-Sidebar], [bs-Section-Nav] {
+[bs-Sidebar], [bs-Section-Nav], [bs-Button~="heading"] {
   background: #272A33; }
-  [bs-Sidebar]:before, [bs-Section-Nav]:before {
+  [bs-Sidebar]:before, [bs-Section-Nav]:before, [bs-Button~="heading"]:before {
     content: " ";
     height: 100%;
     width: 1px;
@@ -632,6 +632,10 @@ td, th {
         -ms-transform: translateX(0) translateY(0) scale(1);
             transform: translateX(0) translateY(0) scale(1);
     opacity: 1; }
+
+[bs-Content] {
+  background: #fff;
+  width: 100%; }
 
 hr {
   clear: both;
@@ -860,7 +864,7 @@ span.sep {
  * Default NAV button styles
  * <button bs-Button="nav">Click me!</button>
  */
-[bs-Button="nav"] {
+[bs-Button~="nav"] {
   width: 100%;
   border-radius: 0;
   text-align: left;
@@ -869,16 +873,16 @@ span.sep {
   border: 0;
   position: relative;
   background: transparent; }
-  [bs-Button="nav"].active {
+  [bs-Button~="nav"].active {
     background: #2F323E;
     box-shadow: -2px 3px 2px #20232a;
     z-index: 5;
     color: #fff; }
-    [bs-Button="nav"].active [bs-Icon] {
+    [bs-Button~="nav"].active [bs-Icon] {
       color: #21A695; }
-  [bs-Button="nav"]:hover [bs-Icon] {
+  [bs-Button~="nav"]:hover [bs-Icon] {
     color: #fff; }
-  [bs-Button="nav"] [bs-Icon] {
+  [bs-Button~="nav"] [bs-Icon] {
     position: absolute;
     -webkit-transition: all 0.3s;
             transition: all 0.3s;
@@ -888,11 +892,26 @@ span.sep {
     font-size: 1.22222rem;
     margin-right: 14px;
     top: 14px; }
-    [bs-Button="nav"] [bs-Icon] [bs-Icon="plug"] {
+    [bs-Button~="nav"] [bs-Icon] [bs-Icon="plug"] {
       font-size: 28px;
       font-size: 1.55556rem;
       left: 22px;
       top: 8px; }
+
+[bs-Button~="heading"] {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 24px;
+  font-size: 1.33333rem;
+  font-weight: 400;
+  color: #E8E8E8;
+  line-height: 52px;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #272A33;
+  font-family: "titillium_webregular"; }
+  [bs-Button~="heading"] [bs-icon] {
+    color: #21A695; }
 
 /**
  * Button bar
@@ -977,10 +996,26 @@ span.sep {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 4px solid #2F323E; }
+  border-bottom: 4px solid #2F323E;
+  position: relative; }
   [bs-header] * {
     margin-top: auto;
     margin-bottom: auto; }
+  [bs-header] [bs-toggle] {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    width: 55px;
+    text-align: center;
+    height: 56px;
+    line-height: 56px;
+    font-size: 24px;
+    font-size: 1.33333rem;
+    color: white;
+    -webkit-transition: background 0.2s;
+            transition: background 0.2s; }
+    [bs-header] [bs-toggle]:hover {
+      background: #272A33; }
 
 .icon {
   display: inline-block; }
