@@ -69,10 +69,11 @@ span.sep {
 }
 
 [bs-Visible~="not-desk"] {
-    @include media-query(min, $lap-start) {
+    @include media-query(min, $desk-start) {
         display: none;
     }
 }
+
 [bs-Visible~="palm"] {
     @include media-query(min, $lap-start) {
         display: none;

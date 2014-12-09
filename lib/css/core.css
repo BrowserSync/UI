@@ -620,7 +620,7 @@ td, th {
   z-index: 1; }
   [bs-Section-Nav] ul {
     margin-bottom: 0; }
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 750px) {
     [bs-Section-Nav] {
       opacity: 1;
       position: relative;
@@ -822,7 +822,7 @@ span.sep {
 [bs-Weight~="light"] {
   font-family: "titillium_webregular"; }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 750px) {
   [bs-Visible~="not-desk"] {
     display: none; } }
 
