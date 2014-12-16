@@ -9,7 +9,7 @@ var rename      = require('gulp-rename');
 var filter      = require('gulp-filter');
 var sprites     = require('gulp-svg-sprites');
 var browserSync = require('browser-sync');
-var crossbow    = require("/Users/shakyshane/code/crossbow.js");
+var crossbow    = require("crossbow/plugins/stream");
 var reload      = browserSync.reload;
 
 /**
@@ -55,11 +55,12 @@ gulp.task('browser-sync', function () {
  * Start BrowserSync
  */
 gulp.task('browser-sync-dev', function () {
-    //browserSync.use(require("bs-html-injector"), {files: "lib/*.html"});
     browserSync({
         notify: false,
-        server: "lib",
-        startPath: "server-info.html"
+        server: {
+            baseDir: "lib",
+            directory: true
+        }
     });
 });
 
@@ -88,19 +89,10 @@ gulp.task('bs-inject', function () {
 /**
  * Compile HTML
  */
-gulp.task('build-src', function (done) {
-    //var file = fs.readFileSync("lib/src/server-info.hbs", "utf-8");
-    //var file = fs.readFileSync("lib/src/history.hbs", "utf-8");
-    var file = fs.readFileSync("lib/src/plugins.hbs", "utf-8");
-    crossbow.clearCache();
-    //crossbow.addPage("server-info.hbs", file);
-    crossbow.addPage("plugins.hbs", file);
-    crossbow.compileOne("plugins.hbs", {cwd: "lib/src"}, function (err, out) {
-        if (!err) {
-            fs.writeFileSync("lib/"  + out.paths.filePath, out.compiled);
-        }
-        done();
-    });
+gulp.task('build-src', function () {
+    gulp.src("lib/src/*.hbs")
+        .pipe(crossbow({cwd: "lib/src"}))
+        .pipe(gulp.dest("./lib"))
 });
 
 /**

@@ -50,6 +50,7 @@
     "browser-sync": "^1.7.2",
     "bs-html-injector": "^1.1.0",
     "chai": "^1.9.1",
+    "crossbow": "^0.2.0",
     "eazy-logger": "^1.5.0",
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "0.0.8",
