@@ -1227,6 +1227,8 @@ span.sep {
             transition: background 0.2s; }
     [bs-header] [bs-toggle]:hover {
       background: #272A33; }
+    [bs-header] [bs-toggle].active {
+      background: #272A33; }
 
 .icon {
   display: inline-block; }
