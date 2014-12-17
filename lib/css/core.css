@@ -617,7 +617,7 @@ td, th {
   -webkit-transition: all 0.3s;
           transition: all 0.3s;
   opacity: 0;
-  z-index: 1; }
+  z-index: 5; }
   [bs-Section-Nav] ul {
     margin-bottom: 0; }
   @media only screen and (min-width: 750px) {
@@ -903,7 +903,7 @@ span.sep {
   margin-bottom: 0;
   font-size: 24px;
   font-size: 1.33333rem;
-  font-weight: 400;
+  font-weight: 700;
   color: #E8E8E8;
   line-height: 52px;
   padding-top: 0;
@@ -1022,14 +1022,12 @@ span.sep {
     margin-bottom: 0;
     font-weight: bold;
     color: #4A90E2; }
-    [bs-Callout] [bs-text~="lede"] span {
-      font-size: 14px;
-      font-size: 0.77778rem;
-      vertical-align: bottom;
-      position: absolute;
-      right: 0;
-      top: 5px;
-      text-transform: none; }
+  [bs-Callout] [bs-text~="prefixed"] {
+    text-transform: none; }
+    [bs-Callout] [bs-text~="prefixed"] span {
+      text-transform: uppercase;
+      color: #E3E3E3;
+      font-weight: 200; }
   [bs-Callout] [bs-text~="controls"] [bs-icon] {
     font-size: 12px;
     font-size: 0.66667rem;

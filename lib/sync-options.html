@@ -70,41 +70,109 @@
             <div ng-view="">
                 <div>
                     <article>
-                        <h1 bs-button="nav heading"><i bs-icon="book_2"></i> History</h1>
+                        <h1 bs-button="nav heading"><i bs-icon="repeat_2"></i> Sync Options</h1>
                         <div bs-callout="controls outline">
                             <button bs-button="inline">
+                                <i bs-icon="circle_ok"></i>
+                                Enable All
+                            </button>
+                            <button bs-button="inline">
                                 <i bs-icon="circle_delete"></i>
-                                Clear all
+                                Disable all
                             </button>
                         </div>
                         <div>
-                            <ul bs-list="bordered swipe">
-                                <li>/</li>
-                                <li>
-                                    <button bs-remove><i bs-icon="bin"></i></button>
-                                    /store-home.php
-                                    <span bs-multi="right">
-                                        <button>new tab</button>
-                                        <button>sync all</button>
-                                    </span>
-                                </li>
-                                <li>
-                                    <button bs-remove><i bs-icon="bin"></i></button>
-                                    /blog/building-browser-sync-ui/javascript/nodejs/2014
-                                    <span bs-multi="right">
-                                        <button>new tab</button>
-                                        <button>sync all</button>
-                                    </span>
-                                </li>
-                                <li class="active">
-                                    <button bs-remove><i bs-icon="bin"></i></button>
-                                    /store-product.php
-                                    <span bs-multi="right">
-                                        <button>new tab</button>
-                                        <button>sync all</button>
-                                    </span>
-                                </li>
-                            </ul>
+                            <section bs-callout="switch ">
+                                <div bs-callout-content="" bs-flex="">
+                                    <div bs-callout-icon="switch">
+                                        <div class="switch">
+                                            <input id="cmn-form-0"
+                                                   ng-model="plugin.active"
+                                                   ng-change="togglePlugin(plugin)"
+                                                   class="cmn-toggle cmn-toggle-round"
+                                                   type="checkbox"
+                                                   checked="">
+                                            <label for="cmn-form-0"></label>
+                                        </div>
+                                    </div>
+                                    <div bs-flex-item="text" bs-width="50">
+                                        <p bs-text="lede">Clicks</p>
+                                    </div>
+                                </div>
+                            </section>
+                            <section bs-callout="switch last">
+                                <div bs-callout-content="" bs-flex="">
+                                    <div bs-callout-icon="switch">
+                                        <div class="switch">
+                                            <input id="cmn-form-1"
+                                                   ng-model="plugin.active"
+                                                   ng-change="togglePlugin(plugin)"
+                                                   class="cmn-toggle cmn-toggle-round"
+                                                   type="checkbox"
+                                                   checked="">
+                                            <label for="cmn-form-1"></label>
+                                        </div>
+                                    </div>
+                                    <div bs-flex-item="text" bs-width="50">
+                                        <p bs-text="lede">Scroll</p>
+                                    </div>
+                                </div>
+                            </section>
+                                <section bs-callout="switch ">
+                                    <div bs-callout-content="" bs-flex="">
+                                        <div bs-callout-icon="switch">
+                                            <div class="switch">
+                                                <input id="cmn-form-0"
+                                                       ng-model="plugin.active"
+                                                       ng-change="togglePlugin(plugin)"
+                                                       class="cmn-toggle cmn-toggle-round"
+                                                       type="checkbox"
+                                                       checked="">
+                                                <label for="cmn-form-0"></label>
+                                            </div>
+                                        </div>
+                                        <div bs-flex-item="text" bs-width="50">
+                                            <p bs-text="lede prefixed"><span>Forms:</span> Submit</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section bs-callout="switch ">
+                                    <div bs-callout-content="" bs-flex="">
+                                        <div bs-callout-icon="switch">
+                                            <div class="switch">
+                                                <input id="cmn-form-1"
+                                                       ng-model="plugin.active"
+                                                       ng-change="togglePlugin(plugin)"
+                                                       class="cmn-toggle cmn-toggle-round"
+                                                       type="checkbox"
+                                                       checked="">
+                                                <label for="cmn-form-1"></label>
+                                            </div>
+                                        </div>
+                                        <div bs-flex-item="text" bs-width="50">
+                                            <p bs-text="lede prefixed"><span>Forms:</span> Toggles</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                <section bs-callout="switch last">
+                                    <div bs-callout-content="" bs-flex="">
+                                        <div bs-callout-icon="switch">
+                                            <div class="switch">
+                                                <input id="cmn-form-2"
+                                                       ng-model="plugin.active"
+                                                       ng-change="togglePlugin(plugin)"
+                                                       class="cmn-toggle cmn-toggle-round"
+                                                       type="checkbox"
+                                                       checked="">
+                                                <label for="cmn-form-2"></label>
+                                            </div>
+                                        </div>
+                                        <div bs-flex-item="text" bs-width="50">
+                                            <p bs-text="lede prefixed"><span>Forms:</span> Inputs</p>
+                                        </div>
+                                    </div>
+                                </section>
+                            <br/>
                         </div>
                     </article>
                 </div>
