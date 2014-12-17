@@ -33,15 +33,12 @@
 }
 
 
-[bs-Callout] {
+[bs-callout] {
 
     @extend %callout;
-    background: white;
+    background: $white;
     padding: $base-spacing 0 $half-spacing;
     border-bottom: 1px solid $grey-border;
-
-
-
 
 //    [bs-List] {
 //        @include font-size(16px);
@@ -58,7 +55,6 @@
         margin-bottom: $half-spacing;
     }
 }
-
 
 [bs-callout~="last"] {
 

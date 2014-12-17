@@ -104,6 +104,10 @@
     background: $sidebar;
     @extend %sidebar-style;
 
+    &:hover {
+        cursor: default;
+    }
+
     [bs-icon] {
         color: $green-lt;
     }

@@ -909,6 +909,8 @@ span.sep {
   padding-top: 0;
   padding-bottom: 0;
   background: #272A33; }
+  [bs-Button~="heading"]:hover {
+    cursor: default; }
   [bs-Button~="heading"] [bs-icon] {
     color: #21A695; }
 
@@ -1011,10 +1013,10 @@ span.sep {
   [bs-Action="menu-close"] {
     display: none; } }
 
-[bs-Callout] {
+[bs-callout] {
   color: #999999;
   position: relative; }
-  [bs-Callout] [bs-text~="lede"] {
+  [bs-callout] [bs-text~="lede"] {
     font-size: 20px;
     font-size: 1.11111rem;
     position: relative;
@@ -1022,22 +1024,22 @@ span.sep {
     margin-bottom: 0;
     font-weight: bold;
     color: #4A90E2; }
-  [bs-Callout] [bs-text~="prefixed"] {
+  [bs-callout] [bs-text~="prefixed"] {
     text-transform: none; }
-    [bs-Callout] [bs-text~="prefixed"] span {
+    [bs-callout] [bs-text~="prefixed"] span {
       text-transform: uppercase;
       color: #E3E3E3;
       font-weight: 200; }
-  [bs-Callout] [bs-text~="controls"] [bs-icon] {
+  [bs-callout] [bs-text~="controls"] [bs-icon] {
     font-size: 12px;
     font-size: 0.66667rem;
     position: relative;
     top: -1px; }
-  [bs-Callout] [bs-text~="controls"] a {
+  [bs-callout] [bs-text~="controls"] a {
     color: #000; }
 
-[bs-Callout] {
-  background: white;
+[bs-callout] {
+  background: #fff;
   padding: 27px 0 14px;
   border-bottom: 1px solid #E3E3E3; }
 
