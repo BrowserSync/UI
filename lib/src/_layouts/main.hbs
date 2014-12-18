@@ -3,16 +3,23 @@ layout: parent.hbs
 ---
 <main>
     {{ inc src="../img/icons/svg/symbols.svg" }}
-    {{ inc src="header.hbs" }}
-    {{ inc src="nav.hbs" }}
+    <section bs-container>
+        {{ inc src="header.hbs" }}
+        <aside bs-controls="top">
+            hi there
+        </aside>
+    </section>
 
-    <section bs-content="">
-        <div ng-view="">
-            <div>
-                <article>
-                    {{ content }}
-                </article>
+    <section bs-container>
+        {{ inc src="nav.hbs" }}
+        <section bs-content="">
+            <div ng-view="">
+                <div>
+                    <article>
+                        {{ content }}
+                    </article>
+                </div>
             </div>
-        </div>
+        </section>
     </section>
 </main>

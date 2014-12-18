@@ -16,7 +16,7 @@
         margin-bottom: 0;
     }
 
-    @include media-query(min, $desk-start) {
+    @include media-query(min, $lap-start) {
         opacity: 1;
         position: relative;
         transform: translateX(0) translateY(0) scale(1);

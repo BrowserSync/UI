@@ -1,3 +1,6 @@
+@import "../vars";
+@import "../modules/mixins";
+
 $header-height: 60px;
 $border-height: 4px;
 $inner-height: $header-height - $border-height;
@@ -15,85 +18,41 @@ $inner-height: $header-height - $border-height;
         margin-bottom: auto;
     }
 
-    [bs-toggle] {
-        position: absolute;
-        right: 0;
-        cursor: pointer;
-        width: 55px;
-        text-align: center;
-        height: $inner-height;
-        line-height: $inner-height;
-        @include font-size(24px);
-        color: white;
-        transition: background .2s;
-
-        &:hover {
-            background: $sidebar;
-        }
-
-        &.active {
-            background: $sidebar;
-        }
+    @include media-query(min, $lap-start) {
+        width: $sidebar-width;
     }
 }
 
-.icon {
-    display: inline-block;
-}
+[bs-toggle] {
 
-.icon-trash {
-    width: 100%;
-    max-width: 26px;
-    height: 26px;
-}
+    @include font-size(24px);
+    @include only-palm;
 
-.icon-word {
-
-    width: 100%;
-    max-width: 134px;
-    height: 100%;
-    margin-left: $gutter - 4px;
-    color: white;
-
-    svg {
-        position: relative;
-        top: 1px;
-    }
-}
-
-.icon-logo {
-
-    color: $white;
-    transition: all .1s;
-    width: $icon-gutter;
-    height: 37px;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    width: 55px;
     text-align: center;
+    height: $inner-height;
+    line-height: $inner-height;
+    color: $white;
+    transition: background .2s;
 
     &:hover {
-        color: $white;
-        transform: scale(1.1);
+        background: $sidebar;
+    }
+
+    &.active {
+        background: $sidebar;
     }
 }
 
-svg {
-    width: 100%;
-    height: 100%;
-    fill: currentColor!important;
-}
+[bs-controls] {
 
-//.#{$ns}-site-title {
-//
-//    background: $green-dk;
-//    margin-top: 0;
-//    padding: 0;
-//    font-family: "titillium_weblight";
-//    @include font-size(24px);
-//    padding: $half-spacing $base-spacing;
-//
-//    @extend %item-stack;
-//
-//    a {
-//        display: block;
-//        color: $white;
-//    }
-//}
+    @include not-palm;
+
+    width: auto;
+    flex: 1;
+    background: $grey-bg;
+    border-bottom: 4px solid red;
+}

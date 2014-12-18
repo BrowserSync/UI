@@ -22,93 +22,100 @@
             <title>Fill 213 + Fill 132</title><desc>Created with Sketch.</desc><g transform="translate(0 0)"><path d="M15.147 3.412c-6.507 0-11.78 5.092-11.78 11.375 0 6.282 5.273 11.375 11.78 11.375s11.78-5.093 11.78-11.375c0-6.283-5.273-11.375-11.78-11.375zm0 25.375c-8.006 0-14.5-6.268-14.5-14s6.494-14 14.5-14c8.007 0 14.5 6.268 14.5 14s-6.493 14-14.5 14z"/><path d="M19.36 12.578c0-.43-.365-.776-.813-.776-.45 0-.813.347-.813.776v6.466c0 .43.364.776.813.776.448 0 .812-.347.812-.776v-6.466zm-3.25 0c0-.43-.365-.776-.813-.776-.45 0-.813.347-.813.776v6.466c0 .43.364.776.813.776.448 0 .812-.347.812-.776v-6.466zm-3.25 0c0-.43-.365-.776-.813-.776-.45 0-.813.347-.813.776v6.466c0 .43.364.776.813.776.448 0 .812-.347.812-.776v-6.466zm8.124-1.552v9.57c0 .43-.364.775-.812.775h-9.75c-.45 0-.813-.345-.813-.775V10.25h11.374v.776zM8.797 8.7c0-.43.364-.777.812-.777h4.062v-.776c0-.43.364-.776.812-.776h1.625c.448 0 .812.348.812.777v.776h4.062c.45 0 .813.347.813.776v.775h-13V8.7z"/></g>
         </symbol>
         </svg>
-        <header bs-header role="banner">
-            <a href="http://www.browsersync.io" title="Visit the BrowserSync.io website" class="icon icon-logo">
-                <svg>
-                    <use xlink:href="#svg-logo"></use>
-                </svg>
-            </a>
-            <span class="icon icon-word">
-                <svg>
-                    <use xlink:href="#svg-logo-word"></use>
-                </svg>
-            </span>
-            <span bs-toggle="nav" ng-click="toggleMenu()">
-                <i bs-icon="list"></i>
-            </span>
-        </header>
-        <section bs-sidebar="">
-            <nav bs-section-nav="" class="">
-                <ul bs-list="">
-                    <li>
-                        <button bs-button="nav">
-                            <i bs-icon="cog"></i> Server Info
-                        </button>
-                    </li>
-                    <li>
-                        <button bs-button="nav" class="active">
-                            <i bs-icon="repeat_2"></i> Sync Options
-                        </button>
-                    </li>
-                    <li>
-                        <button bs-button="nav">
-                            <i bs-icon="book_2"></i> History
-                        </button>
-                    </li>
-                    <li>
-                        <button bs-button="nav">
-                            <i bs-icon="plug"></i> Plugins
-                        </button>
-                    </li>
-                    <li bs-action="menu-close">
-                        <button bs-button="nav" ng-click="toggleMenu()"><i bs-icon="close"></i> CLOSE</button>
-                    </li>
-                </ul>
-            </nav>
+        <section bs-container>
+            <header bs-header role="banner">
+                <a href="http://www.browsersync.io" title="Visit the BrowserSync.io website" class="icon icon-logo">
+                    <svg>
+                        <use xlink:href="#svg-logo"></use>
+                    </svg>
+                </a>
+                <span class="icon icon-word">
+                    <svg>
+                        <use xlink:href="#svg-logo-word"></use>
+                    </svg>
+                </span>
+                <span bs-toggle="nav" ng-click="toggleMenu()">
+                    <i bs-icon="list"></i>
+                </span>
+            </header>
+            <aside bs-controls="top">
+                hi there
+            </aside>
         </section>
-        <section bs-content="">
-            <div ng-view="">
-                <div>
-                    <article>
-                        <h1 bs-button="nav heading"><i bs-icon="book_2"></i> History</h1>
-                        <div bs-callout="controls outline">
-                            <button bs-button="inline">
-                                <i bs-icon="circle_delete"></i>
-                                Clear all
+        <section bs-container>
+            <section bs-sidebar="">
+                <nav bs-section-nav="" class="">
+                    <ul bs-list="">
+                        <li>
+                            <button bs-button="nav">
+                                <i bs-icon="cog"></i> Server Info
                             </button>
-                        </div>
-                        <div>
-                            <ul bs-list="bordered swipe">
-                                <li>/</li>
-                                <li>
-                                    <button bs-remove><i bs-icon="bin"></i></button>
-                                    /store-home.php
-                                    <span bs-multi="right">
-                                        <button>new tab</button>
-                                        <button>sync all</button>
-                                    </span>
-                                </li>
-                                <li>
-                                    <button bs-remove><i bs-icon="bin"></i></button>
-                                    /blog/building-browser-sync-ui/javascript/nodejs/2014
-                                    <span bs-multi="right">
-                                        <button>new tab</button>
-                                        <button>sync all</button>
-                                    </span>
-                                </li>
-                                <li class="active">
-                                    <button bs-remove><i bs-icon="bin"></i></button>
-                                    /store-product.php
-                                    <span bs-multi="right">
-                                        <button>new tab</button>
-                                        <button>sync all</button>
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-                    </article>
+                        </li>
+                        <li>
+                            <button bs-button="nav" class="active">
+                                <i bs-icon="repeat_2"></i> Sync Options
+                            </button>
+                        </li>
+                        <li>
+                            <button bs-button="nav">
+                                <i bs-icon="book_2"></i> History
+                            </button>
+                        </li>
+                        <li>
+                            <button bs-button="nav">
+                                <i bs-icon="plug"></i> Plugins
+                            </button>
+                        </li>
+                        <li bs-action="menu-close">
+                            <button bs-button="nav" ng-click="toggleMenu()"><i bs-icon="close"></i> CLOSE</button>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+            <section bs-content="">
+                <div ng-view="">
+                    <div>
+                        <article>
+                            <h1 bs-button="nav heading"><i bs-icon="book_2"></i> History</h1>
+                            <div bs-callout="controls outline">
+                                <button bs-button="inline">
+                                    <i bs-icon="circle_delete"></i>
+                                    Clear all
+                                </button>
+                            </div>
+                            <div>
+                                <ul bs-list="bordered swipe">
+                                    <li>/</li>
+                                    <li>
+                                        <button bs-remove><i bs-icon="bin"></i></button>
+                                        /store-home.php
+                                        <span bs-multi="right">
+                                            <button>new tab</button>
+                                            <button>sync all</button>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <button bs-remove><i bs-icon="bin"></i></button>
+                                        /blog/building-browser-sync-ui/javascript/nodejs/2014
+                                        <span bs-multi="right">
+                                            <button>new tab</button>
+                                            <button>sync all</button>
+                                        </span>
+                                    </li>
+                                    <li class="active">
+                                        <button bs-remove><i bs-icon="bin"></i></button>
+                                        /store-product.php
+                                        <span bs-multi="right">
+                                            <button>new tab</button>
+                                            <button>sync all</button>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-            </div>
+            </section>
         </section>
     </main>
 </body>

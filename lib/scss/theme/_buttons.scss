@@ -1,4 +1,11 @@
-%button {
+@import "../vars";
+@import "../modules/mixins";
+
+//
+// Default button styles
+// <button bs-button>Click me!</button>
+//
+[bs-button] {
 
     @include font-size(14px);
 
@@ -29,29 +36,20 @@
 
     + .button,
     + a {
-//        margin-left: $half-spacing;
     }
 }
 
-/**
- * Default button styles
- * <button bs-Button>Click me!</button>
- */
-[bs-Button] {
-    @extend %button;
-}
-
-/**
- * Default NAV button styles
- * <button bs-Button="nav">Click me!</button>
- */
-[bs-Button~="nav"] {
+//
+// Default NAV button styles
+//<button bs-button="nav">Click me!</button>
+//
+[bs-button~="nav"] {
 
     width: 100%;
     border-radius: 0;
     text-align: left;
     padding-left: $icon-gutter + $gutter;
-    height: 52px;
+    height: $nav-button-height;
     border: 0;
     position: relative;
     background: transparent;
@@ -60,7 +58,7 @@
         background: $sidebar-lt;
         box-shadow: -2px 3px 2px darken($sidebar, 3%);
         z-index: 5;
-        color:      $white;
+        color: $white;
         [bs-Icon] {
             color: $green-lt;
         }
@@ -73,43 +71,7 @@
     }
 
     [bs-Icon] {
-
-        position: absolute;
-        transition: all .3s;
-        color: $grey-icon;
-        left: $half-spacing + 2px;
-        @include font-size(22px);
-        margin-right: $half-spacing;
-        top: 14px;
-
-        [bs-Icon="plug"] {
-            @include font-size(28px);
-            left: $half-spacing + 8px;
-            top: 8px;
-        }
-    }
-}
-
-[bs-Button~="heading"] {
-
-    margin-top: 0;
-    margin-bottom: 0;
-    @include font-size(24px);
-    font-weight: 700;
-    color: #E8E8E8;
-    line-height: 52px;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    background: $sidebar;
-    @extend %sidebar-style;
-
-    &:hover {
-        cursor: default;
-    }
-
-    [bs-icon] {
-        color: $green-lt;
+        @include button-icon;
     }
 }
 
@@ -117,10 +79,7 @@
 
     position: relative;
     background: transparent;
-    padding-left: 17px;
-    padding-right: $half-spacing;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 $half-spacing 0 17px;
     height: 28px;
     line-height: 28px;
     color: $black;
@@ -141,17 +100,16 @@
     }
 }
 
-
 /**
- * Button bar
- * <div bs-Button-Bar> ... </div>
+ * button bar
+ * <div bs-button-Bar> ... </div>
  */
-[bs-Button-Bar] {
+[bs-button-Bar] {
 
     @extend %flexy;
     @extend %item-stack;
 
-    [bs-Button] {
+    [bs-button] {
         margin-left: 0;
         margin-right: 0;
         border-radius: 0;
@@ -166,11 +124,11 @@
         }
     }
 
-    [bs-Button~="darker"] {
+    [bs-button~="darker"] {
         border-right: 1px solid lighten($green, 10%);
     }
 
-    [bs-Button~="inverted"] {
+    [bs-button~="inverted"] {
         border-right: 0;
         &:last-child {
             border-right: 1px solid $grey-border;
@@ -178,10 +136,10 @@
     }
 }
 
-[bs-Button-Bar~="split"] {
+[bs-button-Bar~="split"] {
     width: 100%;
 
-    [bs-Button] {
+    [bs-button] {
         width: 49%;
         border-radius: 3px;
         &:first-child {
@@ -190,33 +148,33 @@
     }
 }
 
-/**
- * Icons
- * <i bs-Icon="repeat"></i>
- */
-[bs-Button~="icon"] {
+//
+// Icons
+// <i bs-Icon="repeat"></i>
+//
+[bs-button~="icon"] {
     padding-left: $half-spacing;
     padding-right: $half-spacing;
 }
 
-[bs-Button~="icon-left"] {
+[bs-button~="icon-left"] {
 
     [bs-Icon] {
         margin-right: $half-spacing/2;
     }
 }
 
-[bs-Button~="icon-right"] {
+[bs-button~="icon-right"] {
 
     [bs-Icon] {
         margin-left: $half-spacing/2;
     }
 }
 
-/**
- * Darker button
- */
-[bs-Button~="darker"] {
+//
+// Darker button
+//
+[bs-button~="darker"] {
 
     background: $green-alt;
 
@@ -229,10 +187,11 @@
         background: $green-alt;
     }
 }
-/**
- * Darker button
- */
-[bs-Button~="inverted"] {
+
+//
+// Darker button
+//
+[bs-button~="inverted"] {
 
     color: darken($grey-border, 30%);
     background: $white;
@@ -250,15 +209,9 @@
 }
 
 [bs-Action="menu-toggle"] {
-
-    @include media-query(min, $lap-start) {
-        display: none;
-    }
+    @include only-palm;
 }
 
 [bs-Action="menu-close"] {
-
-    @include media-query(min, $lap-start) {
-        display: none;
-    }
+    @include only-palm;
 }

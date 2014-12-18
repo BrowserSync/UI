@@ -70,7 +70,10 @@ gulp.task('browser-sync-dev', function () {
 gulp.task('sass', function () {
     return gulp.src('lib/scss/**/*.scss')
         .pipe(sass())
-        .on('error', function (err) { browserSync.notify(err.message); console.log(err.message) })
+        .on('error', function(err){
+            browserSync.notify(err.message, 3000);
+            this.emit('end');
+        })
         .pipe(autoprefix())
         .pipe(gulp.dest('lib/css'))
         .pipe(filter("**/*.css"))

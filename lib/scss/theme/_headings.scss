@@ -1,6 +1,9 @@
-/**
- * Site Theme
- */
+@import "../vars";
+@import "../modules/mixins";
+
+//
+// Site Theme
+//
 h1, h2, h3, h4, h5, h6, hgroup,
 p, blockquote, address,
 ul, ol, dl,
@@ -48,4 +51,28 @@ h5, .h5 {
 }
 h6, .h6 {
     @include font-size($h6-size);
+}
+
+//
+// Custom Heading styles
+//
+[bs-heading] {
+
+    @include sidebar-style;
+    @include font-size(24px);
+
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 700;
+    color: $grey-bg;
+    line-height: $nav-button-height;
+    padding-left: $icon-gutter + $gutter;
+    position: relative;
+    background: $sidebar;
+
+
+    [bs-icon] {
+        @include button-icon;
+        color: $green-lt;
+    }
 }

@@ -1,11 +1,20 @@
+@import "../vars";
+@import "../modules/mixins";
+
+[bs-container] {
+    @include media-query(min, $lap-start) {
+        display: flex;
+    }
+}
+
 [bs-Content] {
 
     background: $white;
     width:      100%;
-//    padding:    $half-spacing;
 
-//    @include media-query(min, $lap-start) {
-//        padding: $base-spacing $base-spacing*2;
-//        width: 75%;
-//    }
+    @include media-query(min, $lap-start) {
+        width: auto;
+        flex: 1;
+    }
 }
+

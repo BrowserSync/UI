@@ -23,3 +23,7 @@ pre {
         line-height: 1.25;
     }
 }
+
+[bs-stack] {
+    @extend %item-stack;
+}

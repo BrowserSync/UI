@@ -1,17 +1,12 @@
-/**
- * Brand
- */
 $red:        #FF4453;
 $sidebar:    #272A33;
 $sidebar-lt: #2F323E;
+$green:      #033339;
+$green-dk:   #00262C;
+$green-lt:   #21A695;
+$green-alt:  #064F58;
 
-
-$green:     #033339;
-$green-dk:  #00262C;
-$green-lt:  #21A695;
-$green-alt: #064F58;
-
-$blue:      #4A90E2;
+$blue:       #4A90E2;
 
 $lime:          #7ED321;
 $grey-text:     #BBBBBB;
@@ -23,9 +18,6 @@ $input-text:    #999999;
 
 $yellow: #e9ac00;
 
-/**
- * Neutrals
- */
 $white: #fff;
 $black: #000;
 $grey-dk: lighten($black, 10%); // 1a1a1a
@@ -37,9 +29,9 @@ $silver-lt: lighten($black, 90%); // e6e6e6
 $smoke: lighten($black, 95%); // f2f2f2
 
 
-/**
- * Special
- */
+//
+// Special
+//
 $link: $green-lt;
 $link-hover: $green-dk;
 $alert: #cccc00;
@@ -48,33 +40,30 @@ $failure: #cc0000;
 $facebook: #3B5999;
 $twitter: #00ACEE;
 
-
-/*================================================================================
-TYPOGRAPHY
-================================================================================*/
-
+//
+// Type
+//
 $sans: "source_sans_proregular", "Lucida Grande", "Lucida Sans",sans-serif;
 $sans-light: "source_sans_proextralight", "Lucida Grande", "Lucida Sans",sans-serif;
 $serif: Georgia, serif;
 $mono: Consolas, Monaco, monospace;
 
 
-/**
- * Base
- */
+//
+// Base
+//
 $base-font-size: 18px;
 $base-line-height: 1.5;
 $base-font-family: $sans;
 $base-color: $green;
 
 
-/**
- * Headings
- */
+//
+// Headings
+//
 $hn-font-weight: 400;
 $hn-line-height: 1;
 $hn-font-family: $sans;
-//$hn-font-family: "titillium_webbold";
 
 $hn-font-family-thin: "titillium_webregular";
 $hn-color: $base-color;
@@ -86,47 +75,43 @@ $h5-size: 16px;
 $h6-size: 16px;
 
 
-/**
- * Fixed width
- */
+//
+// Fixed width
+//
 $mono-size: 14px;
 $mono-line-height: $base-line-height;
 $mono-font-family: $mono;
 
 
-/**
- * Special
- */
+//
+// Special
+//
 $lede-size: 20px;
 $small-size: 12px;
 $micro-size: 10px;
 
-
-/*================================================================================
-LAYOUT
-================================================================================*/
-
+//
+// LAYOUT
+//
 $border-box: true;
 
-/**
- * Spacing
- */
+//
+// Spacing
+//
 $base-spacing: $base-font-size * $base-line-height;
 $half-spacing: ceil($base-spacing / 2);
 $gutter: 20px;
 $icon-gutter: 55px;
 
-
-/**
- * Radii
- */
+//
+// Radii
+//
 $base-radius: 5px;
 $half-radius: ceil($base-radius / 2);
 
-
-/**
- * Grids
- */
+//
+// Grids
+//
 $column-width: 80px;
 $gutter-width: 20px;
 $page-width: 740px;
@@ -135,6 +120,11 @@ $lap-start: 600px;
 $desk-start: 750px;
 $wide-start: 1200px;
 
-$fa-css-prefix: icon;
-
 $ns: "bs";
+
+//
+// Sidebar widths
+//
+$sidebar-width: 240px;
+$nav-button-height: 52px;
+

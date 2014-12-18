@@ -1,22 +1,8 @@
-.clearfix {
+@import "../vars";
 
-    &:before,
-    &:after {
-        content: "";
-        display: table;
-    }
-    &:after {
-        clear: both;
-    }
-    zoom: 1;
-}
-
-/**
- * Output media query block
- *
-   `@include media-query(min, 640px);`
- *
- */
+//
+// `@include media-query(min, 640px);`
+//
 @mixin media-query($type, $breakpoint: $lap-start) {
     @if $type == "min" {
         @media only screen and (min-width: $breakpoint) { @content }
@@ -47,13 +33,42 @@
     }
 }
 
-/**
- * Output font size using rem and px fallback
- *
-   `@include font-size(10px);`
- *
- */
+//
+// `@include font-size(10px);`
+//
 @mixin font-size($font-size){
     font-size: $font-size;
     font-size: ($font-size / $base-font-size)*1rem;
+}
+
+@mixin button-icon {
+
+    @include      font-size(22px);
+
+    position:     absolute;
+    transition:   all .3s;
+    color:        $grey-icon;
+    left:         $half-spacing + 2px;
+    margin-right: $half-spacing;
+    top:          14px;
+
+    [bs-Icon="plug"] {
+        @include font-size(28px);
+        left: $half-spacing + 8px;
+        top:  8px;
+    }
+}
+
+@mixin only-palm {
+    @include media-query(min, $lap-start) {
+        display: none;
+    }
+}
+
+@mixin not-palm {
+
+    display: none;
+    @include media-query(min, $lap-start) {
+        display: block;
+    }
 }
