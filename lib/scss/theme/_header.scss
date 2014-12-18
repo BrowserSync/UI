@@ -10,8 +10,9 @@ $inner-height: $header-height - $border-height;
     background: $green-lt;
     height: $header-height;
     display: flex;
-    border-bottom: $border-height solid $sidebar-lt;
+    border-bottom: 1px solid $sidebar;
     position: relative;
+//    border-bottom: $border-height solid $sidebar-lt;
 
     * {
         margin-top: auto;
@@ -45,14 +46,4 @@ $inner-height: $header-height - $border-height;
     &.active {
         background: $sidebar;
     }
-}
-
-[bs-controls] {
-
-    @include not-palm;
-
-    width: auto;
-    flex: 1;
-    background: $grey-bg;
-    border-bottom: 4px solid red;
 }

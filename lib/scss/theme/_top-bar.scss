@@ -1,0 +1,60 @@
+@import "../vars";
+@import "../modules/mixins";
+
+[bs-controls] {
+
+    @include not-palm;
+
+    width: auto;
+    flex: 1;
+    background: $grey-bg-dk;
+    //    height: $inner-height + 1px;
+    border-bottom: 1px solid darken($grey-border, 5%);
+
+}
+
+[bs-flex~="top"] {
+    display: flex;
+    height: $header-height - 1px;
+    justify-content: flex-end;
+}
+
+[bs-control] {
+
+    @include font-size(16px);
+    height: 100%;
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+    border-left: 1px solid $white;
+    position: relative;
+    color: $grey-text;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: $half-spacing/2;
+    text-shadow: 1px 1px 0 $white;
+
+    [bs-icon] {
+        transition: all .2s;
+        color: $grey-text;
+    }
+
+    &:before {
+        width: 1px;
+        height: 100%;
+        position: absolute;
+        left: -2px;
+        content: " ";
+        background: darken($grey-border, 5%);
+    }
+
+    &:hover {
+
+        background: lighten($grey-bg-dk, 2%);
+        text-decoration: none;
+
+        [bs-icon] {
+            transform: rotate(360deg) scale(1.1);
+            color: $black;
+        }
+    }
+}

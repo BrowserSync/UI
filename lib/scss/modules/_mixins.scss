@@ -72,3 +72,16 @@
         display: block;
     }
 }
+
+@mixin sidebar-style {
+    background: $sidebar;
+    &:before {
+        content: " ";
+        height: 100%;
+        width: 1px;
+        background: $sidebar-lt;
+        position: absolute;
+        top: 0;
+        left: $icon-gutter;
+    }
+}

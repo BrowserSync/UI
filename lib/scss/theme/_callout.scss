@@ -1,3 +1,6 @@
+@import "../vars";
+@import "../modules/mixins";
+
 %callout {
     color: $input-text;
     position: relative;

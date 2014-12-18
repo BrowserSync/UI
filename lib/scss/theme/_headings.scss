@@ -61,15 +61,24 @@ h6, .h6 {
     @include sidebar-style;
     @include font-size(24px);
 
+    padding-left: $icon-gutter + $gutter;
+    position: relative;
+    line-height: $nav-button-height;
     margin-top: 0;
     margin-bottom: 0;
     font-weight: 700;
     color: $grey-bg;
-    line-height: $nav-button-height;
-    padding-left: $icon-gutter + $gutter;
-    position: relative;
     background: $sidebar;
 
+    @include media-query(min, $lap-start) {
+
+        color: $sidebar;
+        background: $grey-bg;
+
+        &:before {
+            display: none;
+        }
+    }
 
     [bs-icon] {
         @include button-icon;

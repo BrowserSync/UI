@@ -93,6 +93,7 @@ gulp.task('bs-inject', function () {
  * Compile HTML
  */
 gulp.task('build-src', function () {
+    crossbow.clearCache();
     return gulp.src("lib/src/*.hbs")
         .pipe(crossbow({cwd: "lib/src"}))
         .pipe(gulp.dest("./lib"))

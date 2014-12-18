@@ -1,3 +1,6 @@
+@import "../vars";
+@import "../modules/mixins";
+
 [bs-Section-Nav] {
 
     position: absolute;
@@ -9,8 +12,6 @@
     transition: all .3s;
     opacity: 0;
     z-index: 5;
-
-    @extend %sidebar-style;
 
     ul {
         margin-bottom: 0;
