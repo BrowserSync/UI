@@ -547,6 +547,7 @@ td, th {
       width: 240px; } }
 
 [bs-Section-Nav] {
+  background: #272A33;
   position: absolute;
   width: 100%;
   padding-top: 14px;
@@ -560,6 +561,14 @@ td, th {
           transition: all 0.3s;
   opacity: 0;
   z-index: 5; }
+  [bs-Section-Nav]:before {
+    content: " ";
+    height: 100%;
+    width: 1px;
+    background: #2F323E;
+    position: absolute;
+    top: 0;
+    left: 55px; }
   [bs-Section-Nav] ul {
     margin-bottom: 0; }
   @media only screen and (min-width: 600px) {
@@ -605,6 +614,7 @@ html {
   overflow-x: hidden;
   min-height: 100%;
   max-width: 100%;
+  height: 100%;
   font: 112.5%/1.5 "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
@@ -614,7 +624,14 @@ body {
   overflow-x: hidden;
   background: #fff;
   color: #033339;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+  height: 100%; }
+
+main {
+  height: 100%; }
+
+[bs-height~="100"] {
+  height: 100%; }
 
 .lede {
   font-size: 20px;
@@ -1224,8 +1241,8 @@ span.sep {
   cursor: pointer;
   width: 55px;
   text-align: center;
-  height: 56px;
-  line-height: 56px;
+  height: 60px;
+  line-height: 60px;
   color: #fff;
   -webkit-transition: background 0.2s;
           transition: background 0.2s; }

@@ -34,8 +34,8 @@ $inner-height: $header-height - $border-height;
     cursor: pointer;
     width: 55px;
     text-align: center;
-    height: $inner-height;
-    line-height: $inner-height;
+    height: $header-height;
+    line-height: $header-height;
     color: $white;
     transition: background .2s;
 
