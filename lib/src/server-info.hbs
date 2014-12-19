@@ -1,8 +1,11 @@
 ---
 layout: main.hbs
 title: "Server Info"
+icon: "cog"
 ---
-<h1 bs-heading><i bs-icon="cog"></i> {{page.title}}</h1>
+<div bs-callout="controls outline">
+    <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
+</div>
 <div>
     <section bs-callout="">
         <div bs-callout-content="" bs-flex="">

@@ -24,7 +24,7 @@
         </svg>
         <section bs-container>
             <header bs-header role="banner">
-                <a href="http://www.browsersync.io" title="Visit the BrowserSync.io website" class="icon icon-logo">
+                <a href="/" title="Visit the BrowserSync.io website" class="icon icon-logo">
                     <svg>
                         <use xlink:href="#svg-logo"></use>
                     </svg>
@@ -85,7 +85,9 @@
                 <div ng-view="">
                     <div>
                         <article>
-                            <h1 bs-heading><i bs-icon="cog"></i> Server Info</h1>
+                            <div bs-callout="controls outline">
+                                <h1 bs-heading><i bs-icon="cog"></i> Server Info</h1>
+                            </div>
                             <div>
                                 <section bs-callout="">
                                     <div bs-callout-content="" bs-flex="">

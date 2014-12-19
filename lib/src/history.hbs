@@ -3,8 +3,8 @@ layout: main.hbs
 title: "History"
 icon: "book_2"
 ---
-<h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
 <div bs-callout="controls outline">
+    <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
     <button bs-button="inline">
         <i bs-icon="circle_delete"></i>
         Clear all
@@ -12,7 +12,6 @@ icon: "book_2"
 </div>
 <div>
     <ul bs-list="bordered swipe">
-        <li>/</li>
         <li>
             <button bs-remove><i bs-icon="bin"></i></button>
             /store-home.php

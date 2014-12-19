@@ -2,6 +2,7 @@
 @import "../modules/mixins";
 
 %callout {
+
     color: $input-text;
     position: relative;
 
@@ -77,10 +78,16 @@
 }
 
 [bs-Callout~="controls"] {
-    padding: $half-spacing;
-    padding-left: 0;
+    padding: 0;
     background: $grey-bg;
     border-bottom: 1px solid $grey-border;
+
+    [bs-heading] {
+        margin-bottom: $half-spacing;
+    }
+    [bs-button] {
+        margin-bottom: $half-spacing;
+    }
 }
 
 [bs-callout~="outline"] {

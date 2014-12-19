@@ -1075,10 +1075,13 @@ span.sep {
     z-index: 2; }
 
 [bs-Callout~="controls"] {
-  padding: 14px;
-  padding-left: 0;
+  padding: 0;
   background: #FBFBFB;
   border-bottom: 1px solid #F0F0F0; }
+  [bs-Callout~="controls"] [bs-heading] {
+    margin-bottom: 14px; }
+  [bs-Callout~="controls"] [bs-button] {
+    margin-bottom: 14px; }
 
 [bs-callout~="outline"] {
   border-bottom: 0; }
@@ -1295,6 +1298,7 @@ span.sep {
   [bs-control]:before {
     width: 1px;
     height: 100%;
+    top: 0;
     position: absolute;
     left: -2px;
     content: " ";
