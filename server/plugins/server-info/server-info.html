@@ -1,7 +1,9 @@
 <script type="text/ng-template" id="server-info.html">
     <div ng-controller="ServerController">
         <article>
-            <h1>{{options.mode}} Info</h1>
+            <div bs-callout="controls outline">
+                <h1 bs-heading><i bs-icon="cog"></i> Server Info</h1>
+            </div>
             <url-info ng-if="options.server || options.proxy" options="options"></url-info>
             <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
         </article>

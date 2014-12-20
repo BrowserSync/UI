@@ -18,7 +18,7 @@ plugins: ['HTML Injector', 'Console Logger']
 <div>
     {{#each page.plugins}}
     <section bs-callout="switch {{#if @last}}last{{/if}}">
-        <div bs-callout-content="" bs-flex="">
+        <div bs-callout-content="">
             <div bs-callout-icon="switch">
                 <div class="switch">
                     <input id="cmn-form-{{@index}}"
@@ -30,7 +30,7 @@ plugins: ['HTML Injector', 'Console Logger']
                     <label for="cmn-form-{{@index}}"></label>
                 </div>
             </div>
-            <div bs-flex-item="text" bs-width="50">
+            <div>
                 <p bs-text="lede">{{this}}</p>
             </div>
         </div>

@@ -1,0 +1,35 @@
+<!-- old sidebar -->
+<section bs-Sidebar>
+    <header class="bs-site-header" role="banner">
+        <h1 class="bs-site-title alt">
+            <a href="/">BrowserSync</a>
+        </h1>
+        <div bs-Stack>
+            <input bs-Input="darker" bs-Width="100" type="text" ng-model="options.displayUrl" ng-if="options.displayUrl">
+        </div>
+        <div bs-Button-Bar="split">
+            <button bs-Button="darker">Resync</button>
+            <button bs-Button="darker">New Tab</button>
+        </div>
+    </header>
+    <nav bs-Section-Nav ng-class="{'active': ui.sectionMenu}">
+        <ul bs-List>
+            <li ng-repeat="(key, item) in ui.menu | orderObjectBy: 'order'">
+                <button bs-Button="nav" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">
+                    <i bs-Icon="{{item.icon}}"></i> {{item.title}}
+                </button>
+            </li>
+            <li bs-Action="menu-close" bs-Visible="palm">
+                <button bs-Button="nav" ng-click="toggleMenu()"><i bs-Icon="close"></i> CLOSE</button>
+            </li>
+        </ul>
+    </nav>
+    <div class="bs-nav-toggle" bs-Visible="palm">
+        <button bs-Button="nav" ng-click="toggleMenu()"><i bs-Icon="list"></i> Menu</button>
+    </div>
+</section>
+<section bs-Content>
+    %hooks%
+    <div ng-view>
+    </div>
+</section>

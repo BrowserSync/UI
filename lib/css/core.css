@@ -571,6 +571,8 @@ td, th {
     left: 55px; }
   [bs-Section-Nav] ul {
     margin-bottom: 0; }
+    [bs-Section-Nav] ul li.active {
+      margin-right: -5px; }
   @media only screen and (min-width: 600px) {
     [bs-Section-Nav] {
       opacity: 1;
@@ -1067,7 +1069,7 @@ span.sep {
 [bs-callout~="switch"] [bs-callout-content] {
   padding-left: 81px;
   margin-bottom: 14px; }
-  @media only screen and (min-width: 750px) {
+  @media only screen and (min-width: 600px) {
     [bs-callout~="switch"] [bs-callout-content] {
       padding-left: 108px; } }
 

@@ -15,9 +15,14 @@
     opacity: 0;
     z-index: 5;
 
-
     ul {
         margin-bottom: 0;
+
+        li {
+            &.active {
+                margin-right: -5px;
+            }
+        }
     }
 
     @include media-query(min, $lap-start) {

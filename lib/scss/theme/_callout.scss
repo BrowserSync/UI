@@ -48,7 +48,7 @@
     [bs-callout-content] {
 
         padding-left: $base-spacing*3;
-        @include media-query(min, $desk-start) {
+        @include media-query(min, $lap-start) {
             padding-left: $base-spacing*4;
         }
         margin-bottom: $half-spacing;

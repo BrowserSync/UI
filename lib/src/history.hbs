@@ -2,6 +2,12 @@
 layout: main.hbs
 title: "History"
 icon: "book_2"
+urls:
+    - /store-home.php
+    - /store-home.php
+    - /store-home.php
+    - /store-home.php
+    - /store-home.php
 ---
 <div bs-callout="controls outline">
     <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
@@ -12,7 +18,8 @@ icon: "book_2"
 </div>
 <div>
     <ul bs-list="bordered swipe">
-        <li>
+        {{#each page.urls}}
+        <li {{#if @last}}class="active"{{/if}}>
             <button bs-remove><i bs-icon="bin"></i></button>
             /store-home.php
             <span bs-multi="right">
@@ -20,21 +27,6 @@ icon: "book_2"
                 <button>sync all</button>
             </span>
         </li>
-        <li>
-            <button bs-remove><i bs-icon="bin"></i></button>
-            /blog/building-browser-sync-ui/javascript/nodejs/2014
-            <span bs-multi="right">
-                <button>new tab</button>
-                <button>sync all</button>
-            </span>
-        </li>
-        <li class="active">
-            <button bs-remove><i bs-icon="bin"></i></button>
-            /store-product.php
-            <span bs-multi="right">
-                <button>new tab</button>
-                <button>sync all</button>
-            </span>
-        </li>
+        {{/each}}
     </ul>
 </div>

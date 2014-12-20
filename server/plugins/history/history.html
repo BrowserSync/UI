@@ -1,7 +1,11 @@
 <!-- Controller for history-list -->
 <script type="text/ng-template" id="history.html">
-    <article class="bs-main-section">
-        <h1>{{section.title}}</h1>
-        <history-list ng-if="options" options="options"></history-list>
-    </article>
+    <div bs-callout="controls outline">
+        <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
+        <button bs-button="inline">
+            <i bs-icon="circle_delete"></i>
+            Clear all
+        </button>
+    </div>
+    <history-list ng-if="options" options="options"></history-list>
 </script>

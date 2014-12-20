@@ -1,6 +1,14 @@
 <script type="text/ng-template" id="plugins.html">
-    <article class="bs-main-section">
-        <h1>{{section.title}}</h1>
-        <plugin-list ng-if="options" options="options"></plugin-list>
-    </article>
+    <div bs-callout="controls outline">
+        <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
+        <button bs-button="inline">
+            <i bs-icon="circle_ok"></i>
+            Enable All
+        </button>
+        <button bs-button="inline">
+            <i bs-icon="circle_delete"></i>
+            Disable all
+        </button>
+    </div>
+    <plugin-list ng-if="options" options="options"></plugin-list>
 </script>

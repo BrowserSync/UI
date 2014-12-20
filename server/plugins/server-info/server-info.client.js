@@ -15,7 +15,7 @@
                 },
                 replace: true,
                 templateUrl: "url-info.html",
-                controller: ["$scope", "contentSections", urlInfoController]
+                controller: ["$scope", "contentSections", "Location", urlInfoController]
             };
         })
 
@@ -71,11 +71,19 @@
 
     /**
      * @param $scope
+     * @param Location
      * @param contentSections
      */
-    function urlInfoController($scope, contentSections) {
+    function urlInfoController($scope, contentSections, Location) {
 
         var urls = $scope.options.urls;
+
+        /**
+         * Emit the socket event
+         */
+        $scope.sendAllTo = function (url) {
+            Location.sendAllTo(url.url);
+        };
 
         $scope.ui = {
             server: false,

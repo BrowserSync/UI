@@ -1,36 +1,25 @@
 <div>
-
-    <h2>Access Information:</h2>
-    <section bs-callout ng-repeat="url in urls">
-        <div bs-callout-content bs-flex>
-            <div>
-                <div bs-callout-icon>
-                    <i bs-icon="{{url.icon}}"></i>
-                </div>
+    <section bs-callout="" ng-repeat="url in urls">
+        <div bs-callout-content>
+            <div bs-callout-icon>
+                <i bs-icon="{{url.icon}}"></i>
             </div>
-            <div bs-flex-item="text" bs-Width="50">
-                <p bs-Text="lede">{{url.title}}</p>
-                <p>{{url.tagline}}</p>
-            </div>
-            <div bs-flex-item="action" bs-Width="50">
-                <div bs-Input-Overlay>
-                    <input type="text" value="{{url.url}}">
-                    <div bs-Button-Bar>
-                        <button bs-Button="inverted icon" title="Sync all devices here"><i bs-Icon="repeat_2"></i></button>
-                        <a href="{{url.url}}" target="_blank" bs-Button="inverted icon" title="Launch new tab here"><i bs-Icon="share"></i></a>
-                    </div>
-                </div>
-            </div>
+            <p bs-text="lede">{{url.title}}</p>
+            <p bs-text="controls">
+                <a href="{{url.url}}" target="_blank">new tab</a> |
+                <a href="#" ng-click="sendAllTo(url)">sync all</a>
+            </p>
+            <p><a href="{{url.url}}" target="_blank">{{url.url}}</a></p>
         </div>
     </section>
     <section ng-if="ui.server">
-        <div bs-Callout>
-            <div bs-Callout-Icon>
-                <i bs-Icon="terminal"></i>
-            </div>
-            <div bs-Callout-Content>
-                <p bs-Text="lede">Serving files from</p>
-                <ul bs-List>
+        <div bs-callout="full">
+            <div bs-callout-content="">
+                <div bs-callout-icon="">
+                    <i bs-icon="terminal"></i>
+                </div>
+                <p bs-text="lede">Serving files from</p>
+                <ul bs-list="">
                     <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
                 </ul>
             </div>
