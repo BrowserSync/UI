@@ -1067,7 +1067,11 @@ span.sep {
   border-bottom: 1px solid #F0F0F0; }
 
 [bs-callout~="switch"] [bs-callout-content] {
+  padding-left: 81px;
   margin-bottom: 14px; }
+  @media only screen and (min-width: 750px) {
+    [bs-callout~="switch"] [bs-callout-content] {
+      padding-left: 108px; } }
 
 [bs-callout~="last"] {
   border-bottom: 2px solid #F0F0F0;
@@ -1108,43 +1112,27 @@ span.sep {
     bottom: -2px;
     z-index: 2; }
 
-[bs-Callout~="trans"] {
-  border: 0;
-  background: transparent;
-  padding-left: 0;
-  padding-right: 0; }
-
-[bs-Callout-Icon] {
+[bs-callout-icon] {
   position: absolute;
   left: 14px;
   top: 29px; }
-  [bs-Callout-Icon] [bs-Icon] {
+  [bs-callout-icon] [bs-Icon] {
     color: #4A90E2;
     font-size: 24px;
     font-size: 1.33333rem; }
 
-[bs-Callout-Icon~="flush"] {
-  top: 20px;
-  left: 0; }
-
-[bs-Callout-Icon~="switch"] {
-  top: 27px; }
-
-[bs-Callout-Icon~="flush-top"] {
-  top: 20px; }
-
-[bs-Callout-Content] {
+[bs-callout-content] {
   padding-left: 54px;
   padding-right: 14px; }
   @media only screen and (min-width: 600px) {
-    [bs-Callout-Content] {
+    [bs-callout-content] {
       padding-left: 108px; }
-      [bs-Callout-Content] [bs-callout-icon] {
+      [bs-callout-content] [bs-callout-icon] {
         left: 40.5px; }
-        [bs-Callout-Content] [bs-callout-icon] [bs-icon] {
+        [bs-callout-content] [bs-callout-icon] [bs-icon] {
           font-size: 45px;
           font-size: 2.5rem; } }
-  [bs-Callout~="trans"] [bs-Callout-Content] {
+  [bs-Callout~="trans"] [bs-callout-content] {
     padding-left: 68px; }
 
 /**

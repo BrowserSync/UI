@@ -41,16 +41,16 @@
     background: $white;
     padding: $base-spacing 0 $half-spacing;
     border-bottom: 1px solid $grey-border;
-    @include media-query(min, $desk-start) {
-//        padding-left: $base-spacing*2;
-//        padding-top: $base-spacing*2;
-//        padding-top: $base-spacing*2;
-//        padding-bottom: $base-spacing;
-    }
 }
 
 [bs-callout~="switch"] {
+
     [bs-callout-content] {
+
+        padding-left: $base-spacing*3;
+        @include media-query(min, $desk-start) {
+            padding-left: $base-spacing*4;
+        }
         margin-bottom: $half-spacing;
     }
 }
@@ -107,14 +107,8 @@
     }
 }
 
-[bs-Callout~="trans"] {
-    border: 0;
-    background: transparent;
-    padding-left: 0;
-    padding-right: 0;
-}
+[bs-callout-icon] {
 
-[bs-Callout-Icon] {
     position: absolute;
     left: $half-spacing;
     top: $base-spacing + 2px;
@@ -125,20 +119,7 @@
     }
 }
 
-[bs-Callout-Icon~="flush"] {
-    top: $half-spacing + 6px;
-    left: 0;
-}
-
-[bs-Callout-Icon~="switch"] {
-    top: $base-spacing;
-}
-
-[bs-Callout-Icon~="flush-top"] {
-    top: $half-spacing + 6px;
-}
-
-[bs-Callout-Content] {
+[bs-callout-content] {
 
     padding-left: $base-spacing*2;
     padding-right: $half-spacing;
