@@ -72,9 +72,10 @@ h6, .h6 {
 
     @include media-query(min, $lap-start) {
 
+        @include font-size(45px);
         color: $sidebar;
         background: $grey-bg;
-
+        padding-left: $icon-gutter + $gutter + 5px;
         &:before {
             display: none;
         }
@@ -82,6 +83,11 @@ h6, .h6 {
 
     [bs-icon] {
         @include button-icon;
+
+        @include media-query(min, $lap-start) {
+            @include font-size(40px);
+            top: $half-spacing/2;
+        }
         color: $green-lt;
     }
 }

@@ -36,22 +36,17 @@
     }
 }
 
-
 [bs-callout] {
-
     @extend %callout;
     background: $white;
     padding: $base-spacing 0 $half-spacing;
     border-bottom: 1px solid $grey-border;
-
-//    [bs-List] {
-//        @include font-size(16px);
-//        [bs-Msg] {
-//            &:before {
-//                top: 1px;
-//            }
-//        }
-//    }
+    @include media-query(min, $desk-start) {
+//        padding-left: $base-spacing*2;
+//        padding-top: $base-spacing*2;
+//        padding-top: $base-spacing*2;
+//        padding-bottom: $base-spacing;
+    }
 }
 
 [bs-callout~="switch"] {
@@ -81,6 +76,11 @@
     padding: 0;
     background: $grey-bg;
     border-bottom: 1px solid $grey-border;
+
+    @include media-query(min, $lap-start) {
+        padding: $base-spacing;
+        padding-bottom: $half-spacing;
+    }
 
     [bs-heading] {
         margin-bottom: $half-spacing;
@@ -139,12 +139,23 @@
 }
 
 [bs-Callout-Content] {
+
     padding-left: $base-spacing*2;
     padding-right: $half-spacing;
+
+    @include media-query(min, $lap-start) {
+
+        padding-left: $base-spacing*4;
+
+        [bs-callout-icon] {
+            left: $base-spacing*1.5;
+            [bs-icon] {
+                @include font-size(45px);
+            }
+        }
+    }
+
     [bs-Callout~="trans"] & {
         padding-left: $base-spacing*2 + $half-spacing;
-    }
-    [bs-Callout~="switch"] & {
-        padding-left: $base-spacing*3 + $half-spacing;
     }
 }

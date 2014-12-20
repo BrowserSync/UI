@@ -628,7 +628,7 @@ body {
   height: 100%; }
 
 main {
-  height: 100%; }
+  height: auto; }
 
 [bs-height~="100"] {
   height: 100%; }
@@ -742,8 +742,11 @@ h6, .h6 {
     left: 55px; }
   @media only screen and (min-width: 600px) {
     [bs-heading] {
+      font-size: 45px;
+      font-size: 2.5rem;
       color: #272A33;
-      background: #FBFBFB; }
+      background: #FBFBFB;
+      padding-left: 80px; }
       [bs-heading]:before {
         display: none; } }
   [bs-heading] [bs-icon] {
@@ -762,6 +765,11 @@ h6, .h6 {
       font-size: 1.55556rem;
       left: 22px;
       top: 8px; }
+    @media only screen and (min-width: 600px) {
+      [bs-heading] [bs-icon] {
+        font-size: 40px;
+        font-size: 2.22222rem;
+        top: 7px; } }
 
 .lede {
   margin-bottom: 27px;
@@ -1078,6 +1086,10 @@ span.sep {
   padding: 0;
   background: #FBFBFB;
   border-bottom: 1px solid #F0F0F0; }
+  @media only screen and (min-width: 600px) {
+    [bs-Callout~="controls"] {
+      padding: 27px;
+      padding-bottom: 14px; } }
   [bs-Callout~="controls"] [bs-heading] {
     margin-bottom: 14px; }
   [bs-Callout~="controls"] [bs-button] {
@@ -1124,10 +1136,16 @@ span.sep {
 [bs-Callout-Content] {
   padding-left: 54px;
   padding-right: 14px; }
+  @media only screen and (min-width: 600px) {
+    [bs-Callout-Content] {
+      padding-left: 108px; }
+      [bs-Callout-Content] [bs-callout-icon] {
+        left: 40.5px; }
+        [bs-Callout-Content] [bs-callout-icon] [bs-icon] {
+          font-size: 45px;
+          font-size: 2.5rem; } }
   [bs-Callout~="trans"] [bs-Callout-Content] {
     padding-left: 68px; }
-  [bs-Callout~="switch"] [bs-Callout-Content] {
-    padding-left: 95px; }
 
 /**
  * Inline using floats
@@ -1330,8 +1348,8 @@ span.sep {
 
 input.cmn-toggle-round + label {
   padding: 4px;
-  width: 60px;
-  height: 30px;
+  width: 50px;
+  height: 25px;
   border-radius: 4px; }
 
 input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
@@ -1351,8 +1369,8 @@ input.cmn-toggle-round + label:before {
 
 input.cmn-toggle-round + label:after {
   top: 3px;
-  width: 24px;
-  height: 24px;
+  width: 19px;
+  height: 19px;
   background-color: #fff;
   border-radius: 4px;
   -webkit-transition: margin 0.2s;
@@ -1365,10 +1383,28 @@ input.cmn-toggle-round + label:after {
   margin-left: 1px; }
 
 input.cmn-toggle-round:checked + label:after {
-  margin-left: 31px; }
+  margin-left: 26px; }
 
 input.cmn-toggle-round:checked + label {
   background-color: #7ED321; }
+
+@media only screen and (min-width: 750px) {
+  [bs-grid] {
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap; } }
+
+@media only screen and (min-width: 750px) {
+  [bs-grid-item~="3up"] {
+    width: 33.33%; }
+    [bs-grid-item~="3up"] [bs-callout-content] {
+      width: 100%;
+      padding-left: 14px;
+      padding-right: 14px; } }
 
 .notification {
   position: fixed;
