@@ -8,10 +8,10 @@ hr {
 }
 
 html {
-    overflow-y: hidden;
-    overflow-x: hidden;
-    min-height: 100%;
-    max-width: 100%;
+//    overflow-y: hidden;
+//    overflow-x: hidden;
+//    min-height: 100%;
+//    max-width: 100%;
     height: 100%;
     font: #{($base-font-size/16px)*100%}/#{$base-line-height} $base-font-family;
 
@@ -25,11 +25,13 @@ body {
     background: $white;
     color: $base-color;
     text-rendering: optimizeLegibility;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
 }
 
 main {
-    height: auto;
+    position: relative;
+    height: 100%;
 }
 
 [bs-height~="100"] {

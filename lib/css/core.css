@@ -610,10 +610,6 @@ hr {
   height: 1px; }
 
 html {
-  overflow-y: hidden;
-  overflow-x: hidden;
-  min-height: 100%;
-  max-width: 100%;
   height: 100%;
   font: 112.5%/1.5 "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -625,10 +621,12 @@ body {
   background: #fff;
   color: #033339;
   text-rendering: optimizeLegibility;
-  height: 100%; }
+  height: auto;
+  min-height: 100%; }
 
 main {
-  height: auto; }
+  position: relative;
+  height: 100%; }
 
 [bs-height~="100"] {
   height: 100%; }
