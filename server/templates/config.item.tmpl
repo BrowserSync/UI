@@ -1,4 +1,9 @@
 .when('%path%', {
     templateUrl:  '%template%',
-    controller:   '%controller%'
+    controller:   '%controller%',
+    resolve: {
+        options: ['Options', function(opts) {
+            return opts.all();
+        }]
+    }
 })

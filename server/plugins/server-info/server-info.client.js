@@ -5,14 +5,11 @@
 
     angular.module("BrowserSync")
         .controller("ServerController",
-            ["$scope", "contentSections", serverInfoController])
+            ["$scope", "options", "contentSections", serverInfoController])
 
         .directive("urlInfo", function () {
             return {
                 restrict: "E",
-                scope: {
-                    options: "="
-                },
                 replace: true,
                 templateUrl: "url-info.html",
                 controller: ["$scope", "contentSections", "Location", urlInfoController]
@@ -22,21 +19,15 @@
         .directive("serverInfo", function () {
             return {
                 restrict: "E",
-                scope: {
-                    options: "="
-                },
                 replace: true,
                 templateUrl: "server-info.html",
-                controller: ["$scope", "contentSections", serverInfoController]
+                controller: ["contentSections", "Socket", serverInfoController]
             };
         })
 
         .directive("snippetInfo", function () {
             return {
                 restrict: "E",
-                scope: {
-                    options: "="
-                },
                 replace: true,
                 templateUrl: "snippet-info.html",
                 controller: ["$scope", snippetInfoController]
@@ -47,21 +38,22 @@
      * @param $scope
      * @param contentSections
      */
-    function serverInfoController ($scope, contentSections) {
+    function serverInfoController ($scope, options, contentSections) {
 
-        /**
-         * @type {{active: *, snippet: boolean}}
-         */
-        $scope.ui = {
-            snippet: $scope.options.mode === "Snippet"
+        $scope.options = options;
+
+        $scope.ui  = {
+            snippet: false
         };
 
-        /**
-         * Watch the running mode for changes
-         */
-        $scope.$watch("options.mode", function (data) {
-            $scope.ui.snippet = data === "Snippet";
-        });
+        $scope.ui.snippet = options.mode === "Snippet";
+
+        ///**
+        // * Watch the running mode for changes
+        // */
+        //$scope.$watch("options.mode", function (data) {
+        //    $scope.ui.snippet = data === "Snippet";
+        //});
     }
 
     /**
@@ -77,13 +69,6 @@
     function urlInfoController($scope, contentSections, Location) {
 
         var urls = $scope.options.urls;
-
-        /**
-         * Emit the socket event
-         */
-        $scope.sendAllTo = function (url) {
-            Location.sendAllTo(url.url);
-        };
 
         $scope.ui = {
             server: false,

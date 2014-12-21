@@ -68,20 +68,6 @@
         $scope.selectedUrl = null;
 
         /**
-         * Emit the socket event
-         */
-        $scope.sendAllTo = function (url) {
-            Location.sendAllTo(url.path);
-        };
-
-        /**
-         * Emit the reload-all event
-         */
-        $scope.reloadAll = function (url) {
-
-        };
-
-        /**
          *
          */
         $scope.updateVisited = function (data) {

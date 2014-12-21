@@ -14,6 +14,7 @@ var logger   = require("eazy-logger").Logger({
     }
 });
 
+
 var cp           = require("./index");
 var bs           = require('browser-sync');
 

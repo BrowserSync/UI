@@ -3,8 +3,8 @@
         <button bs-remove><i bs-icon="bin"></i></button>
         {{url.path}}
         <span bs-multi="right">
-            <button>new tab</button>
-            <button ng-click="sendAllTo(url)">sync all</button>
+            <a href="{{url.path}}" target="_blank">new tab</a>
+            <button ng-click="sendAllTo(url.path)">sync all</button>
         </span>
     </li>
 </ul>

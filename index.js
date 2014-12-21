@@ -65,7 +65,6 @@ ControlPanel.prototype.initDefaultHooks = function () {
         _this.pages = pages;
     });
 
-
     return this;
 };
 
@@ -86,6 +85,7 @@ ControlPanel.prototype.detectPorts = function () {
     ports.getPorts(1)
         .then(this.startServer.bind(this))
         .then(this.registerPlugins.bind(this))
+        .then(this.addOptionsEvent.bind(this))
         .then(this.inform.bind(this))
         .catch(function (e) {
             this.logger
@@ -94,6 +94,16 @@ ControlPanel.prototype.detectPorts = function () {
         }.bind(this));
 
     return this;
+};
+
+
+ControlPanel.prototype.addOptionsEvent = function () {
+    var bs = this.bs;
+    bs.io.on("connection", function (client) {
+        client.on("cp:get:options", function () {
+            client.emit("cp:receive:options", bs.getOptions());
+        });
+    });
 };
 
 /**

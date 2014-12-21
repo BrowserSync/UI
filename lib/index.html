@@ -26,7 +26,7 @@
 <notify-elem></notify-elem>
 <disconnect-elem></disconnect-elem>
 
-<main ng-controller="MainCtrl">
+<main ng-controller="MainCtrl as app">
     <section bs-container>
         <header bs-header role="banner">
             <a href="/" title="Visit the BrowserSync.io website" class="icon icon-logo">
@@ -39,17 +39,17 @@
                         <use xlink:href="#svg-logo-word"></use>
                     </svg>
                 </span>
-                <span bs-toggle="nav" ng-click="toggleMenu()">
+                <span bs-toggle="nav" ng-click="app.toggleMenu()">
                     <i bs-icon="list"></i>
                 </span>
         </header>
         <aside bs-controls="top">
             <div bs-flex="top">
-                <a href="#" bs-control title="Open a new tab">
+                <a href="{{app.options.urls.local}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options.urls">
                     <i bs-icon="square_add"></i><br/>
                     New Tab
                 </a>
-                <a href="#" bs-control title="Reload all Browsers">
+                <a href="#" bs-control title="Reload all Browsers" ng-click="app.refreshAll()">
                     <i bs-icon="repeat_2"></i><br/>
                     Reload all
                 </a>
@@ -59,15 +59,15 @@
 
     <section bs-container bs-height="100">
         <section bs-sidebar="">
-            <nav bs-section-nav="" ng-class="{'active': ui.sectionMenu}">
+            <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu}">
                 <ul bs-list="">
-                    <li ng-class="{'active': item.active}" ng-repeat="(key, item) in ui.menu | orderObjectBy: 'order'">
-                        <button bs-button="nav" ng-class="{'active': item.active}" ng-click="setActiveSection(item)">
+                    <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
+                        <button bs-button="nav" ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
                             <i bs-icon="{{item.icon}}"></i> {{item.title}}
                         </button>
                     </li>
                     <li bs-action="menu-close" bs-visible="palm">
-                        <button bs-Button="nav" ng-click="toggleMenu()"><i bs-icon="close"></i> CLOSE</button>
+                        <button bs-Button="nav" ng-click="app.toggleMenu()"><i bs-icon="close"></i> CLOSE</button>
                     </li>
                 </ul>
             </nav>

@@ -116,6 +116,7 @@ function serveMainAppFile(app, clientJs) {
         res.end(clientJs);
     });
 }
+
 /**
  * @param app
  * @param clientJs
