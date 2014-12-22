@@ -11,17 +11,11 @@
             return {
                 restrict: "E",
                 replace: true,
+                scope: {
+                    "options": "="
+                },
                 templateUrl: "url-info.html",
                 controller: ["$scope", "contentSections", "Location", urlInfoController]
-            };
-        })
-
-        .directive("serverInfo", function () {
-            return {
-                restrict: "E",
-                replace: true,
-                templateUrl: "server-info.html",
-                controller: ["contentSections", "Socket", serverInfoController]
             };
         })
 
@@ -29,6 +23,9 @@
             return {
                 restrict: "E",
                 replace: true,
+                scope: {
+                    "options": "="
+                },
                 templateUrl: "snippet-info.html",
                 controller: ["$scope", snippetInfoController]
             };
@@ -36,24 +33,23 @@
 
     /**
      * @param $scope
+     * @param {BrowserSync.options} options
      * @param contentSections
      */
     function serverInfoController ($scope, options, contentSections) {
-
         $scope.options = options;
-
-        $scope.ui  = {
-            snippet: false
+        $scope.mode    = (function () {
+            if (options.server) {
+                return "Server"
+            }
+            if (options.proxy) {
+                return "Proxy"
+            }
+            return "Snippet"
+        })();
+        $scope.ui = {
+            snippet: !options.server && !options.proxy
         };
-
-        $scope.ui.snippet = options.mode === "Snippet";
-
-        ///**
-        // * Watch the running mode for changes
-        // */
-        //$scope.$watch("options.mode", function (data) {
-        //    $scope.ui.snippet = data === "Snippet";
-        //});
     }
 
     /**
@@ -68,7 +64,8 @@
      */
     function urlInfoController($scope, contentSections, Location) {
 
-        var urls = $scope.options.urls;
+        var options = $scope.options;
+        var urls = options.urls;
 
         $scope.ui = {
             server: false,

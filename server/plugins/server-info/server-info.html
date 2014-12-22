@@ -2,10 +2,10 @@
     <div>
         <article>
             <div bs-callout="controls outline">
-                <h1 bs-heading><i bs-icon="cog"></i> Server Info</h1>
+                <h1 bs-heading><i bs-icon="cog"></i> {{mode}} Info</h1>
             </div>
-            <url-info ng-if="options.server || options.proxy"></url-info>
-            <snippet-info ng-if="options && ui.snippet"></snippet-info>
+            <url-info ng-if="options.server || options.proxy" options="options"></url-info>
+            <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
         </article>
     </div>
 </script>
