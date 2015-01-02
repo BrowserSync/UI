@@ -38,15 +38,6 @@
      */
     function serverInfoController ($scope, options, contentSections) {
         $scope.options = options;
-        $scope.mode    = (function () {
-            if (options.server) {
-                return "Server"
-            }
-            if (options.proxy) {
-                return "Proxy"
-            }
-            return "Snippet"
-        })();
         $scope.ui = {
             snippet: !options.server && !options.proxy
         };

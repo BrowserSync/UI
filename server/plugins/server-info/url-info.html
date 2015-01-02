@@ -20,6 +20,8 @@
                 </div>
                 <p bs-text="lede">Serving files from</p>
                 <ul bs-list="">
+
+                    <li>{{options.server.baseDir}}</li>
                     <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
                 </ul>
             </div>
