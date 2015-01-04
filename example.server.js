@@ -35,5 +35,5 @@ var instance = bs({
     },
     open: false,
     //tunnel: true
-    online: false
+    //online: false
 });

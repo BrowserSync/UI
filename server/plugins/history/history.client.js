@@ -8,7 +8,7 @@
     angular.module("BrowserSync")
 
         .controller("HistoryController",
-            ["$scope", "$rootScope", "Socket", "contentSections", historyController])
+            ["$scope", "$rootScope", "options", "Socket", "contentSections", historyController])
 
         .directive("historyList", function () {
             return {
@@ -27,7 +27,8 @@
      * @param Socket
      * @param contentSections
      */
-    function historyController($scope, $rootScope, Socket, contentSections) {
+    function historyController($scope, $rootScope, options, Socket, contentSections) {
+        $scope.options = options;
         $scope.section = contentSections[SECTION_NAME];
     }
 
@@ -76,12 +77,12 @@
         };
 
         /**
-         * Set the loading state
-         * @param name
+         * Emit the socket event
          */
-        $scope.setLoading = function (name) {
-            $scope.ui.loading       = true;
-            $scope.ui.loaders[name] = true;
+        $scope.sendAllTo = function (path) {
+            //$scope.urls.current = $scope.options.urls.local + "/";
+            console.log(path);
+            Location.sendAllTo(path);
         };
 
         Socket.on("cp:urls:update", $scope.updateVisited);

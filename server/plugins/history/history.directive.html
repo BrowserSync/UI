@@ -3,7 +3,7 @@
         <button bs-remove><i bs-icon="bin"></i></button>
         {{url.path}}
         <span bs-multi="right">
-            <a href="{{url.path}}" target="_blank">new tab</a>
+            <a href="{{url.path | localUrl:options.port}}" target="_blank">new tab</a>
             <button ng-click="sendAllTo(url.path)">sync all</button>
         </span>
     </li>

@@ -8,7 +8,7 @@
     angular.module("BrowserSync")
 
         .controller("SyncOptionsController",
-            ["$scope", "Socket", "contentSections", syncOptionsController])
+            ["$scope", "Socket", "options", "contentSections", syncOptionsController])
 
         .directive("syncOptions", function () {
             return {
@@ -114,7 +114,8 @@
      * @param Socket
      * @param contentSections
      */
-    function syncOptionsController($scope, Socket, contentSections) {
+    function syncOptionsController($scope, Socket, options, contentSections) {
+        $scope.options = options;
         $scope.section = contentSections[SECTION_NAME];
     }
 

@@ -45,7 +45,7 @@
         </header>
         <aside bs-controls="top">
             <div bs-flex="top">
-                <a href="{{app.options.urls.local}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options.urls">
+                <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options">
                     <i bs-icon="square_add"></i><br/>
                     New Tab
                 </a>
