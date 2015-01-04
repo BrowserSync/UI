@@ -15,7 +15,8 @@ var logger   = require("eazy-logger").Logger({
 });
 
 var cp           = require("./index");
-var bs           = require('browser-sync');
+//var bs           = require('browser-sync');
+var bs           = require('/Users/shakyshane/sites/os-browser-sync');
 
 var htmlInjector = require('/Users/shakyshane/code/bs-plugins/html-injector');
 
@@ -32,7 +33,7 @@ var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    open: false
+    open: false,
     //tunnel: true
-    //online: false
+    online: false
 });

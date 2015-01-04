@@ -63,11 +63,11 @@
             proxy: false
         };
 
-        if ($scope.options.mode === "Server") {
+        if ($scope.options.mode === "server") {
             $scope.ui.server = true;
         }
 
-        if ($scope.options.mode === "Proxy") {
+        if ($scope.options.mode === "proxy") {
             $scope.ui.proxy = true;
         }
 
@@ -97,6 +97,20 @@
                 icon: "globe"
             });
         }
+
+        /**
+         *
+         */
+        $scope.refreshAll = function () {
+            Location.refreshAll();
+        };
+
+        /**
+         *
+         */
+        $scope.sendAllTo = function (path) {
+            Location.sendAllTo(path);
+        };
     }
 
 })(angular);
