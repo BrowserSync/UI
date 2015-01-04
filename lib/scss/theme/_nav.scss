@@ -50,15 +50,6 @@
     }
 }
 
-%inline-btn {
-    border: 0;
-    background: $green-lt;
-    color: white;
-    height: 100%;
-    padding-left: $half-spacing;
-    padding-right: $half-spacing;
-}
-
 [bs-remove] {
 
     position: absolute;
@@ -69,11 +60,27 @@
     padding-right: $half-spacing;
     background: transparent;
     color: $grey-border;
-    transition: .2s all;
     border: 0;
     &:hover {
         color: $grey;
     }
+}
+
+@mixin inline-button {
+    border: 0;
+    background: $green-lt;
+    color: white;
+    height: 100%;
+    padding: 0;
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+    border-radius: 0;
+    line-height: 41px;
+    @include font-size(16px);
+}
+
+[bs-pointer~="default"] {
+    cursor: pointer;
 }
 
 [bs-multi~="right"] {
@@ -90,14 +97,14 @@
         transform: translateX(0);
     }
 
-    button {
+    [bs-button] {
         &:last-child {
             border-left: 1px solid darken($green-lt, 5%);
         }
         &:hover {
             background: darken($green-lt, 2%);
         }
-        @extend %inline-btn;
+        @include inline-button;
     }
 }
 

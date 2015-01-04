@@ -83,6 +83,7 @@
     height: 28px;
     line-height: 28px;
     color: $black;
+
     @include font-size(16px);
 
     [bs-icon] {

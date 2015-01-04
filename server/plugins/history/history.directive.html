@@ -1,10 +1,16 @@
 <ul bs-List="bordered swipe" ng-if="urls.visited">
-    <li ng-repeat="url in urls.visited" class="active">
+    <li ng-repeat="url in urls.visited"
+        ng-swipe-left="url.showActions = true"
+        ng-swipe-right="url.showActions = false"
+        ng-class="{'active': url.showActions}"
+        bs-pointer="default"
+        markable>
+
         <button bs-remove><i bs-icon="bin"></i></button>
         {{url.path}}
         <span bs-multi="right">
-            <a href="{{url.path | localUrl:options.port}}" target="_blank">new tab</a>
-            <button ng-click="sendAllTo(url.path)">sync all</button>
+            <a href="{{url.path | localUrl:options.port}}" target="_blank" bs-button>new tab</a>
+            <a href="{{url.path}}" ng-click="sendAllTo(url.path)" bs-button>sync all</a>
         </span>
     </li>
 </ul>

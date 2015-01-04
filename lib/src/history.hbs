@@ -19,12 +19,12 @@ urls:
 <div>
     <ul bs-list="bordered swipe">
         {{#each page.urls}}
-        <li {{#if @last}}class="active"{{/if}}>
+        <li>
             <button bs-remove><i bs-icon="bin"></i></button>
             /store-home.php
             <span bs-multi="right">
-                <button>new tab</button>
-                <button>sync all</button>
+                <a href="#" bs-button>new tab</a>
+                <a href="#" bs-button>sync all</a>
             </span>
         </li>
         {{/each}}
