@@ -92,6 +92,7 @@
     transition: transform .3s;
     transform: translateX(100%);
     display: flex;
+    z-index: 1000;
 
     .active > & {
         transform: translateX(0);

@@ -80,12 +80,14 @@
          * Emit the socket event
          */
         $scope.sendAllTo = function (path) {
-            //$scope.urls.current = $scope.options.urls.local + "/";
-            console.log(path);
             Location.sendAllTo(path);
         };
 
         Socket.on("cp:urls:update", $scope.updateVisited);
+
+        $scope.$on('$destroy', function () {
+            Socket.off("cp:urls:update", $scope.updateVisited);
+        });
     }
 
 })(angular);

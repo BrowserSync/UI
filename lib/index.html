@@ -107,10 +107,19 @@
 
 <script src="/js/vendor/socket.js"></script>
 <script src="/bower_components/angular/angular.min.js"></script>
+<!--<script src="/bower_components/react/react.js"></script>-->
 <script src="/bower_components/angular-route/angular-route.min.js"></script>
 <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
 <script src="/bower_components/angular-order-object-by/src/ng-order-object-by.js"></script>
-<script src="/js/connector.js"></script>
+<!--<script src="/js/connector.js"></script>-->
+<script type="text/javascript">
+    window.___browserSync___ = {};
+    ___browserSync___.io = window.io;
+    window.io = window.___browserSync___oldSocketIo;
+    window.___browserSync___oldSocketIo=undefined;
+    ___browserSync___.socketConfig = {}; ___browserSync___.socketConfig.path = '/browser-sync/socket.io';
+    ___browserSync___.socket = ___browserSync___.io(location.hostname + ':3000/browser-sync-cp', ___browserSync___.socketConfig);
+</script>
 <script src="/js/dist/app.js"></script>
 <script src="/js/pages-config.js"></script>
 <script src="/js/app-extra.js"></script>

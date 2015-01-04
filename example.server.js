@@ -20,12 +20,12 @@ var bs           = require('/Users/shakyshane/sites/os-browser-sync');
 
 var htmlInjector = require('/Users/shakyshane/code/bs-plugins/html-injector');
 
-bs.use(htmlInjector, {
-    logLevel: "debug",
-    files: [
-        "test/fixtures/*.html"
-    ]
-});
+//bs.use(htmlInjector, {
+//    logLevel: "debug",
+//    files: [
+//        "test/fixtures/*.html"
+//    ]
+//});
 
 bs.use(cp);
 

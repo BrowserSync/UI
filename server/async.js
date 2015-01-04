@@ -61,7 +61,9 @@ module.exports = {
     },
     addOptionsEvent: function (cp, done) {
         var bs = cp.bs;
-        bs.io.on("connection", function (client) {
+        var socket = bs.io.of("/browser-sync-cp");
+        socket.on("connection", function (client) {
+            client.emit("connection", bs.getOptions().toJS());
             client.on("cp:get:options", function () {
                 client.emit("cp:receive:options", bs.getOptions().toJS());
             });
