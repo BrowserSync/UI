@@ -33,8 +33,9 @@ module.exports = {
  * @param bs
  * @param data
  */
-function setOption(bs, data) {
-    bs.setOption(data.key, data.value);
+function setOption (bs, data) {
+    console.log(data.path);
+    bs.setOptionIn(data.path, data.value);
 }
 
 

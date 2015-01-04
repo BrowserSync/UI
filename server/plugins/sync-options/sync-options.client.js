@@ -46,52 +46,36 @@
             toggles: "Radio + Checkboxes changes will be synced"
         };
 
-        for (var item in ghostMode) {
+        Object.keys(ghostMode).forEach(function (item) {
             if (item !== "forms" && item !== "location") {
-                $scope.syncItems.push({
-                    value: ghostMode[item],
-                    name: item,
-                    title: ucfirst(item),
-                    tagline: taglines[item]
-                });
+                $scope.syncItems.push(addItem(item, ["ghostMode", item], ghostMode[item]));
+            }
+        });
+
+        Object.keys(ghostMode.forms).forEach(function (item) {
+            $scope.syncItems.push(addItem(item, ["ghostMode", "forms", item], ghostMode["forms"][item]));
+        });
+
+        function addItem (item, path, value) {
+            return {
+                value: value,
+                name: item,
+                path: path,
+                title: ucfirst(item),
+                tagline: taglines[item]
             }
         }
 
-        for (item in ghostMode.forms) {
-            $scope.formItems.push({
-                name: item,
-                title: ucfirst(item),
-                key: "forms." + item,
-                value: ghostMode.forms[item],
-                tagline: taglines[item]
-            })
-        }
-
         /**
          * Toggle Options
-         * @param key
-         * @param value
+         * @param item
          */
         $scope.toggle = function (item) {
             Socket.emit("cp:option:set", {
-                key: prefixOption(item.name),
+                path:  item.path,
                 value: item.value
             });
         };
-
-        /**
-         * Toggle Options
-         */
-        $scope.formToggle = function (item) {
-            Socket.emit("cp:option:set", {
-                key: prefixOption(item.key),
-                value: item.value
-            });
-        };
-
-        function prefixOption(key) {
-            return "ghostMode." + key;
-        }
 
         /**
          * Emit the reload-all event

@@ -2,13 +2,13 @@
     <div bs-callout-content="">
         <div bs-callout-icon>
             <div class="switch">
-                <input id="cmn-form-{{$index}}"
+                <input id="cmn-{{$index}}"
                        ng-model="item.value"
-                       ng-change="formToggle(item)"
+                       ng-change="toggle(item)"
                        class="cmn-toggle cmn-toggle-round"
                        type="checkbox"
                        checked="">
-                <label for="cmn-form-{{$index}}"></label>
+                <label for="cmn-{{$index}}"></label>
             </div>
         </div>
         <div>
@@ -22,7 +22,7 @@
             <div class="switch">
                 <input id="cmn-form-{{$index}}"
                        ng-model="item.value"
-                       ng-change="formToggle(item)"
+                       ng-change="toggle(item)"
                        class="cmn-toggle cmn-toggle-round"
                        type="checkbox"
                        checked="">
