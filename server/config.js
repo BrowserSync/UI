@@ -11,5 +11,8 @@ module.exports = {
     connector:   "/js/connector.js",
     pagesConfig: "/js/pages-config.js",
     appCss:      "/css/core.css",
-    clientJs:    "/lib/js/includes/events.js"
-}
+    clientJs:    "/lib/js/includes/events.js",
+    socket: {
+        namespace: "/browser-sync-cp"
+    }
+};

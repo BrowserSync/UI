@@ -20,29 +20,28 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        var sockets = bs.io.of("/browser-sync-cp");
-        var clients = bs.io.of("/browser-sync");
+        var socket  = bs.io.of(cp.config.socket.namespace);
+        var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));
 
         clients.on("connection", function (client) {
             client.on("urls:client:connected", function (data) {
                 var temp = validUrls.add(url.parse(data.path).path);
                 if (!Immutable.is(validUrls, temp)) {
                     validUrls = temp;
-                    sendUpdatedUrls(sockets, validUrls);
+                    sendUpdatedUrls(socket, validUrls);
                 }
             });
         });
 
-        sockets.on("connection", function (client) {
+        socket.on("connection", function (client) {
 
-            sendUpdatedUrls(sockets, validUrls);
+            sendUpdatedUrls(socket, validUrls);
 
             client.on("urls:browser:reload",   reloadAll.bind(bs));
             client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
 
-
             client.on("cp:get:visited", function (req) {
-                sockets.emit("cp:receive:visited", decorateUrls(validUrls));
+                socket.emit("cp:receive:visited", decorateUrls(validUrls));
             });
         });
     },

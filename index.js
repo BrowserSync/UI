@@ -27,6 +27,7 @@ var ControlPanel = function (opts, bs, emitter) {
 
     var cp            = this;
     cp.bs             = bs;
+    cp.config         = config;
     cp.events         = emitter;
     cp.opts           = merge(opts);
     cp.logger         = bs.getLogger(config.pluginName);

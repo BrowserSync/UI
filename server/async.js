@@ -1,6 +1,11 @@
 var portScanner = require("portscanner");
 
 module.exports = {
+    /**
+     * The UI uses it's own server/port
+     * @param cp
+     * @param done
+     */
     findAFreePort: function (cp, done) {
         var port = cp.opts.get("port");
         portScanner.findAPortNotInUse(port, port + 100, {
@@ -18,7 +23,10 @@ module.exports = {
         });
     },
     /**
-     *
+     * Default hooks do things like creating/joining JS files &
+     * building angular config
+     * @param cp
+     * @param done
      */
     initDefaultHooks: function (cp, done) {
         done(null, {
@@ -33,35 +41,49 @@ module.exports = {
         })
     },
     /**
+     * Simple static file server with some middlewares for custom
+     * scripts/routes.
      * @param cp
      * @param done
      */
     startServer: function (cp, done) {
 
-        var server      = require("./server");
+        var bs          = cp.bs;
         var port        = cp.opts.get("port");
-        var socketMw    = cp.bs.getMiddleware("socket-js");
-        var connectorMw = cp.bs.getMiddleware("connector");
+        var socketMw    = bs.getMiddleware("socket-js");
+        var connectorMw = bs.getSocketConnector(bs.options.get("port"), {
+            path: bs.options.getIn(["socket", "path"]),
+            namespace: cp.config.socket.namespace
+        });
 
         cp.logger.info("Using port %s", port);
 
         done(null, {
             instance: {
-                server: server(cp, socketMw, connectorMw).listen(port)
+                server: require("./server")(cp, socketMw, connectorMw).listen(port)
             }
         });
-
-        //require("./server/transform.options")(cp.bs);
     },
+    /**
+     * Run default plugins
+     * @param cp
+     * @param done
+     */
     registerPlugins: function (cp, done) {
         Object.keys(cp.defaultPlugins).forEach(function (key) {
             cp.pluginManager.get(key)(cp, cp.bs);
         });
         done();
     },
+    /**
+     * The most important event is the initial connection where
+     * the options are received from the socket
+     * @param cp
+     * @param done
+     */
     addOptionsEvent: function (cp, done) {
         var bs = cp.bs;
-        var socket = bs.io.of("/browser-sync-cp");
+        var socket = bs.io.of(cp.config.socket.namespace);
         socket.on("connection", function (client) {
             client.emit("connection", bs.getOptions().toJS());
             client.on("cp:get:options", function () {
