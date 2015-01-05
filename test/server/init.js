@@ -42,17 +42,17 @@ describe("Can be started with browserSync instance", function() {
     });
     it("can serve the Socket JS file", function (done) {
         request(cp.server)
-            .get(config.socketJs)
+            .get(config.defaults.socketJs)
             .expect(200, done);
     });
     it("can serve the Connector JS file", function (done) {
         request(cp.server)
-            .get(config.connector)
+            .get(config.defaults.connector)
             .expect(200, done);
     });
     it("can serve the main App JS file", function (done) {
         request(cp.server)
-            .get(config.appJs)
+            .get(config.defaults.appJs)
             .expect(200, function (err, res) {
                 assert.include(res.text, 'angular');
                 done();
@@ -69,7 +69,7 @@ describe("Can be started with browserSync instance", function() {
     });
     it("can serve random files", function (done) {
         request(cp.server)
-            .get(config.appCss)
+            .get(config.defaults.appCss)
             .expect(200)
             .end(function (err, res) {
                 assert.include(res.text, "html");

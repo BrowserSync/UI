@@ -27,10 +27,10 @@ var ControlPanel = function (opts, bs, emitter) {
 
     var cp            = this;
     cp.bs             = bs;
-    cp.config         = config;
+    cp.config         = config.merge();
     cp.events         = emitter;
     cp.opts           = merge(opts);
-    cp.logger         = bs.getLogger(config.pluginName);
+    cp.logger         = bs.getLogger(cp.config.get("pluginName"));
     cp.defaultPlugins = defaultPlugins;
 
     if (cp.opts.get("logLevel") === "silent") {
@@ -113,7 +113,7 @@ module.exports.hooks = {
     /**
      * Client JS is added to each connected client
      */
-    "client:js":         require("fs").readFileSync(__dirname + config.clientJs)
+    "client:js":         require("fs").readFileSync(__dirname + config.defaults.clientJs)
 };
 
 /**
@@ -130,4 +130,4 @@ module.exports["plugin"] = function (opts, bs) {
     return controlPanel;
 };
 
-module.exports["plugin:name"]       = config.pluginName;
+module.exports["plugin:name"]       = config.defaults.pluginName;

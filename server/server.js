@@ -72,8 +72,8 @@ function startServer(controlPanel, socketMw, connectorMw) {
  * @param {ControlPanel} controlPanel
  */
 function serveJsFiles(app, socketMw, connectorMw) {
-    app.use(config.socketJs, socketMw);
-    app.use(config.connector, connectorMw);
+    app.use(config.defaults.socketJs, socketMw);
+    app.use(config.defaults.connector, connectorMw);
 }
 
 /**
@@ -83,7 +83,7 @@ function serveJsFiles(app, socketMw, connectorMw) {
  */
 function combineMarkup(res, pageMarkup) {
     res.setHeader("Content-Type", "text/html");
-    return fs.createReadStream(cwd(config.indexPage))
+    return fs.createReadStream(cwd(config.defaults.indexPage))
         .pipe(through(function (buffer) {
             var file = buffer.toString();
             this.queue(file.replace(/%hooks%/g, pageMarkup));
@@ -111,7 +111,7 @@ function insertPageMarkupFromHooks(app, pageMarkup, pages, templates) {
  * @param clientJs
  */
 function serveMainAppFile(app, clientJs) {
-    app.use(config.appExtraJs, function (req, res) {
+    app.use(config.defaults.appExtraJs, function (req, res) {
         res.setHeader("Content-Type", "application/javascript");
         res.end(clientJs);
     });
@@ -122,7 +122,7 @@ function serveMainAppFile(app, clientJs) {
  * @param clientJs
  */
 function serveMainAppConfigurationFile(app, pagesConfig) {
-    app.use(config.pagesConfig, function (req, res) {
+    app.use(config.defaults.pagesConfig, function (req, res) {
         res.setHeader("Content-Type", "application/javascript");
         res.end(pagesConfig);
     });

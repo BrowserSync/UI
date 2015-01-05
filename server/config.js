@@ -1,8 +1,10 @@
+var Immutable = require("immutable");
+
 /**
- * Any configurable paths
+ * Any configurable paths/config
  * @type {{pluginName: string, indexPage: string, socketJs: string, appJs: string, connector: string}}
  */
-module.exports = {
+var defaults = {
     pluginName:  "Control Panel",
     indexPage:   "/index.html",
     socketJs:    "/js/vendor/socket.js",
@@ -15,4 +17,16 @@ module.exports = {
     socket: {
         namespace: "/browser-sync-cp"
     }
+};
+
+module.exports.defaults = defaults;
+
+/**
+ * @param [userConfig]
+ * @returns {Map}
+ */
+module.exports.merge    = function (userConfig) {
+    return Immutable
+        .fromJS(defaults)
+        .mergeDeep(userConfig);
 };

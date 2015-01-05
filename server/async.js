@@ -53,7 +53,7 @@ module.exports = {
         var socketMw    = bs.getMiddleware("socket-js");
         var connectorMw = bs.getSocketConnector(bs.options.get("port"), {
             path: bs.options.getIn(["socket", "path"]),
-            namespace: cp.config.socket.namespace
+            namespace: cp.config.getIn(["socket", "namespace"])
         });
 
         cp.logger.info("Using port %s", port);
@@ -83,7 +83,7 @@ module.exports = {
      */
     addOptionsEvent: function (cp, done) {
         var bs = cp.bs;
-        var socket = bs.io.of(cp.config.socket.namespace);
+        var socket = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         socket.on("connection", function (client) {
             client.emit("connection", bs.getOptions().toJS());
             client.on("cp:get:options", function () {

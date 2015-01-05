@@ -20,7 +20,7 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        var socket  = bs.io.of(cp.config.socket.namespace);
+        var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));
 
         clients.on("connection", function (client) {
