@@ -18,7 +18,7 @@ describe("Can be started with browserSync instance", function() {
             logLevel: "silent"
         };
         bsInstance = browserSync(config, function () {
-            controlPanel = bsInstance.pluginManager.getReturnValue(cp["plugin:name"])[0].value;
+            controlPanel = bsInstance.pluginManager.getReturnValues(cp["plugin:name"])[0].value;
             controlPanel.getServer(done);
         }).instance;
     });

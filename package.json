@@ -29,17 +29,15 @@
     "e2e": "node e2e.test.js",
     "client": "./node_modules/karma/bin/karma start test/client/karma.conf.ci.js",
     "pre-release": "npm run server && npm run e2e && npm run client",
-    "test": "npm run server && npm run client"
+    "test": "npm run server"
   },
   "dependencies": {
     "async": "^0.9.0",
     "connect": "^3.1.1",
     "connect-history-api-fallback": "0.0.5",
-    "easy-extender": "^1.1.0",
+    "easy-extender": "^2.2.0",
     "immutable": "^3.3.0",
     "lodash": "^2.4.1",
-    "multiline": "^1.0.0",
-    "opt-merger": "^0.2.1",
     "portscanner": "^1.0.0",
     "serve-static": "^1.5.3",
     "through": "2.3.4",
