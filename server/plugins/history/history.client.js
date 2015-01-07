@@ -8,7 +8,7 @@
     angular.module("BrowserSync")
 
         .controller("HistoryController",
-            ["$scope", "$rootScope", "options", "Socket", "contentSections", historyController])
+            ["$scope", "$rootScope", "options", "$injector", "contentSections", historyController])
 
         .directive("historyList", function () {
             return {
@@ -27,9 +27,32 @@
      * @param Socket
      * @param contentSections
      */
-    function historyController($scope, $rootScope, options, Socket, contentSections) {
+    function historyController($scope, $rootScope, options, $injector, contentSections) {
+
         $scope.options = options;
         $scope.section = contentSections[SECTION_NAME];
+        $scope.ui = {
+            visited: []
+        };
+
+        var Location = $injector.get("Location");
+        var Socket   = $injector.get("Socket");
+
+        $scope.updateVisited = function (data) {
+            $scope.ui.visited = data;
+            $scope.$digest();
+        };
+
+        Socket.on("cp:urls:update", $scope.updateVisited);
+
+        Location.getHistory().then(function (items) {
+            $scope.ui.visited = items;
+        });
+
+        $scope.clearVisited = function () {
+            Location.clear();
+            $scope.ui.visited = [];
+        };
     }
 
     /**

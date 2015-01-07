@@ -24,13 +24,17 @@ module.exports = {
         var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));
 
+        function sendUpdatedIfChanged(current, temp, socket) {
+            if (!Immutable.is(current, temp)) {
+                validUrls = temp;
+                sendUpdatedUrls(socket, validUrls);
+            }
+        }
+
         clients.on("connection", function (client) {
             client.on("urls:client:connected", function (data) {
                 var temp = addPath(validUrls, data.path);
-                if (!Immutable.is(validUrls, temp)) {
-                    validUrls = temp;
-                    sendUpdatedUrls(socket, validUrls);
-                }
+                sendUpdatedIfChanged(validUrls, temp, socket);
             });
         });
 
@@ -47,10 +51,11 @@ module.exports = {
 
             cpClient.on("cp:remove:visited", function (data) {
                 var temp = removePath(validUrls, data.path);
-                if (!Immutable.is(validUrls, temp)) {
-                    validUrls = temp;
-                    sendUpdatedUrls(socket, validUrls);
-                }
+                sendUpdatedIfChanged(validUrls, temp, socket);
+            });
+            cpClient.on("cp:clear:visited", function (data) {
+                validUrls = Immutable.OrderedSet([]);
+                sendUpdatedUrls(socket, validUrls);
             });
         });
     },
