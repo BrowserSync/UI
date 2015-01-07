@@ -1,4 +1,4 @@
-var browserSync = require("browser-sync");
+var browserSync = require("/Users/shakyshane/sites/os-browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
 var sinon       = require("sinon");
@@ -7,7 +7,7 @@ var request     = require("supertest");
 
 describe("Can be started with browserSync instance", function() {
 
-    var bsInstance;
+    var bsInstance, controlPanel;
 
     before(function (done) {
 
@@ -17,22 +17,22 @@ describe("Can be started with browserSync instance", function() {
             online: false,
             logLevel: "silent"
         };
-        cp.events.on("cp:running", function () {
-            done();
-        });
-        bsInstance = browserSync(config);
+        bsInstance = browserSync(config, function () {
+            controlPanel = bsInstance.pluginManager.getReturnValue(cp["plugin:name"])[0].value;
+            controlPanel.getServer(done);
+        }).instance;
     });
 
     after(function () {
         bsInstance.cleanup();
-        cp.server.close();
+        controlPanel.server.close();
     });
 
     it("can register as plugin", function() {
-        assert.ok(bsInstance.pluginManager.getPlugin(cp["plugin:name"]));
+        assert.ok(controlPanel);
     });
     it("can serve from lib dir", function(done) {
-        request(cp.server)
+        request(controlPanel.server)
             .get("/")
             .expect(200)
             .end(function (err, res, req) {
@@ -41,17 +41,17 @@ describe("Can be started with browserSync instance", function() {
             });
     });
     it("can serve the Socket JS file", function (done) {
-        request(cp.server)
+        request(controlPanel.server)
             .get(config.defaults.socketJs)
             .expect(200, done);
     });
     it("can serve the Connector JS file", function (done) {
-        request(cp.server)
+        request(controlPanel.server)
             .get(config.defaults.connector)
             .expect(200, done);
     });
     it("can serve the main App JS file", function (done) {
-        request(cp.server)
+        request(controlPanel.server)
             .get(config.defaults.appJs)
             .expect(200, function (err, res) {
                 assert.include(res.text, 'angular');
@@ -59,16 +59,16 @@ describe("Can be started with browserSync instance", function() {
             });
     });
     it("can add the pagemarkup", function (done) {
-        request(cp.server)
+        request(controlPanel.server)
             .get("/")
             .expect(200)
             .end(function (err, res) {
-                assert.include(res.text, cp.instance.pageMarkup);
+                assert.include(res.text, controlPanel.pageMarkup);
                 done();
             });
     });
     it("can serve random files", function (done) {
-        request(cp.server)
+        request(controlPanel.server)
             .get(config.defaults.appCss)
             .expect(200)
             .end(function (err, res) {

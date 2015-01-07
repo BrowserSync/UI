@@ -43,6 +43,18 @@ var ControlPanel = function (opts, bs, emitter) {
 };
 
 /**
+ * @param cb
+ */
+ControlPanel.prototype.getServer = function (cb) {
+    var cp = this;
+    if (!cp.server) {
+        this.events.on("cp:running", function (out) {
+            cb(null, cp.server);
+        });
+    }
+};
+
+/**
  * Detect an available port
  * @returns {ControlPanel}
  */

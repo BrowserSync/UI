@@ -14,8 +14,8 @@ describe("Can create immutable map from bs options", function() {
 
     });
 
-    it.only("can adds the Mode property", function() {
-        var options = opts(exampleOpts);
-        console.log(options.get("mode"));
+    it("can adds the Mode property", function() {
+        //var options = opts(exampleOpts);
+        //console.log(options.get("mode"));
     });
 });
