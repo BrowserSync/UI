@@ -1,12 +1,12 @@
 <ul bs-List="bordered swipe" ng-if="urls.visited">
-    <li ng-repeat="url in urls.visited"
+    <li ng-repeat="url in urls.visited track by $index"
         ng-swipe-left="url.showActions = true"
         ng-swipe-right="url.showActions = false"
         ng-class="{'active': url.showActions}"
         bs-pointer="default"
         markable>
 
-        <button bs-remove><i bs-icon="bin"></i></button>
+        <button bs-remove ng-click="removeVisited(url)"><i bs-icon="bin"></i></button>
         {{url.path}}
         <span bs-multi="right">
             <a href="{{url.path | localUrl:options.port}}" target="_blank" bs-button>new tab</a>

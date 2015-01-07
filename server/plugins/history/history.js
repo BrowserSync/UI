@@ -7,7 +7,6 @@ var Immutable = require("immutable");
 /**
  * @type {Immutable.Set}
  */
-var validUrls   = Immutable.OrderedSet('/');
 var timestamp;
 
 /**
@@ -20,12 +19,14 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
+        var validUrls = Immutable.OrderedSet('/');
+
         var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));
 
         clients.on("connection", function (client) {
             client.on("urls:client:connected", function (data) {
-                var temp = validUrls.add(url.parse(data.path).path);
+                var temp = addPath(validUrls, data.path);
                 if (!Immutable.is(validUrls, temp)) {
                     validUrls = temp;
                     sendUpdatedUrls(socket, validUrls);
@@ -33,15 +34,23 @@ module.exports = {
             });
         });
 
-        socket.on("connection", function (client) {
+        socket.on("connection", function (cpClient) {
 
             sendUpdatedUrls(socket, validUrls);
 
-            client.on("urls:browser:reload",   reloadAll.bind(bs));
-            client.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
+            cpClient.on("urls:browser:reload",   reloadAll.bind(bs));
+            cpClient.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
 
-            client.on("cp:get:visited", function (req) {
+            cpClient.on("cp:get:visited", function (req) {
                 socket.emit("cp:receive:visited", decorateUrls(validUrls));
+            });
+
+            cpClient.on("cp:remove:visited", function (data) {
+                var temp = removePath(validUrls, data.path);
+                if (!Immutable.is(validUrls, temp)) {
+                    validUrls = temp;
+                    sendUpdatedUrls(socket, validUrls);
+                }
             });
         });
     },
@@ -110,3 +119,24 @@ function sendToUrl (localUrl, data) {
 function reloadAll() {
     this.io.sockets.emit("browser:reload");
 }
+
+/**
+ * @param immSet
+ * @param urlPath
+ * @returns {*}
+ */
+function addPath(immSet, urlPath) {
+    return immSet.add(url.parse(urlPath).path);
+}
+
+module.exports.addPath = addPath;
+/**
+ * @param immSet
+ * @param urlPath
+ * @returns {*}
+ */
+function removePath(immSet, urlPath) {
+    return immSet.remove(url.parse(urlPath).path);
+}
+
+module.exports.removePath = removePath;

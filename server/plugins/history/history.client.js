@@ -76,6 +76,10 @@
             $scope.$digest();
         };
 
+        $scope.removeVisited = function (data) {
+            Location.remove(data);
+        };
+
         /**
          * Emit the socket event
          */
