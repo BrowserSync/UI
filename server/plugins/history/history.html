@@ -7,5 +7,8 @@
             Clear all
         </button>
     </div>
-    <history-list ng-if="options" options="options"></history-list>
+    <history-list ng-if="ui.visited.length"
+                  options="options"
+                  visited="ui.visited"
+            ></history-list>
 </script>

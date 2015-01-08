@@ -34,34 +34,25 @@ describe("Directive: History", function () {
                     "external": "http://192.168.0.2:3000"
                 }
             };
+            scope.visited = [
+                {
+                    path: "/"
+                },
+                {
+                    path: "/shane"
+                }
+            ];
 
             // Pass in the user object to the directive
-            element = angular.element("<history-list options=\"options\"></history-list>");
+            element = angular.element("<history-list options=\"options\" visited=\"visited\"></history-list>");
 
             // Compile & Digest as normal
             compile(element)(scope);
             scope.$digest();
         }));
 
-        it("sets the base url as first item in list", function () {
-
-            //console.log(element);
-
-            var isolatedScope = scope.$$childHead;
-
-            isolatedScope.updateVisited([
-                {
-                    path: "/"
-                },
-                {
-                    path: "scrolling.html"
-                },
-                {
-                    path: "scrolling.html?hello=shane"
-                }
-            ]);
-
-            assert.equal(isolatedScope.urls.visited[2].path, "scrolling.html?hello=shane");
+        it("Renders items", function () {
+            assert.equal(element.find("li").length, 2);
         });
     });
 });

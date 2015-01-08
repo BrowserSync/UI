@@ -1,50 +1,44 @@
-describe("Module: Disconnect", function () {
+describe("When using the disconnect element", function () {
 
-    var scope, element, compile, clock;
+    var socket, rootScope, isolatedScope;
+
+    var scope, element, compile;
+
+    var $window;
+
     beforeEach(module("BrowserSync"));
     beforeEach(module("test.templates"));
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($compile, $rootScope) {
-        scope = $rootScope;
+    beforeEach(inject(function ($compile, $rootScope, _$window_) {
+        scope   = $rootScope;
         compile = $compile;
-        clock = sinon.useFakeTimers();
     }));
 
     after(function () {
-        clock.restore();
+        //clock.restore();
     });
 
-    describe("When using the disconnect element", function () {
+    beforeEach(inject(function (Socket, $rootScope) {
 
-        var socket, rootScope, isolatedScope;
+        socket = Socket;
+        rootScope = $rootScope;
 
-        beforeEach(inject(function (Socket, $rootScope) {
+        // Pass in the user object to the directive
+        element = angular.element("<disconnect-elem></disconnect-elem>");
 
-            socket = Socket;
-            rootScope = $rootScope;
+        // Compile & Digest as normal
+        compile(element)(scope);
+        scope.$digest();
+        isolatedScope = scope.$$childHead;
+    }));
+    it("has ui properties", function () {
+        assert.isDefined(isolatedScope.ui.visible);
+        assert.isDefined(isolatedScope.ui.heading);
+        assert.isDefined(isolatedScope.ui.message);
+    });
 
-            // Pass in the user object to the directive
-            element = angular.element("<disconnect-elem></disconnect-elem>");
-
-            // Compile & Digest as normal
-            compile(element)(scope);
-            scope.$digest();
-            isolatedScope = scope.$$childHead;
-        }));
-        it("has ui properties", function () {
-            assert.isDefined(isolatedScope.ui.visible);
-            assert.isDefined(isolatedScope.ui.heading);
-            assert.isDefined(isolatedScope.ui.message);
-        });
-        it("should have the correct heading", function () {
-            assert.equal(element.find("h1").text(), "BrowserSync Disconnected");
-        });
-        it("should respond to connection/disconnect events", function () {
-            rootScope.$emit("cp:disconnect");
-            assert.equal(isolatedScope.ui.visible, true);
-            rootScope.$emit("cp:connection");
-            assert.equal(isolatedScope.ui.visible, false);
-        });
+    it("should have the correct heading", function () {
+        assert.equal(element.find("h1").text(), "BrowserSync Disconnected");
     });
 });

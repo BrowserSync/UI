@@ -2,7 +2,7 @@ var Immutable = require("immutable");
 var history   = require("../../server/plugins/history/history");
 var assert    = require("chai").assert;
 
-describe.only("Saving history", function () {
+describe("Saving history", function () {
     it("Adding a new path", function () {
         var imm = Immutable.OrderedSet('/');
         var out = history.addPath(imm, "http://localhost/shane");

@@ -1,4 +1,4 @@
-describe("Directive: Plugins", function () {
+describe.skip("Directive: Plugins", function () {
 
     var scope, element, compile, clock;
     beforeEach(module("BrowserSync"));

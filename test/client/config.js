@@ -13,6 +13,7 @@ module.exports = {
         "lib/bower_components/jquery/dist/jquery.min.js",
         "lib/bower_components/angular/angular.min.js",
         "lib/bower_components/angular-route/angular-route.min.js",
+        "lib/bower_components/angular-touch/angular-touch.min.js",
         "lib/bower_components/angular-mocks/angular-mocks.js",
         "lib/bower_components/angular-order-object-by/src/ng-order-object-by.js",
 

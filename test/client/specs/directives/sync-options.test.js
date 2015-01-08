@@ -44,12 +44,6 @@ describe("Directive: Sync options", function () {
 
             assert.equal(syncItems[0].title, "Clicks");
             assert.equal(syncItems[1].title, "Scroll");
-            assert.equal(syncItems[0].value, true);
-            assert.equal(syncItems[1].value, true);
-
-            var formItems = isolatedScope.formItems;
-            assert.equal(formItems[0].title, "Toggle");
-            assert.equal(formItems[1].title, "Submit");
         });
     });
 });

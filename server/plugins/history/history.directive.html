@@ -1,5 +1,5 @@
-<ul bs-List="bordered swipe" ng-if="urls.visited">
-    <li ng-repeat="url in urls.visited track by $index"
+<ul bs-List="bordered swipe" ng-if="visited">
+    <li ng-repeat="url in visited track by $index"
         ng-swipe-left="url.showActions = true"
         ng-swipe-right="url.showActions = false"
         ng-class="{'active': url.showActions}"

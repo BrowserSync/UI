@@ -29,7 +29,7 @@
     "e2e": "node e2e.test.js",
     "client": "./node_modules/karma/bin/karma start test/client/karma.conf.ci.js",
     "pre-release": "npm run server && npm run e2e && npm run client",
-    "test": "npm run server"
+    "test": "npm run server && npm run client"
   },
   "dependencies": {
     "async": "^0.9.0",

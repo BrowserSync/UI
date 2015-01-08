@@ -1,5 +1,5 @@
 var cp     = require("./index");
-var bs     = require("browser-sync");
+var bs     = require("/Users/shakyshane/sites/os-browser-sync");
 
 //var client = require("/Users/shakyshane/Sites/browser-sync-modules/browser-sync-client");
 //
