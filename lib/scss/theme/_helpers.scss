@@ -52,8 +52,11 @@ span.sep {
     [bs-Width~="20"]  { width: 20%!important; }
 }
 
-[bs-Text~="lede"] {
+[bs-text~="lede"] {
     @include font-size(18px);
+}
+[bs-text~="copyright"] {
+    text-align: center;
 }
 
 [bs-Color~="white"] {

@@ -76,17 +76,14 @@ gulp.task('sass', function () {
         })
         .pipe(autoprefix())
         .pipe(gulp.dest('lib/css'))
-        .pipe(filter("**/*.css"))
-        .pipe(reload({stream:true}));
+        .pipe(filter("**/*.css"));
 });
 
 /**
  * Compile CSS
  */
 gulp.task('bs-inject', function () {
-    setTimeout(function () {
-        browserSync.reload("core.css");
-    }, 500);
+    browserSync.reload("core.css");
 });
 
 /**
@@ -128,7 +125,7 @@ gulp.task('svg', function () {
  * Build Front-end stuff
  */
 gulp.task('dev-frontend', ["sass", "build-src", "browser-sync-dev"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass"]);
+    gulp.watch("lib/scss/**/*.scss", ["sass", "bs-inject"]);
     gulp.watch("lib/src/**/*", ["build-src", browserSync.reload]);
     //gulp.watch("lib/*.html", browserSync.reload);
 });

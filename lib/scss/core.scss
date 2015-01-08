@@ -7,12 +7,11 @@
 @import "vendor/normalize";
 @import "vendor/fonts";
 
-@import "theme/main";
+@import "theme/base";
 @import "theme/sidebar";
 @import "theme/section-nav";
 @import "theme/main-content";
 
-@import "theme/base";
 @import "theme/svg";
 @import "theme/custom-icons";
 @import "theme/headings";
@@ -21,24 +20,20 @@
 @import "theme/helpers";
 @import "theme/buttons";
 
-//@import "theme/flex";
 @import "theme/callout";
-//@import "theme/animations";
 @import "theme/nav";
 
-//
 @import "theme/header";
 @import "theme/top-bar";
 
-//@import "theme/forms";
 @import "theme/switch";
 @import "theme/grid";
+@import "theme/footer";
 //@import "theme/msgs";
 
 //@import "theme/url-nav";
 //@import "theme/main";
 //@import "theme/links";
-//@import "theme/footer";
 //@import "theme/layout";
 //@import "theme/code";
 //@import "theme/steps";
