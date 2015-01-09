@@ -4,13 +4,11 @@ describe("When using the disconnect element", function () {
 
     var scope, element, compile;
 
-    var $window;
-
     beforeEach(module("BrowserSync"));
     beforeEach(module("test.templates"));
 
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($compile, $rootScope, _$window_) {
+    beforeEach(inject(function ($compile, $rootScope) {
         scope   = $rootScope;
         compile = $compile;
     }));

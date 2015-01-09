@@ -1,7 +1,5 @@
 "use strict";
 
-var path        = require("path");
-
 var EE          = require("easy-extender");
 
 var async       = require("./server/async");
@@ -48,7 +46,7 @@ var ControlPanel = function (opts, bs, emitter) {
 ControlPanel.prototype.getServer = function (cb) {
     var cp = this;
     if (!cp.server) {
-        this.events.on("cp:running", function (out) {
+        this.events.on("cp:running", function () {
             cb(null, cp.server);
         });
     }
@@ -110,7 +108,7 @@ ControlPanel.prototype.init = function () {
             cp.logger.debug("{green:Step Complete: " + item.step);
             cb();
         });
-    }, function (err) {
+    }, function () {
         cp.events.emit("cp:running", {instance: cp, options: cp.opts});
         cp.logger.info("Running at: {cyan:http://localhost:%s", cp.opts.get("port"));
     });

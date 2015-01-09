@@ -1,13 +1,11 @@
 describe("Module: History", function () {
 
-    var scope, element, compile, clock;
-
     beforeEach(module("BrowserSync"));
     beforeEach(module("test.templates"));
 
     describe("When using the history module", function () {
 
-        var Location, rootScope, isolatedScope, Socket;
+        var Location, rootScope, Socket;
         beforeEach(inject(function (_Location_, $rootScope, _Socket_, $q) {
             Location  = _Location_;
             Socket    = _Socket_;

@@ -12,7 +12,7 @@ describe("Content Sections Value/Service", function () {
         values = $injector.get("contentSections");
     }));
     it("should be able to transform a value", function () {
-        var transformed = sections.transform(values["history"], function (item) {
+        sections.transform(values["history"], function (item) {
             item.title = "Shane";
             return item;
         });

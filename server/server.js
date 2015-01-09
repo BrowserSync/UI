@@ -1,7 +1,5 @@
-var _           = require("lodash");
 var connect     = require("connect");
 var through     = require("through");
-var path        = require("path");
 var http        = require("http");
 var fs          = require("fs");
 var serveStatic = require("serve-static");

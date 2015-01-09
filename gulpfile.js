@@ -2,7 +2,6 @@ var gulp        = require("gulp");
 var jshint      = require("gulp-jshint");
 var contribs    = require("gulp-contribs");
 var sass        = require("gulp-sass");
-var fs          = require("fs");
 var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require("gulp-browserify");
 var rename      = require("gulp-rename");
@@ -10,7 +9,6 @@ var filter      = require("gulp-filter");
 var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
 var crossbow    = require("crossbow/plugins/stream");
-var reload      = browserSync.reload;
 
 /**
  * Lint all JS files
@@ -24,10 +22,10 @@ gulp.task("lint", function () {
         "server/*.js",
         "gulpfile.js",
     ])
-    .pipe(require("no-abs")());
-    //.pipe(jshint("test/.jshintrc"))
-    //.pipe(jshint.reporter("default"))
-    //.pipe(jshint.reporter("fail"));
+    .pipe(require("no-abs")())
+    .pipe(jshint(".jshintrc"))
+    .pipe(jshint.reporter("default"))
+    .pipe(jshint.reporter("fail"));
 });
 
 /**
@@ -150,4 +148,3 @@ gulp.task("dev", ["browserify"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
     gulp.watch("lib/js/scripts/**/*.js", ["browserify"]);
 });
-

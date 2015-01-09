@@ -1,5 +1,5 @@
 var Immutable  = require("immutable");
-var transforms = require("./transforms");
+//var transforms = require("./transforms");
 
 var defaults = Immutable.Map({
     port: 3001
@@ -17,13 +17,13 @@ module.exports.merge = function (obj) {
  * @param {Immutable.Map} obj
  * @returns {*}
  */
-function transformOptions(obj) {
-
-    var out;
-
-    Object.keys(transforms).forEach(function (key) {
-        out = obj.set(key, transforms[key](obj));
-    });
-
-    return out;
-}
+//function transformOptions(obj) {
+//
+//    var out;
+//
+//    Object.keys(transforms).forEach(function (key) {
+//        out = obj.set(key, transforms[key](obj));
+//    });
+//
+//    return out;
+//}

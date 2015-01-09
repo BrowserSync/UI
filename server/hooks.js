@@ -1,4 +1,3 @@
-var _          = require("lodash");
 var fs         = require("fs");
 var path       = require("path");
 var tmpl       = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
@@ -40,7 +39,7 @@ module.exports = {
         return configTmpl.replace("%when%", items)
             .replace("%pages%", JSON.stringify(pagesConfig, null, 4));
     },
-    "markup": function (hooks, initial) {
+    "markup": function (hooks) {
         var out = hooks.reduce(function (combined, item) {
             return [combined, tmpl.replace("%markup%", item)].join("\n");
         }, "");
@@ -49,7 +48,7 @@ module.exports = {
     "client:js": function (hooks) {
         return hooks.join(";");
     },
-    "templates": function (hooks, cb) {
+    "templates": function (hooks) {
 
         var inlineTemplates = createInlineTemplates(hooks);
         return inlineTemplates;

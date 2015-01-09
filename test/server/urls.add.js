@@ -1,9 +1,10 @@
+/*jshint -W079 */
 var urls    = require("../../server/urls");
 var assert = require("chai").assert;
 
 describe("Adding Urls", function() {
 
-    var validUrls, bsSpy;
+    var validUrls;
 
     beforeEach(function () {
         validUrls   = [{

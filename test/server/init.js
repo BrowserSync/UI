@@ -1,7 +1,7 @@
+/*jshint -W079 */
 var browserSync = require("browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
-var sinon       = require("sinon");
 var config      = require("../../server/config");
 var request     = require("supertest");
 
@@ -35,7 +35,7 @@ describe("Can be started with browserSync instance", function() {
         request(controlPanel.server)
             .get("/")
             .expect(200)
-            .end(function (err, res, req) {
+            .end(function (err, res) {
                 assert.include(res.text, "Browser Sync - Control Panel");
                 done();
             });
@@ -54,7 +54,7 @@ describe("Can be started with browserSync instance", function() {
         request(controlPanel.server)
             .get(config.defaults.appJs)
             .expect(200, function (err, res) {
-                assert.include(res.text, 'angular');
+                assert.include(res.text, "angular");
                 done();
             });
     });
