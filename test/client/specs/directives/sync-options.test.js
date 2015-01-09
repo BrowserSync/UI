@@ -30,8 +30,17 @@ describe("Directive: Sync options", function () {
                 }
             };
 
+            scope.syncItems = [
+                {
+                    title: "Clicks"
+                },
+                {
+                    title: "Scroll"
+                },
+            ];
+
             // Pass in the user object to the directive
-            element = angular.element("<sync-options options=\"options\"></sync-options>");
+            element = angular.element("<sync-options options=\"options\" sync-items=\"syncItems\"></sync-options>");
 
             // Compile & Digest as normal
             compile(element)(scope);

@@ -14,7 +14,8 @@
             return {
                 restrict: "E",
                 scope: {
-                    options: "="
+                    options: "=",
+                    "syncItems": "="
                 },
                 templateUrl: "sync-options-list.html",
                 controller: ["$scope", "Socket", "Location", "contentSections", syncOptionsDirective]
@@ -27,26 +28,19 @@
      * @param contentSections
      */
     function syncOptionsController($scope, Socket, options, contentSections) {
+
         $scope.options = options;
         $scope.section = contentSections[SECTION_NAME];
-    }
 
-    /**
-     * @param $scope
-     * @param Socket
-     * @param contentSections
-     */
-    function syncOptionsDirective($scope, Socket, Location, contentSections) {
-
-        var ghostMode = $scope.options.ghostMode;
+        $scope.setMany = function (value) {
+            Socket.emit("cp:option:setMany", value);
+            $scope.syncItems = $scope.syncItems.map(function (item) {
+                item.value = value;
+                return item;
+            });
+        };
 
         $scope.syncItems = [];
-        $scope.formItems = [];
-
-        $scope.urls = {
-            local: $scope.options.urls.local,
-            current: $scope.options.urls.local + "/"
-        };
 
         var taglines = {
             clicks:  "Mirror clicks across devices",
@@ -62,14 +56,14 @@
             $scope.syncItems.push(addItem("codeSync", ["codeSync"], $scope.options.codeSync, taglines["codeSync"]));
         }
 
-        Object.keys(ghostMode).forEach(function (item) {
+        Object.keys($scope.options.ghostMode).forEach(function (item) {
             if (item !== "forms" && item !== "location") {
-                $scope.syncItems.push(addItem(item, ["ghostMode", item], ghostMode[item], taglines[item]));
+                $scope.syncItems.push(addItem(item, ["ghostMode", item], $scope.options.ghostMode[item], taglines[item]));
             }
         });
 
-        Object.keys(ghostMode.forms).forEach(function (item) {
-            $scope.syncItems.push(addItem("Forms: " + item, ["ghostMode", "forms", item], ghostMode["forms"][item], taglines["ghostMode." + item]));
+        Object.keys($scope.options.ghostMode.forms).forEach(function (item) {
+            $scope.syncItems.push(addItem("Forms: " + item, ["ghostMode", "forms", item], $scope.options.ghostMode["forms"][item], taglines["ghostMode." + item]));
         });
 
         function addItem (item, path, value, tagline) {
@@ -90,6 +84,19 @@
                 return files[key].length;
             });
         }
+    }
+
+    /**
+     * @param $scope
+     * @param Socket
+     * @param contentSections
+     */
+    function syncOptionsDirective($scope, Socket, Location) {
+
+        $scope.urls = {
+            local: $scope.options.urls.local,
+            current: $scope.options.urls.local + "/"
+        };
 
         /**
          * Toggle Options

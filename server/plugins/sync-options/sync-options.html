@@ -3,16 +3,15 @@
     <article class="bs-main-section">
         <div bs-callout="controls outline">
             <h1 bs-heading><i bs-icon="repeat_2"></i> Sync Options</h1>
-            <button bs-button="inline">
+            <button bs-button="inline" ng-click="setMany(true)">
                 <i bs-icon="circle_ok"></i>
                 Enable All
-
             </button>
-            <button bs-button="inline">
+            <button bs-button="inline" ng-click="setMany(false)">
                 <i bs-icon="circle_delete"></i>
                 Disable all
             </button>
         </div>
-        <sync-options ng-if="options" options="options"></sync-options>
+        <sync-options ng-if="options" options="options" sync-items="syncItems"></sync-options>
     </article>
 </script>

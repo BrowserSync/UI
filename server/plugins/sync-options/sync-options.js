@@ -9,6 +9,7 @@ module.exports = {
         var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         socket.on("connection", function (client) {
             client.on("cp:option:set", setOption.bind(null, cp, bs));
+            client.on("cp:option:setMany", setOptions.bind(null, cp, bs));
         });
     },
     "hooks": {
@@ -28,6 +29,34 @@ module.exports = {
     },
     "plugin:name": "Sync Options"
 };
+
+/**
+ * @param bs
+ * @param data
+ */
+function setOptions (cp, bs, value) {
+
+    cp.logger.info("Setting Many options...");
+
+    if (value !== true) {
+        value = false;
+    }
+
+    bs.setMany(function (item) {
+        [
+            ["codeSync"],
+            ["ghostMode", "clicks"],
+            ["ghostMode", "scroll"],
+            ["ghostMode", "forms", "inputs"],
+            ["ghostMode", "forms", "toggles"],
+            ["ghostMode", "forms", "submit"]
+        ].forEach(function (option) {
+            item.setIn(option, value);
+        });
+    });
+
+    return bs;
+}
 
 /**
  * @param bs
