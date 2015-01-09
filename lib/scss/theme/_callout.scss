@@ -141,3 +141,9 @@
         padding-left: $base-spacing*2 + $half-spacing;
     }
 }
+[bs-callout-content~="basic"] {
+    padding-left: $base-spacing;
+    @include media-query(min, $lap-start) {
+        padding-left: $base-spacing*1.5;
+    }
+}

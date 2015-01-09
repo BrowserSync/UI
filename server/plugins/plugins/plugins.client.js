@@ -4,33 +4,23 @@
 (function (angular) {
 
     var SECTION_NAME = "plugins";
+    var module = angular.module("BrowserSync");
 
-    angular.module("BrowserSync")
-        .controller("PluginsController",
-            ["$scope", "$rootScope", "Socket", "contentSections", pluginsController])
-        .directive("pluginList", function () {
-            return {
-                restrict: "E",
-                scope: {
-                    options: "="
-                },
-                templateUrl: "plugins.directive.html",
-                controller: ["$scope", "Socket", "contentSections", pluginsDirective]
-            };
-        });
+    module.controller("PluginsController", ["$scope", "options", "contentSections", pluginsPageController]);
 
     /**
+     * Controller for the URL sync
      * @param $scope
      * @param $rootScope
      * @param Socket
      * @param contentSections
      */
-    function pluginsDirective($scope, Socket, contentSections) {
-
-        var CONFIGURE_EVENT  = "plugins:configure";
+    function pluginsPageController($scope, options, contentSections) {
+        $scope.options = options;
+        $scope.section = contentSections[SECTION_NAME];
 
         /**
-         * Don't show control panel as user plugin
+         * Don't show this control panel as user plugin
          */
         var filtered = $scope.options.userPlugins.filter(function (item) {
             return item.name !== "Control Panel";
@@ -43,6 +33,29 @@
             loading: false,
             plugins: filtered
         };
+    }
+
+    module.directive("pluginList", function () {
+        return {
+            restrict: "E",
+            scope: {
+                options: "=",
+                plugins: "="
+            },
+            templateUrl: "plugins.directive.html",
+            controller: ["$scope", "Socket", pluginsDirective]
+        };
+    });
+
+    /**
+     * @param $scope
+     * @param $rootScope
+     * @param Socket
+     * @param contentSections
+     */
+    function pluginsDirective($scope, Socket) {
+
+        var CONFIGURE_EVENT  = "plugins:configure";
 
         /**
          * Toggle a plugin
@@ -52,32 +65,5 @@
         };
     }
 
-    /**
-     * Controller for the URL sync
-     * @param $scope
-     * @param $rootScope
-     * @param Socket
-     * @param contentSections
-     */
-    function pluginsController($scope, $rootScope, Socket, contentSections) {
-        $scope.section = contentSections[SECTION_NAME];
-    }
-
-    /**
-     * Let the user know shit is happening
-     */
-    function notify($scope, $rootScope) {
-
-        $scope.resetLoaders();
-
-        $rootScope.$broadcast("notify:flash", {
-            heading: "Instruction Sent:",
-            message: "Reload all browsers..",
-            status: "error",
-            timeout: 2000
-        });
-
-        $scope.$digest();
-    }
 })(angular);
 

@@ -1,14 +1,16 @@
 <script type="text/ng-template" id="plugins.html">
     <div bs-callout="controls outline">
         <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
-        <button bs-button="inline">
-            <i bs-icon="circle_ok"></i>
-            Enable All
-        </button>
-        <button bs-button="inline">
-            <i bs-icon="circle_delete"></i>
-            Disable all
-        </button>
+        <div ng-if="ui.plugins.length">
+            <button bs-button="inline">
+                <i bs-icon="circle_ok"></i>
+                Enable All
+            </button>
+            <button bs-button="inline">
+                <i bs-icon="circle_delete"></i>
+                Disable all
+            </button>
+        </div>
     </div>
-    <plugin-list ng-if="options" options="options"></plugin-list>
+    <plugin-list ng-if="options" options="options" plugins="ui.plugins"></plugin-list>
 </script>

@@ -1145,6 +1145,12 @@ span.sep {
   [bs-Callout~="trans"] [bs-callout-content] {
     padding-left: 68px; }
 
+[bs-callout-content~="basic"] {
+  padding-left: 27px; }
+  @media only screen and (min-width: 600px) {
+    [bs-callout-content~="basic"] {
+      padding-left: 40.5px; } }
+
 /**
  * Inline using floats
  */
@@ -1435,7 +1441,21 @@ pre {
   pre code {
     font-size: 12px;
     font-size: 0.66667rem;
-    line-height: 1; }
+    font-size: 16px;
+    font-size: 0.88889rem;
+    color: currentColor;
+    line-height: 1;
+    background: transparent;
+    border: 0; }
+
+code {
+  background: #FBFBFB;
+  display: inline-block;
+  padding: 0 5px;
+  border: 1px solid #F0F0F0;
+  color: #2275d7;
+  font-size: 14px;
+  font-size: 0.77778rem; }
 
 .notification {
   position: fixed;

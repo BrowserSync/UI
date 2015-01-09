@@ -1,11 +1,12 @@
-var path   = "/Users/shakyshane/sites/os-browser-sync";
 var cp     = require("./index");
 var bs     = require("browser-sync");
-//var client = require("/Users/shakyshane/sites/browser-sync-modules/browser-sync-client");
+var htmlInjector = require("bs-html-injector");
 //
 //client["plugin:name"] = "client:script";
 
+//bs.use(htmlInjector);
 bs.use(cp);
+
 //bs.use(client);
 
 //bs({
