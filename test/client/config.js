@@ -10,12 +10,11 @@ module.exports = {
     // list of files / patterns to load in the browser
     files: [
 
-        "lib/bower_components/jquery/dist/jquery.min.js",
-        "lib/bower_components/angular/angular.min.js",
-        "lib/bower_components/angular-route/angular-route.min.js",
-        "lib/bower_components/angular-touch/angular-touch.min.js",
-        "lib/bower_components/angular-mocks/angular-mocks.js",
-        "lib/bower_components/angular-order-object-by/src/ng-order-object-by.js",
+        "node_modules/jquery/dist/jquery.min.js",
+        "node_modules/angular/angular.min.js",
+        "node_modules/angular-route/angular-route.min.js",
+        "node_modules/angular-touch/angular-touch.min.js",
+        "node_modules/angular-mocks/angular-mocks.js",
 
         // Test Libs
         "node_modules/sinon/pkg/sinon.js",

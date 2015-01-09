@@ -1,6 +1,7 @@
 var _           = require("lodash");
 var connect     = require("connect");
 var through     = require("through");
+var path        = require("path");
 var http        = require("http");
 var fs          = require("fs");
 var serveStatic = require("serve-static");
@@ -12,8 +13,12 @@ var config      = require("./config");
  * @param {String|undefined} [path]
  * @returns {string}
  */
-var cwd = function (path) {
+var libDir = function (path) {
     return __dirname + "/../lib" + path || "";
+};
+
+var packageDir = function (path) {
+    return __dirname + "/../" + path;
 };
 
 /**
@@ -57,7 +62,10 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Serve static directory
      */
-    app.use(serveStatic(cwd("")));
+    app.use(serveStatic(libDir("")));
+
+
+    app.use("/node_modules", serveStatic(packageDir("node_modules")));
 
     /**
      * Return the server.
@@ -83,7 +91,7 @@ function serveJsFiles(app, socketMw, connectorMw) {
  */
 function combineMarkup(res, pageMarkup) {
     res.setHeader("Content-Type", "text/html");
-    return fs.createReadStream(cwd(config.defaults.indexPage))
+    return fs.createReadStream(libDir(config.defaults.indexPage))
         .pipe(through(function (buffer) {
             var file = buffer.toString();
             this.queue(file.replace(/%hooks%/g, pageMarkup));
