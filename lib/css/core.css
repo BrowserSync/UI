@@ -612,10 +612,8 @@ table tbody tr:nth-child(odd) {
   -webkit-transform: translateX(-200%) translateY(20px) scale(1.2);
       -ms-transform: translateX(-200%) translateY(20px) scale(1.2);
           transform: translateX(-200%) translateY(20px) scale(1.2);
-  -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-          transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s;
+  transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
+  transition: all 0.3s;
   opacity: 0;
   z-index: 5; }
   [bs-Section-Nav]:before {
@@ -685,8 +683,7 @@ svg {
 
 .icon-logo {
   color: #fff;
-  -webkit-transition: all 0.1s;
-          transition: all 0.1s;
+  transition: all 0.1s;
   width: 55px;
   height: 37px;
   text-align: center; }
@@ -768,8 +765,7 @@ h6, .h6 {
     font-size: 22px;
     font-size: 1.22222rem;
     position: absolute;
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s;
+    transition: all 0.3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
@@ -797,8 +793,7 @@ h6, .h6 {
 
 a {
   color: #21A695;
-  -webkit-transition: background 0.3s ease, color 0.3s ease;
-          transition: background 0.3s ease, color 0.3s ease; }
+  transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     text-decoration: underline;
     color: #00262C; }
@@ -806,8 +801,7 @@ a {
     text-decoration: none; }
 
 [bs-icon] {
-  -webkit-transition: background 0.3s ease, color 0.3s ease;
-          transition: background 0.3s ease, color 0.3s ease; }
+  transition: background 0.3s ease, color 0.3s ease; }
 
 .flush--bottom {
   margin-bottom: 0 !important; }
@@ -927,8 +921,7 @@ span.sep {
   text-align: center;
   cursor: pointer;
   outline: none;
-  -webkit-transition: color 0.3s, background 0.3s;
-          transition: color 0.3s, background 0.3s; }
+  transition: color 0.3s, background 0.3s; }
   [bs-button]:hover, [bs-button]:focus {
     text-decoration: none;
     background: #2F323E;
@@ -956,8 +949,7 @@ span.sep {
     font-size: 22px;
     font-size: 1.22222rem;
     position: absolute;
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s;
+    transition: all 0.3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
@@ -1167,8 +1159,7 @@ span.sep {
     border-top: 1px solid #F0F0F0; }
 
 [bs-List~="actions"] > li {
-  -webkit-transition: background 0.3s;
-          transition: background 0.3s;
+  transition: background 0.3s;
   color: #666666; }
   [bs-List~="actions"] > li:hover {
     background: #fff; }
@@ -1206,8 +1197,8 @@ span.sep {
   top: 0;
   height: 100%;
   right: 0;
-  -webkit-transition: -webkit-transform 0.3s;
-          transition: transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
@@ -1245,15 +1236,17 @@ span.sep {
       @media only screen and (min-width: 600px) {
         [bs-multi~="right"] [bs-button]:last-child {
           border-left-color: #F0F0F0; } }
+    @media only screen and (min-width: 600px) {
+      [bs-multi~="right"] [bs-button] {
+        border-left: 1px solid #F0F0F0; } }
     [bs-multi~="right"] [bs-button]:hover {
       background: #1f9d8d; }
       @media only screen and (min-width: 600px) {
         [bs-multi~="right"] [bs-button]:hover {
-          background: #F0F0F0; } }
+          background: whitesmoke; } }
 
 [bs-Actions~="inline"] {
-  -webkit-transition: opacity 0.2s;
-          transition: opacity 0.2s;
+  transition: opacity 0.2s;
   margin-left: 14px;
   display: inline-block;
   float: right; }
@@ -1292,8 +1285,7 @@ span.sep {
   height: 60px;
   line-height: 60px;
   color: #fff;
-  -webkit-transition: background 0.2s;
-          transition: background 0.2s; }
+  transition: background 0.2s; }
   @media only screen and (min-width: 600px) {
     [bs-toggle] {
       display: none; } }
@@ -1337,8 +1329,7 @@ span.sep {
   padding-top: 7px;
   text-shadow: 1px 1px 0 #fff; }
   [bs-control] [bs-icon] {
-    -webkit-transition: all 0.2s;
-            transition: all 0.2s;
+    transition: all 0.2s;
     color: #BBBBBB; }
   [bs-control]:before {
     width: 1px;
@@ -1391,8 +1382,7 @@ input.cmn-toggle-round + label:before {
   right: 2px;
   background-color: #AAAAAA;
   border-radius: 4px;
-  -webkit-transition: background 0.2s;
-          transition: background 0.2s; }
+  transition: background 0.2s; }
 
 input.cmn-toggle-round + label:after {
   top: 3px;
@@ -1400,8 +1390,7 @@ input.cmn-toggle-round + label:after {
   height: 19px;
   background-color: #fff;
   border-radius: 4px;
-  -webkit-transition: margin 0.2s;
-          transition: margin 0.2s; }
+  transition: margin 0.2s; }
 
 input.cmn-toggle-round:checked + label:before {
   background-color: #7ED321; }
@@ -1449,8 +1438,7 @@ input.cmn-toggle-round:checked + label {
   -webkit-transform: translateY(-110%);
       -ms-transform: translateY(-110%);
           transform: translateY(-110%);
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s; }
+  transition: all 0.3s; }
   .notification.active {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);

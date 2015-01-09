@@ -9,6 +9,7 @@ var filter      = require("gulp-filter");
 var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
 var crossbow    = require("crossbow/plugins/stream");
+var minifyCSS   = require("gulp-minify-css");
 
 /**
  * Lint all JS files
@@ -82,7 +83,11 @@ gulp.task("sass", function () {
         })
         .pipe(autoprefix())
         .pipe(gulp.dest("lib/css"))
-        .pipe(filter("**/*.css"));
+        .pipe(minifyCSS({keepBreaks:true}))
+        .pipe(filter("**/*.css"))
+        .pipe(rename("core.min.css"))
+        .pipe(gulp.dest("lib/css"))
+        .pipe(browserSync.reload({stream:true}));
 });
 
 /**

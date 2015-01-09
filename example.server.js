@@ -16,7 +16,7 @@ var logger   = require("eazy-logger").Logger({
 
 var cp           = require("./index");
 //var bs           = require('browser-sync');
-var bs           = require('/Users/shaneobsourne/sites/browser-sync');
+var bs           = require("browser-sync");
 
 //var htmlInjector = require('/Users/shakyshane/code/bs-plugins/html-injector');
 

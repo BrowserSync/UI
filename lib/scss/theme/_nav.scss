@@ -91,11 +91,14 @@
         }
     }
 
+    @include media-query(min, $lap-start) {
+        border-left: 1px solid $grey-border;
+    }
+
     &:hover {
         background: darken($green-lt, 2%);
         @include media-query(min, $lap-start) {
-            background: $grey-bg-dk;
-//            border-left: 1px solid $grey-bg-dk;
+            background: lighten($grey-bg-dk, 2%);
         }
     }
 }

@@ -93,6 +93,7 @@
 [bs-callout~="outline"] {
 
     border-bottom: 0;
+//    margin-bottom: $base-spacing;
 
     &:after {
         content: " ";

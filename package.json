@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "async": "^0.9.0",
+    "browser-sync": "git://github.com/shakyshane/browser-sync#v2-rc1.1",
     "connect": "^3.1.1",
     "connect-history-api-fallback": "0.0.5",
     "easy-extender": "^2.2.0",
@@ -58,6 +59,7 @@
     "gulp-contribs": "0.0.2",
     "gulp-filter": "^1.0.2",
     "gulp-jshint": "^1.8.4",
+    "gulp-minify-css": "^0.3.11",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^1.2.4",
     "gulp-svg-sprites": "^1.1.0",
@@ -78,4 +80,3 @@
   },
   "keywords": []
 }
-
