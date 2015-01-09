@@ -76,7 +76,28 @@
     padding-right: $half-spacing;
     border-radius: 0;
     line-height: 41px;
+
     @include font-size(16px);
+
+    @include media-query(min, $lap-start) {
+        background: $grey-bg;
+        color: $grey-text;
+    }
+
+    &:last-child {
+        border-left: 1px solid darken($green-lt, 5%);
+        @include media-query(min, $lap-start) {
+            border-left-color: $grey-border;
+        }
+    }
+
+    &:hover {
+        background: darken($green-lt, 2%);
+        @include media-query(min, $lap-start) {
+            background: $grey-bg-dk;
+//            border-left: 1px solid $grey-bg-dk;
+        }
+    }
 }
 
 [bs-pointer~="default"] {
@@ -98,13 +119,11 @@
         transform: translateX(0);
     }
 
+    @include media-query(min, $lap-start) {
+        transform: translateX(0);
+    }
+
     [bs-button] {
-        &:last-child {
-            border-left: 1px solid darken($green-lt, 5%);
-        }
-        &:hover {
-            background: darken($green-lt, 2%);
-        }
         @include inline-button;
     }
 }

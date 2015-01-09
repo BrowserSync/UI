@@ -125,7 +125,7 @@ gulp.task('svg', function () {
  * Build Front-end stuff
  */
 gulp.task('dev-frontend', ["sass", "build-src", "browser-sync-dev"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass", "bs-inject"]);
+    gulp.watch("lib/scss/**/*.scss", ["sass", browserSync.reload]);
     gulp.watch("lib/src/**/*", ["build-src", browserSync.reload]);
     //gulp.watch("lib/*.html", browserSync.reload);
 });

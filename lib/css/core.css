@@ -1219,6 +1219,11 @@ span.sep {
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
             transform: translateX(0); }
+  @media only screen and (min-width: 600px) {
+    [bs-multi~="right"] {
+      -webkit-transform: translateX(0);
+          -ms-transform: translateX(0);
+              transform: translateX(0); } }
   [bs-multi~="right"] [bs-button] {
     border: 0;
     background: #21A695;
@@ -1231,10 +1236,20 @@ span.sep {
     line-height: 41px;
     font-size: 16px;
     font-size: 0.88889rem; }
+    @media only screen and (min-width: 600px) {
+      [bs-multi~="right"] [bs-button] {
+        background: #FBFBFB;
+        color: #BBBBBB; } }
     [bs-multi~="right"] [bs-button]:last-child {
       border-left: 1px solid #1d9182; }
+      @media only screen and (min-width: 600px) {
+        [bs-multi~="right"] [bs-button]:last-child {
+          border-left-color: #F0F0F0; } }
     [bs-multi~="right"] [bs-button]:hover {
       background: #1f9d8d; }
+      @media only screen and (min-width: 600px) {
+        [bs-multi~="right"] [bs-button]:hover {
+          background: #F0F0F0; } }
 
 [bs-Actions~="inline"] {
   -webkit-transition: opacity 0.2s;
