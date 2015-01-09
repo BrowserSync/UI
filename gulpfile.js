@@ -136,21 +136,10 @@ gulp.task("svg", function () {
 /**
  * Build Front-end stuff
  */
-gulp.task("dev-frontend", ["sass", "build-src", "browser-sync-dev"], function () {
+gulp.task("dev-frontend", ["sass", "build-src", "browserify", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass", browserSync.reload]);
     gulp.watch("lib/src/**/*", ["build-src", browserSync.reload]);
-    //gulp.watch("lib/*.html", browserSync.reload);
+    gulp.watch("lib/js/scripts/**/*.js", ["browserify", "browserSync.reload"]);
 });
 
-gulp.task("watch-css", ["sass"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass"]);
-});
-
-gulp.task("default", ["lint"]);
-
-gulp.task("build", ["browserify", "lint"]);
-
-gulp.task("dev", ["browserify"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass"]);
-    gulp.watch("lib/js/scripts/**/*.js", ["browserify"]);
-});
+gulp.task("build", ["sass", "browserify", "lint"]);
