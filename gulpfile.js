@@ -5,11 +5,11 @@ var sass        = require("gulp-sass");
 var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require("gulp-browserify");
 var rename      = require("gulp-rename");
-var filter      = require("gulp-filter");
+//var filter      = require("gulp-filter");
+//var minifyCSS   = require("gulp-minify-css");
 var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
 var crossbow    = require("crossbow/plugins/stream");
-var minifyCSS   = require("gulp-minify-css");
 
 /**
  * Lint all JS files
