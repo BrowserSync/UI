@@ -1,5 +1,5 @@
 <div>
-    <section bs-callout="" ng-repeat="url in urls">
+    <section bs-callout ng-repeat="url in urls">
         <div bs-callout-content>
             <div bs-callout-icon>
                 <i bs-icon="{{url.icon}}"></i>
@@ -20,24 +20,21 @@
                 </div>
                 <p bs-text="lede">Serving files from</p>
                 <ul bs-list="">
-
                     <li>{{options.server.baseDir}}</li>
                     <li ng-repeat="url in options.server.baseDirs">{{url}}</li>
                 </ul>
             </div>
         </div>
     </section>
-    <section ng-if="ui.proxy">
-        <div bs-Callout>
-            <div bs-Callout-Icon>
-                <i bs-Icon="target"></i>
+    <section bs-callout ng-if="ui.proxy">
+        <div bs-callout-content>
+            <div bs-callout-icon>
+                <i bs-icon="target"></i>
             </div>
-            <div bs-Callout-Content>
-                <p bs-Text="lede">Proxying:</p>
-                <p>
-                    <a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a>
-                </p>
-            </div>
+            <p bs-text="lede">Proxying:</p>
+            <p>
+                <a href="{{options.proxy.target}}" target="_blank">{{options.proxy.target}}</a>
+            </p>
         </div>
     </section>
 </div>
