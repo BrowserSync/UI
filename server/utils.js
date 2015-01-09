@@ -27,7 +27,7 @@ function verifyUrl(url, cb) {
         } else {
             cb("not 200");
         }
-    }).on('error', function(e) {
+    }).on("error", function(e) {
         console.log("Got error: " + e.message);
     });
 }

@@ -38,7 +38,7 @@ module.exports = {
                     cp.pages = pages;
                 })
             }
-        })
+        });
     },
     /**
      * Simple static file server with some middlewares for custom

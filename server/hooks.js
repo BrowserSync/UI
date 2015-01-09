@@ -54,7 +54,7 @@ module.exports = {
         var inlineTemplates = createInlineTemplates(hooks);
         return inlineTemplates;
     }
-}
+};
 
 /**
  *

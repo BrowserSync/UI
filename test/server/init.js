@@ -1,4 +1,4 @@
-var browserSync = require("/Users/shakyshane/sites/os-browser-sync");
+var browserSync = require("browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
 var sinon       = require("sinon");

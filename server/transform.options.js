@@ -22,4 +22,4 @@ module.exports = function (bs) {
             server.baseDirs = [path.join(cwd, server.baseDir)];
         }
     }
-}
+};
