@@ -5,10 +5,10 @@ var htmlInjector = require("bs-html-injector");
 //client["plugin:name"] = "client:script";
 
 //bs.use(htmlInjector);
+
 bs.use(cp);
 
 //bs.use(client);
-
 //bs({
 //    server: {
 //        baseDir: "./test/fixtures"

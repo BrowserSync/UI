@@ -19,7 +19,7 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        var validUrls = Immutable.OrderedSet('/');
+        var validUrls = Immutable.OrderedSet("/");
 
         var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));

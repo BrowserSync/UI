@@ -26,6 +26,16 @@
      * @param Socket
      * @param contentSections
      */
+    function syncOptionsController($scope, Socket, options, contentSections) {
+        $scope.options = options;
+        $scope.section = contentSections[SECTION_NAME];
+    }
+
+    /**
+     * @param $scope
+     * @param Socket
+     * @param contentSections
+     */
     function syncOptionsDirective($scope, Socket, Location, contentSections) {
 
         var ghostMode = $scope.options.ghostMode;
@@ -39,31 +49,46 @@
         };
 
         var taglines = {
-            clicks:  "Clicks will be synced",
-            scroll:  "Scroll position will be synced",
-            submit:  "Form Submissions will be synced",
-            inputs:  "Text inputs (including text-areas) will be synced",
-            toggles: "Radio + Checkboxes changes will be synced"
+            clicks:  "Mirror clicks across devices",
+            scroll:  "Mirror scroll position across devices",
+            "ghostMode.submit":  "Form Submissions will be synced",
+            "ghostMode.inputs":  "Text inputs (including text-areas) will be synced",
+            "ghostMode.toggles": "Radio + Checkboxes changes will be synced",
+            codeSync:            "Reload the browser or inject CSS when watched files change"
         };
+
+        // If watching files, add the code-sync toggle
+        if (hasWatchers($scope.options.files)) {
+            $scope.syncItems.push(addItem("codeSync", ["codeSync"], $scope.options.codeSync, taglines["codeSync"]));
+        }
 
         Object.keys(ghostMode).forEach(function (item) {
             if (item !== "forms" && item !== "location") {
-                $scope.syncItems.push(addItem(item, ["ghostMode", item], ghostMode[item]));
+                $scope.syncItems.push(addItem(item, ["ghostMode", item], ghostMode[item], taglines[item]));
             }
         });
 
         Object.keys(ghostMode.forms).forEach(function (item) {
-            $scope.syncItems.push(addItem(item, ["ghostMode", "forms", item], ghostMode["forms"][item]));
+            $scope.syncItems.push(addItem("Forms: " + item, ["ghostMode", "forms", item], ghostMode["forms"][item], taglines["ghostMode." + item]));
         });
 
-        function addItem (item, path, value) {
+        function addItem (item, path, value, tagline) {
             return {
                 value: value,
                 name: item,
                 path: path,
                 title: ucfirst(item),
-                tagline: taglines[item]
+                tagline: tagline
+            };
+        }
+
+        function hasWatchers (files) {
+            if (!files) {
+                return false;
             }
+            return Object.keys(files).some(function (key) {
+                return files[key].length;
+            });
         }
 
         /**
@@ -91,16 +116,6 @@
             $scope.urls.current = $scope.options.urls.local + "/";
             Location.sendAllTo(path);
         };
-    }
-
-    /**
-     * @param $scope
-     * @param Socket
-     * @param contentSections
-     */
-    function syncOptionsController($scope, Socket, options, contentSections) {
-        $scope.options = options;
-        $scope.section = contentSections[SECTION_NAME];
     }
 
     function ucfirst (string) {

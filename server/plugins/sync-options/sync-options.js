@@ -6,9 +6,9 @@ var fs   = require("fs");
  */
 module.exports = {
     "plugin": function (cp, bs) {
-        var sockets = bs.io.sockets;
-        sockets.on("connection", function (client) {
-            client.on("cp:option:set", setOption.bind(null, bs));
+        var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
+        socket.on("connection", function (client) {
+            client.on("cp:option:set", setOption.bind(null, cp, bs));
         });
     },
     "hooks": {
@@ -33,11 +33,10 @@ module.exports = {
  * @param bs
  * @param data
  */
-function setOption (bs, data) {
-    console.log(data.path);
+function setOption (cp, bs, data) {
+    cp.logger.debug("Setting option: {magenta:%s}:{cyan:%s}", data.path.join("."), data.value);
     bs.setOptionIn(data.path, data.value);
 }
-
 
 function getPath (filepath) {
     return path.join(__dirname, filepath);

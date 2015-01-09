@@ -33,7 +33,8 @@ var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    open: false,
+    files: "./test/fixtures/*.html",
+    open: false
     //tunnel: true
     //online: false
 });
