@@ -1426,6 +1426,17 @@ input.cmn-toggle-round:checked + label {
   padding-top: 14px;
   color: #d4d4d4; }
 
+pre {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 5px;
+  box-shadow: -10px 0px 10px #F0F0F0 inset;
+  border: 1px solid #ebebeb; }
+  pre code {
+    font-size: 12px;
+    font-size: 0.66667rem;
+    line-height: 1; }
+
 .notification {
   position: fixed;
   width: 100%;

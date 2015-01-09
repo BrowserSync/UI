@@ -79,14 +79,15 @@ gulp.task("sass", function () {
         .pipe(sass())
         .on("error", function(err){
             browserSync.notify(err.message, 3000);
+            console.log(err.message);
             this.emit("end");
         })
         .pipe(autoprefix())
         .pipe(gulp.dest("lib/css"))
-        .pipe(minifyCSS({keepBreaks:true}))
-        .pipe(filter("**/*.css"))
-        .pipe(rename("core.min.css"))
-        .pipe(gulp.dest("lib/css"))
+        //.pipe(minifyCSS({keepBreaks:true}))
+        //.pipe(filter("**/*.css"))
+        //.pipe(rename("core.min.css"))
+        //.pipe(gulp.dest("lib/css"))
         .pipe(browserSync.reload({stream:true}));
 });
 
