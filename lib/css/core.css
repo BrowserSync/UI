@@ -531,16 +531,9 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
-hr {
-  clear: both;
-  margin-bottom: 27px;
-  border: none;
-  border-bottom: 1px solid #cccccc;
-  padding-bottom: 14px;
-  height: 1px; }
-
 html {
   overflow-x: hidden;
+  overflow-y: auto;
   height: 100%;
   font: 112.5%/1.5 "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -550,12 +543,13 @@ html {
       height: 100vh; } }
 
 body {
+  min-height: 100%;
   max-width: 100%;
   overflow-x: hidden;
   background: #fff;
   color: #033339;
   text-rendering: optimizeLegibility;
-  height: 100%; }
+  overflow-y: auto; }
   @media only screen and (min-width: 600px) {
     body {
       height: 100vh;
@@ -574,6 +568,7 @@ main {
     [bs-content] {
       height: 100vh;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       padding-bottom: 59px; } }
 
 .lede {
@@ -587,6 +582,14 @@ table td {
   padding: 14px 7px; }
 table tbody tr:nth-child(odd) {
   background: #fafafa; }
+
+hr {
+  clear: both;
+  margin-bottom: 27px;
+  border: none;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 14px;
+  height: 1px; }
 
 [bs-sidebar] {
   position: relative;
@@ -603,7 +606,7 @@ table tbody tr:nth-child(odd) {
     [bs-sidebar] {
       width: 240px; } }
 
-[bs-Section-Nav] {
+[bs-section-nav] {
   background: #272A33;
   position: absolute;
   width: 100%;
@@ -612,11 +615,13 @@ table tbody tr:nth-child(odd) {
   -webkit-transform: translateX(-200%) translateY(20px) scale(1.2);
       -ms-transform: translateX(-200%) translateY(20px) scale(1.2);
           transform: translateX(-200%) translateY(20px) scale(1.2);
-  transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-  transition: all 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
+          transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
   opacity: 0;
   z-index: 5; }
-  [bs-Section-Nav]:before {
+  [bs-section-nav]:before {
     content: " ";
     height: 100%;
     width: 1px;
@@ -624,18 +629,18 @@ table tbody tr:nth-child(odd) {
     position: absolute;
     top: 0;
     left: 55px; }
-  [bs-Section-Nav] ul {
+  [bs-section-nav] ul {
     margin-bottom: 0; }
-    [bs-Section-Nav] ul li.active {
+    [bs-section-nav] ul li.active {
       margin-right: -5px; }
   @media only screen and (min-width: 600px) {
-    [bs-Section-Nav] {
+    [bs-section-nav] {
       opacity: 1;
       position: relative;
       -webkit-transform: translateX(0) translateY(0) scale(1);
           -ms-transform: translateX(0) translateY(0) scale(1);
               transform: translateX(0) translateY(0) scale(1); } }
-  [bs-Section-Nav].active {
+  [bs-section-nav].active {
     -webkit-transform: translateX(0) translateY(0) scale(1);
         -ms-transform: translateX(0) translateY(0) scale(1);
             transform: translateX(0) translateY(0) scale(1);
@@ -683,7 +688,8 @@ svg {
 
 .icon-logo {
   color: #fff;
-  transition: all 0.1s;
+  -webkit-transition: all 0.1s;
+          transition: all 0.1s;
   width: 55px;
   height: 37px;
   text-align: center; }
@@ -765,7 +771,8 @@ h6, .h6 {
     font-size: 22px;
     font-size: 1.22222rem;
     position: absolute;
-    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
@@ -793,7 +800,8 @@ h6, .h6 {
 
 a {
   color: #21A695;
-  transition: background 0.3s ease, color 0.3s ease; }
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+          transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     text-decoration: underline;
     color: #00262C; }
@@ -801,7 +809,8 @@ a {
     text-decoration: none; }
 
 [bs-icon] {
-  transition: background 0.3s ease, color 0.3s ease; }
+  -webkit-transition: background 0.3s ease, color 0.3s ease;
+          transition: background 0.3s ease, color 0.3s ease; }
 
 .flush--bottom {
   margin-bottom: 0 !important; }
@@ -921,7 +930,8 @@ span.sep {
   text-align: center;
   cursor: pointer;
   outline: none;
-  transition: color 0.3s, background 0.3s; }
+  -webkit-transition: color 0.3s, background 0.3s;
+          transition: color 0.3s, background 0.3s; }
   [bs-button]:hover, [bs-button]:focus {
     text-decoration: none;
     background: #2F323E;
@@ -949,7 +959,8 @@ span.sep {
     font-size: 22px;
     font-size: 1.22222rem;
     position: absolute;
-    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+            transition: all 0.3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
@@ -1165,7 +1176,8 @@ span.sep {
     border-top: 1px solid #F0F0F0; }
 
 [bs-List~="actions"] > li {
-  transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s;
   color: #666666; }
   [bs-List~="actions"] > li:hover {
     background: #fff; }
@@ -1203,8 +1215,8 @@ span.sep {
   top: 0;
   height: 100%;
   right: 0;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s;
+          transition: transform 0.3s;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
@@ -1252,7 +1264,8 @@ span.sep {
           background: whitesmoke; } }
 
 [bs-Actions~="inline"] {
-  transition: opacity 0.2s;
+  -webkit-transition: opacity 0.2s;
+          transition: opacity 0.2s;
   margin-left: 14px;
   display: inline-block;
   float: right; }
@@ -1291,7 +1304,8 @@ span.sep {
   height: 60px;
   line-height: 60px;
   color: #fff;
-  transition: background 0.2s; }
+  -webkit-transition: background 0.2s;
+          transition: background 0.2s; }
   @media only screen and (min-width: 600px) {
     [bs-toggle] {
       display: none; } }
@@ -1321,6 +1335,38 @@ span.sep {
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
+[bs-flex-fill] {
+  display: none; }
+  @media only screen and (min-width: 1200px) {
+    [bs-flex-fill] {
+      -webkit-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      text-align: left;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      height: 59px; }
+      [bs-flex-fill] [bs-control] {
+        text-transform: none;
+        line-height: 59px;
+        padding-top: 0; }
+        [bs-flex-fill] [bs-control]:first-child {
+          border-left: 0; }
+          [bs-flex-fill] [bs-control]:first-child:before {
+            display: none; }
+        [bs-flex-fill] [bs-control]:last-child {
+          border-right: 1px solid #fff;
+          position: relative; }
+          [bs-flex-fill] [bs-control]:last-child:after {
+            width: 1px;
+            height: 100%;
+            top: 0;
+            position: absolute;
+            right: 0;
+            content: " ";
+            background: #e3e3e3; } }
+
 [bs-control] {
   font-size: 16px;
   font-size: 0.88889rem;
@@ -1335,7 +1381,8 @@ span.sep {
   padding-top: 7px;
   text-shadow: 1px 1px 0 #fff; }
   [bs-control] [bs-icon] {
-    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+            transition: all 0.2s;
     color: #BBBBBB; }
   [bs-control]:before {
     width: 1px;
@@ -1388,7 +1435,8 @@ input.cmn-toggle-round + label:before {
   right: 2px;
   background-color: #AAAAAA;
   border-radius: 4px;
-  transition: background 0.2s; }
+  -webkit-transition: background 0.2s;
+          transition: background 0.2s; }
 
 input.cmn-toggle-round + label:after {
   top: 3px;
@@ -1396,7 +1444,8 @@ input.cmn-toggle-round + label:after {
   height: 19px;
   background-color: #fff;
   border-radius: 4px;
-  transition: margin 0.2s; }
+  -webkit-transition: margin 0.2s;
+          transition: margin 0.2s; }
 
 input.cmn-toggle-round:checked + label:before {
   background-color: #7ED321; }
@@ -1469,7 +1518,8 @@ code {
   -webkit-transform: translateY(-110%);
       -ms-transform: translateY(-110%);
           transform: translateY(-110%);
-  transition: all 0.3s; }
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s; }
   .notification.active {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);

@@ -1,31 +1,27 @@
-hr {
-    clear: both;
-    margin-bottom: $base-spacing;
-    border: none;
-    border-bottom: 1px solid $silver;
-    padding-bottom: $half-spacing;
-    height: 1px;
-}
-
 html {
+
     overflow-x: hidden;
+    overflow-y: auto;
+
     height: 100%;
+
     @include media-query(min, $lap-start) {
         height: 100vh;
     }
-    font: #{($base-font-size/16px)*100%}/#{$base-line-height} $base-font-family;
 
+    font: #{($base-font-size/16px)*100%}/#{$base-line-height} $base-font-family;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
 
 body {
+    min-height: 100%;
     max-width: 100%;
     overflow-x: hidden;
     background: $white;
     color: $base-color;
     text-rendering: optimizeLegibility;
-    height: 100%;
+    overflow-y: auto;
 
     @include media-query(min, $lap-start) {
         height: 100vh;
@@ -35,7 +31,6 @@ body {
 
 main {
     position: relative;
-
     @include media-query(min, $lap-start) {
         overflow: hidden;
     }
@@ -49,6 +44,7 @@ main {
     @include media-query(min, $lap-start) {
         height: 100vh;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         padding-bottom: 59px; // offset header from scroll
     }
 }
@@ -72,4 +68,13 @@ table {
             background: #fafafa;
         }
     }
+}
+
+hr {
+    clear: both;
+    margin-bottom: $base-spacing;
+    border: none;
+    border-bottom: 1px solid $silver;
+    padding-bottom: $half-spacing;
+    height: 1px;
 }

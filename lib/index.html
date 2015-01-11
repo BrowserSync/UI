@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="/css/core.css"/>
 </head>
 <body ng-app="BrowserSync">
@@ -45,13 +44,22 @@
         </header>
         <aside bs-controls="top">
             <div bs-flex="top">
-                <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options">
-                    <i bs-icon="square_add"></i><br/>
-                    New Tab
-                </a>
+                <div bs-flex-fill ng-if="app.options">
+                    <a href="#"
+                            target="_blank"
+                            title="Open a new tab"
+                            ng-repeat="(key, value) in app.options.urls"
+                            bs-control>
+                        {{value}}
+                    </a>
+                </div>
                 <a href="#" bs-control title="Reload all Browsers" ng-click="app.refreshAll()">
                     <i bs-icon="repeat_2"></i><br/>
                     Reload all
+                </a>
+                <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')">
+                    <i bs-icon="home"></i><br/>
+                    Reset All
                 </a>
             </div>
         </aside>

@@ -77,7 +77,7 @@
             title: "Local",
             tagline: "URL for the machine you are running BrowserSync on",
             url: urls.local,
-            icon: "computer_download"
+            icon: "imac"
         });
 
         if (urls.external) {

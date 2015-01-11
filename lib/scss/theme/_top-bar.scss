@@ -19,6 +19,47 @@
     justify-content: flex-end;
 }
 
+[bs-flex-end] {
+}
+
+[bs-flex-fill] {
+
+    display: none;
+
+    @include media-query(min, $wide-start) {
+
+        flex: 1;
+        text-align: left;
+        display: flex;
+        height: 59px;
+
+        [bs-control] {
+            text-transform: none;
+            line-height: 59px;
+            padding-top: 0;
+            &:first-child {
+                border-left: 0;
+                &:before {
+                    display: none;
+                }
+            }
+            &:last-child {
+                border-right: 1px solid $white;
+                position: relative;
+                &:after {
+                    width: 1px;
+                    height: 100%;
+                    top: 0;
+                    position: absolute;
+                    right: 0;
+                    content: " ";
+                    background: darken($grey-border, 5%);
+                }
+            }
+        }
+    }
+}
+
 [bs-control] {
 
     @include font-size(16px);
