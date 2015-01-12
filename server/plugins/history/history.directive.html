@@ -1,16 +1,11 @@
-<ul bs-List="bordered swipe" ng-if="visited">
-    <li ng-repeat="url in visited track by $index"
-        ng-swipe-left="url.showActions = true"
-        ng-swipe-right="url.showActions = false"
-        ng-class="{'active': url.showActions}"
-        bs-pointer="default"
-        markable>
-
+<ul bs-list="bordered inline-controls" ng-if="visited">
+    <li ng-repeat="url in visited track by $index">
         <button bs-remove ng-click="removeVisited(url)"><i bs-icon="bin"></i></button>
-        {{url.path}}
-        <span bs-multi="right">
-            <a href="{{url.path | localUrl:options.port}}" target="_blank" bs-button>new tab</a>
-            <a href="#" ng-click="sendAllTo(url.path)" bs-button>sync all</a>
+        <p>{{url.path}}</p>
+
+        <span bs-multi-controls="right">
+            <a href="{{url.path | localUrl:options.port}}" target="_blank" bs-button><i bs-icon="square_add"></i> new tab</a>
+            <a href="#" ng-click="sendAllTo(url.path)" bs-button><i bs-icon="target"></i> sync all</a>
         </span>
     </li>
 </ul>
