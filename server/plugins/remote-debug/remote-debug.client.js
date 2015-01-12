@@ -46,6 +46,10 @@
             $scope.debugger = data;
             $scope.$digest();
         });
+        Socket.on("cp:debugger:disabled", function (data) {
+            $scope.debugger = false;
+            $scope.$digest();
+        });
     }
 
 })(angular);

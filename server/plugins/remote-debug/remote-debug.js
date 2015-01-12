@@ -80,10 +80,14 @@ function toggleDebugger (socket, cp, bs, value) {
 
     if (value) {
         var _debugger = enableDebugger(cp, bs);
-        bs.setOption("remote-debug", _debugger);
+        bs.setOption("remote-debug", _debugger, true);
         socket.emit("cp:debugger:enabled", _debugger);
+        bs.io.of(
+            bs.options.getIn(["socket", "namespace"])
+        ).emit("cp:add:script", {src: _debugger.url + "/target/target-script-min.js#browsersync"});
     } else {
-        disableDebugger();
+        disableDebugger(cp, bs);
+        socket.emit("cp:debugger:disabled");
     }
 }
 
@@ -119,9 +123,10 @@ function enableDebugger (cp, bs) {
     };
 }
 
-function disableDebugger () {
+function disableDebugger (cp, bs) {
     if (app) {
         app.close();
         app = false;
+        bs.setOption("remote-debug", false);
     }
 }
