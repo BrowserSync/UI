@@ -26,6 +26,12 @@ module.exports = {
         var external = require("url").parse(bs.getOptionIn(["urls", "external"]));
         var port     = 8080;
 
+        clients.on("connection", function (client) {
+            if (app) {
+                client.emit("cp:add:script", {src: external.hostname + ":" + port + "/target/target-script-min.js#browsersync"});
+            }
+        });
+
         socket.on("connection", function (client) {
 
             client.on("cp:debugger:toggle", toggleDebugger.bind(null, socket, cp, bs));
@@ -33,6 +39,7 @@ module.exports = {
             client.on("cp:get:debugger", function () {
 
                 if (app) {
+
                     client.emit("cp:receive:enabled", {
                         url: ["http://", external.hostname, ":", port].join(""),
                         port: port,
