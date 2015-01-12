@@ -31,8 +31,9 @@ module.exports = {
 };
 
 /**
+ * @param cp
  * @param bs
- * @param data
+ * @param value
  */
 function setOptions (cp, bs, value) {
 

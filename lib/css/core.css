@@ -1254,6 +1254,14 @@ span.sep {
   display: flex;
   border-bottom: 1px solid #272A33;
   position: relative; }
+  [bs-header]:after {
+    content: " ";
+    width: 100%;
+    height: 3px;
+    background: #3d4250;
+    position: absolute;
+    bottom: 0;
+    left: 0; }
   [bs-header] * {
     margin-top: auto;
     margin-bottom: auto; }

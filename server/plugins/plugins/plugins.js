@@ -69,8 +69,6 @@ function pluginConfigureMany (cp, bs, value) {
             item.active = value;
             bs.events.emit("plugins:configure", item);
         });
-
-    bs.setOption("userPlugins", bs.getUserPlugins());
 }
 
 function getPath (filepath) {
