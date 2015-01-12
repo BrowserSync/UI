@@ -34,9 +34,43 @@ $controls-height: 41px;
     }
 
     li {
+        
         position: relative;
         padding-bottom: $controls-height;
         padding-left: $base-spacing*2 + 3px;
+        
+        &:hover {
+            background: $grey-bg;
+        }
+
+        // On wide screens, allow inline-buttons to sit on same line.
+        @include media-query(min, $desk-start) {
+
+            padding: 0;
+            display: flex;
+            
+            p {
+                margin-bottom: 0;
+                flex: 1;
+                padding-top: 6px;
+                padding-bottom: 6px;
+            }
+
+            [bs-remove] {
+                position: relative;
+                top: auto;
+                left: auto;
+            }
+
+            [bs-multi-controls] {
+                position: relative;
+                align-self: flex-end;
+            }
+
+            [bs-button] {
+                border: 0;
+            }
+        }
     }
 
     [bs-remove] {
