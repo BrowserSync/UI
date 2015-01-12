@@ -1,6 +1,5 @@
-/**
- * Inline using floats
- */
+$controls-height: 41px;
+
 [bs-List] {
 
     @extend .clearfix;
@@ -44,8 +43,13 @@
 
     color: $green-lt;
 
+    p {
+        margin-bottom: $half-spacing/2;
+    }
+
     li {
         position: relative;
+        padding-bottom: $controls-height;
         padding-left: $base-spacing*2 + 3px;
     }
 }
@@ -54,52 +58,45 @@
 
     position: absolute;
     top: 0;
-    height: 100%;
+    height: $controls-height;
     left: 4px;
     padding-left: $half-spacing;
     padding-right: $half-spacing;
     background: transparent;
-    color: $grey-border;
+    color: $grey-text;
     border: 0;
+
     &:hover {
         color: $grey;
     }
 }
 
 @mixin inline-button {
-    border: 0;
-    background: $green-lt;
-    color: white;
+    background: $grey-bg;
+    color: $grey-text;
+    text-shadow: 1px 1px 0 $white;
     height: 100%;
     padding: 0;
     padding-left: $half-spacing;
     padding-right: $half-spacing;
     border-radius: 0;
-    line-height: 41px;
+    line-height: $controls-height;
 
     @include font-size(16px);
 
-    @include media-query(min, $lap-start) {
-        background: $grey-bg;
-        color: $grey-text;
-    }
-
-    &:last-child {
-        border-left: 1px solid darken($green-lt, 5%);
-        @include media-query(min, $lap-start) {
-            border-left-color: $grey-border;
-        }
-    }
+    border-left: 1px solid $grey-border;
+    border-top: 1px solid $grey-border;
+    border-bottom: 0;
 
     @include media-query(min, $lap-start) {
-        border-left: 1px solid $grey-border;
     }
 
     &:hover {
-        background: darken($green-lt, 2%);
-        @include media-query(min, $lap-start) {
-            background: lighten($grey-bg-dk, 2%);
-        }
+        background: lighten($grey-bg-dk, 2%);
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, .1) inset;
+    }
+    &:active {
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, .2) inset;
     }
 }
 
@@ -110,20 +107,15 @@
 [bs-multi~="right"] {
 
     position: absolute;
-    top: 0;
-    height: 100%;
+    bottom: 0;
+    height: $controls-height;
     right: 0;
     transition: transform .3s;
-    transform: translateX(100%);
     display: flex;
     z-index: 1000;
-
-    .active > & {
-        transform: translateX(0);
-    }
+    transform: translateX(0);
 
     @include media-query(min, $lap-start) {
-        transform: translateX(0);
     }
 
     [bs-button] {
@@ -131,7 +123,7 @@
     }
 }
 
-[bs-Actions~="inline"] {
+[bs-actions~="inline"] {
 
     transition: opacity .2s;
     margin-left: $half-spacing;
@@ -145,6 +137,6 @@
     }
 }
 
-[bs-Sep] {
+[bs-sep] {
     color: lighten($grey-lt, 30%);
 }

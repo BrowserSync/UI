@@ -3,10 +3,10 @@ layout: main.hbs
 title: "History"
 icon: "book_2"
 urls:
+    - /
     - /store-home.php
-    - /store-home.php
-    - /store-home.php
-    - /store-home.php
+    - /store-product.php
+    - /store-product.php?element=thisisit.php&color=we23
     - /store-home.php
     - /store-home.php
     - /store-home.php
@@ -34,8 +34,8 @@ urls:
     <ul bs-list="bordered swipe">
         {{#each page.urls}}
         <li>
+            <p>{{this}}</p>
             <button bs-remove><i bs-icon="bin"></i></button>
-            /store-home.php
             <span bs-multi="right">
                 <a href="#" bs-button>new tab</a>
                 <a href="#" bs-button>sync all</a>

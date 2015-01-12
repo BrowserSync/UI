@@ -76,6 +76,7 @@
     padding: 0;
     background: $grey-bg;
     border-bottom: 1px solid $grey-border;
+    margin-bottom: 1px;
 
     @include media-query(min, $lap-start) {
         padding: $base-spacing;
