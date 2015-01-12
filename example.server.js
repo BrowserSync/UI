@@ -18,14 +18,55 @@ var cp           = require("./index");
 //var bs           = require('browser-sync');
 var bs           = require("browser-sync");
 
-//var htmlInjector = require('/Users/shakyshane/code/bs-plugins/html-injector');
+var htmlInjector = require('bs-html-injector');
 
-//bs.use(htmlInjector, {
-//    logLevel: "debug",
-//    files: [
-//        "test/fixtures/*.html"
-//    ]
-//});
+bs.use(htmlInjector, {
+    logLevel: "info",
+    files: [
+        "test/fixtures/*.html"
+    ]
+});
+
+var dummyPlugin = "Some Pluig";
+
+bs.use({
+    "plugin:name": dummyPlugin,
+    "plugin": function (opts, bs) {
+        /**
+         * Configure event
+         */
+        bs.events.on("plugins:configure", function (data) {
+            if (data.name === dummyPlugin) {
+                console.log("Dummy plugin status: ", data.active);
+            }
+        });
+    }
+});
+
+bs.use({
+    "plugin:name": "dummyPlugin2",
+    "plugin": function (opts, bs) {}
+});
+bs.use({
+    "plugin:name": "dummyPlugin3",
+    "plugin": function (opts, bs) {}
+});
+bs.use({
+    "plugin:name": "dummyPlugin4",
+    "plugin": function (opts, bs) {}
+});bs.use({
+    "plugin:name": "dummyPlugin5",
+    "plugin": function (opts, bs) {}
+});bs.use({
+    "plugin:name": "dummyPlugin6",
+    "plugin": function (opts, bs) {}
+});bs.use({
+    "plugin:name": "dummyPlugin7",
+    "plugin": function (opts, bs) {}
+});
+
+
+
 
 bs.use(cp);
 
@@ -33,7 +74,7 @@ var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    files: "./test/fixtures/*.html",
+    //files: "./test/fixtures/*.html",
     open: false
     //tunnel: true
     //online: false

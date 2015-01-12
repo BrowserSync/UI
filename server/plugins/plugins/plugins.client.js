@@ -3,19 +3,20 @@
  */
 (function (angular) {
 
-    var SECTION_NAME = "plugins";
-    var module = angular.module("BrowserSync");
+    var SECTION_NAME          = "plugins";
+    var module                = angular.module("BrowserSync");
+    var CONFIGURE_EVENT       = "cp:plugins:set";
+    var CONFIGURE_MANY_EVENT  = "cp:plugins:setMany";
 
-    module.controller("PluginsController", ["$scope", "options", "contentSections", pluginsPageController]);
+    module.controller("PluginsController", ["$scope", "options", "contentSections", "Socket", pluginsPageController]);
 
     /**
      * Controller for the URL sync
      * @param $scope
-     * @param $rootScope
-     * @param Socket
      * @param contentSections
      */
-    function pluginsPageController($scope, options, contentSections) {
+    function pluginsPageController($scope, options, contentSections, Socket) {
+
         $scope.options = options;
         $scope.section = contentSections[SECTION_NAME];
 
@@ -33,6 +34,18 @@
             loading: false,
             plugins: filtered
         };
+
+        /**
+         * Set the state of many options
+         * @param value
+         */
+        $scope.setMany = function (value) {
+            Socket.emit(CONFIGURE_MANY_EVENT, value);
+            $scope.ui.plugins = $scope.ui.plugins.map(function (item) {
+                item.active = value;
+                return item;
+            });
+        };
     }
 
     module.directive("pluginList", function () {
@@ -49,13 +62,9 @@
 
     /**
      * @param $scope
-     * @param $rootScope
      * @param Socket
-     * @param contentSections
      */
     function pluginsDirective($scope, Socket) {
-
-        var CONFIGURE_EVENT  = "plugins:configure";
 
         /**
          * Toggle a plugin

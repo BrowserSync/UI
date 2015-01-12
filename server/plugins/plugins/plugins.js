@@ -11,10 +11,11 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        var sockets = bs.io;
+        var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
 
-        sockets.on("connection", function (client) {
-            client.on("plugins:configure", pluginConfigure.bind(null, bs));
+        socket.on("connection", function (client) {
+            client.on("cp:plugins:set",     pluginConfigure.bind(null, cp, bs));
+            client.on("cp:plugins:setMany", pluginConfigureMany.bind(null, cp, bs));
         });
     },
     /**
@@ -42,10 +43,34 @@ module.exports = {
 };
 
 /**
- *
+ * Configure 1 plugin
+ * @param {ControlPanel} cp
+ * @param {BrowserSync} bs
+ * @param {Object} data
  */
-function pluginConfigure (bs, data) {
+function pluginConfigure (cp, bs, data) {
     bs.events.emit("plugins:configure", data);
+}
+
+/**
+ * Configure many plugins
+ */
+function pluginConfigureMany (cp, bs, value) {
+
+    if (value !== true) {
+        value = false;
+    }
+    
+    bs.getUserPlugins()
+        .filter(function (item) {
+            return item.name !== "Control Panel"; // todo dupe code server/client
+        })
+        .forEach(function (item) {
+            item.active = value;
+            bs.events.emit("plugins:configure", item);
+        });
+
+    bs.setOption("userPlugins", bs.getUserPlugins());
 }
 
 function getPath (filepath) {

@@ -1,5 +1,5 @@
 <section ng-if="plugins.length">
-    <div bs-callout="switch" ng-repeat="plugin in plugins">
+    <div bs-callout="switch" ng-repeat="plugin in plugins track by $index">
         <div bs-callout-content="">
             <div bs-callout-icon="switch">
                 <div class="switch">

@@ -2,11 +2,11 @@
     <div bs-callout="controls outline">
         <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
         <div ng-if="ui.plugins.length">
-            <button bs-button="inline">
+            <button bs-button="inline" ng-click="setMany(true)">
                 <i bs-icon="circle_ok"></i>
                 Enable All
             </button>
-            <button bs-button="inline">
+            <button bs-button="inline" ng-click="setMany(false)">
                 <i bs-icon="circle_delete"></i>
                 Disable all
             </button>

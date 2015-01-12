@@ -1218,7 +1218,6 @@ span.sep {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  z-index: 1000;
   height: 41px; }
   [bs-multi-controls] [bs-button] {
     background: #FBFBFB;

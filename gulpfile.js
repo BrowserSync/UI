@@ -21,7 +21,7 @@ gulp.task("lint", function () {
         "lib/js/scripts/*.js",
         "index.js",
         "server/*.js",
-        "gulpfile.js",
+        "gulpfile.js"
     ])
     .pipe(require("no-abs")())
     .pipe(jshint(".jshintrc"))

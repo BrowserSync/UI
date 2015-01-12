@@ -48,7 +48,7 @@
     "angular-route": "^1.3.8",
     "angular-touch": "^1.3.8",
     "browser-sync": "git://github.com/shakyshane/browser-sync#v2-rc1.2",
-    "bs-html-injector": "^1.1.0",
+    "bs-html-injector": "^1.2.1",
     "chai": "^1.9.1",
     "crossbow": "^0.2.0",
     "eazy-logger": "^1.5.0",
