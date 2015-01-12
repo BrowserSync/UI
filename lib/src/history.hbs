@@ -31,14 +31,14 @@ urls:
     </button>
 </div>
 <div>
-    <ul bs-list="bordered swipe">
+    <ul bs-list="bordered inline-controls">
         {{#each page.urls}}
         <li>
             <p>{{this}}</p>
             <button bs-remove><i bs-icon="bin"></i></button>
-            <span bs-multi="right">
-                <a href="#" bs-button>new tab</a>
-                <a href="#" bs-button>sync all</a>
+            <span bs-multi-controls="right">
+                <a href="#" bs-button><i bs-icon="square_add"></i> new tab</a>
+                <a href="#" bs-button><i bs-icon="target"></i> sync all</a>
             </span>
         </li>
         {{/each}}

@@ -27,3 +27,11 @@ pre {
 [bs-stack] {
     @extend %item-stack;
 }
+
+[bs-pointer~="default"] {
+    cursor: pointer;
+}
+
+[bs-sep] {
+    color: lighten($grey-lt, 30%);
+}

@@ -209,10 +209,45 @@
     }
 }
 
-[bs-Action="menu-toggle"] {
+//
+// Menu toggle
+//
+[bs-action~="menu-toggle"] {
     @include only-palm;
 }
 
-[bs-Action="menu-close"] {
+//
+// Menu Close
+//
+[bs-action~="menu-close"] {
     @include only-palm;
+}
+
+@mixin inline-button {
+    background: $grey-bg;
+    color: $grey-text;
+    text-shadow: 1px 1px 0 $white;
+    height: 100%;
+    padding: 0;
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+    border-radius: 0;
+    line-height: $controls-height;
+    text-transform: uppercase;
+    @include font-size(14px);
+
+    border-left: 1px solid $grey-border;
+    border-top: 1px solid $grey-border;
+    border-bottom: 0;
+
+    @include media-query(min, $lap-start) {
+    }
+
+    &:hover {
+        background: lighten($grey-bg-dk, 2%);
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, .1) inset;
+    }
+    &:active {
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, .2) inset;
+    }
 }

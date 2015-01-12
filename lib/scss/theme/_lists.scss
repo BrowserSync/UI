@@ -1,0 +1,85 @@
+$controls-height: 41px;
+
+//
+// Generic lists
+//
+[bs-list] {
+    margin-left: 0;
+    list-style: none;
+}
+
+//
+// Bordered lists
+//
+[bs-list~="bordered"] {
+
+    > li {
+        padding: $half-spacing/2 $half-spacing;
+        border-bottom: 1px solid $grey-border;
+        &:first-child {
+            border-top: 1px solid $grey-border;
+        }
+    }
+}
+
+//
+// Inline-controls
+//
+[bs-list~="inline-controls"] {
+
+    color: $green-lt;
+
+    p {
+        margin-bottom: $half-spacing/2;
+    }
+
+    li {
+        position: relative;
+        padding-bottom: $controls-height;
+        padding-left: $base-spacing*2 + 3px;
+    }
+
+    [bs-remove] {
+
+        position: absolute;
+        top: 0;
+        height: $controls-height;
+        left: 4px;
+        padding-left: $half-spacing;
+        padding-right: $half-spacing;
+        background: transparent;
+        color: $grey-text;
+        border: 0;
+
+        &:hover {
+            color: $grey;
+        }
+    }
+}
+
+//
+// Multi-buttons
+//
+[bs-multi-controls] {
+
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    z-index: 1000;
+
+    height: $controls-height;
+
+    [bs-button] {
+        @include inline-button;
+    }
+    [bs-icon] {
+        margin-right: $half-spacing/2;
+    }
+}
+
+//
+// Right-variation
+//
+[bs-multi-controls~="right"] {
+    right: 0;
+}
