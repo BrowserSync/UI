@@ -1,0 +1,25 @@
+<!-- Controller for history-list -->
+<script type="text/ng-template" id="remote-debug.html">
+    <div bs-callout="controls outline">
+        <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
+    </div>
+    <div bs-callout="switch">
+        <div bs-callout-content="">
+            <div bs-callout-icon="switch">
+                <div class="switch">
+                    <input id="cmn-form-remote"
+                           ng-model="debugger.active"
+                           ng-change="toggleDebugger(debugger)"
+                           class="cmn-toggle cmn-toggle-round"
+                           type="checkbox"
+                           checked="">
+                    <label for="cmn-form-remote"></label>
+                </div>
+            </div>
+            <div>
+                <p bs-Text="lede">Remote Debugger</p>
+                <p ng-show="debugger.url"><a href="{{debugger.url}}" target="_blank">Access remote debugger (opens in a new tab)</a></p>
+            </div>
+        </div>
+    </div>
+</script>

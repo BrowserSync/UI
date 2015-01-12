@@ -20,12 +20,12 @@ var bs           = require("browser-sync");
 
 var htmlInjector = require('bs-html-injector');
 
-bs.use(htmlInjector, {
-    logLevel: "info",
-    files: [
-        "test/fixtures/*.html"
-    ]
-});
+//bs.use(htmlInjector, {
+//    logLevel: "info",
+//    files: [
+//        "test/fixtures/*.html"
+//    ]
+//});
 
 var dummyPlugin = "Some Pluig";
 
@@ -42,31 +42,6 @@ bs.use({
         });
     }
 });
-
-bs.use({
-    "plugin:name": "dummyPlugin2",
-    "plugin": function (opts, bs) {}
-});
-bs.use({
-    "plugin:name": "dummyPlugin3",
-    "plugin": function (opts, bs) {}
-});
-bs.use({
-    "plugin:name": "dummyPlugin4",
-    "plugin": function (opts, bs) {}
-});bs.use({
-    "plugin:name": "dummyPlugin5",
-    "plugin": function (opts, bs) {}
-});bs.use({
-    "plugin:name": "dummyPlugin6",
-    "plugin": function (opts, bs) {}
-});bs.use({
-    "plugin:name": "dummyPlugin7",
-    "plugin": function (opts, bs) {}
-});
-
-
-
 
 bs.use(cp);
 

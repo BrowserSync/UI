@@ -11,7 +11,8 @@ var defaultPlugins = {
     "sync-options": require("./server/plugins/sync-options/sync-options"),
     "server-info":  require("./server/plugins/server-info/server-info"),
     "history":      require("./server/plugins/history/history"),
-    "plugins":      require("./server/plugins/plugins/plugins")
+    "plugins":      require("./server/plugins/plugins/plugins"),
+    "remote-debug": require("./server/plugins/remote-debug/remote-debug")
 };
 
 /**
