@@ -8,8 +8,8 @@
             <div bs-callout-icon="switch">
                 <div class="switch">
                     <input id="cmn-form-remote"
-                           ng-model="debugger.active"
-                           ng-change="toggleDebugger(debugger)"
+                           ng-model="items.weinre.active"
+                           ng-change="toggleDebugger(items.weinre)"
                            class="cmn-toggle cmn-toggle-round"
                            type="checkbox"
                            checked="">
@@ -18,7 +18,26 @@
             </div>
             <div>
                 <p bs-Text="lede">Remote Debugger (weinre)</p>
-                <p ng-show="debugger.url"><a href="{{debugger.url}}/client/#browsersync" target="_blank">Access remote debugger (opens in a new tab)</a></p>
+                <p ng-show="items.weinre.active"><a href="{{items.weinre.url}}/client/#browsersync" target="_blank">Access remote debugger (opens in a new tab)</a></p>
+            </div>
+        </div>
+    </div>
+    <div bs-callout="switch">
+        <div bs-callout-content="">
+            <div bs-callout-icon="switch">
+                <div class="switch">
+                    <input id="cmn-form-pesticide"
+                           ng-model="items.pesticide.active"
+                           ng-change="toggleDebugger(items.pesticide)"
+                           class="cmn-toggle cmn-toggle-round"
+                           type="checkbox"
+                           checked="">
+                    <label for="cmn-form-pesticide"></label>
+                </div>
+            </div>
+            <div>
+                <p bs-Text="lede">CSS outlining</p>
+                <p>Add simple CSS outlines to all elements. (powered by <a href="http://pesticide.io">Pesticide.io</a>)</p>
             </div>
         </div>
     </div>

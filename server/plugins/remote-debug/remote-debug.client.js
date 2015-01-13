@@ -16,38 +16,35 @@
      */
     function RemoteDebugController($scope, options, Socket, contentSections) {
 
-        $scope.options  = options;
-        $scope.section  = contentSections[SECTION_NAME];
-        $scope.debugger = $scope.options["remote-debug"];
+        $scope.options   = options;
+        $scope.section   = contentSections[SECTION_NAME];
 
-        if (!$scope.options["remote-debug"]) {
-            $scope.debugger = {
-                active: false,
-                url: false
-            };
-        }
+        $scope.items = {
+            weinre:    $scope.options["weinre"],
+            pesticide: $scope.options["pesticide"]
+        };
 
         $scope.toggleDebugger = function (item) {
             if (item.active) {
-                return $scope.enable();
+                return $scope.enable(item.name);
             }
-            return $scope.disable();
+            return $scope.disable(item.name);
         };
 
-        $scope.enable = function () {
-            Socket.emit("cp:debugger:toggle", true);
+        $scope.enable = function (name) {
+            Socket.emit("cp:%s:toggle".replace("%s", name), true);
         };
 
-        $scope.disable = function () {
-            Socket.emit("cp:debugger:toggle", false);
+        $scope.disable = function (name) {
+            Socket.emit("cp:%s:toggle".replace("%s", name), false);
         };
 
-        Socket.on("cp:debugger:enabled", function (data) {
-            $scope.debugger = data;
+        Socket.on("cp:weinre:enabled", function (data) {
+            $scope.items.weinre = data;
             $scope.$digest();
         });
-        Socket.on("cp:debugger:disabled", function (data) {
-            $scope.debugger = false;
+        Socket.on("cp:weinre:disabled", function (data) {
+            $scope.items.weinre = false;
             $scope.$digest();
         });
     }

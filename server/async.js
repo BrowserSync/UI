@@ -58,11 +58,15 @@ module.exports = {
 
         cp.logger.info("Using port %s", port);
 
+        var server = require("./server")(cp, socketMw, connectorMw);
+
         done(null, {
             instance: {
-                server: require("./server")(cp, socketMw, connectorMw).listen(port)
+                server: server.server.listen(port),
+                app: server.app
             }
         });
+
     },
     /**
      * Run default plugins

@@ -1,14 +1,15 @@
-var urls      = require("../../urls");
-var url       = require("url");
-var path      = require("path");
-var fs        = require("fs");
-var Immutable = require("immutable");
+var urls           = require("../../urls");
+var url            = require("url");
+var path           = require("path");
+var fs             = require("fs");
+var Immutable      = require("immutable");
+var pesticide      = fs.readFileSync(__dirname + "/css/pesticide.min.css", "utf-8");
+//var pesticideDepth = fs.readFileSync(__dirname + "/css/pesticide-depth.css", "utf-8");
 
 /**
  * @type {Immutable.Set}
  */
 var timestamp;
-const WEINRE_REMOTE = "http://localhost:8080/target/target-script-min.js#anonymous";
 var app;
 
 /**
@@ -21,20 +22,37 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
+        bs.serveFile("/browser-sync/pesticide.css", {
+            type: "text/css",
+            content: pesticide
+        });
+
         var socket   = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients  = bs.io.of(bs.options.getIn(["socket", "namespace"]));
         var external = require("url").parse(bs.getOptionIn(["urls", "external"]));
         var port     = 8080;
 
+        bs.setOption("pesticide", Immutable.fromJS({
+            name:   "pesticide",
+            active: false
+        }));
+
+        bs.setOption("weinre", Immutable.fromJS({
+            name:  "weinre",
+            active: false,
+            url:    false
+        }));
+
         clients.on("connection", function (client) {
             if (app) {
-                client.emit("cp:add:script", {src: external.hostname + ":" + port + "/target/target-script-min.js#browsersync"});
+                client.emit("cp:add:script", {src: ["http://", external.hostname, ":", port, "/target/target-script-min.js#browsersync"].join("")});
             }
         });
 
         socket.on("connection", function (client) {
 
-            client.on("cp:debugger:toggle", toggleDebugger.bind(null, socket, cp, bs));
+            client.on("cp:weinre:toggle", toggleDebugger.bind(null, socket, cp, bs));
+            client.on("cp:pesticide:toggle", togglePesticide.bind(null, socket, cp, bs));
 
             client.on("cp:get:debugger", function () {
 
@@ -75,6 +93,34 @@ module.exports = {
 };
 
 /**
+ * @param socket
+ * @param cp
+ * @param bs
+ * @param value
+ */
+function togglePesticide (socket, cp, bs, value) {
+
+    if (value !== true) {
+        value = false;
+    }
+
+    var clients = bs.io.of(
+        bs.options.getIn(["socket", "namespace"])
+    );
+
+    if (value) {
+        clients.emit("cp:add:css", {
+            src: "/browser-sync/pesticide.css",
+            id: "__bs-pesticide__"
+        });
+    } else {
+        clients.emit("cp:element:remove", {
+            id: "__bs-pesticide__"
+        });
+    }
+}
+
+/**
  * @param cp
  * @param bs
  * @param value
@@ -87,14 +133,15 @@ function toggleDebugger (socket, cp, bs, value) {
 
     if (value) {
         var _debugger = enableDebugger(cp, bs);
-        bs.setOption("remote-debug", _debugger, true);
-        socket.emit("cp:debugger:enabled", _debugger);
+        bs.setOptionIn(["weinre", "active"], true);
+        bs.setOptionIn(["weinre", "url"], _debugger.url);
+        socket.emit("cp:weinre:enabled", _debugger);
         bs.io.of(
             bs.options.getIn(["socket", "namespace"])
         ).emit("cp:add:script", {src: _debugger.url + "/target/target-script-min.js#browsersync"});
     } else {
         disableDebugger(cp, bs);
-        socket.emit("cp:debugger:disabled");
+        socket.emit("cp:weinre:disabled");
     }
 }
 
@@ -134,6 +181,6 @@ function disableDebugger (cp, bs) {
     if (app) {
         app.close();
         app = false;
-        bs.setOption("remote-debug", false);
+        bs.setOptionIn(["weinre", "active"], false);
     }
 }

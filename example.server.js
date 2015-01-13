@@ -50,7 +50,7 @@ var instance = bs({
         baseDir: "./test/fixtures"
     },
     //files: "./test/fixtures/*.html",
-    open: false
-    //tunnel: true
+    open: false,
+    tunnel: true
     //online: false
 });

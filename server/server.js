@@ -68,7 +68,10 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Return the server.
      */
-    return http.createServer(app);
+    return {
+        server: http.createServer(app),
+        app: app
+    };
 }
 
 /**
