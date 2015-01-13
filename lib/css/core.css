@@ -681,7 +681,9 @@ svg {
   color: #fff; }
   .icon-word svg {
     position: relative;
-    top: 1px; }
+    top: 1px;
+    -webkit-filter: drop-shadow(1px 1px 2px #00262C);
+    filter: drop-shadow(1px 1px 2px #00262C); }
 
 .icon-logo {
   color: #fff;
@@ -689,7 +691,9 @@ svg {
           transition: all 0.1s;
   width: 55px;
   height: 37px;
-  text-align: center; }
+  text-align: center;
+  -webkit-filter: drop-shadow(1px 1px 2px #00262C);
+  filter: drop-shadow(1px 1px 2px #00262C); }
   .icon-logo:hover {
     color: #fff;
     -webkit-transform: scale(1.1);
@@ -1295,7 +1299,8 @@ span.sep {
   line-height: 60px;
   color: #fff;
   -webkit-transition: background 0.2s;
-          transition: background 0.2s; }
+          transition: background 0.2s;
+  text-shadow: 1px 1px 2px #00262C; }
   @media only screen and (min-width: 600px) {
     [bs-toggle] {
       display: none; } }

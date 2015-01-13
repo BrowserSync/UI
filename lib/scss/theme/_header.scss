@@ -47,6 +47,7 @@ $inner-height: $header-height - $border-height;
     line-height: $header-height;
     color: $white;
     transition: background .2s;
+    text-shadow: 1px 1px 2px $green-dk;
 
     &:hover {
         background: $sidebar;

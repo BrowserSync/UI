@@ -8,18 +8,13 @@
     width: auto;
     flex: 1;
     background: $grey-bg-dk;
-    //    height: $inner-height + 1px;
     border-bottom: 1px solid darken($grey-border, 5%);
-
 }
 
 [bs-flex~="top"] {
     display: flex;
     height: $header-height - 1px;
     justify-content: flex-end;
-}
-
-[bs-flex-end] {
 }
 
 [bs-flex-fill] {
