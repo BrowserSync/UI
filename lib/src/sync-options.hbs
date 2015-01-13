@@ -6,14 +6,16 @@ options: ['Clicks', 'Scroll', 'Forms: Submit', 'Forms: Toggles', 'Forms: Inputs'
 ---
 <div bs-callout="controls outline">
     <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
-    <button bs-button="inline">
-        <i bs-icon="circle_ok"></i>
-        Enable All
-    </button>
-    <button bs-button="inline">
-        <i bs-icon="circle_delete"></i>
-        Disable all
-    </button>
+    <div bs-button-row>
+        <button bs-button="inline">
+            <i bs-icon="circle_ok"></i>
+            Enable All
+        </button>
+        <button bs-button="inline">
+            <i bs-icon="circle_delete"></i>
+            Disable all
+        </button>
+    </div>
 </div>
 <div>
     {{#each page.options}}

@@ -687,18 +687,13 @@ svg {
 
 .icon-logo {
   color: #fff;
-  -webkit-transition: all 0.1s;
-          transition: all 0.1s;
   width: 55px;
   height: 37px;
   text-align: center;
   -webkit-filter: drop-shadow(1px 1px 2px #00262C);
   filter: drop-shadow(1px 1px 2px #00262C); }
   .icon-logo:hover {
-    color: #fff;
-    -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-            transform: scale(1.1); }
+    color: #fff; }
 
 h1, h2, h3, h4, h5, h6, hgroup, p, blockquote, address, ul, ol, dl, table, fieldset, figure, figcaption, details, pre {
   margin-bottom: 14px; }
@@ -975,12 +970,14 @@ span.sep {
 [bs-button~="inline"] {
   position: relative;
   background: transparent;
-  padding: 0 14px 0 17px;
-  height: 28px;
-  line-height: 28px;
+  padding: 14px 17px 11px;
   color: #000;
+  border-radius: 0;
   font-size: 16px;
   font-size: 0.88889rem; }
+  @media only screen and (min-width: 600px) {
+    [bs-button~="inline"] {
+      padding: 7px 14px 4px; } }
   [bs-button~="inline"] [bs-icon] {
     font-size: 20px;
     font-size: 1.11111rem;
@@ -1113,19 +1110,21 @@ span.sep {
     bottom: -4px;
     z-index: 2; }
 
-[bs-Callout~="controls"] {
+[bs-callout~="controls"] {
   padding: 0;
   background: #FBFBFB;
   border-bottom: 1px solid #F0F0F0;
   margin-bottom: 1px; }
   @media only screen and (min-width: 600px) {
-    [bs-Callout~="controls"] {
+    [bs-callout~="controls"] {
       padding: 27px;
       padding-bottom: 14px; } }
-  [bs-Callout~="controls"] [bs-heading] {
-    margin-bottom: 14px; }
-  [bs-Callout~="controls"] [bs-button] {
-    margin-bottom: 14px; }
+  @media only screen and (min-width: 600px) {
+    [bs-callout~="controls"] [bs-heading] {
+      margin-bottom: 14px; } }
+  @media only screen and (min-width: 600px) {
+    [bs-callout~="controls"] [bs-button-row] {
+      padding-left: 66px; } }
 
 [bs-callout~="outline"] {
   border-bottom: 0; }
@@ -1144,7 +1143,7 @@ span.sep {
   position: absolute;
   left: 14px;
   top: 29px; }
-  [bs-callout-icon] [bs-Icon] {
+  [bs-callout-icon] [bs-icon] {
     color: #4A90E2;
     font-size: 24px;
     font-size: 1.33333rem; }
@@ -1160,7 +1159,7 @@ span.sep {
         [bs-callout-content] [bs-callout-icon] [bs-icon] {
           font-size: 45px;
           font-size: 2.5rem; } }
-  [bs-Callout~="trans"] [bs-callout-content] {
+  [bs-callout~="trans"] [bs-callout-content] {
     padding-left: 68px; }
 
 [bs-callout-content~="basic"] {

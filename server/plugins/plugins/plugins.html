@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="plugins.html">
     <div bs-callout="controls outline">
         <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
-        <div ng-if="ui.plugins.length">
+        <div ng-if="ui.plugins.length" bs-button-row>
             <button bs-button="inline" ng-click="setMany(true)">
                 <i bs-icon="circle_ok"></i>
                 Enable All

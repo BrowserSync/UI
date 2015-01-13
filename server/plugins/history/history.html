@@ -2,10 +2,12 @@
 <script type="text/ng-template" id="history.html">
     <div bs-callout="controls outline">
         <h1 bs-heading><i bs-icon="{{section.icon}}"></i> {{section.title}}</h1>
-        <button bs-button="inline" ng-click="clearVisited()" ng-show="ui.visited.length">
-            <i bs-icon="circle_delete"></i>
-            Clear all
-        </button>
+        <div bs-button-row>
+            <button bs-button="inline" ng-click="clearVisited()" ng-show="ui.visited.length">
+                <i bs-icon="circle_delete"></i>
+                Clear all
+            </button>
+        </div>
     </div>
     <div bs-callout ng-if="!ui.visited.length">
         <div bs-callout-content="basic">

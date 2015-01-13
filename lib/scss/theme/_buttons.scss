@@ -79,10 +79,13 @@
 
     position: relative;
     background: transparent;
-    padding: 0 $half-spacing 0 17px;
-    height: 28px;
-    line-height: 28px;
+    padding: $half-spacing 17px ($half-spacing - 3px);
     color: $black;
+    border-radius: 0;
+
+    @include media-query(min, $lap-start) {
+        padding: $half-spacing/2 $half-spacing ($half-spacing/2 - 3px);
+    }
 
     @include font-size(16px);
 
