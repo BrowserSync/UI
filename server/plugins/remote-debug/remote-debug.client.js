@@ -8,7 +8,7 @@
     angular.module("BrowserSync")
 
         .controller("RemoteDebugController",
-            ["$scope", "options", "Socket", "contentSections", RemoteDebugController])
+            ["$scope", "options", "Socket", "contentSections", RemoteDebugController]);
 
     /**
      * @param $scope

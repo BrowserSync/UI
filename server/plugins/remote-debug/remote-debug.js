@@ -47,6 +47,12 @@ module.exports = {
             if (app) {
                 client.emit("cp:add:script", {src: ["http://", external.hostname, ":", port, "/target/target-script-min.js#browsersync"].join("")});
             }
+            if (bs.options.getIn(["pesticide", "active"])) {
+                client.emit("cp:add:css", {
+                    src: "/browser-sync/pesticide.css",
+                    id: "__bs-pesticide__"
+                });
+            }
         });
 
         socket.on("connection", function (client) {
@@ -113,10 +119,12 @@ function togglePesticide (socket, cp, bs, value) {
             src: "/browser-sync/pesticide.css",
             id: "__bs-pesticide__"
         });
+        bs.setOptionIn(["pesticide", "active"], true, true);
     } else {
         clients.emit("cp:element:remove", {
             id: "__bs-pesticide__"
         });
+        bs.setOptionIn(["pesticide", "active"], false, true);
     }
 }
 

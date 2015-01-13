@@ -56,7 +56,7 @@ module.exports = {
             namespace: cp.config.getIn(["socket", "namespace"])
         });
 
-        cp.logger.info("Using port %s", port);
+        cp.logger.debug("Using port %s", port);
 
         var server = require("./server")(cp, socketMw, connectorMw);
 

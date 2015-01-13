@@ -51,6 +51,6 @@ var instance = bs({
     },
     //files: "./test/fixtures/*.html",
     open: false,
-    tunnel: true
+    //tunnel: true
     //online: false
 });
