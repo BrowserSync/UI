@@ -36,12 +36,12 @@ input.cmn-toggle-round + label:after {
     top: 3px;
     width: $switch-size - 6px;
     height: $switch-size - 6px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 4px;
     transition: margin 0.2s;
 }
 input.cmn-toggle-round:checked + label:before {
-    background-color: $lime;
+    background-color: $green-lt;
 }
 
 input.cmn-toggle-round + label:after {
@@ -53,6 +53,6 @@ input.cmn-toggle-round:checked + label:after {
 }
 
 input.cmn-toggle-round:checked + label {
-    background-color: $lime;
+    background-color: $green-lt;
 
 }

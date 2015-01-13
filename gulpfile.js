@@ -139,7 +139,7 @@ gulp.task("svg", function () {
 gulp.task("dev-frontend", ["sass", "build-src", "browserify", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass", browserSync.reload]);
     gulp.watch("lib/src/**/*", ["build-src", browserSync.reload]);
-    gulp.watch("lib/js/scripts/**/*.js", ["browserify", "browserSync.reload"]);
+    gulp.watch("lib/js/scripts/**/*.js", ["browserify", browserSync.reload]);
 });
 
 gulp.task("build", ["sass", "browserify", "lint"]);

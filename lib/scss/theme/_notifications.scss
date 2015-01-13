@@ -1,6 +1,7 @@
 .notification {
 
-    position: fixed;
+    position: absolute;
+    left: 0;
     width: 100%;
     background: $green;
     color: white;
@@ -8,10 +9,9 @@
     padding: $base-spacing $half-spacing;
     border-bottom: 1px solid $green;
     box-shadow: 0 5px 5px 0px rgba(0, 0, 0, .2);
-
-    transform: translateY(-110%);
-
+    transform: translateY(-200%);
     transition: all .3s;
+    z-index: 100;
 
     &.active {
         transform: translateY(0);

@@ -12,7 +12,7 @@ $inner-height: $header-height - $border-height;
     display: flex;
     border-bottom: 1px solid $sidebar;
     position: relative;
-    
+
     &:after {
         content: " ";
         width: 100%;

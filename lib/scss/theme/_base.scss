@@ -36,19 +36,6 @@ main {
     }
 }
 
-[bs-content] {
-
-    overflow-x: hidden;
-    height: auto;
-
-    @include media-query(min, $lap-start) {
-        height: 100vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 59px; // offset header from scroll
-    }
-}
-
 .lede {
     @include font-size($lede-size);
 }
