@@ -48,10 +48,11 @@ module.exports = {
 
         var socket   = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients  = bs.io.of(bs.options.getIn(["socket", "namespace"]));
-        var external = require("url").parse(bs.getOptionIn(["urls", "external"]));
 
-        weinreTargetUrl.hostname = external.hostname;
-        weinreClientUrl.hostname = external.hostname;
+        var hostUrl  = getHostUrl(cp, bs);
+
+        weinreTargetUrl.hostname = hostUrl.hostname;
+        weinreClientUrl.hostname = hostUrl.hostname;
 
         bs.setOption(PESTICIDE_NAME, Immutable.fromJS({
             name:   PESTICIDE_NAME,
@@ -99,6 +100,23 @@ module.exports = {
      */
     "plugin:name": "Remote Debugger"
 };
+
+/**
+ * Get a suitable host URL for weinre
+ * @param cp
+ * @param bs
+ * @returns {*}
+ */
+function getHostUrl(cp, bs) {
+
+    var url = bs.getOptionIn(["urls", "external"]);
+
+    if (!url) {
+        url = bs.getOptionIn(["urls", "local"]);
+    }
+
+    return require("url").parse(url);
+}
 
 /**
  * @param socket

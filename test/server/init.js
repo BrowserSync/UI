@@ -52,7 +52,7 @@ describe("Can be started with browserSync instance", function() {
     });
     it("can serve the main App JS file", function (done) {
         request(controlPanel.server)
-            .get(config.defaults.appJs)
+            .get(config.defaults.app)
             .expect(200, function (err, res) {
                 assert.include(res.text, "angular");
                 done();
