@@ -57,6 +57,10 @@
                     <i bs-icon="repeat_2"></i><br/>
                     Reload all
                 </a>
+                <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options">
+                    <i bs-icon="square_add"></i><br/>
+                    New Tab
+                </a>
                 <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')">
                     <i bs-icon="home"></i><br/>
                     Reset All
@@ -96,6 +100,7 @@
 <script src="/node_modules/angular/angular.min.js"></script>
 <script src="/node_modules/angular-route/angular-route.min.js"></script>
 <script src="/node_modules/angular-touch/angular-touch.min.js"></script>
+<script src="/node_modules/angular-sanitize/angular-sanitize.min.js"></script>
 <script src="/js/connector.js"></script>
 <script src="/js/dist/app.js"></script>
 <script src="/js/pages-config.js"></script>

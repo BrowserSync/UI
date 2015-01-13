@@ -19,10 +19,21 @@
         $scope.options   = options;
         $scope.section   = contentSections[SECTION_NAME];
 
-        $scope.items = {
-            weinre:    $scope.options["weinre"],
-            pesticide: $scope.options["pesticide"]
-        };
+        $scope.items = [
+            {
+                name: "weinre",
+                title: "Remote Debugger (weinre)",
+                item: $scope.options["weinre"],
+                tagline: "",
+                hidden: "<a href=\"%s\" target=\"_blank\">Access remote debugger (opens in a new tab)</a></p>".replace("%s", $scope.options["weinre"].clientUrl)
+            },
+            {
+                name:  "pesticide",
+                title: "CSS OUTLINING",
+                item: $scope.options["pesticide"],
+                tagline: "Add simple CSS outlines to all elements. (powered by <a href=\"http://pesticide.io\">Pesticide.io</a>)"
+            }
+        ];
 
         $scope.toggleDebugger = function (item) {
             if (item.active) {
