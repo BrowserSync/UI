@@ -77,6 +77,13 @@ span.sep {
     }
 }
 
+[bs-Visible~="not-palm"] {
+    display: none!important;
+    @include media-query(min, $lap-start) {
+        display: inherit!important;
+    }
+}
+
 [bs-Visible~="palm"] {
     @include media-query(min, $lap-start) {
         display: none;

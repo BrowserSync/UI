@@ -68,7 +68,8 @@ h6, .h6 {
     margin-bottom: 0;
     font-weight: 700;
     color: $grey-bg;
-    background: $sidebar;
+    background: darken($sidebar, 2%);
+    border-top: 1px solid darken($sidebar-lt, 2%);
 
     @include media-query(min, $lap-start) {
 
@@ -76,6 +77,7 @@ h6, .h6 {
         color: $sidebar;
         background: $grey-bg;
         padding-left: $icon-gutter + $gutter + 5px;
+        border-top: 0;
         &:before {
             display: none;
         }

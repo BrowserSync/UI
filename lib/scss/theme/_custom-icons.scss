@@ -19,7 +19,7 @@
     svg {
         position: relative;
         top: 1px;
-        @include svg-shadow;
+//        @include svg-shadow;
     }
 }
 
@@ -31,7 +31,7 @@
     height: 37px;
     text-align: center;
 
-    @include svg-shadow;
+//    @include svg-shadow;
 
     &:hover {
         color: $white;

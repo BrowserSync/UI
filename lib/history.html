@@ -23,47 +23,30 @@
         </symbol>
         </svg>
         <section bs-container>
-            <header bs-header role="banner">
-                <a href="/" title="Visit the BrowserSync.io website" class="icon icon-logo">
-                    <svg>
-                        <use xlink:href="#svg-logo"></use>
-                    </svg>
-                </a>
-                <span class="icon icon-word">
-                    <svg>
-                        <use xlink:href="#svg-logo-word"></use>
-                    </svg>
-                </span>
-                <span bs-toggle="nav" ng-click="toggleMenu()">
-                    <i bs-icon="list"></i>
-                </span>
-            </header>
-            <aside bs-controls="top">
-                <div bs-flex="top">
-                    <!--<div bs-flex-fill>-->
-                        <!--<a href="#" target="_blank" bs-control title="Open a new tab">-->
-                            <!--http://localhost:3000-->
-                        <!--</a>-->
-                        <!--<a href="#" target="_blank" bs-control title="Open a new tab">-->
-                            <!--http://192.168.0.4:3000-->
-                        <!--</a>-->
-                        <!--<a href="#" target="_blank" bs-control title="Open a new tab">-->
-                            <!--http://12345.localtunnel.me-->
-                        <!--</a>-->
-                    <!--</div>-->
-                    <a href="#" bs-control title="Reload all Browsers">
-                        <i bs-icon="repeat_2"></i><br/>
-                        Reload all
-                    </a>
-                    <a href="#" bs-control title="Reload all Browsers">
-                        <i bs-icon="home"></i><br/>
-                        Reset all
-                    </a>
-                </div>
-            </aside>
-        </section>
-        <section bs-container>
             <section bs-sidebar="">
+                <header bs-header role="banner">
+                    <div bs-header-row="brand">
+                        <a href="/" title="Visit the BrowserSync.io website" class="icon icon-logo">
+                            <svg>
+                                <use xlink:href="#svg-logo"></use>
+                            </svg>
+                        </a>
+                        <span class="icon icon-word">
+                            <svg>
+                                <use xlink:href="#svg-logo-word"></use>
+                            </svg>
+                        </span>
+                        <span bs-toggle="nav" ng-click="toggleMenu()">
+                            <i bs-icon="list"></i>
+                        </span>
+                    </div>
+                    <div bs-header-row>
+                        <ul bs-list="header">
+                            <li><a href="#">http://localhost:3000</a></li>
+                            <li><a href="#">http://192.168.0.1:3000</a></li>
+                        </ul>
+                    </div>
+                </header>
                 <nav bs-section-nav="" class="">
                     <ul bs-list="">
                         <li>
@@ -93,6 +76,29 @@
                 </nav>
             </section>
             <section bs-content>
+                <aside bs-controls="top">
+                    <div bs-flex="top">
+                        <!--<div bs-flex-fill>-->
+                            <!--<a href="#" target="_blank" bs-control title="Open a new tab">-->
+                                <!--http://localhost:3000-->
+                            <!--</a>-->
+                            <!--<a href="#" target="_blank" bs-control title="Open a new tab">-->
+                                <!--http://192.168.0.4:3000-->
+                            <!--</a>-->
+                            <!--<a href="#" target="_blank" bs-control title="Open a new tab">-->
+                                <!--http://12345.localtunnel.me-->
+                            <!--</a>-->
+                        <!--</div>-->
+                        <a href="#" bs-control title="Reload all Browsers">
+                            <i bs-icon="repeat_2"></i><br/>
+                            Reload all
+                        </a>
+                        <a href="#" bs-control title="Reload all Browsers">
+                            <i bs-icon="home"></i><br/>
+                            Reset all
+                        </a>
+                    </div>
+                </aside>
                 <div ng-view="">
                     <div>
                         <article>

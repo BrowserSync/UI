@@ -7,26 +7,55 @@ $inner-height: $header-height - $border-height;
 
 [bs-header] {
 
-    background: $green-lt;
-    height: $header-height;
-    display: flex;
+//    background: $green-lt url("../img/bs-bg.png") no-repeat top left;
     border-bottom: 1px solid $sidebar;
     position: relative;
 
-    &:after {
-        content: " ";
+//    &:after {
+//        content: " ";
+//        width: 100%;
+//        height: 3px;
+//        background: lighten($sidebar, 10%);
+//        position: absolute;
+//        bottom: 0;
+//        left: 0;
+//    }
+
+    [bs-header-row~="brand"] {
+        height: $header-height;
+    }
+    [bs-header-row] {
+
+        position: relative;
         width: 100%;
-        height: 3px;
-        background: lighten($sidebar, 10%);
-        position: absolute;
-        bottom: 0;
-        left: 0;
+        display: flex;
+
+        * {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
     }
 
-    * {
-        margin-top: auto;
-        margin-bottom: auto;
+    [bs-list~="header"] {
+        width: 100%;
+        padding-left: $icon-gutter + $gutter;
+        &, a {
+            color: $white;
+            &:hover {
+                text-decoration: none;
+            }
+            @include font-size(14px);
+        }
+        a {
+            display: block;
+            position: relative;
+            &:hover {
+                color: $lime;
+                text-shadow: 1px 1px 3px black;
+            }
+        }
     }
+
 
     @include media-query(min, $lap-start) {
         width: $sidebar-width;
@@ -48,6 +77,8 @@ $inner-height: $header-height - $border-height;
     color: $white;
     transition: background .2s;
     text-shadow: 1px 1px 2px $green-dk;
+    border-left: 1px solid $sidebar;
+    border-bottom: 1px solid $sidebar;
 
     &:hover {
         background: $sidebar;
@@ -55,5 +86,7 @@ $inner-height: $header-height - $border-height;
 
     &.active {
         background: $sidebar;
+        border-left: 1px solid $grey-border;
+        border-bottom: 1px solid $grey-border;
     }
 }

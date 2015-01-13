@@ -4,13 +4,9 @@ layout: parent.hbs
 <main>
     {{ inc src="../img/icons/svg/symbols.svg" }}
     <section bs-container>
-        {{ inc src="header.hbs" }}
-        {{ inc src="top-bar.hbs" }}
-    </section>
-
-    <section bs-container>
         {{ inc src="nav.hbs" }}
         <section bs-content>
+            {{ inc src="top-bar.hbs" }}
             <div ng-view="">
                 <div>
                     <article>
