@@ -10,7 +10,31 @@ var pesticide      = fs.readFileSync(__dirname + "/css/pesticide.min.css", "utf-
  * @type {Immutable.Set}
  */
 var timestamp;
-var app;
+var weinreApp;
+
+const PESTICIDE_NAME   = "pesticide";
+const PESTICIDE_URL    = "/browser-sync/pesticide.css";
+const PESTICIDE_ID     = "__browser-sync-pesticide__";
+const WEINRE_NAME      = "weinre";
+const WEINRE_PORT      = 8080;
+const WEINRE_ID        = "#browsersync";
+const WEINRE_ELEM_ID   = "__browser-sync-weinre__";
+
+var weinreTargetUrl    = {
+    protocol: "http:",
+    port: WEINRE_PORT,
+    pathname: "/target/target-script-min.js",
+    hash: WEINRE_ID
+};
+
+var weinreClientUrl    = {
+    protocol: "http:",
+    port: WEINRE_PORT,
+    pathname: "/client/",
+    hash: WEINRE_ID
+};
+
+var clientScripts = Immutable.Map();
 
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
@@ -22,56 +46,34 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        bs.serveFile("/browser-sync/pesticide.css", {
-            type: "text/css",
-            content: pesticide
-        });
-
         var socket   = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients  = bs.io.of(bs.options.getIn(["socket", "namespace"]));
         var external = require("url").parse(bs.getOptionIn(["urls", "external"]));
-        var port     = 8080;
 
-        bs.setOption("pesticide", Immutable.fromJS({
-            name:   "pesticide",
+        weinreTargetUrl.hostname = external.hostname;
+        weinreClientUrl.hostname = external.hostname;
+
+        bs.setOption(PESTICIDE_NAME, Immutable.fromJS({
+            name:   PESTICIDE_NAME,
             active: false
         }));
 
-        bs.setOption("weinre", Immutable.fromJS({
-            name:  "weinre",
+        bs.setOption(WEINRE_NAME, Immutable.fromJS({
+            name:  WEINRE_NAME,
             active: false,
-            url:    false
+            url:    false,
+            targetUrl: url.format(weinreTargetUrl),
+            clientUrl: url.format(weinreClientUrl),
+            port: WEINRE_PORT
         }));
 
-        clients.on("connection", function (client) {
-            if (app) {
-                client.emit("cp:add:script", {src: ["http://", external.hostname, ":", port, "/target/target-script-min.js#browsersync"].join("")});
-            }
-            if (bs.options.getIn(["pesticide", "active"])) {
-                client.emit("cp:add:css", {
-                    src: "/browser-sync/pesticide.css",
-                    id: "__bs-pesticide__"
-                });
-            }
+        socket.on("connection", function (client) {
+            client.on("cp:weinre:toggle", toggleDebugger.bind(null, socket, clients, cp, bs));
+            client.on("cp:pesticide:toggle", togglePesticide.bind(null, socket, clients, cp, bs));
         });
 
-        socket.on("connection", function (client) {
-
-            client.on("cp:weinre:toggle", toggleDebugger.bind(null, socket, cp, bs));
-            client.on("cp:pesticide:toggle", togglePesticide.bind(null, socket, cp, bs));
-
-            client.on("cp:get:debugger", function () {
-
-                if (app) {
-
-                    client.emit("cp:receive:enabled", {
-                        url: ["http://", external.hostname, ":", port].join(""),
-                        port: port,
-                        active: true
-                    });
-                }
-            });
-
+        clients.on("connection", function (client) {
+            updateClients(clientScripts, client);
         });
     },
     /**
@@ -104,52 +106,93 @@ module.exports = {
  * @param bs
  * @param value
  */
-function togglePesticide (socket, cp, bs, value) {
+function togglePesticide (socket, clients, cp, bs, value) {
 
     if (value !== true) {
         value = false;
     }
 
-    var clients = bs.io.of(
-        bs.options.getIn(["socket", "namespace"])
-    );
-
     if (value) {
-        clients.emit("cp:add:css", {
-            src: "/browser-sync/pesticide.css",
-            id: "__bs-pesticide__"
+        bs.setOptionIn([PESTICIDE_NAME, "active"], true, {silent: true});
+        clientScripts = clientScripts.set(PESTICIDE_NAME, {
+            type: "css",
+            src:  PESTICIDE_URL,
+            id:   PESTICIDE_ID
         });
-        bs.setOptionIn(["pesticide", "active"], true, true);
+        bs.serveFile(PESTICIDE_URL, {
+            type: "text/css",
+            content: pesticide
+        });
+        updateClients(clientScripts, clients);
     } else {
-        clients.emit("cp:element:remove", {
-            id: "__bs-pesticide__"
-        });
-        bs.setOptionIn(["pesticide", "active"], false, true);
+        bs.setOptionIn([PESTICIDE_NAME, "active"], false, {silent: true});
+        clientScripts = clientScripts.remove(PESTICIDE_NAME);
+        clients.emit("cp:element:remove", {id: PESTICIDE_ID});
     }
 }
 
 /**
+ * @param elements
+ * @param clients
+ */
+function updateClients (elements, clients) {
+    elements.map(function (value) {
+        clients.emit("cp:element:add", value);
+    });
+}
+
+/**
+ * @param socket
+ * @param clients
  * @param cp
  * @param bs
  * @param value
  */
-function toggleDebugger (socket, cp, bs, value) {
+function toggleDebugger (socket, clients, cp, bs, value) {
 
     if (value !== true) {
         value = false;
     }
 
     if (value) {
-        var _debugger = enableDebugger(cp, bs);
-        bs.setOptionIn(["weinre", "active"], true);
-        bs.setOptionIn(["weinre", "url"], _debugger.url);
+
+        var _debugger = enableWeinre(cp, bs);
+
+        // set the state of weinre
+        bs.setMany(function (item) {
+            item.setIn([WEINRE_NAME, "active"], true);
+            item.setIn([WEINRE_NAME, "url"], _debugger.url);
+            item.setIn([WEINRE_NAME, "active"], true);
+        }, {silent: true});
+
+        // Let the control panel know about it
         socket.emit("cp:weinre:enabled", _debugger);
-        bs.io.of(
-            bs.options.getIn(["socket", "namespace"])
-        ).emit("cp:add:script", {src: _debugger.url + "/target/target-script-min.js#browsersync"});
+
+        // Add the JS script to the clients elements list
+        clientScripts = clientScripts.set(WEINRE_NAME, {
+            type: "js",
+            src: bs.getOptionIn([WEINRE_NAME, "targetUrl"]),
+            id: WEINRE_ELEM_ID
+        });
+
+        // Update all client elements
+        updateClients(clientScripts, clients);
+
     } else {
-        disableDebugger(cp, bs);
+        // Stop it
+        disableWeinre(cp, bs);
+
+        // Reset the state
+        bs.setOptionIn([WEINRE_NAME, "active"], false, {silent: false}); // Force a reload here
+
+        // Remove the script from client elements list
+        clientScripts = clientScripts.remove(WEINRE_NAME);
+
+        // Let the control panel know
         socket.emit("cp:weinre:disabled");
+
+        // Let the clients know.
+        clients.emit("cp:element:remove", {id: WEINRE_ELEM_ID});
     }
 }
 
@@ -159,18 +202,18 @@ function toggleDebugger (socket, cp, bs, value) {
  * @param bs
  * @returns {{url: string, port: number}}
  */
-function enableDebugger (cp, bs) {
+function enableWeinre (cp, bs) {
 
-    if (app) {
-        app.close();
-        app = false;
+    if (weinreApp) {
+        weinreApp.close();
+        weinreApp = false;
     }
 
+    var port     = bs.options.getIn([WEINRE_NAME, "port"]);
     var weinre   = require("weinre/lib/weinre");
     var external = require("url").parse(bs.getOptionIn(["urls", "external"]));
-    var port     = 8080;
 
-    app = weinre.run({
+    weinreApp = weinre.run({
         httpPort: port,
         boundHost: external.hostname,
         verbose: false,
@@ -178,17 +221,19 @@ function enableDebugger (cp, bs) {
         readTimeout: 5,
         deathTimeout: 15 });
 
-    return {
-        url: ["http://", external.hostname, ":", port].join(""),
-        port: port,
-        active: true
-    };
+    return bs.options.get(WEINRE_NAME).toJS();
 }
 
-function disableDebugger (cp, bs) {
-    if (app) {
-        app.close();
-        app = false;
-        bs.setOptionIn(["weinre", "active"], false);
+/**
+ * @param cp
+ * @param bs
+ * @returns {any|*}
+ */
+function disableWeinre (cp, bs) {
+    if (weinreApp) {
+        weinreApp.close();
+        weinreApp = false;
     }
+
+    return bs.options.get(WEINRE_NAME).toJS();
 }

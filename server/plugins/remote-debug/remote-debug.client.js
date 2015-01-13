@@ -38,15 +38,6 @@
         $scope.disable = function (name) {
             Socket.emit("cp:%s:toggle".replace("%s", name), false);
         };
-
-        Socket.on("cp:weinre:enabled", function (data) {
-            $scope.items.weinre = data;
-            $scope.$digest();
-        });
-        Socket.on("cp:weinre:disabled", function (data) {
-            $scope.items.weinre = false;
-            $scope.$digest();
-        });
     }
 
 })(angular);
