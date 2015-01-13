@@ -37,7 +37,6 @@
     "connect-history-api-fallback": "0.0.5",
     "easy-extender": "^2.2.0",
     "immutable": "^3.3.0",
-    "lodash": "^2.4.1",
     "portscanner": "^1.0.0",
     "serve-static": "^1.5.3",
     "through": "2.3.4",

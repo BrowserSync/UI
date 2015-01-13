@@ -38,16 +38,6 @@ function startServer(controlPanel, socketMw, connectorMw) {
     serveJsFiles(app, socketMw, connectorMw);
 
     /**
-     * Serve the main (browserified) js file
-     */
-    serveMainAppFile(app, controlPanel.clientJs);
-
-    /**
-     * Serve the Page configuration file
-     */
-    serveMainAppConfigurationFile(app, controlPanel.pagesConfig);
-
-    /**
      * Add any markup from plugins/hooks
      */
     insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages, controlPanel.templates);
@@ -62,9 +52,23 @@ function startServer(controlPanel, socketMw, connectorMw) {
      */
     app.use(serveStatic(libDir("")));
 
-
+    /**
+     * Development use
+     */
     app.use("/node_modules", serveStatic(packageDir("node_modules")));
 
+    /**
+     * Create a big file with all deps
+     */
+    serveAll(app, [
+        fileContent("node_modules/angular/angular.min.js"),
+        fileContent("node_modules/angular-route/angular-route.min.js"),
+        fileContent("node_modules/angular-touch/angular-touch.min.js"),
+        fileContent("node_modules/angular-sanitize/angular-sanitize.min.js"),
+        fileContent("lib/js/dist/app.js"),
+        controlPanel.pagesConfig,
+        controlPanel.clientJs
+    ].join(";"));
     /**
      * Return the server.
      */
@@ -72,6 +76,10 @@ function startServer(controlPanel, socketMw, connectorMw) {
         server: http.createServer(app),
         app: app
     };
+}
+
+function fileContent (path) {
+    return fs.readFileSync(__dirname + "/../" + path, "utf8");
 }
 
 /**
@@ -116,39 +124,15 @@ function insertPageMarkupFromHooks(app, pageMarkup, pages, templates) {
 }
 
 /**
+ * Serve the entire JS + deps
  * @param app
- * @param clientJs
+ * @param all
  */
-function serveMainAppFile(app, clientJs) {
-    app.use(config.defaults.appExtraJs, function (req, res) {
+function serveAll(app, all) {
+    app.use(config.defaults.app, function (req, res) {
         res.setHeader("Content-Type", "application/javascript");
-        res.end(clientJs);
+        res.end(all);
     });
 }
-
-/**
- * @param app
- * @param clientJs
- */
-function serveMainAppConfigurationFile(app, pagesConfig) {
-    app.use(config.defaults.pagesConfig, function (req, res) {
-        res.setHeader("Content-Type", "application/javascript");
-        res.end(pagesConfig);
-    });
-}
-
-/**
- *
- * @param controlPanel
- * @param app
- */
-//function serveTemplates(app, templates) {
-//    _.each(templates, function (template, path) {
-//        app.use("/" + path, function (req, res, next) {
-//            res.setHeader("Content-Type", "text/html");
-//            res.end(template);
-//        });
-//    });
-//}
 
 module.exports = startServer;

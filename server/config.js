@@ -9,6 +9,7 @@ var defaults = {
     indexPage:   "/index.html",
     socketJs:    "/js/vendor/socket.js",
     appJs:       "/js/dist/app.js",
+    app:         "/app.js",
     appExtraJs:  "/js/app-extra.js",
     connector:   "/js/connector.js",
     pagesConfig: "/js/pages-config.js",
