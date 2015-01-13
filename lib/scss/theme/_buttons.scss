@@ -95,9 +95,16 @@
         color: $lime;
     }
 
-    &:hover, &:focus {
+    &:focus {
         background: transparent;
         color: $black;
+    }
+    &:hover {
+        background: $grey-border;
+        color: $black;
+    }
+    &:active {
+        background: darken($grey-border, 10%);
     }
 }
 

@@ -983,9 +983,14 @@ span.sep {
     margin-right: 7px; }
   [bs-button~="inline"] [bs-icon="circle_ok"] {
     color: #7ED321; }
-  [bs-button~="inline"]:hover, [bs-button~="inline"]:focus {
+  [bs-button~="inline"]:focus {
     background: transparent;
     color: #000; }
+  [bs-button~="inline"]:hover {
+    background: #F0F0F0;
+    color: #000; }
+  [bs-button~="inline"]:active {
+    background: #d6d6d6; }
 
 /**
  * button bar

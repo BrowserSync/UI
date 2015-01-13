@@ -42,7 +42,7 @@ module.exports = {
 
             sendUpdatedUrls(socket, validUrls);
 
-            cpClient.on("urls:browser:reload",   reloadAll.bind(bs));
+            cpClient.on("urls:browser:reload",   reloadAll.bind(null, cp, bs, clients));
             cpClient.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
 
             cpClient.on("cp:get:visited", function (req) {
@@ -121,8 +121,8 @@ function sendToUrl (localUrl, data) {
 /**
  * Simple Browser reload
  */
-function reloadAll() {
-    this.io.sockets.emit("browser:reload");
+function reloadAll(cp, bs, clients) {
+    clients.emit("browser:reload");
 }
 
 /**
