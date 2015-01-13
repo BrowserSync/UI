@@ -982,7 +982,7 @@ span.sep {
     font-size: 1.11111rem;
     margin-right: 7px; }
   [bs-button~="inline"] [bs-icon="circle_ok"] {
-    color: #7ED321; }
+    color: #21A695; }
   [bs-button~="inline"]:focus {
     background: transparent;
     color: #000; }
@@ -1180,9 +1180,12 @@ span.sep {
   [bs-list~="inline-controls"] p {
     margin-bottom: 7px; }
   [bs-list~="inline-controls"] li {
+    background: #fff;
     position: relative;
     padding-bottom: 41px;
-    padding-left: 57px; }
+    padding-left: 57px;
+    -webkit-transition: background 0.5s;
+            transition: background 0.5s; }
     [bs-list~="inline-controls"] li:hover {
       background: #FBFBFB; }
     @media only screen and (min-width: 750px) {
@@ -1208,7 +1211,8 @@ span.sep {
               -ms-flex-item-align: end;
                   align-self: flex-end; }
         [bs-list~="inline-controls"] li [bs-button] {
-          border: 0; } }
+          border: 0;
+          border-left: 1px solid #F0F0F0; } }
   [bs-list~="inline-controls"] [bs-remove] {
     position: absolute;
     top: 0;
@@ -1378,6 +1382,9 @@ span.sep {
     left: -2px;
     content: " ";
     background: #e3e3e3; }
+  [bs-control]:focus {
+    text-decoration: none;
+    color: #BBBBBB; }
   [bs-control]:hover {
     background: whitesmoke;
     text-decoration: none; }
@@ -1496,8 +1503,8 @@ code {
   position: absolute;
   left: 0;
   width: 100%;
-  background: #033339;
-  color: white;
+  background: #272A33;
+  color: #fff;
   text-align: center;
   padding: 27px 14px;
   border-bottom: 1px solid #033339;
@@ -1514,8 +1521,6 @@ code {
             transform: translateY(0); }
   .notification p {
     margin-bottom: 0; }
-  .notification.success {
-    background: #7ED321; }
   .notification.error {
     background: #ED6A13; }
 

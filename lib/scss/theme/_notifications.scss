@@ -3,8 +3,8 @@
     position: absolute;
     left: 0;
     width: 100%;
-    background: $green;
-    color: white;
+    background: $sidebar;
+    color: $white;
     text-align: center;
     padding: $base-spacing $half-spacing;
     border-bottom: 1px solid $green;
@@ -22,7 +22,7 @@
     }
 
     &.success {
-        background: $lime;
+//        background: $lime;
     }
 
     &.error {

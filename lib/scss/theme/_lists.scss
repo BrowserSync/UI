@@ -34,11 +34,13 @@ $controls-height: 41px;
     }
 
     li {
-        
+
+        background: $white;
         position: relative;
         padding-bottom: $controls-height;
         padding-left: $base-spacing*2 + 3px;
-        
+        transition: background .5s;
+
         &:hover {
             background: $grey-bg;
         }
@@ -48,7 +50,7 @@ $controls-height: 41px;
 
             padding: 0;
             display: flex;
-            
+
             p {
                 margin-bottom: 0;
                 flex: 1;
@@ -69,6 +71,7 @@ $controls-height: 41px;
 
             [bs-button] {
                 border: 0;
+                border-left: 1px solid $grey-border;
             }
         }
     }

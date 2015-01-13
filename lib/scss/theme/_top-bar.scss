@@ -89,6 +89,11 @@
         background: darken($grey-border, 5%);
     }
 
+    &:focus {
+        text-decoration: none;
+        color: $grey-text;
+    }
+
     &:hover {
 
         background: lighten($grey-bg-dk, 2%);
