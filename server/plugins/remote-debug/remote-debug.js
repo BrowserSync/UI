@@ -92,7 +92,7 @@ module.exports = {
             template: "remote-debug.html",
             controller: "RemoteDebugController",
             order: 4,
-            icon: "code"
+            icon: "#svg-bug"
         }
     },
     /**

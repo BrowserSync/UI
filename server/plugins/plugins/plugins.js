@@ -33,7 +33,7 @@ module.exports = {
             template: "plugins.html",
             controller: "PluginsController",
             order: 4,
-            icon: "plug"
+            icon: "#svg-plug"
         }
     },
     /**

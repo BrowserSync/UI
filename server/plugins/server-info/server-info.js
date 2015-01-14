@@ -29,7 +29,7 @@ module.exports = {
             template: "server-info.html",
             controller: "ServerController",
             order: 1,
-            icon: "cog"
+            icon: "#svg-cog"
         }
     },
     /**

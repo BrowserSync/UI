@@ -74,7 +74,7 @@ module.exports = {
             template: "history.html",
             controller: "HistoryController",
             order: 3,
-            icon: "book_2"
+            icon: "#svg-book"
         }
     },
     /**

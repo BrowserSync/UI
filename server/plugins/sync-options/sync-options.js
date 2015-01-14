@@ -24,7 +24,7 @@ module.exports = {
             template: "sync-options.html",
             controller: "SyncOptionsController",
             order: 2,
-            icon: "repeat_2"
+            icon: "#svg-repeat"
         }
     },
     "plugin:name": "Sync Options"
