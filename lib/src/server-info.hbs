@@ -21,7 +21,7 @@ callouts:
     <section bs-callout>
         <div bs-callout-content>
             <div bs-callout-icon>
-                <i bs-icon="{{this.icon}}"></i>
+                {{ inc src="icon.hbs" icon=this.icon }}
             </div>
             <p bs-text="lede">{{this.title}}</p>
             <p><a href="#">{{this.url}}</a></p>
@@ -41,7 +41,7 @@ callouts:
     <div bs-callout="full">
         <div bs-callout-content="">
             <div bs-callout-icon="">
-                <i bs-icon="terminal"></i>
+                {{ inc src="icon.hbs" icon="terminal" }}
             </div>
             <p bs-text="lede">Serving files from</p>
             <ul bs-list="">

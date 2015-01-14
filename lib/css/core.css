@@ -1154,10 +1154,11 @@ span.sep {
   position: absolute;
   left: 14px;
   top: 29px; }
-  [bs-callout-icon] [bs-icon] {
+  [bs-callout-icon] [bs-svg-icon] {
     color: #4A90E2;
-    font-size: 24px;
-    font-size: 1.33333rem; }
+    height: 24px;
+    width: 24px;
+    top: 0; }
 
 [bs-callout-content] {
   padding-left: 54px;
@@ -1167,9 +1168,9 @@ span.sep {
       padding-left: 108px; }
       [bs-callout-content] [bs-callout-icon] {
         left: 40.5px; }
-        [bs-callout-content] [bs-callout-icon] [bs-icon] {
-          font-size: 45px;
-          font-size: 2.5rem; } }
+        [bs-callout-content] [bs-callout-icon] [bs-svg-icon] {
+          height: 45px;
+          width: 45px; } }
   [bs-callout~="trans"] [bs-callout-content] {
     padding-left: 68px; }
 

@@ -107,9 +107,11 @@
     left: $half-spacing;
     top: $base-spacing + 2px;
 
-    [bs-icon] {
+    [bs-svg-icon] {
         color: $blue;
-        @include font-size(24px);
+        height: 24px;
+        width: 24px;
+        top: 0;
     }
 }
 
@@ -124,8 +126,9 @@
 
         [bs-callout-icon] {
             left: $base-spacing*1.5;
-            [bs-icon] {
-                @include font-size(45px);
+            [bs-svg-icon] {
+                height: 45px;
+                width: 45px;
             }
         }
     }

@@ -77,7 +77,7 @@
             title: "Local",
             tagline: "URL for the machine you are running BrowserSync on",
             url: urls.local,
-            icon: "imac"
+            icon: "#svg-imac"
         });
 
         if (urls.external) {
@@ -85,7 +85,7 @@
                 title: "External",
                 tagline: "Other devices on the same wifi network",
                 url: urls.external,
-                icon: "wifi_3"
+                icon: "#svg-wifi"
             });
         }
 
@@ -94,7 +94,7 @@
                 title: "Tunnel",
                 tagline: "Secure HTTPS public url",
                 url: urls.tunnel,
-                icon: "globe"
+                icon: "#svg-globe"
             });
         }
 

@@ -2,7 +2,7 @@
     <section bs-callout ng-repeat="url in urls">
         <div bs-callout-content>
             <div bs-callout-icon>
-                <i bs-icon="{{url.icon}}"></i>
+                <svg bs-svg-icon><use xlink:href="{{url.icon}}"></use></svg>
             </div>
             <p bs-text="lede">{{url.title}}</p>
             <p><a href="{{url.url}}">{{url.url}}</a></p>
@@ -22,7 +22,7 @@
         <div bs-callout="full">
             <div bs-callout-content="">
                 <div bs-callout-icon="">
-                    <i bs-icon="terminal"></i>
+                    <svg bs-svg-icon=""><use xlink:href="#svg-terminal"></use></svg>
                 </div>
                 <p bs-text="lede">Serving files from</p>
                 <ul bs-list="">
@@ -35,7 +35,7 @@
     <section bs-callout ng-if="ui.proxy">
         <div bs-callout-content>
             <div bs-callout-icon>
-                <i bs-icon="target"></i>
+                <svg bs-svg-icon=""><use xlink:href="#svg-target"></use></svg>
             </div>
             <p bs-text="lede">Proxying:</p>
             <p>
