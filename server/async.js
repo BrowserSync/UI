@@ -87,11 +87,16 @@ module.exports = {
      */
     addOptionsEvent: function (cp, done) {
         var bs = cp.bs;
-        var socket = bs.io.of(cp.config.getIn(["socket", "namespace"]));
+        var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
+        var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));
         socket.on("connection", function (client) {
             client.emit("connection", bs.getOptions().toJS());
             client.on("cp:get:options", function () {
                 client.emit("cp:receive:options", bs.getOptions().toJS());
+            });
+            // proxy client events
+            client.on("cp:client:proxy", function (evt) {
+                clients.emit(evt.event, evt.data);
             });
         });
         done();

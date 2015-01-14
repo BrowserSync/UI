@@ -61,15 +61,6 @@
         <section bs-content="">
             <aside bs-controls="top">
                 <div bs-flex="top">
-                    <div bs-flex-fill ng-if="app.options">
-                        <!--<a href="#"-->
-                        <!--target="_blank"-->
-                        <!--title="Open a new tab"-->
-                        <!--ng-repeat="(key, value) in app.options.urls"-->
-                        <!--bs-control>-->
-                        <!--{{value}}-->
-                        <!--</a>-->
-                    </div>
                     <a href="#" bs-control title="Reload all Browsers" ng-click="app.refreshAll()">
                         <i bs-icon="repeat_2"></i><br/>
                         Reload all
@@ -77,6 +68,10 @@
                     <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'">
                         <i bs-icon="square_add"></i><br/>
                         New Tab
+                    </a>
+                    <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.scrollAllTo(0)">
+                        <i bs-icon="square_up"></i><br/>
+                        Scroll Top
                     </a>
                     <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')" ng-show="app.options.mode !== 'snippet'">
                         <i bs-icon="home"></i><br/>
