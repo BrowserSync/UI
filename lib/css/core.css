@@ -683,11 +683,15 @@ svg {
 
 .icon-logo {
   color: #fff;
+  transition: all 0.1s;
   width: 55px;
   height: 37px;
   text-align: center; }
   .icon-logo:hover {
-    color: #fff; }
+    color: #fff;
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1); }
 
 h1, h2, h3, h4, h5, h6, hgroup, p, blockquote, address, ul, ol, dl, table, fieldset, figure, figcaption, details, pre {
   margin-bottom: 14px; }

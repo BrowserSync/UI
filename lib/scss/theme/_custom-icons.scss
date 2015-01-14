@@ -19,22 +19,19 @@
     svg {
         position: relative;
         top: 1px;
-//        @include svg-shadow;
     }
 }
 
 .icon-logo {
 
     color: $white;
-//    transition: all .1s;
+    transition: all .1s;
     width: $icon-gutter;
     height: 37px;
     text-align: center;
 
-//    @include svg-shadow;
-
     &:hover {
         color: $white;
-//        transform: scale(1.1);
+        transform: scale(1.1);
     }
 }
