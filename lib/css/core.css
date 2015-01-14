@@ -1369,38 +1369,6 @@ span.sep {
       -ms-flex-pack: end;
           justify-content: flex-end; }
 
-[bs-flex-fill] {
-  display: none; }
-  @media only screen and (min-width: 1200px) {
-    [bs-flex-fill] {
-      -webkit-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
-      text-align: left;
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-      height: 59px; }
-      [bs-flex-fill] [bs-control] {
-        text-transform: none;
-        line-height: 59px;
-        padding-top: 0; }
-        [bs-flex-fill] [bs-control]:first-child {
-          border-left: 0; }
-          [bs-flex-fill] [bs-control]:first-child:before {
-            display: none; }
-        [bs-flex-fill] [bs-control]:last-child {
-          border-right: 1px solid #fff;
-          position: relative; }
-          [bs-flex-fill] [bs-control]:last-child:after {
-            width: 1px;
-            height: 100%;
-            top: 0;
-            position: absolute;
-            right: 0;
-            content: " ";
-            background: #e3e3e3; } }
-
 [bs-control] {
   font-size: 16px;
   font-size: 0.88889rem;
@@ -1414,9 +1382,11 @@ span.sep {
   text-align: center;
   padding-top: 7px;
   text-shadow: 1px 1px 0 #fff; }
-  [bs-control] [bs-icon] {
-    transition: all .2s;
-    color: #BBBBBB; }
+  [bs-control] [bs-svg-icon] {
+    transition: all .3s;
+    width: 19px;
+    height: 19px;
+    top: 0; }
   [bs-control]:before {
     width: 1px;
     height: 100%;
@@ -1431,7 +1401,7 @@ span.sep {
   [bs-control]:hover {
     background: whitesmoke;
     text-decoration: none; }
-    [bs-control]:hover [bs-icon] {
+    [bs-control]:hover [bs-svg-icon] {
       -webkit-transform: rotate(360deg) scale(1.1);
           -ms-transform: rotate(360deg) scale(1.1);
               transform: rotate(360deg) scale(1.1);
