@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>circle_right</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="circle_right" sketch:type="MSLayerGroup" fill="#000000">
+            <g id="CIRCLE__x2F__RIGHT_1_" sketch:type="MSShapeGroup">
+                <g id="CIRCLE__x2F__RIGHT">
+                    <path d="M32,0 C14.327,0 0,14.327 0,32 C0,49.673 14.327,64 32,64 C49.673,64 64,49.673 64,32 C64,14.327 49.673,0 32,0 L32,0 Z M6,32 C6,17.64 17.641,6 32,6 C46.359,6 58,17.64 58,32 C58,46.359 46.359,58 32,58 C17.641,58 6,46.359 6,32 Z" id="Shape"></path>
+                    <path d="M42,21 C40.961,21 40.046,21.527 39.507,22.33 L30.571,35.328 L25.121,29.878 C24.578,29.336 23.828,29 23,29 C21.343,29 20,30.343 20,32 C20,32.829 20.336,33.579 20.879,34.121 L28.879,42.121 C29.422,42.664 30.172,43 31,43 C32.039,43 32.954,42.473 33.493,41.67 L44.462,25.716 C44.801,25.23 45,24.639 45,24 C45,22.343 43.657,21 42,21 L42,21 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

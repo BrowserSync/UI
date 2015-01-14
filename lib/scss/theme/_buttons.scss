@@ -90,9 +90,18 @@
     border-radius: 0;
     border: 0;
     text-transform: none;
+    padding-left: $base-spacing + $half-spacing + 6px;
+
+    [bs-svg-icon] {
+        position: absolute;
+        top: $half-spacing - 2px;
+        left: $half-spacing + 3px;
+        height: 20px;
+        width: 20px;
+    }
 
     @include media-query(min, $lap-start) {
-        padding: $half-spacing/2 $half-spacing ($half-spacing/2 - 3px);
+        padding-top: $half-spacing;
     }
 
     @include font-size(16px);
@@ -118,6 +127,12 @@
 
     &:active {
         background: darken($grey-border, 10%);
+    }
+}
+
+[bs-button~="success"] {
+    [bs-svg-icon] {
+        color: $green-lt;
     }
 }
 

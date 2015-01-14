@@ -88,8 +88,15 @@ $controls-height: 41px;
         padding-left: $half-spacing;
         padding-right: $half-spacing;
         background: transparent;
+        transition: color .3s;
         color: $grey-text;
         border: 0;
+
+        [bs-svg-icon] {
+            top: 4px;
+            height: 20px;
+            width:  20px;
+        }
 
         &:hover {
             color: $grey;
@@ -110,7 +117,15 @@ $controls-height: 41px;
 
     [bs-button] {
         @include inline-button;
+        [bs-svg-icon] {
+            height: 15px;
+            width: 15px;
+            position: relative;
+            top: 3px;
+            margin-right: $half-spacing/2;
+        }
     }
+
     [bs-icon] {
         margin-right: $half-spacing/2;
     }

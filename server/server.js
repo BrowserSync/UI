@@ -3,6 +3,7 @@ var through     = require("through");
 var http        = require("http");
 var fs          = require("fs");
 var serveStatic = require("serve-static");
+var svg         = fs.readFileSync(libDir("/img/icons/svg/symbols.svg"), "utf-8");
 
 var config      = require("./config");
 
@@ -11,13 +12,13 @@ var config      = require("./config");
  * @param {String|undefined} [path]
  * @returns {string}
  */
-var libDir = function (path) {
+function libDir (path) {
     return __dirname + "/../lib" + path || "";
-};
+}
 
-var packageDir = function (path) {
+function packageDir (path) {
     return __dirname + "/../" + path;
-};
+}
 
 /**
  * @param {ControlPanel} controlPanel
@@ -40,7 +41,7 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Add any markup from plugins/hooks
      */
-    insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages, controlPanel.templates);
+    insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages, controlPanel.templates, svg);
 
     /**
      * History API fallback
@@ -96,14 +97,19 @@ function serveJsFiles(app, socketMw, connectorMw) {
 /**
  * @param res
  * @param pageMarkup
+ * @param svgs
  * @returns {*}
  */
-function combineMarkup(res, pageMarkup) {
+function combineMarkup(res, pageMarkup, svgs) {
     res.setHeader("Content-Type", "text/html");
     return fs.createReadStream(libDir(config.defaults.indexPage))
         .pipe(through(function (buffer) {
             var file = buffer.toString();
-            this.queue(file.replace(/%hooks%/g, pageMarkup));
+            this.queue(
+                file
+                    .replace(/%hooks%/g, pageMarkup)
+                    .replace(/%svg%/g, svgs)
+            );
         }))
         .pipe(res);
 }
@@ -112,11 +118,11 @@ function combineMarkup(res, pageMarkup) {
  * @param app
  * @param pageMarkup
  */
-function insertPageMarkupFromHooks(app, pageMarkup, pages, templates) {
+function insertPageMarkupFromHooks(app, pageMarkup, pages, templates, svg) {
 
     app.use(function (req, res, next) {
         if (req.url === "/" || pages[req.url.slice(1)]) {
-            return combineMarkup(res, pageMarkup + templates);
+            return combineMarkup(res, pageMarkup + templates, svg);
         } else {
             next();
         }
