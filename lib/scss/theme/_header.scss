@@ -7,23 +7,14 @@ $inner-height: $header-height - $border-height;
 
 [bs-header] {
 
-//    background: $green-lt url("../img/bs-bg.png") no-repeat top left;
     border-bottom: 1px solid $sidebar;
     position: relative;
 
-//    &:after {
-//        content: " ";
-//        width: 100%;
-//        height: 3px;
-//        background: lighten($sidebar, 10%);
-//        position: absolute;
-//        bottom: 0;
-//        left: 0;
-//    }
-
     [bs-header-row~="brand"] {
+
         height: $header-height;
     }
+
     [bs-header-row] {
 
         position: relative;
@@ -37,15 +28,18 @@ $inner-height: $header-height - $border-height;
     }
 
     [bs-list~="header"] {
+
         width: 100%;
         padding-left: $icon-gutter + $gutter;
+        @include font-size(14px);
+
         &, a {
             color: $white;
             &:hover {
                 text-decoration: none;
             }
-            @include font-size(14px);
         }
+
         a {
             display: block;
             position: relative;

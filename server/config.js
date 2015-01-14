@@ -5,7 +5,7 @@ var Immutable = require("immutable");
  * @type {{pluginName: string, indexPage: string, socketJs: string, appJs: string, connector: string}}
  */
 var defaults = {
-    pluginName:  "Control Panel",
+    pluginName:  "UI",
     indexPage:   "/index.html",
     socketJs:    "/js/vendor/socket.js",
     appJs:       "/js/dist/app.js",

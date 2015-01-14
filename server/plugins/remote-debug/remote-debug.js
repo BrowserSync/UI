@@ -183,7 +183,7 @@ function toggleDebugger (socket, clients, cp, bs, value) {
             item.setIn([WEINRE_NAME, "active"], true);
         }, {silent: true});
 
-        // Let the control panel know about it
+        // Let the UI know about it
         socket.emit("cp:weinre:enabled", _debugger);
 
         // Add the JS script to the clients elements list
@@ -206,7 +206,7 @@ function toggleDebugger (socket, clients, cp, bs, value) {
         // Remove the script from client elements list
         clientScripts = clientScripts.remove(WEINRE_NAME);
 
-        // Let the control panel know
+        // Let the UI know
         socket.emit("cp:weinre:disabled");
 
         // Let the clients know.
@@ -229,7 +229,7 @@ function enableWeinre (cp, bs) {
 
     var port     = bs.options.getIn([WEINRE_NAME, "port"]);
     var weinre   = require("weinre/lib/weinre");
-    var external = require("url").parse(bs.getOptionIn(["urls", "external"]));
+    var external = getHostUrl(cp, bs);
 
     weinreApp = weinre.run({
         httpPort: port,

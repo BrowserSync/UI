@@ -1,5 +1,5 @@
-var path = require("path");
-var fs   = require("fs");
+var path   = require("path");
+var fs     = require("fs");
 
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
@@ -60,10 +60,10 @@ function pluginConfigureMany (cp, bs, value) {
     if (value !== true) {
         value = false;
     }
-    
+
     bs.getUserPlugins()
         .filter(function (item) {
-            return item.name !== "Control Panel"; // todo dupe code server/client
+            return item.name !== "UI    "; // todo dupe code server/client
         })
         .forEach(function (item) {
             item.active = value;

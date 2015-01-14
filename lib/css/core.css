@@ -1283,11 +1283,11 @@ span.sep {
       margin-bottom: auto; }
   [bs-header] [bs-list~="header"] {
     width: 100%;
-    padding-left: 75px; }
+    padding-left: 75px;
+    font-size: 14px;
+    font-size: 0.77778rem; }
     [bs-header] [bs-list~="header"], [bs-header] [bs-list~="header"] a {
-      color: #fff;
-      font-size: 14px;
-      font-size: 0.77778rem; }
+      color: #fff; }
       [bs-header] [bs-list~="header"]:hover, [bs-header] [bs-list~="header"] a:hover {
         text-decoration: none; }
     [bs-header] [bs-list~="header"] a {

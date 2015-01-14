@@ -15,17 +15,16 @@ var logger   = require("eazy-logger").Logger({
 });
 
 var cp           = require("./index");
-//var bs           = require('browser-sync');
 var bs           = require("browser-sync");
 
 var htmlInjector = require('bs-html-injector');
 
-//bs.use(htmlInjector, {
-//    logLevel: "info",
-//    files: [
-//        "test/fixtures/*.html"
-//    ]
-//});
+bs.use(htmlInjector, {
+    logLevel: "info",
+    files: [
+        "test/fixtures/*.html"
+    ]
+});
 
 var dummyPlugin = "Some Pluig";
 

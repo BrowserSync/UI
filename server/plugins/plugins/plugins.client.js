@@ -21,10 +21,10 @@
         $scope.section = contentSections[SECTION_NAME];
 
         /**
-         * Don't show this control panel as user plugin
+         * Don't show this UI as user plugin
          */
         var filtered = $scope.options.userPlugins.filter(function (item) {
-            return item.name !== "Control Panel";
+            return item.name !== "UI";
         });
 
         /**
