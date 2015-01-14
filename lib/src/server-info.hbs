@@ -7,14 +7,14 @@ callouts:
       icon: "imac"
       url: "http://localhost:3000"
     - title: "External"
-      icon: "wifi_3"
+      icon: "wifi"
       url: "http://192.168.0.1:3000"
     - title: "Tunnel"
       icon: "globe"
       url: "http://14frwed.localtunnel.me"
 ---
 <div bs-callout="controls outline">
-    <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
+    <h1 bs-heading>{{ inc src="icon.hbs" icon="cog" }} {{page.title}}</h1>
 </div>
 <div>
     {{#each page.callouts}}

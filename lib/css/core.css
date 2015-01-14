@@ -776,26 +776,16 @@ h6, .h6 {
       border-top: 0; }
       [bs-heading]:before {
         display: none; } }
-  [bs-heading] [bs-icon] {
-    font-size: 22px;
-    font-size: 1.22222rem;
+  [bs-heading] [bs-svg-icon] {
     position: absolute;
-    transition: all .3s;
-    color: #4A4A4A;
-    left: 16px;
-    margin-right: 14px;
-    top: 14px;
+    left: 14px;
+    top: 11px;
     color: #21A695; }
-    [bs-heading] [bs-icon] [bs-Icon="plug"] {
-      font-size: 28px;
-      font-size: 1.55556rem;
-      left: 22px;
-      top: 8px; }
     @media only screen and (min-width: 600px) {
-      [bs-heading] [bs-icon] {
-        font-size: 40px;
-        font-size: 2.22222rem;
-        top: 7px; } }
+      [bs-heading] [bs-svg-icon] {
+        height: 45px;
+        width: 45px;
+        top: 4px; } }
 
 .lede {
   margin-bottom: 27px;
@@ -944,29 +934,24 @@ span.sep {
   border: 0;
   position: relative;
   background: transparent; }
+  [bs-button~="nav"] [bs-svg-icon] {
+    transition: all .3s; }
   [bs-button~="nav"].active {
     background: #2F323E;
     box-shadow: -2px 3px 2px #20232a;
     z-index: 5;
     color: #fff; }
-    [bs-button~="nav"].active [bs-Icon] {
+    [bs-button~="nav"].active [bs-svg-icon] {
       color: #21A695; }
-  [bs-button~="nav"]:hover [bs-Icon] {
+  [bs-button~="nav"]:hover [bs-svg-icon] {
     color: #fff; }
-  [bs-button~="nav"] [bs-Icon] {
-    font-size: 22px;
-    font-size: 1.22222rem;
+  [bs-button~="nav"] [bs-svg-icon] {
     position: absolute;
     transition: all .3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
-    top: 14px; }
-    [bs-button~="nav"] [bs-Icon] [bs-Icon="plug"] {
-      font-size: 28px;
-      font-size: 1.55556rem;
-      left: 22px;
-      top: 8px; }
+    top: 12px; }
 
 [bs-button~="inline"] {
   position: relative;
@@ -988,12 +973,6 @@ span.sep {
   @media only screen and (min-width: 600px) {
     [bs-button~="inline"] {
       padding-top: 14px; } }
-  [bs-button~="inline"] [bs-icon] {
-    font-size: 20px;
-    font-size: 1.11111rem;
-    margin-right: 7px; }
-  [bs-button~="inline"] [bs-icon="circle_ok"] {
-    color: #21A695; }
   [bs-button~="inline"]:focus {
     background: transparent;
     color: #000; }

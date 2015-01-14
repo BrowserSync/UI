@@ -1,27 +1,28 @@
 <section bs-sidebar="">
     {{ inc src="header.hbs" }}
-    <nav bs-section-nav="" class="">
-        <ul bs-list="">
+    <nav bs-section-nav>
+        <ul bs-list>
             <li>
                 <button bs-button="nav">
-                    <i bs-icon="cog"></i> Server Info
+                    {{ inc src="icon.hbs" icon="cog" }} Server Info
                 </button>
             </li>
             <li>
                 <button bs-button="nav" class="active">
-                    <i bs-icon="repeat_2"></i> Sync Options
+                    {{ inc src="icon.hbs" icon="repeat" }} Sync Options
                 </button>
             </li>
             <li>
                 <button bs-button="nav">
-                    <i bs-icon="book_2"></i> History
+                    {{ inc src="icon.hbs" icon="book" }} History
                 </button>
             </li>
             <li>
                 <button bs-button="nav">
-                    <i bs-icon="plug"></i> Plugins
+                    {{ inc src="icon.hbs" icon="plug" }} Plugins
                 </button>
             </li>
+
             <li bs-action="menu-close">
                 <button bs-button="nav" ng-click="toggleMenu()"><i bs-icon="close"></i> CLOSE</button>
             </li>

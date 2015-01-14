@@ -43,20 +43,12 @@
 
 @mixin button-icon {
 
-    @include      font-size(22px);
-
     position:     absolute;
     transition:   all .3s;
     color:        $grey-icon;
     left:         $half-spacing + 2px;
     margin-right: $half-spacing;
-    top:          14px;
-
-    [bs-Icon="plug"] {
-        @include font-size(28px);
-        left: $half-spacing + 8px;
-        top:  8px;
-    }
+    top:          12px;
 }
 
 @mixin only-palm {

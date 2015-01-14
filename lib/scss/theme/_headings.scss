@@ -83,13 +83,17 @@ h6, .h6 {
         }
     }
 
-    [bs-icon] {
-        @include button-icon;
+    [bs-svg-icon] {
+
+        position: absolute;
+        left: $half-spacing;
+        top: $half-spacing - 3px;
+        color: $green-lt;
 
         @include media-query(min, $lap-start) {
-            @include font-size(40px);
-            top: $half-spacing/2;
+            height: 45px;
+            width: 45px;
+            top: $half-spacing/2 - 3px;
         }
-        color: $green-lt;
     }
 }
