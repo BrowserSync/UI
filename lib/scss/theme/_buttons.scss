@@ -10,28 +10,33 @@
     @include font-size(14px);
 
     display: inline-block;
-    border: 0;
+    border: 1px solid $grey-border;
     padding: 8px $base-spacing;
     width: auto;
     vertical-align: middle;
-    background: $sidebar;
+    background: $white;
     color: $grey-text;
     border-radius: 3px;
     line-height: 1.2;
     text-align: center;
     cursor: pointer;
     outline: none;
-    transition: color .3s, background .3s;
+    transition: background .3s;
 
-    &:hover,
-    &:focus {
+    &:hover {
         text-decoration: none;
         background: $sidebar-lt;
         color: $white;
     }
 
-    &:active {
+    &:focus {
+        text-decoration: none;
+        color: $grey-text;
+//        color: $white;
+    }
 
+    &:active {
+        color: $white;
     }
 
     + .button,

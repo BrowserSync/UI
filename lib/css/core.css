@@ -919,22 +919,27 @@ span.sep {
   font-size: 14px;
   font-size: 0.77778rem;
   display: inline-block;
-  border: 0;
+  border: 1px solid #F0F0F0;
   padding: 8px 27px;
   width: auto;
   vertical-align: middle;
-  background: #272A33;
+  background: #fff;
   color: #BBBBBB;
   border-radius: 3px;
   line-height: 1.2;
   text-align: center;
   cursor: pointer;
   outline: none;
-  -webkit-transition: color 0.3s, background 0.3s;
-          transition: color 0.3s, background 0.3s; }
-  [bs-button]:hover, [bs-button]:focus {
+  -webkit-transition: background 0.3s;
+          transition: background 0.3s; }
+  [bs-button]:hover {
     text-decoration: none;
     background: #2F323E;
+    color: #fff; }
+  [bs-button]:focus {
+    text-decoration: none;
+    color: #BBBBBB; }
+  [bs-button]:active {
     color: #fff; }
 
 [bs-button~="nav"] {
@@ -1081,13 +1086,6 @@ span.sep {
       text-transform: uppercase;
       color: #F0F0F0;
       font-weight: 200; }
-  [bs-callout] [bs-text~="controls"] [bs-icon] {
-    font-size: 12px;
-    font-size: 0.66667rem;
-    position: relative;
-    top: -1px; }
-  [bs-callout] [bs-text~="controls"] a {
-    color: #000; }
 
 [bs-callout] {
   background: #fff;
