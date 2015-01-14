@@ -26,8 +26,7 @@ bs.use(htmlInjector, {
     ]
 });
 
-var dummyPlugin = "Some Pluig";
-
+//var dummyPlugin = "Some Pluig";
 //bs.use({
 //    "plugin:name": dummyPlugin,
 //    "plugin": function (opts, bs) {
@@ -48,8 +47,10 @@ var instance = bs({
     server: {
         baseDir: "./test/fixtures"
     },
-    //files: "./test/fixtures/*.html",
-    open: false,
+    files: [
+        "test/fixtures/**"
+    ],
+    open: false
     //tunnel: true
     //online: false
 });
