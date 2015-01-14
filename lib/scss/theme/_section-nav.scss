@@ -16,6 +16,7 @@
     z-index: 5;
 
     ul {
+
         margin-bottom: 0;
 
         li {
@@ -23,6 +24,10 @@
                 margin-right: -5px;
             }
         }
+    }
+
+    [bs-button] {
+        text-transform: none;
     }
 
     @include media-query(min, $lap-start) {

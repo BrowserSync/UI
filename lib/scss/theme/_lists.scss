@@ -72,6 +72,9 @@ $controls-height: 41px;
             [bs-button] {
                 border: 0;
                 border-left: 1px solid $grey-border;
+                &:last-child {
+                    border-right: 1px solid $grey-border;
+                }
             }
         }
     }

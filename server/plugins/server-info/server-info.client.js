@@ -15,7 +15,7 @@
                     "options": "="
                 },
                 templateUrl: "url-info.html",
-                controller: ["$scope", "contentSections", "Location", urlInfoController]
+                controller: ["$scope", "$rootScope", "contentSections", "Location", urlInfoController]
             };
         })
 
@@ -53,7 +53,7 @@
      * @param Location
      * @param contentSections
      */
-    function urlInfoController($scope, contentSections, Location) {
+    function urlInfoController($scope, $rootScope, contentSections, Location) {
 
         var options = $scope.options;
         var urls = options.urls;
@@ -109,6 +109,10 @@
          *
          */
         $scope.sendAllTo = function (path) {
+            $rootScope.$emit("notify:flash", {
+                heading: "Instruction sent:",
+                message: "Sync all Browsers to: " + path
+            });
             Location.sendAllTo(path);
         };
     }

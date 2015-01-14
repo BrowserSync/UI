@@ -141,3 +141,9 @@
         padding-left: $base-spacing*1.5;
     }
 }
+
+[bs-skinny] {
+    @include media-query(min, $wide-start) {
+        padding: $base-spacing*2 ($base-spacing*3 + $half-spacing);
+    }
+}

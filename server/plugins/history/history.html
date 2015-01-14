@@ -15,7 +15,10 @@
                 to sync all devices to a specific page</p>
         </div>
     </div>
-    <history-list ng-if="ui.visited.length"
-                  options="options"
-                  visited="ui.visited"></history-list>
+    <div bs-skinny ng-if="ui.visited.length">
+
+        <history-list ng-if="ui.visited.length"
+                      options="options"
+                      visited="ui.visited"></history-list>
+    </div>
 </script>

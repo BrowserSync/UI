@@ -48,7 +48,7 @@ var instance = bs({
         baseDir: "./test/fixtures"
     },
     files: [
-        "test/fixtures/**"
+        "test/fixtures/css/**"
     ],
     open: false
     //tunnel: true
