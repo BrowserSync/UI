@@ -4,7 +4,7 @@
         <p>{{url.path}}</p>
 
         <span bs-multi-controls="right">
-            <a href="{{url.path | localUrl:options.port}}" target="_blank" bs-button><i bs-icon="square_add"></i> new tab</a>
+            <a href="{{url.path | localUrl:options.port:options.mode}}" target="_blank" bs-button><i bs-icon="square_add"></i> new tab</a>
             <a href="#" ng-click="sendAllTo(url.path)" bs-button><i bs-icon="target"></i> sync all</a>
         </span>
     </li>

@@ -87,6 +87,7 @@
     padding: $half-spacing 17px ($half-spacing - 3px);
     color: $black;
     border-radius: 0;
+    border: 0;
 
     @include media-query(min, $lap-start) {
         padding: $half-spacing/2 $half-spacing ($half-spacing/2 - 3px);
@@ -107,19 +108,21 @@
         background: transparent;
         color: $black;
     }
+
     &:hover {
         background: $grey-border;
         color: $black;
     }
+
     &:active {
         background: darken($grey-border, 10%);
     }
 }
 
-/**
- * button bar
- * <div bs-button-Bar> ... </div>
- */
+//
+// button bar
+// <div bs-button-Bar> ... </div>
+//
 [bs-button-Bar] {
 
     @extend %flexy;
@@ -262,6 +265,7 @@
         background: lighten($grey-bg-dk, 2%);
         box-shadow: 0px 0px 1px rgba(0, 0, 0, .1) inset;
     }
+
     &:active {
         box-shadow: 0px 0px 3px rgba(0, 0, 0, .2) inset;
     }

@@ -28,19 +28,19 @@ bs.use(htmlInjector, {
 
 var dummyPlugin = "Some Pluig";
 
-bs.use({
-    "plugin:name": dummyPlugin,
-    "plugin": function (opts, bs) {
-        /**
-         * Configure event
-         */
-        bs.events.on("plugins:configure", function (data) {
-            if (data.name === dummyPlugin) {
-                console.log("Dummy plugin status: ", data.active);
-            }
-        });
-    }
-});
+//bs.use({
+//    "plugin:name": dummyPlugin,
+//    "plugin": function (opts, bs) {
+//        /**
+//         * Configure event
+//         */
+//        bs.events.on("plugins:configure", function (data) {
+//            if (data.name === dummyPlugin) {
+//                console.log("Dummy plugin status: ", data.active);
+//            }
+//        });
+//    }
+//});
 
 bs.use(cp);
 

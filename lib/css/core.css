@@ -605,10 +605,8 @@ hr {
   -webkit-transform: translateX(-200%) translateY(20px) scale(1.2);
       -ms-transform: translateX(-200%) translateY(20px) scale(1.2);
           transform: translateX(-200%) translateY(20px) scale(1.2);
-  -webkit-transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-          transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s;
+  transition-timing-function: cubic-bezier(0.3, 0, 0, 1.3);
+  transition: all 0.3s;
   opacity: 0;
   z-index: 5; }
   [bs-section-nav]:before {
@@ -765,8 +763,7 @@ h6, .h6 {
     font-size: 22px;
     font-size: 1.22222rem;
     position: absolute;
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s;
+    transition: all 0.3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
@@ -794,8 +791,7 @@ h6, .h6 {
 
 a {
   color: #21A695;
-  -webkit-transition: background 0.3s ease, color 0.3s ease;
-          transition: background 0.3s ease, color 0.3s ease; }
+  transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     text-decoration: underline;
     color: #00262C; }
@@ -803,8 +799,7 @@ a {
     text-decoration: none; }
 
 [bs-icon] {
-  -webkit-transition: background 0.3s ease, color 0.3s ease;
-          transition: background 0.3s ease, color 0.3s ease; }
+  transition: background 0.3s ease, color 0.3s ease; }
 
 .flush--bottom {
   margin-bottom: 0 !important; }
@@ -930,8 +925,7 @@ span.sep {
   text-align: center;
   cursor: pointer;
   outline: none;
-  -webkit-transition: background 0.3s;
-          transition: background 0.3s; }
+  transition: background 0.3s; }
   [bs-button]:hover {
     text-decoration: none;
     background: #2F323E;
@@ -964,8 +958,7 @@ span.sep {
     font-size: 22px;
     font-size: 1.22222rem;
     position: absolute;
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s;
+    transition: all 0.3s;
     color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
@@ -982,6 +975,7 @@ span.sep {
   padding: 14px 17px 11px;
   color: #000;
   border-radius: 0;
+  border: 0;
   font-size: 16px;
   font-size: 0.88889rem; }
   @media only screen and (min-width: 600px) {
@@ -1002,10 +996,6 @@ span.sep {
   [bs-button~="inline"]:active {
     background: #d6d6d6; }
 
-/**
- * button bar
- * <div bs-button-Bar> ... </div>
- */
 [bs-button-Bar] [bs-button] {
   margin-left: 0;
   margin-right: 0;
@@ -1189,8 +1179,7 @@ span.sep {
     position: relative;
     padding-bottom: 41px;
     padding-left: 57px;
-    -webkit-transition: background 0.5s;
-            transition: background 0.5s; }
+    transition: background 0.5s; }
     [bs-list~="inline-controls"] li:hover {
       background: #FBFBFB; }
     @media only screen and (min-width: 750px) {
@@ -1309,8 +1298,7 @@ span.sep {
   height: 60px;
   line-height: 60px;
   color: #fff;
-  -webkit-transition: background 0.2s;
-          transition: background 0.2s;
+  transition: background 0.2s;
   text-shadow: 1px 1px 2px #00262C;
   border-left: 1px solid #272A33;
   border-bottom: 1px solid #272A33; }
@@ -1391,8 +1379,7 @@ span.sep {
   padding-top: 7px;
   text-shadow: 1px 1px 0 #fff; }
   [bs-control] [bs-icon] {
-    -webkit-transition: all 0.2s;
-            transition: all 0.2s;
+    transition: all 0.2s;
     color: #BBBBBB; }
   [bs-control]:before {
     width: 1px;
@@ -1448,8 +1435,7 @@ input.cmn-toggle-round + label:before {
   right: 2px;
   background-color: #AAAAAA;
   border-radius: 4px;
-  -webkit-transition: background 0.2s;
-          transition: background 0.2s; }
+  transition: background 0.2s; }
 
 input.cmn-toggle-round + label:after {
   top: 3px;
@@ -1457,8 +1443,7 @@ input.cmn-toggle-round + label:after {
   height: 19px;
   background-color: #fff;
   border-radius: 4px;
-  -webkit-transition: margin 0.2s;
-          transition: margin 0.2s; }
+  transition: margin 0.2s; }
 
 input.cmn-toggle-round:checked + label:before {
   background-color: #21A695; }
@@ -1532,8 +1517,7 @@ code {
   -webkit-transform: translateY(-200%);
       -ms-transform: translateY(-200%);
           transform: translateY(-200%);
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s;
+  transition: all 0.3s;
   z-index: 100; }
   .notification.active {
     -webkit-transform: translateY(0);

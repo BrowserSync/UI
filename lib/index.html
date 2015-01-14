@@ -74,11 +74,11 @@
                         <i bs-icon="repeat_2"></i><br/>
                         Reload all
                     </a>
-                    <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options">
+                    <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'">
                         <i bs-icon="square_add"></i><br/>
                         New Tab
                     </a>
-                    <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')">
+                    <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')" ng-show="app.options.mode !== 'snippet'">
                         <i bs-icon="home"></i><br/>
                         Reset All
                     </a>

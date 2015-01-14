@@ -12,6 +12,8 @@
 
     /**
      * @param $scope
+     * @param options
+     * @param Socket
      * @param contentSections
      */
     function RemoteDebugController($scope, options, Socket, contentSections) {

@@ -119,6 +119,19 @@ function getHostUrl(cp, bs) {
 }
 
 /**
+ * If it's snippet mode, create a url that contains host
+ * @param targetPath
+ * @param cp
+ * @param bs
+ */
+function getRemoteUrl(targetPath, cp, bs) {
+    if (bs.options.get("mode") === "snippet") {
+        return ["//", getHostUrl(cp, bs).host, targetPath].join("");
+    }
+    return targetPath;
+}
+
+/**
  * @param socket
  * @param cp
  * @param bs
@@ -134,7 +147,7 @@ function togglePesticide (socket, clients, cp, bs, value) {
         bs.setOptionIn([PESTICIDE_NAME, "active"], true, {silent: true});
         clientScripts = clientScripts.set(PESTICIDE_NAME, {
             type: "css",
-            src:  PESTICIDE_URL,
+            src:  getRemoteUrl(PESTICIDE_URL, cp, bs),
             id:   PESTICIDE_ID
         });
         bs.serveFile(PESTICIDE_URL, {

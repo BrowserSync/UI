@@ -19,7 +19,7 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        var validUrls = Immutable.OrderedSet("/");
+        var validUrls = Immutable.OrderedSet();
 
         var socket  = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients = bs.io.of(bs.options.getIn(["socket", "namespace"]));
@@ -33,7 +33,7 @@ module.exports = {
 
         clients.on("connection", function (client) {
             client.on("urls:client:connected", function (data) {
-                var temp = addPath(validUrls, data.path);
+                var temp = addPath(validUrls, url.parse(data.href), cp, bs);
                 sendUpdatedIfChanged(validUrls, temp, socket);
             });
         });
@@ -130,8 +130,12 @@ function reloadAll(cp, bs, clients) {
  * @param urlPath
  * @returns {*}
  */
-function addPath(immSet, urlPath) {
-    return immSet.add(url.parse(urlPath).path);
+function addPath(immSet, urlObj, cp, bs) {
+    return immSet.add(
+        bs.options.get("mode") === "snippet"
+            ? urlObj.href
+            : urlObj.path
+    );
 }
 
 module.exports.addPath = addPath;
