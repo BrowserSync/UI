@@ -191,12 +191,19 @@
 [bs-button~="icon"] {
     padding-left: $half-spacing;
     padding-right: $half-spacing;
+    padding-top: 10px;
 }
 
 [bs-button~="icon-left"] {
-
-    [bs-icon] {
-        margin-right: $half-spacing/2;
+    line-height: 1;
+    position: relative;
+    padding-left: $base-spacing + $half-spacing;
+    [bs-svg-icon] {
+        position: absolute;
+        top: 8px;
+        left: $half-spacing;
+        width: 16px;
+        height: 16px;
     }
 }
 

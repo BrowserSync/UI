@@ -7,8 +7,14 @@
             <p bs-text="lede">{{url.title}}</p>
             <p><a href="{{url.url}}">{{url.url}}</a></p>
             <p bs-text="controls">
-                <a href="{{url.url}}" target="_blank" bs-button="icon icon-left"><i bs-icon="square_add"></i> new tab</a>
-                <a href="#" ng-click="sendAllTo(url.url)" bs-button="icon icon-left"><i bs-icon="target"></i> sync all</a>
+                <a href="{{url.url}}" target="_blank" bs-button="icon icon-left">
+                    <svg bs-svg-icon=""><use xlink:href="#svg-square-add"></use></svg>
+                    new tab
+                </a>
+                <a href="#" ng-click="sendAllTo(url.url)" bs-button="icon icon-left">
+                    <svg bs-svg-icon=""><use xlink:href="#svg-target"></use></svg>
+                    sync all
+                </a>
             </p>
         </div>
     </section>
