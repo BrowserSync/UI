@@ -28,7 +28,7 @@ module.exports = {
 
         clients.on("connection", function (client) {
             client.on("urls:client:connected", function (data) {
-                var temp = addPath(validUrls, url.parse(data.href), cp, bs);
+                var temp = addPath(validUrls, url.parse(data.href), bs.options.get("mode"));
                 sendUpdatedIfChanged(validUrls, temp, socket);
             });
         });
@@ -130,9 +130,9 @@ function reloadAll(cp, bs, clients) {
  * @param bs
  * @returns {*}
  */
-function addPath(immSet, urlObj, cp, bs) {
+function addPath(immSet, urlObj, mode) {
     return immSet.add(
-        bs.options.get("mode") === "snippet"
+        mode === "snippet"
             ? urlObj.href
             : urlObj.path
     );
