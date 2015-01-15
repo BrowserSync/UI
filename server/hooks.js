@@ -1,11 +1,8 @@
 var fs         = require("fs");
 var path       = require("path");
-var through2   = require("through2");
 var async      = require("async");
-var select     = require('html-select');
-var tokenize   = require('html-tokenize');
-var through    = require('through2');
-var vinyl      = require("vinyl");
+var directives = require("./directive-stripper");
+
 var pluginTmpl = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
 var configTmpl = fs.readFileSync(__dirname + "/templates/config.tmpl", "utf-8");
 var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf-8");
@@ -109,7 +106,6 @@ function getIcon () {
  * @returns {*}
  */
 function transformConfig (item) {
-    //item.icon = "#svg-" + item.icon;
     return item;
 }
 
@@ -148,28 +144,6 @@ function pluginTemplate (combined, item) {
     return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
 }
 
-function directiveStripper(item, markup, config, done) {
-
-        var replacer = getReplacer(item, config);
-
-        var file = new vinyl({
-            contents: new Buffer(markup)
-        });
-
-        var chunks = [];
-
-        file
-            .pipe(tokenize())
-            .pipe(replacer)
-            .pipe(through2.obj(function (row, buf, next) {
-                chunks.push(row[1]);
-                next();
-            }, function () {
-                done(null, chunks.join(""));
-            }));
-
-        replacer.resume();
-}
 
 /**
  *
@@ -177,13 +151,18 @@ function directiveStripper(item, markup, config, done) {
 function preAngular (plugins, config, cb) {
 
     var out = "";
+
     async.eachSeries(Object.keys(plugins), function (key, done) {
+
         var boundOnce = bindOnce(plugins[key].hooks.markup, config[key]);
-        directiveStripper("icon", boundOnce, config[key], function (err, out2) {
-            out2 = inlineTemp
+
+        directives.directiveStripper("icon", boundOnce, config[key], function (err, out2) {
+
+            // Make a <script> template
+            out += inlineTemp
                 .replace("%content%", out2)
                 .replace("%id%", config[key].template);
-            out += pluginTmpl.replace("%markup%", out2);
+
             done();
         });
     }, function (err) {
@@ -203,43 +182,3 @@ function bindOnce (markup, config) {
     });
 }
 
-/**
- * @param name
- * @param content
- * @param item
- * @returns {*|string}
- */
-function directive (name, content, item) {
-
-    var angularDir = require("../lib/js/scripts/directives/icon.js")();
-
-    var scope = item;
-
-    scope = angularDir.link(scope, {}, {});
-
-    return angularDir.template.replace(/\{\{(.+?)\}\}/, function ($1, $2) {
-        if ($2 in scope) {
-            return scope[$2];
-        }
-        return $1;
-    });
-}
-
-function getReplacer (name, item) {
-
-    return select("icon", function (e) {
-
-        var tr = through.obj(function (row, buf, next) {
-
-            if (row[0] === "open") {
-                this.push([row[0], directive(name, String(row[1]), item)]);
-            } else {
-                this.push([ row[0], "" ]);
-            }
-
-            next();
-        });
-
-        tr.pipe(e.createStream()).pipe(tr);
-    });
-}
