@@ -7,28 +7,32 @@
     var module = angular.module("BrowserSync");
 
     module.controller("ConnectionsController",
-        ["$scope", "options", "Socket", "contentSections", connectionsControllers]);
+        ["$scope", "options", "Socket", "$rootScope", "contentSections", connectionsControllers]);
 
     /**
      * @param $scope
      * @param options
+     * @param Socket
      * @param contentSections
      */
-    function connectionsControllers($scope, options, Socket, contentSections) {
+    function connectionsControllers($scope, options, Socket, $rootScope, contentSections) {
 
         $scope.options = options;
         $scope.section = contentSections[SECTION_NAME];
         $scope.ui = {
-            connections: [
-                {
-                    browser: "Chrome"
-                },
-                {
-                    browser: "Firefox"
-                }
-            ]
+            connections: {}
         };
 
+        $scope.update = function (data) {
+            $rootScope.$emit("connections:update", data);
+            $scope.ui.connections = data;
+            $scope.$digest();
+        }
+
+        Socket.on("cp:connections:update", $scope.update);
+        $scope.$on('$destroy', function () {
+            Socket.off("cp:connections:update", $scope.update);
+        });
     }
 
     module.directive("connectionList", function () {
