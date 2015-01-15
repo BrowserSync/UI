@@ -2,7 +2,7 @@
     <section bs-callout ng-repeat="url in urls">
         <div bs-callout-content>
             <div bs-callout-icon>
-                <svg bs-svg-icon><use xlink:href="{{url.icon}}"></use></svg>
+                <icon name="{{url.icon}}"></icon>
             </div>
             <p bs-text="lede">{{url.title}}</p>
             <p><a href="{{url.url}}">{{url.url}}</a></p>

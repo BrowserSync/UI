@@ -6,7 +6,7 @@ var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf
 var inlineTemp = fs.readFileSync(__dirname + "/templates/inline.template.tmpl", "utf-8");
 
 function createTemplate(cp, item) {
-    console.log(item);
+    //console.log(item);
     return item;
 }
 /**
@@ -44,7 +44,7 @@ module.exports = {
              * pagesConfig in object form
              */
             pagesObj: config,
-            pageMarkup: cp.pluginManager.hook("markup")
+            pageMarkup: preAngular(cp.pluginManager.plugins, config)
         };
     },
     /**
@@ -100,7 +100,7 @@ function getIcon () {
  * @returns {*}
  */
 function transformConfig (item) {
-    item.icon = "#svg-" + item.icon;
+    //item.icon = "#svg-" + item.icon;
     return item;
 }
 
@@ -132,9 +132,32 @@ function createConfigItem (joined, item) {
     return joined;
 }
 
-function pluginTemplate () {
-    return hooks
-        .reduce(function (combined, item) {
-            return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
-        }, "");
+/**
+ * @returns {*}
+ */
+function pluginTemplate (combined, item) {
+    return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
+}
+
+/**
+ *
+ */
+function preAngular (plugins, config) {
+    return Object.keys(plugins)
+        .map(function (key) {
+            return bindOnce(plugins[key].hooks.markup, config[key]);
+        })
+        .reduce(pluginTemplate, "");
+
+}
+
+/**
+ * @param markup
+ * @param config
+ * @returns {*}
+ */
+function bindOnce (markup, config) {
+    return markup.toString().replace(/\{\{section\.(.+?)\}\}/g, function ($1, $2) {
+        return config[$2] || "";
+    });
 }

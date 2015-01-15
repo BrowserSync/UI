@@ -1,7 +1,7 @@
 <script type="text/ng-template" id="server-info.html">
     <article>
         <div bs-callout="controls outline">
-            <h1 bs-heading><svg bs-svg-icon=""><use xlink:href="{{section.icon}}"></use></svg> {{options.mode | ucfirst}} Info</h1>
+            <h1 bs-heading><icon name="{{section.icon}}"></icon> {{options.mode | ucfirst}} Info</h1>
         </div>
         <url-info ng-if="options.server || options.proxy" options="options"></url-info>
         <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
