@@ -136,7 +136,7 @@ gulp.task("svg", function () {
 /**
  * Build Front-end stuff
  */
-gulp.task("dev-frontend", ["sass", "build-src", "browserify", "browser-sync-dev"], function () {
+gulp.task("dev-frontend", ["sass", "svg", "build-src", "browserify", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass", browserSync.reload]);
     gulp.watch([
         "lib/src/**"
