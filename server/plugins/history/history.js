@@ -5,11 +5,6 @@ var fs        = require("fs");
 var Immutable = require("immutable");
 
 /**
- * @type {Immutable.Set}
- */
-var timestamp;
-
-/**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
 module.exports = {
@@ -43,7 +38,7 @@ module.exports = {
             sendUpdatedUrls(socket, validUrls);
 
             cpClient.on("urls:browser:reload",   reloadAll.bind(null, cp, bs, clients));
-            cpClient.on("urls:browser:url",      sendToUrl.bind(bs, bs.getOption("urls.local")));
+            cpClient.on("urls:browser:url",      sendToUrl.bind(null, cp, bs, clients));
 
             cpClient.on("cp:get:visited", function (req) {
                 socket.emit("cp:receive:visited", decorateUrls(validUrls));
@@ -74,7 +69,7 @@ module.exports = {
             template: "history.html",
             controller: "HistoryController",
             order: 3,
-            icon: "#svg-book"
+            icon: "book"
         }
     },
     /**
@@ -108,14 +103,15 @@ function decorateUrls (urls) {
 /**
  * Send all browsers to a URL
  */
-function sendToUrl (localUrl, data) {
+function sendToUrl (cp, bs, clients, data) {
 
     var parsed = url.parse(data.path);
-    var bs = this;
-    data.path = parsed.path;
+
     data.override = true;
-    data.url = parsed.href;
-    bs.io.sockets.emit("browser:location", data);
+    data.path = parsed.path;
+    data.url  = parsed.href;
+
+    clients.emit("browser:location", data);
 }
 
 /**
@@ -126,8 +122,12 @@ function reloadAll(cp, bs, clients) {
 }
 
 /**
+ * If snippet mode, add the full URL
+ * if server/proxy, add JUST the path
  * @param immSet
- * @param urlPath
+ * @param urlObj
+ * @param cp
+ * @param bs
  * @returns {*}
  */
 function addPath(immSet, urlObj, cp, bs) {

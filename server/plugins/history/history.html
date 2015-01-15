@@ -1,7 +1,7 @@
 <!-- Controller for history-list -->
 <script type="text/ng-template" id="history.html">
     <div bs-callout="controls outline">
-        <h1 bs-heading><svg bs-svg-icon=""><use xlink:href="#svg-book"></use></svg> {{section.title}}</h1>
+        <h1 bs-heading><svg bs-svg-icon=""><use xlink:href="{{section.icon}}"></use></svg> {{section.title}}</h1>
         <div bs-button-row>
             <button bs-button="inline" ng-click="clearVisited()" ng-show="ui.visited.length">
                 <svg bs-svg-icon=""><use xlink:href="#svg-circle-delete"></use></svg>

@@ -1,11 +1,11 @@
-# browser-sync-control-panel [![Build Status](https://travis-ci.org/shakyShane/browser-sync-control-panel.png?branch=master)](https://travis-ci.org/shakyShane/browser-sync-control-panel)
+# browser-sync-ui [![Build Status](https://travis-ci.org/shakyShane/browser-sync-control-panel.png?branch=master)](https://travis-ci.org/shakyShane/browser-sync-control-panel)
 
-Control Panel for BrowserSync
+User Interface for BrowserSync
 
 ## Contributors
 
 ```
-     2	Shane Osbourne
+   246	Shane Osbourne
 ```
 
 ## License
