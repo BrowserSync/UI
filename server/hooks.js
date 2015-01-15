@@ -1,10 +1,14 @@
 var fs         = require("fs");
 var path       = require("path");
-var tmpl       = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
+var pluginTmpl = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
 var configTmpl = fs.readFileSync(__dirname + "/templates/config.tmpl", "utf-8");
 var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf-8");
 var inlineTemp = fs.readFileSync(__dirname + "/templates/inline.template.tmpl", "utf-8");
 
+function createTemplate(cp, item) {
+    console.log(item);
+    return item;
+}
 /**
  //*
  * @type {{markup: Function, client:js: Function, templates: Function}}
@@ -13,45 +17,53 @@ module.exports = {
     /**
      * Create the url config for each section of the ui
      * @param hooks
-     * @param initial
+     * @param cb
      */
-    "page": function (hooks, cb) {
-        var items = hooks.reduce(function (all, item) {
-            return all + configItem.replace(/%(.+)%/g, function () {
-                var key = arguments[1];
-                if (item[key]) {
-                    return item[key];
-                }
-            });
-        }, "");
+    "page": function (hooks, cp) {
 
-        var pagesConfig = hooks.reduce(function (joined, item) {
-            if (item.path === "/") {
-                joined["server-info"] = item;
-            } else {
-                joined[item.path.slice(1)] = item;
-            }
-            return joined;
-        }, {});
+        var config = hooks
+            .map(transformConfig)
+            .map(createTemplate.bind(null, cp))
+            .reduce(createConfigItem, {});
 
-        cb(null, pagesConfig);
-
-        return configTmpl.replace("%when%", items)
-            .replace("%pages%", JSON.stringify(pagesConfig, null, 4));
+        return {
+            /**
+             * pagesConfig - This is the angular configuration such as routes
+             */
+            pagesConfig: configTmpl
+                .replace("%when%", hooks.reduce(
+                    createAngularRoutes,
+                    ""
+                ))
+                .replace("%pages%", JSON.stringify(
+                    config,
+                    null,
+                    4
+                )),
+            /**
+             * pagesConfig in object form
+             */
+            pagesObj: config,
+            pageMarkup: cp.pluginManager.hook("markup")
+        };
     },
-    "markup": function (hooks) {
-        var out = hooks.reduce(function (combined, item) {
-            return [combined, tmpl.replace("%markup%", item)].join("\n");
-        }, "");
-        return out;
+    /**
+     * Controller markup for each plugin
+     * @param hooks
+     * @returns {*}
+     */
+    "markup": function (hooks, config, plugins) {
+
+        return hooks
+            .reduce(function (combined, item) {
+                return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
+            }, "");
     },
     "client:js": function (hooks) {
         return hooks.join(";");
     },
     "templates": function (hooks) {
-
-        var inlineTemplates = createInlineTemplates(hooks);
-        return inlineTemplates;
+        return createInlineTemplates(hooks);
     }
 };
 
@@ -77,4 +89,52 @@ function createInlineTemplates (hooks) {
     }, "");
 
     return out;
+}
+
+function getIcon () {
+
+}
+
+/**
+ * @param item
+ * @returns {*}
+ */
+function transformConfig (item) {
+    item.icon = "#svg-" + item.icon;
+    return item;
+}
+
+/**
+ * @param {String} all
+ * @param {Object} item
+ * @returns {*}
+ */
+function createAngularRoutes(all, item) {
+    return all + configItem.replace(/%(.+)%/g, function () {
+        var key = arguments[1];
+        if (item[key]) {
+            return item[key];
+        }
+    });
+}
+
+/**
+ * @param joined
+ * @param item
+ * @returns {*}
+ */
+function createConfigItem (joined, item) {
+    if (item.path === "/") {
+        joined["server-info"] = item;
+    } else {
+        joined[item.path.slice(1)] = item;
+    }
+    return joined;
+}
+
+function pluginTemplate () {
+    return hooks
+        .reduce(function (combined, item) {
+            return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
+        }, "");
 }

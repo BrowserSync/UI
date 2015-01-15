@@ -2,7 +2,9 @@
 <script type="text/ng-template" id="sync-options.html">
     <article class="bs-main-section">
         <div bs-callout="controls outline">
-            <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-repeat"></use></svg> Sync Options</h1>
+            <h1 bs-heading>
+                <icon name="{{section.icon}}"></icon>
+                Sync Options</h1>
             <div bs-button-row>
                 <button bs-button="inline success" ng-click="setMany(true)">
                     <svg bs-svg-icon=""><use xlink:href="#svg-circle-ok"></use></svg>

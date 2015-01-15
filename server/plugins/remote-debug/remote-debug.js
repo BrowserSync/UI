@@ -6,6 +6,8 @@ var Immutable      = require("immutable");
 var pesticide      = fs.readFileSync(__dirname + "/css/pesticide.min.css", "utf-8");
 //var pesticideDepth = fs.readFileSync(__dirname + "/css/pesticide-depth.css", "utf-8");
 
+const PLUGIN_NAME = "Remote Debug";
+
 /**
  * @type {Immutable.Set}
  */
@@ -88,17 +90,17 @@ module.exports = {
         ],
         "page": {
             path: "/remote-debug",
-            title: "Remote Debug",
+            title: PLUGIN_NAME,
             template: "remote-debug.html",
-            controller: "RemoteDebugController",
+            controller: PLUGIN_NAME.replace(" ", "") + "Controller",
             order: 4,
-            icon: "#svg-bug"
+            icon: "bug"
         }
     },
     /**
      * Plugin name
      */
-    "plugin:name": "Remote Debugger"
+    "plugin:name": PLUGIN_NAME
 };
 
 /**

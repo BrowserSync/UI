@@ -4,6 +4,8 @@ var path      = require("path");
 var fs        = require("fs");
 var Immutable = require("immutable");
 
+const PLUGIN_NAME = "History";
+
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
@@ -65,9 +67,9 @@ module.exports = {
         ],
         "page": {
             path: "/history",
-            title: "History",
+            title: PLUGIN_NAME,
             template: "history.html",
-            controller: "HistoryController",
+            controller: PLUGIN_NAME + "Controller",
             order: 3,
             icon: "book"
         }
@@ -75,7 +77,7 @@ module.exports = {
     /**
      * Plugin name
      */
-    "plugin:name": "History"
+    "plugin:name": PLUGIN_NAME
 };
 
 /**
@@ -126,9 +128,8 @@ function reloadAll(cp, bs, clients) {
  * if server/proxy, add JUST the path
  * @param immSet
  * @param urlObj
- * @param cp
- * @param bs
- * @returns {*}
+ * @param mode
+ * @returns {Set}
  */
 function addPath(immSet, urlObj, mode) {
     return immSet.add(

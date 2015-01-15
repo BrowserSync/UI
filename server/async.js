@@ -29,14 +29,14 @@ module.exports = {
      * @param done
      */
     initDefaultHooks: function (cp, done) {
+        var pages = cp.pluginManager.hook("page", cp);
         done(null, {
             instance: {
-                pageMarkup:  cp.pluginManager.hook("markup"),
                 clientJs:    cp.pluginManager.hook("client:js"),
                 templates:   cp.pluginManager.hook("templates"),
-                pagesConfig: cp.pluginManager.hook("page", function (err, pages) {
-                    cp.pages = pages;
-                })
+                pagesConfig: pages.pagesConfig,
+                pages:       pages.pagesObj,
+                pageMarkup:  pages.pageMarkup
             }
         });
     },

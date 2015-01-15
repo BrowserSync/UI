@@ -3,8 +3,12 @@
  */
 (function (angular) {
 
+    const SECTION_NAME = "server-info";
+
     angular.module("BrowserSync")
-        .controller("ServerController",
+
+        .controller("ServerInfoController",
+
             ["$scope", "options", "contentSections", serverInfoController])
 
         .directive("urlInfo", function () {
@@ -37,6 +41,7 @@
      * @param contentSections
      */
     function serverInfoController ($scope, options, contentSections) {
+        $scope.section = contentSections[SECTION_NAME];
         $scope.options = options;
         $scope.ui = {
             snippet: !options.server && !options.proxy

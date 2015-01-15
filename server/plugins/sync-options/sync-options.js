@@ -1,6 +1,8 @@
 var path = require("path");
 var fs   = require("fs");
 
+const PLUGIN_NAME = "Sync Options";
+
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
@@ -20,14 +22,14 @@ module.exports = {
         ],
         "page": {
             path: "/sync-options",
-            title: "Sync Options",
+            title: PLUGIN_NAME,
             template: "sync-options.html",
-            controller: "SyncOptionsController",
+            controller: PLUGIN_NAME.replace(" ", "") + "Controller",
             order: 2,
-            icon: "#svg-repeat"
+            icon: "repeat"
         }
     },
-    "plugin:name": "Sync Options"
+    "plugin:name": PLUGIN_NAME
 };
 
 /**

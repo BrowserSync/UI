@@ -1,6 +1,8 @@
 var path   = require("path");
 var fs     = require("fs");
 
+const PLUGIN_NAME = "Plugins";
+
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
  */
@@ -29,17 +31,17 @@ module.exports = {
         ],
         "page": {
             path: "/plugins",
-            title: "Plugins",
+            title: PLUGIN_NAME,
             template: "plugins.html",
-            controller: "PluginsController",
+            controller: PLUGIN_NAME + "Controller",
             order: 4,
-            icon: "#svg-plug"
+            icon: "plug"
         }
     },
     /**
      * Plugin name
      */
-    "plugin:name": "Plugins"
+    "plugin:name": PLUGIN_NAME
 };
 
 /**

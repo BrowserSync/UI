@@ -1,7 +1,7 @@
 var path = require("path");
 var fs   = require("fs");
 
-var NAME = "Server Info";
+const PLUGIN_NAME = "Server Info";
 
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
@@ -25,17 +25,17 @@ module.exports = {
         ],
         "page": {
             path: "/",
-            title: "Server Info",
+            title: PLUGIN_NAME,
             template: "server-info.html",
-            controller: "ServerController",
+            controller: PLUGIN_NAME.replace(" ", "") + "Controller",
             order: 1,
-            icon: "#svg-cog"
+            icon: "cog"
         }
     },
     /**
      * Plugin name
      */
-    "plugin:name": "Server Information"
+    "plugin:name": PLUGIN_NAME
 };
 
 function getPath (filepath) {
