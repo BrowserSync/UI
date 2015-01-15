@@ -39,7 +39,7 @@
                 <ul bs-list="">
                     <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
                         <button bs-button="nav" ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
-                            <icon name="{{item.icon}}"></icon>
+                            <icon icon="{{item.icon}}"></icon>
                             {{item.title | ucfirst}}
                         </button>
                     </li>

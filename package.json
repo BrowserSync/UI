@@ -36,10 +36,13 @@
     "connect": "^3.1.1",
     "connect-history-api-fallback": "0.0.5",
     "easy-extender": "^2.2.0",
+    "html-select": "^2.3.23",
+    "html-tokenize": "^1.2.5",
     "immutable": "^3.3.0",
     "portscanner": "^1.0.0",
     "serve-static": "^1.5.3",
     "through": "2.3.4",
+    "trumpet": "^1.7.0",
     "weinre": "^2.0.0-pre-I0Z7U9OV"
   },
   "devDependencies": {

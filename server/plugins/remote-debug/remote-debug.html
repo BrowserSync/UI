@@ -1,29 +1,30 @@
 <!-- Controller for history-list -->
-<script type="text/ng-template" id="remote-debug.html">
-    <div bs-callout="controls outline">
-        <h1 bs-heading>
-            <icon name="{{section.icon}}"></icon>
-            {{section.title}}</h1>
-    </div>
+<div bs-callout="controls outline">
+    <h1 bs-heading>
+        <icon icon="{{section.icon}}"></icon>
+        {{section.title}}
+    </h1>
+</div>
 
-    <div bs-callout="switch" ng-repeat="item in items track by $index">
-        <div bs-callout-content="">
-            <div bs-callout-icon="switch">
-                <div class="switch">
-                    <input id="cmn-form-{{item.name}}"
-                           ng-model="item.item.active"
-                           ng-change="toggleDebugger(item.item)"
-                           class="cmn-toggle cmn-toggle-round"
-                           type="checkbox"
-                           checked="">
-                    <label for="cmn-form-{{item.name}}"></label>
-                </div>
-            </div>
-            <div>
-                <p bs-Text="lede">{{item.title}}</p>
-                <p ng-if="item.tagline.length" ng-bind-html="item.tagline"></p>
-                <p ng-if="item.item.active && item.hidden.length" ng-bind-html="item.hidden"></p>
+<div bs-callout="switch" ng-repeat="item in items track by $index">
+    <div bs-callout-content="">
+        <div bs-callout-icon="switch">
+            <div class="switch">
+                <input id="cmn-form-{{item.name}}"
+                       ng-model="item.item.active"
+                       ng-change="toggleDebugger(item.item)"
+                       class="cmn-toggle cmn-toggle-round"
+                       type="checkbox"
+                       checked="">
+                <label for="cmn-form-{{item.name}}"></label>
             </div>
         </div>
+        <div>
+            <p bs-Text="lede">{{item.title}}</p>
+
+            <p ng-if="item.tagline.length" ng-bind-html="item.tagline"></p>
+
+            <p ng-if="item.item.active && item.hidden.length" ng-bind-html="item.hidden"></p>
+        </div>
     </div>
-</script>
+</div>

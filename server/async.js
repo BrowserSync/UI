@@ -29,15 +29,17 @@ module.exports = {
      * @param done
      */
     initDefaultHooks: function (cp, done) {
-        var pages = cp.pluginManager.hook("page", cp);
-        done(null, {
-            instance: {
-                clientJs:    cp.pluginManager.hook("client:js"),
-                templates:   cp.pluginManager.hook("templates"),
-                pagesConfig: pages.pagesConfig,
-                pages:       pages.pagesObj,
-                pageMarkup:  pages.pageMarkup
-            }
+        var pages = cp.pluginManager.hook("page", cp, function (err, out) {
+
+            done(null, {
+                instance: {
+                    clientJs:    cp.pluginManager.hook("client:js"),
+                    templates:   cp.pluginManager.hook("templates"),
+                    pagesConfig: out.pagesConfig,
+                    pages:       out.pagesObj,
+                    pageMarkup:  out.pageMarkup
+                }
+            });
         });
     },
     /**

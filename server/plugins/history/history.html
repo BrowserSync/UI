@@ -1,23 +1,20 @@
-<!-- Controller for history-list -->
-<script type="text/ng-template" id="history.html">
-    <div bs-callout="controls outline">
-        <h1 bs-heading><icon name="{{section.icon}}"></icon> {{section.title}}</h1>
-        <div bs-button-row>
-            <button bs-button="inline" ng-click="clearVisited()" ng-show="ui.visited.length">
-                <svg bs-svg-icon=""><use xlink:href="#svg-circle-delete"></use></svg>
-                Clear all
-            </button>
-        </div>
+<div bs-callout="controls outline">
+    <h1 bs-heading><icon icon="{{section.icon}}"></icon> {{section.title}}</h1>
+    <div bs-button-row>
+        <button bs-button="inline" ng-click="clearVisited()" ng-show="ui.visited.length">
+            <svg bs-svg-icon><use xlink:href="#svg-circle-delete"></use></svg>
+            Clear all
+        </button>
     </div>
-    <div bs-callout ng-if="!ui.visited.length">
-        <div bs-callout-content="basic">
-            <p>Pages you navigate to will appear here - making it easy
-                to sync all devices to a specific page</p>
-        </div>
+</div>
+<div bs-callout ng-if="!ui.visited.length">
+    <div bs-callout-content="basic">
+        <p>Pages you navigate to will appear here - making it easy
+            to sync all devices to a specific page</p>
     </div>
-    <div bs-skinny ng-if="ui.visited.length">
-        <history-list ng-if="ui.visited.length"
-                      options="options"
-                      visited="ui.visited"></history-list>
-    </div>
-</script>
+</div>
+<div bs-skinny ng-if="ui.visited.length">
+    <history-list ng-if="ui.visited.length"
+                  options="options"
+                  visited="ui.visited"></history-list>
+</div>

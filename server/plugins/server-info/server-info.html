@@ -1,9 +1,10 @@
-<script type="text/ng-template" id="server-info.html">
-    <article>
-        <div bs-callout="controls outline">
-            <h1 bs-heading><icon name="{{section.icon}}"></icon> {{options.mode | ucfirst}} Info</h1>
-        </div>
-        <url-info ng-if="options.server || options.proxy" options="options"></url-info>
-        <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
-    </article>
-</script>
+<article>
+    <div bs-callout="controls outline">
+        <h1 bs-heading>
+            <icon icon="{{section.icon}}"></icon>
+            {{options.mode | ucfirst}} Info
+        </h1>
+    </div>
+    <url-info ng-if="options.server || options.proxy" options="options"></url-info>
+    <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
+</article>
