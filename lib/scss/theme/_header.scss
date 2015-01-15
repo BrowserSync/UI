@@ -74,6 +74,14 @@ $inner-height: $header-height - $border-height;
     border-left: 1px solid $sidebar;
     border-bottom: 1px solid $sidebar;
 
+    svg {
+        position: relative;
+        top: 6px;
+        height: 30px;
+        width: 30px;
+        pointer-events: none;
+    }
+
     &:hover {
         background: $sidebar;
     }

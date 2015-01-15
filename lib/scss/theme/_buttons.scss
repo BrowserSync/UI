@@ -59,28 +59,22 @@
     position: relative;
     background: transparent;
 
-    [bs-svg-icon] {
-        transition: all .3s;
-    }
-
     &.active {
         background: $sidebar-lt;
         box-shadow: -2px 3px 2px darken($sidebar, 3%);
         z-index: 5;
         color: $white;
+
         [bs-svg-icon] {
             color: $green-lt;
         }
     }
 
-    &:hover {
-        [bs-svg-icon] {
-            color: $white;
-        }
-    }
-
     [bs-svg-icon] {
-        @include button-icon;
+        position:     absolute;
+        left:         $half-spacing + 2px;
+        margin-right: $half-spacing;
+        top:          12px;
     }
 }
 

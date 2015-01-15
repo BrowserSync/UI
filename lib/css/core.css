@@ -882,9 +882,6 @@ span.sep {
   border: 0;
   position: relative;
   background: transparent; }
-  [bs-button~="nav"] [bs-svg-icon] {
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s; }
   [bs-button~="nav"].active {
     background: #2F323E;
     box-shadow: -2px 3px 2px #20232a;
@@ -892,13 +889,8 @@ span.sep {
     color: #fff; }
     [bs-button~="nav"].active [bs-svg-icon] {
       color: #21A695; }
-  [bs-button~="nav"]:hover [bs-svg-icon] {
-    color: #fff; }
   [bs-button~="nav"] [bs-svg-icon] {
     position: absolute;
-    -webkit-transition: all 0.3s;
-            transition: all 0.3s;
-    color: #4A4A4A;
     left: 16px;
     margin-right: 14px;
     top: 12px; }
@@ -1274,6 +1266,12 @@ span.sep {
   @media only screen and (min-width: 600px) {
     [bs-toggle] {
       display: none; } }
+  [bs-toggle] svg {
+    position: relative;
+    top: 6px;
+    height: 30px;
+    width: 30px;
+    pointer-events: none; }
   [bs-toggle]:hover {
     background: #272A33; }
   [bs-toggle].active {

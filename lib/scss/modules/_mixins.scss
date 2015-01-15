@@ -41,16 +41,6 @@
     font-size: ($font-size / $base-font-size)*1rem;
 }
 
-@mixin button-icon {
-
-    position:     absolute;
-    transition:   all .3s;
-    color:        $grey-icon;
-    left:         $half-spacing + 2px;
-    margin-right: $half-spacing;
-    top:          12px;
-}
-
 @mixin only-palm {
     @include media-query(min, $lap-start) {
         display: none;
