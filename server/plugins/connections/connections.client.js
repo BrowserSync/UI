@@ -27,7 +27,8 @@
             $rootScope.$emit("connections:update", data);
             $scope.ui.connections = data;
             $scope.$digest();
-        }
+        };
+
 
         Socket.on("cp:connections:update", $scope.update);
         $scope.$on('$destroy', function () {
@@ -43,7 +44,7 @@
                 connections: "="
             },
             templateUrl: "connections.directive.html",
-            controller:  ["$scope", "Location", connectionListDirective]
+            controller:  ["$scope", "Socket", "Location", connectionListDirective]
         }
     });
 
@@ -52,18 +53,11 @@
      * @param $scope - directive scope
      * @param Location
      */
-    function connectionListDirective($scope, Location) {
+    function connectionListDirective($scope, Socket, Location) {
 
-        //$scope.removeVisited = function (data) {
-        //    Location.remove(data);
-        //};
-        //
-        ///**
-        // * Emit the socket event
-        // */
-        //$scope.sendAllTo = function (path) {
-        //    Location.sendAllTo(path);
-        //};
+        $scope.highlight = function (connection) {
+            Socket.emit("cp:highlight", connection);
+        };
     }
 
 })(angular);

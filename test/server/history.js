@@ -25,4 +25,9 @@ describe("Saving history", function () {
         var out = history.removePath(imm, "http://localhost/");
         assert.deepEqual(out.toJS(), ["/shane"]);
     });
+    it.only("Can compare two maps", function () {
+        var map1 = Immutable.Map({a:1, b:1, c:"1", d: Immutable.Map({hello:"shane"})});
+        var map2 = Immutable.Map({a:1, b:1, c:"1", d: Immutable.Map({hello:"shane"})});
+        console.log(Immutable.is(map1, map2));
+    });
 });

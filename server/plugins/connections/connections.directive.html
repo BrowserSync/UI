@@ -1,5 +1,10 @@
 <ul bs-list="bordered inline-controls" ng-if="connections">
     <li ng-repeat="connection in connections track by connection.id">
-        <p>{{connection.id}}</p>
+        <p>{{connection.browser.name}} - ({{connection.browser.version}})</p>
+        <span bs-multi-controls="right">
+            <a href="#" ng-click="highlight(connection)" bs-button>
+                <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> Highlight
+            </a>
+        </span>
     </li>
 </ul>

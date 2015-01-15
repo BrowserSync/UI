@@ -11,9 +11,13 @@ const PLUGIN_NAME = "Connections";
 var connectedClients = Immutable.Map();
 
 function decorateClients(connectedClients) {
-    return connectedClients.map(function (client) {
-        return client;
-    });
+    return connectedClients;
+    //return connectedClients.map(function (client) {
+    //    return {
+    //        browser: uaParser.setUA(client.handshake.headers["user-agent"]).getBrowser(),
+    //        id: client.id
+    //    }
+    //});
 }
 
 /**
@@ -21,6 +25,7 @@ function decorateClients(connectedClients) {
  * @param connectedClients
  */
 function sendUpdated(socket, connectedClients) {
+    console.log(decorateClients(connectedClients));
     socket.emit("cp:connections:update", decorateClients(connectedClients));
 }
 
@@ -42,47 +47,53 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
-        var registry = [];
         var socket   = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients  = bs.io.of(bs.options.getIn(["socket", "namespace"]));
 
         clients.on("connection", function (client) {
-
             client.on("client:heartbeat", function (data) {
-                if (!registry.some(function (item) {
-                    return item.id === client.id;
-                })) {
-                    registry.push({
-                        id: client.id,
-                        time: new Date().getTime(),
-                        data: data
-                    });
-                } else {
-                    registry = registry.map(function (item) {
-                        if (item.id === client.id) {
-                            item.time = new Date().getTime();
-                        }
-                        return item;
-                    });
-                }
+                // todo add window size stuff
             });
         });
 
-        setInterval(function () {
-            var current = new Date().getTime();
-            registry = registry.filter(function (item) {
-                return current - item.time < 1000;
+        socket.on("connection", function (client) {
+            client.on("cp:highlight", function (data) {
+                clients.sockets.some(function (item, i) {
+                    if (item.id === data.id) {
+                        clients.sockets[i].emit("highlight");
+                        return true;
+                    }
+                });
             });
-            sendUpdated(socket, registry);
+        });
+
+        var registry;
+        var temp;
+
+        setInterval(function () {
+
+            if (clients.sockets.length) {
+                temp = Immutable.List(clients.sockets.map(function (client) {
+                    return Immutable.fromJS({
+                        id: client.id,
+                        browser: uaParser.setUA(client.handshake.headers["user-agent"]).getBrowser()
+                    });
+                }));
+                if (!registry) {
+                    registry = temp;
+                    sendUpdated(socket, registry.toJS());
+                } else {
+                    if (Immutable.is(registry, temp)) {
+                        console.log("SAME, BRO, do nothing");
+                    } else {
+                        registry = temp;
+                        console.log("Different, sending updates");
+                        sendUpdated(socket, registry.toJS());
+                    }
+                }
+            }
+
         }, 1000);
-
-
-
-        // Imitate a reaction to a heartbeat every 800ms - adding it to the registry
-        //setInterval(function() {
-        //    monitor.addItem({id: 123});
-        //}, 800);
-
     },
     /**
      * Hooks
