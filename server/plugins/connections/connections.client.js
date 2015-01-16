@@ -29,7 +29,12 @@
             $scope.$digest();
         };
 
+        // Always try to retreive the sockets first time.
+        Socket.getData("clients").then(function (data) {
+            $scope.ui.connections = data;
+        });
 
+        // Listen to events to update the list on the fly
         Socket.on("cp:connections:update", $scope.update);
         $scope.$on('$destroy', function () {
             Socket.off("cp:connections:update", $scope.update);

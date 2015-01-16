@@ -58,10 +58,15 @@ module.exports = {
 
         socket.on("connection", function (client) {
             client.on("cp:highlight", highlightClient.bind(null, clients));
+            client.on("cp:get:clients", function () {
+                client.emit("cp:receive:clients", registry || []);
+            })
         });
 
         var registry;
         var temp;
+        var count = 0;
+        var initialSent;
 
         setInterval(function () {
 
@@ -77,14 +82,19 @@ module.exports = {
                     sendUpdated(socket, registry.toJS());
                 } else {
                     if (Immutable.is(registry, temp)) {
-                        console.log("SAME, BRO, do nothing");
+                        if (!initialSent) {
+                            sendUpdated(socket, registry.toJS());
+                            initialSent = true;
+                        }
+                        //console.log("SAME, BRO, do nothing");
                     } else {
                         registry = temp;
                         sendUpdated(socket, registry.toJS());
-                        console.log("Different, sending updates");
+                        //console.log("Different, sending updates");
                     }
                 }
             }
+            count += 1;
 
         }, 1000);
 
