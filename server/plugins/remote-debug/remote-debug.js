@@ -224,8 +224,8 @@ function toggleDebugger (socket, clients, cp, bs, value) {
         // Let the UI know
         socket.emit("cp:weinre:disabled");
 
-        // Let the clients know.
-        clients.emit("cp:element:remove", {id: WEINRE_ELEM_ID});
+        // Reload all browsers to remove weinre elements/JS
+        clients.emit("browser:reload");
     }
 }
 
