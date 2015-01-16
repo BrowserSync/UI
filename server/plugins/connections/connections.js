@@ -57,14 +57,7 @@ module.exports = {
         });
 
         socket.on("connection", function (client) {
-            client.on("cp:highlight", function (data) {
-                clients.sockets.some(function (item, i) {
-                    if (item.id === data.id) {
-                        clients.sockets[i].emit("highlight");
-                        return true;
-                    }
-                });
-            });
+            client.on("cp:highlight", highlightClient.bind(null, clients));
         });
 
         var registry;
@@ -87,13 +80,14 @@ module.exports = {
                         console.log("SAME, BRO, do nothing");
                     } else {
                         registry = temp;
-                        console.log("Different, sending updates");
                         sendUpdated(socket, registry.toJS());
+                        console.log("Different, sending updates");
                     }
                 }
             }
 
         }, 1000);
+
     },
     /**
      * Hooks
@@ -118,6 +112,32 @@ module.exports = {
      */
     "plugin:name": PLUGIN_NAME
 };
+
+/**
+ * @param clients
+ * @param data
+ */
+function highlightClient (clients, data) {
+    var socket;
+    if (socket = getClientById(clients, data.id)) {
+        socket.emit("highlight");
+    }
+}
+
+/**
+ * @param clients
+ * @param id
+ */
+function getClientById (clients, id) {
+    var match;
+    clients.sockets.some(function (item, i) {
+        if (item.id === id) {
+            match = clients.sockets[i];
+            return true;
+        }
+    });
+    return match;
+}
 
 /**
  * @param immSet
