@@ -1,23 +1,23 @@
 {
-  "name": "browser-sync-control-panel",
+  "name": "browser-sync-ui",
   "description": "Control Panel for BrowserSync",
   "version": "0.0.5",
-  "homepage": "https://github.com/shakyshane/browser-sync-control-panel",
+  "homepage": "https://github.com/shakyshane/browser-sync-ui",
   "author": {
     "name": "Shane Osbourne",
     "email": "shane.osbourne8@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/shakyshane/browser-sync-control-panel.git"
+    "url": "git://github.com/shakyshane/browser-sync-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/shakyshane/browser-sync-control-panel/issues"
+    "url": "https://github.com/shakyshane/browser-sync-ui/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/shakyshane/browser-sync-control-panel/blob/master/LICENSE-MIT"
+      "url": "https://github.com/shakyshane/browser-sync-ui/blob/master/LICENSE-MIT"
     }
   ],
   "main": "index.js",
@@ -36,15 +36,16 @@
     "connect": "^3.1.1",
     "connect-history-api-fallback": "0.0.5",
     "easy-extender": "^2.2.0",
-    "heartbeat-monitor": "git://github.com/shakyshane/heartbeat-monitor",
     "html-select": "^2.3.23",
     "html-tokenize": "^1.2.5",
     "immutable": "^3.3.0",
     "portscanner": "^1.0.0",
     "serve-static": "^1.5.3",
     "through": "2.3.4",
+    "through2": "^0.6.3",
     "trumpet": "^1.7.0",
     "ua-parser-js": "^0.7.3",
+    "vinyl": "^0.4.6",
     "weinre": "^2.0.0-pre-I0Z7U9OV"
   },
   "devDependencies": {

@@ -1,9 +1,7 @@
 var fs         = require("fs");
 var path       = require("path");
 var async      = require("async");
-var vinyl      = require("vinyl");
 var through2   = require("through2");
-var tokenize   = require('html-tokenize');
 var directives = require("./directive-stripper");
 
 var pluginTmpl = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
@@ -149,11 +147,8 @@ function preAngular (plugins, config, cb) {
 
         var stream = new Duplex();
 
-        stream._read = function (out) {};
-
-        stream._write = function (out) {
-            this.push(out);
-        };
+        stream._read  = function () {};
+        stream._write = function (out) { this.push(out); };
 
         stream
             .pipe(through2.obj(function (out, enc, next) {

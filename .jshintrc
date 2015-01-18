@@ -26,7 +26,6 @@
     "by": false,
     "element": false,
     "protractor": false,
-    "assert": false,
     "inject": false,
     "angular": false
   }

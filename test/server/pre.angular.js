@@ -1,4 +1,5 @@
-var assert = require("chai").assert;
+/*jshint -W079 */
+var assert  = require("chai").assert;
 var directive = require("../../server/directive-stripper");
 
 describe("Stripping simple Angular templating/directives where binding not needed", function(){

@@ -1,7 +1,7 @@
-var tokenize   = require('html-tokenize');
-var through2   = require('through2');
+var tokenize   = require("html-tokenize");
+var through2   = require("through2");
 var vinyl      = require("vinyl");
-var select     = require('html-select');
+var select     = require("html-select");
 
 /**
  * @param config
@@ -61,8 +61,9 @@ function getReplacer (name, markup) {
  */
 function directive (name, content, item) {
 
+    var angularDir;
     try {
-        var angularDir = require("../lib/js/scripts/directives/" + name)();
+        angularDir = require("../lib/js/scripts/directives/" + name)();
     } catch (e) {
         console.log("Directive not found, cannot re-use");
         return content;

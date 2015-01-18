@@ -29,7 +29,8 @@ module.exports = {
      * @param done
      */
     initDefaultHooks: function (cp, done) {
-        var pages = cp.pluginManager.hook("page", cp, function (err, out) {
+
+        cp.pluginManager.hook("page", cp, function (err, out) {
 
             done(null, {
                 instance: {
