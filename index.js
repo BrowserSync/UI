@@ -47,11 +47,12 @@ var ControlPanel = function (opts, bs, emitter) {
  */
 ControlPanel.prototype.getServer = function (cb) {
     var cp = this;
-    if (!cp.server) {
-        this.events.on("cp:running", function () {
-            cb(null, cp.server);
-        });
+    if (cp.server) {
+        return cp.server;
     }
+    this.events.on("cp:running", function () {
+        cb(null, cp.server);
+    });
 };
 
 /**

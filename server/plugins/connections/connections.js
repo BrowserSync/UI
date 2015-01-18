@@ -25,7 +25,7 @@ function decorateClients(connectedClients) {
  * @param connectedClients
  */
 function sendUpdated(socket, connectedClients) {
-    console.log(decorateClients(connectedClients));
+    //console.log(decorateClients(connectedClients));
     socket.emit("cp:connections:update", decorateClients(connectedClients));
 }
 
