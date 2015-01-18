@@ -4,61 +4,48 @@
 (function (angular) {
 
     const SECTION_NAME = "server-info";
+    var module         = angular.module("BrowserSync");
 
-    angular.module("BrowserSync")
-
-        .controller("ServerInfoController",
-
-            ["$scope", "options", "contentSections", serverInfoController])
-
-        .directive("urlInfo", function () {
-            return {
-                restrict: "E",
-                replace: true,
-                scope: {
-                    "options": "="
-                },
-                templateUrl: "url-info.html",
-                controller: ["$scope", "$rootScope", "contentSections", "Location", urlInfoController]
+    module.controller("ServerInfoController", [
+        "$scope",
+        "options",
+        "contentSections",
+        function serverInfoController ($scope, options, contentSections) {
+            $scope.section = contentSections[SECTION_NAME];
+            $scope.options = options;
+            $scope.ui = {
+                snippet: !options.server && !options.proxy
             };
-        })
-
-        .directive("snippetInfo", function () {
-            return {
-                restrict: "E",
-                replace: true,
-                scope: {
-                    "options": "="
-                },
-                templateUrl: "snippet-info.html",
-                controller: ["$scope", snippetInfoController]
-            };
-        });
+        }
+    ]);
 
     /**
-     * @param $scope
-     * @param {BrowserSync.options} options
-     * @param contentSections
+     * Url Info - this handles rendering of each server
+     * info item
      */
-    function serverInfoController ($scope, options, contentSections) {
-        $scope.section = contentSections[SECTION_NAME];
-        $scope.options = options;
-        $scope.ui = {
-            snippet: !options.server && !options.proxy
+    module.directive("urlInfo", function () {
+        return {
+            restrict: "E",
+            replace: true,
+            scope: {
+                "options": "="
+            },
+            templateUrl: "url-info.html",
+            controller: [
+                "$scope",
+                "$rootScope",
+                "Clients",
+                urlInfoController
+            ]
         };
-    }
+    });
 
     /**
      * @param $scope
+     * @param $rootScope
+     * @param Clients
      */
-    function snippetInfoController($scope) {/*noop*/}
-
-    /**
-     * @param $scope
-     * @param Location
-     * @param contentSections
-     */
-    function urlInfoController($scope, $rootScope, contentSections, Location) {
+    function urlInfoController($scope, $rootScope, Clients) {
 
         var options = $scope.options;
         var urls = options.urls;
@@ -106,20 +93,28 @@
         /**
          *
          */
-        $scope.refreshAll = function () {
-            Location.refreshAll();
-        };
-
-        /**
-         *
-         */
         $scope.sendAllTo = function (path) {
+            Clients.sendAllTo(path);
             $rootScope.$emit("notify:flash", {
                 heading: "Instruction sent:",
                 message: "Sync all Browsers to: " + path
             });
-            Location.sendAllTo(path);
         };
     }
+
+    /**
+     * Display the snippet when in snippet mode
+     */
+    module.directive("snippetInfo", function () {
+        return {
+            restrict: "E",
+            replace: true,
+            scope: {
+                "options": "="
+            },
+            templateUrl: "snippet-info.html",
+            controller: ["$scope", function snippetInfoController($scope) {/*noop*/}]
+        };
+    });
 
 })(angular);

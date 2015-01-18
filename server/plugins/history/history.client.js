@@ -1,79 +1,70 @@
-/**
- *
- */
 (function (angular) {
 
-    var SECTION_NAME = "history";
+    const SECTION_NAME = "history";
+    var module         = angular.module("BrowserSync");
 
-    angular.module("BrowserSync")
+    module.controller("HistoryController", [
+        "$scope",
+        "options",
+        "History",
+        "Socket",
+        "contentSections",
+        function historyController($scope, options, History, Socket, contentSections) {
 
-        .controller("HistoryController",
-            ["$scope", "options", "$injector", "contentSections", historyController])
+            $scope.options = options;
+            $scope.section = contentSections[SECTION_NAME];
+            $scope.ui = {
+                visited: []
+            };
 
-        .directive("historyList", function () {
-            return {
-                restrict: "E",
-                scope: {
-                    options: "=",
-                    visited: "="
-                },
-                templateUrl: "history.directive.html",
-                controller: ["$scope", "Location", historyDirective]
-            }
-        });
+            History.getHistory().then(function (items) {
+                $scope.ui.visited = items;
+            });
 
-    /**
-     * @param $scope
-     * @param contentSections
-     */
-    function historyController($scope, options, $injector, contentSections) {
+            $scope.updateVisited = function (data) {
+                $scope.ui.visited = data;
+                $scope.$digest();
+            };
 
-        $scope.options = options;
-        $scope.section = contentSections[SECTION_NAME];
-        $scope.ui = {
-            visited: []
-        };
+            $scope.clearVisited = function () {
+                History.clear();
+                $scope.ui.visited = [];
+            };
 
-        var Location = $injector.get("Location");
-        var Socket   = $injector.get("Socket");
+            Socket.on("cp:urls:update", $scope.updateVisited);
 
-        $scope.updateVisited = function (data) {
-            $scope.ui.visited = data;
-            $scope.$digest();
-        };
+            $scope.$on('$destroy', function () {
+                Socket.off("cp:urls:update", $scope.updateVisited);
+            });
+        }
+    ]);
 
-        Location.getHistory().then(function (items) {
-            $scope.ui.visited = items;
-        });
-
-        $scope.clearVisited = function () {
-            Location.clear();
-            $scope.ui.visited = [];
-        };
-
-        Socket.on("cp:urls:update", $scope.updateVisited);
-
-        $scope.$on('$destroy', function () {
-            Socket.off("cp:urls:update", $scope.updateVisited);
-        });
-    }
+    module.directive("historyList", function () {
+        return {
+            restrict: "E",
+            scope: {
+                options: "=",
+                visited: "="
+            },
+            templateUrl: "history.directive.html",
+            controller: ["$scope", "History", "Clients", historyDirective]
+        }
+    });
 
     /**
      * Controller for the URL sync
      * @param $scope - directive scope
-     * @param Location
+     * @param History
+     * @param Clients
      */
-    function historyDirective($scope, Location) {
+    function historyDirective($scope, History, Clients) {
 
         $scope.removeVisited = function (data) {
-            Location.remove(data);
+            History.remove(data);
         };
 
-        /**
-         * Emit the socket event
-         */
         $scope.sendAllTo = function (path) {
-            Location.sendAllTo(path);
+            Clients.sendAllTo(path);
         };
     }
 

@@ -8,45 +8,44 @@
     var CONFIGURE_EVENT       = "cp:plugins:set";
     var CONFIGURE_MANY_EVENT  = "cp:plugins:setMany";
 
-    module.controller("PluginsController", ["$scope", "options", "contentSections", "Socket", pluginsPageController]);
+    module.controller("PluginsController", [
+        "$scope",
+        "options",
+        "Socket",
+        "contentSections",
+        function pluginsPageController($scope, options, Socket, contentSections) {
 
-    /**
-     * Controller for the URL sync
-     * @param $scope
-     * @param contentSections
-     */
-    function pluginsPageController($scope, options, contentSections, Socket) {
+            $scope.options = options;
+            $scope.section = contentSections[SECTION_NAME];
 
-        $scope.options = options;
-        $scope.section = contentSections[SECTION_NAME];
-
-        /**
-         * Don't show this UI as user plugin
-         */
-        var filtered = $scope.options.userPlugins.filter(function (item) {
-            return item.name !== "UI";
-        });
-
-        /**
-         * @type {{loading: boolean}}
-         */
-        $scope.ui = {
-            loading: false,
-            plugins: filtered
-        };
-
-        /**
-         * Set the state of many options
-         * @param value
-         */
-        $scope.setMany = function (value) {
-            Socket.emit(CONFIGURE_MANY_EVENT, value);
-            $scope.ui.plugins = $scope.ui.plugins.map(function (item) {
-                item.active = value;
-                return item;
+            /**
+             * Don't show this UI as user plugin
+             */
+            var filtered = $scope.options.userPlugins.filter(function (item) {
+                return item.name !== "UI";
             });
-        };
-    }
+
+            /**
+             * @type {{loading: boolean}}
+             */
+            $scope.ui = {
+                loading: false,
+                plugins: filtered
+            };
+
+            /**
+             * Set the state of many options
+             * @param value
+             */
+            $scope.setMany = function (value) {
+                Socket.emit(CONFIGURE_MANY_EVENT, value);
+                $scope.ui.plugins = $scope.ui.plugins.map(function (item) {
+                    item.active = value;
+                    return item;
+                });
+            };
+        }
+    ]);
 
     module.directive("pluginList", function () {
         return {

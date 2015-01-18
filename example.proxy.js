@@ -1,5 +1,5 @@
-var cp     = require("./index");
-var bs     = require("browser-sync");
+var cp = require("./index");
+var bs = require("browser-sync");
 
 //var client = require("/Users/shaneobsourne/sites/browser-sync-client");
 //

@@ -39,8 +39,7 @@ module.exports = {
 
             sendUpdatedUrls(socket, validUrls);
 
-            cpClient.on("urls:browser:reload",   reloadAll.bind(null, cp, bs, clients));
-            cpClient.on("urls:browser:url",      sendToUrl.bind(null, cp, bs, clients));
+            cpClient.on("urls:browser:url", sendToUrl.bind(null, cp, bs, clients));
 
             cpClient.on("cp:get:visited", function (req) {
                 socket.emit("cp:receive:visited", decorateUrls(validUrls));

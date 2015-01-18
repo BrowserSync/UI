@@ -152,7 +152,7 @@ function preAngular (plugins, config, cb) {
 
         stream
             .pipe(through2.obj(function (out, enc, next) {
-                this.push(directives.bindOnce(out, config));
+                this.push(directives.bindOnce(out, config[key]));
                 next();
             }))
             .pipe(es.map(directives.directiveStripper.bind(null, config[key], "icon")))

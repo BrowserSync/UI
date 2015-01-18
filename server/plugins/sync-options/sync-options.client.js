@@ -1,97 +1,90 @@
-/**
- *
- */
 (function (angular) {
 
-    var SECTION_NAME = "sync-options";
+    const SECTION_NAME = "sync-options";
+    var module         = angular.module("BrowserSync");
 
-    angular.module("BrowserSync")
+    module.controller("SyncOptionsController", [
+        "$scope",
+        "Socket",
+        "options",
+        "contentSections",
+        function syncOptionsController($scope, Socket, options, contentSections) {
 
-        .controller("SyncOptionsController",
-            ["$scope", "Socket", "options", "contentSections", syncOptionsController])
+            $scope.options = options;
+            $scope.section = contentSections[SECTION_NAME];
 
-        .directive("syncOptions", function () {
-            return {
-                restrict: "E",
-                scope: {
-                    options: "=",
-                    "syncItems": "="
-                },
-                templateUrl: "sync-options-list.html",
-                controller: ["$scope", "Socket", "Location", "contentSections", syncOptionsDirective]
+            $scope.setMany = function (value) {
+                Socket.emit("cp:option:setMany", value);
+                $scope.syncItems = $scope.syncItems.map(function (item) {
+                    item.value = value;
+                    return item;
+                });
             };
-        });
+
+            $scope.syncItems = [];
+
+            var taglines = {
+                clicks:  "Mirror clicks across devices",
+                scroll:  "Mirror scroll position across devices",
+                "ghostMode.submit":  "Form Submissions will be synced",
+                "ghostMode.inputs":  "Text inputs (including text-areas) will be synced",
+                "ghostMode.toggles": "Radio + Checkboxes changes will be synced",
+                codeSync:            "Reload the browser or inject CSS when watched files change"
+            };
+
+            // If watching files, add the code-sync toggle
+            if (hasWatchers($scope.options.files)) {
+                $scope.syncItems.push(addItem("codeSync", ["codeSync"], $scope.options.codeSync, taglines["codeSync"]));
+            }
+
+            Object.keys($scope.options.ghostMode).forEach(function (item) {
+                if (item !== "forms" && item !== "location") {
+                    $scope.syncItems.push(addItem(item, ["ghostMode", item], $scope.options.ghostMode[item], taglines[item]));
+                }
+            });
+
+            Object.keys($scope.options.ghostMode.forms).forEach(function (item) {
+                $scope.syncItems.push(addItem("Forms: " + item, ["ghostMode", "forms", item], $scope.options.ghostMode["forms"][item], taglines["ghostMode." + item]));
+            });
+
+            function addItem (item, path, value, tagline) {
+                return {
+                    value: value,
+                    name: item,
+                    path: path,
+                    title: ucfirst(item),
+                    tagline: tagline
+                };
+            }
+
+            function hasWatchers (files) {
+                if (!files) {
+                    return false;
+                }
+                return Object.keys(files).some(function (key) {
+                    return files[key].length;
+                });
+            }
+        }
+    ]);
+
+    module.directive("syncOptions", function () {
+        return {
+            restrict: "E",
+            scope: {
+                options: "=",
+                "syncItems": "="
+            },
+            templateUrl: "sync-options-list.html",
+            controller: ["$scope", "Socket", "contentSections", syncOptionsDirective]
+        };
+    });
 
     /**
      * @param $scope
      * @param Socket
-     * @param contentSections
      */
-    function syncOptionsController($scope, Socket, options, contentSections) {
-
-        $scope.options = options;
-        $scope.section = contentSections[SECTION_NAME];
-
-        $scope.setMany = function (value) {
-            Socket.emit("cp:option:setMany", value);
-            $scope.syncItems = $scope.syncItems.map(function (item) {
-                item.value = value;
-                return item;
-            });
-        };
-
-        $scope.syncItems = [];
-
-        var taglines = {
-            clicks:  "Mirror clicks across devices",
-            scroll:  "Mirror scroll position across devices",
-            "ghostMode.submit":  "Form Submissions will be synced",
-            "ghostMode.inputs":  "Text inputs (including text-areas) will be synced",
-            "ghostMode.toggles": "Radio + Checkboxes changes will be synced",
-            codeSync:            "Reload the browser or inject CSS when watched files change"
-        };
-
-        // If watching files, add the code-sync toggle
-        if (hasWatchers($scope.options.files)) {
-            $scope.syncItems.push(addItem("codeSync", ["codeSync"], $scope.options.codeSync, taglines["codeSync"]));
-        }
-
-        Object.keys($scope.options.ghostMode).forEach(function (item) {
-            if (item !== "forms" && item !== "location") {
-                $scope.syncItems.push(addItem(item, ["ghostMode", item], $scope.options.ghostMode[item], taglines[item]));
-            }
-        });
-
-        Object.keys($scope.options.ghostMode.forms).forEach(function (item) {
-            $scope.syncItems.push(addItem("Forms: " + item, ["ghostMode", "forms", item], $scope.options.ghostMode["forms"][item], taglines["ghostMode." + item]));
-        });
-
-        function addItem (item, path, value, tagline) {
-            return {
-                value: value,
-                name: item,
-                path: path,
-                title: ucfirst(item),
-                tagline: tagline
-            };
-        }
-
-        function hasWatchers (files) {
-            if (!files) {
-                return false;
-            }
-            return Object.keys(files).some(function (key) {
-                return files[key].length;
-            });
-        }
-    }
-
-    /**
-     * @param $scope
-     * @param Socket
-     * @param contentSections
-     */
-    function syncOptionsDirective($scope, Socket, Location) {
+    function syncOptionsDirective($scope, Socket) {
 
         $scope.urls = {
             local: $scope.options.urls.local,
@@ -107,21 +100,6 @@
                 path:  item.path,
                 value: item.value
             });
-        };
-
-        /**
-         * Emit the reload-all event
-         */
-        $scope.reloadAll = function () {
-            Location.refreshAll();
-        };
-
-        /**
-         * Emit the socket event
-         */
-        $scope.sendAllTo = function (path) {
-            $scope.urls.current = $scope.options.urls.local + "/";
-            Location.sendAllTo(path);
         };
     }
 

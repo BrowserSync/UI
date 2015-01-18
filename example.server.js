@@ -50,7 +50,6 @@ var instance = bs({
     files: [
         "test/fixtures/css/**"
     ],
-    open: false
-    //tunnel: true
+    open: false,
     //online: false
 });

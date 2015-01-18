@@ -99,7 +99,6 @@ module.exports = {
             });
             // proxy client events
             client.on("cp:client:proxy", function (evt) {
-                console.log(evt);
                 clients.emit(evt.event, evt.data);
             });
         });
