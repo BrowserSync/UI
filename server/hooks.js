@@ -1,6 +1,9 @@
 var fs         = require("fs");
 var path       = require("path");
 var async      = require("async");
+var vinyl      = require("vinyl");
+var through2   = require("through2");
+var tokenize   = require('html-tokenize');
 var directives = require("./directive-stripper");
 
 var pluginTmpl = fs.readFileSync(__dirname + "/templates/plugin.tmpl", "utf-8");
@@ -8,24 +11,21 @@ var configTmpl = fs.readFileSync(__dirname + "/templates/config.tmpl", "utf-8");
 var configItem = fs.readFileSync(__dirname + "/templates/config.item.tmpl", "utf-8");
 var inlineTemp = fs.readFileSync(__dirname + "/templates/inline.template.tmpl", "utf-8");
 
-function createTemplate(cp, item) {
-    return item;
-}
 /**
- //*
+ *
  * @type {{markup: Function, client:js: Function, templates: Function}}
  */
 module.exports = {
     /**
      * Create the url config for each section of the ui
      * @param hooks
+     * @param cp
      * @param cb
      */
     "page": function (hooks, cp, cb) {
 
         var config = hooks
             .map(transformConfig)
-            .map(createTemplate.bind(null, cp))
             .reduce(createConfigItem, {});
 
         preAngular(cp.pluginManager.plugins, config, function (err, markup) {
@@ -58,47 +58,37 @@ module.exports = {
      * @param hooks
      * @returns {*}
      */
-    "markup": function (hooks, config, plugins) {
-
-        return hooks
-            .reduce(function (combined, item) {
-                return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
-            }, "");
+    "markup": function (hooks) {
+        return hooks.reduce(pluginTemplate, "");
     },
+    /**
+     * @param hooks
+     * @returns {*|string}
+     */
     "client:js": function (hooks) {
         return hooks.join(";");
     },
+    /**
+     * @param hooks
+     * @returns {String}
+     */
     "templates": function (hooks) {
         return createInlineTemplates(hooks);
     }
 };
 
 /**
- *
+ * @param hooks
+ * @returns {String}
  */
 function createInlineTemplates (hooks) {
-
-    var out = hooks.reduce(function (combined, item) {
-
-        var string = "";
-        item.forEach(function (filepath) {
-            var filecontents;
-            try {
-                filecontents = fs.readFileSync(filepath);
-                filepath     = path.basename(filepath);
-                string += inlineTemp.replace("%id%", filepath).replace("%content%", filecontents);
-            } catch (e) {
-                throw e;
-            }
-        });
-        return combined += string;
+    return hooks.reduce(function (combined, item) {
+        return combined + item.reduce(function (all, filepath) {
+            return all + angularWrap(
+                path.basename(filepath),
+                fs.readFileSync(filepath));
+        }, "");
     }, "");
-
-    return out;
-}
-
-function getIcon () {
-
 }
 
 /**
@@ -144,41 +134,57 @@ function pluginTemplate (combined, item) {
     return [combined, pluginTmpl.replace("%markup%", item)].join("\n");
 }
 
-
 /**
- *
+ * Strip some directive/templating where the only use
+ * is interpolation
  */
 function preAngular (plugins, config, cb) {
+
+    var Duplex = require("stream").Duplex;
+    var es     = require("event-stream");
 
     var out = "";
 
     async.eachSeries(Object.keys(plugins), function (key, done) {
 
-        var boundOnce = bindOnce(plugins[key].hooks.markup, config[key]);
+        var stream = new Duplex();
 
-        directives.directiveStripper("icon", boundOnce, config[key], function (err, out2) {
+        stream._read = function (out) {};
 
-            // Make a <script> template
-            out += inlineTemp
-                .replace("%content%", out2)
-                .replace("%id%", config[key].template);
+        stream._write = function (out) {
+            this.push(out);
+        };
 
-            done();
-        });
+        stream
+            .pipe(through2.obj(function (out, enc, next) {
+                this.push(directives.bindOnce(out, config));
+                next();
+            }))
+            .pipe(es.map(directives.directiveStripper.bind(null, config[key], "icon")))
+            .pipe(through2.obj(function (out, enc, next) {
+                this.push(angularWrap(config[key].template, out));
+                next();
+            }))
+            .pipe(through2.obj(function (out2) {
+                out += out2;
+                done();
+            }));
+
+        stream.write(plugins[key].hooks.markup);
+
     }, function (err) {
-        cb(null, out);
+        cb(err, out);
     });
 }
 
 /**
+ * @param templateName
  * @param markup
- * @param config
  * @returns {*}
  */
-function bindOnce (markup, config) {
-
-    return markup.toString().replace(/\{\{section\.(.+?)\}\}/g, function ($1, $2) {
-        return config[$2] || "";
-    });
+function angularWrap (templateName, markup) {
+    return inlineTemp
+        .replace("%content%", markup)
+        .replace("%id%", templateName);
 }
 

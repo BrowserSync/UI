@@ -36,9 +36,10 @@ describe("Can be started with browserSync instance", function() {
             .get("/")
             .expect(200)
             .end(function (err, res) {
-                assert.include(res.text, "Browser Sync - Control Panel");
+                assert.include(res.text, "<title>Browser Sync</title>");
                 done();
             });
+
     });
     it("can serve the Socket JS file", function (done) {
         request(controlPanel.server)
