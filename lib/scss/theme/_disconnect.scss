@@ -1,16 +1,15 @@
-%cover-all {
+@mixin cover-all {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     right: 0;
-    left: 0;
 }
 
-[bs-Overlay] {
+[bs-overlay] {
 
-    @extend %cover-all;
+    @include cover-all;
     background: rgba(black, .9);
     padding: $base-spacing*2 $half-spacing;
     color: $white;
@@ -24,5 +23,10 @@
 
     * {
         color: $white;
+    }
+
+    [bs-svg-icon] {
+        width: 100px;
+        height: 100px;
     }
 }
