@@ -1,7 +1,5 @@
-var connect     = require("connect");
 var http        = require("http");
 var fs          = require("fs");
-var serveStatic = require("serve-static");
 var config      = require("./config");
 var svg         = fs.readFileSync(libDir("/img/icons/svg/symbols.svg"), "utf-8");
 var indexPage   = fs.readFileSync(libDir(config.defaults.indexPage), "utf-8");
@@ -26,6 +24,9 @@ function packageDir (path) {
  * @returns {*}
  */
 function startServer(controlPanel, socketMw, connectorMw) {
+
+    var connect     = controlPanel.bs.utils.connect;
+    var serveStatic = controlPanel.bs.utils.serveStatic;
 
     /**
      * Create a connect server

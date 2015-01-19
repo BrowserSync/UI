@@ -1,11 +1,10 @@
 "use strict";
 
-var EE          = require("easy-extender");
-
 var async       = require("./server/async");
 var hooks       = require("./server/hooks");
 var config      = require("./server/config");
 var merge       = require("./server/opts").merge;
+var Events      = require("events").EventEmitter;
 
 var defaultPlugins = {
     "sync-options": require("./server/plugins/sync-options/sync-options"),
@@ -20,8 +19,9 @@ var defaultPlugins = {
  * @param {Object} opts - Any options specifically
  *                        passed to the control panel
  * @param {BrowserSync} bs
- * @returns {ControlPanel}
+ * @param {EventEmitter} emitter
  * @constructor
+ * @returns {ControlPanel}
  */
 var ControlPanel = function (opts, bs, emitter) {
 
@@ -37,7 +37,7 @@ var ControlPanel = function (opts, bs, emitter) {
         cp.logger.mute(true);
     }
 
-    cp.pluginManager = new EE(defaultPlugins, hooks).init();
+    cp.pluginManager = new bs.utils.easyExtender(defaultPlugins, hooks).init();
 
     return cp;
 };
@@ -126,7 +126,7 @@ module.exports.hooks = {
     /**
      * Client JS is added to each connected client
      */
-    "client:js":         require("fs").readFileSync(__dirname + config.defaults.clientJs)
+    "client:js": require("fs").readFileSync(__dirname + config.defaults.clientJs)
 };
 
 /**
@@ -136,9 +136,7 @@ module.exports.hooks = {
  * @returns {ControlPanel}
  */
 module.exports["plugin"] = function (opts, bs) {
-    var Events       = require("events").EventEmitter;
-    var emitter      = new Events();
-    var controlPanel = new ControlPanel(opts, bs, emitter);
+    var controlPanel = new ControlPanel(opts, bs, new Events());
     controlPanel.init();
     return controlPanel;
 };

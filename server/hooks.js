@@ -1,6 +1,5 @@
 var fs         = require("fs");
 var path       = require("path");
-var async      = require("async");
 var through2   = require("through2");
 var directives = require("./directive-stripper");
 
@@ -26,7 +25,7 @@ module.exports = {
             .map(transformConfig)
             .reduce(createConfigItem, {});
 
-        preAngular(cp.pluginManager.plugins, config, function (err, markup) {
+        preAngular(cp.pluginManager.plugins, cp.bs.utils, config, function (err, markup) {
 
             return cb(null, {
                 /**
@@ -136,14 +135,14 @@ function pluginTemplate (combined, item) {
  * Strip some directive/templating where the only use
  * is interpolation
  */
-function preAngular (plugins, config, cb) {
+function preAngular (plugins, utils, config, cb) {
 
     var Duplex = require("stream").Duplex;
     var es     = require("event-stream");
 
     var out = "";
 
-    async.eachSeries(Object.keys(plugins), function (key, done) {
+    utils.async.eachSeries(Object.keys(plugins), function (key, done) {
 
         var stream = new Duplex();
 

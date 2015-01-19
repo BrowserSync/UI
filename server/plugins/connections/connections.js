@@ -3,8 +3,6 @@ var url       = require("url");
 var path      = require("path");
 var fs        = require("fs");
 var Immutable = require("immutable");
-var UAParser  = require("ua-parser-js");
-var uaParser  = new UAParser();
 
 const PLUGIN_NAME = "Connections";
 
@@ -47,6 +45,8 @@ module.exports = {
      */
     "plugin": function (cp, bs) {
 
+        var uaParser = new bs.utils.UAParser();
+
         var socket   = bs.io.of(cp.config.getIn(["socket", "namespace"]));
         var clients  = bs.io.of(bs.options.getIn(["socket", "namespace"]));
 
@@ -60,7 +60,7 @@ module.exports = {
             client.on("cp:highlight", highlightClient.bind(null, clients));
             client.on("cp:get:clients", function () {
                 client.emit("cp:receive:clients", registry || []);
-            })
+            });
         });
 
         var registry;

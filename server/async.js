@@ -1,5 +1,3 @@
-var portScanner = require("portscanner");
-
 module.exports = {
     /**
      * The UI uses it's own server/port
@@ -8,7 +6,7 @@ module.exports = {
      */
     findAFreePort: function (cp, done) {
         var port = cp.opts.get("port");
-        portScanner.findAPortNotInUse(port, port + 100, {
+        cp.bs.utils.portscanner.findAPortNotInUse(port, port + 100, {
             host: "localhost",
             timeout: 1000
         }, function (err, port) {
