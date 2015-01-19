@@ -16,7 +16,7 @@ async.eachSeries(tests, function (testFile, asyncCallback) {
     process.env["BS_TEST_FILE"] = "tests/" + testFile;
     ptor({}, configFile, function (err, out) {
         if (out) {
-            // console.log(out) //debugging
+            //console.log(out) //debugging
         }
         if (!err) {
             console.log("Tests Passed: %s", testFile);
