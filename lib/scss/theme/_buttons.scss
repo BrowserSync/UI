@@ -74,7 +74,9 @@
         position:     absolute;
         left:         $half-spacing + 2px;
         margin-right: $half-spacing;
-        top:          12px;
+        top:          14px;
+        width:        22px;
+        height:       22px;
     }
 }
 
@@ -160,18 +162,6 @@
     }
 }
 
-[bs-button-Bar~="split"] {
-    width: 100%;
-
-    [bs-button] {
-        width: 49%;
-        border-radius: 3px;
-        &:first-child {
-            margin-right: 2%;
-        }
-    }
-}
-
 //
 // Icons
 // <i bs-Icon="repeat"></i>
@@ -199,43 +189,6 @@
 
     [bs-Icon] {
         margin-left: $half-spacing/2;
-    }
-}
-
-//
-// Darker button
-//
-[bs-button~="darker"] {
-
-    background: $green-alt;
-
-    &:hover, &:focus {
-        background: lighten($green-alt, 5%);
-        box-shadow: 0 0 5px 5px rgba(0, 0, 0, .1) inset;
-    }
-
-    &:active {
-        background: $green-alt;
-    }
-}
-
-//
-// Darker button
-//
-[bs-button~="inverted"] {
-
-    color: darken($grey-border, 30%);
-    background: $white;
-    border: 1px solid $grey-border;
-
-    &:hover, &:focus {
-        background: darken($white, 2%);
-        color: $black;
-    }
-
-    &:active {
-        background: darken($white, 4%);
-        box-shadow: 0 0 2px 2px rgba($grey-border, .5) inset;
     }
 }
 
