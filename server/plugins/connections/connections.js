@@ -103,19 +103,19 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": fs.readFileSync(path.join(__dirname, "connections.html")),
-        "client:js": require("fs").readFileSync(__dirname + "/connections.client.js"),
-        "templates": [
-            path.join(__dirname, "/connections.directive.html")
-        ],
-        "page": {
-            path: "/connections",
-            title: PLUGIN_NAME,
-            template: "connections.html",
-            controller: PLUGIN_NAME + "Controller",
-            order: 3,
-            icon: "devices"
-        }
+        //"markup": fs.readFileSync(path.join(__dirname, "connections.html")),
+        "client:js": require("fs").readFileSync(__dirname + "/connections.client.js")
+        //"templates": [
+        //    path.join(__dirname, "/connections.directive.html")
+        //]
+        //"page": {
+        //    path: "/connections",
+        //    title: PLUGIN_NAME,
+        //    template: "connections.html",
+        //    controller: PLUGIN_NAME + "Controller",
+        //    order: 3,
+        //    icon: "devices"
+        //}
     },
     /**
      * Plugin name

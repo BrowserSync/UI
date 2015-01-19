@@ -7,13 +7,13 @@
     var module = angular.module("BrowserSync");
 
     module.controller("ConnectionsController", [
-        "$scope",
         "options",
         "Socket",
         "$rootScope",
         "contentSections",
-        function connectionsControllers($scope, options, Socket, $rootScope, contentSections) {
+        function connectionsControllers(options, Socket, $rootScope, contentSections) {
 
+            var $scope = this;
             $scope.options = options;
             $scope.section = contentSections[SECTION_NAME];
             $scope.ui = {
@@ -48,7 +48,7 @@
             },
             templateUrl: "connections.directive.html",
             controller:  ["$scope", "Clients", connectionListDirective]
-        }
+        };
     });
 
     /**

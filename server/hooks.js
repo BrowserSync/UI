@@ -141,8 +141,11 @@ function preAngular (plugins, utils, config, cb) {
     var es     = require("event-stream");
 
     var out = "";
+    var withPages = Object.keys(plugins).filter(function (key) {
+        return config[key];
+    });
 
-    utils.async.eachSeries(Object.keys(plugins), function (key, done) {
+    utils.async.eachSeries(withPages, function (key, done) {
 
         var stream = new Duplex();
 

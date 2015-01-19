@@ -7,4 +7,11 @@
     </div>
     <url-info ng-if="options.server || options.proxy" options="options"></url-info>
     <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
+    <div ng-controller="ConnectionsController as conn">
+        <div bs-skinny>
+            <connection-list ng-if="conn.ui.connections"
+                             options="options"
+                             connections="conn.ui.connections"></connection-list>
+        </div>
+    </div>
 </article>
