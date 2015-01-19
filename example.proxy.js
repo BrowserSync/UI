@@ -9,19 +9,8 @@ bs.use(cp);
 //bs.use(client);
 
 bs({
-    proxy: "http://www.bbc.co.uk",
+    proxy: "swoon.static",
     open: false,
-    minify: false,
-    snippetOptions: {
-
-        // Provide a custom Regex for inserting the snippet.
-        rule: {
-            match: /<\/body>/i,
-            fn: function (snigppet, match) {
-                return snippet + match;
-            }
-        }
-    }
     //tunnel: true
-    //port: 3000
+    port: 4000
 });

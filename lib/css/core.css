@@ -1122,6 +1122,9 @@ span.sep {
     [bs-list~="inline-controls"] [bs-remove]:hover {
       color: #333333; }
 
+[bs-list~="padded-left"] li {
+  padding-left: 14px; }
+
 [bs-multi-controls] {
   position: absolute;
   bottom: 0;
@@ -1215,7 +1218,7 @@ span.sep {
       display: none; } }
   [bs-toggle] svg {
     position: relative;
-    top: 6px;
+    top: 8px;
     height: 30px;
     width: 30px;
     pointer-events: none; }

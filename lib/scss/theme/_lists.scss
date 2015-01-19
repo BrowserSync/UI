@@ -22,9 +22,6 @@ $controls-height: 41px;
     }
 }
 
-//
-// Inline-controls
-//
 [bs-list~="inline-controls"] {
 
     color: $green-lt;
@@ -101,6 +98,15 @@ $controls-height: 41px;
         &:hover {
             color: $grey;
         }
+    }
+}
+
+//
+// Padded-left variant of the bs-list
+//
+[bs-list~="padded-left"] {
+    li {
+        padding-left: $half-spacing;
     }
 }
 
