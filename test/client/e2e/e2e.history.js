@@ -9,6 +9,9 @@ var utils = require("./test-utils");
 describe("History section", function() {
 
     var bs;
+    var cp;
+    var bsUrl;
+    var cpUrl;
     var port;
 
     beforeEach(function () {
@@ -18,19 +21,24 @@ describe("History section", function() {
             open:   false,
             online: false
         }).then(function (out) {
-            port = out.port;
-            bs   = out.bs;
+            port  = out.port;
+            bs    = out.bs;
+            cp    = out.cp;
+            bsUrl = bs.instance.options.getIn(["urls", "local"]);
+            cpUrl = "http://localhost:" + out.cp.server.address().port;
         });
+    });
+
+    afterEach(function () {
+        bs.instance.cleanup();
+        cp.server.close();
     });
 
     it("should list visited urls & delete them", function () {
 
-        var options = bs.instance.options;
-        var bsUrl   = options.getIn(["urls", "local"]);
-        var url     = "http://localhost:" + port;
         var elems   = element.all(by.repeater("url in visited track by $index"));
 
-        browser.get(url + "/history");
+        browser.get(cpUrl + "/history");
 
         expect(elems.count()).toEqual(0);
 
@@ -38,13 +46,13 @@ describe("History section", function() {
 
         browser.getAllWindowHandles().then(function (handles) {
 
-            var ui             = handles[0];
-            var client         = handles[1];
-            var urls           = ["/scrolling.html", "/forms.html"];
+            var ui = handles[0];
+            var client = handles[1];
+            var urls = ["/scrolling.html", "/forms.html"];
             var emptyContainer = "#bs-history-empty";
-            var listContainer  = "#bs-history-list";
-            var selector       = by.css(listContainer + " li > [bs-remove]");
-            var deleteButtons  = element.all(selector);
+            var listContainer = "#bs-history-list";
+            var selector = by.css(listContainer + " li > [bs-remove]");
+            var deleteButtons = element.all(selector);
 
             browser.switchTo().window(client);
             browser.get(bsUrl + urls[0]);
@@ -67,8 +75,28 @@ describe("History section", function() {
             expect(element.all(by.css(listContainer + " li")).count()).toBe(0);
             expect(element.all(by.css(emptyContainer)).count()).toBe(1);
 
-        }).then(function () {
-            bs.instance.cleanup();
+            // Test the "SYNC ALL" buttons on each list item
+            browser.switchTo().window(client);
+            browser.get(bsUrl + urls[0]);
+            browser.get(bsUrl + urls[1]);
+            browser.get(bsUrl);
+            browser.sleep(500);
+            browser.switchTo().window(ui);
+            expect(element.all(by.css(listContainer + " li")).count()).toBe(3);
+            element.all(by.css(listContainer + " li > [bs-multi-controls] > a"))
+                .get(1)
+                .click();
+            browser.sleep(500);
+            browser.switchTo().window(client);
+            expect(browser.getCurrentUrl()).toBe(bsUrl + urls[0]);
+
+            // Test the "clear all" button
+            browser.switchTo().window(ui);
+            element.all(by.css('[bs-button-row] [bs-button~="inline"]'))
+                .get(0)
+                .click();
+            browser.sleep(500);
+            expect(elems.count()).toEqual(0);
         });
     });
 });

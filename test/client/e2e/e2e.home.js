@@ -103,7 +103,7 @@ function matchClickToTitle (item, selector) {
                 .getText()
                 .then(function (texts) {
                     assert.equal(texts, text);
-                })
+                });
         });
     });
 }
