@@ -3,8 +3,8 @@
  * E2E tests for the History plugin
  *
  */
-var init  = require("./bs-init");
-var utils = require("./test-utils");
+var init  = require("./../bs-init");
+var utils = require("./../test-utils");
 
 describe("History section", function() {
 
@@ -80,8 +80,8 @@ describe("History section", function() {
             browser.get(bsUrl + urls[0]);
             browser.get(bsUrl + urls[1]);
             browser.get(bsUrl);
-            browser.sleep(500);
             browser.switchTo().window(ui);
+            browser.sleep(1000);
             expect(element.all(by.css(listContainer + " li")).count()).toBe(3);
             element.all(by.css(listContainer + " li > [bs-multi-controls] > a"))
                 .get(1)
