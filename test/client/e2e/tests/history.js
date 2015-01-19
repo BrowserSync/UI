@@ -80,8 +80,8 @@ describe("History section", function() {
             browser.get(bsUrl + urls[0]);
             browser.get(bsUrl + urls[1]);
             browser.get(bsUrl);
-            browser.switchTo().window(ui);
             browser.sleep(1000);
+            browser.switchTo().window(ui);
             expect(element.all(by.css(listContainer + " li")).count()).toBe(3);
             element.all(by.css(listContainer + " li > [bs-multi-controls] > a"))
                 .get(1)
