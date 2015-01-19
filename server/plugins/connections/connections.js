@@ -52,6 +52,7 @@ module.exports = {
 
         clients.on("connection", function (client) {
             client.on("client:heartbeat", function (data) {
+                console.log(data);
                 // todo add window size stuff
             });
         });
@@ -86,11 +87,9 @@ module.exports = {
                             sendUpdated(socket, registry.toJS());
                             initialSent = true;
                         }
-                        //console.log("SAME, BRO, do nothing");
                     } else {
                         registry = temp;
                         sendUpdated(socket, registry.toJS());
-                        //console.log("Different, sending updates");
                     }
                 }
             }

@@ -98,7 +98,7 @@ function decorateUrls (urls) {
             path: value,
             key: count
         };
-    }).toJS();
+    }).toJS().reverse();
 }
 
 /**
