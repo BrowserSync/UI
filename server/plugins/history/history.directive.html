@@ -1,4 +1,4 @@
-<ul bs-list="bordered inline-controls" ng-if="visited">
+<ul bs-list="bordered inline-controls" ng-if="visited" id="bs-history-list">
     <li ng-repeat="url in visited track by $index">
         <button bs-remove ng-click="removeVisited(url)">
             <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
