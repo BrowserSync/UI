@@ -12,6 +12,7 @@ var defaultPlugins = {
     "history":      require("./server/plugins/history/history"),
     //"plugins":      require("./server/plugins/plugins/plugins"),
     "remote-debug": require("./server/plugins/remote-debug/remote-debug"),
+    "help":         require("./server/plugins/help/help"),
     "connections":  require("./server/plugins/connections/connections")
 };
 
