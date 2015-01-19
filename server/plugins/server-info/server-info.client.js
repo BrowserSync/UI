@@ -8,14 +8,32 @@
 
     module.controller("ServerInfoController", [
         "$scope",
+        "$rootScope",
         "options",
+        "Socket",
         "contentSections",
-        function serverInfoController ($scope, options, contentSections) {
+        function serverInfoController ($scope, $rootScope, options, Socket, contentSections) {
             $scope.section = contentSections[SECTION_NAME];
             $scope.options = options;
             $scope.ui = {
-                snippet: !options.server && !options.proxy
+                snippet: !options.server && !options.proxy,
+                connections: false
             };
+
+            $scope.updateConnected = function (data) {
+                $rootScope.$emit("connections:update", data);
+                $scope.ui.connections = data;
+                $scope.$digest();
+            };
+
+            Socket.getData("clients").then(function (data) {
+                $scope.ui.connections = data;
+            });
+
+            Socket.on("cp:connections:update", $scope.updateConnected);
+            $scope.$on('$destroy', function () {
+                Socket.off("cp:connections:update", $scope.updateConnected);
+            });
         }
     ]);
 

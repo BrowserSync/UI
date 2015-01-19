@@ -7,11 +7,18 @@
     </div>
     <url-info ng-if="options.server || options.proxy" options="options"></url-info>
     <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
-    <div ng-controller="ConnectionsController as conn">
-        <div bs-skinny>
-            <connection-list ng-if="conn.ui.connections"
+
+    <div bs-callout="full">
+        <div bs-callout-content>
+            <div bs-callout-icon>
+                <svg bs-svg-icon><use xlink:href="#svg-devices"></use></svg>
+            </div>
+            <p bs-text="lede">Current Connections</p>
+            <p>Connected browsers will be listed here.</p>
+            <connection-list ng-if="ui.connections.length"
                              options="options"
-                             connections="conn.ui.connections"></connection-list>
+                             connections="ui.connections"></connection-list>
         </div>
     </div>
+
 </article>

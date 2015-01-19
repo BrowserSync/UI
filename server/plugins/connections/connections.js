@@ -104,10 +104,10 @@ module.exports = {
      */
     "hooks": {
         //"markup": fs.readFileSync(path.join(__dirname, "connections.html")),
-        "client:js": require("fs").readFileSync(__dirname + "/connections.client.js")
-        //"templates": [
-        //    path.join(__dirname, "/connections.directive.html")
-        //]
+        "client:js": require("fs").readFileSync(__dirname + "/connections.client.js"),
+        "templates": [
+            path.join(__dirname, "/connections.directive.html")
+        ]
         //"page": {
         //    path: "/connections",
         //    title: PLUGIN_NAME,

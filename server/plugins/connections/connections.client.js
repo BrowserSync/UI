@@ -3,18 +3,15 @@
  */
 (function (angular) {
 
-    var SECTION_NAME = "history";
+    var SECTION_NAME = "connections";
     var module = angular.module("BrowserSync");
 
     module.controller("ConnectionsController", [
-        "options",
         "Socket",
         "$rootScope",
         "contentSections",
-        function connectionsControllers(options, Socket, $rootScope, contentSections) {
-
+        function connectionsControllers(Socket, $rootScope, contentSections) {
             var $scope = this;
-            $scope.options = options;
             $scope.section = contentSections[SECTION_NAME];
             $scope.ui = {
                 connections: {}
@@ -23,7 +20,6 @@
             $scope.update = function (data) {
                 $rootScope.$emit("connections:update", data);
                 $scope.ui.connections = data;
-                $scope.$digest();
             };
 
             // Always try to retreive the sockets first time.
