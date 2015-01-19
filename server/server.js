@@ -1,11 +1,10 @@
 var connect     = require("connect");
-var through     = require("through");
 var http        = require("http");
 var fs          = require("fs");
 var serveStatic = require("serve-static");
-var svg         = fs.readFileSync(libDir("/img/icons/svg/symbols.svg"), "utf-8");
-
 var config      = require("./config");
+var svg         = fs.readFileSync(libDir("/img/icons/svg/symbols.svg"), "utf-8");
+var indexPage   = fs.readFileSync(libDir(config.defaults.indexPage), "utf-8");
 
 /**
  * CWD directory helper for static dir
@@ -95,26 +94,6 @@ function serveJsFiles(app, socketMw, connectorMw) {
 }
 
 /**
- * @param res
- * @param pageMarkup
- * @param svgs
- * @returns {*}
- */
-function combineMarkup(res, pageMarkup, svgs) {
-    res.setHeader("Content-Type", "text/html");
-    return fs.createReadStream(libDir(config.defaults.indexPage))
-        .pipe(through(function (buffer) {
-            var file = buffer.toString();
-            this.queue(
-                file
-                    .replace(/%hooks%/g, pageMarkup)
-                    .replace(/%svg%/g, svgs)
-            );
-        }))
-        .pipe(res);
-}
-
-/**
  * @param app
  * @param pageMarkup
  */
@@ -122,7 +101,12 @@ function insertPageMarkupFromHooks(app, pageMarkup, pages, templates, svg) {
 
     app.use(function (req, res, next) {
         if (req.url === "/" || pages[req.url.slice(1)]) {
-            return combineMarkup(res, pageMarkup + templates, svg);
+            res.setHeader("Content-Type", "text/html");
+            res.end(
+                indexPage
+                    .replace(/%hooks%/g, pageMarkup + templates)
+                    .replace(/%svg%/g, svg)
+            );
         } else {
             next();
         }
