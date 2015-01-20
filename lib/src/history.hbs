@@ -25,23 +25,24 @@ urls:
 ---
 <div bs-callout="controls outline">
     <h1 bs-heading>{{ inc src="icon.hbs" icon="list2" }} {{page.title}}</h1>
-    <div bs-button-row>
-        <button bs-button="inline">
-            {{ inc src="icon.hbs" icon="bin" }}
-            Clear all
-        </button>
-    </div>
+</div>
+<div bs-button-row>
+    <button bs-button="inline icon-left">
+        {{ inc src="icon.hbs" icon="bin" }}
+        Clear all
+    </button>
 </div>
 <div bs-skinny>
     <ul bs-list="bordered inline-controls">
         {{#each page.urls}}
         <li>
-            <button bs-remove>{{ inc src="icon.hbs" icon="bin" }}</button>
             <p>{{this}}</p>
             <span bs-multi-controls="right">
                 <a href="#" bs-button>{{ inc src="icon.hbs" icon="square-add" }} new tab</a>
                 <a href="#" bs-button>{{ inc src="icon.hbs" icon="target" }} sync all</a>
+                <a href="#" bs-button="icon-only">{{ inc src="icon.hbs" icon="bin" }}</a>
             </span>
+            <!--<button bs-remove>{{ inc src="icon.hbs" icon="bin" }}</button>-->
         </li>
         {{/each}}
     </ul>

@@ -983,7 +983,7 @@ span.sep {
   padding-left: 41px; }
   [bs-button~="icon-left"] [bs-svg-icon] {
     position: absolute;
-    top: 8px;
+    top: 11px;
     left: 14px;
     width: 16px;
     height: 16px; }
@@ -1123,7 +1123,7 @@ span.sep {
     background: #fff;
     position: relative;
     padding-bottom: 41px;
-    padding-left: 57px;
+    padding-left: 14px;
     -webkit-transition: background 0.5s;
             transition: background 0.5s; }
     [bs-list~="inline-controls"] li:hover {
@@ -1131,6 +1131,7 @@ span.sep {
     @media only screen and (min-width: 750px) {
       [bs-list~="inline-controls"] li {
         padding: 0;
+        padding-left: 14px;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex; }
@@ -1211,6 +1212,8 @@ span.sep {
       position: relative;
       top: 3px;
       margin-right: 7px; }
+  [bs-multi-controls] [bs-button~="icon-only"] [bs-svg-icon] {
+    margin-right: 0; }
   [bs-multi-controls] [bs-icon] {
     margin-right: 7px; }
 

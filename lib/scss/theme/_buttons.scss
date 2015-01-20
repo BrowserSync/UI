@@ -157,12 +157,14 @@
 }
 
 [bs-button~="icon-left"] {
+
     line-height: 1;
     position: relative;
     padding-left: $base-spacing + $half-spacing;
+
     [bs-svg-icon] {
         position: absolute;
-        top: 8px;
+        top: 11px;
         left: $half-spacing;
         width: 16px;
         height: 16px;

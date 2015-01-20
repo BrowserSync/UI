@@ -35,7 +35,7 @@ $controls-height: 41px;
         background: $white;
         position: relative;
         padding-bottom: $controls-height;
-        padding-left: $base-spacing*2 + 3px;
+        padding-left: $half-spacing;
         transition: background .5s;
 
         &:hover {
@@ -46,6 +46,7 @@ $controls-height: 41px;
         @include media-query(min, $desk-start) {
 
             padding: 0;
+            padding-left: $half-spacing;
             display: flex;
 
             p {
@@ -129,6 +130,12 @@ $controls-height: 41px;
             position: relative;
             top: 3px;
             margin-right: $half-spacing/2;
+        }
+    }
+
+    [bs-button~="icon-only"] {
+        [bs-svg-icon] {
+            margin-right: 0;
         }
     }
 
