@@ -3,8 +3,6 @@
 
 [bs-controls] {
 
-    @include not-palm;
-
     width: auto;
     flex: 1;
     background: $grey-bg-dk;
@@ -14,16 +12,17 @@
 [bs-flex~="top"] {
 
     display: flex;
-    height: $header-height - 1px;
-    justify-content: flex-end;
+//    height: $header-height - 1px;
+//    justify-content: flex-end;
 }
 
 [bs-control] {
 
-    @include font-size(16px);
-    height: 100%;
-    padding-left: $half-spacing;
-    padding-right: $half-spacing;
+    @include font-size(12px);
+    flex: 1;
+//    height: 100%;
+    padding-left: $half-spacing/2;
+    padding-right: $half-spacing/2;
     border-left: 1px solid $white;
     position: relative;
     color: $grey-text;
@@ -32,12 +31,19 @@
     padding-top: $half-spacing/2;
     text-shadow: 1px 1px 0 $white;
 
+    &:first-child {
+        border-left: 0;
+    }
 
     [bs-svg-icon] {
         transition: all .3s;
         width: 19px;
         height: 19px;
         top: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 5px;
     }
 
     &:before {
@@ -59,6 +65,7 @@
 
         background: lighten($grey-bg-dk, 2%);
         text-decoration: none;
+        color: $black;
 
         [bs-svg-icon] {
             transform: rotate(360deg) scale(1.1);

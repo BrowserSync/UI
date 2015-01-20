@@ -99,6 +99,8 @@
         <div class="tube">
             <h1>BrowserSync UI Components</h1>
             <hr/>
+        </div>
+                    <div class="tube">
                 <h1>Typography</h1>
                 <h1>Heading 1</h1>
                 <h2>Heading 2</h2>
@@ -112,7 +114,9 @@
                 <p>
                     <a href="#links">Link</a> <span bs-sep>|</span> <a href="#">Another link</a>
                 </p>
+                    </div>
                 <hr/>
+                    <div class="tube">
                 <h1>Buttons</h1>
                 <p>
                     <button bs-button>New Tab</button> <button bs-button>Sync all</button>
@@ -129,7 +133,9 @@
                         new tab
                     </a>
                 </p>
+                    </div>
                 <hr/>
+                    <div class="tube">
                 <h1>Headings</h1>
                 <div bs-callout="controls outline">
                     <h1 bs-heading>
@@ -137,8 +143,30 @@
                         Server Info
                     </h1>
                 </div>
+                    </div>
                 <hr/>
-        </div>
+                <h1>Top Bar</h1>
+                <aside bs-controls="top">
+                    <div bs-flex="top">
+                        <a href="#" bs-control title="Reload all Browsers" ng-click="app.reloadAll()">
+                            <svg bs-svg-icon><use xlink:href="#svg-repeat"></use></svg>
+                            Reload all
+                        </a>
+                        <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'" class="ng-scope">
+                            <svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg>
+                            New Tab
+                        </a>
+                        <a href="#" bs-control title="Reset the scroll position of all browsers to 0" ng-click="app.scrollAllTo(0)">
+                            <svg bs-svg-icon><use xlink:href="#svg-square-up"></use></svg>
+                            Scroll Top
+                        </a>
+                        <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')" ng-show="app.options.mode !== 'snippet'">
+                            <svg bs-svg-icon><use xlink:href="#svg-home"></use></svg>
+                            Reset All
+                        </a>
+                    </div>
+                </aside>
+                <hr/>
     </main>
 </body>
 </html>
