@@ -1,23 +1,25 @@
 ---
 layout: components.hbs
 title: "Components"
+sections:
+    - name: "Typography"
+      file: "_components/type.hbs"
+    - name: "Buttons"
+      file: "_components/buttons.hbs"
+    - name: "Headings"
+      file: "_components/heading.hbs"
 ---
 {{ inc src="../img/icons/svg/symbols.svg" }}
 <div class="tube">
+
     <h1>BrowserSync UI Components</h1>
-    <hr/>
-    <h1>Typography (H1)</h1>
-    <h2>Heading 2</h2>
-    <h3>Heading 3</h3>
-    <h4>Heading 4</h4>
-    <p>Paragraph text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Aperiam aspernatur aut consequuntur cupiditate deleniti dolor dolorem ea
-        exercitationem laudantium odio officia quidem quod repudiandae sequi vel,
-        veniam vero voluptas voluptatem. <a href="more">Read more</a>
-    </p>
-    <p>
-        <a href="#links">Link</a> <span class="bs-sep">|</span> <a href="#">Another link</a>
-    </p>
 
     <hr/>
+
+    {{#each page.sections}}
+        <h1>{{this.name}}</h1>
+        {{inc src=this.file title=this.name }}
+        <hr/>
+    {{/each}}
+
 </div>

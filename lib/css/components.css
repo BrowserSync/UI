@@ -3,5 +3,8 @@ svg {
   height: 100%;
   fill: currentColor !important; }
 
+body, html {
+  height: auto; }
+
 .tube {
   padding: 28px; }

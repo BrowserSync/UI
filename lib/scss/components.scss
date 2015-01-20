@@ -4,6 +4,10 @@
 @import "modules/mixins";
 @import "theme/svg";
 
+body, html {
+    height: auto;
+}
+
 .tube {
     padding: $half-spacing*2;
 }
