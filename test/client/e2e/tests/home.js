@@ -53,15 +53,9 @@ describe("Section Navigation", function() {
         expect(elems.get(0).getText()).toBe("Server Info");
         expect(elems.get(1).getText()).toBe("Sync Options");
         expect(elems.get(2).getText()).toBe("History");
-        expect(elems.get(3).getText()).toBe("Connections");
-        expect(elems.get(4).getText()).toBe("Plugins");
-        expect(elems.get(5).getText()).toBe("Remote Debug");
         matchClickToTitle(elems.get(0), headerSelector);
         matchClickToTitle(elems.get(1), headerSelector);
         matchClickToTitle(elems.get(2), headerSelector);
-        matchClickToTitle(elems.get(3), headerSelector);
-        matchClickToTitle(elems.get(4), headerSelector);
-        matchClickToTitle(elems.get(5), headerSelector);
 
         elems.get(0).click(); // back to homepage
     });

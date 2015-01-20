@@ -16,24 +16,8 @@
             $scope.section = contentSections[SECTION_NAME];
             $scope.options = options;
             $scope.ui = {
-                snippet: !options.server && !options.proxy,
-                connections: false
+                snippet: !options.server && !options.proxy
             };
-
-            $scope.updateConnected = function (data) {
-                $rootScope.$emit("connections:update", data);
-                $scope.ui.connections = data;
-                $scope.$digest();
-            };
-
-            Socket.getData("clients").then(function (data) {
-                $scope.ui.connections = data;
-            });
-
-            Socket.on("cp:connections:update", $scope.updateConnected);
-            $scope.$on('$destroy', function () {
-                Socket.off("cp:connections:update", $scope.updateConnected);
-            });
         }
     ]);
 

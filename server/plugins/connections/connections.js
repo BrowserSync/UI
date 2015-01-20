@@ -52,7 +52,7 @@ module.exports = {
 
         clients.on("connection", function (client) {
             client.on("client:heartbeat", function (data) {
-                console.log(data);
+                // console.log(data, client.id);
                 // todo add window size stuff
             });
         });

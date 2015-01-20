@@ -3,8 +3,9 @@
  * E2E tests for the History plugin
  *
  */
-var init  = require("./../bs-init");
-var utils = require("./../test-utils");
+var init   = require("./../bs-init");
+var utils  = require("./../test-utils");
+var assert = require("chai").assert;
 
 describe("History section", function() {
 
@@ -88,7 +89,11 @@ describe("History section", function() {
                 .click();
             browser.sleep(500);
             browser.switchTo().window(client);
-            expect(browser.getCurrentUrl()).toBe(bsUrl + urls[0]);
+
+            browser.getCurrentUrl().then(function (url) {
+                var match = url.match(new RegExp(bsUrl + "\\/?"));
+                assert.isTrue(match.length > 0);
+            });
 
             // Test the "clear all" button
             browser.switchTo().window(ui);

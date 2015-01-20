@@ -41,7 +41,7 @@ bs.use(htmlInjector, {
 //    }
 //});
 
-bs.use(cp);
+bs.use(cp, {port: 4001});
 
 var instance = bs({
     server: {
@@ -50,6 +50,6 @@ var instance = bs({
     files: [
         "test/fixtures/css/**"
     ],
-    open: false,
+    open: false
     //online: false
 });
