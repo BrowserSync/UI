@@ -117,7 +117,7 @@ function createAngularRoutes(all, item) {
  */
 function createConfigItem (joined, item) {
     if (item.path === "/") {
-        joined["server-info"] = item;
+        joined["overview"] = item;
     } else {
         joined[item.path.slice(1)] = item;
     }

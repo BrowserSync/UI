@@ -3,10 +3,10 @@
  */
 (function (angular) {
 
-    const SECTION_NAME = "server-info";
+    const SECTION_NAME = "overview";
     var module         = angular.module("BrowserSync");
 
-    module.controller("ServerInfoController", [
+    module.controller("OverviewController", [
         "$scope",
         "$rootScope",
         "options",

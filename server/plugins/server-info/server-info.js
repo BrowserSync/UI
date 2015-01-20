@@ -1,7 +1,7 @@
 var path = require("path");
 var fs   = require("fs");
 
-const PLUGIN_NAME = "Server Info";
+const PLUGIN_NAME = "Overview";
 
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}
