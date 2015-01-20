@@ -60,19 +60,18 @@ h6, .h6 {
     @include sidebar-style;
     @include font-size(24px);
 
-    padding-left: $icon-gutter + $gutter;
+    padding-left: $icon-gutter;
     position: relative;
     line-height: $nav-button-height;
     margin-top: 0;
     margin-bottom: 0;
-    font-weight: 700;
     color: $grey-bg;
     background: darken($sidebar, 2%);
-    border-top: 1px solid darken($sidebar-lt, 2%);
+    border-top: 1px solid darken($sidebar, 2%);
 
     @include media-query(min, $lap-start) {
 
-        @include font-size(45px);
+        @include font-size(38px);
         color: $sidebar;
         background: $grey-bg;
         padding-left: $icon-gutter + $gutter + 5px;
@@ -85,14 +84,13 @@ h6, .h6 {
     [bs-svg-icon] {
 
         position: absolute;
-        left: $half-spacing;
+        left: 14px;
         top: $half-spacing - 3px;
-        color: $green-lt;
 
         @include media-query(min, $lap-start) {
-            height: 45px;
-            width: 45px;
-            top: $half-spacing/2 - 3px;
+            height: 38px;
+            width: 38px;
+            top: $half-spacing/2 - 1px;
         }
     }
 }

@@ -37,9 +37,11 @@
     [bs-callout-content] {
 
         padding-left: $base-spacing*3;
+
         @include media-query(min, $lap-start) {
             padding-left: $base-spacing*4;
         }
+
         margin-bottom: $half-spacing;
     }
 }
@@ -65,7 +67,6 @@
     padding: 0;
     background: $grey-bg;
     border-bottom: 1px solid $grey-border;
-    margin-bottom: 1px;
 
     @include media-query(min, $lap-start) {
         padding: $base-spacing;
@@ -75,11 +76,6 @@
     [bs-heading] {
         @include media-query(min, $lap-start) {
             margin-bottom: $half-spacing;
-        }
-    }
-    [bs-button-row] {
-        @include media-query(min, $lap-start) {
-            padding-left: $icon-gutter + $gutter - 9px;
         }
     }
 }

@@ -4,18 +4,16 @@ title: "Sync Options"
 icon: "repeat_2"
 options: ['Clicks', 'Scroll', 'Forms: Submit', 'Forms: Toggles', 'Forms: Inputs', 'Clicks', 'Scroll', 'Forms: Submit', 'Forms: Toggles', 'Forms: Inputs']
 ---
-<div bs-callout="controls outline">
-    <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
-    <div bs-button-row>
-        <button bs-button="inline success">
-            {{ inc src="icon.hbs" icon="circle-ok" }}
-            Enable All
-        </button>
-        <button bs-button="inline">
-            {{ inc src="icon.hbs" icon="circle-delete" }}
-            Disable all
-        </button>
-    </div>
+<div bs-callout="controls">
+    <h1 bs-heading>{{inc src="icon.hbs" icon="sync" }} {{page.title}}</h1>
+</div>
+<div bs-button-row>
+    <button bs-button="inline success">
+        <span bs-checkbox>[ ]</span> Enable All
+    </button>
+    <button bs-button="inline">
+        <span bs-checkbox>[ ]</span> Disable All
+    </button>
 </div>
 <div>
     {{#each page.options}}

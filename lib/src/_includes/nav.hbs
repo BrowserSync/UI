@@ -2,36 +2,35 @@
     <nav bs-section-nav>
         <ul bs-list>
             <li>
-                <button bs-button="nav">
+                <a href="#" bs-button="nav">
                     {{ inc src="icon.hbs" icon="cog" }} Server Info
-                </button>
+                </a>
             </li>
             <li>
-                <button bs-button="nav" class="active">
-                    {{ inc src="icon.hbs" icon="repeat" }} Sync Options
-                </button>
+                <a href="#" bs-button="nav" class="active">
+                    {{ inc src="icon.hbs" icon="sync" }} Sync Options
+                </a>
             </li>
             <li>
-                <button bs-button="nav">
-                    {{ inc src="icon.hbs" icon="book" }} History
-                </button>
+                <a href="#" bs-button="nav">
+                    {{ inc src="icon.hbs" icon="list2" }} History
+                </a>
             </li>
-            <li>
-                <button bs-button="nav">
+            <!--<li>
+                <a href="#" bs-button="nav">
                     {{ inc src="icon.hbs" icon="devices" }} Connections
-                </button>
-            </li>
+                </a>
+            </li>-->
             <li>
-                <button bs-button="nav">
-                    {{ inc src="icon.hbs" icon="plug" }} Plugins
-                </button>
-            </li>
-            <li>
-                <button bs-button="nav">
+                <a href="#" bs-button="nav">
                     {{ inc src="icon.hbs" icon="bug" }} Remote Debug
-                </button>
+                </a>
             </li>
-
+            <li>
+                <a href="#" bs-button="nav">
+                    {{ inc src="icon.hbs" icon="help" }} Help / About
+                </a>
+            </li>
             <li bs-action="menu-close">
                 <button bs-button="nav" ng-click="toggleMenu()">{{ inc src="icon.hbs" icon="circle-delete" }} CLOSE</button>
             </li>

@@ -26,7 +26,7 @@
 
     &:hover {
         text-decoration: none;
-        background: $sidebar-lt;
+//        background: $sidebar-lt;
         color: $white;
     }
 
@@ -53,15 +53,17 @@
     width: 100%;
     border-radius: 0;
     text-align: left;
-    padding-left: $icon-gutter + $gutter;
-    height: $nav-button-height;
     border: 0;
     position: relative;
     background: transparent;
+    display: block;
+    padding: $half-spacing 0;
+    padding-left: $icon-gutter;
+    border-bottom: 1px solid $sidebar-hover;
+    @include font-size(16px);
 
     &.active {
-        background: $sidebar-lt;
-        box-shadow: -2px 3px 2px darken($sidebar, 3%);
+        background: $sidebar-hover;
         z-index: 5;
         color: $white;
 
@@ -70,13 +72,18 @@
         }
     }
 
+    &:hover {
+        color: $white;
+        background: $sidebar-hover;
+    }
+
     [bs-svg-icon] {
         position:     absolute;
         left:         $half-spacing + 2px;
         margin-right: $half-spacing;
         top:          14px;
-        width:        22px;
-        height:       22px;
+        width:        18px;
+        height:       18px;
     }
 }
 
@@ -88,8 +95,8 @@
     color: $black;
     border-radius: 0;
     border: 0;
-    text-transform: none;
-    padding-left: $base-spacing + $half-spacing + 6px;
+    text-transform: uppercase;
+    @include font-size(14px);
 
     [bs-svg-icon] {
         position: absolute;
@@ -99,11 +106,14 @@
         width: 20px;
     }
 
+    [bs-checkbox] {
+        margin-right: 8px;
+    }
+
     @include media-query(min, $lap-start) {
         padding-top: $half-spacing;
     }
 
-    @include font-size(16px);
 
     &:focus {
         background: transparent;
@@ -126,39 +136,13 @@
     }
 }
 
-//
-// button bar
-// <div bs-button-Bar> ... </div>
-//
-[bs-button-Bar] {
+[bs-button-row] {
 
-    @extend %flexy;
-    @extend %item-stack;
+    background: $grey-bg;
+    border-bottom: 1px solid darken($grey-border, 10%);;
 
-    [bs-button] {
-        margin-left: 0;
-        margin-right: 0;
-        border-radius: 0;
-        border-right: 1px solid lighten($green-lt, 3%);
-        &:first-child {
-            border-top-left-radius: 3px;
-            border-bottom-left-radius: 3px;
-        }
-        &:last-child {
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
-        }
-    }
-
-    [bs-button~="darker"] {
-        border-right: 1px solid lighten($green, 10%);
-    }
-
-    [bs-button~="inverted"] {
-        border-right: 0;
-        &:last-child {
-            border-right: 1px solid $grey-border;
-        }
+    @include media-query(min, $lap-start) {
+        padding-left: $base-spacing;
     }
 }
 
