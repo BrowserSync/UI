@@ -7,8 +7,12 @@ $inner-height: $header-height - $border-height;
 
 [bs-header] {
 
-    border-bottom: 1px solid $sidebar;
     position: relative;
+    background: $header;
+
+    @include media-query(min, $lap-start) {
+        display: flex;
+    }
 
     [bs-header-row~="brand"] {
 
@@ -49,11 +53,6 @@ $inner-height: $header-height - $border-height;
             }
         }
     }
-
-
-    @include media-query(min, $lap-start) {
-        width: $sidebar-width;
-    }
 }
 
 [bs-toggle] {
@@ -71,8 +70,8 @@ $inner-height: $header-height - $border-height;
     color: $white;
     transition: background .2s;
     text-shadow: 1px 1px 2px $green-dk;
-    border-left: 1px solid $sidebar;
-    border-bottom: 1px solid $sidebar;
+    border-left: 1px solid $header;
+    border-bottom: 1px solid $header;
 
     svg {
         position: relative;

@@ -5,35 +5,49 @@
 
     width: auto;
     flex: 1;
-    background: $grey-bg-dk;
-    border-bottom: 1px solid darken($grey-border, 5%);
 }
 
 [bs-flex~="top"] {
 
     display: flex;
-//    height: $header-height - 1px;
-//    justify-content: flex-end;
+
+    @include media-query(min, $lap-start) {
+        justify-content: flex-end;
+        height: $header-height - 1px;
+    }
 }
 
 [bs-control] {
 
     @include font-size(12px);
+
     flex: 1;
-//    height: 100%;
+
+    @include media-query(min, $lap-start) {
+        flex: none;
+        height: 100%;
+        padding-top: $half-spacing/2 + 3px;
+        padding-left: $half-spacing;
+        padding-right: $half-spacing;
+    }
+
     padding-left: $half-spacing/2;
     padding-right: $half-spacing/2;
-    border-left: 1px solid $white;
+    border-left: 1px solid $grey;
+    border-top:  1px solid $grey;
     position: relative;
     color: $grey-text;
     text-transform: uppercase;
     text-align: center;
     padding-top: $half-spacing/2;
-    text-shadow: 1px 1px 0 $white;
 
     &:first-child {
-        border-left: 0;
+        border-left-width: 0;
+        @include media-query(min, $lap-start) {
+            border-left-width: 1px;
+        }
     }
+
 
     [bs-svg-icon] {
         transition: all .3s;
@@ -46,15 +60,15 @@
         margin-bottom: 5px;
     }
 
-    &:before {
-        width: 1px;
-        height: 100%;
-        top: 0;
-        position: absolute;
-        left: -2px;
-        content: " ";
-        background: darken($grey-border, 5%);
-    }
+//    &:before {
+//        width: 1px;
+//        height: 100%;
+//        top: 0;
+//        position: absolute;
+//        left: -2px;
+//        content: " ";
+//        background: lighten($grey, 10%);
+//    }
 
     &:focus {
         text-decoration: none;
@@ -63,13 +77,13 @@
 
     &:hover {
 
-        background: lighten($grey-bg-dk, 2%);
+        background: $sidebar;
         text-decoration: none;
-        color: $black;
+        color: $white;
 
         [bs-svg-icon] {
             transform: rotate(360deg) scale(1.1);
-            color: $black;
+            color: $white;
         }
     }
 }

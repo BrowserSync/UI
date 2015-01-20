@@ -1,12 +1,12 @@
 ---
 layout: parent.hbs
 ---
+{{ inc src="../img/icons/svg/symbols.svg" }}
 <main>
-    {{ inc src="../img/icons/svg/symbols.svg" }}
+    {{ inc src="_components/top-bar.hbs" }}
     <section bs-container>
         {{ inc src="nav.hbs" }}
         <section bs-content>
-            {{ inc src="_components/top-bar.hbs" }}
             <div ng-view="">
                 <div>
                     <article>

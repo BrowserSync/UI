@@ -1,5 +1,4 @@
-<section bs-sidebar="">
-    {{ inc src="header.hbs" }}
+<section bs-sidebar>
     <nav bs-section-nav>
         <ul bs-list>
             <li>
@@ -34,7 +33,7 @@
             </li>
 
             <li bs-action="menu-close">
-                <button bs-button="nav" ng-click="toggleMenu()"><i bs-icon="close"></i> CLOSE</button>
+                <button bs-button="nav" ng-click="toggleMenu()">{{ inc src="icon.hbs" icon="circle-delete" }} CLOSE</button>
             </li>
         </ul>
     </nav>
