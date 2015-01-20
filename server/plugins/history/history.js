@@ -70,7 +70,7 @@ module.exports = {
             template: "history.html",
             controller: PLUGIN_NAME + "Controller",
             order: 3,
-            icon: "book"
+            icon: "list2"
         }
     },
     /**

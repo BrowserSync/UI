@@ -1,4 +1,4 @@
-<section bs-callout="switch" ng-repeat="item in syncItems track by $index">
+<section bs-callout="switch" ng-repeat="item in syncItems track by $index" ng-class="{'disabled': !item.value}">
     <div bs-callout-content="">
         <div bs-callout-icon>
             <div class="switch">

@@ -32,7 +32,7 @@ module.exports = {
             template: "help.html",
             controller: "HelpAboutController",
             order: 5,
-            icon: "book"
+            icon: "help"
         }
     },
     /**
