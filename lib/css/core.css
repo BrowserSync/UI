@@ -1025,6 +1025,10 @@ span.sep {
   padding: 27px 0 14px;
   border-bottom: 1px solid #F0F0F0; }
 
+[bs-callout~="switch"].disabled {
+  background: #FBFBFB; }
+  [bs-callout~="switch"].disabled, [bs-callout~="switch"].disabled [bs-text~="lede"] {
+    color: #ababab; }
 [bs-callout~="switch"] [bs-callout-content] {
   padding-left: 81px;
   margin-bottom: 14px; }

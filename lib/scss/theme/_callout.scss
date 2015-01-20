@@ -36,6 +36,13 @@
 
 [bs-callout~="switch"] {
 
+    &.disabled {
+        background: $grey-bg;
+        &, [bs-text~="lede"] {
+            color: $grey-text;
+        }
+    }
+
     [bs-callout-content] {
 
         padding-left: $base-spacing*3;
