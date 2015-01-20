@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+@import "vars";
+@import "modules/mixins";
+@import "theme/svg";
+
+.tube {
+    padding: $half-spacing*2;
+}

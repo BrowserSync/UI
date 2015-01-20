@@ -5,7 +5,7 @@ var sass        = require("gulp-sass");
 var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require("gulp-browserify");
 var rename      = require("gulp-rename");
-//var filter      = require("gulp-filter");
+var filter      = require("gulp-filter");
 //var minifyCSS   = require("gulp-minify-css");
 var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
@@ -58,16 +58,23 @@ gulp.task("browser-sync", function () {
         files: ["lib/*.html"]
     });
 });
+
 /**
  * Start BrowserSync
  */
 gulp.task("browser-sync-dev", function () {
+    browserSync.use(require("./"));
+    browserSync.use(require("bs-html-injector"), {
+        files: "lib/*.html"
+    });
     browserSync({
         notify: false,
+        open: false,
         server: {
             baseDir: "lib",
             directory: true
-        }
+        },
+        ui: false
     });
 });
 
@@ -85,7 +92,7 @@ gulp.task("sass", function () {
         .pipe(autoprefix())
         .pipe(gulp.dest("lib/css"))
         //.pipe(minifyCSS({keepBreaks:true}))
-        //.pipe(filter("**/*.css"))
+        .pipe(filter("**/*.css"))
         //.pipe(rename("core.min.css"))
         //.pipe(gulp.dest("lib/css"))
         .pipe(browserSync.reload({stream:true}));
@@ -95,7 +102,7 @@ gulp.task("sass", function () {
  * Compile CSS
  */
 gulp.task("bs-inject", function () {
-    browserSync.reload("core.css");
+    browserSync.reload(["core.css", "components.css"]);
 });
 
 /**
@@ -103,7 +110,7 @@ gulp.task("bs-inject", function () {
  */
 gulp.task("build-src", function () {
     crossbow.clearCache();
-    return gulp.src("lib/src/*.hbs")
+    return gulp.src("lib/src/**")
         .pipe(crossbow({cwd: "lib/src"}))
         .pipe(gulp.dest("./lib"));
 });
@@ -137,10 +144,10 @@ gulp.task("svg", function () {
  * Build Front-end stuff
  */
 gulp.task("dev-frontend", ["sass", "svg", "build-src", "browserify", "browser-sync-dev"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass", browserSync.reload]);
+    gulp.watch("lib/scss/**/*.scss", ["sass"]);
     gulp.watch([
         "lib/src/**"
-    ], ["build-src", browserSync.reload]);
+    ], ["build-src"]);
     gulp.watch([
         "lib/img/svg/**"
     ], ["svg", "build-src", browserSync.reload]);

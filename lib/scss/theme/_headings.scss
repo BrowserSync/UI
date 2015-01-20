@@ -36,7 +36,6 @@ h1, .h1 {
     @include font-size($h1-size);
 }
 h2, .h2 {
-    font-family: $hn-font-family-thin;
     @include font-size($h2-size);
 }
 
