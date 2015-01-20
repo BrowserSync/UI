@@ -470,7 +470,7 @@ body {
   max-width: 100%;
   overflow-x: hidden;
   background: #fff;
-  color: #033339;
+  color: #000;
   text-rendering: optimizeLegibility;
   overflow-y: auto; }
   @media only screen and (min-width: 600px) {
@@ -861,9 +861,6 @@ span.sep {
 [bs-Color~="white"] {
   color: #fff; }
 
-[bs-Weight~="light"] {
-  font-family: "titillium_webregular"; }
-
 @media only screen and (min-width: 750px) {
   [bs-Visible~="not-desk"] {
     display: none; } }
@@ -1003,16 +1000,19 @@ span.sep {
     display: none; } }
 
 [bs-callout] {
-  color: #999999;
+  color: #000;
   position: relative; }
   [bs-callout] [bs-text~="lede"] {
     font-size: 20px;
     font-size: 1.11111rem;
+    font-family: "source_sans_probold", "Lucida Grande", "Lucida Sans", sans-serif;
     position: relative;
-    text-transform: uppercase;
     margin-bottom: 0;
-    font-weight: bold;
-    color: #4A90E2; }
+    color: #000; }
+    @media only screen and (min-width: 600px) {
+      [bs-callout] [bs-text~="lede"] {
+        font-size: 24px;
+        font-size: 1.33333rem; } }
   [bs-callout] [bs-text~="prefixed"] {
     text-transform: none; }
     [bs-callout] [bs-text~="prefixed"] span {
@@ -1087,7 +1087,8 @@ span.sep {
     [bs-callout-content] {
       padding-left: 108px; }
       [bs-callout-content] [bs-callout-icon] {
-        left: 40.5px; }
+        left: 40.5px;
+        top: 33px; }
         [bs-callout-content] [bs-callout-icon] [bs-svg-icon] {
           height: 45px;
           width: 45px; } }

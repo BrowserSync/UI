@@ -3,16 +3,18 @@
 
 %callout {
 
-    color: $input-text;
+    color: $black;
     position: relative;
 
     [bs-text~="lede"] {
         @include font-size(20px);
+        @include media-query(min, $lap-start) {
+            @include font-size(24px);
+        }
+        font-family: $sans-heavy;
         position: relative;
-        text-transform: uppercase;
         margin-bottom: 0;
-        font-weight: bold;
-        color: $blue;
+        color: $black;
     }
 
     [bs-text~="prefixed"] {
@@ -122,6 +124,7 @@
 
         [bs-callout-icon] {
             left: $base-spacing*1.5;
+            top: $base-spacing + 6px;
             [bs-svg-icon] {
                 height: 45px;
                 width: 45px;
