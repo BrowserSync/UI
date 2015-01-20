@@ -148,7 +148,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/sync-options.html" bs-button="nav"  class="active">
+                            <a href="/sync-options.html" bs-button="nav" >
                                 <svg bs-svg-icon><use xlink:href="#svg-sync"></use></svg> Sync Options
                             </a>
                         </li>
@@ -158,7 +158,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/remote-debug.html" bs-button="nav" >
+                            <a href="/remote-debug.html" bs-button="nav"  class="active">
                                 <svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Remote Debug
                             </a>
                         </li>
@@ -177,8 +177,8 @@
                 <div ng-view="">
                     <div>
                         <article>
-                            <div bs-callout="controls">
-                                <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-sync"></use></svg> Sync Options</h1>
+                            <div bs-callout="controls outline">
+                                <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Remote Debug</h1>
                             </div>
                             <div bs-button-row>
                                 <button bs-button="icon-left inline success">
@@ -189,193 +189,39 @@
                                 </button>
                             </div>
                             <div>
-                                <section bs-callout="switch" class="disabled">
+                                <section bs-callout="switch ">
                                     <div bs-callout-content="">
-                                        <div bs-callout-icon>
+                                        <div bs-callout-icon="switch">
                                             <div class="switch">
                                                 <input id="cmn-form-0"
                                                        ng-model="plugin.active"
                                                        ng-change="togglePlugin(plugin)"
                                                        class="cmn-toggle cmn-toggle-round"
                                                        type="checkbox"
-                                                    >
+                                                       checked="">
                                                 <label for="cmn-form-0"></label>
                                             </div>
                                         </div>
                                         <div>
-                                            <p bs-text="lede">Clicks</p>
-                                            <p>Mirrors click events across devices</p>
+                                            <p bs-text="lede">Remote Debug (weinre)</p>
                                         </div>
                                     </div>
                                 </section>
-                                <section bs-callout="switch">
+                                <section bs-callout="switch last">
                                     <div bs-callout-content="">
-                                        <div bs-callout-icon>
+                                        <div bs-callout-icon="switch">
                                             <div class="switch">
                                                 <input id="cmn-form-1"
                                                        ng-model="plugin.active"
                                                        ng-change="togglePlugin(plugin)"
                                                        class="cmn-toggle cmn-toggle-round"
                                                        type="checkbox"
-                                                    checked>
+                                                       checked="">
                                                 <label for="cmn-form-1"></label>
                                             </div>
                                         </div>
                                         <div>
-                                            <p bs-text="lede">Scroll</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-2"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-2"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Forms: Submit</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-3"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-3"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Forms: Toggles</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-4"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-4"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Forms: Inputs</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-5"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-5"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Clicks</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-6"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-6"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Scroll</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-7"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-7"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Forms: Submit</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-8"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-8"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Forms: Toggles</p>
-                                            <p>Mirrors click events across devices</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-callout="switch last">
-                                    <div bs-callout-content="">
-                                        <div bs-callout-icon>
-                                            <div class="switch">
-                                                <input id="cmn-form-9"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                    checked>
-                                                <label for="cmn-form-9"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Forms: Inputs</p>
-                                            <p>Mirrors click events across devices</p>
+                                            <p bs-text="lede">CSS Outlining</p>
                                         </div>
                                     </div>
                                 </section>

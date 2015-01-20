@@ -48,6 +48,9 @@
         padding-left: $base-spacing*3;
 
         @include media-query(min, $lap-start) {
+            [bs-callout-icon] {
+                top: $base-spacing + 6px;
+            }
             padding-left: $base-spacing*4;
         }
 
@@ -131,7 +134,7 @@
 
         [bs-callout-icon] {
             left: $base-spacing*1.5;
-            top: $base-spacing + 6px;
+            top: $base-spacing;
             [bs-svg-icon] {
                 height: 45px;
                 width: 45px;

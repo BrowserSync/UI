@@ -11,23 +11,23 @@
 
     display: inline-block;
     border: 1px solid $grey-border;
-    padding: 8px $base-spacing;
+    padding: $half-spacing $base-spacing;
     width: auto;
     vertical-align: middle;
-    background: $white;
-    color: $grey-text;
+    background: $red;
+    color: $white;
     border-radius: 3px;
-    line-height: 1.2;
     text-align: center;
     cursor: pointer;
     outline: none;
     transition: background .3s;
     text-transform: uppercase;
+    letter-spacing: 1px;
 
     &:hover {
         text-decoration: none;
-//        background: $sidebar-lt;
         color: $white;
+        background: darken($red, 10%);
     }
 
     &:focus {
@@ -50,6 +50,7 @@
 //
 [bs-button~="nav"] {
 
+    color: $grey-text;
     width: 100%;
     border-radius: 0;
     text-align: left;
@@ -57,8 +58,7 @@
     position: relative;
     background: transparent;
     display: block;
-    padding: $half-spacing 0;
-    padding-left: $icon-gutter;
+    padding: 11px 0 11px $icon-gutter;
     border-bottom: 1px solid $sidebar-hover;
     @include font-size(16px);
 
@@ -153,7 +153,6 @@
 [bs-button~="icon"] {
     padding-left: $half-spacing;
     padding-right: $half-spacing;
-    padding-top: 10px;
 }
 
 [bs-button~="icon-left"] {
@@ -164,7 +163,7 @@
 
     [bs-svg-icon] {
         position: absolute;
-        top: 11px;
+        top: 12px;
         left: $half-spacing;
         width: 16px;
         height: 16px;

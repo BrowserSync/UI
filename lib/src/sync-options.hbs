@@ -7,14 +7,7 @@ options: ['Clicks', 'Scroll', 'Forms: Submit', 'Forms: Toggles', 'Forms: Inputs'
 <div bs-callout="controls">
     <h1 bs-heading>{{inc src="icon.hbs" icon="sync" }} {{page.title}}</h1>
 </div>
-<div bs-button-row>
-    <button bs-button="inline success">
-        <span bs-checkbox>[ ]</span> Enable All
-    </button>
-    <button bs-button="inline">
-        <span bs-checkbox>[ ]</span> Disable All
-    </button>
-</div>
+{{ inc src="enable.disable.hbs" }}
 <div>
     {{#each page.options}}
     <section bs-callout="switch{{#if @last}} last{{/if}}"{{#if @first}} class="disabled"{{/if}}>

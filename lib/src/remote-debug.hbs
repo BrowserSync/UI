@@ -1,20 +1,17 @@
 ---
 layout: main.hbs
-title: "Plugins"
-icon: "plug"
-plugins: ['HTML Injector', 'Console Logger']
+title: "Remote Debug"
+icon: "bug"
+plugins:
+    - name: "Remote Debug (weinre)"
+      info: "weinre"
+    - name: "CSS Outlining"
+      info: "Add simple CSS outlines to all elements. (powered by pesitice"
 ---
 <div bs-callout="controls outline">
     <h1 bs-heading>{{ inc src="icon.hbs" icon=page.icon }} {{page.title}}</h1>
-    <button bs-button="inline">
-        <i bs-icon="circle_ok"></i>
-        Enable All
-    </button>
-    <button bs-button="inline">
-        <i bs-icon="circle_delete"></i>
-        Disable all
-    </button>
 </div>
+{{ inc src="enable.disable.hbs" }}
 <div>
     {{#each page.plugins}}
     <section bs-callout="switch {{#if @last}}last{{/if}}">
@@ -31,7 +28,7 @@ plugins: ['HTML Injector', 'Console Logger']
                 </div>
             </div>
             <div>
-                <p bs-text="lede">{{this}}</p>
+                <p bs-text="lede">{{this.name}}</p>
             </div>
         </div>
     </section>
