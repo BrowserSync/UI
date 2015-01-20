@@ -1,11 +1,11 @@
 <div bs-callout="controls outline">
     <h1 bs-heading><icon icon="{{section.icon}}"></icon> {{section.title}}</h1>
-    <div bs-button-row>
-        <button bs-button="inline" ng-click="clearVisited()" ng-show="ui.visited.length">
-            <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
-            Clear all
-        </button>
-    </div>
+</div>
+<div bs-button-row>
+    <button bs-button="icon-left inline" ng-click="clearVisited()" ng-show="ui.visited.length">
+        <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
+        Clear all
+    </button>
 </div>
 <div bs-callout ng-if="!ui.visited.length" id="bs-history-empty">
     <div bs-callout-content="basic">

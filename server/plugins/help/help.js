@@ -4,7 +4,7 @@ var path      = require("path");
 var fs        = require("fs");
 var Immutable = require("immutable");
 
-const PLUGIN_NAME = "Help, About";
+const PLUGIN_NAME = "Help / About";
 
 /**
  * @type {{plugin: Function, plugin:name: string, markup: string}}

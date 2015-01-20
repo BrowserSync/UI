@@ -17,8 +17,8 @@ module.exports = {
      * Hooks
      */
     "hooks": {
-        "markup": file("/server-info.html"),
-        "client:js": file("/server-info.client.js"),
+        "markup": file("/overview.html"),
+        "client:js": file("/overview.client.js"),
         "templates": [
             getPath("/snippet-info.html"),
             getPath("/url-info.html")
@@ -26,7 +26,7 @@ module.exports = {
         "page": {
             path: "/",
             title: PLUGIN_NAME,
-            template: "server-info.html",
+            template: "overview.html",
             controller: PLUGIN_NAME.replace(" ", "") + "Controller",
             order: 1,
             icon: "cog"

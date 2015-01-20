@@ -1,4 +1,4 @@
-<ul bs-list="bordered inline-controls" ng-show="ui.connections" id="bs-connection-list">
+<ul bs-list="inline-controls" ng-show="ui.connections" id="bs-connection-list">
     <li ng-repeat="connection in ui.connections track by connection.id">
         <p>{{connection.browser.name}} - ({{connection.browser.version}})</p>
         <!--<span bs-multi-controls="right">

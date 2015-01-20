@@ -1,8 +1,5 @@
 <ul bs-list="bordered inline-controls" ng-if="visited" id="bs-history-list">
     <li ng-repeat="url in visited track by $index">
-        <button bs-remove ng-click="removeVisited(url)">
-            <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
-        </button>
         <p>{{url.path}}</p>
 
         <span bs-multi-controls="right">
@@ -12,6 +9,7 @@
             <a href="#" ng-click="sendAllTo(url.path)" bs-button>
                 <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> sync all
             </a>
+            <a href="#" bs-button="icon-only" ng-click="removeVisited(url)"><svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg></a>
         </span>
     </li>
 </ul>

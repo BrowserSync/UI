@@ -4,20 +4,20 @@
             <icon icon="{{section.icon}}"></icon>
             {{section.title}}
         </h1>
-        <div bs-button-row>
-            <button bs-button="inline success" ng-click="setMany(true)">
-                <svg bs-svg-icon="">
-                    <use xlink:href="#svg-circle-ok"></use>
-                </svg>
-                Enable All
-            </button>
-            <button bs-button="inline" ng-click="setMany(false)">
-                <svg bs-svg-icon="">
-                    <use xlink:href="#svg-circle-delete"></use>
-                </svg>
-                Disable all
-            </button>
-        </div>
+    </div>
+    <div bs-button-row>
+        <button bs-button="icon-left inline success" ng-click="setMany(true)">
+            <svg bs-svg-icon="">
+                <use xlink:href="#svg-circle-ok"></use>
+            </svg>
+            Enable All
+        </button>
+        <button bs-button="icon-left inline" ng-click="setMany(false)">
+            <svg bs-svg-icon="">
+                <use xlink:href="#svg-circle-delete"></use>
+            </svg>
+            Disable all
+        </button>
     </div>
     <sync-options ng-if="options" options="options" sync-items="syncItems"></sync-options>
 </article>
