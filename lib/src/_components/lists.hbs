@@ -21,26 +21,17 @@
 </div>
 
 <ul bs-list="bordered inline-controls">
+{{#each site.links}}
     <li>
-        <p>/components.html</p>
+        <p>{{this}}</p>
         <div bs-button-group>
             <button href="#" bs-button="subtle-alt icon">
-              {{inc src="icon.hbs" icon="target"}}
+              {{inc src="icon.hbs" icon="syncall"}}
             </button>
             <button href="#" bs-button="subtle-alt icon">
                 {{inc src="icon.hbs" icon="bin"}}
             </button>
         </div>
     </li>
-    <li>
-        <p>https://github.com/shakyShane/browser-sync/pull/400</p>
-        <div bs-button-group>
-            <button href="#" bs-button="subtle-alt icon">
-                {{inc src="icon.hbs" icon="target"}}
-            </button>
-            <button href="#" bs-button="subtle-alt icon">
-                {{inc src="icon.hbs" icon="bin"}}
-            </button>
-        </div>
-    </li>
+{{/each}}
 </ul>

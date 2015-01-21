@@ -1195,8 +1195,6 @@ span.sep {
   word-wrap: break-word; }
   [bs-list~="inline-controls"] p {
     margin-bottom: 7px; }
-  [bs-list~="inline-controls"] [bs-button-group] {
-    margin-bottom: 0; }
   [bs-list~="inline-controls"] li {
     background: #fff;
     position: relative;
@@ -1226,12 +1224,13 @@ span.sep {
               -ms-flex: 1;
                   flex: 1;
           padding-top: 11px;
-          padding-bottom: 11px; }
-        [bs-list~="inline-controls"] li [bs-multi-controls] {
-          position: relative;
-          -webkit-align-self: flex-end;
-              -ms-flex-item-align: end;
-                  align-self: flex-end; } }
+          padding-bottom: 11px; } }
+  [bs-list~="inline-controls"] [bs-button-group] {
+    margin-bottom: 0; }
+    [bs-list~="inline-controls"] [bs-button-group] [bs-svg-icon] {
+      top: 4px;
+      width: 22px;
+      height: 22px; }
 
 [bs-list~="padded-left"] li {
   padding-left: 14px; }

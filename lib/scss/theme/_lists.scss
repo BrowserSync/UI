@@ -56,10 +56,6 @@ $controls-height: 41px;
         margin-bottom: $half-spacing/2;
     }
 
-    [bs-button-group] {
-        margin-bottom: 0;
-    }
-
     li {
 
         background: $white;
@@ -96,11 +92,17 @@ $controls-height: 41px;
                 padding-top: 11px;
                 padding-bottom: 11px;
             }
+        }
+    }
 
-            [bs-multi-controls] {
-                position: relative;
-                align-self: flex-end;
-            }
+    [bs-button-group] {
+
+        margin-bottom: 0;
+
+        [bs-svg-icon] {
+            top: 4px;
+            width:  22px;
+            height: 22px;
         }
     }
 }
