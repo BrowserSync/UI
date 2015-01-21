@@ -6,6 +6,10 @@ $controls-height: 41px;
 [bs-list] {
     margin-left: 0;
     list-style: none;
+    
+    p {
+        margin-bottom: 0;
+    }
 }
 
 //
@@ -22,6 +26,9 @@ $controls-height: 41px;
     }
 }
 
+//
+// In-list controls
+//
 [bs-list~="inline-controls"] {
 
     color: $green-lt;
@@ -109,6 +116,14 @@ $controls-height: 41px;
     li {
         padding-left: $half-spacing;
     }
+}
+
+//
+// Basic version of a list
+//
+[bs-list~="basic"] {
+    list-style: circle;
+    margin-left: $base-spacing;
 }
 
 //

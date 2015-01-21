@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="72px" height="64px" viewBox="0 0 72 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>square-add</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="square-add" sketch:type="MSLayerGroup" fill="#000000">
+            <g id="SQUARE__x2F__ADD_1_" sketch:type="MSShapeGroup">
+                <g id="SQUARE__x2F__ADD">
+                    <path d="M23,35 L33,35 L33,45 C33,46.657 34.343,48 36,48 C37.657,48 39,46.657 39,45 L39,35 L49,35 C50.657,35 52,33.657 52,32 C52,30.343 50.657,29 49,29 L39,29 L39,19 C39,17.343 37.657,16 36,16 C34.343,16 33,17.343 33,19 L33,29 L23,29 C21.343,29 20,30.343 20,32 C20,33.657 21.343,35 23,35 L23,35 Z M65,0 L7,0 C5.343,0 4,1.343 4,3 L4,61 C4,62.657 5.343,64 7,64 L65,64 C66.657,64 68,62.657 68,61 L68,3 C68,1.343 66.657,0 65,0 L65,0 Z M62,64 L10,64 L10,6 L62,6 L62,64 L62,64 Z" id="Shape"></path>
+                    <rect id="Rectangle-1" x="0" y="59" width="10" height="5"></rect>
+                    <rect id="Rectangle-2" x="62" y="59" width="10" height="5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

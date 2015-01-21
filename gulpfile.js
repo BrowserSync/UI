@@ -110,9 +110,9 @@ gulp.task("bs-inject", function () {
  */
 gulp.task("build-src", function () {
     crossbow.clearCache();
-    crossbow.emitter.on("_error", function (err) {
-        console.log(err.message);
-    });
+    //crossbow.emitter.on("_error", function (err) {
+    //    console.log(err.message);
+    //});
     return gulp.src("lib/src/**")
         .pipe(crossbow({
             cwd: "lib/src",

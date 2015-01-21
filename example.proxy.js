@@ -9,7 +9,7 @@ bs.use(cp);
 //bs.use(client);
 
 bs({
-    proxy: "swoon.static",
+    proxy: "http://www.chucklebooth.co.uk/",
     open: false,
     //tunnel: true
     port: 4000

@@ -39,7 +39,7 @@ module.exports = {
  */
 function setOptions (cp, bs, value) {
 
-    cp.logger.info("Setting Many options...");
+    cp.logger.debug("Setting Many options...");
 
     if (value !== true) {
         value = false;

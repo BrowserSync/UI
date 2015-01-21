@@ -4,10 +4,10 @@
 
         <span bs-multi-controls="right">
             <a href="{{url.path | localUrl:options.port:options.mode}}" target="_blank" bs-button>
-                <svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> new tab
+                <icon icon="newtab"></icon> new tab
             </a>
             <a href="#" ng-click="sendAllTo(url.path)" bs-button>
-                <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> sync all
+                <icon icon="target"></icon> sync all
             </a>
             <a href="#" bs-button="icon-only" ng-click="removeVisited(url)"><svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg></a>
         </span>
