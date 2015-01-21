@@ -1,16 +1,25 @@
 <p>Default button styles</p>
 <p>
-    <button bs-button>New Tab</button> <button bs-button>Sync all</button>
+    <button bs-button>Button</button>
+    <button bs-button="size-small">Button Small</button>
+    <button bs-button="size-small" disabled>Button Small</button>
+</p>
+<p>Subtle button styles</p>
+<p>
+    <button bs-button="subtle">Button</button>
+    <button bs-button="size-small subtle">Button Small</button>
+    <button bs-button="size-small subtle" disabled>Button Small</button>
 </p>
 <hr/>
-<h2>Buttons with Icons</h2>
+<p>Default buttons with icons</p>
 <p>
-    <a href="#" bs-button="icon icon-left">
-        {{ inc src="icon.hbs" icon="square-add" }}
-        new tab
-    </a>
-    <a href="#" bs-button="icon icon-left">
-        {{ inc src="icon.hbs" icon="target" }}
-        new tab
-    </a>
+    <button bs-button="icon-left">{{ inc src="icon.hbs" icon="square-add" }} Icon Left</button>
+    <button bs-button="icon-right">{{ inc src="icon.hbs" icon="bug" }} Icon Right</button>
+    <button bs-button="icon">{{ inc src="icon.hbs" icon="target" }}</button>
+</p>
+<p>Subtle buttons with icons</p>
+<p>
+    <button bs-button="subtle icon-left">{{ inc src="icon.hbs" icon="square-add" }} Icon Left</button>
+    <button bs-button="subtle icon-right">{{ inc src="icon.hbs" icon="bug" }} Icon Right</button>
+    <button bs-button="subtle icon">{{ inc src="icon.hbs" icon="target" }}</button>
 </p>

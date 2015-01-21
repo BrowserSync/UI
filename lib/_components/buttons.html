@@ -1,16 +1,25 @@
 <p>Default button styles</p>
 <p>
-    <button bs-button>New Tab</button> <button bs-button>Sync all</button>
+    <button bs-button>Button</button>
+    <button bs-button="size-small">Button Small</button>
+    <button bs-button="size-small" disabled>Button Small</button>
+</p>
+<p>Subtle button styles</p>
+<p>
+    <button bs-button="subtle">Button</button>
+    <button bs-button="size-small subtle">Button Small</button>
+    <button bs-button="size-small subtle" disabled>Button Small</button>
 </p>
 <hr/>
-<h2>Buttons with Icons</h2>
+<p>Default buttons with icons</p>
 <p>
-    <a href="#" bs-button="icon icon-left">
-        <svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg>
-        new tab
-    </a>
-    <a href="#" bs-button="icon icon-left">
-        <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg>
-        new tab
-    </a>
+    <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
+    <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
+    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+</p>
+<p>Subtle buttons with icons</p>
+<p>
+    <button bs-button="subtle icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
+    <button bs-button="subtle icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
+    <button bs-button="subtle icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
 </p>

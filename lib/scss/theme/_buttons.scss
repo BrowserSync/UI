@@ -23,7 +23,9 @@
     transition: background .3s;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 1px 1px 0 rgba(black, .5);
+    box-shadow: 0 1px 1px 0 rgba(black, .4);
+    margin-bottom: $half-spacing;
+    height: 40px;
 
     &:hover {
         text-decoration: none;
@@ -33,16 +35,62 @@
 
     &:focus {
         text-decoration: none;
-        color: $grey-text;
+        color: $white;
     }
 
     &:active {
         color: $white;
+        box-shadow: 0px 1px 1px 0 rgba(black, .4) inset;
+        text-shadow: 1px 1px 0px rgba(black, .4);
+    }
+    
+    &[disabled] {
+        border-color: desaturate($red, 30%);
+        background: desaturate($red, 30%);
+        color: #F2AAAA;
     }
 
     + .button,
     + a {
     }
+}
+
+//
+//
+//
+[bs-button~="subtle"] {
+
+    background: $white;
+    color: $red;
+    border-color: darken($grey-border, 5%);
+
+    &:hover, &:focus {
+        color: $red;
+        background: $grey-border;
+    }
+    
+    &:focus {
+        background: $white;
+    }
+
+    &:active {
+        color: $red;
+        text-shadow: 1px 1px 1px rgba(black, .2);
+    }
+
+    &[disabled] {
+        border-color: darken($grey-border, 5%);
+        background: $grey-border;
+        color: #F2AAAA;
+    }
+}
+
+//
+//
+//
+[bs-button~="size-small"] {
+    @include font-size(14px);
+    padding: 5px $half-spacing;
 }
 
 //
@@ -152,20 +200,46 @@
 // <i bs-Icon="repeat"></i>
 //
 [bs-button~="icon"] {
+
     padding-left: $half-spacing;
     padding-right: $half-spacing;
+
+    [bs-svg-icon] {
+        top: 4px;
+        width: 16px;
+        height: 16px;
+    }
 }
 
+//
+// Buttons with icons on left
+//
 [bs-button~="icon-left"] {
 
-    line-height: 1;
     position: relative;
     padding-left: $base-spacing + $half-spacing;
 
     [bs-svg-icon] {
         position: absolute;
-        top: 12px;
+        top: 11px;
         left: $half-spacing;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+//
+// Buttons with icons on left
+//
+[bs-button~="icon-right"] {
+
+    position: relative;
+    padding-right: $base-spacing + $half-spacing;
+
+    [bs-svg-icon] {
+        position: absolute;
+        top: 11px;
+        right: $half-spacing;
         width: 16px;
         height: 16px;
     }
