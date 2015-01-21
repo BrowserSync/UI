@@ -7,11 +7,11 @@
 //
 [bs-button] {
 
-    @include font-size(14px);
+    @include font-size(16px);
 
     display: inline-block;
-    border: 1px solid $grey-border;
-    padding: $half-spacing $base-spacing;
+    border: 1px solid darken($red, 15%);
+    padding: 7px $half-spacing*1.5;
     width: auto;
     vertical-align: middle;
     background: $red;
@@ -23,6 +23,7 @@
     transition: background .3s;
     text-transform: uppercase;
     letter-spacing: 1px;
+    box-shadow: 0 1px 1px 0 rgba(black, .5);
 
     &:hover {
         text-decoration: none;

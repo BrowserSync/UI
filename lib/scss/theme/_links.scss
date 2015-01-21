@@ -2,7 +2,6 @@ a {
     color: $link;
     transition: background 0.3s ease, color 0.3s ease;
 
-
     &:hover,
     &:active,
     &:focus{
@@ -18,5 +17,4 @@ a {
 
 [bs-icon] {
     transition: background 0.3s ease, color 0.3s ease;
-//    text-shadow: 1px 1px 0 white;
 }

@@ -755,7 +755,7 @@ h6, .h6 {
   font-size: 0.66667rem; }
 
 a {
-  color: #21A695;
+  color: #ff4453;
   transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     text-decoration: underline;
@@ -851,11 +851,11 @@ span.sep {
     display: none; } }
 
 [bs-button] {
-  font-size: 14px;
-  font-size: 0.77778rem;
+  font-size: 16px;
+  font-size: 0.88889rem;
   display: inline-block;
-  border: 1px solid #F0F0F0;
-  padding: 14px 27px;
+  border: 1px solid #f60014;
+  padding: 7px 21px;
   width: auto;
   vertical-align: middle;
   background: #ff4453;
@@ -866,7 +866,8 @@ span.sep {
   outline: none;
   transition: background .3s;
   text-transform: uppercase;
-  letter-spacing: 1px; }
+  letter-spacing: 1px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5); }
   [bs-button]:hover {
     text-decoration: none;
     color: #fff;
