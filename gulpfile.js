@@ -113,7 +113,7 @@ gulp.task("build-src", function () {
     //crossbow.emitter.on("_error", function (err) {
     //    console.log(err.message);
     //});
-    return gulp.src("lib/src/**")
+    return gulp.src(["lib/src/*.hbs", "lib/src/_components/*.hbs"])
         .pipe(crossbow({
             cwd: "lib/src",
             siteConfig: "lib/src/_config.yml"
@@ -151,12 +151,8 @@ gulp.task("svg", function () {
  */
 gulp.task("dev-frontend", ["sass", "svg", "build-src", "browserify", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
-    gulp.watch([
-        "lib/src/**"
-    ], ["build-src", browserSync.reload]);
-    gulp.watch([
-        "lib/img/svg/**"
-    ], ["svg", "build-src", browserSync.reload]);
+    gulp.watch(["lib/src/**"], ["build-src", browserSync.reload]);
+    gulp.watch(["lib/img/svg/**"], ["svg", "build-src", browserSync.reload]);
     gulp.watch("lib/js/scripts/**/*.js", ["browserify", browserSync.reload]);
 });
 

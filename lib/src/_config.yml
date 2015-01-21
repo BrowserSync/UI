@@ -14,3 +14,9 @@ sections:
   - title: "Help / About"
     icon:  "help"
     href:  "/help.html"
+
+links:
+  github: "https://github.com/shakyShane/browser-sync-ui"
+  twitter: "https://twitter.com/browsersync"
+  home:    "https://browsersync.io"
+
