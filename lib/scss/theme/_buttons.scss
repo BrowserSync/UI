@@ -68,7 +68,7 @@
 
     &:active {
         color: $white;
-        box-shadow: 0px 1px 1px 0 rgba(black, .4) inset;
+        box-shadow: 0px 1px 0px 0 rgba(black, .1) inset;
         text-shadow: 1px 1px 0px rgba(black, .4);
     }
     
@@ -90,7 +90,6 @@
         height: 16px;
     }
 }
-
 
 //
 //
@@ -133,7 +132,7 @@
     padding-right: $half-spacing;
     [bs-svg-icon] {
         position: relative;
-        top: 3px;
+        top: 2px;
         left: auto;
     }
 }
@@ -162,6 +161,26 @@
     [bs-svg-icon] {
         left: auto;
         right: $half-spacing;
+    }
+}
+
+//
+//
+//
+[bs-button-group] {
+
+    display: flex;
+
+    [bs-button] {
+        border-radius: 0;
+        &:first-child {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+        &:last-child {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
     }
 }
 
