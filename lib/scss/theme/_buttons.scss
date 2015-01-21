@@ -53,6 +53,14 @@
     + .button,
     + a {
     }
+
+    [bs-svg-icon] {
+        position: absolute;
+        top: 11px;
+        left: $half-spacing;
+        width: 16px;
+        height: 16px;
+    }
 }
 
 //
@@ -89,8 +97,58 @@
 //
 //
 [bs-button~="size-small"] {
+
     @include font-size(14px);
     padding: 5px $half-spacing;
+    height: 33px;
+
+    [bs-svg-icon] {
+        top: 8px;
+        width: 14px;
+        height: 14px;
+    }
+}
+
+
+//
+// Icons
+// <i bs-Icon="repeat"></i>
+//
+[bs-button~="icon"] {
+    padding-left: $half-spacing;
+    padding-right: $half-spacing;
+    [bs-svg-icon] {
+        position: relative;
+        top: 4px;
+        left: auto;
+    }
+}
+
+//
+// Buttons with icons on left
+//
+[bs-button~="icon-left"] {
+
+    position: relative;
+    padding-left: $base-spacing + $half-spacing;
+
+    [bs-svg-icon] {
+        left: $half-spacing;
+    }
+}
+
+//
+// Buttons with icons on left
+//
+[bs-button~="icon-right"] {
+
+    position: relative;
+    padding-right: $base-spacing + $half-spacing;
+
+    [bs-svg-icon] {
+        left: auto;
+        right: $half-spacing;
+    }
 }
 
 //
@@ -192,63 +250,6 @@
 
     @include media-query(min, $lap-start) {
         padding-left: $base-spacing;
-    }
-}
-
-//
-// Icons
-// <i bs-Icon="repeat"></i>
-//
-[bs-button~="icon"] {
-
-    padding-left: $half-spacing;
-    padding-right: $half-spacing;
-
-    [bs-svg-icon] {
-        top: 4px;
-        width: 16px;
-        height: 16px;
-    }
-}
-
-//
-// Buttons with icons on left
-//
-[bs-button~="icon-left"] {
-
-    position: relative;
-    padding-left: $base-spacing + $half-spacing;
-
-    [bs-svg-icon] {
-        position: absolute;
-        top: 11px;
-        left: $half-spacing;
-        width: 16px;
-        height: 16px;
-    }
-}
-
-//
-// Buttons with icons on left
-//
-[bs-button~="icon-right"] {
-
-    position: relative;
-    padding-right: $base-spacing + $half-spacing;
-
-    [bs-svg-icon] {
-        position: absolute;
-        top: 11px;
-        right: $half-spacing;
-        width: 16px;
-        height: 16px;
-    }
-}
-
-[bs-button~="icon-right"] {
-
-    [bs-Icon] {
-        margin-left: $half-spacing/2;
     }
 }
 
