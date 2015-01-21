@@ -3,6 +3,8 @@ var fs          = require("fs");
 var config      = require("./config");
 var svg         = fs.readFileSync(libDir("/img/icons/svg/symbols.svg"), "utf-8");
 var indexPage   = fs.readFileSync(libDir(config.defaults.indexPage), "utf-8");
+var header      = fs.readFileSync(libDir(config.defaults.components.header), "utf-8");
+var footer      = fs.readFileSync(libDir(config.defaults.components.footer), "utf-8");
 
 /**
  * CWD directory helper for static dir
@@ -39,9 +41,18 @@ function startServer(controlPanel, socketMw, connectorMw) {
     serveJsFiles(app, socketMw, connectorMw);
 
     /**
-     * Add any markup from plugins/hooks
+     * Add any markup from plugins/hooks/templates
      */
-    insertPageMarkupFromHooks(app, controlPanel.pageMarkup, controlPanel.pages, controlPanel.templates, svg);
+    insertPageMarkupFromHooks(
+        app,
+        controlPanel.pages,
+        indexPage
+            .replace("%pageMarkup%", controlPanel.pageMarkup)
+            .replace("%templates%", controlPanel.templates)
+            .replace("%svg%", svg)
+            .replace("%header%", header)
+            .replace("%footer%", footer)
+    );
 
     /**
      * History API fallback
@@ -98,16 +109,12 @@ function serveJsFiles(app, socketMw, connectorMw) {
  * @param app
  * @param pageMarkup
  */
-function insertPageMarkupFromHooks(app, pageMarkup, pages, templates, svg) {
+function insertPageMarkupFromHooks(app, pages, markup) {
 
     app.use(function (req, res, next) {
         if (req.url === "/" || pages[req.url.slice(1)]) {
             res.setHeader("Content-Type", "text/html");
-            res.end(
-                indexPage
-                    .replace(/%hooks%/g, pageMarkup + templates)
-                    .replace(/%svg%/g, svg)
-            );
+            res.end(markup);
         } else {
             next();
         }

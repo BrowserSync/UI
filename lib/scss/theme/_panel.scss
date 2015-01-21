@@ -1,7 +1,7 @@
 @import "../vars";
 @import "../modules/mixins";
 
-%panel {
+@mixin panel {
 
     color: $black;
     position: relative;
@@ -28,7 +28,9 @@
 }
 
 [bs-panel] {
-    @extend %panel;
+
+    @include panel;
+
     background: $white;
     padding: $base-spacing 0 $half-spacing;
     border-bottom: 1px solid $grey-border;

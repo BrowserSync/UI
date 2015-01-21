@@ -975,7 +975,10 @@ span.sep {
 
 [bs-panel] {
   color: #000;
-  position: relative; }
+  position: relative;
+  background: #fff;
+  padding: 27px 0 14px;
+  border-bottom: 1px solid #F0F0F0; }
   [bs-panel] [bs-text~="lede"] {
     font-size: 20px;
     font-size: 1.11111rem;
@@ -993,11 +996,6 @@ span.sep {
       text-transform: uppercase;
       color: #F0F0F0;
       font-weight: 200; }
-
-[bs-panel] {
-  background: #fff;
-  padding: 27px 0 14px;
-  border-bottom: 1px solid #F0F0F0; }
 
 [bs-panel~="switch"].disabled {
   background: #FBFBFB; }

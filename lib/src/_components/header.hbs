@@ -1,15 +1,15 @@
 <header bs-header role="banner">
     <div bs-header-row="brand">
-            <span class="icon icon-word">
-            <svg>
-                <use xlink:href="#svg-logo-word"></use>
+        <span class="icon icon-word">
+        <svg>
+            <use xlink:href="#svg-logo-word"></use>
+        </svg>
+        </span>
+        <span bs-toggle="nav" ng-click="toggleMenu()">
+            <svg bs-svg-icon>
+                <use xlink:href="#svg-list"></use>
             </svg>
-            </span>
-            <span bs-toggle="nav" ng-click="toggleMenu()">
-                <svg bs-svg-icon>
-                    <use xlink:href="#svg-list"></use>
-                </svg>
-            </span>
+        </span>
     </div>
     <aside bs-controls="top">
         <div bs-flex="top">
@@ -18,7 +18,7 @@
                 Reload all
             </a>
             <a href="\{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'" class="ng-scope">
-                {{ inc src="icon.hbs" icon="square-add" }}
+                {{ inc src="icon.hbs" icon="newtab" }}
                 New Tab
             </a>
             <a href="#" bs-control title="Reset the scroll position of all browsers to 0" ng-click="app.scrollAllTo(0)">

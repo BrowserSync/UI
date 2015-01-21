@@ -10,85 +10,48 @@
 </head>
 <body ng-app="BrowserSync">
 
-%svg%
+    %svg%
 
-<disconnect-elem></disconnect-elem>
-<notify-elem></notify-elem>
+    <disconnect-elem></disconnect-elem>
+    <notify-elem></notify-elem>
 
-<main ng-controller="MainController as app">
-    <header bs-header role="banner">
-        <div bs-header-row="brand">
-            <a href="/" title="Visit the BrowserSync.io website" class="icon icon-logo">
-                <svg>
-                    <use xlink:href="#svg-logo"></use>
-                </svg>
-            </a>
-            <span class="icon icon-word">
-                <svg>
-                    <use xlink:href="#svg-logo-word"></use>
-                </svg>
-            </span>
-            <span bs-toggle="nav" ng-click="app.toggleMenu()" ng-class="{'active': app.ui.sectionMenu}">
-                <svg>
-                    <use xlink:href="#svg-list"></use>
-                </svg>
-            </span>
-        </div>
-        <aside bs-controls="top">
-            <div bs-flex="top">
-                <a href="#" bs-control title="Reload all Browsers" ng-click="app.reloadAll()">
-                    <svg bs-svg-icon><use xlink:href="#svg-repeat"></use></svg>
-                    Reload all
-                </a>
-                <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'">
-                    <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
-                    New Tab
-                </a>
-                <a href="#" bs-control title="Reset the scroll position of all browsers to 0" ng-click="app.scrollAllTo(0)">
-                    <svg bs-svg-icon><use xlink:href="#svg-square-up"></use></svg>
-                    Scroll Top
-                </a>
-                <a href="#" bs-control title="Reset all Browsers to Homepage" ng-click="app.sendAllTo('/')" ng-show="app.options.mode !== 'snippet'">
-                    <svg bs-svg-icon><use xlink:href="#svg-home"></use></svg>
-                    Reset All
-                </a>
-            </div>
-        </aside>
-    </header>
-    <section bs-container>
-        <section bs-sidebar>
-            <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu}">
-                <ul bs-list="">
-                    <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
-                        <button bs-button="nav" ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
-                            <icon icon="{{item.icon}}"></icon>
-                            {{item.title | ucfirst}}
-                        </button>
-                    </li>
-                    <li bs-action="menu-close" bs-visible="palm">
-                        <button bs-button="nav" ng-click="app.toggleMenu()"><icon icon="circle-delete"></icon> CLOSE</button>
-                    </li>
-                </ul>
-            </nav>
+    <main ng-controller="MainController as app">
+
+        %header%
+
+        <section bs-container>
+            <section bs-sidebar>
+                <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu}">
+                    <ul bs-list="">
+                        <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
+                            <button bs-button="nav" ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
+                                <icon icon="{{item.icon}}"></icon>
+                                {{item.title | ucfirst}}
+                            </button>
+                        </li>
+                        <li bs-action="menu-close" bs-visible="palm">
+                            <button bs-button="nav" ng-click="app.toggleMenu()"><icon icon="circle-delete"></icon> CLOSE</button>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+
+            <section bs-content>
+
+                %pageMarkup%
+                %templates%
+
+                <div ng-view></div>
+
+                %footer%
+
+            </section>
         </section>
-        <section bs-content="">
-            %hooks%
-            <div ng-view>
-            </div>
-            <footer bs-footer>
-                <p bs-text="copyright">© 2015 -
-                    <a href="http://browsersync.io">BrowserSync.io</a> |
-                    <a href="https://github.com/shakyShane/browser-sync-control-panel"><svg bs-svg-icon><use xlink:href="#svg-github"></use></svg></a>
-                    <a href="https://twitter.com/browsersync"><svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg></a>
-                </p>
-            </footer>
-        </section>
-    </section>
-</main>
+    </main>
 
-<script src="/js/vendor/socket.js"></script>
-<script src="/js/connector.js"></script>
-<script src="/app.js"></script>
+    <script src="/js/vendor/socket.js"></script>
+    <script src="/js/connector.js"></script>
+    <script src="/app.js"></script>
 
 </body>
 </html>

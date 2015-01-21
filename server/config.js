@@ -17,6 +17,10 @@ var defaults = {
     clientJs:    "/lib/js/includes/events.js",
     socket: {
         namespace: "/browser-sync-cp"
+    },
+    components: {
+        header: "/_components/top-bar.html",
+        footer: "/_components/footer.html"
     }
 };
 

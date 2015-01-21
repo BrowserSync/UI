@@ -18,7 +18,7 @@ module.exports = {
         "markup": file("sync-options.html"),
         "client:js": file("sync-options.client.js"),
         "templates": [
-            getPath("/sync-options-list.html"),
+            getPath("/sync-options-list.html")
         ],
         "page": {
             path: "/sync-options",
