@@ -26,7 +26,7 @@ module.exports = {
             template: "sync-options.html",
             controller: PLUGIN_NAME.replace(" ", "") + "Controller",
             order: 2,
-            icon: "repeat"
+            icon: "sync"
         }
     },
     "plugin:name": PLUGIN_NAME

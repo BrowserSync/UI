@@ -2,7 +2,7 @@
 layout: main.hbs
 title: "Snippet Info"
 icon: "cog"
-callouts:
+panels:
     - title: "Local"
       icon: "imac"
       url: "http://localhost:3000"
@@ -13,13 +13,13 @@ callouts:
       icon: "globe"
       url: "http://14frwed.localtunnel.me"
 ---
-<div bs-callout="controls outline">
+<div bs-panel="controls outline">
     <h1 bs-heading><i bs-icon="{{page.icon}}"></i> {{page.title}}</h1>
 </div>
 <section>
-    <div bs-callout="full">
-        <div bs-callout-content="">
-            <div bs-callout-icon="">
+    <div bs-panel="full">
+        <div bs-panel-content="">
+            <div bs-panel-icon="">
                 <i bs-icon="code"></i>
             </div>
             <p bs-text="lede">Place this snippet somewhere before the closing <code>&lt;/body&gt;</code> tag in your website</p>

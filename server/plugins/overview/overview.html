@@ -1,5 +1,5 @@
 <article>
-    <div bs-callout="controls outline">
+    <div bs-panel="controls outline">
         <h1 bs-heading>
             <icon icon="{{section.icon}}"></icon>
             {{section.title}}
@@ -8,9 +8,9 @@
     <url-info ng-if="options.server || options.proxy" options="options"></url-info>
     <snippet-info ng-if="options && ui.snippet" options="options"></snippet-info>
 
-    <div bs-callout="full">
-        <div bs-callout-content>
-            <div bs-callout-icon>
+    <div bs-panel="full">
+        <div bs-panel-content>
+            <div bs-panel-icon>
                 <svg bs-svg-icon><use xlink:href="#svg-devices"></use></svg>
             </div>
             <p bs-text="lede">Current Connections</p>

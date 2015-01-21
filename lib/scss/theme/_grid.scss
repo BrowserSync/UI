@@ -12,7 +12,7 @@
 [bs-grid-item~="3up"] {
     @include media-query(min, $desk-start) {
         width: 33.33%;
-        [bs-callout-content] {
+        [bs-panel-content] {
             width: 100%;
             padding-left: $half-spacing;
             padding-right: $half-spacing;

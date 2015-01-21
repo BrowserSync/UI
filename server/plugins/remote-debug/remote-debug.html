@@ -1,13 +1,13 @@
-<div bs-callout="controls outline">
+<div bs-panel="controls outline">
     <h1 bs-heading>
         <icon icon="{{section.icon}}"></icon>
         {{section.title}}
     </h1>
 </div>
 
-<div bs-callout="switch" ng-repeat="item in items track by $index" ng-class="{'disabled': !item.item.active}">
-    <div bs-callout-content="">
-        <div bs-callout-icon="switch">
+<div bs-panel="switch" ng-repeat="item in items track by $index" ng-class="{'disabled': !item.item.active}">
+    <div bs-panel-content="">
+        <div bs-panel-icon="switch">
             <div class="switch">
                 <input id="cmn-form-{{item.name}}"
                        ng-model="item.item.active"

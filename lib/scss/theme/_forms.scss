@@ -12,7 +12,7 @@ $input-height: 40px;
     max-width: 100%;
     font-family: $sans-light;
 
-    @extend %callout;
+    @extend %panel;
 }
 
 /*

@@ -1,5 +1,5 @@
 <article>
-    <div bs-callout="controls outline">
+    <div bs-panel="controls outline">
         <h1 bs-heading>
             <icon icon="{{section.icon}}"></icon>
             {{section.title}}
@@ -7,15 +7,11 @@
     </div>
     <div bs-button-row>
         <button bs-button="icon-left inline success" ng-click="setMany(true)">
-            <svg bs-svg-icon="">
-                <use xlink:href="#svg-circle-ok"></use>
-            </svg>
+            <svg bs-svg-icon><use xlink:href="#svg-circle-ok"></use></svg>
             Enable All
         </button>
         <button bs-button="icon-left inline" ng-click="setMany(false)">
-            <svg bs-svg-icon="">
-                <use xlink:href="#svg-circle-delete"></use>
-            </svg>
+            <svg bs-svg-icon><use xlink:href="#svg-circle-delete"></use></svg>
             Disable all
         </button>
     </div>

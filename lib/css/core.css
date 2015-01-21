@@ -973,10 +973,10 @@ span.sep {
   [bs-action~="menu-close"] {
     display: none; } }
 
-[bs-callout] {
+[bs-panel] {
   color: #000;
   position: relative; }
-  [bs-callout] [bs-text~="lede"] {
+  [bs-panel] [bs-text~="lede"] {
     font-size: 20px;
     font-size: 1.11111rem;
     font-family: "source_sans_probold", "Lucida Grande", "Lucida Sans", sans-serif;
@@ -984,38 +984,38 @@ span.sep {
     margin-bottom: 0;
     color: #000; }
     @media only screen and (min-width: 600px) {
-      [bs-callout] [bs-text~="lede"] {
+      [bs-panel] [bs-text~="lede"] {
         font-size: 24px;
         font-size: 1.33333rem; } }
-  [bs-callout] [bs-text~="prefixed"] {
+  [bs-panel] [bs-text~="prefixed"] {
     text-transform: none; }
-    [bs-callout] [bs-text~="prefixed"] span {
+    [bs-panel] [bs-text~="prefixed"] span {
       text-transform: uppercase;
       color: #F0F0F0;
       font-weight: 200; }
 
-[bs-callout] {
+[bs-panel] {
   background: #fff;
   padding: 27px 0 14px;
   border-bottom: 1px solid #F0F0F0; }
 
-[bs-callout~="switch"].disabled {
+[bs-panel~="switch"].disabled {
   background: #FBFBFB; }
-  [bs-callout~="switch"].disabled, [bs-callout~="switch"].disabled [bs-text~="lede"] {
+  [bs-panel~="switch"].disabled, [bs-panel~="switch"].disabled [bs-text~="lede"] {
     color: #ababab; }
-[bs-callout~="switch"] [bs-callout-content] {
+[bs-panel~="switch"] [bs-panel-content] {
   padding-left: 81px;
   margin-bottom: 14px; }
   @media only screen and (min-width: 600px) {
-    [bs-callout~="switch"] [bs-callout-content] {
+    [bs-panel~="switch"] [bs-panel-content] {
       padding-left: 108px; }
-      [bs-callout~="switch"] [bs-callout-content] [bs-callout-icon] {
+      [bs-panel~="switch"] [bs-panel-content] [bs-panel-icon] {
         top: 33px; } }
 
-[bs-callout~="last"] {
+[bs-panel~="last"] {
   border-bottom: 2px solid #F0F0F0;
   position: relative; }
-  [bs-callout~="last"]:after {
+  [bs-panel~="last"]:after {
     content: " ";
     width: 100%;
     height: 1px;
@@ -1025,21 +1025,21 @@ span.sep {
     bottom: -4px;
     z-index: 2; }
 
-[bs-callout~="controls"] {
+[bs-panel~="controls"] {
   padding: 0;
   background: #FBFBFB;
   border-bottom: 1px solid #F0F0F0; }
   @media only screen and (min-width: 600px) {
-    [bs-callout~="controls"] {
+    [bs-panel~="controls"] {
       padding: 27px;
       padding-bottom: 14px; } }
   @media only screen and (min-width: 600px) {
-    [bs-callout~="controls"] [bs-heading] {
+    [bs-panel~="controls"] [bs-heading] {
       margin-bottom: 14px; } }
 
-[bs-callout~="outline"] {
+[bs-panel~="outline"] {
   border-bottom: 0; }
-  [bs-callout~="outline"]:after {
+  [bs-panel~="outline"]:after {
     content: " ";
     width: 100%;
     left: 0;
@@ -1050,35 +1050,35 @@ span.sep {
     bottom: -2px;
     z-index: 2; }
 
-[bs-callout-icon] {
+[bs-panel-icon] {
   position: absolute;
   left: 14px;
   top: 29px; }
-  [bs-callout-icon] [bs-svg-icon] {
+  [bs-panel-icon] [bs-svg-icon] {
     color: #4A90E2;
     height: 24px;
     width: 24px;
     top: 0; }
 
-[bs-callout-content] {
+[bs-panel-content] {
   padding-left: 54px;
   padding-right: 14px; }
   @media only screen and (min-width: 600px) {
-    [bs-callout-content] {
+    [bs-panel-content] {
       padding-left: 108px; }
-      [bs-callout-content] [bs-callout-icon] {
+      [bs-panel-content] [bs-panel-icon] {
         left: 40.5px;
         top: 27px; }
-        [bs-callout-content] [bs-callout-icon] [bs-svg-icon] {
+        [bs-panel-content] [bs-panel-icon] [bs-svg-icon] {
           height: 45px;
           width: 45px; } }
-  [bs-callout~="trans"] [bs-callout-content] {
+  [bs-panel~="trans"] [bs-panel-content] {
     padding-left: 68px; }
 
-[bs-callout-content~="basic"] {
+[bs-panel-content~="basic"] {
   padding-left: 27px; }
   @media only screen and (min-width: 600px) {
-    [bs-callout-content~="basic"] {
+    [bs-panel-content~="basic"] {
       padding-left: 40.5px; } }
 
 @media only screen and (min-width: 1200px) {
@@ -1348,7 +1348,7 @@ input.cmn-toggle-round:checked + label {
 @media only screen and (min-width: 750px) {
   [bs-grid-item~="3up"] {
     width: 33.33%; }
-    [bs-grid-item~="3up"] [bs-callout-content] {
+    [bs-grid-item~="3up"] [bs-panel-content] {
       width: 100%;
       padding-left: 14px;
       padding-right: 14px; } }

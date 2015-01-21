@@ -1,6 +1,6 @@
-<section bs-callout="switch" ng-repeat="item in syncItems track by $index" ng-class="{'disabled': !item.value}">
-    <div bs-callout-content="">
-        <div bs-callout-icon>
+<section bs-panel="switch" ng-repeat="item in syncItems track by $index" ng-class="{'disabled': !item.value}">
+    <div bs-panel-content="">
+        <div bs-panel-icon>
             <div class="switch">
                 <input id="cmn-{{$index}}"
                        ng-model="item.value"

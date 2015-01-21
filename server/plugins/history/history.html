@@ -1,4 +1,4 @@
-<div bs-callout="controls outline">
+<div bs-panel="controls outline">
     <h1 bs-heading><icon icon="{{section.icon}}"></icon> {{section.title}}</h1>
 </div>
 <div bs-button-row>
@@ -7,8 +7,8 @@
         Clear all
     </button>
 </div>
-<div bs-callout ng-if="!ui.visited.length" id="bs-history-empty">
-    <div bs-callout-content="basic">
+<div bs-panel ng-if="!ui.visited.length" id="bs-history-empty">
+    <div bs-panel-content="basic">
         <p>Pages you navigate to will appear here - making it easy
             to sync all devices to a specific page</p>
     </div>
