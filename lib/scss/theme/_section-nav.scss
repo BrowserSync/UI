@@ -19,6 +19,36 @@
 
     [bs-button] {
         text-transform: none;
+
+        color: $grey-text;
+        width: 100%;
+        border-radius: 0;
+        text-align: left;
+        border: 0;
+        position: relative;
+        background: transparent;
+        display: block;
+        height: auto;
+        padding: 11px 0 11px $icon-gutter;
+        border-bottom: 1px solid $sidebar-hover;
+        @include font-size(16px);
+        margin-bottom: 0;
+        box-shadow: 0 0 0 0;
+
+        &.active {
+            background: $sidebar-hover;
+            z-index: 5;
+            color: $white;
+
+            [bs-svg-icon] {
+                color: $red;
+            }
+        }
+
+        &:hover {
+            color: $white;
+            background: $sidebar-hover;
+        }
     }
 
     @include media-query(min, $lap-start) {
@@ -33,4 +63,19 @@
     }
 }
 
+//
+// Default NAV button styles
+//<button bs-button="nav">Click me!</button>
+//
+[bs-button~="nav"] {
 
+
+    [bs-svg-icon] {
+        position:     absolute;
+        left:         $half-spacing + 2px;
+        margin-right: $half-spacing;
+        top:          14px;
+        width:        18px;
+        height:       18px;
+    }
+}

@@ -6,16 +6,16 @@
             </div>
             <p bs-text="lede">{{url.title}}</p>
             <p><a href="{{url.url}}">{{url.url}}</a></p>
-            <p bs-text="controls">
-                <a href="{{url.url}}" target="_blank" bs-button="icon icon-left">
+            <div bs-button-group>
+                <a href="{{url.url}}" target="_blank" bs-button="size-small subtle-alt icon-left">
                     <icon icon="newtab"></icon>
                     new tab
                 </a>
-                <a href="#" ng-click="sendAllTo(url.url)" bs-button="icon icon-left">
-                    <icon icon="target"></icon>
+                <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                    <icon icon="syncall"></icon>
                     sync all
                 </a>
-            </p>
+            </div>
         </div>
     </section>
     <section ng-if="ui.server">

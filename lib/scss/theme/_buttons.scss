@@ -71,7 +71,7 @@
         box-shadow: 0px 1px 0px 0 rgba(black, .1) inset;
         text-shadow: 1px 1px 0px rgba(black, .4);
     }
-    
+
     &[disabled] {
         border-color: desaturate($red, 30%);
         background: desaturate($red, 30%);
@@ -184,49 +184,6 @@
             border-top-right-radius: 3px;
             border-bottom-right-radius: 3px;
         }
-    }
-}
-
-//
-// Default NAV button styles
-//<button bs-button="nav">Click me!</button>
-//
-[bs-button~="nav"] {
-
-    color: $grey-text;
-    width: 100%;
-    border-radius: 0;
-    text-align: left;
-    border: 0;
-    position: relative;
-    background: transparent;
-    display: block;
-    padding: 11px 0 11px $icon-gutter;
-    border-bottom: 1px solid $sidebar-hover;
-    @include font-size(16px);
-
-    &.active {
-        background: $sidebar-hover;
-        z-index: 5;
-        color: $white;
-
-        [bs-svg-icon] {
-            color: $red;
-        }
-    }
-
-    &:hover {
-        color: $white;
-        background: $sidebar-hover;
-    }
-
-    [bs-svg-icon] {
-        position:     absolute;
-        left:         $half-spacing + 2px;
-        margin-right: $half-spacing;
-        top:          14px;
-        width:        18px;
-        height:       18px;
     }
 }
 

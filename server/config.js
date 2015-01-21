@@ -19,7 +19,7 @@ var defaults = {
         namespace: "/browser-sync-cp"
     },
     components: {
-        header: "/_components/top-bar.html",
+        header: "/_components/header.html",
         footer: "/_components/footer.html"
     }
 };
