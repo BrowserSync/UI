@@ -11,6 +11,9 @@ sections:
     - name: "Button bars"
       file: "_components/button-bars.hbs"
       tube: true
+    - name: "Lists"
+      file: "_components/lists.hbs"
+      tube: false
     - name: "Headings"
       file: "_components/heading.hbs"
       tube: true
@@ -18,7 +21,7 @@ sections:
       file: "_components/top-bar.hbs"
       tube: false
 ---
-<link rel="stylesheet" href="css/components.css"/>
+<link rel="stylesheet" href="css/components.css" />
 
 {{ inc src="../img/icons/svg/symbols.svg" }}
 
@@ -27,14 +30,14 @@ sections:
     <hr/>
 </div>
 
-    {{#each page.sections}}
-        {{#if this.tube}}
-            <div class="tube">
-        {{/if}}
-        <h1>{{this.name}}</h1>
-        {{inc src=this.file title=this.name }}
-        {{#if this.tube}}
-            </div>
-        {{/if}}
-        <hr/>
-    {{/each}}
+{{#each page.sections}}
+{{#if this.tube}}
+<div class="tube">
+{{/if}}
+    <h1>{{this.name}}</h1>
+    {{inc src=this.file title=this.name }}
+{{#if this.tube}}
+    </div>
+{{/if}}
+<hr/>
+{{/each}}

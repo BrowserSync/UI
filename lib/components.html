@@ -12,7 +12,7 @@
 </head>
 <body>
     <main>
-        <link rel="stylesheet" href="css/components.css"/>
+        <link rel="stylesheet" href="css/components.css" />
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
         <symbol id="svg-bin" viewBox="0 0 64 64">
             <path d="M53 9H38V6c0-1.657-1.343-3-3-3h-6c-1.657 0-3 1.343-3 3v3H11c-1.657 0-3 1.343-3 3v3h48v-3c0-1.657-1.343-3-3-3zM11 58c0 1.657 1.343 3 3 3h36c1.657 0 3-1.343 3-3V18H11v40zm30-31c0-1.657 1.343-3 3-3s3 1.343 3 3v25c0 1.657-1.343 3-3 3s-3-1.343-3-3V27zm-12 0c0-1.657 1.343-3 3-3s3 1.343 3 3v25c0 1.657-1.343 3-3 3s-3-1.343-3-3V27zm-12 0c0-1.657 1.343-3 3-3s3 1.343 3 3v25c0 1.657-1.343 3-3 3s-3-1.343-3-3V27z" enable-background="new"/>
@@ -112,130 +112,177 @@
             <h1>BrowserSync UI Components</h1>
             <hr/>
         </div>
-                    <div class="tube">
-                <h1>Typography</h1>
-                <h1>Heading 1</h1>
-                <h2>Heading 2</h2>
-                <h3>Heading 3</h3>
-                <h4>Heading 4</h4>
-                <p>Paragraph text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Aperiam aspernatur aut consequuntur cupiditate deleniti dolor dolorem ea
-                    exercitationem laudantium odio officia quidem quod repudiandae sequi vel,
-                    veniam vero voluptas voluptatem. <a href="more">Read more</a>
-                </p>
-                <p>
-                    <a href="#links">Link</a> <span bs-sep>|</span> <a href="#">Another link</a>
-                </p>
+        <div class="tube">
+            <h1>Typography</h1>
+            <h1>Heading 1</h1>
+            <h2>Heading 2</h2>
+            <h3>Heading 3</h3>
+            <h4>Heading 4</h4>
+            <p>Paragraph text: Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Aperiam aspernatur aut consequuntur cupiditate deleniti dolor dolorem ea
+                exercitationem laudantium odio officia quidem quod repudiandae sequi vel,
+                veniam vero voluptas voluptatem. <a href="more">Read more</a>
+            </p>
+            <p>
+                <a href="#links">Link</a> <span bs-sep>|</span> <a href="#">Another link</a>
+            </p>
+            </div>
+        <hr/>
+        <div class="tube">
+            <h1>Buttons</h1>
+            <p>Default button styles</p>
+            <p>
+                <button bs-button>Button</button>
+                <button bs-button="size-small">Button Small</button>
+                <button bs-button="size-small" disabled>Button Small</button>
+            </p>
+            <p>Subtle button styles</p>
+            <p>
+                <button bs-button="subtle">Button</button>
+                <button bs-button="size-small subtle">Button Small</button>
+                <button bs-button="size-small subtle" disabled>Button Small</button>
+            </p>
+            <p>Alternative Subtle button styles</p>
+            <p>
+                <button bs-button="subtle-alt">Button</button>
+                <button bs-button="size-small subtle-alt">Button Small</button>
+                <button bs-button="size-small subtle-alt" disabled>Button Small</button>
+            </p>
+            <hr/>
+            <p>Default buttons with icons</p>
+            <div>
+                <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
+                <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Icon Right</button>
+                <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+                <button bs-button="icon" disabled><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+            </div>
+            <div>
+                <button bs-button="size-small icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
+                <button bs-button="size-small icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
+                <button bs-button="size-small icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+                <button bs-button="size-small icon" disabled><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+            </div>
+            <br/>
+            <p>Subtle buttons with icons</p>
+            <div>
+                <button bs-button="subtle icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
+                <button bs-button="subtle icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
+                <button bs-button="subtle icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+                <button bs-button="subtle icon" disabled><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg></button>
+            </div>
+            <div>
+                <button bs-button="size-small subtle icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
+                <button bs-button="size-small subtle icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
+                <button bs-button="size-small subtle icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+                <button bs-button="size-small subtle icon" disabled><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg></button>
+            </div>
+            <br/>
+            <p>Alternative Subtle button styles with icons</p>
+            <div>
+                <button bs-button="size-small subtle-alt icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Icon Left</button>
+                <button bs-button="size-small subtle-alt icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
+                <button bs-button="size-small subtle-alt icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+                <button bs-button="size-small subtle-alt icon" disabled><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg></button>
+            </div>
+            </div>
+        <hr/>
+        <div class="tube">
+            <h1>Button bars</h1>
+            <div bs-button-group>
+                <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Website</button>
+                <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg> Twitter</button>
+                <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-github"></use></svg> Github</button>
+                <button bs-button="icon" disabled><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+            </div>
+            <div bs-button-group>
+                <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
+                <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg></button>
+                <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-github"></use></svg></button>
+                <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
+            </div>
+            <div bs-button-group>
+                <button bs-button="">Button</button>
+                <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
+                <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
+                <button bs-button disabled>n/a</button>
+                <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
+            </div>
+            <div bs-button-group>
+                <button bs-button="subtle-alt">Button</button>
+                <button bs-button="subtle-alt icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
+                <button bs-button="subtle-alt icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
+                <button bs-button="subtle-alt" disabled>n/a</button>
+                <button bs-button="subtle-alt icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
+            </div>
+            <div bs-button-group>
+                <button bs-button="size-small subtle-alt">Button</button>
+                <button bs-button="size-small subtle-alt icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
+                <button bs-button="size-small subtle-alt icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
+                <button bs-button="size-small subtle-alt" disabled>n/a</button>
+                <button bs-button="size-small subtle-alt icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
+            </div>
+            </div>
+        <hr/>
+            <h1>Lists</h1>
+            <div class="tube">
+            <h2>Simple list</h2>
+            <ul bs-list>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+            </ul>
+            <br/>
+            <h2>Bordered list</h2>
+            <ul bs-list="bordered">
+                <li>/gallery/new-item</li>
+                <li><a href="#">https://github.com/shakyShane/browser-sync/pull/400</a></li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+            </ul>
+            <br/>
+            <h2>Bordered list with controls</h2>
+            </div>
+            <ul bs-list="bordered inline-controls">
+                <li>
+                    <p>/components.html</p>
+                    <div bs-button-group>
+                        <button href="#" bs-button="subtle-alt icon">
+                          <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg>
+                        </button>
+                        <button href="#" bs-button="subtle-alt icon">
+                            <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
+                        </button>
                     </div>
-                <hr/>
-                    <div class="tube">
-                <h1>Buttons</h1>
-                <p>Default button styles</p>
-                <p>
-                    <button bs-button>Button</button>
-                    <button bs-button="size-small">Button Small</button>
-                    <button bs-button="size-small" disabled>Button Small</button>
-                </p>
-                <p>Subtle button styles</p>
-                <p>
-                    <button bs-button="subtle">Button</button>
-                    <button bs-button="size-small subtle">Button Small</button>
-                    <button bs-button="size-small subtle" disabled>Button Small</button>
-                </p>
-                <p>Alternative Subtle button styles</p>
-                <p>
-                    <button bs-button="subtle-alt">Button</button>
-                    <button bs-button="size-small subtle-alt">Button Small</button>
-                    <button bs-button="size-small subtle-alt" disabled>Button Small</button>
-                </p>
-                <hr/>
-                <p>Default buttons with icons</p>
-                <div>
-                    <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
-                    <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Icon Right</button>
-                    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                    <button bs-button="icon" disabled><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                </div>
-                <div>
-                    <button bs-button="size-small icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
-                    <button bs-button="size-small icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
-                    <button bs-button="size-small icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                    <button bs-button="size-small icon" disabled><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                </div>
-                <br/>
-                <p>Subtle buttons with icons</p>
-                <div>
-                    <button bs-button="subtle icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
-                    <button bs-button="subtle icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
-                    <button bs-button="subtle icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                    <button bs-button="subtle icon" disabled><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg></button>
-                </div>
-                <div>
-                    <button bs-button="size-small subtle icon-left"><svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> Icon Left</button>
-                    <button bs-button="size-small subtle icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
-                    <button bs-button="size-small subtle icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                    <button bs-button="size-small subtle icon" disabled><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg></button>
-                </div>
-                <br/>
-                <p>Alternative Subtle button styles with icons</p>
-                <div>
-                    <button bs-button="size-small subtle-alt icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Icon Left</button>
-                    <button bs-button="size-small subtle-alt icon-right"><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Icon Right</button>
-                    <button bs-button="size-small subtle-alt icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                    <button bs-button="size-small subtle-alt icon" disabled><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg></button>
-                </div>
+                </li>
+                <li>
+                    <p>https://github.com/shakyShane/browser-sync/pull/400</p>
+                    <div bs-button-group>
+                        <button href="#" bs-button="subtle-alt icon">
+                            <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg>
+                        </button>
+                        <button href="#" bs-button="subtle-alt icon">
+                            <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
+                        </button>
                     </div>
-                <hr/>
-                    <div class="tube">
-                <h1>Button bars</h1>
-                <div bs-button-group>
-                    <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Website</button>
-                    <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg> Twitter</button>
-                    <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-github"></use></svg> Github</button>
-                    <button bs-button="icon" disabled><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                </div>
-                <div bs-button-group>
-                    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
-                    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg></button>
-                    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-github"></use></svg></button>
-                    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-target"></use></svg></button>
-                </div>
-                <div bs-button-group>
-                    <button bs-button="">Button</button>
-                    <button bs-button="icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
-                    <button bs-button="icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
-                    <button bs-button disabled>n/a</button>
-                    <button bs-button="icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
-                </div>
-                <div bs-button-group>
-                    <button bs-button="subtle-alt">Button</button>
-                    <button bs-button="subtle-alt icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
-                    <button bs-button="subtle-alt icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
-                    <button bs-button="subtle-alt" disabled>n/a</button>
-                    <button bs-button="subtle-alt icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
-                </div>
-                <div bs-button-group>
-                    <button bs-button="size-small subtle-alt">Button</button>
-                    <button bs-button="size-small subtle-alt icon"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg></button>
-                    <button bs-button="size-small subtle-alt icon-left"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
-                    <button bs-button="size-small subtle-alt" disabled>n/a</button>
-                    <button bs-button="size-small subtle-alt icon-right"><svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg> Button Small</button>
-                </div>
-                    </div>
-                <hr/>
-                    <div class="tube">
-                <h1>Headings</h1>
-                <div bs-panel="controls outline">
-                    <h1 bs-heading>
-                        <svg bs-svg-icon><use xlink:href="#svg-cog"></use></svg>
-                        Server Info
-                    </h1>
-                </div>
-                    </div>
-                <hr/>
-                <h1>Top Bar</h1>
-                
-                <hr/>
+                </li>
+            </ul>
+        <hr/>
+        <div class="tube">
+            <h1>Headings</h1>
+            <div bs-panel="controls outline">
+                <h1 bs-heading>
+                    <svg bs-svg-icon><use xlink:href="#svg-cog"></use></svg>
+                    Server Info
+                </h1>
+            </div>
+            </div>
+        <hr/>
+            <h1>Top Bar</h1>
+            
+        <hr/>
     </main>
 </body>
 </html>

@@ -864,7 +864,7 @@ span.sep {
   text-align: center;
   cursor: pointer;
   outline: none;
-  transition: background .3s;
+  transition: color .2s, background .2s;
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
@@ -963,9 +963,14 @@ span.sep {
 [bs-button-group] {
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  -webkit-align-items: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  margin-bottom: 14px; }
   [bs-button-group] [bs-button] {
-    border-radius: 0; }
+    border-radius: 0;
+    margin-bottom: 0; }
     [bs-button-group] [bs-button]:first-child {
       border-top-left-radius: 3px;
       border-bottom-left-radius: 3px; }
@@ -1163,73 +1168,70 @@ span.sep {
 
 [bs-list] {
   margin-left: 0;
-  list-style: none; }
+  list-style: none;
+  word-wrap: break-word; }
   [bs-list] p {
     margin-bottom: 0; }
+  [bs-list] [bs-button-group] {
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-bottom: 0; }
+    [bs-list] [bs-button-group] [bs-button] {
+      height: auto;
+      border: 0;
+      box-shadow: 0 0 0 0;
+      border-radius: 0; }
+      [bs-list] [bs-button-group] [bs-button]:active {
+        box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3) inset; }
 
 [bs-list~="bordered"] > li {
-  padding: 7px 14px;
+  padding: 11px 14px;
   border-bottom: 1px solid #F0F0F0; }
   [bs-list~="bordered"] > li:first-child {
     border-top: 1px solid #F0F0F0; }
 
 [bs-list~="inline-controls"] {
-  color: #21A695; }
+  word-wrap: break-word; }
   [bs-list~="inline-controls"] p {
     margin-bottom: 7px; }
+  [bs-list~="inline-controls"] [bs-button-group] {
+    margin-bottom: 0; }
   [bs-list~="inline-controls"] li {
     background: #fff;
     position: relative;
-    padding-bottom: 41px;
     padding-left: 14px;
     transition: background .5s; }
     [bs-list~="inline-controls"] li:hover {
       background: #FBFBFB; }
+      [bs-list~="inline-controls"] li:hover [bs-button~="subtle-alt"] {
+        color: #000; }
+      [bs-list~="inline-controls"] li:hover [bs-button] {
+        background: transparent; }
+        [bs-list~="inline-controls"] li:hover [bs-button]:hover {
+          color: #ff4453; }
     @media only screen and (min-width: 750px) {
       [bs-list~="inline-controls"] li {
         padding: 0;
         padding-left: 14px;
         display: -webkit-flex;
         display: -ms-flexbox;
-        display: flex; }
+        display: flex;
+        -webkit-align-items: stretch;
+            -ms-flex-align: stretch;
+                align-items: stretch; }
         [bs-list~="inline-controls"] li p {
           margin-bottom: 0;
           -webkit-flex: 1;
               -ms-flex: 1;
                   flex: 1;
-          padding-top: 6px;
-          padding-bottom: 6px; }
-        [bs-list~="inline-controls"] li [bs-remove] {
-          position: relative;
-          top: auto;
-          left: auto; }
+          padding-top: 11px;
+          padding-bottom: 11px; }
         [bs-list~="inline-controls"] li [bs-multi-controls] {
           position: relative;
           -webkit-align-self: flex-end;
               -ms-flex-item-align: end;
-                  align-self: flex-end; }
-        [bs-list~="inline-controls"] li [bs-button] {
-          border: 0;
-          border-left: 1px solid #F0F0F0; }
-          [bs-list~="inline-controls"] li [bs-button]:last-child {
-            border-right: 1px solid #F0F0F0; } }
-  [bs-list~="inline-controls"] [bs-remove] {
-    position: absolute;
-    top: 0;
-    height: 41px;
-    left: 4px;
-    padding-left: 14px;
-    padding-right: 14px;
-    background: transparent;
-    transition: color .3s;
-    color: #ababab;
-    border: 0; }
-    [bs-list~="inline-controls"] [bs-remove] [bs-svg-icon] {
-      top: 4px;
-      height: 20px;
-      width: 20px; }
-    [bs-list~="inline-controls"] [bs-remove]:hover {
-      color: #333333; }
+                  align-self: flex-end; } }
 
 [bs-list~="padded-left"] li {
   padding-left: 14px; }
@@ -1237,48 +1239,6 @@ span.sep {
 [bs-list~="basic"] {
   list-style: circle;
   margin-left: 27px; }
-
-[bs-multi-controls] {
-  position: absolute;
-  bottom: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 41px; }
-  [bs-multi-controls] [bs-button] {
-    background: #FBFBFB;
-    color: #ababab;
-    text-shadow: 1px 1px 0 #fff;
-    height: 100%;
-    padding: 0;
-    padding-left: 14px;
-    padding-right: 14px;
-    border-radius: 0;
-    line-height: 41px;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-size: 0.77778rem;
-    border-left: 1px solid #F0F0F0;
-    border-top: 1px solid #F0F0F0;
-    border-bottom: 0; }
-    [bs-multi-controls] [bs-button]:hover {
-      background: whitesmoke;
-      box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1) inset; }
-    [bs-multi-controls] [bs-button]:active {
-      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2) inset; }
-    [bs-multi-controls] [bs-button] [bs-svg-icon] {
-      height: 15px;
-      width: 15px;
-      position: relative;
-      top: 3px;
-      margin-right: 7px; }
-  [bs-multi-controls] [bs-button~="icon-only"] [bs-svg-icon] {
-    margin-right: 0; }
-  [bs-multi-controls] [bs-icon] {
-    margin-right: 7px; }
-
-[bs-multi-controls~="right"] {
-  right: 0; }
 
 [bs-controls] {
   width: auto;
