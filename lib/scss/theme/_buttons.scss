@@ -1,6 +1,34 @@
 @import "../vars";
 @import "../modules/mixins";
 
+
+@mixin subtle-button ($_color, $disabled) {
+    background: $white;
+    color: $_color;
+    border-color: darken($grey-border, 5%);
+
+    &:hover, &:focus {
+        color: $_color;
+        background: $grey-border;
+    }
+
+    &:focus {
+        background: $white;
+    }
+
+    &:active {
+        color: $_color;
+        text-shadow: 1px 1px 1px rgba(black, .2);
+        background: darken($white, 3%);
+    }
+
+    &[disabled] {
+        border-color: darken($grey-border, 5%);
+        background: $grey-border;
+        color: $disabled;
+    }
+}
+
 //
 // Default button styles
 // <button bs-button>Click me!</button>
@@ -63,34 +91,19 @@
     }
 }
 
+
 //
 //
 //
 [bs-button~="subtle"] {
+    @include subtle-button($red, #F2AAAA);
+}
 
-    background: $white;
-    color: $red;
-    border-color: darken($grey-border, 5%);
-
-    &:hover, &:focus {
-        color: $red;
-        background: $grey-border;
-    }
-    
-    &:focus {
-        background: $white;
-    }
-
-    &:active {
-        color: $red;
-        text-shadow: 1px 1px 1px rgba(black, .2);
-    }
-
-    &[disabled] {
-        border-color: darken($grey-border, 5%);
-        background: $grey-border;
-        color: #F2AAAA;
-    }
+//
+//
+//
+[bs-button~="subtle-alt"] {
+    @include subtle-button(darken($grey-border, 40%), darken($grey-border, 20%));
 }
 
 //
@@ -100,10 +113,11 @@
 
     @include font-size(14px);
     padding: 5px $half-spacing;
-    height: 33px;
+    padding-top: 7px;
+    height: 34px;
 
     [bs-svg-icon] {
-        top: 8px;
+        top: 9px;
         width: 14px;
         height: 14px;
     }
@@ -119,7 +133,7 @@
     padding-right: $half-spacing;
     [bs-svg-icon] {
         position: relative;
-        top: 4px;
+        top: 3px;
         left: auto;
     }
 }

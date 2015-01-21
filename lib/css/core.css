@@ -903,19 +903,39 @@ span.sep {
     background: #fff; }
   [bs-button~="subtle"]:active {
     color: #ff4453;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); }
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    background: #f7f7f7; }
   [bs-button~="subtle"][disabled] {
     border-color: #e3e3e3;
     background: #F0F0F0;
     color: #F2AAAA; }
 
+[bs-button~="subtle-alt"] {
+  background: #fff;
+  color: #8a8a8a;
+  border-color: #e3e3e3; }
+  [bs-button~="subtle-alt"]:hover, [bs-button~="subtle-alt"]:focus {
+    color: #8a8a8a;
+    background: #F0F0F0; }
+  [bs-button~="subtle-alt"]:focus {
+    background: #fff; }
+  [bs-button~="subtle-alt"]:active {
+    color: #8a8a8a;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    background: #f7f7f7; }
+  [bs-button~="subtle-alt"][disabled] {
+    border-color: #e3e3e3;
+    background: #F0F0F0;
+    color: #bdbdbd; }
+
 [bs-button~="size-small"] {
   font-size: 14px;
   font-size: 0.77778rem;
   padding: 5px 14px;
-  height: 33px; }
+  padding-top: 7px;
+  height: 34px; }
   [bs-button~="size-small"] [bs-svg-icon] {
-    top: 8px;
+    top: 9px;
     width: 14px;
     height: 14px; }
 
@@ -924,7 +944,7 @@ span.sep {
   padding-right: 14px; }
   [bs-button~="icon"] [bs-svg-icon] {
     position: relative;
-    top: 4px;
+    top: 3px;
     left: auto; }
 
 [bs-button~="icon-left"] {
