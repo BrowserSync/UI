@@ -64,9 +64,9 @@ gulp.task("browser-sync", function () {
  */
 gulp.task("browser-sync-dev", function () {
     browserSync.use(require("./"));
-    browserSync.use(require("bs-html-injector"), {
-        files: "lib/*.html"
-    });
+    //browserSync.use(require("bs-html-injector"), {
+    //    files: "lib/*.html"
+    //});
     browserSync({
         notify: false,
         open: false,
@@ -151,7 +151,7 @@ gulp.task("svg", function () {
  */
 gulp.task("dev-frontend", ["sass", "svg", "build-src", "browserify", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
-    gulp.watch(["lib/src/**"], ["build-src"/*, browserSync.reload*/]);
+    gulp.watch(["lib/src/**"], ["build-src", browserSync.reload]);
     gulp.watch(["lib/img/svg/**"], ["svg", "build-src", browserSync.reload]);
     gulp.watch("lib/js/scripts/**/*.js", ["browserify", browserSync.reload]);
 });

@@ -234,29 +234,18 @@
 
     position: relative;
     background: transparent;
-    padding: $half-spacing 17px ($half-spacing - 3px);
     color: $black;
     border-radius: 0;
     border: 0;
     text-transform: uppercase;
+    box-shadow: 0 0 0 0;
     @include font-size(14px);
-
-    [bs-svg-icon] {
-        position: absolute;
-        top: $half-spacing - 2px;
-        left: $half-spacing + 3px;
-        height: 20px;
-        width: 20px;
-    }
+    margin-bottom: 0;
+    padding-top: 10px;
 
     [bs-checkbox] {
         margin-right: 8px;
     }
-
-    @include media-query(min, $lap-start) {
-        padding-top: $half-spacing;
-    }
-
 
     &:focus {
         background: transparent;
@@ -270,6 +259,7 @@
 
     &:active {
         background: darken($grey-border, 10%);
+        box-shadow: 0 0 0 0;
     }
 }
 

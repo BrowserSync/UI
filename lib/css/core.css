@@ -1011,24 +1011,17 @@ span.sep {
 [bs-button~="inline"] {
   position: relative;
   background: transparent;
-  padding: 14px 17px 11px;
   color: #000;
   border-radius: 0;
   border: 0;
   text-transform: uppercase;
+  box-shadow: 0 0 0 0;
   font-size: 14px;
-  font-size: 0.77778rem; }
-  [bs-button~="inline"] [bs-svg-icon] {
-    position: absolute;
-    top: 12px;
-    left: 17px;
-    height: 20px;
-    width: 20px; }
+  font-size: 0.77778rem;
+  margin-bottom: 0;
+  padding-top: 10px; }
   [bs-button~="inline"] [bs-checkbox] {
     margin-right: 8px; }
-  @media only screen and (min-width: 600px) {
-    [bs-button~="inline"] {
-      padding-top: 14px; } }
   [bs-button~="inline"]:focus {
     background: transparent;
     color: #000; }
@@ -1036,7 +1029,8 @@ span.sep {
     background: #F0F0F0;
     color: #000; }
   [bs-button~="inline"]:active {
-    background: #d6d6d6; }
+    background: #d6d6d6;
+    box-shadow: 0 0 0 0; }
 
 [bs-button~="success"] [bs-svg-icon] {
   color: #21A695; }
