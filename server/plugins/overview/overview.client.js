@@ -11,9 +11,9 @@
         "$rootScope",
         "options",
         "Socket",
-        "contentSections",
-        function serverInfoController ($scope, $rootScope, options, Socket, contentSections) {
-            $scope.section = contentSections[SECTION_NAME];
+        "pagesConfig",
+        function serverInfoController ($scope, $rootScope, options, Socket, pagesConfig) {
+            $scope.section = pagesConfig[SECTION_NAME];
             $scope.options = options;
             $scope.ui = {
                 snippet: !options.server && !options.proxy

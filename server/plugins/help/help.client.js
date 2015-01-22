@@ -8,10 +8,10 @@
         "options",
         "History",
         "Socket",
-        "contentSections",
-        function helpAboutController($scope, options, History, Socket, contentSections) {
+        "pagesConfig",
+        function helpAboutController($scope, options, History, Socket, pagesConfig) {
             $scope.options = options;
-            $scope.section = contentSections[SECTION_NAME];
+            $scope.section = pagesConfig[SECTION_NAME];
         }
     ]);
 

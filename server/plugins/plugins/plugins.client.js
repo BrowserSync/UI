@@ -12,11 +12,11 @@
         "$scope",
         "options",
         "Socket",
-        "contentSections",
-        function pluginsPageController($scope, options, Socket, contentSections) {
+        "pagesConfig",
+        function pluginsPageController($scope, options, Socket, pagesConfig) {
 
             $scope.options = options;
-            $scope.section = contentSections[SECTION_NAME];
+            $scope.section = pagesConfig[SECTION_NAME];
 
             /**
              * Don't show this UI as user plugin

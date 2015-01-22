@@ -73,10 +73,10 @@ function startServer(controlPanel, socketMw, connectorMw) {
      * Create a big file with all deps
      */
     serveAll(app, [
-        fileContent("node_modules/angular/angular.min.js"),
-        fileContent("node_modules/angular-route/angular-route.min.js"),
-        fileContent("node_modules/angular-touch/angular-touch.min.js"),
-        fileContent("node_modules/angular-sanitize/angular-sanitize.min.js"),
+        fileContent("node_modules/angular/angular.js"),
+        fileContent("node_modules/angular-route/angular-route.js"),
+        fileContent("node_modules/angular-touch/angular-touch.js"),
+        fileContent("node_modules/angular-sanitize/angular-sanitize.js"),
         fileContent("lib/js/dist/app.js"),
         controlPanel.pagesConfig,
         controlPanel.clientJs

@@ -9,10 +9,10 @@
     module.controller("ConnectionsController", [
         "Socket",
         "$rootScope",
-        "contentSections",
-        function connectionsControllers(Socket, $rootScope, contentSections) {
+        "pagesConfig",
+        function connectionsControllers(Socket, $rootScope, pagesConfig) {
             var $scope = this;
-            $scope.section = contentSections[SECTION_NAME];
+            $scope.section = pagesConfig[SECTION_NAME];
             //$scope.ui = {
             //    connections: {}
             //};

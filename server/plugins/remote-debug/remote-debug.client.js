@@ -8,18 +8,18 @@
     angular.module("BrowserSync")
 
         .controller("RemoteDebugController",
-            ["$scope", "options", "Socket", "contentSections", RemoteDebugController]);
+            ["$scope", "options", "Socket", "pagesConfig", RemoteDebugController]);
 
     /**
      * @param $scope
      * @param options
      * @param Socket
-     * @param contentSections
+     * @param pagesConfig
      */
-    function RemoteDebugController($scope, options, Socket, contentSections) {
+    function RemoteDebugController($scope, options, Socket, pagesConfig) {
 
         $scope.options   = options;
-        $scope.section   = contentSections[SECTION_NAME];
+        $scope.section   = pagesConfig[SECTION_NAME];
 
         $scope.items = [
             {

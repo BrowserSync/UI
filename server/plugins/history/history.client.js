@@ -8,11 +8,11 @@
         "options",
         "History",
         "Socket",
-        "contentSections",
-        function historyController($scope, options, History, Socket, contentSections) {
+        "pagesConfig",
+        function historyController($scope, options, History, Socket, pagesConfig) {
 
             $scope.options = options;
-            $scope.section = contentSections[SECTION_NAME];
+            $scope.section = pagesConfig[SECTION_NAME];
             $scope.ui = {
                 visited: []
             };
