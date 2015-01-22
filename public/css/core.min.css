@@ -200,8 +200,9 @@ span.sep{margin-left:5px;margin-right:5px}
 .loader,.loader:after,.loader:before{background:#333;-webkit-animation:load1 .5s infinite ease-in-out;animation:load1 .5s infinite ease-in-out;width:1em;height:2em}
 .loader:after,.loader:before{position:absolute;top:0;content:''}
 .loader:before{left:-1.5em}
-.loader{text-indent:-9999em;margin:8em auto;position:absolute;font-size:11px;-webkit-animation-delay:-.16s;animation-delay:-.16s;z-index:1;left:50%}
+.loader{opacity:1;transition:all 1s;text-indent:-9999em;margin:8em auto;position:absolute;font-size:11px;-webkit-animation-delay:-.16s;animation-delay:-.16s;z-index:1;left:50%}
 .loader.behind{z-index:0}
+.loader.ready{opacity:0;-webkit-transform:translateY(-200%);-ms-transform:translateY(-200%);transform:translateY(-200%)}
 .loader:after{left:1.5em;-webkit-animation-delay:-.32s;animation-delay:-.32s}
 @-webkit-keyframes load1{0%,100%,80%{box-shadow:0 0 #333;height:4em}
 40%{box-shadow:0 -2em #333;height:5em}}

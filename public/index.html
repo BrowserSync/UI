@@ -23,7 +23,7 @@
         <section bs-container>
 
             <section bs-sidebar>
-                <div class="loader">Loading...</div>
+                <div class="loader" ng-class="{ready:true}">Loading...</div>
                 <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu, ready: true}">
                     <ul bs-list="">
                         <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">

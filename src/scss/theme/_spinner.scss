@@ -14,10 +14,14 @@ $spinner-color: $grey;
     top: 0;
     content: '';
 }
+
 .loader:before {
     left: -1.5em;
 }
+
 .loader {
+    opacity: 1;
+    transition: all 1s;
     text-indent: -9999em;
     margin: 8em auto;
     position: absolute;
@@ -28,6 +32,10 @@ $spinner-color: $grey;
     left: 50%;
     &.behind {
         z-index: 0;
+    }
+    &.ready {
+        opacity: 0;
+        transform: translateY(-200%);
     }
 }
 .loader:after {

@@ -1080,6 +1080,8 @@ span.sep {
   left: -1.5em; }
 
 .loader {
+  opacity: 1;
+  transition: all 1s;
   text-indent: -9999em;
   margin: 8em auto;
   position: absolute;
@@ -1090,6 +1092,11 @@ span.sep {
   left: 50%; }
   .loader.behind {
     z-index: 0; }
+  .loader.ready {
+    opacity: 0;
+    -webkit-transform: translateY(-200%);
+        -ms-transform: translateY(-200%);
+            transform: translateY(-200%); }
 
 .loader:after {
   left: 1.5em;
