@@ -26,7 +26,6 @@ var defaultPlugins = {
  */
 var ControlPanel = function (opts, bs, emitter) {
 
-    console.log(opts);
     var cp            = this;
     cp.bs             = bs;
     cp.config         = config.merge();

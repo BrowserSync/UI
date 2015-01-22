@@ -16,7 +16,11 @@
   },
   "files": [
     "index.js",
-    "lib",
+    "lib/_components",
+    "lib/css",
+    "lib/js",
+    "lib/index.html",
+    "lib/favicon.ico",
     "LICENCE",
     "server"
   ],

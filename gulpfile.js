@@ -71,7 +71,7 @@ gulp.task("browser-sync-dev", function () {
         notify: false,
         open: false,
         server: {
-            baseDir: "lib",
+            baseDir: ["static", "lib"],
             directory: true
         },
         ui: false
@@ -108,17 +108,17 @@ gulp.task("bs-inject", function () {
 /**
  * Compile HTML
  */
-gulp.task("build-src", function () {
+gulp.task("crossbow", function () {
     crossbow.clearCache();
     //crossbow.emitter.on("_error", function (err) {
     //    console.log(err.message);
     //});
-    return gulp.src(["lib/src/*.hbs", "lib/src/_components/*.hbs"])
+    return gulp.src(["src/crossbow/*.hbs", "src/crossbow/_components/*.hbs"])
         .pipe(crossbow({
-            cwd: "lib/src",
-            siteConfig: "lib/src/_config.yml"
+            cwd: "src/crossbow",
+            siteConfig: "src/crossbow/_config.yml"
         }))
-        .pipe(gulp.dest("./lib"));
+        .pipe(gulp.dest("./static"));
 });
 
 /**
@@ -149,10 +149,10 @@ gulp.task("svg", function () {
 /**
  * Build Front-end stuff
  */
-gulp.task("dev-frontend", ["sass", "svg", "build-src", "browserify", "browser-sync-dev"], function () {
+gulp.task("dev-frontend", ["sass", "svg", "crossbow", "browserify", "browser-sync-dev"], function () {
     gulp.watch("lib/scss/**/*.scss", ["sass"]);
-    gulp.watch(["lib/src/**"], ["build-src", browserSync.reload]);
-    gulp.watch(["lib/img/svg/**"], ["svg", "build-src", browserSync.reload]);
+    gulp.watch(["lib/src/**"], ["crossbow", browserSync.reload]);
+    gulp.watch(["lib/img/svg/**"], ["svg", "crossbow", browserSync.reload]);
     gulp.watch("lib/js/scripts/**/*.js", ["browserify", browserSync.reload]);
 });
 
