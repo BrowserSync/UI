@@ -178,47 +178,62 @@
                         </li>
                     </ul>
                 </nav>
+                <div bs-visible="not-palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
             <section bs-content>
                 <div ng-view>
-                    <div>
-                        <article>
-                            <div bs-panel="controls outline">
-                                <h1 bs-heading><i bs-icon="cog"></i> Snippet Info</h1>
-                            </div>
-                            <section>
-                                <div bs-panel="full">
-                                    <div bs-panel-content="">
-                                        <div bs-panel-icon="">
-                                            <i bs-icon="code"></i>
-                                        </div>
-                                        <p bs-text="lede">Place this snippet somewhere before the closing <code>&lt;/body&gt;</code> tag in your website</p>
+                    <div bs-panel="controls outline">
+                        <h1 bs-heading><i bs-icon="cog"></i> Snippet Info</h1>
+                    </div>
+                    <section>
+                        <div bs-panel="full">
+                            <div bs-panel-content="">
+                                <div bs-panel-icon="">
+                                    <i bs-icon="code"></i>
+                                </div>
+                                <p bs-text="lede">Place this snippet somewhere before the closing <code>&lt;/body&gt;</code> tag in your website</p>
 <pre><code>&lt;script type=&#039;text/javascript&#039; id=&quot;__bs_script__&quot;&gt;//&lt;![CDATA[
 document.write(&quot;&lt;script async src=&#039;//HOST:3000/browser-sync/browser-sync-client.1.8.2.js&#039;&gt;&lt;\/script&gt;&quot;.replace(/HOST/g, location.hostname).replace(/PORT/g, location.port));
 //]]&gt;&lt;/script&gt;
 </code></pre>            <!--<p bs-text="lede">Serving files from</p>-->
-                                        <!--<ul bs-list="">-->
-                                            <!--<li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>-->
-                                            <!--<li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>-->
-                                            <!--<li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>-->
-                                        <!--</ul>-->
-                                    </div>
-                                </div>
-                            </section>
-                        </article>
-                    </div>
+                                <!--<ul bs-list="">-->
+                                    <!--<li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>-->
+                                    <!--<li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>-->
+                                    <!--<li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>-->
+                                <!--</ul>-->
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <footer bs-footer>
-                    <p bs-text="copyright">© 2015 -
-                        <a href="https://browsersync.io">BrowserSync.io</a> |
-                        <a href="https://github.com/shakyShane/browser-sync-ui">
-                            <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
-                        </a>
-                        <a href="https://twitter.com/browsersync">
-                            <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
-                        </a>
-                    </p>
-                </footer>
+                <div bs-visible="palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
         </section>
     </main>

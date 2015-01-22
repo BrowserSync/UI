@@ -59,7 +59,7 @@
     background: $sidebar;
 }
 
-@mixin svg-shadow () {
-    -webkit-filter: drop-shadow( 1px 1px 2px $green-dk );
-    filter: drop-shadow( 1px 1px 2px $green-dk );
+@mixin svg-shadow ($blur: 2px) {
+    -webkit-filter: drop-shadow( 1px 1px $blur $green-dk );
+    filter:         drop-shadow( 1px 1px $blur $green-dk );
 }

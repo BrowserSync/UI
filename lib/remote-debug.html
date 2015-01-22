@@ -178,75 +178,90 @@
                         </li>
                     </ul>
                 </nav>
+                <div bs-visible="not-palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
             <section bs-content>
                 <div ng-view>
+                    <div bs-panel="controls outline">
+                        <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Remote Debug</h1>
+                    </div>
+                    <div bs-button-row>
+                        <button bs-button="icon-left inline success">
+                            <svg bs-svg-icon><use xlink:href="#svg-circle-ok"></use></svg> Enable All
+                        </button>
+                        <button bs-button="icon-left inline">
+                            <svg bs-svg-icon><use xlink:href="#svg-circle-delete"></use></svg> Disable All
+                        </button>
+                    </div>
                     <div>
-                        <article>
-                            <div bs-panel="controls outline">
-                                <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-bug"></use></svg> Remote Debug</h1>
-                            </div>
-                            <div bs-button-row>
-                                <button bs-button="icon-left inline success">
-                                    <svg bs-svg-icon><use xlink:href="#svg-circle-ok"></use></svg> Enable All
-                                </button>
-                                <button bs-button="icon-left inline">
-                                    <svg bs-svg-icon><use xlink:href="#svg-circle-delete"></use></svg> Disable All
-                                </button>
-                            </div>
-                            <div>
-                                <section bs-panel="switch ">
-                                    <div bs-panel-content="">
-                                        <div bs-panel-icon="switch">
-                                            <div class="switch">
-                                                <input id="cmn-form-0"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                       checked="">
-                                                <label for="cmn-form-0"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">Remote Debug (weinre)</p>
-                                        </div>
+                        <section bs-panel="switch ">
+                            <div bs-panel-content="">
+                                <div bs-panel-icon="switch">
+                                    <div class="switch">
+                                        <input id="cmn-form-0"
+                                               ng-model="plugin.active"
+                                               ng-change="togglePlugin(plugin)"
+                                               class="cmn-toggle cmn-toggle-round"
+                                               type="checkbox"
+                                               checked="">
+                                        <label for="cmn-form-0"></label>
                                     </div>
-                                </section>
-                                <section bs-panel="switch last">
-                                    <div bs-panel-content="">
-                                        <div bs-panel-icon="switch">
-                                            <div class="switch">
-                                                <input id="cmn-form-1"
-                                                       ng-model="plugin.active"
-                                                       ng-change="togglePlugin(plugin)"
-                                                       class="cmn-toggle cmn-toggle-round"
-                                                       type="checkbox"
-                                                       checked="">
-                                                <label for="cmn-form-1"></label>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p bs-text="lede">CSS Outlining</p>
-                                        </div>
-                                    </div>
-                                </section>
-                                <br/>
+                                </div>
+                                <div>
+                                    <p bs-text="lede">Remote Debug (weinre)</p>
+                                </div>
                             </div>
-                        </article>
+                        </section>
+                        <section bs-panel="switch last">
+                            <div bs-panel-content="">
+                                <div bs-panel-icon="switch">
+                                    <div class="switch">
+                                        <input id="cmn-form-1"
+                                               ng-model="plugin.active"
+                                               ng-change="togglePlugin(plugin)"
+                                               class="cmn-toggle cmn-toggle-round"
+                                               type="checkbox"
+                                               checked="">
+                                        <label for="cmn-form-1"></label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p bs-text="lede">CSS Outlining</p>
+                                </div>
+                            </div>
+                        </section>
+                        <br/>
                     </div>
                 </div>
-                <footer bs-footer>
-                    <p bs-text="copyright">© 2015 -
-                        <a href="https://browsersync.io">BrowserSync.io</a> |
-                        <a href="https://github.com/shakyShane/browser-sync-ui">
-                            <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
-                        </a>
-                        <a href="https://twitter.com/browsersync">
-                            <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
-                        </a>
-                    </p>
-                </footer>
+                <div bs-visible="palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
         </section>
     </main>

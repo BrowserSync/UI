@@ -178,33 +178,48 @@
                         </li>
                     </ul>
                 </nav>
+                <div bs-visible="not-palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
             <section bs-content>
                 <div ng-view>
-                    <div>
-                        <article>
-                            <div bs-panel="controls outline">
-                                <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg> Help</h1>
-                            </div>
-                            <div bs-panel>
-                                <div bs-panel-content="basic">
-                                    <p>Sup</p>
-                                </div>
-                            </div>
-                        </article>
+                    <div bs-panel="controls outline">
+                        <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-help"></use></svg> Help</h1>
+                    </div>
+                    <div bs-panel>
+                        <div bs-panel-content="basic">
+                            <p>Sup</p>
+                        </div>
                     </div>
                 </div>
-                <footer bs-footer>
-                    <p bs-text="copyright">© 2015 -
-                        <a href="https://browsersync.io">BrowserSync.io</a> |
-                        <a href="https://github.com/shakyShane/browser-sync-ui">
-                            <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
-                        </a>
-                        <a href="https://twitter.com/browsersync">
-                            <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
-                        </a>
-                    </p>
-                </footer>
+                <div bs-visible="palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
         </section>
     </main>

@@ -20,3 +20,5 @@ links:
   twitter: "https://twitter.com/browsersync"
   home:    "https://browsersync.io"
 
+project:
+  name: "BrowserSync.io"

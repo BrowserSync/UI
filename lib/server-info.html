@@ -178,102 +178,117 @@
                         </li>
                     </ul>
                 </nav>
+                <div bs-visible="not-palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
             <section bs-content>
                 <div ng-view>
-                    <div>
-                        <article>
-                            <div bs-panel="controls outline">
-                                <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-cog"></use></svg> Server Info</h1>
-                            </div>
-                            <div>
-                                <section bs-panel>
-                                    <div bs-panel-content>
-                                        <div bs-panel-icon>
-                                            <svg bs-svg-icon><use xlink:href="#svg-imac"></use></svg>
-                                        </div>
-                                        <p bs-text="lede">Local</p>
-                                        <p><a href="#">http://localhost:3000</a></p>
-                                        <div bs-button-group>
-                                            <a href="http://localhost:3000" target="_blank" bs-button="size-small subtle-alt icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
-                                                new tab
-                                            </a>
-                                            <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
-                                                sync all
-                                            </a>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-panel>
-                                    <div bs-panel-content>
-                                        <div bs-panel-icon>
-                                            <svg bs-svg-icon><use xlink:href="#svg-wifi"></use></svg>
-                                        </div>
-                                        <p bs-text="lede">External</p>
-                                        <p><a href="#">http://192.168.0.1:3000</a></p>
-                                        <div bs-button-group>
-                                            <a href="http://192.168.0.1:3000" target="_blank" bs-button="size-small subtle-alt icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
-                                                new tab
-                                            </a>
-                                            <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
-                                                sync all
-                                            </a>
-                                        </div>
-                                    </div>
-                                </section>
-                                <section bs-panel>
-                                    <div bs-panel-content>
-                                        <div bs-panel-icon>
-                                            <svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg>
-                                        </div>
-                                        <p bs-text="lede">Tunnel</p>
-                                        <p><a href="#">http://14frwed.localtunnel.me</a></p>
-                                        <div bs-button-group>
-                                            <a href="http://14frwed.localtunnel.me" target="_blank" bs-button="size-small subtle-alt icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
-                                                new tab
-                                            </a>
-                                            <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
-                                                sync all
-                                            </a>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                            <section>
-                                <div bs-panel="full">
-                                    <div bs-panel-content>
-                                        <div bs-panel-icon>
-                                            <svg bs-svg-icon><use xlink:href="#svg-terminal"></use></svg>
-                                        </div>
-                                        <p bs-text="lede">Serving files from</p>
-                                        <ul bs-list="basic">
-                                            <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
-                                            <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
-                                            <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </section>
-                        </article>
+                    <div bs-panel="controls outline">
+                        <h1 bs-heading><svg bs-svg-icon><use xlink:href="#svg-cog"></use></svg> Server Info</h1>
                     </div>
+                    <div>
+                        <section bs-panel>
+                            <div bs-panel-content>
+                                <div bs-panel-icon>
+                                    <svg bs-svg-icon><use xlink:href="#svg-imac"></use></svg>
+                                </div>
+                                <p bs-text="lede">Local</p>
+                                <p><a href="#">http://localhost:3000</a></p>
+                                <div bs-button-group>
+                                    <a href="http://localhost:3000" target="_blank" bs-button="size-small subtle-alt icon-left">
+                                        <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
+                                        new tab
+                                    </a>
+                                    <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                                        <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
+                                        sync all
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                        <section bs-panel>
+                            <div bs-panel-content>
+                                <div bs-panel-icon>
+                                    <svg bs-svg-icon><use xlink:href="#svg-wifi"></use></svg>
+                                </div>
+                                <p bs-text="lede">External</p>
+                                <p><a href="#">http://192.168.0.1:3000</a></p>
+                                <div bs-button-group>
+                                    <a href="http://192.168.0.1:3000" target="_blank" bs-button="size-small subtle-alt icon-left">
+                                        <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
+                                        new tab
+                                    </a>
+                                    <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                                        <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
+                                        sync all
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                        <section bs-panel>
+                            <div bs-panel-content>
+                                <div bs-panel-icon>
+                                    <svg bs-svg-icon><use xlink:href="#svg-globe"></use></svg>
+                                </div>
+                                <p bs-text="lede">Tunnel</p>
+                                <p><a href="#">http://14frwed.localtunnel.me</a></p>
+                                <div bs-button-group>
+                                    <a href="http://14frwed.localtunnel.me" target="_blank" bs-button="size-small subtle-alt icon-left">
+                                        <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
+                                        new tab
+                                    </a>
+                                    <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                                        <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
+                                        sync all
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <section>
+                        <div bs-panel="full">
+                            <div bs-panel-content>
+                                <div bs-panel-icon>
+                                    <svg bs-svg-icon><use xlink:href="#svg-terminal"></use></svg>
+                                </div>
+                                <p bs-text="lede">Serving files from</p>
+                                <ul bs-list="basic">
+                                    <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
+                                    <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
+                                    <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <footer bs-footer>
-                    <p bs-text="copyright">© 2015 -
-                        <a href="https://browsersync.io">BrowserSync.io</a> |
-                        <a href="https://github.com/shakyShane/browser-sync-ui">
-                            <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
-                        </a>
-                        <a href="https://twitter.com/browsersync">
-                            <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
-                        </a>
-                    </p>
-                </footer>
+                <div bs-visible="palm">
+                    <footer bs-footer>
+                        <p bs-text="copyright">© 2015 -
+                            <a href="https://browsersync.io">BrowserSync.io</a>
+                        </p>
+                        <p>
+                            <a href="https://github.com/shakyShane/browser-sync-ui" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-github"></use></svg>
+                            </a>
+                            <a href="https://twitter.com/browsersync" bs-icon>
+                                <svg bs-svg-icon><use xlink:href="#svg-twitter"></use></svg>
+                            </a>
+                        </p>
+                    </footer>
+                </div>
             </section>
         </section>
     </main>

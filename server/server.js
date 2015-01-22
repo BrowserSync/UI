@@ -62,7 +62,7 @@ function startServer(controlPanel, opts) {
             .replace("%templates%", controlPanel.templates)
             .replace("%svg%", svg)
             .replace("%header%", header)
-            .replace("%footer%", footer)
+            .replace(/%footer%/g, footer)
     );
 
     /**

@@ -8,13 +8,11 @@ layout: parent.hbs
         {{ inc src="nav.hbs" }}
         <section bs-content>
             <div ng-view>
-                <div>
-                    <article>
-                        {{ content }}
-                    </article>
-                </div>
+                {{ content }}
             </div>
-            {{ inc src="_components/footer.hbs" }}
+            <div bs-visible="palm">
+                {{ inc src="_components/footer.hbs" }}
+            </div>
         </section>
     </section>
 </main>

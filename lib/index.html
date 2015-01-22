@@ -37,6 +37,9 @@
                         </li>
                     </ul>
                 </nav>
+                <div bs-visible="not-palm">
+                    %footer%
+                </div>
             </section>
 
             <section bs-content>
@@ -46,7 +49,9 @@
 
                 <div ng-view></div>
 
-                %footer%
+                <div bs-visible="palm">
+                    %footer%
+                </div>
 
             </section>
         </section>

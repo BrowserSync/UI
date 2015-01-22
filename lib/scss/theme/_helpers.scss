@@ -55,32 +55,29 @@ span.sep {
 [bs-text~="lede"] {
     @include font-size(18px);
 }
-[bs-text~="copyright"] {
-    text-align: center;
-}
 
 [bs-Color~="white"] {
     color: $white;
 }
 
-[bs-Visible] {
+[bs-visible] {
 
 }
 
-[bs-Visible~="not-desk"] {
+[bs-visible~="not-desk"] {
     @include media-query(min, $desk-start) {
         display: none;
     }
 }
 
-[bs-Visible~="not-palm"] {
+[bs-visible~="not-palm"] {
     display: none!important;
     @include media-query(min, $lap-start) {
         display: inherit!important;
     }
 }
 
-[bs-Visible~="palm"] {
+[bs-visible~="palm"] {
     @include media-query(min, $lap-start) {
         display: none;
     }
