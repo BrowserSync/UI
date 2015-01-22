@@ -51,15 +51,18 @@ module.exports = {
 
         var bs          = cp.bs;
         var port        = cp.opts.get("port");
-        var socketMw    = bs.getMiddleware("socket-js");
-        var connectorMw = bs.getSocketConnector(bs.options.get("port"), {
-            path: bs.options.getIn(["socket", "path"]),
-            namespace: cp.config.getIn(["socket", "namespace"])
-        });
 
         cp.logger.debug("Using port %s", port);
 
-        var server = require("./server")(cp, socketMw, connectorMw);
+        var server = require("./server")(cp, {
+            middleware: {
+                socket: bs.getMiddleware("socket-js"),
+                connector: bs.getSocketConnector(bs.options.get("port"), {
+                    path: bs.options.getIn(["socket", "path"]),
+                    namespace: cp.config.getIn(["socket", "namespace"])
+                })
+            }
+        });
 
         done(null, {
             instance: {

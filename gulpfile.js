@@ -43,7 +43,7 @@ gulp.task("contribs", function () {
  * Build the app.
  */
 gulp.task("browserify", function () {
-    return gulp.src("lib/js/scripts/index.js")
+    return gulp.src("lib/js/scripts/app.js")
         .pipe(browserify())
         .pipe(rename("app.js"))
         .pipe(gulp.dest("./lib/js/dist"));

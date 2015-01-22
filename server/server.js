@@ -1,10 +1,10 @@
 var http        = require("http");
 var fs          = require("fs");
 var config      = require("./config");
-var svg         = fs.readFileSync(libDir("/img/icons/svg/symbols.svg"), "utf-8");
-var indexPage   = fs.readFileSync(libDir(config.defaults.indexPage), "utf-8");
-var header      = fs.readFileSync(libDir(config.defaults.components.header), "utf-8");
-var footer      = fs.readFileSync(libDir(config.defaults.components.footer), "utf-8");
+var svg         = libFile("/img/icons/svg/symbols.svg");
+var indexPage   = libFile(config.defaults.indexPage);
+var header      = libFile(config.defaults.components.header);
+var footer      = libFile(config.defaults.components.footer);
 
 /**
  * CWD directory helper for static dir
@@ -15,17 +15,28 @@ function libDir (path) {
     return __dirname + "/../lib" + path || "";
 }
 
+/**
+ * @param path
+ * @returns {*}
+ */
+function libFile(path) {
+    return fs.readFileSync(libDir(path), "utf-8");
+}
+
+/**
+ * @param path
+ * @returns {string}
+ */
 function packageDir (path) {
     return __dirname + "/../" + path;
 }
 
 /**
  * @param {ControlPanel} controlPanel
- * @param {Function} socketMw
- * @param {Function} connectorMw
+ * @param opts
  * @returns {*}
  */
-function startServer(controlPanel, socketMw, connectorMw) {
+function startServer(controlPanel, opts) {
 
     var connect     = controlPanel.bs.utils.connect;
     var serveStatic = controlPanel.bs.utils.serveStatic;
@@ -38,7 +49,7 @@ function startServer(controlPanel, socketMw, connectorMw) {
     /**
      * Serve JS files
      */
-    serveJsFiles(app, socketMw, connectorMw);
+    serveJsFiles(app, opts.middleware.socket, opts.middleware.connector);
 
     /**
      * Add any markup from plugins/hooks/templates
@@ -73,10 +84,10 @@ function startServer(controlPanel, socketMw, connectorMw) {
      * Create a big file with all deps
      */
     serveAll(app, [
-        fileContent("node_modules/angular/angular.js"),
-        fileContent("node_modules/angular-route/angular-route.js"),
-        fileContent("node_modules/angular-touch/angular-touch.js"),
-        fileContent("node_modules/angular-sanitize/angular-sanitize.js"),
+        fileContent("node_modules/angular/angular.min.js"),
+        fileContent("node_modules/angular-route/angular-route.min.js"),
+        fileContent("node_modules/angular-touch/angular-touch.min.js"),
+        fileContent("node_modules/angular-sanitize/angular-sanitize.min.js"),
         fileContent("lib/js/dist/app.js"),
         controlPanel.pagesConfig,
         controlPanel.clientJs
@@ -98,7 +109,6 @@ function fileContent (path) {
  * @param {Connect} app
  * @param {Function} socketMw
  * @param {Function} connectorMw
- * @param {ControlPanel} controlPanel
  */
 function serveJsFiles(app, socketMw, connectorMw) {
     app.use(config.defaults.socketJs, socketMw);
@@ -107,7 +117,8 @@ function serveJsFiles(app, socketMw, connectorMw) {
 
 /**
  * @param app
- * @param pageMarkup
+ * @param pages
+ * @param markup
  */
 function insertPageMarkupFromHooks(app, pages, markup) {
 
