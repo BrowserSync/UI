@@ -1,38 +1,31 @@
 {
   "name": "browser-sync-ui",
-  "description": "Control Panel for BrowserSync",
+  "description": "User Interface for BrowserSync",
   "version": "0.0.9",
-  "homepage": "https://github.com/shakyshane/browser-sync-ui",
+  "homepage": "http://www.browsersync.io/",
   "author": {
-    "name": "Shane Osbourne",
-    "email": "shane.osbourne8@gmail.com"
+    "name": "Shane Osbourne"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shakyshane/browser-sync-ui.git"
-  },
+  "repository": "shakyshane/browser-sync-ui",
   "bugs": {
     "url": "https://github.com/shakyshane/browser-sync-ui/issues"
   },
   "files": [
     "index.js",
-    "lib/_components",
-    "lib/css",
-    "lib/js",
-    "lib/index.html",
-    "lib/favicon.ico",
+    "lib",
+    "public",
     "LICENCE",
-    "server"
+    "README.md"
   ],
   "licenses": [
     {
-      "type": "MIT",
-      "url": "https://github.com/shakyshane/browser-sync-ui/blob/master/LICENSE-MIT"
+      "type": "Apache-2.0",
+      "url": "https://github.com/shakyshane/browser-sync-ui/blob/master/LICENSE"
     }
   ],
   "main": "index.js",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "backend": "gulp build && mocha test/server",
@@ -58,7 +51,7 @@
   "devDependencies": {
     "angular-mocks": "^1.3.8",
     "async": "^0.9.0",
-    "browser-sync": "git://github.com/shakyshane/browser-sync#v2-rc2.4",
+    "browser-sync": "git://github.com/shakyshane/browser-sync#v2-rc2.6",
     "bs-html-injector": "^1.2.1",
     "chai": "^1.9.1",
     "crossbow": "^0.2.0",
@@ -83,8 +76,14 @@
     "mocha": "^1.21.4",
     "ng-html2js": "^1.2.0",
     "no-abs": "0.0.0",
+    "pretty-js": "^0.1.8",
     "sinon": "^1.10.3",
     "supertest": "^0.14.0"
   },
-  "keywords": []
+  "keywords": [
+    "browser sync",
+    "live reload",
+    "css injection",
+    "action sync"
+  ]
 }
