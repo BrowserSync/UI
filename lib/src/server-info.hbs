@@ -25,26 +25,28 @@ panels:
             </div>
             <p bs-text="lede">{{this.title}}</p>
             <p><a href="#">{{this.url}}</a></p>
-            <p bs-text="controls">
-                <a href="#" bs-button="icon icon-left">
-                    {{ inc src="icon.hbs" icon="square-add" }} new tab
+            <div bs-button-group>
+                <a href="{{this.url}}" target="_blank" bs-button="size-small subtle-alt icon-left">
+                    {{ inc src="icon.hbs" icon="newtab" }}
+                    new tab
                 </a>
-                <a href="#" bs-button="icon icon-left">
-                    {{ inc src="icon.hbs" icon="target" }} sync all
+                <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                    {{ inc src="icon.hbs" icon="syncall" }}
+                    sync all
                 </a>
-            </p>
+            </div>
         </div>
     </section>
     {{/each}}
 </div>
 <section>
     <div bs-panel="full">
-        <div bs-panel-content="">
-            <div bs-panel-icon="">
+        <div bs-panel-content>
+            <div bs-panel-icon>
                 {{ inc src="icon.hbs" icon="terminal" }}
             </div>
             <p bs-text="lede">Serving files from</p>
-            <ul bs-list="bordered">
+            <ul bs-list="basic">
                 <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
                 <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
                 <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>

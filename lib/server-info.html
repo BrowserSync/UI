@@ -194,14 +194,16 @@
                                         </div>
                                         <p bs-text="lede">Local</p>
                                         <p><a href="#">http://localhost:3000</a></p>
-                                        <p bs-text="controls">
-                                            <a href="#" bs-button="icon icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> new tab
+                                        <div bs-button-group>
+                                            <a href="http://localhost:3000" target="_blank" bs-button="size-small subtle-alt icon-left">
+                                                <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
+                                                new tab
                                             </a>
-                                            <a href="#" bs-button="icon icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> sync all
+                                            <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                                                <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
+                                                sync all
                                             </a>
-                                        </p>
+                                        </div>
                                     </div>
                                 </section>
                                 <section bs-panel>
@@ -211,14 +213,16 @@
                                         </div>
                                         <p bs-text="lede">External</p>
                                         <p><a href="#">http://192.168.0.1:3000</a></p>
-                                        <p bs-text="controls">
-                                            <a href="#" bs-button="icon icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> new tab
+                                        <div bs-button-group>
+                                            <a href="http://192.168.0.1:3000" target="_blank" bs-button="size-small subtle-alt icon-left">
+                                                <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
+                                                new tab
                                             </a>
-                                            <a href="#" bs-button="icon icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> sync all
+                                            <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                                                <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
+                                                sync all
                                             </a>
-                                        </p>
+                                        </div>
                                     </div>
                                 </section>
                                 <section bs-panel>
@@ -228,25 +232,27 @@
                                         </div>
                                         <p bs-text="lede">Tunnel</p>
                                         <p><a href="#">http://14frwed.localtunnel.me</a></p>
-                                        <p bs-text="controls">
-                                            <a href="#" bs-button="icon icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-square-add"></use></svg> new tab
+                                        <div bs-button-group>
+                                            <a href="http://14frwed.localtunnel.me" target="_blank" bs-button="size-small subtle-alt icon-left">
+                                                <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
+                                                new tab
                                             </a>
-                                            <a href="#" bs-button="icon icon-left">
-                                                <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> sync all
+                                            <a href="#" ng-click="sendAllTo(url.url)" bs-button="size-small subtle-alt icon-left">
+                                                <svg bs-svg-icon><use xlink:href="#svg-syncall"></use></svg>
+                                                sync all
                                             </a>
-                                        </p>
+                                        </div>
                                     </div>
                                 </section>
                             </div>
                             <section>
                                 <div bs-panel="full">
-                                    <div bs-panel-content="">
-                                        <div bs-panel-icon="">
+                                    <div bs-panel-content>
+                                        <div bs-panel-icon>
                                             <svg bs-svg-icon><use xlink:href="#svg-terminal"></use></svg>
                                         </div>
                                         <p bs-text="lede">Serving files from</p>
-                                        <ul bs-list="bordered">
+                                        <ul bs-list="basic">
                                             <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
                                             <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
                                             <li>/Users/shakyshane/Sites/browser-sync-modules/browser-sync-cp/test/fixtures</li>
