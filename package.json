@@ -1,7 +1,7 @@
 {
   "name": "browser-sync-ui",
   "description": "Control Panel for BrowserSync",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://github.com/shakyshane/browser-sync-ui",
   "author": {
     "name": "Shane Osbourne",
