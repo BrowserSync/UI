@@ -41,7 +41,7 @@ bs.use(htmlInjector, {
 //    }
 //});
 
-bs.use(cp, {port: 4001});
+bs.use(cp, {port: 4000});
 
 var instance = bs({
     server: {
