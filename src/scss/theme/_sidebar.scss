@@ -3,6 +3,7 @@
 
 [bs-sidebar] {
     position: relative;
+
     @include sidebar-style;
     @include media-query(min, $lap-start) {
         width: $sidebar-width;

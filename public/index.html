@@ -23,7 +23,8 @@
         <section bs-container>
 
             <section bs-sidebar>
-                <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu}">
+                <div class="loader">Loading...</div>
+                <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu, ready: true}">
                     <ul bs-list="">
                         <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
                             <button bs-button="nav" ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
@@ -69,6 +70,7 @@
         BrowserSync UI Plugin scripts
 
     -->
+
     <script src="%appjs%"></script>
 
 </body>

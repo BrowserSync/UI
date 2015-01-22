@@ -150,10 +150,10 @@ gulp.task("svg", function () {
  * Build Front-end stuff
  */
 gulp.task("dev-frontend", ["sass", "svg", "crossbow", "js", "browser-sync-dev"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass"]);
-    gulp.watch(["lib/src/**"], ["crossbow", browserSync.reload]);
-    gulp.watch(["lib/img/svg/**"], ["svg", "crossbow", browserSync.reload]);
-    gulp.watch("lib/js/scripts/**/*.js", ["js", browserSync.reload]);
+    gulp.watch("src/scss/**/*.scss", ["sass"]);
+    gulp.watch(["src/crossbow/**"], ["crossbow", browserSync.reload]);
+    gulp.watch(["src/svg/**"], ["svg", "crossbow", browserSync.reload]);
+    gulp.watch("src/scripts/**/*.js", ["js", browserSync.reload]);
 });
 
 gulp.task("build", ["sass", "js", "lint"]);

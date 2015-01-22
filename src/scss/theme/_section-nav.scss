@@ -64,7 +64,9 @@
     }
 
     @include media-query(min, $lap-start) {
-        opacity: 1;
+        &.ready {
+            opacity: 1;
+        }
         position: relative;
         transform: translateX(0) translateY(0) scale(1);
     }
