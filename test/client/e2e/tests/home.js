@@ -50,7 +50,7 @@ describe("Section Navigation", function() {
         browser.get(cpUrl);
 
         var elems = element.all(by.css("[bs-section-nav] li"));
-        expect(elems.get(0).getText()).toBe("Server Info");
+        expect(elems.get(0).getText()).toBe("Overview");
         expect(elems.get(1).getText()).toBe("Sync Options");
         expect(elems.get(2).getText()).toBe("History");
         matchClickToTitle(elems.get(0), headerSelector);

@@ -52,16 +52,18 @@ describe("History section", function() {
             var urls = ["/scrolling.html", "/forms.html"];
             var emptyContainer = "#bs-history-empty";
             var listContainer = "#bs-history-list";
-            var selector = by.css(listContainer + " li > [bs-remove]");
+            var selector = by.css(listContainer + " li > div > [bs-remove]");
             var deleteButtons = element.all(selector);
 
             browser.switchTo().window(client);
             browser.get(bsUrl + urls[0]);
             browser.switchTo().window(ui);
+            browser.sleep(500);
             expect(elems.count()).toEqual(2);
             browser.switchTo().window(client);
             browser.get(bsUrl + urls[1]);
             browser.switchTo().window(ui);
+            browser.sleep(500);
             expect(elems.count()).toEqual(3);
             expect(element.all(by.css(emptyContainer)).count()).toBe(0);
             deleteButtons.get(0).click();
@@ -84,7 +86,7 @@ describe("History section", function() {
             browser.sleep(1000);
             browser.switchTo().window(ui);
             expect(element.all(by.css(listContainer + " li")).count()).toBe(3);
-            element.all(by.css(listContainer + " li > [bs-multi-controls] > a"))
+            element.all(by.css(listContainer + " li > div > a"))
                 .get(1)
                 .click();
             browser.sleep(500);
