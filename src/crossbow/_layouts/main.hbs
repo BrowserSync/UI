@@ -1,0 +1,18 @@
+---
+layout: parent.hbs
+---
+{{ inc src="../../lib/img/icons/svg/symbols.svg" }}
+<main>
+    {{ inc src="_components/header.hbs" }}
+    <section bs-container>
+        {{ inc src="nav.hbs" }}
+        <section bs-content>
+            <div ng-view>
+                {{ content }}
+            </div>
+            <div bs-visible="palm">
+                {{ inc src="_components/footer.hbs" }}
+            </div>
+        </section>
+    </section>
+</main>

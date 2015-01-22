@@ -1,0 +1,49 @@
+---
+layout: components.hbs
+title: "Components"
+sections:
+    - name: "Typography"
+      file: "_components/type.hbs"
+      tube: true
+    - name: "Buttons"
+      file: "_components/buttons.hbs"
+      tube: true
+    - name: "Button bars"
+      file: "_components/button-bars.hbs"
+      tube: true
+    - name: "Lists"
+      file: "_components/lists.hbs"
+      tube: false
+    - name: "Headings"
+      file: "_components/heading.hbs"
+      tube: true
+    - name: "Panels"
+      file: "_components/panels.hbs"
+      tube: false
+    - name: "Header"
+      file: "_components/header.hbs"
+      tube: false
+---
+<link rel="stylesheet" href="../../public/css/components.css" />
+
+{{ inc src="../img/icons/svg/symbols.svg" }}
+
+<div class="tube">
+    <h1>BrowserSync UI Components</h1>
+    <hr/>
+</div>
+
+{{#each page.sections}}
+{{#if this.tube}}
+<div class="tube">
+    <h1>{{this.name}}</h1>
+    {{inc src=this.file title=this.name }}
+    </div>
+<hr/>
+{{else}}
+    <div class="tube">
+        <h1>{{this.name}}</h1>
+    </div>
+    {{inc src=this.file title=this.name }}
+{{/if}}
+{{/each}}

@@ -1,19 +1,19 @@
 "use strict";
 
-var async       = require("./server/async");
-var hooks       = require("./server/hooks");
-var config      = require("./server/config");
-var merge       = require("./server/opts").merge;
+var async       = require("./lib/async");
+var hooks       = require("./lib/hooks");
+var config      = require("./lib/config");
+var merge       = require("./lib/opts").merge;
 var Events      = require("events").EventEmitter;
 
 var defaultPlugins = {
-    "sync-options": require("./server/plugins/sync-options/sync-options"),
-    "overview":     require("./server/plugins/overview/overview"),
-    "history":      require("./server/plugins/history/history"),
+    "sync-options": require("./lib/plugins/sync-options/sync-options"),
+    "overview":     require("./lib/plugins/overview/overview"),
+    "history":      require("./lib/plugins/history/history"),
     //"plugins":      require("./server/plugins/plugins/plugins"),
-    "remote-debug": require("./server/plugins/remote-debug/remote-debug"),
-    "help":         require("./server/plugins/help/help"),
-    "connections":  require("./server/plugins/connections/connections")
+    "remote-debug": require("./lib/plugins/remote-debug/remote-debug"),
+    "help":         require("./lib/plugins/help/help"),
+    "connections":  require("./lib/plugins/connections/connections")
 };
 
 /**

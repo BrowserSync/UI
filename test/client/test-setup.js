@@ -5,16 +5,7 @@ var request      = require("supertest");
 var cp           = require("./../../index");
 var bs           = require(bspath);
 var fs           = require("fs");
-var prettyJs = require('pretty-js');
-
-cp.events.on("cp:running", function () {
-    request(cp.server)
-        .get("/js/pages-config.js")
-        .end(function (err, res) {
-            fs.writeFileSync(__dirname + "/setup-config.js", prettyJs(res.text));
-            process.exit();
-        });
-});
+var prettyJs     = require('pretty-js');
 
 var htmlInjector = require(htmlpath);
 
@@ -33,4 +24,16 @@ bs({
     },
     open: false,
     online: false
+}, function (err, bs) {
+    var cp = bs.pluginManager.getReturnValues("UI")[0].value;
+
+    cp.getServer(function (err, server) {
+        request(server)
+            .get("/js/pages-config.js")
+            .end(function (err, res) {
+                fs.writeFileSync(__dirname + "/setup-config.js", prettyJs(res.text));
+                process.exit();
+            });
+    })
+    //console.log(cp);
 });

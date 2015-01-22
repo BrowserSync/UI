@@ -6,7 +6,7 @@ var autoprefix  = require("gulp-autoprefixer");
 var browserify  = require("gulp-browserify");
 var rename      = require("gulp-rename");
 var filter      = require("gulp-filter");
-//var minifyCSS   = require("gulp-minify-css");
+var minifyCSS   = require("gulp-minify-css");
 var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
 var crossbow    = require("crossbow/plugins/stream");
@@ -18,7 +18,7 @@ gulp.task("lint", function () {
     return gulp.src([
         "test/client/specs/**/*.js",
         "test/server/**/*.js",
-        "lib/js/scripts/*.js",
+        "public/js/scripts/*.js",
         "index.js",
         "server/*.js",
         "gulpfile.js"
@@ -42,11 +42,11 @@ gulp.task("contribs", function () {
 /**
  * Build the app.
  */
-gulp.task("browserify", function () {
-    return gulp.src("lib/js/scripts/app.js")
+gulp.task("js", function () {
+    return gulp.src("src/scripts/app.js")
         .pipe(browserify())
         .pipe(rename("app.js"))
-        .pipe(gulp.dest("./lib/js/dist"));
+        .pipe(gulp.dest("./public/js"));
 });
 
 /**
@@ -71,7 +71,7 @@ gulp.task("browser-sync-dev", function () {
         notify: false,
         open: false,
         server: {
-            baseDir: "lib",
+            baseDir: ["static", "lib"],
             directory: true
         },
         ui: false
@@ -82,7 +82,7 @@ gulp.task("browser-sync-dev", function () {
  * Compile CSS
  */
 gulp.task("sass", function () {
-    return gulp.src("lib/scss/**/*.scss")
+    return gulp.src("src/scss/**/*.scss")
         .pipe(sass())
         .on("error", function(err){
             browserSync.notify(err.message, 3000);
@@ -90,11 +90,11 @@ gulp.task("sass", function () {
             this.emit("end");
         })
         .pipe(autoprefix())
-        .pipe(gulp.dest("lib/css"))
-        //.pipe(minifyCSS({keepBreaks:true}))
+        .pipe(gulp.dest("public/css"))
+        .pipe(minifyCSS({keepBreaks:true}))
         .pipe(filter("**/*.css"))
-        //.pipe(rename("core.min.css"))
-        //.pipe(gulp.dest("lib/css"))
+        .pipe(rename("core.min.css"))
+        .pipe(gulp.dest("public/css"))
         .pipe(browserSync.reload({stream:true}));
 });
 
@@ -108,29 +108,29 @@ gulp.task("bs-inject", function () {
 /**
  * Compile HTML
  */
-gulp.task("build-src", function () {
+gulp.task("crossbow", function () {
     crossbow.clearCache();
     //crossbow.emitter.on("_error", function (err) {
     //    console.log(err.message);
     //});
-    return gulp.src(["lib/src/*.hbs", "lib/src/_components/*.hbs"])
+    return gulp.src(["src/crossbow/*.hbs", "src/crossbow/_components/*.hbs"])
         .pipe(crossbow({
-            cwd: "lib/src",
-            siteConfig: "lib/src/_config.yml"
+            cwd: "src/crossbow",
+            siteConfig: "src/crossbow/_config.yml"
         }))
-        .pipe(gulp.dest("./lib"));
+        .pipe(gulp.dest("./static"));
 });
 
 /**
  * Compile SVG Symbols
  */
 gulp.task("svg", function () {
-    return gulp.src("lib/img/svg/*.svg")
+    return gulp.src("src/svg/*.svg")
         .pipe(sprites({
             mode: "symbols",
             svgId: "svg-%f",
             templates: {
-                symbols: require("fs").readFileSync("lib/img/svg-template.tmpl", "utf-8")
+                symbols: require("fs").readFileSync("src/svg-template.tmpl", "utf-8")
             },
             afterTransform: function (data) {
                 data.svg = data.svg.map(function (item) {
@@ -143,17 +143,17 @@ gulp.task("svg", function () {
                 return data;
             }
         }))
-        .pipe(gulp.dest("lib/img/icons"));
+        .pipe(gulp.dest("public/img/icons"));
 });
 
 /**
  * Build Front-end stuff
  */
-gulp.task("dev-frontend", ["sass", "svg", "build-src", "browserify", "browser-sync-dev"], function () {
-    gulp.watch("lib/scss/**/*.scss", ["sass"]);
-    gulp.watch(["lib/src/**"], ["build-src", browserSync.reload]);
-    gulp.watch(["lib/img/svg/**"], ["svg", "build-src", browserSync.reload]);
-    gulp.watch("lib/js/scripts/**/*.js", ["browserify", browserSync.reload]);
+gulp.task("dev-frontend", ["sass", "svg", "crossbow", "js", "browser-sync-dev"], function () {
+    gulp.watch("src/scss/**/*.scss", ["sass"]);
+    gulp.watch(["src/crossbow/**"], ["crossbow", browserSync.reload]);
+    gulp.watch(["src/svg/**"], ["svg", "crossbow", browserSync.reload]);
+    gulp.watch("src/scripts/**/*.js", ["js", browserSync.reload]);
 });
 
-gulp.task("build", ["sass", "browserify", "lint"]);
+gulp.task("build", ["sass", "js", "lint"]);

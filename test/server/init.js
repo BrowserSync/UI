@@ -2,7 +2,7 @@
 var browserSync = require("browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
-var config      = require("../../server/config");
+var config      = require("../../lib/config");
 var request     = require("supertest");
 
 describe("Can be started with browserSync instance", function() {
