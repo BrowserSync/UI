@@ -128,8 +128,10 @@
 // <i bs-Icon="repeat"></i>
 //
 [bs-button~="icon"] {
+
     padding-left: $half-spacing;
     padding-right: $half-spacing;
+
     [bs-svg-icon] {
         position: relative;
         top: 2px;
@@ -222,7 +224,7 @@
 
 [bs-button~="success"] {
     [bs-svg-icon] {
-        color: $green-lt;
+        color: $lime;
     }
 }
 

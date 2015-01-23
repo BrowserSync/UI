@@ -19,7 +19,7 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     background: $white;
-    color: $black;
+    color: lighten($sidebar, 20%);
     text-rendering: optimizeLegibility;
     overflow-y: auto;
 

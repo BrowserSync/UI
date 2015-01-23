@@ -1,4 +1,5 @@
-$switch-size: 25px;
+$switch-size: 22px;
+
 .cmn-toggle {
     position: absolute;
     margin-left: -9999px;
@@ -41,7 +42,7 @@ input.cmn-toggle-round + label:after {
     transition: margin 0.2s;
 }
 input.cmn-toggle-round:checked + label:before {
-    background-color: $green-lt;
+    background-color: $lime;
 }
 
 input.cmn-toggle-round + label:after {
@@ -53,6 +54,6 @@ input.cmn-toggle-round:checked + label:after {
 }
 
 input.cmn-toggle-round:checked + label {
-    background-color: $green-lt;
+    background-color: $lime;
 
 }

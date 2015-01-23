@@ -24,10 +24,10 @@
 
             <section bs-sidebar>
                 <div class="loader" ng-class="{ready:true}">Loading...</div>
-                <nav bs-section-nav="" ng-class="{'active': app.ui.sectionMenu, ready: true}">
-                    <ul bs-list="">
+                <nav bs-section-nav ng-class="{'active': app.ui.sectionMenu, ready: true}">
+                    <ul bs-list="stacked">
                         <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
-                            <button bs-button="nav" ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
+                            <button bs-button ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
                                 <icon icon="{{item.icon}}"></icon>
                                 {{item.title | ucfirst}}
                             </button>

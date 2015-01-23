@@ -1,7 +1,7 @@
 <div bs-panel="controls outline">
     <h1 bs-heading><icon icon="{{section.icon}}"></icon> {{section.title}}</h1>
 </div>
-<div bs-button-row>
+<div bs-button-row ng-if="ui.visited.length">
     <button bs-button="icon-left inline" ng-click="clearVisited()" ng-show="ui.visited.length">
         <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
         Clear all

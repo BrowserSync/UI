@@ -3,7 +3,6 @@
 
 @mixin panel {
 
-    color: $black;
     position: relative;
 
     [bs-text~="lede"] {
@@ -11,7 +10,6 @@
         @include media-query(min, $lap-start) {
             @include font-size(24px);
         }
-        font-family: $sans-heavy;
         position: relative;
         margin-bottom: 0;
         color: $black;
@@ -95,30 +93,17 @@
 }
 
 [bs-panel~="outline"] {
-
-    border-bottom: 0;
-
-    &:after {
-        content: " ";
-        width: 100%;
-        left: 0;
-        height: 1px;
-        display: block;
-        background: $grey-border;
-        position: absolute;
-        bottom: -2px;
-        z-index: 2;
-    }
+    border-bottom: 1px solid $grey-border;
 }
 
 [bs-panel-icon] {
 
     position: absolute;
     left: $half-spacing;
-    top: $base-spacing + 2px;
+    top: $base-spacing + 3px;
 
     [bs-svg-icon] {
-        color: $blue;
+        color: $sidebar;
         height: 24px;
         width: 24px;
         top: 0;
@@ -135,11 +120,15 @@
         padding-left: $base-spacing*4;
 
         [bs-panel-icon] {
-            left: $base-spacing*1.5;
+            left: 44px;
             top: $base-spacing;
             [bs-svg-icon] {
-                height: 45px;
-                width: 45px;
+                height: 30px;
+                width: 30px;
+                use {
+                    height: 30px;
+                    width: 30px;
+                }
             }
         }
     }
