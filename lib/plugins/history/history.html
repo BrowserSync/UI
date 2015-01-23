@@ -1,20 +1,20 @@
 <div bs-panel="controls outline">
-    <h1 bs-heading><icon icon="{{section.icon}}"></icon> {{section.title}}</h1>
+    <h1 bs-heading><icon icon="{{ctrl.section.icon}}"></icon> {{ctrl.section.title}}</h1>
 </div>
-<div bs-button-row ng-if="ui.visited.length">
-    <button bs-button="icon-left inline" ng-click="clearVisited()" ng-show="ui.visited.length">
+<div bs-button-row ng-if="ctrl.ui.visited.length">
+    <button bs-button="icon-left inline" ng-click="ctrl.clearVisited()" ng-show="ctrl.ui.visited.length">
         <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
         Clear all
     </button>
 </div>
-<div bs-panel ng-if="!ui.visited.length" id="bs-history-empty">
+<div bs-panel ng-if="!ctrl.ui.visited.length" id="bs-history-empty">
     <div bs-panel-content="basic">
         <p>Pages you navigate to will appear here - making it easy
             to sync all devices to a specific page</p>
     </div>
 </div>
-<div ng-if="ui.visited.length">
-    <history-list ng-if="ui.visited.length"
-                  options="options"
-                  visited="ui.visited"></history-list>
+<div ng-if="ctrl.ui.visited.length">
+    <history-list ng-if="ctrl.ui.visited.length"
+                  options="ctrl.options"
+                  visited="ctrl.ui.visited"></history-list>
 </div>
