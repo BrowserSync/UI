@@ -36,11 +36,12 @@ h1, .h1 {
     @include font-size($h1-size);
 }
 h2, .h2 {
+    padding-top: $half-spacing;
     @include font-size($h2-size);
 }
-
 h3, .h3 {
     @include font-size($h3-size);
+    font-weight: bold;
 }
 h4, .h4 {
     @include font-size($h4-size);

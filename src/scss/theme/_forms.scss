@@ -10,7 +10,7 @@ $input-height: 40px;
     padding-left: $half-spacing;
     padding-right: $half-spacing;
     max-width: 100%;
-    font-family: $sans-light;
+    font-family: $sans;
 
     @extend %panel;
 }
@@ -25,7 +25,7 @@ textarea {
     @extend %base-input
 }
 
-[bs-Input] { } 
+[bs-Input] { }
 [bs-Input~="darker"] {
     background: $green-dk;
     color: $white;

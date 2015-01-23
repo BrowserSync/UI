@@ -140,6 +140,8 @@
 
 [bs-panel-content~="basic"] {
     padding-left: $base-spacing;
+    max-width: 50em;
+
     @include media-query(min, $lap-start) {
         padding-left: $base-spacing*1.5;
     }

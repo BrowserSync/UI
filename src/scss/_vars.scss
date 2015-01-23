@@ -34,9 +34,9 @@ $twitter: #00ACEE;
 //
 // Type
 //
-$sans: "source_sans_proregular", "Lucida Grande", "Lucida Sans",sans-serif;
-$sans-light: "source_sans_proextralight", "Lucida Grande", "Lucida Sans",sans-serif;
-$sans-heavy: "source_sans_probold", "Lucida Grande", "Lucida Sans",sans-serif;
+$sans: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
+// $sans-light: "source_sans_proextralight", "Lucida Grande", "Lucida Sans",sans-serif;
+$sans-heavy: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
 $serif: Georgia, serif;
 $mono: Consolas, Monaco, monospace;
 
@@ -56,9 +56,9 @@ $hn-line-height: 1;
 $hn-font-family: $sans;
 
 $hn-color: $base-color;
-$h1-size: 30px;
-$h2-size: 24px;
-$h3-size: 20px;
+$h1-size: 36px;
+$h2-size: 30px;
+$h3-size: 18px;
 $h4-size: 16px;
 $h5-size: 16px;
 $h6-size: 16px;
@@ -75,9 +75,9 @@ $mono-font-family: $mono;
 //
 // Special
 //
-$lede-size: 20px;
-$small-size: 12px;
-$micro-size: 10px;
+$lede-size: 24px;
+$small-size: 14px;
+
 
 //
 // Spacing
