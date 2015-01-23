@@ -45,19 +45,31 @@ legend{border:0;padding:0}
 textarea{overflow:auto}
 optgroup{font-weight:700}
 table{border-collapse:collapse;border-spacing:0}
-td,th{padding:0}
 @font-face{font-family:source_sans;src:url(../fonts/source-sans/sourcesanspro-it-webfont.eot);src:url(../fonts/source-sans/sourcesanspro-it-webfont.eot?#iefix) format('embedded-opentype'),url(../fonts/source-sans/sourcesanspro-it-webfont.woff2) format('woff2'),url(../fonts/source-sans/sourcesanspro-it-webfont.woff) format('woff'),url(../fonts/source-sans/sourcesanspro-it-webfont.ttf) format('truetype'),url(../fonts/source-sans/sourcesanspro-it-webfont.svg#source_sans_proitalic) format('svg');font-weight:400;font-style:italic}
 @font-face{font-family:source_sans;src:url(../fonts/source-sans/sourcesanspro-bold-webfont.eot);src:url(../fonts/source-sans/sourcesanspro-bold-webfont.eot?#iefix) format('embedded-opentype'),url(../fonts/source-sans/sourcesanspro-bold-webfont.woff2) format('woff2'),url(../fonts/source-sans/sourcesanspro-bold-webfont.woff) format('woff'),url(../fonts/source-sans/sourcesanspro-bold-webfont.ttf) format('truetype'),url(../fonts/source-sans/sourcesanspro-bold-webfont.svg#source_sans_probold) format('svg');font-weight:700;font-style:normal}
 @font-face{font-family:source_sans;src:url(../fonts/source-sans/sourcesanspro-regular-webfont.eot);src:url(../fonts/source-sans/sourcesanspro-regular-webfont.eot?#iefix) format('embedded-opentype'),url(../fonts/source-sans/sourcesanspro-regular-webfont.woff2) format('woff2'),url(../fonts/source-sans/sourcesanspro-regular-webfont.woff) format('woff'),url(../fonts/source-sans/sourcesanspro-regular-webfont.ttf) format('truetype'),url(../fonts/source-sans/sourcesanspro-regular-webfont.svg#source_sans_proregular) format('svg');font-weight:400;font-style:normal}
-html{overflow-x:hidden;overflow-y:auto;height:100%;font:112.5%/1.5 source_sans,"Lucida Grande","Lucida Sans",sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}
+html{overflow-x:hidden;overflow-y:auto;height:100%;font:112.5%/1.5 source_sans,"Lucida Grande","Lucida Sans",sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-font-smoothing:antialiased}
 @media only screen and (min-width:600px){html{height:100vh}}
-body{min-height:100%;max-width:100%;overflow-x:hidden;background:#fff;color:#777;text-rendering:optimizeLegibility;overflow-y:auto}
+body{min-height:100%;max-width:100%;overflow-x:hidden;overflow-y:auto;background:#fff;color:#777;text-rendering:optimizeLegibility}
 @media only screen and (min-width:600px){body{height:100vh;overflow-y:hidden}}
 main{position:relative}
 @media only screen and (min-width:600px){main{overflow:hidden}}
-table tr td:first-child{white-space:nowrap;font-weight:700}
-table td{padding:14px 7px}
-table tbody tr:nth-child(odd){background:#fafafa}
+dl ol,dl ul,ol ol,ol ul,ul ol,ul ul{margin-bottom:0}
+ol,ul{margin-left:27px}
+ul{list-style:disc}
+ul ul{list-style:circle}
+ol{list-style:decimal}
+ol ol{list-style:lower-alpha}
+dt{font-weight:700}
+dd+dt{padding-top:14px}
+table{margin-top:14px;width:100%}
+td,th{padding:7px 14px;border-bottom:1px solid #F0F0F0;text-align:left;vertical-align:top}
+th{font-weight:700}
+thead tr:last-child th{border-bottom:2px solid #F0F0F0}
+[colspan]{text-align:center}
+[colspan="1"]{text-align:left}
+[rowspan]{vertical-align:middle}
+[rowspan="1"]{vertical-align:top}
 hr{clear:both;margin-bottom:27px;border:none;border-bottom:1px solid #F0F0F0;padding-bottom:14px;height:1px}
 .ng-cloak,.x-ng-cloak,[data-ng-cloak],[ng-cloak],[ng\:cloak],[x-ng-cloak]{display:none!important}
 [bs-header]{position:relative;background:#222}
@@ -104,17 +116,17 @@ svg{width:100%;height:100%;fill:currentColor!important}
 address,blockquote,details,dl,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hgroup,ol,p,pre,table,ul{margin-bottom:14px}
 .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{color:#444;font-weight:400;line-height:1;font-family:source_sans,"Lucida Grande","Lucida Sans",sans-serif;margin-bottom:27px;-webkit-font-smoothing:antialiased}
 .h1 small,.h2 small,.h3 small,.h4 small,.h5 small,.h6 small,h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-size:inherit;font-weight:400}
-.h1,h1{font-size:30px;font-size:1.66667rem}
-.h2,h2{font-size:24px;font-size:1.33333rem}
-.h3,h3{font-size:20px;font-size:1.11111rem}
+.h1,h1{font-size:36px;font-size:2rem}
+.h2,h2{padding-top:14px;font-size:30px;font-size:1.66667rem}
+.h3,h3{font-size:18px;font-size:1rem;font-weight:700}
 .h4,.h5,.h6,h4,h5,h6{font-size:16px;font-size:.88889rem}
 [bs-heading]{font-size:24px;font-size:1.33333rem;padding-left:55px;position:relative;line-height:52px;margin-top:0;margin-bottom:0;color:#FBFBFB;background:#3f3f3f;border-top:1px solid #3f3f3f}
 @media only screen and (min-width:600px){[bs-heading]{font-size:38px;font-size:2.11111rem;color:#444;background:#FBFBFB;padding-left:80px;border-top:0}
 [bs-heading]:before{display:none}}
 [bs-heading] [bs-svg-icon]{position:absolute;left:14px;top:11px}
 @media only screen and (min-width:600px){[bs-heading] [bs-svg-icon]{height:38px;width:38px;top:6px}}
-.lede{margin-bottom:27px;font-size:20px;font-size:1.11111rem}
-.small{font-size:12px;font-size:.66667rem}
+.lede{font-size:24px;font-size:1.33333rem}
+.small{font-size:14px;font-size:.77778rem}
 a{color:#ff4453;transition:background .3s ease,color .3s ease}
 a:active,a:focus,a:hover{color:#000}
 a [class*=" icon-"],a [class^=icon-]{text-decoration:none}
@@ -222,7 +234,7 @@ span.sep{margin-left:5px;margin-right:5px}
 [bs-panel-content] [bs-panel-icon]{left:44px;top:27px}
 [bs-panel-content] [bs-panel-icon] [bs-svg-icon],[bs-panel-content] [bs-panel-icon] [bs-svg-icon] use{height:30px;width:30px}}
 [bs-panel~=trans] [bs-panel-content]{padding-left:68px}
-[bs-panel-content~=basic]{padding-left:27px}
+[bs-panel-content~=basic]{padding-left:27px;max-width:50em}
 @media only screen and (min-width:600px){[bs-panel-content~=basic]{padding-left:40.5px}}
 @media only screen and (min-width:1200px){[bs-skinny]{padding:54px 95px}}
 [bs-list]{margin-left:0;list-style:none;word-wrap:break-word}
