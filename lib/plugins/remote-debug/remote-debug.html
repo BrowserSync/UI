@@ -1,17 +1,17 @@
 <div bs-panel="controls outline">
     <h1 bs-heading>
-        <icon icon="{{section.icon}}"></icon>
-        {{section.title}}
+        <icon icon="{{ctrl.section.icon}}"></icon>
+        {{ctrl.section.title}}
     </h1>
 </div>
 
-<div bs-panel="switch" ng-repeat="item in items track by $index" ng-class="{'disabled': !item.item.active}">
+<div bs-panel="switch" ng-repeat="item in ctrl.items track by $index" ng-class="{'disabled': !item.item.active}">
     <div bs-panel-content="">
         <div bs-panel-icon="switch">
             <div class="switch">
                 <input id="cmn-form-{{item.name}}"
                        ng-model="item.item.active"
-                       ng-change="toggleDebugger(item.item)"
+                       ng-change="ctrl.toggleDebugger(item.item)"
                        class="cmn-toggle cmn-toggle-round"
                        type="checkbox"
                        checked="">
