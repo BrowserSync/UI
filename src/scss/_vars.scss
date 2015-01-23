@@ -1,35 +1,25 @@
-$red:        #ff4453;
-$sidebar:    #444444;
+$red:           #ff4453;
+$red-alt:       #F2AAAA;
+$sidebar:       #444444;
 $sidebar-hover: #363636;
-$header:     #222222;
-$green:      #033339;
-$green-dk:   #00262C;
-$green-lt:   #21A695;
-$green-alt:  #064F58;
+$header:        #222222;
+$green:         #033339;
+$green-dk:      #00262C;
 
-$blue:       #4A90E2;
+$blue:          #4A90E2;
 
 $lime:          #81be00;
 $grey-text:     #ababab;
 $grey-bg:       #FBFBFB;
 $grey-bg-dk:    #F0F0F0;
 $grey-border:   $grey-bg-dk;
-$grey-icon:     #4A4A4A;
 
-$input-text:    #999999;
 
 $yellow: #e9ac00;
 
 $white: #fff;
 $black: #000;
-$grey-dk: lighten($black, 10%); // 1a1a1a
 $grey: lighten($black, 20%); // 333333
-$grey-lt: lighten($black, 40%); // 666666
-$silver-dk: lighten($black, 60%); // 999999
-$silver: lighten($black, 80%); // cccccc
-$silver-lt: lighten($black, 90%); // e6e6e6
-$smoke: lighten($black, 95%); // f2f2f2
-
 
 //
 // Special
@@ -51,15 +41,13 @@ $sans-heavy: "source_sans_probold", "Lucida Grande", "Lucida Sans",sans-serif;
 $serif: Georgia, serif;
 $mono: Consolas, Monaco, monospace;
 
-
 //
 // Base
 //
 $base-font-size: 18px;
 $base-line-height: 1.5;
 $base-font-family: $sans;
-$base-color: $green;
-
+$base-color: $sidebar;
 
 //
 // Headings
@@ -93,11 +81,6 @@ $small-size: 12px;
 $micro-size: 10px;
 
 //
-// LAYOUT
-//
-$border-box: true;
-
-//
 // Spacing
 //
 $base-spacing: $base-font-size * $base-line-height;
@@ -108,14 +91,12 @@ $icon-gutter: 55px;
 //
 // Radii
 //
-$base-radius: 5px;
+$base-radius: 3px;
 $half-radius: ceil($base-radius / 2);
 
 //
 // Grids
 //
-$column-width: 80px;
-$gutter-width: 20px;
 $page-width: 740px;
 
 $lap-start: 600px;

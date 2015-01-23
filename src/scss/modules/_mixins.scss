@@ -63,3 +63,30 @@
     -webkit-filter: drop-shadow( 1px 1px $blur $green-dk );
     filter:         drop-shadow( 1px 1px $blur $green-dk );
 }
+
+@mixin subtle-button ($_color, $disabled) {
+    background: $white;
+    color: $_color;
+    border-color: darken($grey-border, 5%);
+
+    &:hover, &:focus {
+        color: $_color;
+        background: $grey-border;
+    }
+
+    &:focus {
+        background: $white;
+    }
+
+    &:active {
+        color: $_color;
+        text-shadow: 1px 1px 1px rgba(black, .2);
+        background: darken($white, 3%);
+    }
+
+    &[disabled] {
+        border-color: darken($grey-border, 5%);
+        background: $grey-border;
+        color: $disabled;
+    }
+}

@@ -1,4 +1,4 @@
-.notification {
+[bs-notify] {
 
     position: absolute;
     left: 0;
@@ -7,7 +7,6 @@
     color: $white;
     text-align: center;
     padding: $base-spacing $half-spacing;
-    border-bottom: 1px solid $green;
     box-shadow: 0 5px 5px 0px rgba(0, 0, 0, .2);
     transform: translateY(-200%);
     transition: all .3s;
@@ -22,7 +21,7 @@
     }
 
     &.success {
-//        background: $lime;
+
     }
 
     &.error {

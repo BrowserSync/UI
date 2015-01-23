@@ -6,7 +6,7 @@
             return {
                 restrict: "E",
                 scope: {},
-                template: "<div class=\"notification\" ng-class=\"{\'active\': ui.visible}\">\n    <p class=\"notification__text\">{{ui.heading}} <span class=\"color--lime\">{{ui.message}}</span></p>\n</div>",
+                template: "<div bs-notify ng-class=\"{\'active\': ui.visible}\">\n    <p class=\"notification__text\">{{ui.heading}} <span class=\"color--lime\">{{ui.message}}</span></p>\n</div>",
                 controller: ["$scope", "$rootScope", notifyController]
             };
         });

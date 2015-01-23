@@ -4,7 +4,7 @@ $input-height: 40px;
 
     outline: none;
     vertical-align: middle;
-    border-radius: 3px;
+    border-radius: $base-radius;
     outline: 0;
     height: $input-height;
     padding-left: $half-spacing;

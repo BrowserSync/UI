@@ -17,7 +17,7 @@ input.cmn-toggle-round + label {
     padding: 4px;
     width: $switch-size*2;
     height: $switch-size;
-    border-radius: 4px;
+    border-radius: $base-radius;
 }
 input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
     display: block;
@@ -30,7 +30,7 @@ input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
 input.cmn-toggle-round + label:before {
     right: 2px;
     background-color: #AAAAAA;
-    border-radius: 4px;
+    border-radius: $base-radius;
     transition: background 0.2s;
 }
 input.cmn-toggle-round + label:after {
@@ -38,7 +38,7 @@ input.cmn-toggle-round + label:after {
     width: $switch-size - 6px;
     height: $switch-size - 6px;
     background-color: $white;
-    border-radius: 4px;
+    border-radius: $base-radius;
     transition: margin 0.2s;
 }
 input.cmn-toggle-round:checked + label:before {

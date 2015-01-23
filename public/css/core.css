@@ -1,47 +1,23 @@
-/**
- * RESET
- */
-/**
-
-    */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
        box-sizing: border-box; }
 
-/**
- * The usual...
- */
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, form, fieldset, legend, table, th, td, caption, hr {
   margin: 0;
   padding: 0; }
 
-/**
- * Give a help cursor to elements that give extra info on `:hover`.
- */
 abbr[title], dfn[title] {
   cursor: help; }
 
-/**
- * Remove underlines from potentially troublesome elements.
- */
 a, u, ins {
   text-decoration: none; }
 
-/**
- * Apply faux underline via `border-bottom`.
- */
 ins {
   border-bottom: 1px solid; }
 
-/**
-
- */
 img {
   font-style: italic; }
 
-/**
- * Give form elements some cursor interactions...
- */
 label, input, textarea, button, select, option {
   cursor: pointer; }
 
@@ -500,7 +476,7 @@ hr {
   clear: both;
   margin-bottom: 27px;
   border: none;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #F0F0F0;
   padding-bottom: 14px;
   height: 1px; }
 
@@ -726,7 +702,7 @@ h1, h2, h3, h4, h5, h6, hgroup, p, blockquote, address, ul, ol, dl, table, field
   margin-bottom: 14px; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-  color: #033339;
+  color: #444444;
   font-weight: 400;
   line-height: 1;
   font-family: "source_sans_proregular", "Lucida Grande", "Lucida Sans", sans-serif;
@@ -1390,7 +1366,7 @@ input.cmn-toggle-round + label {
   padding: 4px;
   width: 44px;
   height: 22px;
-  border-radius: 4px; }
+  border-radius: 3px; }
 
 input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
   display: block;
@@ -1403,7 +1379,7 @@ input.cmn-toggle-round + label:before, input.cmn-toggle-round + label:after {
 input.cmn-toggle-round + label:before {
   right: 2px;
   background-color: #AAAAAA;
-  border-radius: 4px;
+  border-radius: 3px;
   transition: background 0.2s; }
 
 input.cmn-toggle-round + label:after {
@@ -1411,7 +1387,7 @@ input.cmn-toggle-round + label:after {
   width: 16px;
   height: 16px;
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: 3px;
   transition: margin 0.2s; }
 
 input.cmn-toggle-round:checked + label:before {
@@ -1425,24 +1401,6 @@ input.cmn-toggle-round:checked + label:after {
 
 input.cmn-toggle-round:checked + label {
   background-color: #81be00; }
-
-@media only screen and (min-width: 750px) {
-  [bs-grid] {
-    width: 100%;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap; } }
-
-@media only screen and (min-width: 750px) {
-  [bs-grid-item~="3up"] {
-    width: 33.33%; }
-    [bs-grid-item~="3up"] [bs-panel-content] {
-      width: 100%;
-      padding-left: 14px;
-      padding-right: 14px; } }
 
 [bs-footer] {
   color: #000;
@@ -1481,7 +1439,7 @@ input.cmn-toggle-round:checked + label {
 pre {
   margin-top: 14px;
   padding: 14px;
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: -10px 0px 10px #F0F0F0 inset;
   border: 1px solid #ebebeb; }
   pre code {
@@ -1503,7 +1461,7 @@ code {
   font-size: 14px;
   font-size: 0.77778rem; }
 
-.notification {
+[bs-notify] {
   position: absolute;
   left: 0;
   width: 100%;
@@ -1511,20 +1469,19 @@ code {
   color: #fff;
   text-align: center;
   padding: 27px 14px;
-  border-bottom: 1px solid #033339;
   box-shadow: 0 5px 5px 0px rgba(0, 0, 0, 0.2);
   -webkit-transform: translateY(-200%);
       -ms-transform: translateY(-200%);
           transform: translateY(-200%);
   transition: all .3s;
   z-index: 100; }
-  .notification.active {
+  [bs-notify].active {
     -webkit-transform: translateY(0);
         -ms-transform: translateY(0);
             transform: translateY(0); }
-  .notification p {
+  [bs-notify] p {
     margin-bottom: 0; }
-  .notification.error {
+  [bs-notify].error {
     background: #ED6A13; }
 
 [bs-overlay] {

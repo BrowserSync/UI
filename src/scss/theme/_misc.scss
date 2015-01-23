@@ -1,5 +1,5 @@
 hr {
-    border-color: $silver;
+    border-color: $grey-border;
 }
 
 code {
@@ -30,8 +30,4 @@ pre {
 
 [bs-pointer~="default"] {
     cursor: pointer;
-}
-
-[bs-sep] {
-    color: lighten($grey-lt, 30%);
 }

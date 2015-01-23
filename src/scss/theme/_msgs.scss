@@ -3,38 +3,23 @@
     padding-top: 4px;
     padding-bottom: 4px;
     position: relative;
-
-    &:before {
-        font-family: "icomoon";
-        content: " ";
-        position: absolute;
-        top: 2px;
-        left: 0;
-        @include font-size(20px);
-    }
 }
 
-/**
- * Messages
- */
-[bs-Msg] {
+[bs-msg] {
     @extend %msg-line;
 }
-[bs-Msg~="success"] {
+[bs-msg~="success"] {
     &:before {
         color: $lime;
-        content: "\e6e7";
     }
 }
-[bs-Msg~="info"] {
+[bs-msg~="info"] {
     &:before {
         color: $yellow;
-        content: "\e6ef";
     }
 }
-[bs-Msg~="error"] {
+[bs-msg~="error"] {
     &:before {
         color: $red;
-        content: "\e6eb";
     }
 }
