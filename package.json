@@ -14,6 +14,7 @@
     "index.js",
     "lib",
     "public",
+    "templates",
     "LICENCE",
     "README.md"
   ],
