@@ -1,7 +1,7 @@
 <div bs-panel="controls outline">
     <h1 bs-heading>
-        <icon icon="{{section.icon}}"></icon>
-        {{section.title}}
+        <icon icon="{{ctrl.section.icon}}"></icon>
+        {{ctrl.section.title}}
     </h1>
     <div ng-if="ui.plugins.length" bs-button-row>
         <button bs-button="inline success" ng-click="setMany(true)">
@@ -18,4 +18,4 @@
         </button>
     </div>
 </div>
-<plugin-list ng-if="options" options="options" plugins="ui.plugins"></plugin-list>
+<plugin-list ng-if="ctrl.options" options="ctrl.options" plugins="ctrl.ui.plugins"></plugin-list>
