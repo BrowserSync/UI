@@ -85,6 +85,10 @@ ControlPanel.prototype.init = function () {
         {
             step: "Add options setting event",
             fn:   async.addOptionsEvent
+        },
+        {
+            step: "Add element events",
+            fn:   async.addElementEvents
         }
     ];
 
