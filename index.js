@@ -32,10 +32,13 @@ var ControlPanel = function (opts, bs, emitter) {
     cp.events         = emitter;
     cp.opts           = merge(opts);
     cp.logger         = bs.getLogger(cp.config.get("pluginName"));
+    console.log(cp.logger);
     cp.defaultPlugins = defaultPlugins;
 
     if (cp.opts.get("logLevel") === "silent") {
         cp.logger.mute(true);
+    } else {
+        cp.logger.setLevel(cp.opts.get("logLevel"));
     }
 
     cp.pluginManager = new bs.utils.easyExtender(defaultPlugins, hooks).init();
