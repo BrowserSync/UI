@@ -117,7 +117,7 @@ ControlPanel.prototype.init = function () {
         });
     }, function () {
         cp.events.emit("cp:running", {instance: cp, options: cp.opts});
-        cp.logger.info("Running at: {cyan:http://localhost:%s", cp.opts.get("port"));
+        cp.logger.info("Running at: {magenta:http://localhost:%s", cp.opts.get("port"));
     });
 
     return this;

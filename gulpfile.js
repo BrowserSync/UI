@@ -71,7 +71,7 @@ gulp.task("browser-sync-dev", function () {
         notify: false,
         open: false,
         server: {
-            baseDir: ["static", "lib"],
+            baseDir: ["static", "public"],
             directory: true
         },
         ui: false
