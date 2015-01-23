@@ -586,7 +586,7 @@ hr {
         position: absolute;
         right: 0;
         top: 0;
-        z-index: 100;
+        z-index: 10;
         background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 100%); } }
 
 [bs-section-nav] {
