@@ -33,6 +33,9 @@ var ControlPanel = function (opts, bs, emitter) {
     cp.opts           = merge(opts);
     cp.logger         = bs.getLogger(cp.config.get("pluginName"));
     cp.defaultPlugins = defaultPlugins;
+    cp.clients        = bs.io.of(bs.options.getIn(["socket", "namespace"]));
+    cp.socket         = bs.io.of(cp.config.getIn(["socket", "namespace"]));
+    cp.options        = Immutable.Map();
 
     if (cp.opts.get("logLevel") === "silent") {
         cp.logger.mute(true);

@@ -41,7 +41,7 @@ bs.use(htmlInjector, {
 //    }
 //});
 
-bs.use(cp, {port: 4080, logLevel: "debug"});
+bs.use(cp, {port: 4080, logLevel: "info"});
 
 var instance = bs({
     server: {
@@ -50,6 +50,6 @@ var instance = bs({
     files: [
         "test/fixtures/css/**"
     ],
-    open: false
-    //online: false
+    open: false,
+    online: false
 });
