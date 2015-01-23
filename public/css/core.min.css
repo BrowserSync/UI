@@ -125,7 +125,7 @@ address,blockquote,details,dl,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hgrou
 .lede{margin-bottom:27px;font-size:20px;font-size:1.11111rem}
 .small{font-size:12px;font-size:.66667rem}
 a{color:#ff4453;transition:background .3s ease,color .3s ease}
-a:active,a:focus,a:hover{text-decoration:underline;color:#00262C}
+a:active,a:focus,a:hover{color:#000}
 a [class*=" icon-"],a [class^=icon-]{text-decoration:none}
 [bs-icon]{transition:background .3s ease,color .3s ease}
 .flush--bottom{margin-bottom:0!important}

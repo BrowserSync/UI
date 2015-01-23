@@ -781,8 +781,7 @@ a {
   color: #ff4453;
   transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
-    text-decoration: underline;
-    color: #00262C; }
+    color: #000; }
   a [class^="icon-"], a [class*=" icon-"] {
     text-decoration: none; }
 

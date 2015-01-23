@@ -14,7 +14,6 @@ $grey-bg:       #FBFBFB;
 $grey-bg-dk:    #F0F0F0;
 $grey-border:   $grey-bg-dk;
 
-
 $yellow: #e9ac00;
 
 $white: #fff;
@@ -25,7 +24,7 @@ $grey: lighten($black, 20%); // 333333
 // Special
 //
 $link: $red;
-$link-hover: $green-dk;
+$link-hover: $black;
 $alert: #cccc00;
 $success: #00cc66;
 $failure: #cc0000;
