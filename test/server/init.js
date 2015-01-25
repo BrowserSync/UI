@@ -24,7 +24,6 @@ describe("Can be started with browserSync instance", function() {
 
     after(function () {
         bsInstance.cleanup();
-        controlPanel.server.close();
     });
 
     it("can register as plugin", function() {

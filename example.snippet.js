@@ -6,7 +6,7 @@ var htmlInjector = require("bs-html-injector");
 
 //bs.use(htmlInjector);
 
-bs.use(cp);
+bs.use(cp, {logLevel: "debug"});
 
 //bs.use(client);
 //bs({
@@ -20,4 +20,6 @@ bs.use(cp);
 //    open: false
 //});
 
-bs();
+bs({
+    logLevel: "silent"
+});

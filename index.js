@@ -3,6 +3,7 @@
 var async       = require("./lib/async");
 var hooks       = require("./lib/hooks");
 var config      = require("./lib/config");
+var Immutable   = require("immutable");
 var merge       = require("./lib/opts").merge;
 var Events      = require("events").EventEmitter;
 
@@ -37,9 +38,7 @@ var ControlPanel = function (opts, bs, emitter) {
     cp.socket         = bs.io.of(cp.config.getIn(["socket", "namespace"]));
     cp.options        = Immutable.Map();
 
-    if (cp.opts.get("logLevel") === "silent") {
-        cp.logger.mute(true);
-    } else {
+    if (cp.opts.get("logLevel")) {
         cp.logger.setLevel(cp.opts.get("logLevel"));
     }
 
