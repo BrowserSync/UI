@@ -25,11 +25,18 @@ sections:
       tube: false
 ---
 <link rel="stylesheet" href="css/components.css" />
-
 {{ inc src="../../public/img/icons/svg/symbols.svg" }}
 
 <div class="tube">
     <h1>BrowserSync UI Components</h1>
+    <p>Also, you can view static representations of each section:</p>
+    <ul bs-list="inline" class="">
+    {{#each site.sections}}
+        <li>
+            <a href="{{this.href}}" {{#current this.href}} class="active"{{/current}}>{{this.title}}</a> {{#if @last}}{{else}}<span bs-sep>|</span>{{/if}}
+        </li>
+    {{/each}}
+    </ul>
     <hr/>
 </div>
 

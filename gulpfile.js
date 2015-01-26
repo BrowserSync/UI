@@ -69,11 +69,12 @@ gulp.task("browser-sync-dev", function () {
     //});
     browserSync({
         notify: false,
-        open: false,
+        open: true,
         server: {
             baseDir: ["static", "public"],
             directory: true
         },
+        startPath: "components.html",
         ui: false
     });
 });

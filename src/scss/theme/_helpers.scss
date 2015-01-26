@@ -86,3 +86,9 @@ span.sep {
         display: none;
     }
 }
+
+[bs-sep] {
+    color: darken($grey-border, 10%);
+    margin-left: 3px;
+    margin-right: 3px;
+}
