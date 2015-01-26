@@ -37,7 +37,6 @@ describe("Section Navigation", function() {
 
     afterEach(function () {
         bs.instance.cleanup();
-        cp.server.close();
     });
 
     /**

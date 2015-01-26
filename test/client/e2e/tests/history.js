@@ -32,7 +32,6 @@ describe("History section", function() {
 
     afterEach(function () {
         bs.instance.cleanup();
-        cp.server.close();
     });
 
     it("should list visited urls & delete them", function () {
