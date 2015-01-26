@@ -6,7 +6,7 @@
             return {
                 restrict: "E",
                 scope: {},
-                template: '<section bs-overlay ng-class="{\'active\': ui.visible}"><p><icon icon="block"></icon></p><h1>{{ui.heading}} {{ui.message}}</h1><p>Possible reasons are:</p><ul bs-list><li>1. Your process was exited by another tool</li></ul></section>', // jshint:ignore
+                template: '<section bs-overlay ng-class="{\'active\': ui.visible}">\n    <p><icon icon="block"></icon></p>\n    <h1>{{ui.heading}} {{ui.message}}</h1>\n    <p>Possible reasons are:</p>\n    <ul bs-list>\n        <li>1. Your process was exited by another tool</li>\n    </ul>\n    <p>You should check your terminal window to see what happened. <br/>(Or simply try reloading this page.)</p>\n</section>', // jshint:ignore
                 controller: ["$scope", "$rootScope", "$window", disconnectController]
             };
         });
