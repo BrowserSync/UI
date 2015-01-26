@@ -13,5 +13,5 @@ function OptionsService(Socket) {
         all: function () {
             return Socket.getData("options");
         }
-    }
+    };
 }
