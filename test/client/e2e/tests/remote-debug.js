@@ -36,7 +36,7 @@ describe("Remote debug page", function() {
 
     it("should allow elements to be added/removed from clients via the UI", function() {
 
-        var id = bs.options.getIn(["clientFiles", "pesticide", "id"]);
+        var id = cp.getOptionIn(["clientFiles", "pesticide", "id"]);
         browser.get(cpUrl + "/remote-debug");
         browser.sleep(1000);
         var button = element.all(by.css("label[for='cmn-form-pesticide']"));
