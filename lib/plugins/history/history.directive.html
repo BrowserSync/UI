@@ -3,12 +3,14 @@
         <p>{{url.path}}</p>
 
         <div bs-button-group>
-            <!--
-            <a href="{{url.path | localUrl:options.port:options.mode}}" bs-button="subtle-alt icon" target="_blank">
-                <icon icon="newtab"></icon>
-            </a>-->
-            <a href="#" ng-click="sendAllTo(url.path)" bs-button="subtle-alt icon" title="Sync all devices to this address.">
-                <icon icon="syncall"></icon> Sync all
+            <a href="#"
+               title="Sync all devices to this address."
+               bs-button="subtle-alt icon-left"
+               ng-click="sendAllTo(url)"
+               ng-class="{success: url.success}"
+               >
+                <icon icon="circle-ok" bs-state="success"></icon>
+                <icon icon="syncall"   bs-state="default"></icon> Sync all
             </a>
             <a href="#" bs-button="subtle-alt icon" bs-remove ng-click="removeVisited(url)">
                 <icon icon="bin"></icon>

@@ -26,7 +26,11 @@
     }
 
     [bs-svg-icon] {
-        width: 100px;
-        height: 100px;
+        width: 40px;
+        height: 40px;
+        @include media-query(min, $lap-start) {
+            width: 100px;
+            height: 100px;
+        }
     }
 }

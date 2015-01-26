@@ -52,6 +52,7 @@ $controls-height: 41px;
 [bs-list~="inline-controls"] {
 
     word-wrap: break-word;
+
     p {
         margin-bottom: $half-spacing/2;
     }
@@ -98,6 +99,15 @@ $controls-height: 41px;
     [bs-button-group] {
 
         margin-bottom: 0;
+
+        [bs-button~="icon-left"] {
+
+            line-height: 35px;
+
+            [bs-svg-icon] {
+                top: 12px;
+            }
+        }
 
         [bs-svg-icon] {
             top: 4px;

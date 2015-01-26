@@ -631,7 +631,11 @@ hr {
 svg {
   width: 100%;
   height: 100%;
-  fill: currentColor !important; }
+  opacity: 1;
+  fill: currentColor !important;
+  transition: .3s; }
+  svg.icon-hidden {
+    opacity: 0; }
 
 .icon {
   display: inline-block; }
@@ -829,8 +833,11 @@ span.sep {
   font-size: 18px;
   font-size: 1rem; }
 
-[bs-Color~="white"] {
+[bs-color~="white"] {
   color: #fff; }
+
+[bs-color~="success"] {
+  color: #81be00; }
 
 @media only screen and (min-width: 750px) {
   [bs-visible~="not-desk"] {
@@ -865,7 +872,8 @@ span.sep {
   letter-spacing: 1px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
   margin-bottom: 14px;
-  height: 40px; }
+  height: 40px;
+  -webkit-tap-highlight-color: transparent; }
   [bs-button]:hover {
     text-decoration: none;
     color: #fff;
@@ -877,6 +885,15 @@ span.sep {
     color: #fff;
     box-shadow: 0px 1px 0px 0 rgba(0, 0, 0, 0.1) inset;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4); }
+  [bs-button] [bs-state~="success"] {
+    opacity: 0;
+    color: #81be00; }
+  [bs-button].success {
+    color: #81be00 !important; }
+    [bs-button].success [bs-state~="success"] {
+      opacity: 1; }
+    [bs-button].success [bs-state~="default"] {
+      opacity: 0; }
   [bs-button][disabled] {
     border-color: #e3606b;
     background: #e3606b;
@@ -1236,6 +1253,10 @@ span.sep {
           padding-bottom: 11px; } }
   [bs-list~="inline-controls"] [bs-button-group] {
     margin-bottom: 0; }
+    [bs-list~="inline-controls"] [bs-button-group] [bs-button~="icon-left"] {
+      line-height: 35px; }
+      [bs-list~="inline-controls"] [bs-button-group] [bs-button~="icon-left"] [bs-svg-icon] {
+        top: 12px; }
     [bs-list~="inline-controls"] [bs-button-group] [bs-svg-icon] {
       top: 4px;
       width: 22px;
@@ -1479,5 +1500,9 @@ code {
   [bs-overlay] * {
     color: #fff; }
   [bs-overlay] [bs-svg-icon] {
-    width: 100px;
-    height: 100px; }
+    width: 40px;
+    height: 40px; }
+    @media only screen and (min-width: 600px) {
+      [bs-overlay] [bs-svg-icon] {
+        width: 100px;
+        height: 100px; } }

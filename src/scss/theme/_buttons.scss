@@ -26,6 +26,7 @@
     box-shadow: 0 1px 1px 0 rgba(black, .4);
     margin-bottom: $half-spacing;
     height: 40px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 
     &:hover {
         text-decoration: none;
@@ -42,6 +43,21 @@
         color: $white;
         box-shadow: 0px 1px 0px 0 rgba(black, .1) inset;
         text-shadow: 1px 1px 0px rgba(black, .4);
+    }
+
+    [bs-state~="success"] {
+        opacity: 0;
+        color: $lime;
+    }
+
+    &.success {
+        [bs-state~="success"] {
+            opacity: 1;
+        }
+        [bs-state~="default"] {
+            opacity: 0;
+        }
+        color: $lime!important;
     }
 
     &[disabled] {
@@ -61,6 +77,7 @@
         width: 16px;
         height: 16px;
     }
+
 }
 
 //

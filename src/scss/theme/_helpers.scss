@@ -56,8 +56,12 @@ span.sep {
     @include font-size(18px);
 }
 
-[bs-Color~="white"] {
+[bs-color~="white"] {
     color: $white;
+}
+
+[bs-color~="success"] {
+    color: $lime;
 }
 
 [bs-visible] {
