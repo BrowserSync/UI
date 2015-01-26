@@ -114,7 +114,11 @@ gulp.task("crossbow", function () {
     //crossbow.emitter.on("_error", function (err) {
     //    console.log(err.message);
     //});
-    return gulp.src(["src/crossbow/*.hbs", "src/crossbow/_components/*.hbs"])
+    return gulp.src([
+        "src/crossbow/*.hbs",
+        "src/crossbow/_components/*.hbs",
+        "src/crossbow/content/*.hbs"
+    ])
         .pipe(crossbow({
             cwd: "src/crossbow",
             siteConfig: "src/crossbow/_config.yml"

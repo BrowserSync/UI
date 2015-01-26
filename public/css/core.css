@@ -1188,10 +1188,12 @@ span.sep {
 
 [bs-panel-content~="basic"] {
   padding-left: 27px;
+  padding-right: 27px;
   max-width: 50em; }
   @media only screen and (min-width: 600px) {
     [bs-panel-content~="basic"] {
-      padding-left: 40.5px; } }
+      padding-left: 40.5px;
+      padding-right: 40.5px; } }
 
 @media only screen and (min-width: 1200px) {
   [bs-skinny] {

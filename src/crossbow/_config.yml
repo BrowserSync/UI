@@ -19,6 +19,10 @@ links:
   github:  "https://github.com/shakyShane/browser-sync-ui"
   twitter: "https://twitter.com/browsersync"
   home:    "https://browsersync.io"
+  stackoverflow:  "http://stackoverflow.com/questions/tagged/browser-sync"
+  snippetOptions: "http://www.browsersync.io/docs/options/#option-snippetOptions"
+  contributing: "https://github.com/shakyShane/browser-sync/blob/master/CONTRIBUTING.md"
+  options: "http://www.browsersync.io/docs/options/#option"
 
 project:
   name: "BrowserSync.io"

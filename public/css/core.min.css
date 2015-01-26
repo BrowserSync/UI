@@ -241,8 +241,8 @@ span.sep{margin-left:5px;margin-right:5px}
 [bs-panel-content] [bs-panel-icon]{left:44px;top:27px}
 [bs-panel-content] [bs-panel-icon] [bs-svg-icon],[bs-panel-content] [bs-panel-icon] [bs-svg-icon] use{height:30px;width:30px}}
 [bs-panel~=trans] [bs-panel-content]{padding-left:68px}
-[bs-panel-content~=basic]{padding-left:27px;max-width:50em}
-@media only screen and (min-width:600px){[bs-panel-content~=basic]{padding-left:40.5px}}
+[bs-panel-content~=basic]{padding-left:27px;padding-right:27px;max-width:50em}
+@media only screen and (min-width:600px){[bs-panel-content~=basic]{padding-left:40.5px;padding-right:40.5px}}
 @media only screen and (min-width:1200px){[bs-skinny]{padding:54px 95px}}
 [bs-list]{margin-left:0;list-style:none;word-wrap:break-word}
 [bs-list] p{margin-bottom:0}
