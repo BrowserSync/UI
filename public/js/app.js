@@ -555,7 +555,7 @@ function OptionsService(Socket) {
         all: function () {
             return Socket.getData("options");
         }
-    }
+    };
 }
 },{"../module":6}],13:[function(require,module,exports){
 /**
