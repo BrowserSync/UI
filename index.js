@@ -11,7 +11,12 @@ module.exports.hooks = {
     /**
      * Client JS is added to each connected client
      */
-    "client:js": require("fs").readFileSync(__dirname + config.defaults.clientJs)
+    "client:js": require("fs").readFileSync(__dirname + config.defaults.clientJs),
+    "server:middleware": function () {
+        return [
+            require("./lib/plugins/remote-debug/remote-debug").throttleMiddleware()
+        ]
+    }
 };
 
 /**
