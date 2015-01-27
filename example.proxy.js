@@ -9,7 +9,7 @@ bs.use(cp);
 //bs.use(client);
 
 bs({
-    proxy: "swoon.static",
+    proxy: "localhost:8080",
     open: false,
     //tunnel: true
     port: 4000
