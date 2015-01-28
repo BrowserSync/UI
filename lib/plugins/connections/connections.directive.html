@@ -1,6 +1,6 @@
 <ul bs-list="basic" ng-show="ui.connections" id="bs-connection-list">
     <li ng-repeat="connection in ui.connections track by connection.id">
-        <p>{{connection.browser.name}} - ({{connection.browser.version}})</p>
+        <p>{{connection.id}} - {{connection.browser.name}} - ({{connection.browser.version}})</p>
         <!--<span bs-multi-controls="right">
             <a href="#" ng-click="highlight(connection)" bs-button>
                 <svg bs-svg-icon><use xlink:href="#svg-target"></use></svg> Highlight
