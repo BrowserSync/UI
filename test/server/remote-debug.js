@@ -3,12 +3,13 @@ var browserSync = require("browser-sync");
 var ui          = require("../../index");
 var request     = require("request");
 
-describe.only("Remote debug", function () {
+describe("Remote debug", function () {
 
     var bsInstance, uiInstance;
     this.timeout(10000);
     before(function (done) {
 
+        browserSync.reset();
         browserSync.use(ui);
 
         var config = {
@@ -27,7 +28,7 @@ describe.only("Remote debug", function () {
     });
     it("should init", function (done) {
 
-        request(bsInstance.options.getIn(["urls", "local"]) + "/shane", function (err, res, body) {
+        request(bsInstance.options.getIn(["urls", "local"]) + "/shane", function () {
             done();
         });
     });
