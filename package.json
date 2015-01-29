@@ -1,7 +1,7 @@
 {
   "name": "browser-sync-ui",
   "description": "User Interface for BrowserSync",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "http://www.browsersync.io/",
   "author": {
     "name": "Shane Osbourne"
@@ -15,6 +15,7 @@
     "lib",
     "public",
     "static/_components",
+    "static/_content",
     "templates",
     "LICENCE",
     "README.md"
