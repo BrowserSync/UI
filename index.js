@@ -16,12 +16,14 @@ module.exports.hooks = {
 
 /**
  * BrowserSync Plugin interface
- * @param opts
- * @param bs
+ * @param {Object} opts
+ * @param {BrowserSync} bs
+ * @param {Function} cb
  * @returns {UI}
  */
-module.exports["plugin"] = function (opts, bs) {
+module.exports["plugin"] = function (opts, bs, cb) {
     var ui = new UI(opts, bs, new Events());
+    ui.cb = cb || function () { /*noop*/ };
     ui.init();
     return ui;
 };
