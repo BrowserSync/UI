@@ -74,11 +74,16 @@ $inner-height: $header-height - $border-height;
     border-bottom: 1px solid $header;
 
     svg {
-        position: relative;
-        top: 8px;
+        position: absolute;
+        top: $half-spacing;
+        left: $half-spacing - 2px;
         height: 30px;
         width: 30px;
         pointer-events: none;
+
+        &[bs-state=alt] {
+            opacity: 0;
+        }
     }
 
     &:hover {
@@ -86,8 +91,11 @@ $inner-height: $header-height - $border-height;
     }
 
     &.active {
-        background: $sidebar;
-        border-left: 1px solid $grey-border;
-        border-bottom: 1px solid $grey-border;
+        svg {
+            opacity: 0;
+            &[bs-state=alt] {
+                opacity: 1!important;
+            }
+        }
     }
 }

@@ -513,17 +513,20 @@ hr {
     [bs-toggle] {
       display: none; } }
   [bs-toggle] svg {
-    position: relative;
-    top: 8px;
+    position: absolute;
+    top: 14px;
+    left: 12px;
     height: 30px;
     width: 30px;
     pointer-events: none; }
+    [bs-toggle] svg[bs-state=alt] {
+      opacity: 0; }
   [bs-toggle]:hover {
     background: #444444; }
-  [bs-toggle].active {
-    background: #444444;
-    border-left: 1px solid #F0F0F0;
-    border-bottom: 1px solid #F0F0F0; }
+  [bs-toggle].active svg {
+    opacity: 0; }
+    [bs-toggle].active svg[bs-state=alt] {
+      opacity: 1 !important; }
 
 [bs-sidebar] {
   position: relative;

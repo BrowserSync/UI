@@ -84,9 +84,11 @@ hr{clear:both;margin-bottom:27px;border:none;border-bottom:1px solid #F0F0F0;pad
 [bs-header] [bs-list~=header] a:hover{color:#81be00;text-shadow:1px 1px 3px #000}
 [bs-toggle]{font-size:24px;font-size:1.33333rem;position:absolute;right:0;cursor:pointer;width:55px;text-align:center;height:60px;line-height:60px;color:#fff;transition:background .2s;text-shadow:1px 1px 2px #00262C;border-left:1px solid #222;border-bottom:1px solid #222}
 @media only screen and (min-width:600px){[bs-toggle]{display:none}}
-[bs-toggle] svg{position:relative;top:8px;height:30px;width:30px;pointer-events:none}
+[bs-toggle] svg{position:absolute;top:14px;left:12px;height:30px;width:30px;pointer-events:none}
+[bs-toggle] svg[bs-state=alt]{opacity:0}
 [bs-toggle]:hover{background:#444}
-[bs-toggle].active{background:#444;border-left:1px solid #F0F0F0;border-bottom:1px solid #F0F0F0}
+[bs-toggle].active svg{opacity:0}
+[bs-toggle].active svg[bs-state=alt]{opacity:1!important}
 [bs-sidebar]{position:relative;background:#444}
 @media only screen and (min-width:600px){[bs-sidebar]{width:240px}
 [bs-sidebar]:after{content:" ";width:10px;height:100%;position:absolute;right:0;top:0;z-index:10;background:linear-gradient(to right,transparent 0,rgba(0,0,0,.2) 100%)}}
