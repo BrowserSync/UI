@@ -19,7 +19,7 @@ describe("Remote debug", function () {
         };
 
         bsInstance = browserSync(config, function (err, bs) {
-            uiInstance = bs.pluginManager.getReturnValues("UI")[0].value;
+            uiInstance = bs.ui;
             done();
         }).instance;
     });

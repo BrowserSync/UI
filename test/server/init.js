@@ -6,7 +6,7 @@ var request     = require("supertest");
 
 describe("Can be started with browserSync instance", function() {
 
-    var bsInstance, controlPanel;
+    var bsInstance, ui;
 
     before(function (done) {
 
@@ -16,9 +16,9 @@ describe("Can be started with browserSync instance", function() {
             online: false,
             logLevel: "silent"
         };
-        bsInstance = browserSync(config, function () {
-            controlPanel = bsInstance.pluginManager.getReturnValues(cp["plugin:name"])[0].value;
-            controlPanel.getServer(done);
+        bsInstance = browserSync(config, function (err, bs) {
+            ui = bs.ui;
+            done();
         }).instance;
     });
 
@@ -27,10 +27,10 @@ describe("Can be started with browserSync instance", function() {
     });
 
     it("can register as plugin", function() {
-        assert.ok(controlPanel);
+        assert.ok(ui);
     });
     it("can serve from lib dir", function(done) {
-        request(controlPanel.server)
+        request(ui.server)
             .get("/")
             .expect(200)
             .end(function (err, res) {
