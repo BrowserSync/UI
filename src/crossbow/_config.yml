@@ -16,9 +16,10 @@ sections:
     href:  "/help.html"
 
 links:
-  github:  "https://github.com/shakyShane/browser-sync-ui"
+  github:  "https://github.com/BrowserSync/UI/"
+  issues:  "https://github.com/BrowserSync/UI/issues"
   twitter: "https://twitter.com/browsersync"
-  home:    "https://browsersync.io"
+  home:    "http://browsersync.io"
   stackoverflow:  "http://stackoverflow.com/questions/tagged/browser-sync"
   snippetOptions: "http://www.browsersync.io/docs/options/#option-snippetOptions"
   contributing: "https://github.com/shakyShane/browser-sync/blob/master/CONTRIBUTING.md"
