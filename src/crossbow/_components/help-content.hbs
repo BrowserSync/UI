@@ -4,9 +4,8 @@
 <div bs-panel>
     <div bs-panel-content="basic">
         <p class="lede">
-            When you’re making responsive websites, there’s a lot of tweaking and testing to do.
-            BrowserSync makes your workflow faster by synchronising URLs, interactions and code changes across multiple devices.
-            It’s wicked-fast and totally free.
+            BrowserSync is an open-source project created and maintained by the front-end designers/developers at [JH]({{site.links.jh}})
+            . Together with contributors from all over the world, we aim to make modern, multi-device web development easier & faster.
         </p>
     </div>
 </div>
@@ -16,17 +15,23 @@
         <dl>
             <dt>Why isn&rsquo;t BrowserSync connecting with my project?</dt>
             <dd>99% of the time, it's because your web page doesn't have a `body` tag.
-                In order for BrowserSync to connect properly the `body` tag must be present in your website. Alternatively you can provide a custom rule for the snippet using [snippetOptions]({{site.links.snippetOptions}})
+                In order for BrowserSync to connect properly the `body` tag must be present in your website (we add a script tag just after it).
+                Alternatively you can provide a custom rule for the snippet using [snippetOptions]({{site.links.snippetOptions}})
             </dd>
             <dt>Which mode should I be running in?</dt>
             <dd>
                 <ul>
                     <li>If you have simple HTML, CSS & Javascript files, you need the [server option]({{site.links.options}}-server).</li>
-                    <li>If you already have an existing server setup (such as an Express app, Mamp, Rails etc, then you need the [proxy option]({{site.links.options}}-server).</li>
+                    <li>If you already have an existing server setup (such as an Express app, Mamp, Rails etc, then you need the [proxy option]({{site.links.options}}-proxy).</li>
                     <li>If you intend to copy/paste the snippet into your website manually, you use the `snippet` mode. This is the default mode and is
                     achieved by omitting both the server & proxy options</li>
                 </ul>
             </dd>
+            <dt>Where can I report an issue?</dt>
+            <dd>
+                <p>If you have found an issue with the BrowserSync UI, please use our [issue tracker]({{site.links.github}}) </p>
+            </dd>
+
         </dl>
         <hr>
         <p>Need more assistance? Please try our [documentation](http://www.browsersync.io/docs/) for user guides or our [stackoverflow]({{site.links.stackoverflow}}) tag for answers to common problems.</p>

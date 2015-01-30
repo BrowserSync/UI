@@ -23,6 +23,8 @@ links:
   snippetOptions: "http://www.browsersync.io/docs/options/#option-snippetOptions"
   contributing: "https://github.com/shakyShane/browser-sync/blob/master/CONTRIBUTING.md"
   options: "http://www.browsersync.io/docs/options/#option"
+  contributing: "https://github.com/shakyShane/browser-sync/blob/master/CONTRIBUTING.md"
+  jh: "http://www.wearejh.com"
 
 project:
   name: "BrowserSync.io"

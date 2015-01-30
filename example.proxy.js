@@ -9,7 +9,7 @@ bs.use(cp);
 //bs.use(client);
 
 bs({
-    proxy: "localhost:8080",
+    proxy: "oddlondon.dev",
     open: false,
     //tunnel: true
     port: 4000
