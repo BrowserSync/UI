@@ -45,14 +45,14 @@ bs.use(cp);
 
 var instance = bs({
     server: {
-        baseDir: "./test/fixtures"
+        baseDir: [
+            "./test/fixtures",
+            "./test/server"
+        ]
     },
     files: [
         "test/fixtures/css/**"
     ],
-    open: false,
-    ui: {
-        logLevel: "silent"
-    }
+    open: false
     //online: false
 });
