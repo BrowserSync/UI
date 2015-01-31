@@ -1,14 +1,17 @@
+"use strict";
+
 var gulp        = require("gulp");
 var jshint      = require("gulp-jshint");
 var contribs    = require("gulp-contribs");
 var sass        = require("gulp-sass");
 var autoprefix  = require("gulp-autoprefixer");
-var browserify  = require("gulp-browserify");
 var rename      = require("gulp-rename");
 var filter      = require("gulp-filter");
 var minifyCSS   = require("gulp-minify-css");
 var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
+var browserify = require("browserify");
+var source      = require("vinyl-source-stream");
 var crossbow    = require("crossbow/plugins/stream");
 
 /**
@@ -33,20 +36,20 @@ gulp.task("lint", function () {
  * Update Contributors list
  */
 gulp.task("contribs", function () {
-    gulp.src("README.md")
+    return gulp.src("README.md")
         .pipe(contribs())
-        .pipe(gulp.dest("./"));
+        .pipe(gulp.dest(""));
 });
 
 
 /**
  * Build the app.
  */
-gulp.task("js", function () {
-    return gulp.src("src/scripts/app.js")
-        .pipe(browserify())
-        .pipe(rename("app.js"))
-        .pipe(gulp.dest("./public/js"));
+gulp.task("js", ["lint"], function () {
+    return browserify({entries: ["./src/scripts/app.js"]})
+        .bundle()
+        .pipe(source("app.js"))
+        .pipe(gulp.dest("public/js"));
 });
 
 /**
@@ -122,7 +125,7 @@ gulp.task("crossbow", function () {
             cwd: "src/crossbow",
             siteConfig: "src/crossbow/_config.yml"
         }))
-        .pipe(gulp.dest("./static"));
+        .pipe(gulp.dest("static"));
 });
 
 /**
@@ -160,4 +163,4 @@ gulp.task("dev-frontend", ["sass", "svg", "crossbow", "js", "browser-sync-dev"],
     gulp.watch("src/scripts/**/*.js", ["js", browserSync.reload]);
 });
 
-gulp.task("build", ["sass", "js", "lint"]);
+gulp.task("build", ["sass", "js"]);
