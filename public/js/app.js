@@ -1,23 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var module = require("./module"); //jshint ignore:line
-
-module.directive("icon", require("./directives/icon"));
-},{"./directives/icon":2,"./module":6}],2:[function(require,module,exports){
-module.exports = function () {
-    return {
-        scope: {
-            icon: "@"
-        },
-        restrict: "E",
-        replace: true,
-        template: "<svg bs-svg-icon><use xlink:href=\"{{iconName}}\"></use></svg>",
-        link: function (scope, elem, attrs) {
-            scope.iconName = "#svg-" + scope.icon;
-            return scope;
-        }
-    };
-};
-},{}],3:[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -62,7 +43,26 @@ var mainCtrl    = require("./main/controller");
 var filter      = require("./filters");
 var directives  = require("./directives");
 /* jshint ignore:end */
-},{"./directives":1,"./filters":4,"./main/controller":5,"./modules/bsClients":7,"./modules/bsDisconnect":8,"./modules/bsHistory":9,"./modules/bsNotify":10,"./modules/bsSocket":11,"./services/Options":12,"./services/Pages":13}],4:[function(require,module,exports){
+},{"./directives":2,"./filters":4,"./main/controller":5,"./modules/bsClients":7,"./modules/bsDisconnect":8,"./modules/bsHistory":9,"./modules/bsNotify":10,"./modules/bsSocket":11,"./services/Options":12,"./services/Pages":13}],2:[function(require,module,exports){
+var module = require("./module"); //jshint ignore:line
+
+module.directive("icon", require("./directives/icon"));
+},{"./directives/icon":3,"./module":6}],3:[function(require,module,exports){
+module.exports = function () {
+    return {
+        scope: {
+            icon: "@"
+        },
+        restrict: "E",
+        replace: true,
+        template: "<svg bs-svg-icon><use xlink:href=\"{{iconName}}\"></use></svg>",
+        link: function (scope, elem, attrs) {
+            scope.iconName = "#svg-" + scope.icon;
+            return scope;
+        }
+    };
+};
+},{}],4:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 var utils  = require("./utils"); //jshint ignore:line
 
@@ -642,4 +642,4 @@ module.exports = {
         return filtered;
     }
 };
-},{}]},{},[3])
+},{}]},{},[1]);

@@ -7,18 +7,12 @@
     "name": "Shane Osbourne"
   },
   "repository": "shakyshane/browser-sync-ui",
-  "bugs": {
-    "url": "https://github.com/shakyshane/browser-sync-ui/issues"
-  },
   "files": [
     "index.js",
     "lib",
     "public",
-    "static/_components",
-    "static/content",
-    "templates",
-    "LICENCE",
-    "README.md"
+    "static",
+    "templates"
   ],
   "licenses": [
     {
@@ -26,59 +20,59 @@
       "url": "https://github.com/shakyshane/browser-sync-ui/blob/master/LICENSE"
     }
   ],
-  "main": "index.js",
   "engines": {
     "node": ">= 0.10.0"
   },
   "scripts": {
     "backend": "gulp build && mocha test/server",
     "e2e": "node test/client/e2e/_setup.js",
-    "client": "./node_modules/karma/bin/karma start test/client/karma.conf.ci.js",
+    "client": "karma start test/client/karma.conf.ci.js",
     "pre-release": "npm run backend && npm run e2e",
     "test": "npm run backend"
   },
   "dependencies": {
-    "angular": "^1.3.8",
+    "angular": "^1.3.11",
     "angular-route": "^1.3.8",
-    "angular-sanitize": "^1.3.8",
-    "angular-touch": "^1.3.8",
+    "angular-sanitize": "^1.3.11",
+    "angular-touch": "^1.3.11",
+    "async-each-series": "^0.1.1",
     "connect-history-api-fallback": "0.0.5",
     "immutable": "^3.3.0",
     "through2": "^0.6.3",
     "weinre": "^2.0.0-pre-I0Z7U9OV"
   },
   "devDependencies": {
-    "angular-mocks": "^1.3.8",
-    "async": "^0.9.0",
+    "angular-mocks": "^1.3.11",
     "browser-sync": "git://github.com/shakyshane/browser-sync",
+    "browserify": "^8.1.1",
     "bs-html-injector": "^1.2.1",
-    "chai": "^1.9.1",
+    "chai": "^1.10.0",
     "crossbow": "^0.2.0",
-    "eazy-logger": "^1.5.0",
-    "gulp": "^3.8.7",
-    "gulp-autoprefixer": "0.0.8",
-    "gulp-browserify": "^0.5.0",
+    "eazy-logger": "^2.1.0",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "2.1.0",
     "gulp-contribs": "0.0.2",
-    "gulp-filter": "^1.0.2",
-    "gulp-jshint": "^1.8.4",
-    "gulp-minify-css": "^0.3.11",
+    "gulp-filter": "^2.0.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-minify-css": "^0.4.3",
     "gulp-rename": "^1.2.0",
-    "gulp-sass": "^1.2.4",
+    "gulp-sass": "^1.3.2",
     "gulp-svg-sprites": "^2.0.1",
     "jquery": "^2.1.3",
-    "karma": "^0.12.22",
-    "karma-firefox-launcher": "^0.1.3",
+    "karma": "^0.12.31",
+    "karma-firefox-launcher": "^0.1.4",
     "karma-html2js-preprocessor": "^0.1.0",
     "karma-mocha": "^0.1.8",
-    "karma-ng-html2js-preprocessor": "^0.1.0",
+    "karma-ng-html2js-preprocessor": "^0.1.2",
     "karma-sinon": "^1.0.3",
-    "mocha": "^1.21.4",
-    "ng-html2js": "^1.2.0",
+    "mocha": "^2.1.0",
+    "ng-html2js": "^2.0.0",
     "no-abs": "0.0.0",
     "pretty-js": "^0.1.8",
     "request": "^2.51.0",
-    "sinon": "^1.10.3",
-    "supertest": "^0.14.0"
+    "sinon": "^1.12.2",
+    "supertest": "^0.15.0",
+    "vinyl-source-stream": "^1.0.0"
   },
   "keywords": [
     "browser sync",
