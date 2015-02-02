@@ -1,6 +1,6 @@
 /*jshint -W079 */
 var browserSync = require("browser-sync");
-var ui          = require("../../index");
+var ui          = require("../../../index");
 var request     = require("supertest");
 var assert      = require("chai").assert;
 

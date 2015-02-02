@@ -10,10 +10,9 @@ var assert = require("chai").assert;
 describe("History section", function() {
 
     var bs;
-    var cp;
+    var ui;
     var bsUrl;
     var cpUrl;
-    var port;
 
     beforeEach(function () {
         browser.ignoreSynchronization = true;
@@ -22,16 +21,15 @@ describe("History section", function() {
             open:   false,
             online: false
         }).then(function (out) {
-            port  = out.port;
             bs    = out.bs;
-            cp    = out.cp;
-            bsUrl = bs.instance.options.getIn(["urls", "local"]);
-            cpUrl = "http://localhost:" + out.cp.server.address().port;
+            ui    = out.ui;
+            bsUrl = bs.options.getIn(["urls", "local"]);
+            cpUrl = bs.options.getIn(["urls", "ui"]);
         });
     });
 
     afterEach(function () {
-        bs.instance.cleanup();
+        bs.cleanup();
     });
 
     it("should list visited urls & delete them", function () {
@@ -50,7 +48,7 @@ describe("History section", function() {
             var client = handles[1];
             var urls = ["/scrolling.html", "/forms.html"];
             var emptyContainer = "#bs-history-empty";
-            var listContainer = "#bs-history-list";
+            var listContainer  = "#bs-history-list";
             var selector = by.css(listContainer + " li > div > [bs-remove]");
             var deleteButtons = element.all(selector);
 
@@ -66,13 +64,13 @@ describe("History section", function() {
             expect(elems.count()).toEqual(3);
             expect(element.all(by.css(emptyContainer)).count()).toBe(0);
             deleteButtons.get(0).click();
+            browser.sleep(1000);
             expect(elems.count()).toEqual(2);
-            browser.sleep(1000);
             deleteButtons.get(0).click();
+            browser.sleep(1000);
             expect(elems.count()).toEqual(1);
-            browser.sleep(1000);
             deleteButtons.get(0).click();
-            browser.sleep(500);
+            browser.sleep(1000);
             expect(elems.count()).toEqual(0);
             expect(element.all(by.css(listContainer + " li")).count()).toBe(0);
             expect(element.all(by.css(emptyContainer)).count()).toBe(1);
