@@ -1,5 +1,6 @@
 *, *:before, *:after {
-  box-sizing: border-box; }
+  -moz-box-sizing: border-box;
+       box-sizing: border-box; }
 
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, dl, dd, ol, ul, form, fieldset, legend, table, th, td, caption, hr {
   margin: 0;
@@ -175,6 +176,7 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -267,7 +269,8 @@ input {
  * 2. Remove excess padding in IE 8/9/10.
  */
 input[type="checkbox"], input[type="radio"] {
-  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */ }
@@ -288,6 +291,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -460,7 +464,6 @@ hr {
   background: #222222; }
   @media only screen and (min-width: 600px) {
     [bs-header] {
-      display: -webkit-box;
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex; } }
@@ -469,7 +472,6 @@ hr {
   [bs-header] [bs-header-row] {
     position: relative;
     width: 100%;
-    display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
@@ -503,8 +505,7 @@ hr {
   height: 60px;
   line-height: 60px;
   color: #fff;
-  -webkit-transition: background .2s;
-          transition: background .2s;
+  transition: background .2s;
   text-shadow: 1px 1px 2px #00262C;
   border-left: 1px solid #222222;
   border-bottom: 1px solid #222222; }
@@ -541,7 +542,6 @@ hr {
         right: 0;
         top: 0;
         z-index: 10;
-        background: -webkit-linear-gradient(left, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
         background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.2) 100%); } }
 
 [bs-section-nav] {
@@ -551,10 +551,8 @@ hr {
   -webkit-transform: translateX(-200%) translateY(20px) scale(1.2);
       -ms-transform: translateX(-200%) translateY(20px) scale(1.2);
           transform: translateX(-200%) translateY(20px) scale(1.2);
-  -webkit-transition-timing-function: cubic-bezier(.3, 0, 0, 1.3);
-          transition-timing-function: cubic-bezier(.3, 0, 0, 1.3);
-  -webkit-transition: all .3s;
-          transition: all .3s;
+  transition-timing-function: cubic-bezier(.3, 0, 0, 1.3);
+  transition: all .3s;
   opacity: 0;
   z-index: 5; }
   [bs-section-nav] ul {
@@ -611,7 +609,6 @@ hr {
 
 @media only screen and (min-width: 600px) {
   [bs-container] {
-    display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; } }
@@ -630,7 +627,6 @@ hr {
       padding-bottom: 59px;
       margin-top: 1px;
       width: auto;
-      -webkit-box-flex: 1;
       -webkit-flex: 1;
           -ms-flex: 1;
               flex: 1; } }
@@ -640,8 +636,7 @@ svg {
   height: 100%;
   opacity: 1;
   fill: currentColor !important;
-  -webkit-transition: .3s;
-          transition: .3s; }
+  transition: .3s; }
   svg.icon-hidden {
     opacity: 0; }
 
@@ -665,8 +660,7 @@ svg {
 
 .icon-logo {
   color: #fff;
-  -webkit-transition: all .1s;
-          transition: all .1s;
+  transition: all .1s;
   width: 55px;
   height: 37px;
   text-align: center; }
@@ -769,16 +763,14 @@ h6, .h6 {
 
 a {
   color: #ff4453;
-  -webkit-transition: background 0.3s ease, color 0.3s ease;
-          transition: background 0.3s ease, color 0.3s ease; }
+  transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
     color: #000; }
   a [class^="icon-"], a [class*=" icon-"] {
     text-decoration: none; }
 
 [bs-icon] {
-  -webkit-transition: background 0.3s ease, color 0.3s ease;
-          transition: background 0.3s ease, color 0.3s ease; }
+  transition: background 0.3s ease, color 0.3s ease; }
 
 .flush--bottom {
   margin-bottom: 0 !important; }
@@ -883,8 +875,7 @@ span.sep {
   text-align: center;
   cursor: pointer;
   outline: none;
-  -webkit-transition: color .2s, background .2s;
-          transition: color .2s, background .2s;
+  transition: color .2s, background .2s;
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
@@ -991,11 +982,9 @@ span.sep {
     right: 14px; }
 
 [bs-button-group] {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: stretch;
   -webkit-align-items: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
@@ -1069,8 +1058,7 @@ span.sep {
 
 .loader {
   opacity: 1;
-  -webkit-transition: all 1s;
-          transition: all 1s;
+  transition: all 1s;
   text-indent: -9999em;
   margin: 8em auto;
   position: absolute;
@@ -1221,7 +1209,6 @@ span.sep {
   [bs-list] p {
     margin-bottom: 0; }
   [bs-list] [bs-button-group] {
-    -webkit-box-pack: end;
     -webkit-justify-content: flex-end;
         -ms-flex-pack: end;
             justify-content: flex-end;
@@ -1251,8 +1238,7 @@ span.sep {
     background: #fff;
     position: relative;
     padding-left: 14px;
-    -webkit-transition: background .5s;
-            transition: background .5s; }
+    transition: background .5s; }
     [bs-list~="inline-controls"] li:hover {
       background: #FBFBFB; }
       [bs-list~="inline-controls"] li:hover [bs-button~="subtle-alt"] {
@@ -1265,17 +1251,14 @@ span.sep {
       [bs-list~="inline-controls"] li {
         padding: 0;
         padding-left: 14px;
-        display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-align: stretch;
         -webkit-align-items: stretch;
             -ms-flex-align: stretch;
                 align-items: stretch; }
         [bs-list~="inline-controls"] li p {
           margin-bottom: 0;
-          -webkit-box-flex: 1;
           -webkit-flex: 1;
               -ms-flex: 1;
                   flex: 1;
@@ -1301,13 +1284,11 @@ span.sep {
 
 [bs-controls] {
   width: auto;
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1; }
 
 [bs-flex~="top"] {
-  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1315,7 +1296,6 @@ span.sep {
   border-bottom: 1px solid #424242; }
   @media only screen and (min-width: 600px) {
     [bs-flex~="top"] {
-      -webkit-box-pack: end;
       -webkit-justify-content: flex-end;
           -ms-flex-pack: end;
               justify-content: flex-end;
@@ -1324,7 +1304,6 @@ span.sep {
 [bs-control] {
   font-size: 12px;
   font-size: 0.66667rem;
-  -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -1340,7 +1319,6 @@ span.sep {
   padding-bottom: 6px; }
   @media only screen and (min-width: 600px) {
     [bs-control] {
-      -webkit-box-flex: 0;
       -webkit-flex: none;
           -ms-flex: none;
               flex: none;
@@ -1354,8 +1332,7 @@ span.sep {
       [bs-control]:first-child {
         border-left-width: 1px; } }
   [bs-control] [bs-svg-icon] {
-    -webkit-transition: all .3s;
-            transition: all .3s;
+    transition: all .3s;
     width: 14px;
     height: 14px;
     top: 0;
@@ -1414,8 +1391,7 @@ input.cmn-toggle-round + label:before {
   right: 2px;
   background-color: #AAAAAA;
   border-radius: 3px;
-  -webkit-transition: background 0.2s;
-          transition: background 0.2s; }
+  transition: background 0.2s; }
 
 input.cmn-toggle-round + label:after {
   top: 3px;
@@ -1423,8 +1399,7 @@ input.cmn-toggle-round + label:after {
   height: 16px;
   background-color: #fff;
   border-radius: 3px;
-  -webkit-transition: margin 0.2s;
-          transition: margin 0.2s; }
+  transition: margin 0.2s; }
 
 input.cmn-toggle-round:checked + label:before {
   background-color: #81be00; }
@@ -1509,8 +1484,7 @@ code {
   -webkit-transform: translateY(-200%);
       -ms-transform: translateY(-200%);
           transform: translateY(-200%);
-  -webkit-transition: all .3s;
-          transition: all .3s;
+  transition: all .3s;
   z-index: 100; }
   [bs-notify].active {
     -webkit-transform: translateY(0);
