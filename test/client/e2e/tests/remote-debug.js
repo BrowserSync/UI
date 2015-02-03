@@ -8,10 +8,9 @@ var utils  = require("./../test-utils");
 describe("Remote debug page", function() {
 
     var bs;
-    var cp;
+    var ui;
     var bsUrl;
     var cpUrl;
-    var port;
 
     beforeEach(function () {
 
@@ -19,14 +18,14 @@ describe("Remote debug page", function() {
 
         init(protractor, {
             server: "./test/fixtures",
+            logLevel: "silent",
             open:   false,
             online: false
         }).then(function (out) {
-            port  = out.port;
-            bs    = out.bs.instance;
-            cp    = out.cp;
+            bs    = out.bs;
+            ui    = out.ui;
             bsUrl = bs.options.getIn(["urls", "local"]);
-            cpUrl = "http://localhost:" + out.cp.server.address().port;
+            cpUrl = bs.options.getIn(["urls", "ui"]);
         });
     });
 
@@ -36,9 +35,11 @@ describe("Remote debug page", function() {
 
     it("should allow elements to be added/removed from clients via the UI", function() {
 
-        var id = cp.getOptionIn(["clientFiles", "pesticide", "id"]);
+        var id = ui.getOptionIn(["clientFiles", "pesticide", "id"]);
+
         browser.get(cpUrl + "/remote-debug");
         browser.sleep(1000);
+
         var button = element.all(by.css("label[for='cmn-form-pesticide']"));
 
         button.get(0).click();
@@ -49,14 +50,14 @@ describe("Remote debug page", function() {
             var ui     = handles[0];
             var client = handles[1];
             browser.switchTo().window(client);
+            //browser.pause();
             expect(element(by.id(id)).isPresent()).toBeTruthy();
-            browser.sleep(500);
+            browser.sleep(1000);
             browser.switchTo().window(ui);
             button.get(0).click();
             browser.switchTo().window(client);
-            browser.sleep(500);
+            browser.sleep(1000);
             expect(element(by.id(id)).isPresent()).toBeFalsy();
-            browser.close();
         });
     });
 });

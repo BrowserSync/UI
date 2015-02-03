@@ -11,10 +11,9 @@ describe("Section Navigation", function() {
     var selector, menu, headerSelector;
 
     var bs;
-    var cp;
+    var ui;
     var bsUrl;
     var cpUrl;
-    var port;
 
     beforeEach(function () {
 
@@ -27,16 +26,15 @@ describe("Section Navigation", function() {
             open:   false,
             online: false
         }).then(function (out) {
-            port  = out.port;
             bs    = out.bs;
-            cp    = out.cp;
-            bsUrl = bs.instance.options.getIn(["urls", "local"]);
-            cpUrl = "http://localhost:" + out.cp.server.address().port;
+            ui    = out.ui;
+            bsUrl = bs.options.getIn(["urls", "local"]);
+            cpUrl = bs.options.getIn(["urls", "ui"]);
         });
     });
 
     afterEach(function () {
-        bs.instance.cleanup();
+        bs.cleanup();
     });
 
     /**
