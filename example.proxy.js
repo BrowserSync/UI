@@ -9,8 +9,6 @@ bs.use(cp);
 //bs.use(client);
 
 bs({
-    proxy: "oddlondon.dev",
-    open: false,
-    //tunnel: true
-    port: 4000
+    proxy: "swoon.static",
+    open: false
 });
