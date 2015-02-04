@@ -1,6 +1,6 @@
 /*jshint -W079 */
 var Immutable = require("immutable");
-var history   = require("../../lib/plugins/history/history");
+var history   = require("../../../lib/plugins/history/history");
 var assert    = require("chai").assert;
 var url       = require("url");
 

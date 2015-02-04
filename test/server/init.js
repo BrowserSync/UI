@@ -14,7 +14,8 @@ describe("Can be started with browserSync instance", function() {
 
         var config = {
             online: false,
-            logLevel: "silent"
+            logLevel: "silent",
+            open: false
         };
         bsInstance = browserSync(config, function (err, bs) {
             ui = bs.ui;
