@@ -1,12 +1,12 @@
 /*jshint -W079 */
 var browserSync = require("browser-sync");
-var bsui        = require("../../index");
+var bsui        = require("../../../index");
 var request     = require("supertest");
 var assert      = require("chai").assert;
 
 describe("Remote debug - Latency", function () {
 
-    var bsInstance, ui;
+    var bs, ui;
 
     this.timeout(10000);
 
@@ -23,13 +23,14 @@ describe("Remote debug - Latency", function () {
             server: "test/fixtures"
         };
 
-        bsInstance = browserSync(config, function (err, bs) {
-            ui = bs.ui;
+        browserSync(config, function (err, out) {
+            ui = out.ui;
+            bs = out;
             done();
-        }).instance;
+        });
     });
     after(function () {
-        bsInstance.cleanup();
+        bs.cleanup();
     });
     it("should Init Latency plugin on/off", function (done) {
 
@@ -50,9 +51,10 @@ describe("Remote debug - Latency", function () {
 
         ui.latency.toggle(true);
         ui.latency.adjust({rate: 1.5});
+
         var time = new Date().getTime();
 
-        request(bsInstance.server)
+        request(bs.server)
             .get("/")
             .expect(200)
             .end(function () {

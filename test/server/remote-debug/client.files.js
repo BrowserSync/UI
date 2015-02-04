@@ -1,17 +1,18 @@
 /*jshint -W079 */
 var browserSync = require("browser-sync");
-var ui          = require("../../../index");
 var request     = require("supertest");
 var assert      = require("chai").assert;
 
 describe("Remote debug", function () {
 
-    var bs, uiInstance;
+    var bs, ui;
+
     this.timeout(10000);
+
     before(function (done) {
 
         browserSync.reset();
-        browserSync.use(ui);
+        browserSync.use(require("../../../index"));
 
         var config = {
             online: false,
@@ -20,19 +21,20 @@ describe("Remote debug", function () {
             logLevel: "silent"
         };
 
-        bs = browserSync(config, function (err, bs) {
-            uiInstance = bs.ui;
+        browserSync(config, function (err, out) {
+            ui = out.ui;
+            bs = out;
             done();
-        }).instance;
+        })
     });
     after(function () {
         bs.cleanup();
     });
     it("should enable a file & allow BrowserSync to serve it", function (done) {
 
-        var cssFile = uiInstance.options.getIn(["clientFiles", "pesticide"]).toJS();
+        var cssFile = ui.options.getIn(["clientFiles", "pesticide"]).toJS();
 
-        uiInstance.enableElement(cssFile);
+        ui.enableElement(cssFile);
 
         request(bs.server)
             .get(cssFile.src)
