@@ -6,7 +6,7 @@
 </div>
 
 <div bs-panel="switch" ng-repeat="item in ctrl.items track by $index" ng-class="{'disabled': !item.active}">
-    <div bs-panel-content="">
+    <div bs-panel-content>
         <div bs-panel-icon="switch">
             <div class="switch">
                 <input id="cmn-form-{{item.name}}"
@@ -20,42 +20,10 @@
         </div>
         <div>
             <p bs-Text="lede">{{item.title}}</p>
-
             <p ng-if="item.tagline.length" ng-bind-html="item.tagline"></p>
-
             <p ng-if="item.active && item.hidden.length" ng-bind-html="item.hidden"></p>
         </div>
     </div>
 </div>
 
-<div bs-panel="switch" ng-class="{'disabled': !ctrl.latency.active}" ng-if="ctrl.options.mode !== 'snippet'">
-    <div bs-panel-content="">
-        <div bs-panel-icon="switch">
-            <div class="switch">
-                <input id="cmn-form-{{ctrl.latency.name}}"
-                       ng-model="ctrl.latency.active"
-                       ng-change="ctrl.toggleDebugger(ctrl.latency)"
-                       class="cmn-toggle cmn-toggle-round"
-                       type="checkbox"
-                       checked="">
-                <label for="cmn-form-{{ctrl.latency.name}}"></label>
-            </div>
-        </div>
-        <div>
-            <p bs-Text="lede">{{ctrl.latency.title}}</p>
-            <p ng-if="ctrl.latency.tagline.length" ng-bind-html="ctrl.latency.tagline"></p>
-            <div ng-show="ctrl.latency.active">
-                <input
-                        type="range"
-                        max="5"
-                        min="0"
-                        step=".50"
-                        id="latency-rate"
-                        ng-change="ctrl.alterLatency()"
-                        ng-model="ctrl.latency.rate" />
-
-                <label for="latency-rate">{{ctrl.latency.rate | number:1}}s</label>
-            </div>
-        </div>
-    </div>
-</div>
+<latency options="ctrl.uiOptions" ng-if="ctrl.options.mode !== 'snippet'"></latency>
