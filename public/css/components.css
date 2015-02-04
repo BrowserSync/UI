@@ -3,8 +3,7 @@ svg {
   height: 100%;
   opacity: 1;
   fill: currentColor !important;
-  -webkit-transition: .3s;
-          transition: .3s; }
+  transition: .3s; }
   svg.icon-hidden {
     opacity: 0; }
 

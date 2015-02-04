@@ -21,6 +21,7 @@ gulp.task("lint", function () {
     return gulp.src([
         "test/client/specs/**/*.js",
         "test/server/**/*.js",
+        "lib/**/*.js",
         "public/js/scripts/*.js",
         "index.js",
         "server/*.js",
