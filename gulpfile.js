@@ -164,3 +164,7 @@ gulp.task("dev-frontend", ["sass", "svg", "crossbow", "js", "browser-sync-dev"],
 });
 
 gulp.task("build", ["sass", "js"]);
+
+gulp.task("watch-js", ["js"], function () {
+    gulp.watch(["src/scripts/**"], ["js"]);
+});

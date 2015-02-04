@@ -53,6 +53,5 @@ var instance = bs({
     files: [
         "test/fixtures/css/**"
     ],
-    open: false,
-    startPath: "/scrolling.html"
+    open: false
 });

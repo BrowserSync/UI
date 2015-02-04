@@ -359,21 +359,40 @@ function getDisplayUrl (urls) {
 
     function HistoryService (Socket) {
 
-        var visited  = [];
+        var visited     = [];
+        var updateStack = [];
+
+        /**
+         * Add a single socket event and call all callbacks listening to it.
+         */
+        Socket.on("cp:history:update", function (items) {
+            updateStack.forEach(function (fn) {
+                fn(items);
+            });
+        });
 
         return {
             visited: visited,
             updateHistory: function (urls) {
                 visited = urls;
             },
-            getHistory: function () {
+            get: function () {
                 return Socket.getData("visited");
             },
             remove: function (data) {
-                Socket.emit("cp:remove:visited", data);
+                Socket.emit("cp:history:remove", data);
             },
             clear: function () {
-                Socket.emit("cp:clear:visited");
+                Socket.emit("cp:history:clear");
+            },
+            on: function (event, fn) {
+                updateStack.push(fn);
+            },
+            off: function (fn) {
+                var index = updateStack.indexOf(fn);
+                if (index > -1) {
+                    updateStack = updateStack.splice(index, 1);
+                }
             }
         };
     }

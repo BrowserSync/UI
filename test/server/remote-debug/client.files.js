@@ -25,7 +25,7 @@ describe("Remote debug", function () {
             ui = out.ui;
             bs = out;
             done();
-        })
+        });
     });
     after(function () {
         bs.cleanup();
