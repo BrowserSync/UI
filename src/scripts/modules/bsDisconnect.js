@@ -55,8 +55,8 @@
             }
         };
 
-        $rootScope.$on("cp:connection", $scope.socketEvents.connection);
-        $rootScope.$on("cp:disconnect", $scope.socketEvents.disconnect);
+        $rootScope.$on("ui:connection", $scope.socketEvents.connection);
+        $rootScope.$on("ui:disconnect", $scope.socketEvents.disconnect);
     }
 
 })(angular);

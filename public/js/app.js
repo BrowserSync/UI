@@ -203,8 +203,8 @@ function MainController ($scope, $rootScope, $location, $injector) {
     /**
      * React to disconnects
      */
-    $rootScope.$on("cp:disconnect", ctrl.socketEvents.disconnect);
-    $rootScope.$on("cp:connection", function (evt, options) {
+    $rootScope.$on("ui:disconnect", ctrl.socketEvents.disconnect);
+    $rootScope.$on("ui:connection", function (evt, options) {
         ctrl.socketEvents.connection(options);
         $scope.$digest();
     });
@@ -275,7 +275,7 @@ function getDisplayUrl (urls) {
                 });
             },
             highlight:   function (connection) {
-                Socket.emit("cp:highlight", connection);
+                Socket.emit("ui:highlight", connection);
             }
         };
 
@@ -343,8 +343,8 @@ function getDisplayUrl (urls) {
             }
         };
 
-        $rootScope.$on("cp:connection", $scope.socketEvents.connection);
-        $rootScope.$on("cp:disconnect", $scope.socketEvents.disconnect);
+        $rootScope.$on("ui:connection", $scope.socketEvents.connection);
+        $rootScope.$on("ui:disconnect", $scope.socketEvents.disconnect);
     }
 
 })(angular);
@@ -365,7 +365,7 @@ function getDisplayUrl (urls) {
         /**
          * Add a single socket event and call all callbacks listening to it.
          */
-        Socket.on("cp:history:update", function (items) {
+        Socket.on("ui:history:update", function (items) {
             updateStack.forEach(function (fn) {
                 fn(items);
             });
@@ -380,10 +380,10 @@ function getDisplayUrl (urls) {
                 return Socket.getData("visited");
             },
             remove: function (data) {
-                Socket.emit("cp:history:remove", data);
+                Socket.emit("ui:history:remove", data);
             },
             clear: function () {
-                Socket.emit("cp:history:clear");
+                Socket.emit("ui:history:clear");
             },
             on: function (event, fn) {
                 updateStack.push(fn);
@@ -510,12 +510,12 @@ function getDisplayUrl (urls) {
         var deferred = $q.defer();
 
         socket.on("connection", function (out) {
-            $rootScope.$emit("cp:connection", out);
+            $rootScope.$emit("ui:connection", out);
             deferred.resolve(out, this);
         });
 
         socket.on("disconnect", function () {
-            $rootScope.$emit("cp:disconnect");
+            $rootScope.$emit("ui:disconnect");
         });
 
         return {
@@ -537,7 +537,7 @@ function getDisplayUrl (urls) {
              * @param data
              */
             clientEvent: function (name, data) {
-                socket.emit("cp:client:proxy", {
+                socket.emit("ui:client:proxy", {
                     event: name,
                     data: data
                 });
@@ -547,10 +547,10 @@ function getDisplayUrl (urls) {
             },
             getData: function (name) {
                 var deferred = $q.defer();
-                socket.on("cp:receive:" + name, function (data) {
+                socket.on("ui:receive:" + name, function (data) {
                     deferred.resolve(data);
                 });
-                socket.emit("cp:get:" + name);
+                socket.emit("ui:get:" + name);
                 return deferred.promise;
             }
         };

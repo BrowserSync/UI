@@ -129,8 +129,8 @@ function MainController ($scope, $rootScope, $location, $injector) {
     /**
      * React to disconnects
      */
-    $rootScope.$on("cp:disconnect", ctrl.socketEvents.disconnect);
-    $rootScope.$on("cp:connection", function (evt, options) {
+    $rootScope.$on("ui:disconnect", ctrl.socketEvents.disconnect);
+    $rootScope.$on("ui:connection", function (evt, options) {
         ctrl.socketEvents.connection(options);
         $scope.$digest();
     });

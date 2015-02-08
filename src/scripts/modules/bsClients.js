@@ -30,7 +30,7 @@
                 });
             },
             highlight:   function (connection) {
-                Socket.emit("cp:highlight", connection);
+                Socket.emit("ui:highlight", connection);
             }
         };
 

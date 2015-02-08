@@ -19,12 +19,12 @@
         var deferred = $q.defer();
 
         socket.on("connection", function (out) {
-            $rootScope.$emit("cp:connection", out);
+            $rootScope.$emit("ui:connection", out);
             deferred.resolve(out, this);
         });
 
         socket.on("disconnect", function () {
-            $rootScope.$emit("cp:disconnect");
+            $rootScope.$emit("ui:disconnect");
         });
 
         return {
@@ -46,7 +46,7 @@
              * @param data
              */
             clientEvent: function (name, data) {
-                socket.emit("cp:client:proxy", {
+                socket.emit("ui:client:proxy", {
                     event: name,
                     data: data
                 });
@@ -56,10 +56,10 @@
             },
             getData: function (name) {
                 var deferred = $q.defer();
-                socket.on("cp:receive:" + name, function (data) {
+                socket.on("ui:receive:" + name, function (data) {
                     deferred.resolve(data);
                 });
-                socket.emit("cp:get:" + name);
+                socket.emit("ui:get:" + name);
                 return deferred.promise;
             }
         };

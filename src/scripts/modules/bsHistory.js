@@ -12,7 +12,7 @@
         /**
          * Add a single socket event and call all callbacks listening to it.
          */
-        Socket.on("cp:history:update", function (items) {
+        Socket.on("ui:history:update", function (items) {
             updateStack.forEach(function (fn) {
                 fn(items);
             });
@@ -27,10 +27,10 @@
                 return Socket.getData("visited");
             },
             remove: function (data) {
-                Socket.emit("cp:history:remove", data);
+                Socket.emit("ui:history:remove", data);
             },
             clear: function () {
-                Socket.emit("cp:history:clear");
+                Socket.emit("ui:history:clear");
             },
             on: function (event, fn) {
                 updateStack.push(fn);

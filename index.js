@@ -5,13 +5,13 @@ var config      = require("./lib/config");
 var Events      = require("events").EventEmitter;
 
 /**
- * These hooks are for attaching functionality to BrowserSync
+ * Hooks are for attaching functionality to BrowserSync
  */
 module.exports.hooks = {
     /**
      * Client JS is added to each connected client
      */
-    "client:js": require("fs").readFileSync(__dirname + config.defaults.clientJs)
+    "client:js": fileContent(config.defaults.clientJs)
 };
 
 /**
@@ -29,3 +29,19 @@ module.exports["plugin"] = function (opts, bs, cb) {
 };
 
 module.exports["plugin:name"]       = config.defaults.pluginName;
+
+/**
+ * @param filepath
+ * @returns {*}
+ */
+function getPath (filepath) {
+    return require("path").join(__dirname, filepath);
+}
+
+/**
+ * @param filepath
+ * @returns {*}
+ */
+function fileContent (filepath) {
+    return require("fs").readFileSync(getPath(filepath));
+}
