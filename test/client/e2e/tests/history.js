@@ -34,7 +34,7 @@ describe("History section", function() {
 
     it("should list visited urls & delete them", function () {
 
-        var elems   = element.all(by.repeater("url in visited track by $index"));
+        var elems   = element.all(by.repeater("url in ctrl.visited track by $index"));
 
         browser.get(cpUrl + "/history");
 
@@ -99,7 +99,7 @@ describe("History section", function() {
             element.all(by.css('[bs-button-row] [bs-button~="inline"]'))
                 .get(0)
                 .click();
-            browser.sleep(500);
+            browser.sleep(1000);
             expect(elems.count()).toEqual(0);
         });
     });

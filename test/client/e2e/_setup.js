@@ -5,7 +5,7 @@ var eachSeries = require("async-each-series");
 var ptor       = require("./runProtractor");
 
 var tests       = [
-    //"history.js",
+    "history.js",
     "home.js",
     "remote-debug.js"
 ];
