@@ -38,7 +38,6 @@
     "async-each-series": "^0.1.1",
     "connect-history-api-fallback": "0.0.5",
     "immutable": "^3.3.0",
-    "through2": "^0.6.3",
     "weinre": "^2.0.0-pre-I0Z7U9OV"
   },
   "devDependencies": {
