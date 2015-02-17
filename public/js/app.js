@@ -154,7 +154,6 @@ function MainController ($scope, $rootScope, $location, $injector) {
      *
      */
     ctrl.toggleMenu = function () {
-        console.log("toggle menu");
         ctrl.ui.sectionMenu = !ctrl.ui.sectionMenu;
     };
 
