@@ -50,7 +50,6 @@ describe("Remote debug page", function() {
             var ui     = handles[0];
             var client = handles[1];
             browser.switchTo().window(client);
-            //browser.pause();
             expect(element(by.id(id)).isPresent()).toBeTruthy();
             browser.sleep(1000);
             browser.switchTo().window(ui);
