@@ -20,7 +20,7 @@
                 <svg bs-svg-icon><use xlink:href="#svg-repeat"></use></svg>
                 Reload all
             </a>
-            <a href="{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'" class="ng-scope">
+            <a href="{{app.options.port | localRootUrl:app.options.scheme}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'" class="ng-scope">
                 <svg bs-svg-icon><use xlink:href="#svg-newtab"></use></svg>
                 New Tab
             </a>

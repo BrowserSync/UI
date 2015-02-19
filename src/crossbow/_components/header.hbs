@@ -20,7 +20,7 @@
                 {{ inc src="icon.hbs" icon="repeat" }}
                 Reload all
             </a>
-            <a href="\{{app.options.port | localRootUrl}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'" class="ng-scope">
+            <a href="\{{app.options.port | localRootUrl:app.options.scheme}}" target="_blank" bs-control title="Open a new tab" ng-if="app.options" ng-show="app.options.mode !== 'snippet'" class="ng-scope">
                 {{ inc src="icon.hbs" icon="newtab" }}
                 New Tab
             </a>

@@ -637,8 +637,8 @@ module.exports = {
     ucfirst: function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     },
-    localRootUrl: function (port) {
-        return ["//", window.location.hostname, ":", port].join("");
+    localRootUrl: function (port, scheme) {
+        return [scheme, "://", window.location.hostname, ":", port].join("");
     },
     localUrl: function(path, port, mode) {
         if (mode === "snippet") {
