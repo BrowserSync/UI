@@ -1,4 +1,4 @@
-body:after {
+{{selector}}:after {
   position: absolute;
   width: auto;
   height: auto;

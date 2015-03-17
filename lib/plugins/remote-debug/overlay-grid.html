@@ -39,6 +39,19 @@
                         ng-change="ctrl.alterGridColor(ctrl.overlayGrid)"
                         ng-model="ctrl.overlayGrid.color" />
                 </p>
+                <p><b>Selector</b> - restrict the grid to any element. (enter a valid CSS selector such as
+                    <code>.jumbotron</code>
+                </p>
+                <p>
+                    <input  type="text"
+                            max="100"
+                            min="0"
+                            step="1"
+                            id="grid-selector"
+                            size="100"
+                            ng-change="ctrl.alterSelector(ctrl.overlayGrid)"
+                            ng-model="ctrl.overlayGrid.selector" />
+                </p>
                 <ul>
                     <li>
                         <input type="checkbox" ng-model="ctrl.overlayGrid.vertical" ng-change="ctrl.toggleAxis('vertical', ctrl.overlayGrid.vertical)" />

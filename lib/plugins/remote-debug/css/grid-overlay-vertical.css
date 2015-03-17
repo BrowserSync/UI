@@ -1,4 +1,4 @@
-body:before {
+{{selector}}:before {
   position: absolute;
   width: auto;
   height: auto;
