@@ -260,8 +260,12 @@ function getDisplayUrl (urls) {
                 Socket.clientEvent("browser:reload");
             },
             sendAllTo:   function (path) {
-                Socket.emit("urls:browser:url", {
-                    path: path
+                Socket.emit("ui", {
+                    namespace: "history",
+                    event: "sendAllTo",
+                    data: {
+                        path: path
+                    }
                 });
             },
             scrollAllTo: function () {
@@ -379,10 +383,17 @@ function getDisplayUrl (urls) {
                 return Socket.getData("visited");
             },
             remove: function (data) {
-                Socket.emit("ui:history:remove", data);
+                Socket.emit("ui", {
+                    namespace: "history",
+                    event: "remove",
+                    data: data
+                });
             },
             clear: function () {
-                Socket.emit("ui:history:clear");
+                Socket.emit("ui", {
+                    namespace: "history",
+                    event: "clear"
+                });
             },
             on: function (event, fn) {
                 updateStack.push(fn);

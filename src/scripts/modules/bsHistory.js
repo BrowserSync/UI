@@ -27,10 +27,17 @@
                 return Socket.getData("visited");
             },
             remove: function (data) {
-                Socket.emit("ui:history:remove", data);
+                Socket.emit("ui", {
+                    namespace: "history",
+                    event: "remove",
+                    data: data
+                });
             },
             clear: function () {
-                Socket.emit("ui:history:clear");
+                Socket.emit("ui", {
+                    namespace: "history",
+                    event: "clear"
+                });
             },
             on: function (event, fn) {
                 updateStack.push(fn);

@@ -16,8 +16,12 @@
                 Socket.clientEvent("browser:reload");
             },
             sendAllTo:   function (path) {
-                Socket.emit("urls:browser:url", {
-                    path: path
+                Socket.emit("ui", {
+                    namespace: "history",
+                    event: "sendAllTo",
+                    data: {
+                        path: path
+                    }
                 });
             },
             scrollAllTo: function () {
