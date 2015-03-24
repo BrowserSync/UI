@@ -18,4 +18,10 @@
         </button>
     </div>
 </div>
-<plugin-list ng-if="ctrl.options" options="ctrl.options" plugins="ctrl.ui.plugins"></plugin-list>
+
+<switch toggle="ctrl.togglePlugin(item)"
+        switchid="sync-options-{{$index}}"
+        active="item.active"
+        prop="active"
+        ng-repeat="item in ctrl.ui.plugins track by $index"
+        item="item"></switch>

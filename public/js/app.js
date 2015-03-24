@@ -43,11 +43,12 @@ var mainCtrl    = require("./main/controller");
 var filter      = require("./filters");
 var directives  = require("./directives");
 /* jshint ignore:end */
-},{"./directives":2,"./filters":4,"./main/controller":5,"./modules/bsClients":7,"./modules/bsDisconnect":8,"./modules/bsHistory":9,"./modules/bsNotify":10,"./modules/bsSocket":11,"./services/Options":12,"./services/Pages":13}],2:[function(require,module,exports){
+},{"./directives":2,"./filters":5,"./main/controller":6,"./modules/bsClients":8,"./modules/bsDisconnect":9,"./modules/bsHistory":10,"./modules/bsNotify":11,"./modules/bsSocket":12,"./services/Options":13,"./services/Pages":14}],2:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 
-module.directive("icon", require("./directives/icon"));
-},{"./directives/icon":3,"./module":6}],3:[function(require,module,exports){
+module.directive("icon",   require("./directives/icon"));
+module.directive("switch", require("./directives/switch"));
+},{"./directives/icon":3,"./directives/switch":4,"./module":7}],3:[function(require,module,exports){
 module.exports = function () {
     return {
         scope: {
@@ -63,6 +64,29 @@ module.exports = function () {
     };
 };
 },{}],4:[function(require,module,exports){
+module.exports = function () {
+    return {
+        scope: {
+            toggle: "&",
+            item: "=",
+            switchid: "@",
+            title: "@",
+            tagline: "@",
+            active: "=",
+            prop: "@"
+        },
+        restrict: "E",
+        replace: true,
+        transclude: true,
+        templateUrl: "bs-switch.html",
+        controllerAs: "ctrl",
+        controller: ["$scope", function ($scope) {
+            var ctrl = this;
+            ctrl.item = $scope.item;
+        }]
+    };
+};
+},{}],5:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 var utils  = require("./utils"); //jshint ignore:line
 
@@ -71,7 +95,7 @@ module
     .filter("localRootUrl",  function () { return utils.localRootUrl;  })
     .filter("localUrl",      function () { return utils.localRootUrl;  })
     .filter("orderObjectBy", function () { return utils.orderObjectBy; });
-},{"./module":6,"./utils":14}],5:[function(require,module,exports){
+},{"./module":7,"./utils":15}],6:[function(require,module,exports){
 var app    = require("../module");
 
 app.controller("MainController", [
@@ -231,7 +255,7 @@ function getDisplayUrl (urls) {
     }
     return urls.external || urls.local;
 }
-},{"../module":6}],6:[function(require,module,exports){
+},{"../module":7}],7:[function(require,module,exports){
 (function (angular) {
 
     /**
@@ -241,7 +265,7 @@ function getDisplayUrl (urls) {
 
 })(angular);
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -288,7 +312,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function () {
 
     angular
@@ -353,7 +377,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -410,7 +434,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -498,7 +522,7 @@ function getDisplayUrl (urls) {
         $rootScope.$on("notify:flash", $scope.show);
     }
 })(angular);
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (angular, browserSyncSocket) {
 
     /**
@@ -568,7 +592,7 @@ function getDisplayUrl (urls) {
 
 })(angular, window.___browserSync___.socket);
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var app = require("../module");
 
 app.factory("Options", ["Socket", OptionsService]);
@@ -586,7 +610,7 @@ function OptionsService(Socket) {
         }
     };
 }
-},{"../module":6}],13:[function(require,module,exports){
+},{"../module":7}],14:[function(require,module,exports){
 /**
  * @type {angular}
  */
@@ -643,7 +667,7 @@ function ContentSections(pagesConfig, $location) {
         }
     };
 }
-},{"../module":6}],14:[function(require,module,exports){
+},{"../module":7}],15:[function(require,module,exports){
 module.exports = {
     ucfirst: function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);

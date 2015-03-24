@@ -15,5 +15,11 @@
             Disable all
         </button>
     </div>
-    <sync-options ng-if="ctrl.options" options="ctrl.options" sync-items="ctrl.syncItems"></sync-options>
+
+    <switch toggle="ctrl.toggleSyncItem(item)"
+            switchid="plugins-{{$index}}"
+            active="item.value"
+            prop="value"
+            ng-repeat="item in ctrl.syncItems track by $index"
+            item="item"></switch>
 </article>
