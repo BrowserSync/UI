@@ -1,69 +1,55 @@
-<div bs-panel="switch" ng-class="{'disabled': !ctrl.overlayGrid.active}">
-    <div bs-panel-content>
-        <div bs-panel-icon="switch">
-            <div class="switch">
-                <input id="cmn-form-{{ctrl.overlayGrid.name}}"
-                       ng-model="ctrl.overlayGrid.active"
-                       ng-change="ctrl.toggle(ctrl.overlayGrid)"
-                       class="cmn-toggle cmn-toggle-round"
-                       type="checkbox"
-                       checked="">
-                <label for="cmn-form-{{ctrl.overlayGrid.name}}"></label>
-            </div>
-        </div>
-        <div>
-            <p bs-Text="lede">{{ctrl.overlayGrid.title}}</p>
-            <p ng-if="ctrl.overlayGrid.tagline.length" ng-bind-html="ctrl.overlayGrid.tagline"></p>
-            <div ng-show="ctrl.overlayGrid.active">
-                <p><b>Grid Size</b> (enter a CSS value, such as <code>10px</code> or <code>1.2em</code></p>
-                <p>
+<div ng-show="ctrl.overlayGrid.active">
 
-                <input  type="text"
-                        max="100"
-                        min="0"
-                        step="1"
-                        id="grid-size"
-                        size="5"
-                        ng-change="ctrl.alterGridSize(ctrl.overlayGrid)"
-                        ng-model="ctrl.overlayGrid.size" />
-                </p>
-                <p><b>Grid Colour</b> (enter a CSS value, such as <code>rgba(0, 0, 0, .3)</code> or <code>red</code>, </p>
-                <p>
+    <p><b>Grid Size</b> (enter a CSS value, such as <code>10px</code> or <code>1.2em</code></p>
 
-                <input  type="text"
-                        max="100"
-                        min="0"
-                        step="1"
-                        id="grid-color"
-                        size="20"
-                        ng-change="ctrl.alterGridColor(ctrl.overlayGrid)"
-                        ng-model="ctrl.overlayGrid.color" />
-                </p>
-                <p><b>Selector</b> - restrict the grid to any element. (enter a valid CSS selector such as
-                    <code>.jumbotron</code>
-                </p>
-                <p>
-                    <input  type="text"
-                            max="100"
-                            min="0"
-                            step="1"
-                            id="grid-selector"
-                            size="100"
-                            ng-change="ctrl.alterSelector(ctrl.overlayGrid)"
-                            ng-model="ctrl.overlayGrid.selector" />
-                </p>
-                <ul>
-                    <li>
-                        <input type="checkbox" ng-model="ctrl.overlayGrid.vertical" ng-change="ctrl.toggleAxis('vertical', ctrl.overlayGrid.vertical)" />
-                        Vertical Axis
-                    </li>
-                    <li>
-                        <input type="checkbox" ng-model="ctrl.overlayGrid.horizontal" ng-change="ctrl.toggleAxis('horizontal', ctrl.overlayGrid.horizontal)" />
-                        Horizontal Axis
-                    </li>
-                </ul>
+    <p>
 
-            </div>
-        </div>
-    </div>
+        <input type="text"
+               max="100"
+               min="0"
+               step="1"
+               id="grid-size"
+               size="5"
+               ng-change="ctrl.alterGridSize(ctrl.overlayGrid)"
+               ng-model="ctrl.overlayGrid.size"/>
+    </p>
+
+    <p><b>Grid Colour</b> (enter a CSS value, such as <code>rgba(0, 0, 0, .3)</code> or <code>red</code>, </p>
+
+    <p>
+
+        <input type="text"
+               max="100"
+               min="0"
+               step="1"
+               id="grid-color"
+               size="20"
+               ng-change="ctrl.alterGridColor(ctrl.overlayGrid)"
+               ng-model="ctrl.overlayGrid.color"/>
+    </p>
+
+    <p><b>Selector</b> - restrict the grid to any element. (enter a valid CSS selector such as
+        <code>.jumbotron</code>
+    </p>
+
+    <p>
+        <input type="text"
+               max="100"
+               min="0"
+               step="1"
+               id="grid-selector"
+               size="100"
+               ng-change="ctrl.alterSelector(ctrl.overlayGrid)"
+               ng-model="ctrl.overlayGrid.selector"/>
+    </p>
+    <ul>
+        <li>
+            <input type="checkbox" ng-model="ctrl.overlayGrid.vertical" ng-change="ctrl.toggleAxis('vertical', ctrl.overlayGrid.vertical)"/>
+            Vertical Axis
+        </li>
+        <li>
+            <input type="checkbox" ng-model="ctrl.overlayGrid.horizontal" ng-change="ctrl.toggleAxis('horizontal', ctrl.overlayGrid.horizontal)"/>
+            Horizontal Axis
+        </li>
+    </ul>
 </div>
