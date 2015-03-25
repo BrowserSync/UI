@@ -5,26 +5,14 @@
     </h1>
 </div>
 
-<div bs-panel="switch" ng-repeat="item in ctrl.items track by $index" ng-class="{'disabled': !item.active}">
-    <div bs-panel-content>
-        <div bs-panel-icon="switch">
-            <div class="switch">
-                <input id="cmn-form-{{item.name}}"
-                       ng-model="item.active"
-                       ng-change="ctrl.toggleDebugger(item)"
-                       class="cmn-toggle cmn-toggle-round"
-                       type="checkbox"
-                       checked="">
-                <label for="cmn-form-{{item.name}}"></label>
-            </div>
-        </div>
-        <div>
-            <p bs-Text="lede">{{item.title}}</p>
-            <p ng-if="item.tagline.length" ng-bind-html="item.tagline"></p>
-            <p ng-if="item.active && item.hidden.length" ng-bind-html="item.hidden"></p>
-        </div>
-    </div>
-</div>
+<switch toggle="ctrl.toggleClientFile(item)"
+        switchid="plugins-{{$index}}"
+        active="item.active"
+        prop="active"
+        ng-repeat="item in ctrl.items track by $index"
+        item="item">
+    <p ng-if="item.active && item.hidden.length" ng-bind-html="item.hidden"></p>
+</switch>
 
 <switch toggle="ctrl.toggleOverlayGrid(ctrl.overlayGrid)"
         switchid="css-overlay-grid"

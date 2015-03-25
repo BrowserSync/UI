@@ -40,7 +40,8 @@ describe("Remote debug page", function() {
         browser.get(cpUrl + "/remote-debug");
         browser.sleep(1000);
 
-        var button = element.all(by.css("label[for='cmn-form-pesticide']"));
+        //browser.pause();
+        var button = element.all(by.css("label[for='plugins-1']"));
 
         button.get(0).click();
 
