@@ -12,7 +12,8 @@ var sprites     = require("gulp-svg-sprites");
 var browserSync = require("browser-sync");
 var browserify = require("browserify");
 var source      = require("vinyl-source-stream");
-var crossbow    = require("crossbow/plugins/stream");
+var crossbow    = require("crossbow");
+var htmlInjector = require("bs-html-injector");
 
 /**
  * Lint all JS files
@@ -73,12 +74,8 @@ gulp.task("browser-sync-dev", function () {
     //});
     browserSync({
         notify: false,
-        open: "ui",
-        server: {
-            baseDir: ["static", "public"],
-            directory: true
-        },
-        startPath: "components.html"
+        server: ["./static", "./public"]
+
     });
 });
 
@@ -99,7 +96,9 @@ gulp.task("sass", function () {
         .pipe(filter("**/*.css"))
         .pipe(rename("core.min.css"))
         .pipe(gulp.dest("public/css"))
-        .pipe(browserSync.reload({stream:true}));
+        .on("end", function () {
+            browserSync.reload();
+        });
 });
 
 /**
@@ -113,7 +112,7 @@ gulp.task("bs-inject", function () {
  * Compile HTML
  */
 gulp.task("crossbow", function () {
-    crossbow.clearCache();
+    //crossbow.clearCache();
     //crossbow.emitter.on("_error", function (err) {
     //    console.log(err.message);
     //});
@@ -122,11 +121,18 @@ gulp.task("crossbow", function () {
         "src/crossbow/_components/*.hbs",
         "src/crossbow/content/*.hbs"
     ])
-        .pipe(crossbow({
-            cwd: "src/crossbow",
-            siteConfig: "src/crossbow/_config.yml"
+        .pipe(crossbow.stream({
+            config: {
+                base: "src/crossbow"
+            },
+            data: {
+                site: "file:_config.yml"
+            }
         }))
-        .pipe(gulp.dest("static"));
+        .pipe(gulp.dest("./static"))
+        .on("end", function () {
+            browserSync.reload();
+        });
 });
 
 /**
@@ -157,11 +163,11 @@ gulp.task("svg", function () {
 /**
  * Build Front-end stuff
  */
-gulp.task("dev-frontend", ["sass", "svg", "crossbow", "js", "browser-sync-dev"], function () {
+gulp.task("dev-frontend", ["sass", "svg", "crossbow", "browser-sync-dev"], function () {
     gulp.watch("src/scss/**/*.scss", ["sass"]);
-    gulp.watch(["src/crossbow/**"], ["crossbow", browserSync.reload]);
-    gulp.watch(["src/svg/**"], ["svg", "crossbow", browserSync.reload]);
-    gulp.watch("src/scripts/**/*.js", ["js", browserSync.reload]);
+    gulp.watch(["src/crossbow/**"], ["crossbow"]);
+    //gulp.watch(["src/svg/**"], ["svg", "crossbow", browserSync.reload]);
+    //gulp.watch("src/scripts/**/*.js", ["js", browserSync.reload]);
 });
 
 gulp.task("build", ["sass", "js"]);

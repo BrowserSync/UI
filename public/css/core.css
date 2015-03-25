@@ -1052,6 +1052,52 @@ span.sep {
   [bs-action~="menu-close"] {
     display: none; } }
 
+/*
+ * Basic Inputs
+ */
+button, input, select, textarea {
+  outline: none;
+  vertical-align: middle;
+  border-radius: 3px;
+  outline: 0;
+  height: 40px;
+  padding-left: 7px;
+  padding-right: 14px;
+  max-width: 100%;
+  font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
+  color: #4A90E2; }
+
+[bs-input] {
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px dashed #F0F0F0;
+  height: 100%; }
+  [bs-input] label {
+    position: relative;
+    margin-bottom: 7px;
+    display: block; }
+
+[bs-input-info] {
+  opacity: .5;
+  -webkit-transition: opacity .2s;
+          transition: opacity .2s; }
+  [bs-input-info]:hover {
+    opacity: 1; }
+  [bs-input-info] code {
+    margin-right: 3px; }
+  [bs-input-info] [bs-svg-icon] {
+    width: 16px;
+    height: 16px;
+    top: 4px; }
+
+[bs-input-info~="offset"] {
+  display: block; }
+  @media only screen and (min-width: 600px) {
+    [bs-input-info~="offset"] {
+      position: absolute;
+      right: 0;
+      top: 0; } }
+
 .loader, .loader:before, .loader:after {
   background: #333333;
   -webkit-animation: load1 .5s infinite ease-in-out;

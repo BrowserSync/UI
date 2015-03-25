@@ -6,10 +6,10 @@
   content: '';
   display: block;
   pointer-events: none;
-  top: 0;
+  top: {{offsetY}};
   right: 0;
   bottom: 0;
-  left: 0;
+  left: {{offsetX}};
   background-color: transparent;
   background-image: linear-gradient({{color}} 1px, transparent 1px);
   background-size: 100% {{size}};

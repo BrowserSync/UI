@@ -1,18 +1,17 @@
 $input-height: 40px;
 
-%base-input {
+@mixin base-input {
 
     outline: none;
     vertical-align: middle;
     border-radius: $base-radius;
     outline: 0;
     height: $input-height;
-    padding-left: $half-spacing;
+    padding-left: $half-spacing/2;
     padding-right: $half-spacing;
     max-width: 100%;
     font-family: $sans;
-
-    @extend %panel;
+    color: $blue;
 }
 
 /*
@@ -22,57 +21,52 @@ button,
 input,
 select,
 textarea {
-    @extend %base-input
+
+    @include base-input;
 }
 
-[bs-Input] { }
-[bs-Input~="darker"] {
-    background: $green-dk;
-    color: $white;
-    border-color: $green-dk;
+[bs-input] {
+
+    padding-bottom: $half-spacing;
+    margin-bottom: $half-spacing;
+    border-bottom: 1px dashed $grey-border;
+    height: 100%;
+
+    label {
+
+        position: relative;
+        margin-bottom: $half-spacing/2;
+        display: block;
+    }
 }
 
-[bs-Input-Overlay] {
+[bs-input-info] {
 
-    width: 100%;
-    position: relative;
+    opacity: .5;
+    transition: opacity .2s;
 
-    input {
-        width: 100%;
+    &:hover {
+        opacity: 1;
     }
 
-    [bs-Button] {
-        top: 0;
-        right: 0;
-        z-index: 1;
+    code {
+        margin-right: 3px;
+    }
+
+    [bs-svg-icon] {
+        width: 16px;
+        height: 16px;
+        top: 4px;
+    }
+}
+
+[bs-input-info~="offset"] {
+
+    display: block;
+
+    @include media-query(min, $lap-start) {
         position: absolute;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-        top: 1px;
-        height: $input-height - 2px;
-
-        .icon {
-            top: -2px;
-        }
-    }
-
-    [bs-Button~="inverted"] {
-        border-top: 0;
-        border-bottom: 0;
-    }
-
-    [bs-Button-Bar] {
-
-        position: absolute;
-        top: 0;
         right: 0;
-
-        [bs-Button] {
-            position: relative;
-            &:first-child {
-                border-bottom-left-radius: 0;
-                border-top-left-radius: 0;
-            }
-        }
+        top: 0;
     }
 }

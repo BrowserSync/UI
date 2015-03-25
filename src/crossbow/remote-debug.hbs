@@ -14,7 +14,7 @@ plugins:
 {{ inc src="enable.disable.hbs" }}
 <div>
     {{#each page.plugins}}
-    <section bs-panel="switch {{#if @last}}last{{/if}}">
+    <section bs-panel="switch">
         <div bs-panel-content="">
             <div bs-panel-icon="switch">
                 <div class="switch">
@@ -29,9 +29,38 @@ plugins:
             </div>
             <div>
                 <p bs-text="lede">{{this.name}}</p>
+                <p>Some Awesome tagline here</p>
             </div>
         </div>
     </section>
     {{/each}}
+    <section bs-panel="switch">
+        <div bs-panel-content="">
+            <div bs-panel-icon="switch">
+                <div class="switch">
+                    <input id="cmn-form-{{@index}}"
+                           ng-model="plugin.active"
+                           ng-change="togglePlugin(plugin)"
+                           class="cmn-toggle cmn-toggle-round"
+                           type="checkbox"
+                           checked="">
+                    <label for="cmn-form-{{@index}}"></label>
+                </div>
+            </div>
+            <div>
+                <p bs-text="lede">Css Overlay Grid</p>
+                <p>Some Other Awesome tagline here</p>
+                <div>
+                    <ul bs-list="bordered">
+                        <li><p><b>He</b></p></li>
+                        <li><a href="#">https://github.com/shakyShane/browser-sync/pull/400</a></li>
+                        <li>Item 3</li>
+                        <li>Item 4</li>
+                        <li>Item 5</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
     <br/>
 </div>
