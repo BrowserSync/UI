@@ -41,7 +41,7 @@ describe("Can be started with browserSync instance", function() {
     });
     it("has options", function(done) {
         assert.equal(ui.options.getIn(["bs", "mode"]), "snippet");
-        assert.equal(ui.options.getIn(["bs", "port"]), 3000);
+        assert.ok(String(ui.options.getIn(["bs", "port"])).match(/\d{4}/));
         done();
     });
 });

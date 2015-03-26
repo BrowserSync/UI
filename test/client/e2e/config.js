@@ -4,6 +4,7 @@ exports.config = {
         process.env["BS_TEST_FILE"]
         //"tests/remote-debug.js",
         //"tests/home.js",
-        //"tests/history.js"
+        //"tests/history.js",
+        //"tests/network-throttle.js"
     ]
 };

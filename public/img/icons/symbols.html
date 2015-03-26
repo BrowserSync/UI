@@ -246,6 +246,9 @@
 <symbol id="svg-terminal" viewBox="0 0 64 64">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M30 32v-.014c0-.848-.352-1.613-.918-2.16l-18-18-.007.008C10.535 11.318 9.805 11 9 11c-1.657 0-3 1.343-3 3 0 .91.406 1.725 1.046 2.275l15.718 15.718L6.84 47.917C6.32 48.458 6 49.192 6 50c0 1.657 1.343 3 3 3 .81 0 1.543-.32 2.082-.84l18-18c.566-.547.918-1.312.918-2.16zm25.5 15h-23c-1.38 0-2.5 1.12-2.5 2.5v1c0 1.38 1.12 2.5 2.5 2.5h23c1.38 0 2.5-1.12 2.5-2.5v-1c0-1.38-1.12-2.5-2.5-2.5z"/>
 </symbol>
+<symbol id="svg-time" viewBox="0 0 64 64">
+    <g enable-background="new"><path d="M45 29H35V14c0-1.657-1.343-3-3-3s-3 1.343-3 3v18c0 1.657 1.343 3 3 3h13c1.657 0 3-1.343 3-3s-1.343-3-3-3zM32 0C14.327 0 0 14.327 0 32s14.327 32 32 32 32-14.327 32-32S49.673 0 32 0zm0 58C17.64 58 6 46.36 6 32S17.64 6 32 6s26 11.64 26 26-11.64 26-26 26z"/></g>
+</symbol>
 <symbol id="svg-trash" viewBox="0 0 30 29">
     <title>Fill 213 + Fill 132</title><desc>Created with Sketch.</desc><g fill-rule="evenodd"><g transform="translate(-18 -136)"><g transform="translate(0 76)"><g transform="translate(18 60)"><g><path d="M15.147 3.412c-6.507 0-11.78 5.092-11.78 11.375 0 6.282 5.273 11.375 11.78 11.375s11.78-5.093 11.78-11.375c0-6.283-5.273-11.375-11.78-11.375zm0 25.375c-8.006 0-14.5-6.268-14.5-14s6.494-14 14.5-14c8.007 0 14.5 6.268 14.5 14s-6.493 14-14.5 14z"/><path d="M19.36 12.578c0-.43-.365-.776-.813-.776-.45 0-.813.347-.813.776v6.466c0 .43.364.776.813.776.448 0 .812-.347.812-.776v-6.466zm-3.25 0c0-.43-.365-.776-.813-.776-.45 0-.813.347-.813.776v6.466c0 .43.364.776.813.776.448 0 .812-.347.812-.776v-6.466zm-3.25 0c0-.43-.365-.776-.813-.776-.45 0-.813.347-.813.776v6.466c0 .43.364.776.813.776.448 0 .812-.347.812-.776v-6.466zm8.124-1.552v9.57c0 .43-.364.775-.812.775h-9.75c-.45 0-.813-.345-.813-.775V10.25h11.374v.776zM8.797 8.7c0-.43.364-.777.812-.777h4.062v-.776c0-.43.364-.776.812-.776h1.625c.448 0 .812.348.812.777v.776h4.062c.45 0 .813.347.813.776v.775h-13V8.7z"/></g></g></g></g></g>
 </symbol>
@@ -257,7 +260,7 @@
 </symbol>
 </svg>
 <header>
-    <h1 id="logo">Gulp SVG Sprites <small>(33 icons in &lt;symbol&gt; mode)</small></h1>
+    <h1 id="logo">Gulp SVG Sprites <small>(34 icons in &lt;symbol&gt; mode)</small></h1>
     <h4>Files Generated:</h4>
     <ol>
         <li><a href="svg/symbols.svg">svg/symbols.svg</a></li>
@@ -752,6 +755,22 @@
             <button onclick="invertBackground('icon-box-svg-terminal')">Invert Background</button>
             <div class="snippet-popover" id="snippet-svg-terminal">
                 <pre><code>&lt;svg class=&quot;icon svg-terminal&quot;&gt;&lt;use xlink:href=&quot;#svg-terminal&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
+                <button onclick="hidePopover()">Close</button>
+            </div>
+        </li>
+        
+<li title="svg-time">
+            <div class="icon-box" id="icon-box-svg-time">
+                <svg class="icon svg-time">
+                    <use xlink:href="#svg-time" />
+                </svg>
+            </div>
+            <h2>svg-time</h2>
+            <button onclick="showPopover('snippet-svg-time')">Show Snippet</button>
+            <br/>
+            <button onclick="invertBackground('icon-box-svg-time')">Invert Background</button>
+            <div class="snippet-popover" id="snippet-svg-time">
+                <pre><code>&lt;svg class=&quot;icon svg-time&quot;&gt;&lt;use xlink:href=&quot;#svg-time&quot;&gt;&lt;/use&gt;&lt;/svg&gt;</code></pre>
                 <button onclick="hidePopover()">Close</button>
             </div>
         </li>

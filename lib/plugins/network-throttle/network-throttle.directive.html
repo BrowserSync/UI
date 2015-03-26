@@ -1,0 +1,33 @@
+<section>
+    <div bs-panel="switch"
+         ng-class="{'disabled': !target.active}"
+         ng-repeat="(key, target) in ctrl.throttle.targets | orderObjectBy:'order'">
+        <div bs-panel-content>
+            <div bs-panel-icon="switch">
+                <div class="switch">
+                    <input id="cmn-form-{{target.name}}"
+                           ng-model="target.active"
+                           ng-change="ctrl.toggleSpeed(target)"
+                           class="cmn-toggle cmn-toggle-round"
+                           type="checkbox"
+                           checked="">
+                    <label for="cmn-form-{{target.name}}"></label>
+                </div>
+            </div>
+            <div>
+                <p bs-Text="lede">{{target.title}}</p>
+                <div ng-if="target.active">
+                    <p ng-if="!target.urls.length">
+                        Creating a throttled server, please wait...
+                    </p>
+                    <div ng-if="target.urls.length">
+                        <ul bs-list>
+                            <li ng-repeat="url in target.urls"><a href="{{url}}">{{url}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<p ng-if="ctrl.throttle.tagline.length" ng-bind-html="ctrl.throttle.tagline"></p>-->
+            </div>
+        </div>
+    </div>
+</section>

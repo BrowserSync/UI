@@ -1,0 +1,18 @@
+<article>
+    <div bs-panel="controls outline">
+        <h1 bs-heading>
+            <icon icon="{{ctrl.section.icon}}"></icon>
+            {{ctrl.section.title}}
+        </h1>
+    </div>
+    <div bs-panel class="ng-scope">
+        <div bs-panel-content="basic">
+            <p class="lede">
+                Test your website against slower connections (on all devices!)
+            </p>
+            <p>Pro tip: Use along with the 'No Cache' option in the <link-to path="remote-debug">Remote Debug</link-to> to simulate
+            a new user's experience.</p>
+        </div>
+    </div>
+    <throttle options="ctrl.uiOptions" ng-if="ctrl.options.mode !== 'snippet'"></throttle>
+</article>

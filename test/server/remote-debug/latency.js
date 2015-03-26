@@ -4,7 +4,7 @@ var bsui        = require("../../../index");
 var request     = require("supertest");
 var assert      = require("chai").assert;
 
-describe("Remote debug - Latency", function () {
+describe.skip("Remote debug - Latency", function () {
 
     var bs, ui;
 

@@ -7,7 +7,8 @@ var ptor       = require("./runProtractor");
 var tests       = [
     "history.js",
     "home.js",
-    "remote-debug.js"
+    "remote-debug.js",
+    "network-throttle.js"
 ];
 
 var configFile  = path.resolve(__dirname + "/config.js");
