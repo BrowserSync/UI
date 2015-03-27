@@ -27,16 +27,31 @@ textarea {
 
 [bs-input] {
 
-    padding-bottom: $half-spacing;
+    padding: $half-spacing;
     margin-bottom: $half-spacing;
-    border-bottom: 1px dashed $grey-border;
+    border: 1px solid $grey-border;
+    border-radius: $base-radius;
     height: 100%;
 
     label {
-
         position: relative;
         margin-bottom: $half-spacing/2;
         display: block;
+        text-transform: uppercase;
+        font-weight: bold;
+        @include font-size(12px);
+        @include media-query(min, $lap-start) {
+            @include font-size(14px);
+        }
+    }
+
+    input {
+        //border: 1px grey solid;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+        border-bottom: 1px solid rgba(black, .1);
+        outline: 0;
     }
 }
 
@@ -44,6 +59,7 @@ textarea {
 
     opacity: .5;
     transition: opacity .2s;
+    text-transform: none;
 
     &:hover {
         opacity: 1;
@@ -62,11 +78,11 @@ textarea {
 
 [bs-input-info~="offset"] {
 
-    display: block;
-
-    @include media-query(min, $lap-start) {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
+    //display: block;
+    //
+    //@include media-query(min, $lap-start) {
+    //    position: absolute;
+    //    right: 0;
+    //    top: 0;
+    //}
 }
