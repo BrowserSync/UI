@@ -40,7 +40,7 @@ describe("Remote debug", function () {
             .get(cssFile.src)
             .expect(200)
             .end(function (err, res) {
-                assert.include(res.text, "outline:1px solid #2980b9");
+                assert.include(res.text, "1px solid #3498db");
                 done();
             });
     });

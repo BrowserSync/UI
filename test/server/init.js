@@ -3,7 +3,6 @@ var browserSync = require("browser-sync");
 var cp          = require("../../index");
 var assert      = require("chai").assert;
 var request     = require("supertest");
-var Immutable   = require("immutable");
 
 describe("Can be started with browserSync instance", function() {
 
@@ -44,11 +43,6 @@ describe("Can be started with browserSync instance", function() {
         assert.equal(ui.options.getIn(["bs", "mode"]), "snippet");
         assert.equal(ui.options.getIn(["bs", "port"]), 3000);
         done();
-    });
-    it.only("merges updated data", function () {
-        var seq = Immutable.KeyedSeq(["shane", "kittie"]);
-        console.log(seq);
-        //console.log(newItem);
     });
 });
 
