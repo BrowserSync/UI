@@ -46,20 +46,10 @@ textarea {
     padding: 0;
     border-radius: $base-radius;
     height: 100%;
-    display: flex;
 
     > * {
         margin-top: auto;
         margin-bottom: auto;
-    }
-
-    svg {
-        width: 10px;
-        height: 10px;
-        color: lighten($grey-text, 10%);
-        color: $blue;
-        top: 0;
-        margin-right: 10px;
     }
 
     input {
@@ -68,20 +58,40 @@ textarea {
         border-radius: 0;
         padding: 0;
         outline: 0;
-        display: inline-block;
         @include font-size(16px);
-        width: 100%;
         border-bottom: 1px dashed $grey-border;
+
+        &:focus {
+            color: $blue;
+        }
+    }
+
+    input[type=text] {
+        width: 100%;
     }
 }
 
-[bs-input-item] {
+[bs-input~="text"] {
+    input {
+        font-family: monospace;
+    }
+}
+
+[bs-input~="checkbox"] {
 
 }
 
-[bs-input-item~="checkbox"] {
+[bs-input~="inline"] {
 
     display: flex;
+
+    input {
+        &:focus {
+            + label {
+                text-decoration: underline;
+            }
+        }
+    }
 
     > * {
 

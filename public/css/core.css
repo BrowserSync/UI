@@ -1112,41 +1112,37 @@ button, input, select, textarea {
 [bs-input] {
   padding: 0;
   border-radius: 3px;
-  height: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
+  height: 100%; }
   [bs-input] > * {
     margin-top: auto;
     margin-bottom: auto; }
-  [bs-input] svg {
-    width: 10px;
-    height: 10px;
-    color: #c4c4c4;
-    color: #4A90E2;
-    top: 0;
-    margin-right: 10px; }
   [bs-input] input {
     border: 0;
     border-radius: 0;
     padding: 0;
     outline: 0;
-    display: inline-block;
     font-size: 16px;
     font-size: 0.88889rem;
-    width: 100%;
     border-bottom: 1px dashed #F0F0F0; }
+    [bs-input] input:focus {
+      color: #4A90E2; }
+  [bs-input] input[type=text] {
+    width: 100%; }
 
-[bs-input-item~="checkbox"] {
+[bs-input~="text"] input {
+  font-family: monospace; }
+
+[bs-input~="inline"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
-  [bs-input-item~="checkbox"] > * {
+  [bs-input~="inline"] input:focus + label {
+    text-decoration: underline; }
+  [bs-input~="inline"] > * {
     margin-top: auto;
     margin-bottom: auto; }
-    [bs-input-item~="checkbox"] > *:first-child {
+    [bs-input~="inline"] > *:first-child {
       margin-right: 14px; }
 
 .loader, .loader:before, .loader:after {

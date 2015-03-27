@@ -3,13 +3,13 @@ body,html{overflow-y:auto}
 [colspan="1"],td,th{text-align:left}
 [bs-button],[rowspan]{vertical-align:middle}
 [rowspan="1"],td,th{vertical-align:top}
+[bs-button]:focus,[bs-button]:hover,[bs-header] [bs-list~=header] a:hover,[bs-header] [bs-list~=header]:hover,a,a [class*=" icon-"],a [class^=icon-],ins,u{text-decoration:none}
 [bs-header],[bs-header] [bs-header-row],main,sub,sup{position:relative}
 [bs-header] [bs-header-row~=brand],[bs-toggle]{height:60px}
 [bs-sidebar],[bs-toggle]:hover{background:#444}
 [bs-content],body,html{overflow-x:hidden}
 [bs-toggle],[colspan]{text-align:center}
 [bs-list],[bs-list~=inline-controls]{word-wrap:break-word}
-[bs-button]:focus,[bs-button]:hover,[bs-control]:focus,[bs-control]:hover,[bs-header] [bs-list~=header] a:hover,[bs-header] [bs-list~=header]:hover,a,a [class*=" icon-"],a [class^=icon-],ins,u{text-decoration:none}
 pre,textarea{overflow:auto}
 *,:after,:before{box-sizing:border-box}
 blockquote,caption,dd,dl,fieldset,form,h1,h2,h3,h4,h5,h6,hr,legend,ol,p,pre,table,td,th,ul{margin:0;padding:0}
@@ -124,7 +124,7 @@ address,blockquote,details,dl,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hgrou
 .h3,h3{font-size:18px;font-size:1rem;font-weight:700}
 .h4,.h5,.h6,h4,h5,h6{font-size:16px;font-size:.88889rem}
 [bs-heading]{font-size:24px;font-size:1.33333rem;padding-left:55px;line-height:52px;margin-top:0;margin-bottom:0;color:#FBFBFB;background:#3f3f3f;border-top:1px solid #3f3f3f}
-[bs-input-item~=checkbox]>*,[bs-input]>*{margin-bottom:auto;margin-top:auto}
+[bs-input]>*,[bs-input~=inline]>*{margin-bottom:auto;margin-top:auto}
 [bs-heading] [bs-svg-icon]{position:absolute;left:14px;top:11px}
 @media only screen and (min-width:600px){[bs-heading]{font-size:38px;font-size:2.11111rem;color:#444;background:#FBFBFB;padding-left:80px;border-top:0}
 [bs-heading]:before{display:none}
@@ -209,11 +209,14 @@ span.sep{margin-left:5px;margin-right:5px}
 button,input,select,textarea{vertical-align:middle;border-radius:3px;outline:0;height:40px;padding-left:7px;padding-right:14px;max-width:100%;color:#000}
 [bs-input-label]{font-size:14px;font-size:.77778rem;position:relative;display:block;text-transform:uppercase;font-weight:700;color:#ababab;letter-spacing:.5px}
 @media only screen and (min-width:600px){[bs-input-label]{font-size:14px;font-size:.77778rem}}
-[bs-input]{padding:0;border-radius:3px;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
-[bs-input] svg{width:10px;height:10px;color:#4A90E2;top:0;margin-right:10px}
-[bs-input] input{border:0;border-radius:0;padding:0;outline:0;display:inline-block;font-size:16px;font-size:.88889rem;width:100%;border-bottom:1px dashed #F0F0F0}
-[bs-input-item~=checkbox]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
-[bs-input-item~=checkbox]>:first-child{margin-right:14px}
+[bs-input]{padding:0;border-radius:3px;height:100%}
+[bs-input] input{border:0;border-radius:0;padding:0;outline:0;font-size:16px;font-size:.88889rem;border-bottom:1px dashed #F0F0F0}
+[bs-input] input:focus{color:#4A90E2}
+[bs-input] input[type=text]{width:100%}
+[bs-input~=text] input{font-family:monospace}
+[bs-input~=inline]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
+[bs-input~=inline] input:focus+label{text-decoration:underline}
+[bs-input~=inline]>:first-child{margin-right:14px}
 .loader,.loader:after,.loader:before{background:#333;-webkit-animation:load1 .5s infinite ease-in-out;animation:load1 .5s infinite ease-in-out;width:1em;height:2em}
 .loader:after,.loader:before{position:absolute;top:0;content:''}
 .loader:before{left:-1.5em}
@@ -283,8 +286,8 @@ button,input,select,textarea{vertical-align:middle;border-radius:3px;outline:0;h
 [bs-control]:first-child{border-left-width:1px}}
 [bs-control] [bs-svg-icon]{-webkit-transition:all .3s;transition:all .3s;width:14px;height:14px;top:0;display:block;margin-left:auto;margin-right:auto;margin-bottom:5px}
 @media only screen and (min-width:600px){[bs-control] [bs-svg-icon]{width:19px;height:19px}}
-[bs-control]:focus{color:#ababab}
-[bs-control]:hover{background:#444;color:#fff}
+[bs-control]:focus{text-decoration:none;color:#ababab}
+[bs-control]:hover{background:#444;text-decoration:none;color:#fff}
 [bs-control]:hover [bs-svg-icon]{-webkit-transform:rotate(360deg)scale(1.1);-ms-transform:rotate(360deg)scale(1.1);transform:rotate(360deg)scale(1.1);color:#fff}
 .cmn-toggle{position:absolute;margin-left:-9999px;visibility:hidden}
 .cmn-toggle+label{display:block;position:relative;cursor:pointer;outline:0;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background:#AAA}
