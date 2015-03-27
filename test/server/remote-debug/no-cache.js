@@ -4,7 +4,7 @@ var bsui        = require("../../../index");
 var assert      = require("chai").assert;
 var request     = require("supertest");
 
-describe("Remote debug - No cache", function () {
+describe.skip("Remote debug - No cache", function () {
 
     var bs, ui;
 

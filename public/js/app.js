@@ -43,12 +43,13 @@ var mainCtrl    = require("./main/controller");
 var filter      = require("./filters");
 var directives  = require("./directives");
 /* jshint ignore:end */
-},{"./directives":2,"./filters":5,"./main/controller":6,"./modules/bsClients":8,"./modules/bsDisconnect":9,"./modules/bsHistory":10,"./modules/bsNotify":11,"./modules/bsSocket":12,"./services/Options":13,"./services/Pages":14}],2:[function(require,module,exports){
+},{"./directives":2,"./filters":6,"./main/controller":7,"./modules/bsClients":9,"./modules/bsDisconnect":10,"./modules/bsHistory":11,"./modules/bsNotify":12,"./modules/bsSocket":13,"./services/Options":14,"./services/Pages":15}],2:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 
-module.directive("icon",   require("./directives/icon"));
+module.directive("icon", require("./directives/icon"));
+module.directive("linkTo", require("./directives/link-to"));
 module.directive("switch", require("./directives/switch"));
-},{"./directives/icon":3,"./directives/switch":4,"./module":7}],3:[function(require,module,exports){
+},{"./directives/icon":3,"./directives/link-to":4,"./directives/switch":5,"./module":8}],3:[function(require,module,exports){
 module.exports = function () {
     return {
         scope: {
@@ -64,6 +65,29 @@ module.exports = function () {
     };
 };
 },{}],4:[function(require,module,exports){
+module.exports = function () {
+    return {
+        restrict:   "E",
+        replace:    false,
+        transclude: true,
+        scope:      {
+            "path": "@"
+        },
+        template:   "<a href='#' ng-click='navi(path)' ng-transclude=''>as</a>",
+        controller: ["$scope", "$location", "$injector", function ($scope, $location, $injector) {
+
+            var pages = $injector.get("pagesConfig");
+            var Pages = $injector.get("Pages");
+
+            $scope.navi = function (path) {
+                var item = pages[path];
+                Pages.enable(item);
+                $location.path(path);
+            };
+        }]
+    };
+};
+},{}],5:[function(require,module,exports){
 module.exports = function () {
     return {
         scope: {
@@ -86,7 +110,7 @@ module.exports = function () {
         }]
     };
 };
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 var utils  = require("./utils"); //jshint ignore:line
 
@@ -95,7 +119,7 @@ module
     .filter("localRootUrl",  function () { return utils.localRootUrl;  })
     .filter("localUrl",      function () { return utils.localRootUrl;  })
     .filter("orderObjectBy", function () { return utils.orderObjectBy; });
-},{"./module":7,"./utils":15}],6:[function(require,module,exports){
+},{"./module":8,"./utils":16}],7:[function(require,module,exports){
 var app    = require("../module");
 
 app.controller("MainController", [
@@ -255,7 +279,7 @@ function getDisplayUrl (urls) {
     }
     return urls.external || urls.local;
 }
-},{"../module":7}],7:[function(require,module,exports){
+},{"../module":8}],8:[function(require,module,exports){
 (function (angular) {
 
     /**
@@ -265,7 +289,7 @@ function getDisplayUrl (urls) {
 
 })(angular);
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -312,7 +336,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function () {
 
     angular
@@ -377,7 +401,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -434,7 +458,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -522,7 +546,7 @@ function getDisplayUrl (urls) {
         $rootScope.$on("notify:flash", $scope.show);
     }
 })(angular);
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (angular, browserSyncSocket) {
 
     /**
@@ -592,7 +616,7 @@ function getDisplayUrl (urls) {
 
 })(angular, window.___browserSync___.socket);
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var app = require("../module");
 
 app.factory("Options", ["Socket", OptionsService]);
@@ -610,7 +634,7 @@ function OptionsService(Socket) {
         }
     };
 }
-},{"../module":7}],14:[function(require,module,exports){
+},{"../module":8}],15:[function(require,module,exports){
 /**
  * @type {angular}
  */
@@ -667,7 +691,7 @@ function ContentSections(pagesConfig, $location) {
         }
     };
 }
-},{"../module":7}],15:[function(require,module,exports){
+},{"../module":8}],16:[function(require,module,exports){
 module.exports = {
     ucfirst: function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);

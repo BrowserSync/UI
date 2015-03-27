@@ -10,9 +10,14 @@
             <p class="lede">
                 Test your website against slower connections (on all devices!)
             </p>
-            <p>Pro tip: Use along with the 'No Cache' option in the <link-to path="remote-debug">Remote Debug</link-to> to simulate
-            a new user's experience.</p>
         </div>
     </div>
-    <throttle options="ctrl.uiOptions" ng-if="ctrl.options.mode !== 'snippet'"></throttle>
+    <switch toggle="ctrl.toggleSpeed(item)"
+            switchid="sync-options-{{$index}}"
+            active="item.active"
+            prop="active"
+            ng-repeat="(key, item) in ctrl.throttle.targets | orderObjectBy:'order'"
+            item="item">
+        <throttle target="item" options="ctrl.uiOptions"></throttle>
+    </switch>
 </article>
