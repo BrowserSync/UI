@@ -1,23 +1,45 @@
-<div bs-grid="desk-2">
-    <div bs-input>
-        <label for="grid-size">Simple label + text input</label>
-        <input id="grid-size" type="text" size="20" value="20px"/>
-    </div>
-    <div bs-input>
-        <label for="grid-selector">With Help Text <span bs-input-info="offset">eg:
-            <code>.post-content</code> <code>.site-header</code>
-        </span>
-        </label>
-        <input id="grid-selector" type="text" size="20"  placeholder="Value here"/>
-    </div>
-    <div bs-input>
-        <label for="grid-color"><b>Input with offset help</b> <span bs-input-info="offset">eg:
-            <code>rgba(0,0,0,.2)</code> <code>#cacaca</code></span></label>
-        <input id="grid-color" type="text" size="20" value="#808080"/>
-    </div>
-    <div bs-input>
-        <label for="grid-color"><b>Input with offset help</b> <span bs-input-info="offset">eg:
-            <code>rgba(0,0,0,.2)</code> <code>#cacaca</code></span></label>
-        <input id="grid-color" type="text" size="20" value="#808080"/>
-    </div>
+<ul bs-list="bordered inline-controls">
+    <li>
+        <div bs-input>
+            <label for="grid-size">Grid Size</label>
+            <input id="grid-size" type="text" size="16" value="16px"/>
+        </div>
+    </li>
+    <li>
+        <div bs-input>
+            <label for="grid-color">Grid Colour</label>
+            <input id="grid-color" type="text" size="16" value="rgba(0, 0, 0, 0.2)"/>
+        </div>
+    </li>
+    <li>
+        <div bs-input>
+            <label for="grid-selector">Selector</label>
+            <input id="grid-selector" type="text" size="16" value="body"/>
+        </div>
+    </li>
+    <li>
+        <div bs-input>
+            <label for="grid-offsetY">Offset Top</label>
+            <input id="grid-offsetY" type="text" size="16" value="0"/>
+        </div>
+    </li>
+    <li>
+        <div bs-input>
+            <label for="grid-offsetX">Offset Left</label>
+            <input id="grid-offsetX" type="text" size="16" value="0"/>
+        </div>
+    </li>
+</ul>
+
+<div bs-input>
+    <label for="grid-selector">With Help Text</label>
+    <input id="grid-selector" type="text" size="20" placeholder="Value here"/>
+</div>
+<div bs-input>
+    <label for="grid-color">Input with offset help</label>
+    <input id="grid-color" type="text" size="20" value="#808080"/>
+</div>
+<div bs-input>
+    <label for="grid-color">Input with offset help</label>
+    <input id="grid-color" type="text" size="20" value="#808080"/>
 </div>

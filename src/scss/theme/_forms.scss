@@ -27,31 +27,36 @@ textarea {
 
 [bs-input] {
 
-    padding: $half-spacing;
-    margin-bottom: $half-spacing;
-    border: 1px solid $grey-border;
+    padding: $half-spacing 0;
     border-radius: $base-radius;
     height: 100%;
 
     label {
+
+        @include font-size(14px);
+
         position: relative;
-        margin-bottom: $half-spacing/2;
         display: block;
         text-transform: uppercase;
         font-weight: bold;
-        @include font-size(12px);
+        color: $grey-text;
+        letter-spacing: .5px;
+
         @include media-query(min, $lap-start) {
             @include font-size(14px);
         }
+
     }
 
     input {
-        //border: 1px grey solid;
+        transition: all .1s;
         border: 0;
         border-radius: 0;
         padding: 0;
-        border-bottom: 1px solid rgba(black, .1);
         outline: 0;
+        &:focus {
+            text-indent: $half-spacing/2;
+        }
     }
 }
 

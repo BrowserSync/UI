@@ -202,11 +202,12 @@ span.sep{margin-left:5px;margin-right:5px}
 @media only screen and (min-width:600px){[bs-button-row]{padding-left:27px}
 [bs-action~=menu-toggle],[bs-action~=menu-close]{display:none}}
 button,input,select,textarea{vertical-align:middle;border-radius:3px;outline:0;height:40px;padding-left:7px;padding-right:14px;max-width:100%;color:#4A90E2}
-[bs-input]{padding:14px;margin-bottom:14px;border:1px solid #F0F0F0;border-radius:3px;height:100%}
-[bs-input] label{position:relative;margin-bottom:7px;display:block;text-transform:uppercase;font-weight:700;font-size:12px;font-size:.66667rem}
+[bs-input]{padding:14px 0;border-radius:3px;height:100%}
+[bs-input] label{font-size:14px;font-size:.77778rem;position:relative;display:block;text-transform:uppercase;font-weight:700;color:#ababab;letter-spacing:.5px}
 [bs-input-info],[bs-panel] [bs-text~=prefixed]{text-transform:none}
 @media only screen and (min-width:600px){[bs-input] label{font-size:14px;font-size:.77778rem}}
-[bs-input] input{border:0;border-radius:0;padding:0;border-bottom:1px solid rgba(0,0,0,.1);outline:0}
+[bs-input] input{-webkit-transition:all .1s;transition:all .1s;border:0;border-radius:0;padding:0;outline:0}
+[bs-input] input:focus{text-indent:7px}
 [bs-input-info]{opacity:.5;-webkit-transition:opacity .2s;transition:opacity .2s}
 .loader,[bs-input-info]:hover{opacity:1}
 [bs-input-info] code{margin-right:3px}

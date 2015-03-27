@@ -1068,29 +1068,31 @@ button, input, select, textarea {
   color: #4A90E2; }
 
 [bs-input] {
-  padding: 14px;
-  margin-bottom: 14px;
-  border: 1px solid #F0F0F0;
+  padding: 14px 0;
   border-radius: 3px;
   height: 100%; }
   [bs-input] label {
+    font-size: 14px;
+    font-size: 0.77778rem;
     position: relative;
-    margin-bottom: 7px;
     display: block;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 12px;
-    font-size: 0.66667rem; }
+    color: #ababab;
+    letter-spacing: .5px; }
     @media only screen and (min-width: 600px) {
       [bs-input] label {
         font-size: 14px;
         font-size: 0.77778rem; } }
   [bs-input] input {
+    -webkit-transition: all .1s;
+            transition: all .1s;
     border: 0;
     border-radius: 0;
     padding: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     outline: 0; }
+    [bs-input] input:focus {
+      text-indent: 7px; }
 
 [bs-input-info] {
   opacity: .5;
