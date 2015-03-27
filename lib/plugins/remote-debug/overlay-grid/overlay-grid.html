@@ -1,9 +1,10 @@
-<div ng-show="ctrl.overlayGrid.active">
+<div ng-show="ctrl.overlayGrid.active" bs-panel-content="basic tight">
 
-    <div bs-list="bordered inline-controls">
+    <div bs-list="bordered" bs-input-list>
         <li>
+            <svg bs-svg-icon><use xlink:href="#svg-code"></use></svg>
+            <label for="grid-size" bs-input-label>Grid Size</label>
             <div bs-input>
-                <label for="grid-size">Grid Size</label>
                 <input type="text"
                        max="100"
                        min="0"
@@ -15,8 +16,9 @@
             </div>
         </li>
         <li>
+            <svg bs-svg-icon><use xlink:href="#svg-code"></use></svg>
+            <label for="grid-color" bs-input-label>Grid Colour</label>
             <div bs-input>
-                <label for="grid-color">Grid Colour</label>
                 <input type="text"
                        max="100"
                        min="0"
@@ -28,8 +30,9 @@
             </div>
         </li>
         <li>
+            <svg bs-svg-icon><use xlink:href="#svg-code"></use></svg>
+            <label for="grid-selector" bs-input-label>Selector</label>
             <div bs-input>
-                <label for="grid-selector">Selector</label>
                 <input type="text"
                        max="100"
                        min="0"
@@ -41,8 +44,9 @@
             </div>
         </li>
         <li>
+            <svg bs-svg-icon><use xlink:href="#svg-code"></use></svg>
+            <label for="grid-offsetY" bs-input-label>Offset Top</label>
             <div bs-input>
-                <label for="grid-offsetY">Offset Top</label>
                 <input type="text"
                        id="grid-offsetY"
                        size="20"
@@ -51,8 +55,9 @@
             </div>
         </li>
         <li>
+            <svg bs-svg-icon><use xlink:href="#svg-code"></use></svg>
+            <label for="grid-offsetX" bs-input-label>Offset Left</label>
             <div bs-input>
-                <label for="grid-offsetX">Offset Left</label>
                 <input type="text"
                        id="grid-offsetX"
                        size="20"

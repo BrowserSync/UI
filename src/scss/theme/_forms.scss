@@ -11,7 +11,7 @@ $input-height: 40px;
     padding-right: $half-spacing;
     max-width: 100%;
     font-family: $sans;
-    color: $blue;
+    color: $black;
 }
 
 /*
@@ -25,69 +25,71 @@ textarea {
     @include base-input;
 }
 
+[bs-input-label] {
+
+    @include font-size(14px);
+
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $grey-text;
+    letter-spacing: .5px;
+
+    @include media-query(min, $lap-start) {
+        @include font-size(14px);
+    }
+}
+
 [bs-input] {
 
-    padding: $half-spacing 0;
+    padding: 0;
     border-radius: $base-radius;
     height: 100%;
+    display: flex;
 
-    label {
+    > * {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
 
-        @include font-size(14px);
-
-        position: relative;
-        display: block;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: $grey-text;
-        letter-spacing: .5px;
-
-        @include media-query(min, $lap-start) {
-            @include font-size(14px);
-        }
-
+    svg {
+        width: 10px;
+        height: 10px;
+        color: lighten($grey-text, 10%);
+        color: $blue;
+        top: 0;
+        margin-right: 10px;
     }
 
     input {
-        transition: all .1s;
+
         border: 0;
         border-radius: 0;
         padding: 0;
         outline: 0;
-        &:focus {
-            text-indent: $half-spacing/2;
+        display: inline-block;
+        @include font-size(16px);
+        width: 100%;
+        border-bottom: 1px dashed $grey-border;
+    }
+}
+
+[bs-input-item] {
+
+}
+
+[bs-input-item~="checkbox"] {
+
+    display: flex;
+
+    > * {
+
+        margin-top: auto;
+        margin-bottom: auto;
+
+        &:first-child {
+            margin-right: $half-spacing;
         }
     }
-}
-
-[bs-input-info] {
-
-    opacity: .5;
-    transition: opacity .2s;
-    text-transform: none;
-
-    &:hover {
-        opacity: 1;
-    }
-
-    code {
-        margin-right: 3px;
-    }
-
-    [bs-svg-icon] {
-        width: 16px;
-        height: 16px;
-        top: 4px;
-    }
-}
-
-[bs-input-info~="offset"] {
-
-    //display: block;
-    //
-    //@include media-query(min, $lap-start) {
-    //    position: absolute;
-    //    right: 0;
-    //    top: 0;
-    //}
 }

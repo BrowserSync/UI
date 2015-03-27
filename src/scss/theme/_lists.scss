@@ -8,7 +8,7 @@ $controls-height: 41px;
     margin-left: 0;
     list-style: none;
     word-wrap: break-word;
-    
+
     p {
         margin-bottom: 0;
     }
@@ -44,8 +44,10 @@ $controls-height: 41px;
 [bs-list~="bordered"] {
 
     > li {
+
         padding: ($half-spacing - 3px) $half-spacing;
         border-bottom: 1px solid $grey-border;
+
         &:first-child {
             border-top: 1px solid $grey-border;
         }
@@ -71,6 +73,7 @@ $controls-height: 41px;
         transition: background .5s;
 
         &:hover {
+
             background: $grey-bg;
 
             [bs-button~="subtle-alt"] {

@@ -452,6 +452,34 @@ hr {
   padding-bottom: 14px;
   height: 1px; }
 
+[bs-grid] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-flex-flow: wrap;
+      -ms-flex-flow: wrap;
+          flex-flow: wrap; }
+  [bs-grid] > * {
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 7px; }
+
+@media only screen and (min-width: 750px) {
+  [bs-grid~="desk-2"] [bs-grid-item] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 50%;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%; } }
+
+@media only screen and (min-width: 1000px) {
+  [bs-grid~="wide-4"] [bs-grid-item] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%; } }
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important; }
 
@@ -1065,48 +1093,61 @@ button, input, select, textarea {
   padding-right: 14px;
   max-width: 100%;
   font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
-  color: #4A90E2; }
+  color: #000; }
+
+[bs-input-label] {
+  font-size: 14px;
+  font-size: 0.77778rem;
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #ababab;
+  letter-spacing: .5px; }
+  @media only screen and (min-width: 600px) {
+    [bs-input-label] {
+      font-size: 14px;
+      font-size: 0.77778rem; } }
 
 [bs-input] {
-  padding: 14px 0;
+  padding: 0;
   border-radius: 3px;
-  height: 100%; }
-  [bs-input] label {
-    font-size: 14px;
-    font-size: 0.77778rem;
-    position: relative;
-    display: block;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #ababab;
-    letter-spacing: .5px; }
-    @media only screen and (min-width: 600px) {
-      [bs-input] label {
-        font-size: 14px;
-        font-size: 0.77778rem; } }
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  [bs-input] > * {
+    margin-top: auto;
+    margin-bottom: auto; }
+  [bs-input] svg {
+    width: 10px;
+    height: 10px;
+    color: #c4c4c4;
+    color: #4A90E2;
+    top: 0;
+    margin-right: 10px; }
   [bs-input] input {
-    -webkit-transition: all .1s;
-            transition: all .1s;
     border: 0;
     border-radius: 0;
     padding: 0;
-    outline: 0; }
-    [bs-input] input:focus {
-      text-indent: 7px; }
+    outline: 0;
+    display: inline-block;
+    font-size: 16px;
+    font-size: 0.88889rem;
+    width: 100%;
+    border-bottom: 1px dashed #F0F0F0; }
 
-[bs-input-info] {
-  opacity: .5;
-  -webkit-transition: opacity .2s;
-          transition: opacity .2s;
-  text-transform: none; }
-  [bs-input-info]:hover {
-    opacity: 1; }
-  [bs-input-info] code {
-    margin-right: 3px; }
-  [bs-input-info] [bs-svg-icon] {
-    width: 16px;
-    height: 16px;
-    top: 4px; }
+[bs-input-item~="checkbox"] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  [bs-input-item~="checkbox"] > * {
+    margin-top: auto;
+    margin-bottom: auto; }
+    [bs-input-item~="checkbox"] > *:first-child {
+      margin-right: 14px; }
 
 .loader, .loader:before, .loader:after {
   background: #333333;
@@ -1200,6 +1241,14 @@ button, input, select, textarea {
       padding-left: 108px; }
       [bs-panel~="switch"] [bs-panel-content] [bs-panel-icon] {
         top: 33px; } }
+[bs-panel~="switch"] [bs-panel-content~="basic"] {
+  padding-left: 14px;
+  padding-right: 14px;
+  max-width: none; }
+[bs-panel~="switch"] [bs-panel-content~="tight"] {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none; }
 
 [bs-panel~="last"] {
   border-bottom: 2px solid #F0F0F0;
@@ -1266,7 +1315,7 @@ button, input, select, textarea {
       padding-left: 40.5px;
       padding-right: 40.5px; } }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
   [bs-skinny] {
     padding: 54px 95px; } }
 

@@ -56,6 +56,18 @@
 
         margin-bottom: $half-spacing;
     }
+
+    [bs-panel-content~="basic"] {
+        padding-left: $half-spacing;
+        padding-right: $half-spacing;
+        max-width: none;
+    }
+
+    [bs-panel-content~="tight"] {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: none;
+    }
 }
 
 [bs-panel~="last"] {
