@@ -94,7 +94,6 @@ $controls-height: 41px;
             padding: 0;
             padding-left: $half-spacing;
             display: flex;
-            align-items: stretch;
 
             p {
                 margin-bottom: 0;
@@ -141,4 +140,19 @@ $controls-height: 41px;
 [bs-list~="basic"] {
     list-style: circle;
     margin-left: $base-spacing;
+}
+
+//
+// Offset thing
+//
+[bs-offset~="basic"] {
+
+    > li {
+
+        padding-left: $base-spacing;
+
+        @include media-query(min, $lap-start) {
+            padding-left: $base-spacing*1.5;
+        }
+    }
 }

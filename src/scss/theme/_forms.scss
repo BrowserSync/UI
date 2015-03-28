@@ -41,6 +41,13 @@ textarea {
     }
 }
 
+[bs-input-label~="mono"] {
+    font-weight: normal;
+    @include font-size(16px);
+    font-family: monospace;
+    color: $black;
+}
+
 [bs-input] {
 
     padding: 0;
@@ -68,6 +75,13 @@ textarea {
 
     input[type=text] {
         width: 100%;
+    }
+    input[type=radio] {
+        &:checked {
+            + label {
+                color: $blue!important;
+            }
+        }
     }
 }
 

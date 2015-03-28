@@ -1,0 +1,95 @@
+---
+layout: main.hbs
+title: "Network Throttle"
+icon: "time"
+---
+<div bs-panel="controls outline">
+    <h1 bs-heading>{{ inc src="icon.hbs" icon=page.icon }} {{page.title}}</h1>
+</div>
+
+<div bs-panel>
+    <div bs-panel-content="basic">
+        <p class="lede">Test your website against slower connections (on all devices!)</p>
+    </div>
+</div>
+
+<div bs-panel="no-border">
+    <div bs-panel-content="basic">
+        <div bs-inputs bs-grid="wide-3 desk-2">
+            <div bs-grid-item>
+                <label  bs-input-label>Speed</label>
+                <div bs-input="inline">
+                    <input type="radio" id="speed-dsl" checked name="speed">
+                    <label for="speed-dsl" bs-input-label="mono">DSL (2Mbps, 5ms RTT)</label>
+                </div>
+                <div bs-input="inline">
+                    <input type="radio" id="speed-3g" checked name="speed">
+                    <label for="speed-3g" bs-input-label="mono">3G (750kbs, 100ms RTT)</label>
+                </div>
+                <div bs-input="inline">
+                    <input type="radio" id="speed-edge" checked name="speed">
+                    <label for="speed-edge" bs-input-label="mono">EDGE (250kbs, 300ms RTT)</label>
+                </div>
+                <div bs-input="inline">
+                    <input type="radio" id="speed-gprs" checked name="speed">
+                    <label for="speed-gprs" bs-input-label="mono">GPRS (50kbs, 500ms RTT)</label>
+                </div>
+                <div bs-input="inline">
+                    <input type="radio" id="speed-none" checked name="speed">
+                    <label for="speed-none" bs-input-label="mono">None</label>
+                </div>
+            </div>
+            <div bs-grid-item="">
+                <div bs-input="text">
+                    <label for="grid-size" bs-input-label="">Port</label>
+                    <input id="grid-size" type="number" size="16px" value="" placeholder="AUTO">
+                </div>
+                <br/>
+                <button bs-button="size-small subtle-alt icon-left"><svg bs-svg-icon=""><use xlink:href="#svg-circle-plus"></use></svg>
+                    Create Server</button>
+            </div>
+            <div bs-grid-item>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div bs-panel-content="basic">
+        <h3>Your Servers</h3>
+    </div>
+    <ul bs-list="bordered inline-controls" bs-offset="basic">
+        <li>
+            <p bs-width="5">1.</p>
+            <p bs-width="10"><b>3G</b></p>
+            <p><a href="">https://localhost:3001</a></p>
+            <p><a href="">https://192.136.1.0:3001</a></p>
+            <div bs-button-group>
+                <button href="#" bs-button="subtle-alt icon" title="Sync All">
+                    {{inc src="icon.hbs" icon="syncall"}}
+                </button>
+                <button href="#" bs-button="subtle-alt icon" title="New Tab">
+                    {{inc src="icon.hbs" icon="newtab"}}
+                </button>
+                <button href="#" bs-button="subtle-alt icon">
+                    {{inc src="icon.hbs" icon="bin"}}
+                </button>
+            </div>
+        </li>
+        <li>
+            <p bs-width="5">2.</p>
+            <p bs-width="10"><b>GPRS</b></p>
+            <p bs-width="inline"><a href="">https://localhost:3002</a></p>
+            <p><a href="">https://192.136.1.0:3002</a></p>
+            <div bs-button-group>
+                <button href="#" bs-button="subtle-alt icon" title="Sync All">
+                    {{inc src="icon.hbs" icon="syncall"}}
+                </button>
+                <button href="#" bs-button="subtle-alt icon" title="New Tab">
+                    {{inc src="icon.hbs" icon="newtab"}}
+                </button>
+                <button href="#" bs-button="subtle-alt icon">
+                    {{inc src="icon.hbs" icon="bin"}}
+                </button>
+            </div>
+        </li>
+    </ul>
+</div>

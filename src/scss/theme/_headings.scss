@@ -41,6 +41,7 @@ h2, .h2 {
 }
 h3, .h3 {
     @include font-size($h3-size);
+    //margin-bottom: $half-spacing;
     font-weight: bold;
 }
 h4, .h4 {
