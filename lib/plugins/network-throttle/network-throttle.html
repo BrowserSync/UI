@@ -5,19 +5,64 @@
             {{ctrl.section.title}}
         </h1>
     </div>
-    <div bs-panel class="ng-scope">
+    <div bs-panel>
         <div bs-panel-content="basic">
             <p class="lede">
                 Test your website against slower connections (on all devices!)
             </p>
         </div>
     </div>
-    <switch toggle="ctrl.toggleSpeed(item)"
-            switchid="sync-options-{{$index}}"
-            active="item.active"
-            prop="active"
-            ng-repeat="(key, item) in ctrl.throttle.targets | orderObjectBy:'order'"
-            item="item">
-        <throttle target="item" options="ctrl.uiOptions"></throttle>
-    </switch>
+
+
+    <div bs-panel="no-border">
+        <div bs-panel-content="basic">
+            <div bs-inputs bs-grid="wide-3 desk-2">
+                <div bs-grid-item>
+                    <label  bs-input-label>Speed</label>
+                    <div bs-input="inline" ng-repeat="(key, item) in ctrl.throttle.targets | orderObjectBy:'order'">
+                        <input
+                                type="radio"
+                                id="speed-{{item.name}}"
+                                checked name="speed"
+                                ng-model="ctrl.selected"
+                                value="{{item.name}}">
+
+                        <label for="speed-{{item.name}}" bs-input-label="mono">{{item.title}}</label>
+                    </div>
+                </div>
+                <div bs-grid-item>
+                    <div bs-input="text">
+                        <label for="grid-size" bs-input-label>Port</label>
+                        <input id="grid-size" type="text" value="" placeholder="AUTO" ng-model="ctrl.port">
+                    </div>
+                    <br/>
+                    <button bs-button="size-small subtle-alt icon-left" ng-click="ctrl.createServer(ctrl.selected)">
+                        <svg bs-svg-icon><use xlink:href="#svg-circle-plus"></use></svg>Create Server
+                    </button>
+                </div>
+                <div bs-grid-item>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div bs-panel-content="basic">
+            <h3 ng-if="ctrl.servers.length">Your Servers</h3>
+            <h3 ng-if="!ctrl.servers.length">Your Servers will appear here.</h3>
+        </div>
+
+        <ul bs-list="bordered inline-controls" bs-offset="basic">
+            <li ng-repeat="(key, item) in ctrl.servers track by key">
+                <p bs-width="5">{{$index + 1}}.</p>
+                <p bs-width="10"><b>{{item.speed.name | uppercase}}</b></p>
+                <p><a href="{{item.urls[0]}}">{{item.urls[0]}}</a></p>
+                <p><a href="{{item.urls[0]}}">{{item.urls[1]}}</a></p>
+                <div bs-button-group>
+                    <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.destroyServer(item.port)">
+                        <svg bs-svg-icon><use xlink:href="#svg-bin"></use></svg>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
 </article>
