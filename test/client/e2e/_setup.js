@@ -8,7 +8,9 @@ var tests       = [
     "history.js",
     "home.js",
     "remote-debug.js",
-    "network-throttle.js"
+    "tests/network-throttle.auto.js",
+    "tests/network-throttle.remove.js",
+    "tests/network-throttle.manual.js"
 ];
 
 var configFile  = path.resolve(__dirname + "/config.js");
@@ -18,7 +20,7 @@ eachSeries(tests, function (testFile, asyncCallback) {
     process.env["BS_TEST_FILE"] = "tests/" + testFile;
     ptor({}, configFile, function (err, out) {
         if (out) {
-            //console.log(out); //debugging
+            console.log(out); //debugging
         }
         if (!err) {
             console.log("Tests Passed: %s", testFile);
@@ -30,6 +32,7 @@ eachSeries(tests, function (testFile, asyncCallback) {
         asyncCallback();
     });
 }, function (err) {
+    console.log(err);
     if (err) {
         console.error(err.stdout || err.message);
         process.exit(1);
