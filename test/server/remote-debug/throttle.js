@@ -4,11 +4,13 @@ var bsui        = require("../../../index");
 var assert      = require("chai").assert;
 var request     = require("supertest");
 
-describe("Remote debug - Throttle", function () {
+describe("Remote debug - Throttle HTTP", function () {
 
     var bs, ui;
 
     this.timeout(10000);
+
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
     before(function (done) {
 
@@ -34,86 +36,37 @@ describe("Remote debug - Throttle", function () {
     });
     it("should init DSL speed", function (done) {
 
-        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()["dsl"];
+        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()[0];
 
         target.active = true;
 
-        target.cb = function (err, out) {
+        var cb = function (err, out) {
             assert.isDefined(out.server);
             assert.isDefined(out.port);
-            assert.isDefined(ui.servers["dsl"]);
-            request(out.server)
+            assert.isDefined(ui.servers[out.port]);
+
+            var updated = ui.getOptionIn(["network-throttle", "servers"]).toJS();
+
+            assert.equal(updated[out.port].urls.length, 1);
+            assert.include(updated[out.port].urls[0], "http://");
+
+            request(updated[out.port].urls[0])
                 .get("/")
                 .set("accept", "text/html")
                 .expect(200)
                 .end(function (err, res) {
+                    if (err) {
+                        return done(err);
+                    }
                     assert.include(res.text, bs.options.get("snippet"));
                     done();
                 });
         };
-        ui.throttle["toggle:speed"](target);
-    });
-    it("should init 3G speed", function (done) {
 
-        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()["3g"];
-
-        target.active = true;
-
-        target.cb = function (err, out) {
-            assert.isDefined(out.server);
-            assert.isDefined(out.port);
-            assert.isDefined(ui.servers["3g"]);
-            request(out.server)
-                .get("/")
-                .set("accept", "text/html")
-                .expect(200)
-                .end(function (err, res) {
-                    assert.include(res.text, bs.options.get("snippet"));
-                    done();
-                });
-        };
-        ui.throttle["toggle:speed"](target);
-    });
-    it("should init EDGE speed", function (done) {
-
-        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()["edge"];
-
-        target.active = true;
-
-        target.cb = function (err, out) {
-            assert.isDefined(out.server);
-            assert.isDefined(out.port);
-            assert.isDefined(ui.servers["edge"]);
-            request(out.server)
-                .get("/")
-                .set("accept", "text/html")
-                .expect(200)
-                .end(function (err, res) {
-                    assert.include(res.text, bs.options.get("snippet"));
-                    done();
-                });
-        };
-        ui.throttle["toggle:speed"](target);
-    });
-    it("should init GPRS speed", function (done) {
-
-        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()["gprs"];
-
-        target.active = true;
-
-        target.cb = function (err, out) {
-            assert.isDefined(out.server);
-            assert.isDefined(out.port);
-            assert.isDefined(ui.servers["gprs"]);
-            request(out.server)
-                .get("/")
-                .set("accept", "text/html")
-                .expect(200)
-                .end(function (err, res) {
-                    assert.include(res.text, bs.options.get("snippet"));
-                    done();
-                });
-        };
-        ui.throttle["toggle:speed"](target);
+        ui.throttle["server:create"]({
+            speed: target,
+            port: "",
+            cb: cb
+        });
     });
 });

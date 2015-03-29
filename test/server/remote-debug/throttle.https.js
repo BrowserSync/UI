@@ -37,17 +37,21 @@ describe("Remote debug - Throttle HTTPS", function () {
     });
     it("should init DSL speed", function (done) {
 
-        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()["dsl"];
+        var target = ui.options.getIn(["network-throttle", "targets"]).toJS()[0];
 
         target.active = true;
 
-        target.cb = function (err, out) {
+        var cb = function (err, out) {
             assert.isDefined(out.server);
             assert.isDefined(out.port);
-            assert.isDefined(ui.servers["dsl"]);
-            var updated = ui.options.getIn(["network-throttle", "targets"]).toJS()["dsl"];
-            assert.include(updated.urls[0], "https://");
-            request(updated.urls[0])
+            assert.isDefined(ui.servers[out.port]);
+
+            var updated = ui.getOptionIn(["network-throttle", "servers"]).toJS();
+
+            assert.equal(updated[out.port].urls.length, 1);
+            assert.include(updated[out.port].urls[0], "https://");
+
+            request(updated[out.port].urls[0])
                 .get("/")
                 .set("accept", "text/html")
                 .expect(200)
@@ -59,6 +63,11 @@ describe("Remote debug - Throttle HTTPS", function () {
                     done();
                 });
         };
-        ui.throttle["toggle:speed"](target);
+
+        ui.throttle["server:create"]({
+            speed: target,
+            port: "",
+            cb: cb
+        });
     });
 });
