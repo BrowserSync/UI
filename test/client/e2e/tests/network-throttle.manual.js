@@ -33,18 +33,16 @@ describe("Network throttle page", function() {
         bs.cleanup();
     });
 
-    it("Should allow servers to be created with auto port", function() {
+    it("Should allow servers to be created with user-entered port", function() {
 
         browser.get(cpUrl + "/network-throttle");
         browser.sleep(1000);
-
-        var items = element.all(by.repeater("(key, item) in ctrl.throttle.targets | orderObjectBy:'order'"));
-
-        expect(items.count()).toBe(6);
+        var testPort = 4003;
 
         var createServerBtn = by.id("create-server");
+        var portEntry = element(by.id("server-port"));
 
-        expect(element(createServerBtn).isPresent()).toBeTruthy();
+        portEntry.sendKeys(testPort);
 
         element(createServerBtn).click();
 
@@ -53,8 +51,6 @@ describe("Network throttle page", function() {
         var flow     = protractor.promise.controlFlow();
 
         flow.execute(function () {
-
-            browser.pause();
 
             var serverList = element(by.id("throttle-server-list"));
             var listItem   = serverList.all(by.tagName("li"));
@@ -66,7 +62,10 @@ describe("Network throttle page", function() {
                 .all(by.tagName("p"))
                 .get(2)
                 .getText()
-                .then(utils.openWindow.bind(null, browser));
+                .then(function (url) {
+                    expect(url).toBe("http://localhost:" + testPort);
+                    utils.openWindow(browser, url);
+                });
 
             browser.sleep(1000);
 

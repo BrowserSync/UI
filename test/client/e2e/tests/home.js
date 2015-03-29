@@ -24,7 +24,8 @@ describe("Section Navigation", function() {
         init(protractor, {
             server: "./test/fixtures",
             open:   false,
-            online: false
+            online: false,
+            logLevel: "silent"
         }).then(function (out) {
             bs    = out.bs;
             ui    = out.ui;

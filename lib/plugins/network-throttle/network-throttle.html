@@ -45,6 +45,7 @@
                     </div>
                     <br/>
                     <button
+                            id="create-server"
                             bs-button="size-small subtle-alt icon-left"
                             ng-click="ctrl.createServer(ctrl.selected)"
                             ng-class="{success: ctrl.state.success}"
@@ -65,7 +66,7 @@
             <h3 ng-if="!ctrl.serverCount">Your Servers will appear here...</h3>
         </div>
 
-        <ul bs-list="bordered inline-controls" bs-offset="basic">
+        <ul bs-list="bordered inline-controls" bs-offset="basic" id="throttle-server-list">
             <li ng-repeat="(key, item) in ctrl.servers track by key">
                 <p bs-width="5">{{$index + 1}}.</p>
                 <p bs-width="10"><b>{{item.speed.id | uppercase}}</b></p>
