@@ -7,51 +7,58 @@ icon: "time"
     <h1 bs-heading>{{ inc src="icon.hbs" icon=page.icon }} {{page.title}}</h1>
 </div>
 
-<div bs-panel>
-    <div bs-panel-content="basic">
-        <p class="lede">Test your website against slower connections (on all devices!)</p>
-    </div>
-</div>
-
 <div bs-panel="no-border">
     <div bs-panel-content="basic">
         <div bs-inputs bs-grid="wide-3 desk-2">
             <div bs-grid-item>
-                <label  bs-input-label>Speed</label>
+                <p bs-label-heading><b>Speed</b></p>
+
+                <!--<label  bs-input-label>Speed</label>-->
                 <div bs-input="inline">
                     <input type="radio" id="speed-dsl" checked name="speed">
-                    <label for="speed-dsl" bs-input-label="mono">DSL (2Mbps, 5ms RTT)</label>
+                    <label for="speed-dsl" bs-input-label="light">DSL (2Mbps, 5ms RTT)</label>
                 </div>
                 <div bs-input="inline">
                     <input type="radio" id="speed-3g" checked name="speed">
-                    <label for="speed-3g" bs-input-label="mono">3G (750kbs, 100ms RTT)</label>
+                    <label for="speed-3g" bs-input-label="light">3G (750kbs, 100ms RTT)</label>
                 </div>
                 <div bs-input="inline">
                     <input type="radio" id="speed-edge" checked name="speed">
-                    <label for="speed-edge" bs-input-label="mono">EDGE (250kbs, 300ms RTT)</label>
+                    <label for="speed-edge" bs-input-label="light">EDGE (250kbs, 300ms RTT)</label>
                 </div>
                 <div bs-input="inline">
                     <input type="radio" id="speed-gprs" checked name="speed">
-                    <label for="speed-gprs" bs-input-label="mono">GPRS (50kbs, 500ms RTT)</label>
+                    <label for="speed-gprs" bs-input-label="light">GPRS (50kbs, 500ms RTT)</label>
                 </div>
                 <div bs-input="inline">
                     <input type="radio" id="speed-none" checked name="speed">
-                    <label for="speed-none" bs-input-label="mono">None</label>
+                    <label for="speed-none" bs-input-label="light">None</label>
                 </div>
-            </div>
-            <div bs-grid-item="">
-                <div bs-input="text">
-                    <label for="grid-size" bs-input-label="">Port</label>
-                    <input id="grid-size" type="number" size="16px" value="" placeholder="AUTO">
-                </div>
-                <br/>
-                <button bs-button="size-small subtle-alt icon-left"><svg bs-svg-icon=""><use xlink:href="#svg-circle-plus"></use></svg>
-                    Create Server</button>
             </div>
             <div bs-grid-item>
+                <p bs-label-heading><b>Port</b></p>
+                <div bs-input="text">
+                    <div bs-input="inline">
+                        <input type="radio" name="port-select" id="port-auto" checked="" value="auto" ng-model="ctrl.portEntry" class="ng-pristine ng-untouched ng-valid">
+                        <label for="port-auto" bs-input-label>Auto Detection</label>
+                    </div>
+                    <div bs-input="inline">
+                        <input type="radio" id="port-manual" name="port-select" value="manual" ng-model="ctrl.portEntry" class="ng-pristine ng-untouched ng-valid">
+                        <label for="port-manual" bs-input-label>User specified <!-- ngIf: ctrl.state.portError --></label>
+                    </div>
+                    <input id="server-port" type="text" value="" placeholder="Eg: 1024" ng-model="ctrl.port" ng-focus="ctrl.portEntry = 'manual'" custom-validation="" class="ng-pristine ng-untouched ng-valid">
+
+                </div>
+                <br>
+                <button id="create-server" bs-button="size-small subtle-alt icon-left">
+                    <svg bs-svg-icon icon="circle-ok" bs-state="success"><use xlink:href="#svg-circle-ok"></use></svg>
+                    <svg bs-svg-icon icon="circle-plus" bs-state="default"><use xlink:href="#svg-circle-plus"></use></svg>
+                    Create Server
+                </button>
             </div>
         </div>
     </div>
+    <br/>
     <br/>
     <div bs-panel-content="basic">
         <h3>Your Servers</h3>

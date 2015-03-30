@@ -1126,6 +1126,10 @@ button, input, select, textarea {
   font-family: monospace;
   color: #000; }
 
+[bs-label-heading] {
+  color: #000;
+  font-weight: bold; }
+
 [bs-input] {
   padding: 0;
   border-radius: 3px;

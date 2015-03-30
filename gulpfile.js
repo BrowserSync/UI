@@ -13,7 +13,7 @@ var browserSync = require("browser-sync");
 var browserify = require("browserify");
 var source      = require("vinyl-source-stream");
 var crossbow    = require("crossbow");
-//var htmlInjector = require("bs-html-injector");
+var htmlInjector = require("bs-html-injector");
 
 /**
  * Lint all JS files
@@ -69,13 +69,14 @@ gulp.task("browser-sync", function () {
  */
 gulp.task("browser-sync-dev", function () {
     browserSync.use(require("./"));
-    //browserSync.use(require("bs-html-injector"), {
-    //    files: "lib/*.html"
-    //});
     browserSync({
         notify: false,
-        server: ["./static", "./public"]
-
+        server: ["./static", "./public"],
+        plugins: [
+            {
+                "bs-html-injector": {}
+            }
+        ]
     });
 });
 
@@ -163,7 +164,7 @@ gulp.task("svg", function () {
 /**
  * Build Front-end stuff
  */
-gulp.task("dev-frontend", ["sass", "svg", "crossbow", "browser-sync-dev"], function () {
+gulp.task("dev-frontend", ["crossbow", "browser-sync-dev"], function () {
     gulp.watch("src/scss/**/*.scss", ["sass"]);
     gulp.watch(["src/crossbow/**"], ["crossbow"]);
     //gulp.watch(["src/svg/**"], ["svg", "crossbow", browserSync.reload]);

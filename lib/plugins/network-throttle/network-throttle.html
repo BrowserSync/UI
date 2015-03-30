@@ -14,7 +14,7 @@
         <div bs-panel-content="basic">
             <div bs-inputs bs-grid="wide-3 desk-2">
                 <div bs-grid-item>
-                    <label bs-input-label>Speed</label>
+                    <p bs-label-heading>Speed</p>
                     <div bs-input="inline" ng-repeat="(key, item) in ctrl.throttle.targets | orderObjectBy:'order'">
                         <input
                                 type="radio"
@@ -23,20 +23,20 @@
                                 ng-model="ctrl.selected"
                                 value="{{item.id}}">
 
-                        <label for="speed-{{item.id}}" bs-input-label="mono">{{item.title}}</label>
+                        <label for="speed-{{item.id}}" bs-input-label="light">{{item.title}}</label>
                     </div>
                 </div>
                 <div bs-grid-item>
+                    <p bs-label-heading>Port</p>
                     <div bs-input="text">
-                        <p bs-input-label>Port</p>
                         <div bs-input="inline">
                             <input type="radio" name="port-select" id="port-auto" checked value="auto"
                                    ng-model="ctrl.portEntry">
-                            <label for="port-auto" bs-input-label="mono">Auto Detection</label>
+                            <label for="port-auto" bs-input-label="light">Auto Detection</label>
                         </div>
                         <div bs-input="inline">
                             <input type="radio" id="port-manual" name="port-select" value="manual" ng-model="ctrl.portEntry">
-                            <label for="port-manual" bs-input-label="mono">User specified <span ng-if="ctrl.state.portError">(between
+                            <label for="port-manual" bs-input-label="light">User specified <span ng-if="ctrl.state.portError">(between
                                 1024 & 65535)</span></label>
                         </div>
                         <input id="server-port"
