@@ -5,7 +5,12 @@
             {{ctrl.section.title}}
         </h1>
     </div>
-    <div bs-panel="no-border">
+    <div bs-panel="no-border" ng-if="ctrl.options.mode === 'snippet'">
+        <div bs-panel-content="basic">
+            <p class="lede">Sorry, Network Throttling is only available in Server or Proxy mode.</p>
+        </div>
+    </div>
+    <div bs-panel="no-border" ng-if="ctrl.options.mode !== 'snippet'">
         <div bs-panel-content="basic">
             <div bs-inputs bs-grid="wide-3 desk-2">
                 <div bs-grid-item>
