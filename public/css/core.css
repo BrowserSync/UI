@@ -363,6 +363,28 @@ td, th {
   font-weight: normal;
   font-style: normal; }
 
+[bs-anim~="spin"] {
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear; }
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
 html {
   overflow-x: hidden;
   overflow-y: auto;
@@ -925,7 +947,6 @@ span.sep {
           transition: color .2s, background .2s;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.4);
   margin-bottom: 14px;
   height: 40px;
   -webkit-tap-highlight-color: transparent; }
@@ -940,9 +961,6 @@ span.sep {
     color: #fff;
     box-shadow: 0px 1px 0px 0 rgba(0, 0, 0, 0.1) inset;
     text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4); }
-  [bs-button] [bs-state~="success"] {
-    opacity: 0;
-    color: #81be00; }
   [bs-button].success {
     color: #81be00 !important; }
     [bs-button].success [bs-state~="success"] {
@@ -1508,6 +1526,38 @@ button, input, select, textarea {
           -ms-transform: rotate(360deg) scale(1.1);
               transform: rotate(360deg) scale(1.1);
       color: #fff; }
+
+[bs-state~="success"] {
+  opacity: 0;
+  color: #81be00; }
+
+[bs-state~="waiting"] {
+  opacity: 0;
+  color: #4A90E2; }
+
+[bs-state-icons] {
+  position: relative; }
+  [bs-state-icons] [bs-svg-icon] {
+    position: absolute; }
+
+[bs-anim~="spin"] {
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear; }
+
+[bs-state-wrapper] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  [bs-state-wrapper] [bs-state~="inline"] {
+    top: 3px;
+    left: 14px;
+    width: 17px;
+    height: 27px; }
+  [bs-state-wrapper].waiting [bs-state~="waiting"] {
+    opacity: 1; }
+  [bs-state-wrapper].success [bs-state~="success"] {
+    opacity: 1; }
 
 .cmn-toggle {
   position: absolute;

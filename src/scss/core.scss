@@ -7,6 +7,8 @@
 @import "vendor/normalize";
 @import "vendor/fonts";
 
+@import "theme/animations";
+
 @import "theme/base";
 @import "theme/grid";
 @import "theme/cloak";
@@ -24,11 +26,10 @@
 @import "theme/buttons";
 @import "theme/forms";
 @import 'theme/spinner';
-
 @import "theme/panel";
 @import "theme/lists";
-
 @import "theme/top-bar";
+@import "theme/state";
 @import "theme/switch";
 @import "theme/footer";
 @import "theme/code";

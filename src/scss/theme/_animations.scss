@@ -1,11 +1,9 @@
-.spin {
-    animation: fa-spin 2s infinite linear;
+
+[bs-anim~="spin"] {
+    animation: spin 1s infinite linear;
 }
-@keyframes fa-spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(359deg);
-    }
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }

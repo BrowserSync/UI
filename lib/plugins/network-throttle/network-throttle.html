@@ -49,17 +49,21 @@
 
                     </div>
                     <br/>
-                    <button
-                            id="create-server"
-                            bs-button="size-small subtle-alt icon-left"
-                            ng-click="ctrl.createServer(ctrl.selected)"
-                            ng-class="{success: ctrl.state.success}"
-                            ng-disabled="ctrl.state.waiting"
-                            >
-                        <icon icon="circle-ok"   bs-state="success"></icon>
-                        <icon icon="circle-plus" bs-state="default"></icon>
-                        {{ctrl.btnText}}
-                    </button>
+                    <div ng-class="[ctrl.state.classname]" bs-state-wrapper>
+                        <button
+                                id="create-server"
+                                bs-button="size-small subtle-alt icon-left"
+                                ng-click="ctrl.createServer(ctrl.selected, $event)"
+                                ng-disabled="ctrl.state.waiting"
+                                >
+                            <icon icon="circle-plus"></icon>
+                            Create Server
+                        </button>
+                        <div bs-state-icons>
+                            <icon icon="circle-ok"    bs-state="success inline"></icon>
+                            <icon icon="circle-minus" bs-state="waiting inline" bs-anim="spin"></icon>
+                        </div>
+                    </div>
                 </div>
                 <div bs-grid-item>
                 </div>
