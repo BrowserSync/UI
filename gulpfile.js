@@ -13,7 +13,7 @@ var browserSync = require("browser-sync");
 var browserify = require("browserify");
 var source      = require("vinyl-source-stream");
 var crossbow    = require("crossbow");
-var htmlInjector = require("bs-html-injector");
+//var htmlInjector = require("bs-html-injector");
 
 /**
  * Lint all JS files
