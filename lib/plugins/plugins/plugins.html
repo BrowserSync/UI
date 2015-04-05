@@ -19,12 +19,7 @@
     </div>
 </div>
 
-<switch toggle="ctrl.togglePlugin(item)"
-        switchid="sync-options-{{$index}}"
-        active="item.active"
-        prop="active"
-        ng-repeat="item in ctrl.ui.plugins track by $index"
-        item="item"></switch>
+%pluginlist%
 
 <section ng-if="!ctrl.ui.plugins.length">
     <div bs-panel>
