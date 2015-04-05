@@ -61,6 +61,9 @@
                 });
                 socket.emit("ui:get:" + name);
                 return deferred.promise;
+            },
+            uiEvent: function (evt) {
+                socket.emit("ui", evt);
             }
         };
     }
