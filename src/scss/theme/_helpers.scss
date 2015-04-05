@@ -63,6 +63,13 @@ span.sep {
     @include font-size(18px);
 }
 
+[bs-text~="mono"] {
+    font-weight: normal;
+    @include font-size(16px);
+    font-family: monospace;
+    color: $black;
+}
+
 [bs-color~="white"] {
     color: $white;
 }

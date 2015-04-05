@@ -26,3 +26,9 @@
         }
     }
 }
+
+[bs-grid-item~="padded-right"] {
+    @include media-query(min, $lap-start) {
+        padding-right: $base-spacing*2;
+    }
+}

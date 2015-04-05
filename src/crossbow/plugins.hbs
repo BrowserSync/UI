@@ -2,18 +2,10 @@
 layout: main.hbs
 title: "Plugins"
 icon: "plug"
-plugins: ['HTML Injector', 'Console Logger']
+plugins: ['HTML Injector']
 ---
 <div bs-panel="controls outline">
     <h1 bs-heading>{{ inc src="icon.hbs" icon=page.icon }} {{page.title}}</h1>
-    <button bs-button="inline">
-        <i bs-icon="circle_ok"></i>
-        Enable All
-    </button>
-    <button bs-button="inline">
-        <i bs-icon="circle_delete"></i>
-        Disable all
-    </button>
 </div>
 <div>
     {{#each page.plugins}}
@@ -32,6 +24,29 @@ plugins: ['HTML Injector', 'Console Logger']
             </div>
             <div>
                 <p bs-text="lede">{{this}}</p>
+            </div>
+        </div>
+        <div bs-panel-content>
+            <p>Default behaviour is to compare the entire page. You can also restrict the comparisons
+            for localized edits.</p>
+        </div>
+        <div bs-panel-content>
+            <div bs-inputs bs-grid="desk-2">
+                <div bs-grid-item="padded-right">
+                    {{inc src="form.input.text.hbs" title="New Restriction" value="" placeholder="eg: #main"}}
+                </div>
+                <div bs-grid-item>
+                    <p bs-label-heading=""><b>Current Restrictions:</b></p>
+                    <ul bs-list="bordered inline-controls">
+                        <li><p bs-text="mono">#main</p><div bs-button-group="">
+                            <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.destroyServer(item, key)" class="ng-click-active">
+                                <svg bs-svg-icon=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-bin"></use></svg>
+                            </button>
+                        </div></li>
+                        <li><p bs-text="mono">#header</p></li>
+                        <li><p bs-text="mono">#footer</p></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
