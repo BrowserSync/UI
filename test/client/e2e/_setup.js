@@ -8,9 +8,10 @@ var tests       = [
     "history.js",
     "home.js",
     "remote-debug.js",
-    "tests/network-throttle.auto.js",
-    "tests/network-throttle.remove.js",
-    "tests/network-throttle.manual.js"
+    "network-throttle.auto.js",
+    "network-throttle.remove.js",
+    "network-throttle.manual.js",
+    "plugins.js"
 ];
 
 var configFile  = path.resolve(__dirname + "/config.js");
