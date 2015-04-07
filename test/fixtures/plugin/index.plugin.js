@@ -6,7 +6,7 @@ module.exports = {
         var logger = bs.getLogger(PLUGIN_NAME);
         bs.events.on("plugins:configure", function (data) {
             if (data.name === PLUGIN_NAME) {
-                logger.error("Some plugin error");
+                //console.log(data);
             }
         });
     }

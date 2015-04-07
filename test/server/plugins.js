@@ -60,8 +60,8 @@ describe("Can resolve pluings", function() {
         var pluginPath = path.resolve(__dirname, "../", "fixtures/plugin");
         plugin1[pluginPath] = {};
         var plugin2 = {};
-        var pluginPath = path.resolve(__dirname, "../", "fixtures/plugin-noui");
-        plugin2[pluginPath] = {};
+        var pluginPath2 = path.resolve(__dirname, "../", "fixtures/plugin-noui");
+        plugin2[pluginPath2] = {};
         browserSync({
             server: "test/fixtures",
             logLevel: "silent",

@@ -16,5 +16,5 @@
             <p ng-show="item.tagline && item.tagline.length" ng-bind-html="item.tagline">{{item.tagline}}</p>
         </div>
     </div>
-    <div ng-transclude></div>
+    <div ng-transclude ng-if="item.active"></div>
 </section>
