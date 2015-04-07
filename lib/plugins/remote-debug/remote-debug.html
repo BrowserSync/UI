@@ -11,7 +11,7 @@
         prop="active"
         ng-repeat="item in ctrl.items track by $index"
         item="item">
-    <p ng-if="item.active && item.hidden.length" ng-bind-html="item.hidden"></p>
+    <div bs-panel-content ng-if="item.active && item.hidden.length" ng-bind-html="item.hidden"></div>
 </switch>
 
 <switch toggle="ctrl.toggleOverlayGrid(ctrl.overlayGrid)"
