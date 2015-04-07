@@ -138,6 +138,7 @@ address,blockquote,details,dl,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hgrou
 a{color:#ff4453}
 a:active,a:focus,a:hover{color:#000}
 .flush--bottom{margin-bottom:0!important}
+[bs-button-group],[bs-button],[bs-stack]{margin-bottom:14px}
 .text--cap{text-transform:capitalize}
 .color--lime{color:#81be00}
 .hidden{display:none}
@@ -173,7 +174,7 @@ span.sep{margin-left:5px;margin-right:5px}
 [bs-visible~=not-palm]{display:inherit!important}
 [bs-visible~=palm]{display:none}}
 [bs-sep]{color:#d6d6d6;margin-left:3px;margin-right:3px}
-[bs-button]{font-size:16px;font-size:.88889rem;display:inline-block;border:1px solid #f60014;padding:7px 21px;width:auto;background:#ff4453;color:#fff;border-radius:3px;cursor:pointer;outline:0;-webkit-transition:color .2s,background .2s;transition:color .2s,background .2s;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;height:40px;-webkit-tap-highlight-color:transparent}
+[bs-button]{font-size:16px;font-size:.88889rem;display:inline-block;border:1px solid #f60014;padding:7px 21px;width:auto;background:#ff4453;color:#fff;border-radius:3px;cursor:pointer;outline:0;-webkit-transition:color .2s,background .2s;transition:color .2s,background .2s;text-transform:uppercase;letter-spacing:1px;height:40px;-webkit-tap-highlight-color:transparent}
 [bs-button]:hover{color:#fff;background:#ff1124}
 [bs-button]:focus{color:#fff}
 [bs-button]:active{color:#fff;box-shadow:0 1px 0 0 rgba(0,0,0,.1)inset;text-shadow:1px 1px 0 rgba(0,0,0,.4)}
@@ -199,7 +200,7 @@ span.sep{margin-left:5px;margin-right:5px}
 [bs-button~=icon-left] [bs-svg-icon]{left:14px}
 [bs-button~=icon-right]{position:relative;padding-right:41px}
 [bs-button~=icon-right] [bs-svg-icon]{left:auto;right:14px}
-[bs-button-group]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:stretch;-webkit-align-items:stretch;-ms-flex-align:stretch;align-items:stretch;margin-bottom:14px}
+[bs-button-group]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:stretch;-webkit-align-items:stretch;-ms-flex-align:stretch;align-items:stretch}
 [bs-button-group] [bs-button]{border-radius:0;margin-bottom:0}
 [bs-button-group] [bs-button]:first-child{border-top-left-radius:3px;border-bottom-left-radius:3px}
 [bs-button-group] [bs-button]:last-child{border-top-right-radius:3px;border-bottom-right-radius:3px}

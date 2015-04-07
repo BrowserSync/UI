@@ -848,6 +848,9 @@ a {
   .hidden.active {
     display: block; }
 
+[bs-stack] {
+  margin-bottom: 14px; }
+
 span.sep {
   margin-left: 5px;
   margin-right: 5px; }
