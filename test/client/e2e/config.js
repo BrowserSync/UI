@@ -9,5 +9,6 @@ exports.config = {
         //"tests/network-throttle.remove.js",
         //"tests/network-throttle.manual.js"
         //"tests/plugins.js"
+        //"tests/plugins.inline.js"
     ]
 };

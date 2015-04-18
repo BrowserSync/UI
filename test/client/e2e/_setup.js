@@ -11,7 +11,8 @@ var tests       = [
     "network-throttle.auto.js",
     "network-throttle.remove.js",
     "network-throttle.manual.js",
-    "plugins.js"
+    "plugins.js",
+    "plugins.inline.js"
 ];
 
 var configFile  = path.resolve(__dirname + "/config.js");
