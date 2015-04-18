@@ -17,9 +17,9 @@ describe("Plugins page", function() {
 
         browser.ignoreSynchronization = true;
 
-        var pluginPath = path.resolve(__dirname, "../../../", "fixtures/plugin");
-        var plugin = {};
-        plugin[pluginPath] = {};
+        var plugin = {
+            module: path.resolve(__dirname, "../../../", "fixtures/plugin")
+        };
 
         init(protractor, {
             server: "./test/fixtures",

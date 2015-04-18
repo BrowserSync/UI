@@ -10,9 +10,9 @@ describe("Can resolve pluings", function() {
 
         browserSync.reset();
         browserSync.use(ui);
-        var plugin = {};
-        var pluginPath = path.resolve(__dirname, "../", "fixtures/plugin");
-        plugin[pluginPath] = {};
+        var plugin = {
+            module: path.resolve(__dirname, "../", "fixtures/plugin")
+        };
         browserSync({
             server: "test/fixtures",
             logLevel: "silent",
@@ -32,13 +32,40 @@ describe("Can resolve pluings", function() {
             done();
         });
     });
+    it("can return plugins from non-module", function(done) {
+
+        browserSync.reset();
+        browserSync.use(ui);
+        var plugin = {
+            module: {
+                plugin: function () {
+                    console.log("CALLEd");
+                },
+                "plugin:name": "Test inline plugin"
+            }
+        };
+        browserSync({
+            server: "test/fixtures",
+            logLevel: "silent",
+            open: false,
+            plugins: [plugin]
+        }, function (err, bs) {
+
+            assert.equal(bs.ui.bsPlugins.size, 1);
+            assert.equal(bs.ui.bsPlugins.get(0).get("name"), "Test inline plugin");
+
+            bs.cleanup();
+            done();
+        });
+    });
+
     it("Does not blow up when Plugin does not contain any UI", function(done) {
 
         browserSync.reset();
         browserSync.use(ui);
-        var plugin = {};
-        var pluginPath = path.resolve(__dirname, "../", "fixtures/plugin-noui");
-        plugin[pluginPath] = {};
+        var plugin = {
+            module: path.resolve(__dirname, "../", "fixtures/plugin-noui")
+        };
         browserSync({
             server: "test/fixtures",
             logLevel: "silent",
@@ -56,12 +83,12 @@ describe("Can resolve pluings", function() {
 
         browserSync.reset();
         browserSync.use(ui);
-        var plugin1 = {};
-        var pluginPath = path.resolve(__dirname, "../", "fixtures/plugin");
-        plugin1[pluginPath] = {};
-        var plugin2 = {};
-        var pluginPath2 = path.resolve(__dirname, "../", "fixtures/plugin-noui");
-        plugin2[pluginPath2] = {};
+        var plugin1 = {
+            module: path.resolve(__dirname, "../", "fixtures/plugin")
+        };
+        var plugin2 = {
+            module: path.resolve(__dirname, "../", "fixtures/plugin-noui")
+        };
         browserSync({
             server: "test/fixtures",
             logLevel: "silent",
