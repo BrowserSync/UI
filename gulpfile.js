@@ -8,7 +8,7 @@ var autoprefix  = require("gulp-autoprefixer");
 var rename      = require("gulp-rename");
 var filter      = require("gulp-filter");
 var minifyCSS   = require("gulp-minify-css");
-var sprites     = require("gulp-svg-sprites");
+var easysvg     = require("easy-svg");
 var browserSync = require("browser-sync");
 var browserify = require("browserify");
 var source      = require("vinyl-source-stream");
@@ -141,23 +141,7 @@ gulp.task("crossbow", function () {
  */
 gulp.task("svg", function () {
     return gulp.src("src/svg/*.svg")
-        .pipe(sprites({
-            mode: "symbols",
-            svgId: "svg-%f",
-            templates: {
-                symbols: require("fs").readFileSync("src/svg-template.tmpl", "utf-8")
-            },
-            afterTransform: function (data) {
-                data.svg = data.svg.map(function (item) {
-                    item.raw = item.raw.replace(/ fill="(.+?)"/g, function () {
-                        return "";
-                    });
-                    return item;
-                });
-
-                return data;
-            }
-        }))
+        .pipe(easysvg.stream({js: false}))
         .pipe(gulp.dest("public/img/icons"));
 });
 
