@@ -43,13 +43,14 @@ var mainCtrl    = require("./main/controller");
 var filter      = require("./filters");
 var directives  = require("./directives");
 /* jshint ignore:end */
-},{"./directives":2,"./filters":6,"./main/controller":7,"./modules/bsClients":9,"./modules/bsDisconnect":10,"./modules/bsHistory":11,"./modules/bsNotify":12,"./modules/bsSocket":13,"./services/Options":14,"./services/Pages":15}],2:[function(require,module,exports){
+},{"./directives":2,"./filters":7,"./main/controller":8,"./modules/bsClients":10,"./modules/bsDisconnect":11,"./modules/bsHistory":12,"./modules/bsNotify":13,"./modules/bsSocket":14,"./services/Options":15,"./services/Pages":16}],2:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 
 module.directive("icon", require("./directives/icon"));
 module.directive("linkTo", require("./directives/link-to"));
 module.directive("switch", require("./directives/switch"));
-},{"./directives/icon":3,"./directives/link-to":4,"./directives/switch":5,"./module":8}],3:[function(require,module,exports){
+module.directive("newTab", require("./directives/new-tab"));
+},{"./directives/icon":3,"./directives/link-to":4,"./directives/new-tab":5,"./directives/switch":6,"./module":9}],3:[function(require,module,exports){
 module.exports = function () {
     return {
         scope: {
@@ -91,6 +92,18 @@ module.exports = function () {
 module.exports = function () {
     return {
         scope: {
+            url: "@",
+            mode: "@"
+        },
+        restrict: "E",
+        replace: true,
+        template: '<a href="{{url}}" bs-button="subtle-alt icon" target="_blank" title="Open a new tab" ng-show="mode !== \'snippet\'"><icon icon="newtab"></icon> New Tab </a>' //jshint:ignore
+    };
+};
+},{}],6:[function(require,module,exports){
+module.exports = function () {
+    return {
+        scope: {
             toggle: "&",
             item: "=",
             switchid: "@",
@@ -110,7 +123,7 @@ module.exports = function () {
         }]
     };
 };
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var module = require("./module"); //jshint ignore:line
 var utils  = require("./utils"); //jshint ignore:line
 
@@ -119,7 +132,7 @@ module
     .filter("localRootUrl",  function () { return utils.localRootUrl;  })
     .filter("localUrl",      function () { return utils.localRootUrl;  })
     .filter("orderObjectBy", function () { return utils.orderObjectBy; });
-},{"./module":8,"./utils":16}],7:[function(require,module,exports){
+},{"./module":9,"./utils":17}],8:[function(require,module,exports){
 var app    = require("../module");
 
 app.controller("MainController", [
@@ -279,7 +292,7 @@ function getDisplayUrl (urls) {
     }
     return urls.external || urls.local;
 }
-},{"../module":8}],8:[function(require,module,exports){
+},{"../module":9}],9:[function(require,module,exports){
 (function (angular) {
 
     /**
@@ -289,7 +302,7 @@ function getDisplayUrl (urls) {
 
 })(angular);
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -336,7 +349,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function () {
 
     angular
@@ -401,7 +414,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -458,7 +471,7 @@ function getDisplayUrl (urls) {
 })(angular);
 
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (angular) {
 
     angular
@@ -546,7 +559,7 @@ function getDisplayUrl (urls) {
         $rootScope.$on("notify:flash", $scope.show);
     }
 })(angular);
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 (function (angular, browserSyncSocket) {
 
     /**
@@ -619,7 +632,7 @@ function getDisplayUrl (urls) {
 
 })(angular, window.___browserSync___.socket);
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 var app = require("../module");
 
 app.factory("Options", ["Socket", OptionsService]);
@@ -637,7 +650,7 @@ function OptionsService(Socket) {
         }
     };
 }
-},{"../module":8}],15:[function(require,module,exports){
+},{"../module":9}],16:[function(require,module,exports){
 /**
  * @type {angular}
  */
@@ -694,7 +707,7 @@ function ContentSections(pagesConfig, $location) {
         }
     };
 }
-},{"../module":8}],16:[function(require,module,exports){
+},{"../module":9}],17:[function(require,module,exports){
 module.exports = {
     ucfirst: function (string) {
         return string.charAt(0).toUpperCase() + string.slice(1);

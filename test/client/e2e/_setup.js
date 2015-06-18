@@ -6,6 +6,7 @@ var ptor       = require("./runProtractor");
 
 var tests       = [
     "history.js",
+    "history.newtabs.js",
     "home.js",
     "remote-debug.js",
     "network-throttle.auto.js",

@@ -53,6 +53,7 @@ describe("History section", function() {
             var selector = by.css(listContainer + " li > div > [bs-remove]");
             var deleteButtons = element.all(selector);
 
+            browser.sleep(500);
             browser.switchTo().window(client);
             browser.get(bsUrl + urls[0]);
             browser.switchTo().window(ui);
