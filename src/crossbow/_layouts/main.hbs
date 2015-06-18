@@ -1,9 +1,9 @@
 ---
 layout: parent.hbs
 ---
-{{ inc src="../../public/img/icons/svg/symbols.svg" }}
+{{ inc src="../../public/img/icons/icons.svg" }}
 <main>
-    {{ inc src="_components/header.hbs" }}
+    {{ inc src="components/header.hbs" }}
     <section bs-container>
         {{ inc src="nav.hbs" }}
         <section bs-content>
@@ -11,7 +11,7 @@ layout: parent.hbs
                 {{ content }}
             </div>
             <div bs-visible="palm">
-                {{ inc src="_components/footer.hbs" }}
+                {{ inc src="components/footer.hbs" }}
             </div>
         </section>
     </section>

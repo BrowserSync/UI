@@ -119,7 +119,7 @@ gulp.task("crossbow", function () {
     //});
     return gulp.src([
         "src/crossbow/*.hbs",
-        "src/crossbow/_components/*.hbs",
+        "src/crossbow/components/*.hbs",
         "src/crossbow/content/*.hbs"
     ])
         .pipe(crossbow.stream({

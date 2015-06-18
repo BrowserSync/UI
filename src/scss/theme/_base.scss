@@ -19,7 +19,7 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     background: $white;
-    color: lighten($sidebar, 20%);
+    color: $body-text;
     text-rendering: optimizeLegibility;
 
     @include media-query(min, $lap-start) {

@@ -581,6 +581,14 @@ hr {
     [bs-toggle].active svg[bs-state=alt] {
       opacity: 1 !important; }
 
+[bs-link~="version"] {
+  color: #777777;
+  margin-left: 7px;
+  font-size: 14px;
+  font-size: 0.77778rem; }
+  [bs-link~="version"]:hover, [bs-link~="version"]:focus {
+    color: #ff4453; }
+
 [bs-sidebar] {
   position: relative;
   background: #444444; }
@@ -715,7 +723,7 @@ svg {
   color: #fff; }
   .icon-word svg {
     position: relative;
-    top: 1px; }
+    top: -1px; }
 
 .icon-logo {
   color: #fff;
