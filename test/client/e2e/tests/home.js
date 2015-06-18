@@ -57,6 +57,11 @@ describe("Section Navigation", function() {
 
         elems.get(0).click(); // back to homepage
     });
+
+    it("should show the current Browsersync version in header", function() {
+        browser.get(cpUrl);
+        expect(element(by.css('[bs-link="version"]')).getText()).toBe('v' + bs.options.get('version'));
+    });
 });
 
 /**
