@@ -84,6 +84,7 @@ textarea {
 }
 
 [bs-input~="text"] {
+    height: auto;
     input {
         font-family: monospace;
     }
@@ -96,6 +97,7 @@ textarea {
 [bs-input~="inline"] {
 
     display: flex;
+    height: auto;
 
     input {
         &:focus {

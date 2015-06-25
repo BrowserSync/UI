@@ -238,8 +238,9 @@ button,input,select,textarea{vertical-align:middle;border-radius:3px;outline:0;h
 [bs-input] input:focus{color:#4A90E2}
 [bs-input] input[type=text]{width:100%}
 [bs-input] input[type=radio]:checked+label{color:#4A90E2!important}
+[bs-input~=text]{height:auto}
 [bs-input~=text] input{font-family:monospace}
-[bs-input~=inline]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
+[bs-input~=inline]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;height:auto}
 [bs-input~=inline] input:focus+label{text-decoration:underline}
 [bs-input~=inline]>:first-child{margin-right:14px}
 .loader,.loader:after,.loader:before{background:#333;-webkit-animation:load1 .5s infinite ease-in-out;animation:load1 .5s infinite ease-in-out;width:1em;height:2em}

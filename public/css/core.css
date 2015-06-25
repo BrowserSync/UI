@@ -1185,14 +1185,17 @@ button, input, select, textarea {
   [bs-input] input[type=radio]:checked + label {
     color: #4A90E2 !important; }
 
-[bs-input~="text"] input {
-  font-family: monospace; }
+[bs-input~="text"] {
+  height: auto; }
+  [bs-input~="text"] input {
+    font-family: monospace; }
 
 [bs-input~="inline"] {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  height: auto; }
   [bs-input~="inline"] input:focus + label {
     text-decoration: underline; }
   [bs-input~="inline"] > * {
