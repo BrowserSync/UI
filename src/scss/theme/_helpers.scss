@@ -74,6 +74,16 @@ span.sep {
     color: $black;
 }
 
+[bs-text~="micro"] {
+    @include font-size(12px);
+    text-transform: uppercase;
+    color: darken($grey-border, 10%);
+    width: 60px;
+    display: inline-block;
+    text-align: right;
+    margin-right: 5px;
+}
+
 [bs-color~="white"] {
     color: $white;
 }

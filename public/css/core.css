@@ -928,6 +928,16 @@ span.sep {
   font-family: monospace;
   color: #000; }
 
+[bs-text~="micro"] {
+  font-size: 12px;
+  font-size: 0.66667rem;
+  text-transform: uppercase;
+  color: #d6d6d6;
+  width: 60px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 5px; }
+
 [bs-color~="white"] {
   color: #fff; }
 
@@ -1452,6 +1462,20 @@ button, input, select, textarea {
       top: 4px;
       width: 22px;
       height: 22px; }
+
+[bs-tag] {
+  position: absolute;
+  right: calc(100% + 10px);
+  text-transform: uppercase;
+  font-size: 10px;
+  background: #f1f1f1;
+  border-radius: 3px;
+  padding: 1px 3px;
+  top: 6px;
+  text-align: center; }
+  [bs-tag] span {
+    color: #bebebe;
+    display: block; }
 
 [bs-list~="padded-left"] li {
   padding-left: 14px; }

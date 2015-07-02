@@ -8,8 +8,7 @@ plugins: ['HTML Injector']
     <h1 bs-heading>{{ inc src="icon.hbs" icon=page.icon }} {{page.title}}</h1>
 </div>
 <div>
-    {{#each page.plugins}}
-    <section bs-panel="switch {{#if @last}}last{{/if}}">
+    <section bs-panel="switch">
         <div bs-panel-content="">
             <div bs-panel-icon="switch">
                 <div class="switch">
@@ -23,12 +22,76 @@ plugins: ['HTML Injector']
                 </div>
             </div>
             <div>
-                <p bs-text="lede">{{this}}</p>
+                <p bs-text="lede">Rewrite Rules</p>
+            </div>
+        </div>
+        <div bs-panel-content>
+            <p>Add temporary string replacements</p>
+        </div>
+        <div bs-panel-content>
+            <p>
+                <button id="create-server" bs-button="size-small subtle-alt icon-left">
+                    <svg bs-svg-icon="" icon="circle-ok" bs-state="success"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-ok"></use></svg>
+                    <svg bs-svg-icon="" icon="circle-plus" bs-state="default"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-plus"></use></svg>
+                    New Replacement
+                </button>
+            </p>
+            <div bs-inputs bs-grid="desk-2">
+                <div>
+                    <p bs-label-heading=""><b>Current Replacements</b></p>
+                    <ul bs-list="bordered inline-controls leading-controls">
+                        <li style="border-bottom: 0;">
+                            <span bs-tag>Match <span>string</span></span>
+                            <p bs-text="mono">&lt;script async="" src="/browser-sync/browser-sync-client.2.7.12.js"&gt;&lt;/script&gt;&lt;script async=""</p>
+                            <div bs-button-group="">
+                                <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.destroyServer(item, key)" class="ng-click-active">
+                                    <svg bs-svg-icon=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-bin"></use></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li>
+                            <span bs-tag>Replace<span>function</span></span>
+                            <p bs-text="mono">function (match) { return &quot;localhost:3003&quot; + namespace; }</p>
+                        </li>
+                        <li style="border-bottom: 0;">
+                            <span bs-tag>Match <span>regex</span></span>
+                            <p bs-text="mono">/skin/default/assets/(.+?)</p>
+                            <div bs-button-group="">
+                                <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.destroyServer(item, key)" class="ng-click-active">
+                                    <svg bs-svg-icon=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-bin"></use></svg>
+                                </button>
+                            </div>
+                        </li>
+                        <li>
+                            <span bs-tag>Replace<span>string</span></span>
+                            <p bs-text="mono">&lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;114x114&quot; href=&quot;http://www.sunspel.com/skin/frontend/sunspel/default/assets/img/114x114.png&quot;&gt;
+                                &lt;link rel=&quot;apple-touch-icon&quot; sizes=&quot;144x144&quot; href=&quot;http://www.sunspel.com/skin/frontend/sunspel/default/assets/img/144x144.png&quot;&gt;</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section bs-panel="switch">
+        <div bs-panel-content="">
+            <div bs-panel-icon="switch">
+                <div class="switch">
+                    <input id="cmn-form-{{@index}}"
+                           ng-model="plugin.active"
+                           ng-change="togglePlugin(plugin)"
+                           class="cmn-toggle cmn-toggle-round"
+                           type="checkbox"
+                           checked="">
+                    <label for="cmn-form-{{@index}}"></label>
+                </div>
+            </div>
+            <div>
+                <p bs-text="lede">HTML Injector</p>
             </div>
         </div>
         <div bs-panel-content>
             <p>Default behaviour is to compare the entire page. You can also restrict the comparisons
-            for localized edits.</p>
+                for localized edits.</p>
         </div>
         <div bs-panel-content>
             <div bs-inputs bs-grid="desk-2">
@@ -50,6 +113,5 @@ plugins: ['HTML Injector']
             </div>
         </div>
     </section>
-    {{/each}}
     <br/>
 </div>
