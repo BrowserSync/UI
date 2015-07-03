@@ -27,10 +27,45 @@
                         return item.name === PLUGIN_NAME;
                     })[0];
 
+                    ctrl.plugin.rules = [
+                        {
+                            added: 1234567892,
+                            active: true,
+                            match: {
+                                input: '/some-regex/',
+                                type:  'regex'
+                            },
+                            replace: {
+                                input: 'function (match) { return match + "other" }',
+                                type:  'function'
+                            }
+                        },
+                        {
+                            added: 1234567891,
+                            active: true,
+                            match: {
+                                input: '<script src="/assetes/whateves"></script>',
+                                type:  'string'
+                            },
+                            replace: {
+                                input: '<script src="/assetes/whateves.js"></script>',
+                                type:  'string'
+                            }
+                        }
+                    ];
+
+                    ctrl.toggleState = function (rule) {
+                        rule.active = !rule.active;
+                    }
+
                     ctrl.update = function (data) {
                         ctrl.plugin.opts = data.opts;
                         $scope.$digest();
                     };
+
+                    ctrl.removeRule = function (rule) {
+                        Socket.on
+                    }
 
                     Socket.on("options:update", ctrl.update);
 
