@@ -1145,7 +1145,7 @@ span.sep {
 /*
  * Basic Inputs
  */
-button, input, select, textarea {
+button, input, select {
   outline: none;
   vertical-align: middle;
   border-radius: 3px;
@@ -1156,6 +1156,42 @@ button, input, select, textarea {
   max-width: 100%;
   font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
   color: #000; }
+
+[bs-code-input] {
+  width: 100%;
+  border: 0;
+  border: 1px dashed #F0F0F0;
+  font-family: monospace;
+  padding: 14px; }
+
+[bs-heading-bar] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 7px; }
+  [bs-heading-bar] [bs-input-label] {
+    line-height: 36px; }
+  [bs-heading-bar] [bs-button-group] {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-bottom: auto;
+    margin-top: auto; }
+    [bs-heading-bar] [bs-button-group] [bs-button] {
+      padding: 3px 5px;
+      height: 24px;
+      font-size: 10px; }
+      @media only screen and (min-width: 600px) {
+        [bs-heading-bar] [bs-button-group] [bs-button] {
+          padding: 7px 14px;
+          height: 34px;
+          font-size: 14px; } }
 
 [bs-input-label] {
   font-size: 14px;

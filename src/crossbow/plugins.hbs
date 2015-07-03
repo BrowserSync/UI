@@ -36,11 +36,38 @@ plugins: ['HTML Injector']
                     New Replacement
                 </button>
             </p>
+            <div bs-heading-bar>
+                <label for="match" bs-input-label="">Match</label>
+                <div bs-button-group="">
+                    <button bs-button="size-small subtle-alt" disabled>String</button>
+                    <button bs-button="size-small subtle-alt">Regex</button>
+                </div>
+            </div>
+            <textarea name="" id="match" cols="30" rows="5" bs-code-input></textarea>
+            <br/>
+            <br/>
+            <div bs-heading-bar>
+                <label for="match" bs-input-label="">Replacement</label>
+                <div bs-button-group="">
+                    <button bs-button="size-small subtle-alt" disabled>String</button>
+                    <button bs-button="size-small subtle-alt">Function</button>
+                </div>
+            </div>
+            <textarea name="" id="" cols="30" rows="5" bs-code-input></textarea>
+            <br/>
+            <br/>
+            <p>
+                <button id="create-server" bs-button="size-small subtle-alt icon-left">
+                    <svg bs-svg-icon="" icon="circle-ok" bs-state="success"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-ok"></use></svg>
+                    <svg bs-svg-icon="" icon="circle-plus" bs-state="default"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-plus"></use></svg>
+                    Save
+                </button>
+            </p>
             <div bs-inputs bs-grid="desk-2">
                 <div>
                     <p bs-label-heading=""><b>Current Replacements</b></p>
                     <ul bs-list="bordered inline-controls leading-controls">
-                        <li style="border-bottom: 0;">
+                        <li style="border-bottom: 0;" bs-input="text">
                             <span bs-tag>Match <span>string</span></span>
                             <p bs-text="mono">&lt;script async="" src="/browser-sync/browser-sync-client.2.7.12.js"&gt;&lt;/script&gt;&lt;script async=""</p>
                             <div bs-button-group="">

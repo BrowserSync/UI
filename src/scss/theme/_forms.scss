@@ -19,10 +19,42 @@ $input-height: 40px;
  */
 button,
 input,
-select,
-textarea {
-
+select {
     @include base-input;
+}
+
+[bs-code-input] {
+    width: 100%;
+    border: 0;
+    border: 1px dashed $grey-border;
+    font-family: monospace;
+    padding: $half-spacing;
+}
+
+[bs-heading-bar] {
+    display: flex;
+    margin-bottom: $half-spacing/2;
+    [bs-input-label] {
+        line-height: 36px;
+    }
+    [bs-button-group] {
+        flex: 1;
+        justify-content: flex-end;
+        margin-bottom: auto;
+        margin-top: auto;
+
+        [bs-button] {
+            padding: 3px 5px;
+            height: 24px;
+            font-size: 10px;
+
+            @include media-query(min, $lap-start) {
+                padding: 7px $half-spacing;
+                height: 34px;
+                font-size: 14px;
+            }
+        }
+    }
 }
 
 [bs-input-label] {
