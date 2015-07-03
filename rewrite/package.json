@@ -1,0 +1,22 @@
+{
+  "name": "rewrite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "browser-sync:ui": {
+    "hooks": {
+      "markup": "ui/rewrite.html",
+      "templates": [
+        "ui/rewrite.directive.html"
+      ],
+      "client:js": [
+        "ui/client.js"
+      ]
+    }
+  }
+}
