@@ -4,12 +4,12 @@
             <button id="create-server" bs-button="size-small subtle-alt icon-left">
                 <svg bs-svg-icon="" icon="circle-ok" bs-state="success"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-ok"></use></svg>
                 <svg bs-svg-icon="" icon="circle-plus" bs-state="default"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-plus"></use></svg>
-                New Replacement
+                New Rewrite Rule
             </button>
         </p>
         <div>
-            <p bs-label-heading=""><b>Current Replacements</b></p>
-            <ul bs-list="bordered inline-controls leading-controls" ng-repeat="rule in ctrl.plugin.rules">
+            <p bs-label-heading=""><b>Current Rules</b></p>
+            <ul bs-list="bordered inline-controls leading-controls" ng-repeat="rule in ctrl.rules track by rule.added">
                 <li style="border-bottom: 0;" bs-input="text">
                     <span bs-tag>Match <span>{{rule.match.type}}</span></span>
                     <p bs-text="mono">{{rule.match.input}}</p>

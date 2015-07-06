@@ -1,6 +1,6 @@
 (function (angular) {
 
-    const PLUGIN_NAME = "Rewrite Rules";
+    var OPT_PATH = ['shakyshane', 'rewrite-rules'];
 
     angular
         .module("BrowserSync")
@@ -10,72 +10,68 @@
                 replace: true,
                 scope: {
                     "options": "=",
-                    "pluginOpts": "="
+                    "pluginOpts": "=",
+                    "uiOptions": "="
                 },
                 templateUrl: "rewrite.directive.html",
-                controller: ["$scope", "Socket", function ($scope, Socket) {
-
-                    var ctrl = this;
-
-                    ctrl.restriction = "";
-
-                    ctrl.state = {
-                        classname: "ready"
-                    };
-
-                    ctrl.plugin = $scope.options.userPlugins.filter(function (item) {
-                        return item.name === PLUGIN_NAME;
-                    })[0];
-
-                    ctrl.plugin.rules = [
-                        {
-                            added: 1234567892,
-                            active: true,
-                            match: {
-                                input: '/some-regex/',
-                                type:  'regex'
-                            },
-                            replace: {
-                                input: 'function (match) { return match + "other" }',
-                                type:  'function'
-                            }
-                        },
-                        {
-                            added: 1234567891,
-                            active: true,
-                            match: {
-                                input: '<script src="/assetes/whateves"></script>',
-                                type:  'string'
-                            },
-                            replace: {
-                                input: '<script src="/assetes/whateves.js"></script>',
-                                type:  'string'
-                            }
-                        }
-                    ];
-
-                    ctrl.toggleState = function (rule) {
-                        rule.active = !rule.active;
-                    }
-
-                    ctrl.update = function (data) {
-                        ctrl.plugin.opts = data.opts;
-                        $scope.$digest();
-                    };
-
-                    ctrl.removeRule = function (rule) {
-                        Socket.on
-                    }
-
-                    Socket.on("options:update", ctrl.update);
-
-                    $scope.$on("$destory", function () {
-                        Socket.off("options:update", ctrl.update);
-                    });
-                }],
+                controller: ["$scope", "Socket", rewriteRulesDirective],
                 controllerAs: "ctrl"
             };
         });
 
-})(angular);
+    /**
+     * Rewrite Rules Directive
+     * @param $scope
+     * @param Socket
+     */
+    function rewriteRulesDirective($scope, Socket) {
 
+        var ctrl    = this;
+        var ns      = OPT_PATH.join(":");
+
+        ctrl.plugin = $scope.options.userPlugins.filter(function (item) {
+            return item.name === "Rewrite Rules";
+        })[0];
+
+        ctrl.plugin.opts = $scope.uiOptions[OPT_PATH[0]][OPT_PATH[1]];
+        ctrl.rules       = ctrl.plugin.opts.rules;
+
+        ctrl.state = {
+            classname: "ready"
+        };
+
+        ctrl.toggleState = function (rule) {
+            rule.active = !rule.active;
+        }
+
+        ctrl.update = function (data) {
+            ctrl.plugin.opts  = data.opts;
+            ctrl.rules = data.rules;
+            $scope.$digest();
+        };
+
+        ctrl.updateRules = function (data) {
+            ctrl.rules = data.rules;
+            $scope.$digest();
+        };
+
+        ctrl.removeRule = function (rule) {
+            Socket.uiEvent({
+                namespace: ns,
+                event: "removeRule",
+                data: {
+                    rule: rule
+                }
+            });
+        }
+
+        Socket.on("shaksyhane:rewrite-rules:updated", ctrl.updateRules);
+
+        Socket.on("options:update", ctrl.update);
+
+        $scope.$on("$destory", function () {
+            Socket.off("options:update", ctrl.update);
+        });
+    }
+
+})(angular);
