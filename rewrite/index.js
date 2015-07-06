@@ -49,6 +49,24 @@ module.exports["plugin"] = function (opts, bs) {
             ui.socket.emit("shaksyhane:rewrite-rules:updated", {
                 rules: newRules.toJS()
             });
+        },
+        pauseRule: function (data) {
+            var rule     = data.rule;
+            var rulePath = config.OPT_PATH.concat('rules');
+            var newRules = ui.options.updateIn(rulePath, null, function (list) {
+                return list.map(function (item) {
+                    if (item.get('added') === rule.added) {
+                        item.set('active', rule.active);
+                    }
+                    return item;
+                })
+            });
+
+            console.log(newRules.getIn(rulePath));
+
+            //console.log(newRules);
+            //console.log(ui.getOptionIn(config.OPT_PATH.concat('rules')));
+            //console.log(rule);
         }
     });
 };

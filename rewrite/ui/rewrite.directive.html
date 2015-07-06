@@ -14,11 +14,12 @@
                     <span bs-tag>Match <span>{{rule.match.type}}</span></span>
                     <p bs-text="mono">{{rule.match.input}}</p>
                     <div bs-button-group="">
-                        <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.toggleState(rule)" class="ng-click-active">
+                        <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
+                                class="ng-click-active">
                             <icon icon="circle-pause" ng-show="rule.active"></icon>
                             <icon icon="circle-play" ng-show="!rule.active"></icon>
                         </button>
-                        <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.removeRule(rule)" class="ng-click-active">
+                        <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)" class="ng-click-active">
                             <icon icon="bin"></icon>
                         </button>
                     </div>

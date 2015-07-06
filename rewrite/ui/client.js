@@ -55,10 +55,20 @@
             $scope.$digest();
         };
 
-        ctrl.removeRule = function (rule) {
+        ctrl.removeRule = function (action, rule) {
             Socket.uiEvent({
                 namespace: ns,
-                event: "removeRule",
+                event: 'removeRule',
+                data: {
+                    rule: rule
+                }
+            });
+        }
+        ctrl.pauseRule = function (action, rule) {
+            rule.active = !rule.active;
+            Socket.uiEvent({
+                namespace: ns,
+                event: 'pauseRule',
                 data: {
                     rule: rule
                 }
