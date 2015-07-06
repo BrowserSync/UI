@@ -5,6 +5,7 @@
  *
  */
 var config    = require("./config");
+var utils     = require("./utils");
 var Immutable = require("immutable");
 
 /**
@@ -17,18 +18,9 @@ module.exports["plugin"] = function (opts, bs) {
     opts.rules = opts.rules || [];
     var ui     = bs.ui;
 
-    opts.rules.map(function (rule) {
-        var output = {};
-        if (rule.match.type === 'regex') {
-            output.match = new RegExp(rule.match.input);
-        } else {
-            output.match = rule.match.input;
-        }
-
-        if (rule.replace.type === 'function') {
-
-        }
-    })
+    opts.rules
+    .map(utils.normalizeRule)
+    .forEach(bs.addRewriteRule.bind(bs));
 
     var logger = bs.getLogger(config.PLUGIN_NAME).info("Running...");
 
