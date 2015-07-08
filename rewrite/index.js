@@ -16,11 +16,18 @@ module.exports["plugin"] = function (opts, bs) {
 
     opts       = opts || {};
     opts.rules = opts.rules || [];
+    opts.rules = opts.rules.map(utils.addId);
     var ui     = bs.ui;
 
-    opts.rules
-    .map(utils.normalizeRule)
-    .forEach(bs.addRewriteRule.bind(bs));
+    var normRules = opts.rules
+        .map(utils.normalizeRuleForBs);
+    normRules.forEach(bs.addRewriteRule.bind(bs));
+
+    opts.rules = opts.rules
+        .reduce(function (obj, item) {
+            obj[item.id] = item;
+            return obj;
+        }, {});
 
     var logger = bs.getLogger(config.PLUGIN_NAME).info("Running...");
 
@@ -43,7 +50,7 @@ module.exports["plugin"] = function (opts, bs) {
             var rulePath = config.OPT_PATH.concat('rules');
             var rules    = ui.getOptionIn(rulePath);
             var newRules = rules.filter(function (item) {
-                return item.get('added') !== data.rule.added;
+                return item.get('id') !== data.rule.id;
             });
             ui.setOptionIn(rulePath, newRules);
             ui.socket.emit("shaksyhane:rewrite-rules:updated", {
@@ -52,21 +59,10 @@ module.exports["plugin"] = function (opts, bs) {
         },
         pauseRule: function (data) {
             var rule     = data.rule;
-            var rulePath = config.OPT_PATH.concat('rules');
-            var newRules = ui.options.updateIn(rulePath, null, function (list) {
-                return list.map(function (item) {
-                    if (item.get('added') === rule.added) {
-                        item.set('active', rule.active);
-                    }
-                    return item;
-                })
+            var rulePath = config.OPT_PATH.concat(['rules', rule.id]);
+            ui.options = ui.options.updateIn(rulePath, function (item) {
+                return item.set('active', rule.active);
             });
-
-            console.log(newRules.getIn(rulePath));
-
-            //console.log(newRules);
-            //console.log(ui.getOptionIn(config.OPT_PATH.concat('rules')));
-            //console.log(rule);
         }
     });
 };

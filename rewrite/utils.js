@@ -1,6 +1,7 @@
 var utils = exports;
+var counter = 0;
 
-utils.normalizeRule = function (rule) {
+utils.normalizeRuleForBs = function (rule) {
     var output = {};
     if (rule.match.type === 'regex') {
         output.match = new RegExp(rule.match.input, 'g');
@@ -12,6 +13,13 @@ utils.normalizeRule = function (rule) {
     } else {
         output.fn = rule.replace.input;
     }
-    output.id   = rule.added;
     return output;
+}
+
+utils.addId = function (item) {
+    counter += 1;
+    if (!item.id) {
+        item.id = 'rewrite-' + counter;
+    }
+    return item;
 }

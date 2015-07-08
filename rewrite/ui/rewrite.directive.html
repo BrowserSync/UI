@@ -9,7 +9,7 @@
         </p>
         <div>
             <p bs-label-heading=""><b>Current Rules</b></p>
-            <ul bs-list="bordered inline-controls leading-controls" ng-repeat="rule in ctrl.rules track by rule.added">
+            <ul bs-list="bordered inline-controls leading-controls" ng-repeat="(key, rule) in ctrl.rules track by rule.id">
                 <li style="border-bottom: 0;" bs-input="text">
                     <span bs-tag>Match <span>{{rule.match.type}}</span></span>
                     <p bs-text="mono">{{rule.match.input}}</p>
