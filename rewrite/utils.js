@@ -3,6 +3,7 @@ var counter = 0;
 
 utils.normalizeRuleForBs = function (rule) {
     var output = {};
+    output.id = rule.id;
     if (rule.match.type === 'regex') {
         output.match = new RegExp(rule.match.input, 'g');
     } else {

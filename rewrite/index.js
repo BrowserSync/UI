@@ -52,6 +52,7 @@ module.exports["plugin"] = function (opts, bs) {
             var newRules = rules.filter(function (item) {
                 return item.get('id') !== data.rule.id;
             });
+            bs.removeRewriteRule(data.rule.id);
             ui.setOptionIn(rulePath, newRules);
             ui.socket.emit("shaksyhane:rewrite-rules:updated", {
                 rules: newRules.toJS()
