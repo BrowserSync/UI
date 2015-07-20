@@ -23548,7 +23548,8 @@
 
 	var React = __webpack_require__(1);
 	var Main = __webpack_require__(197);
-	var Home = __webpack_require__(198);
+	var Other = __webpack_require__(198);
+	var Home = __webpack_require__(199);
 	var Router = __webpack_require__(157);
 	var DefaultRoute = Router.DefaultRoute;
 	var Route = Router.Route;
@@ -23556,7 +23557,8 @@
 	module.exports = React.createElement(
 	    Route,
 	    { name: 'app', path: '/', handler: Main },
-	    React.createElement(DefaultRoute, { handler: Home })
+	    React.createElement(DefaultRoute, { handler: Home }),
+	    React.createElement(Route, { name: 'other', path: '/other', handler: Other })
 	);
 
 /***/ },
@@ -23597,6 +23599,28 @@
 
 /***/ },
 /* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var Home = React.createClass({
+	    displayName: "Home",
+
+	    render: function render() {
+	        return React.createElement(
+	            "h2",
+	            { className: "text-center" },
+	            "Some other path"
+	        );
+	    }
+	});
+
+	module.exports = Home;
+
+/***/ },
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
