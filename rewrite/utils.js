@@ -9,7 +9,7 @@ utils.decorateTypes = function (item) {
     var output = {
         match:       item.match,
         replace:     item.replace || item.fn,
-        paths:       item.paths,
+        paths:       item.paths   || [],
         matchType:   matchType,
         replaceType: replaceType,
         id:          item.id,

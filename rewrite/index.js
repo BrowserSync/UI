@@ -15,16 +15,24 @@ var Immutable = require("immutable");
 module.exports["plugin"] = function (opts, bs) {
 
     var ui     = bs.ui
-    opts       = opts || {};
+
+    opts       = opts       || {};
     opts.rules = opts.rules || [];
+
     opts.rules = bs.getOption("rewriteRules")
         .toJS()
         .map(utils.addId)
         .map(utils.decorateTypes)
         .map(utils.decorateInputs);
 
+    // Get original BS snippet
+    var builtin = bs.snippetMw.opts.rules
+        .filter(function (item) {
+            return item.id === 'bs-snippet';
+        });
 
-    console.log(opts.rules);
+    bs.updateRewriteRules(opts.rules.concat(builtin));
+
     var logger = bs.getLogger(config.PLUGIN_NAME).info("Running...");
 
     if (typeof opts.logLevel !== "undefined") {
@@ -41,19 +49,19 @@ module.exports["plugin"] = function (opts, bs) {
         ns: config.NS
     }));
 
-    //ui.listen(config.NS, {
-    //    removeRule: function (data) {
-    //        var rulePath = config.OPT_PATH.concat('rules');
-    //        var rules    = ui.getOptionIn(rulePath);
-    //        var newRules = rules.filter(function (item) {
-    //            return item.get('id') !== data.rule.id;
-    //        });
-    //        bs.removeRewriteRule(data.rule.id);
-    //        ui.setOptionIn(rulePath, newRules);
-    //        ui.socket.emit("shaksyhane:rewrite-rules:updated", {
-    //            rules: newRules.toJS()
-    //        });
-    //    },
+    ui.listen(config.NS, {
+        removeRule: function (data) {
+            var rulePath = config.OPT_PATH.concat('rules');
+            var rules    = ui.getOptionIn(rulePath);
+            var newRules = rules.filter(function (item) {
+                return item.get('id') !== data.rule.id;
+            });
+            bs.removeRewriteRule(data.rule.id);
+            ui.setOptionIn(rulePath, newRules);
+            ui.socket.emit("shaksyhane:rewrite-rules:updated", {
+                rules: newRules.toJS()
+            });
+        },
     //    pauseRule: function (data) {
     //        var rule     = data.rule;
     //        var rulePath = config.OPT_PATH.concat(['rules', rule.id]);
@@ -61,7 +69,7 @@ module.exports["plugin"] = function (opts, bs) {
     //            return item.set('active', rule.active);
     //        });
     //    }
-    //});
+    });
 };
 
 /**
