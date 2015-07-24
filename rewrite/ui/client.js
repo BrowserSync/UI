@@ -35,6 +35,7 @@
 
         ctrl.plugin.opts = $scope.uiOptions[OPT_PATH[0]][OPT_PATH[1]];
         ctrl.rules       = ctrl.plugin.opts.rules;
+        var config = ctrl.plugin.opts.config;
 
         ctrl.state = {
             classname: "ready"
@@ -63,7 +64,8 @@
                     rule: rule
                 }
             });
-        }
+        };
+
         ctrl.pauseRule = function (action, rule) {
             rule.active = !rule.active;
             Socket.uiEvent({
@@ -73,9 +75,9 @@
                     rule: rule
                 }
             });
-        }
+        };
 
-        Socket.on("shaksyhane:rewrite-rules:updated", ctrl.updateRules);
+        Socket.on(config.EVENT_UPDATE, ctrl.updateRules);
 
         Socket.on("options:update", ctrl.update);
 

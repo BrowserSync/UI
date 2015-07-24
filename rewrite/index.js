@@ -33,7 +33,8 @@ module.exports["plugin"] = function (opts, bs) {
 
     bs.updateRewriteRules(opts.rules.concat(builtin));
 
-    var logger = bs.getLogger(config.PLUGIN_NAME).info("Running...");
+    var logger   = bs.getLogger(config.PLUGIN_NAME).info("Running...");
+    var rulePath = config.OPT_PATH.concat('rules');
 
     if (typeof opts.logLevel !== "undefined") {
         logger.setLevel(opts.logLevel);
@@ -46,29 +47,48 @@ module.exports["plugin"] = function (opts, bs) {
         tagline: 'Rewrite HTML on the fly',
         rules: opts.rules,
         opts: opts,
-        ns: config.NS
+        ns: config.NS,
+        config: config
     }));
+
+    function setBsRules (rules) {
+        bs.updateRewriteRules(
+            rules.filter(function (item) {
+                return item.get('active');
+            })
+            .toJS()
+            .concat(builtin)
+        )
+    }
+
+    function updateRules (fn) {
+        var rules    = ui.getOptionIn(rulePath);
+        var newRules = fn(rules);
+        ui.setOptionIn(rulePath, newRules);
+        setBsRules(newRules);
+        ui.socket.emit(config.EVENT_UPDATE, {
+            rules: newRules.toJS()
+        });
+    }
 
     ui.listen(config.NS, {
         removeRule: function (data) {
-            var rulePath = config.OPT_PATH.concat('rules');
-            var rules    = ui.getOptionIn(rulePath);
-            var newRules = rules.filter(function (item) {
-                return item.get('id') !== data.rule.id;
-            });
-            bs.removeRewriteRule(data.rule.id);
-            ui.setOptionIn(rulePath, newRules);
-            ui.socket.emit("shaksyhane:rewrite-rules:updated", {
-                rules: newRules.toJS()
+            updateRules(function (rules) {
+                return rules.filter(function (item) {
+                    return item.get('id') !== data.rule.id;
+                });
             });
         },
-    //    pauseRule: function (data) {
-    //        var rule     = data.rule;
-    //        var rulePath = config.OPT_PATH.concat(['rules', rule.id]);
-    //        ui.options = ui.options.updateIn(rulePath, function (item) {
-    //            return item.set('active', rule.active);
-    //        });
-    //    }
+        pauseRule: function (data) {
+            updateRules(function (rules) {
+                return rules.map(function (item) {
+                    if (item.get('id') === data.rule.id) {
+                        return item.set('active', data.rule.active);
+                    }
+                    return item;
+                });
+            });
+        }
     });
 };
 
