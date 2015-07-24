@@ -1,21 +1,38 @@
 var utils = exports;
 var counter = 0;
 
-utils.normalizeRuleForBs = function (rule) {
-    var output = {};
-    output.id = rule.id;
-    if (rule.match.type === 'regex') {
-        output.match = new RegExp(rule.match.input, 'g');
-    } else {
-        output.match = rule.match.input;
-    }
-    if (rule.replace.type === 'function') {
-        output.fn = new Function(rule.replace.input);
-    } else {
-        output.fn = rule.replace.input;
-    }
+utils.decorateTypes = function (item) {
+
+    var matchType   = typeof item.match   === 'string' ? 'string' : 'regex';
+    var replaceType = typeof item.replace;
+
+    var output = {
+        match:       item.match,
+        replace:     item.replace || item.fn,
+        paths:       item.paths,
+        matchType:   matchType,
+        replaceType: replaceType,
+        id:          item.id,
+        active:      true
+    };
     return output;
-}
+};
+
+utils.decorateInputs = function (item) {
+    if (item.matchType === 'regex') {
+        item.matchInput = item.match.source
+    }
+    if (item.matchType === 'string') {
+        item.matchInput = item.match
+    }
+    if (item.replaceType === 'string') {
+        item.replaceInput = item.replace
+    }
+    if (item.replaceType === 'function') {
+        item.replaceInput = item.replace.toString();
+    }
+    return item;
+};
 
 utils.addId = function (item) {
     counter += 1;
@@ -23,4 +40,4 @@ utils.addId = function (item) {
         item.id = 'rewrite-' + counter;
     }
     return item;
-}
+};

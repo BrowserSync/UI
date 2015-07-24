@@ -11,8 +11,8 @@
             <p bs-label-heading=""><b>Current Rules</b></p>
             <ul bs-list="bordered inline-controls leading-controls" ng-repeat="(key, rule) in ctrl.rules track by rule.id">
                 <li style="border-bottom: 0;" bs-input="text">
-                    <span bs-tag>Match <span>{{rule.match.type}}</span></span>
-                    <p bs-text="mono">{{rule.match.input}}</p>
+                    <span bs-tag>Match <span>{{rule.matchType}}</span></span>
+                    <p bs-text="mono">{{rule.matchInput}}</p>
                     <div bs-button-group="">
                         <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
                                 class="ng-click-active">
@@ -25,8 +25,8 @@
                     </div>
                 </li>
                 <li>
-                    <span bs-tag>Replace<span>{{rule.replace.type}}</span></span>
-                    <p bs-text="mono">{{rule.replace.input}}</p>
+                    <span bs-tag>Replace<span>{{rule.replaceType}}</span></span>
+                    <p bs-text="mono">{{rule.replaceInput}}</p>
                 </li>
             </ul>
         </div>
