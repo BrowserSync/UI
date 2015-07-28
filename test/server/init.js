@@ -35,7 +35,7 @@ describe("Can be started with browserSync instance", function() {
             .get("/")
             .expect(200)
             .end(function (err, res) {
-                assert.include(res.text, "<title>Browser Sync</title>");
+                assert.include(res.text, "<title>Browsersync</title>");
                 done();
             });
     });
