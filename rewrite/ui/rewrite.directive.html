@@ -1,25 +1,51 @@
 <section>
     <div bs-panel-content>
         <p>
-            <button id="create-server" bs-button="size-small subtle-alt icon-left">
-                <svg bs-svg-icon="" icon="circle-ok" bs-state="success"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-ok"></use></svg>
-                <svg bs-svg-icon="" icon="circle-plus" bs-state="default"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-circle-plus"></use></svg>
-                New Rewrite Rule
+            <button id="create-rewrite-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.showInputs();">
+                <icon icon="circle-plus" ng-show="!ctrl.state.adding"></icon>
+                <icon icon="bin" ng-show="ctrl.state.adding"></icon>
+                {{ctrl.buttonText}}
             </button>
         </p>
+        <div ng-show="ctrl.state.adding">
+            <div bs-input="text">
+                <label for="rewrite-match" bs-input-label>Match</label>
+                <input id="rewrite-match"
+                       type="text"
+                       placeholder="Eg: 'skin/core.css' or /skin.core.css/g"
+                       ng-model="ctrl.inputs.match">
+            </div>
+            <br/>
+            <div bs-input="text">
+                <label for="rewrite-replace" bs-input-label>Replace</label>
+                <input id="rewrite-replace" type="text" placeholder="Eg: skin/core.css" ng-model="ctrl.inputs.replace">
+            </div>
+            <br/>
+            <div ng-class="[ctrl.state.classname]" bs-state-wrapper>
+                <button id="save-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule(ctrl.inputs, $event)" ng-disabled="ctrl.state.waiting">
+                    <svg bs-svg-icon class="ng-isolate-scope"><use xlink:href="#svg-circle-ok"></use></svg>
+                    Save
+                </button>
+                <div bs-state-icons>
+                    <icon icon="circle-ok" bs-state="success inline"></icon>
+                    <icon icon="circle-minus" bs-state="waiting inline" bs-anim="spin"></icon>
+                </div>
+            </div>
+        </div>
+
         <div>
-            <p bs-label-heading=""><b>Current Rules</b></p>
+            <p bs-label-heading><b>Current Rules</b></p>
             <ul bs-list="bordered inline-controls leading-controls" ng-repeat="(key, rule) in ctrl.rules track by rule.id">
-                <li style="border-bottom: 0;" bs-input="text">
+                <li bs-input="text">
                     <span bs-tag>Match <span>{{rule.matchType}}</span></span>
                     <p bs-text="mono">{{rule.matchInput}}</p>
-                    <div bs-button-group="">
-                        <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
+                    <div bs-button-group>
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
                                 class="ng-click-active">
                             <icon icon="circle-pause" ng-show="rule.active"></icon>
                             <icon icon="circle-play" ng-show="!rule.active"></icon>
                         </button>
-                        <button href="#" bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)" class="ng-click-active">
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)" class="ng-click-active">
                             <icon icon="bin"></icon>
                         </button>
                     </div>

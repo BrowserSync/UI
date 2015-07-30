@@ -37,13 +37,51 @@
         ctrl.rules       = ctrl.plugin.opts.rules;
         var config = ctrl.plugin.opts.config;
 
+        ctrl.buttonText = "Add Rewrite Rule";
+
         ctrl.state = {
-            classname: "ready"
+            classname: "ready",
+            adding: false
+        };
+
+        ctrl.inputs = {
+            match: '',
+            replace: ''
+        };
+
+        ctrl.showInputs = function () {
+            if (!ctrl.state.adding) {
+                ctrl.state.adding = true;
+                ctrl.buttonText = "Cancle";
+            } else {
+                ctrl.state.adding = false;
+                ctrl.buttonText = "Add Rewrite Rule";
+            }
         };
 
         ctrl.toggleState = function (rule) {
             rule.active = !rule.active;
-        }
+        };
+
+        ctrl.resetForm = function () {
+            ctrl.buttonText     = "Add Rewrite Rule";
+            ctrl.inputs.match   = "";
+            ctrl.inputs.replace = "";
+        };
+
+        ctrl.saveRule = function (inputs) {
+            ctrl.state.classname = 'waiting';
+            setTimeout(function () {
+                ctrl.state.classname = 'success';
+                $scope.$digest();
+                setTimeout(function () {
+                    ctrl.state.classname = 'ready';
+                    ctrl.state.adding = false;
+                    ctrl.resetForm();
+                    $scope.$digest();
+                }, 1000 );
+            }, 500);
+        };
 
         ctrl.update = function (data) {
             ctrl.plugin.opts  = data.opts;

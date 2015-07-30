@@ -31,7 +31,7 @@ module.exports["plugin"] = function (opts, bs) {
             return item.id === 'bs-snippet';
         });
 
-    bs.updateRewriteRules(opts.rules.concat(builtin));
+    bs.setRewriteRules(opts.rules.concat(builtin));
 
     var logger   = bs.getLogger(config.PLUGIN_NAME).info("Running...");
     var rulePath = config.OPT_PATH.concat('rules');
@@ -52,7 +52,7 @@ module.exports["plugin"] = function (opts, bs) {
     }));
 
     function setBsRules (rules) {
-        bs.updateRewriteRules(
+        bs.setRewriteRules(
             rules.filter(function (item) {
                 return item.get('active');
             })
@@ -71,7 +71,7 @@ module.exports["plugin"] = function (opts, bs) {
         });
     }
 
-    ui.listen(config.NS, {
+    var methods = {
         removeRule: function (data) {
             updateRules(function (rules) {
                 return rules.filter(function (item) {
@@ -89,7 +89,11 @@ module.exports["plugin"] = function (opts, bs) {
                 });
             });
         }
-    });
+    };
+
+    ui.listen(config.NS, methods);
+
+    return methods;
 };
 
 /**
