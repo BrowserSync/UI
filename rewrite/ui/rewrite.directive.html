@@ -80,12 +80,15 @@
                     <span bs-tag="offset" ng-show="rule.matchFlags">Flags <span>{{rule.matchFlags}}</span></span>
                     <p bs-text="mono">{{rule.matchInput}}</p>
                     <div bs-button-group>
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.editRule(rule)">
+                            <icon icon="pencil"></icon>
+                        </button>
                         <button bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
                                 class="ng-click-active">
                             <icon icon="circle-pause" ng-show="rule.active"></icon>
                             <icon icon="circle-play" ng-show="!rule.active"></icon>
                         </button>
-                        <button bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)" class="ng-click-active">
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)">
                             <icon icon="bin"></icon>
                         </button>
                     </div>

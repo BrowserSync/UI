@@ -33,10 +33,10 @@ utils.decorateInputs = function (item) {
         item.matchFlags = flags;
     }
     if (item.matchType === 'string') {
-        item.matchInput = item.match
+        item.matchInput = item.match;
     }
     if (item.replaceType === 'string') {
-        item.replaceInput = item.replace
+        item.replaceInput = item.replace;
     }
     if (item.replaceType === 'function') {
         item.replaceInput = item.replace.toString();
@@ -45,8 +45,8 @@ utils.decorateInputs = function (item) {
 };
 
 utils.addId = function (item) {
-    counter += 1;
     if (!item.id) {
+        counter += 1;
         item.id = 'rewrite-' + counter;
     }
     return item;

@@ -42,7 +42,8 @@
 
         ctrl.state = {
             classname: "ready",
-            adding: false
+            adding: false,
+            editing: false
         };
 
         ctrl.inputs = {
@@ -58,6 +59,7 @@
         };
 
         ctrl.showInputs = function () {
+            ctrl.resetForm();
             if (!ctrl.state.adding) {
                 ctrl.state.adding = true;
                 ctrl.buttonText = "Cancel";
@@ -87,25 +89,50 @@
             ctrl.buttonText = "Add Rewrite Rule";
             ctrl.showErrors = false;
             ctrl.inputs.match.value   = "";
+            ctrl.inputs.match.flags   = "";
             ctrl.inputs.replace.value = "";
+            ctrl.state.editing = false;
+        };
+
+        ctrl.editRule = function (rule) {
+            ctrl.state.editing = true;
+            ctrl.state.currentRule = rule;
+            ctrl.buttonText = 'Cancel';
+            ctrl.inputs.match.value = rule.matchInput;
+            ctrl.inputs.match.type  = rule.matchType;
+
+            if (ctrl.inputs.match.type === 'regex') {
+                ctrl.inputs.match.flags = rule.matchFlags;
+            }
+
+            ctrl.inputs.replace.value = rule.replaceInput;
+            ctrl.inputs.replace.type  = rule.replaceType;
+
+            ctrl.state.adding = true;
         };
 
         ctrl.saveRule = function () {
+
             var match   = ctrl.inputs.match;
             var replace = ctrl.inputs.replace;
+            var obj     = {};
+
+            if (ctrl.state.editing) {
+                obj.id = ctrl.state.currentRule.id;
+            }
 
             if (!$scope.rewriteForm.$valid) {
                 ctrl.showErrors = true;
                 return;
             }
 
+            obj.match   = match;
+            obj.replace = replace;
+
             Socket.uiEvent({
                 namespace: ns,
                 event: 'addRule',
-                data: {
-                    match: match,
-                    replace: replace
-                }
+                data: obj
             });
 
             ctrl.state.classname = 'waiting';

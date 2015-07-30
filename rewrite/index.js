@@ -14,7 +14,7 @@ var Immutable = require("immutable");
  */
 module.exports["plugin"] = function (opts, bs) {
 
-    var ui     = bs.ui
+    var ui     = bs.ui;
 
     opts       = opts       || {};
     opts.rules = opts.rules || [];
@@ -92,13 +92,10 @@ module.exports["plugin"] = function (opts, bs) {
         addRule: function (data) {
             var rule = {};
             if (data.match.type !== 'string') {
-
                 var flags = getFlags(data.match.flags);
-                console.log(flags);
                 rule.match = new RegExp(data.match.value, flags);
             } else {
                 rule.match = data.match.value;
-                rule._flags = data.match.flags;
             }
             if (data.replace.type !== 'string') {
                 rule.replace = new Function(data.replace.value);
@@ -107,7 +104,20 @@ module.exports["plugin"] = function (opts, bs) {
             }
 
             updateRules(function (rules) {
-                var out = rules.concat(
+
+                var matchedRule = rules.filter(function (item) {
+                    return item.get('id') === data.id;
+                });
+
+                var without = rules.filter(function (item) {
+                    return item.get('id') !== data.id;
+                });
+
+                if (matchedRule.size) {
+                    rule.id = matchedRule.get(0).get('id');
+                }
+
+                var out = without.concat(
                     Immutable.fromJS([rule]
                         .map(utils.addId)
                         .map(utils.decorateTypes)
