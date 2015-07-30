@@ -88,6 +88,29 @@ module.exports["plugin"] = function (opts, bs) {
                     return item;
                 });
             });
+        },
+        addRule: function (data) {
+            var rule = {};
+            if (data.match.type !== 'string') {
+                rule.match = new RegExp(data.match.value);
+            } else {
+                rule.match = data.match.value;
+            }
+            if (data.replace.type !== 'string') {
+                rule.replace = new Function(data.replace.value);
+            } else {
+                rule.replace = data.replace.value;
+            }
+
+            updateRules(function (rules) {
+                var out = rules.concat(
+                    Immutable.fromJS([rule]
+                        .map(utils.addId)
+                        .map(utils.decorateTypes)
+                        .map(utils.decorateInputs))
+                );
+                return out;
+            });
         }
     };
 

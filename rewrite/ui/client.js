@@ -35,6 +35,7 @@
 
         ctrl.plugin.opts = $scope.uiOptions[OPT_PATH[0]][OPT_PATH[1]];
         ctrl.rules       = ctrl.plugin.opts.rules;
+
         var config = ctrl.plugin.opts.config;
 
         ctrl.buttonText = "Add Rewrite Rule";
@@ -45,18 +46,36 @@
         };
 
         ctrl.inputs = {
-            match: '',
-            replace: ''
+            match: {
+                type: 'string',
+                value: ''
+            },
+            replace: {
+                type: 'string',
+                value: ''
+            }
         };
 
         ctrl.showInputs = function () {
             if (!ctrl.state.adding) {
                 ctrl.state.adding = true;
-                ctrl.buttonText = "Cancle";
+                ctrl.buttonText = "Cancel";
             } else {
                 ctrl.state.adding = false;
                 ctrl.buttonText = "Add Rewrite Rule";
             }
+        };
+
+        ctrl.setMatchType = function (type) {
+            ctrl.inputs.match.type = type;
+        };
+
+        ctrl.setReplaceType = function (type) {
+            ctrl.inputs.replace.type = type;
+        };
+
+        ctrl.setReplaceType = function (type) {
+            ctrl.inputs.replace.type = type;
         };
 
         ctrl.toggleState = function (rule) {
@@ -64,12 +83,30 @@
         };
 
         ctrl.resetForm = function () {
-            ctrl.buttonText     = "Add Rewrite Rule";
-            ctrl.inputs.match   = "";
-            ctrl.inputs.replace = "";
+            ctrl.buttonText = "Add Rewrite Rule";
+            ctrl.showErrors = false;
+            ctrl.inputs.match.value   = "";
+            ctrl.inputs.replace.value = "";
         };
 
-        ctrl.saveRule = function (inputs) {
+        ctrl.saveRule = function () {
+            var match   = ctrl.inputs.match;
+            var replace = ctrl.inputs.replace;
+
+            if (!$scope.rewriteForm.$valid) {
+                ctrl.showErrors = true;
+                return;
+            }
+
+            Socket.uiEvent({
+                namespace: ns,
+                event: 'addRule',
+                data: {
+                    match: match,
+                    replace: replace
+                }
+            });
+
             ctrl.state.classname = 'waiting';
             setTimeout(function () {
                 ctrl.state.classname = 'success';

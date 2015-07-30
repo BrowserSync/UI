@@ -8,11 +8,17 @@
             </button>
         </p>
         <div ng-show="ctrl.state.adding">
-            <div bs-heading-bar="">
+            <form name="rewriteForm">
+
+            <div bs-heading-bar>
                 <label for="rewrite-match" bs-input-label="">Match</label>
                 <div bs-button-group="">
-                    <button bs-button="size-small subtle-alt" disabled="">String</button>
-                    <button bs-button="size-small subtle-alt">Regex</button>
+                    <button bs-button="size-small subtle-alt" ng-disabled="ctrl.inputs.match.type === 'string'" ng-click="ctrl.setMatchType('string')">
+                        String
+                    </button>
+                    <button bs-button="size-small subtle-alt" ng-click="ctrl.setMatchType('regex')" ng-disabled="ctrl.inputs.match.type === 'regex'">
+                        Regex
+                    </button>
                 </div>
             </div>
             <textarea
@@ -20,14 +26,21 @@
                     cols="30"
                     rows="5"
                     bs-code-input
-                    ng-model="ctrl.inputs.match"
+                    name="rewriteMatch"
+                    ng-model="ctrl.inputs.match.value"
+                    ng-required="1"
+                    ng-minlength="1"
                     placeholder="Eg: 'skin/core.css' or /skin.core.css/g"></textarea>
             <br/>
             <div bs-heading-bar="">
                 <label for="rewrite-replace" bs-input-label="">Replace</label>
                 <div bs-button-group="">
-                    <button bs-button="size-small subtle-alt" disabled="">String</button>
-                    <button bs-button="size-small subtle-alt">Regex</button>
+                    <button bs-button="size-small subtle-alt" ng-disabled="ctrl.inputs.replace.type === 'string'" ng-click="ctrl.setReplaceType('string')">
+                        String
+                    </button>
+                    <button bs-button="size-small subtle-alt" ng-click="ctrl.setReplaceType('function')" ng-disabled="ctrl.inputs.replace.type === 'function'">
+                        Function
+                    </button>
                 </div>
             </div>
             <textarea
@@ -35,11 +48,11 @@
                     cols="30"
                     rows="5"
                     bs-code-input
-                    ng-model="ctrl.inputs.replace"
+                    ng-model="ctrl.inputs.replace.value"
                     placeholder="Eg: 'skin/core.css' or /skin.core.css/g"></textarea>
             <br/>
             <div ng-class="[ctrl.state.classname]" bs-state-wrapper>
-                <button id="save-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule(ctrl.inputs, $event)" ng-disabled="ctrl.state.waiting">
+                <button id="save-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule()" ng-disabled="ctrl.state.waiting">
                     <svg bs-svg-icon class="ng-isolate-scope"><use xlink:href="#svg-circle-ok"></use></svg>
                     Save
                 </button>
@@ -48,6 +61,7 @@
                     <icon icon="circle-minus" bs-state="waiting inline" bs-anim="spin"></icon>
                 </div>
             </div>
+            </form>
         </div>
 
         <div>
