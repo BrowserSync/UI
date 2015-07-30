@@ -29,6 +29,10 @@ select {
     border: 1px dashed $grey-border;
     font-family: monospace;
     padding: $half-spacing;
+
+    &:focus {
+        color: $blue;
+    }
 }
 
 [bs-heading-bar] {

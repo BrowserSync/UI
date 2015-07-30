@@ -18,6 +18,10 @@ module.exports["plugin"] = function (opts, bs) {
 
     opts       = opts       || {};
     opts.rules = opts.rules || [];
+    var bsRules = bs.getOption("rewriteRules");
+    if (bsRules === false) {
+        bs.setOption('rewriteRules', Immutable.List([]));
+    }
 
     opts.rules = bs.getOption("rewriteRules")
         .toJS()
@@ -123,6 +127,7 @@ module.exports["plugin"] = function (opts, bs) {
                         .map(utils.decorateTypes)
                         .map(utils.decorateInputs))
                 );
+                console.log('set new rule');
                 return out;
             });
         }

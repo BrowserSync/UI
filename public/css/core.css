@@ -1163,6 +1163,8 @@ button, input, select {
   border: 1px dashed #F0F0F0;
   font-family: monospace;
   padding: 14px; }
+  [bs-code-input]:focus {
+    color: #4A90E2; }
 
 [bs-heading-bar] {
   display: -webkit-box;

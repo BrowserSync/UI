@@ -219,6 +219,7 @@ span.sep{margin-left:5px;margin-right:5px}
 button,input,select{border-radius:3px;outline:0;height:40px;padding-left:7px;padding-right:14px;max-width:100%;font-family:source_sans,"Lucida Grande","Lucida Sans",sans-serif;color:#000}
 [bs-code-input],[bs-input~=text] input{font-family:monospace}
 [bs-code-input]{width:100%;border:0;border:1px dashed #F0F0F0;padding:14px}
+[bs-code-input]:focus{color:#4A90E2}
 [bs-heading-bar]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-bottom:7px}
 [bs-heading-bar] [bs-input-label]{line-height:36px}
 [bs-heading-bar] [bs-button-group]{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end}

@@ -39,7 +39,10 @@ utils.decorateInputs = function (item) {
         item.replaceInput = item.replace;
     }
     if (item.replaceType === 'function') {
-        item.replaceInput = item.replace.toString();
+        item.replaceInput = item.replace
+            .toString()
+            .replace(/(^.*?\{|\}$)/g, "")
+            .trim();
     }
     return item;
 };
