@@ -21,6 +21,14 @@
                     </button>
                 </div>
             </div>
+            <div bs-heading-bar ng-show="ctrl.inputs.match.type === 'regex'">
+                <label for="rewrite-match" bs-input-label="">Flags</label>
+                <div bs-button-group="">
+                    <div bs-input="text">
+                        <input type="text" placeholder="eg: gi" ng-model="ctrl.inputs.match.flags"/>
+                    </div>
+                </div>
+            </div>
             <textarea
                     id="rewrite-match"
                     cols="30"
@@ -69,6 +77,7 @@
             <ul bs-list="bordered inline-controls leading-controls" ng-repeat="(key, rule) in ctrl.rules track by rule.id">
                 <li bs-input="text">
                     <span bs-tag>Match <span>{{rule.matchType}}</span></span>
+                    <span bs-tag="offset" ng-show="rule.matchFlags">Flags <span>{{rule.matchFlags}}</span></span>
                     <p bs-text="mono">{{rule.matchInput}}</p>
                     <div bs-button-group>
                         <button bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"

@@ -1513,6 +1513,14 @@ button, input, select {
     color: #bebebe;
     display: block; }
 
+[bs-tag~="offset"] {
+  top: 44px; }
+  @media only screen and (min-width: 600px) {
+    [bs-tag~="offset"] {
+      top: 6px;
+      right: auto;
+      left: -86px; } }
+
 [bs-list~="padded-left"] li {
   padding-left: 14px; }
 

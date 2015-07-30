@@ -48,7 +48,8 @@
         ctrl.inputs = {
             match: {
                 type: 'string',
-                value: ''
+                value: '',
+                flags: ''
             },
             replace: {
                 type: 'string',
@@ -121,7 +122,7 @@
         };
 
         ctrl.update = function (data) {
-            ctrl.plugin.opts  = data.opts;
+            ctrl.plugin.opts = data.opts;
             ctrl.rules = data.rules;
             $scope.$digest();
         };

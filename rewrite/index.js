@@ -92,9 +92,13 @@ module.exports["plugin"] = function (opts, bs) {
         addRule: function (data) {
             var rule = {};
             if (data.match.type !== 'string') {
-                rule.match = new RegExp(data.match.value);
+
+                var flags = getFlags(data.match.flags);
+                console.log(flags);
+                rule.match = new RegExp(data.match.value, flags);
             } else {
                 rule.match = data.match.value;
+                rule._flags = data.match.flags;
             }
             if (data.replace.type !== 'string') {
                 rule.replace = new Function(data.replace.value);
@@ -118,6 +122,17 @@ module.exports["plugin"] = function (opts, bs) {
 
     return methods;
 };
+
+function getFlags(input) {
+    var whitelist = ['g', 'i', 'm'];
+    return input
+        .trim()
+        .split('')
+        .filter(function (key) {
+            return whitelist.indexOf(key > -1);
+        })
+        .join('');
+}
 
 /**
  * Plugin name.

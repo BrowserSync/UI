@@ -142,6 +142,15 @@ $controls-height: 41px;
     }
 }
 
+[bs-tag~="offset"] {
+    top: 44px;
+    @include media-query(min, $lap-start) {
+        top: 6px;
+        right: auto;
+        left: -86px;
+    }
+}
+
 //
 // Padded-left variant of the bs-list
 //

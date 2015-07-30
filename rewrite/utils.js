@@ -20,7 +20,17 @@ utils.decorateTypes = function (item) {
 
 utils.decorateInputs = function (item) {
     if (item.matchType === 'regex') {
-        item.matchInput = item.match.source
+        item.matchInput = item.match.source;
+        var flagnames = ['global', 'multiline', 'ignoreCase'];
+        var flags = flagnames.filter(function (name) {
+            return item.match[name];
+        })
+        .map(function (item) {
+            return item.charAt(0);
+        })
+        .join('');
+
+        item.matchFlags = flags;
     }
     if (item.matchType === 'string') {
         item.matchInput = item.match
