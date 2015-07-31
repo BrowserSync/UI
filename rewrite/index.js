@@ -127,7 +127,6 @@ module.exports["plugin"] = function (opts, bs) {
                         .map(utils.decorateTypes)
                         .map(utils.decorateInputs))
                 );
-                console.log('set new rule');
                 return out;
             });
         }

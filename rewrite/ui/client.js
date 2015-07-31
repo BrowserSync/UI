@@ -14,7 +14,7 @@
                     "uiOptions": "="
                 },
                 templateUrl: "rewrite.directive.html",
-                controller: ["$scope", "Socket", rewriteRulesDirective],
+                controller: ["$scope", "Socket", "Clients", rewriteRulesDirective],
                 controllerAs: "ctrl"
             };
         });
@@ -24,7 +24,7 @@
      * @param $scope
      * @param Socket
      */
-    function rewriteRulesDirective($scope, Socket) {
+    function rewriteRulesDirective($scope, Socket, Clients) {
 
         var ctrl    = this;
         var ns      = OPT_PATH.join(":");
@@ -38,7 +38,9 @@
 
         var config = ctrl.plugin.opts.config;
 
+
         ctrl.buttonText = "Add Rewrite Rule";
+        ctrl.nextUpdate = [];
 
         ctrl.state = {
             classname: "ready",
@@ -111,7 +113,13 @@
             ctrl.state.adding = true;
         };
 
-        ctrl.saveRule = function () {
+        ctrl.saveRule = function (after) {
+
+            if (after === 'reload') {
+                ctrl.nextUpdate.push(function () {
+                    Clients.reloadAll();
+                });
+            }
 
             var match   = ctrl.inputs.match;
             var replace = ctrl.inputs.replace;
@@ -136,6 +144,7 @@
             });
 
             ctrl.state.classname = 'waiting';
+
             setTimeout(function () {
                 ctrl.state.classname = 'success';
                 $scope.$digest();
@@ -148,14 +157,24 @@
             }, 500);
         };
 
-        ctrl.update = function (data) {
+        ctrl.updateOptions = function (data) {
             ctrl.plugin.opts = data.opts;
             ctrl.rules = data.rules;
             $scope.$digest();
         };
 
         ctrl.updateRules = function (data) {
+
+
             ctrl.rules = data.rules;
+
+            if (ctrl.nextUpdate.length) {
+                ctrl.nextUpdate.forEach(function (fn) {
+                    fn(data);
+                });
+            }
+
+            ctrl.nextUpdate = [];
             $scope.$digest();
         };
 
@@ -182,10 +201,11 @@
 
         Socket.on(config.EVENT_UPDATE, ctrl.updateRules);
 
-        Socket.on("options:update", ctrl.update);
+        Socket.on("options:update", ctrl.updateOptions);
 
         $scope.$on("$destory", function () {
-            Socket.off("options:update", ctrl.update);
+            Socket.off(config.EVENT_UPDATE, ctrl.updateRules);
+            Socket.off("options:update", ctrl.updateOptions);
         });
     }
 
