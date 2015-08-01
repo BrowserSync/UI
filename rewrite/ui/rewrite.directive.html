@@ -88,31 +88,35 @@
             </form>
         </div>
     </div>
-    <div bs-panel-content>
-        <p bs-label-heading><b ng-show="ctrl.rules.length">Current Rules</b><b ng-show="!ctrl.rules.length">When you've added some, rules will be listed below.</b></p>
-        <ul bs-list="bordered inline-controls leading-controls" ng-repeat="(key, rule) in ctrl.rules track by rule.id">
-            <li bs-input="text">
-                <span bs-tag>Match <span>{{rule.matchType}}</span></span>
-                <span bs-tag="offset" ng-show="rule.matchFlags">Flags <span>{{rule.matchFlags}}</span></span>
-                <p bs-text="mono">{{rule.matchInput}}</p>
-                <div bs-button-group>
-                    <button bs-button="subtle-alt icon" ng-click="ctrl.editRule(rule)">
-                        <icon icon="pencil"></icon>
-                    </button>
-                    <button bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
-                            class="ng-click-active">
-                        <icon icon="circle-pause" ng-show="rule.active"></icon>
-                        <icon icon="circle-play" ng-show="!rule.active"></icon>
-                    </button>
-                    <button bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)">
-                        <icon icon="bin"></icon>
-                    </button>
-                </div>
-            </li>
-            <li>
-                <span bs-tag>Replace<span>{{rule.replaceType}}</span></span>
-                <p bs-text="mono">{{rule.replaceInput}}</p>
-            </li>
-        </ul>
+    <div bs-panel-content ng-show="ctrl.rules.length">
+        <div ng-repeat="(key, rule) in ctrl.rules track by rule.id">
+            <ul bs-list="bordered inline-controls leading-controls" bs-flush="bottom">
+                <li>
+                    <p>Rule <b>{{$index + 1}} <span style="color: #e1e1e1; margin-left: 10px">id: {{rule.id}}</span></b></p>
+                    <div bs-button-group>
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.editRule(rule)">
+                            <icon icon="pencil"></icon>
+                        </button>
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.pauseRule('pause', rule)"
+                                class="ng-click-active">
+                            <icon icon="circle-pause" ng-show="rule.active"></icon>
+                            <icon icon="circle-play" ng-show="!rule.active"></icon>
+                        </button>
+                        <button bs-button="subtle-alt icon" ng-click="ctrl.removeRule('remove', rule)">
+                            <icon icon="bin"></icon>
+                        </button>
+                    </div>
+                </li>
+                <li bs-input="text">
+                    <span bs-tag>Match <span>{{rule.matchType}}</span></span>
+                    <span bs-tag="offset" ng-show="rule.matchFlags">Flags <span>{{rule.matchFlags}}</span></span>
+                    <p bs-text="mono">{{rule.matchInput}}</p>
+                </li>
+                <li>
+                    <span bs-tag>Replace<span>{{rule.replaceType}}</span></span>
+                    <p bs-text="mono">{{rule.replaceInput}}</p>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>

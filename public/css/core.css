@@ -1439,6 +1439,10 @@ button, input, select {
   [bs-skinny] {
     padding: 54px 95px; } }
 
+[bs-flush] {
+  margin-bottom: 0;
+  border-bottom: 0; }
+
 [bs-list] {
   margin-left: 0;
   list-style: none;

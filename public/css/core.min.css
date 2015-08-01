@@ -289,6 +289,7 @@ button,input,select{border-radius:3px;outline:0;height:40px;padding-left:7px;pad
 @media only screen and (min-width:600px){[bs-panel~=controls]{padding:27px 27px 14px}
 [bs-panel~=controls] [bs-heading]{margin-bottom:14px}
 }
+[bs-flush],[bs-list] p,[bs-list~=inline-controls] [bs-button-group]{margin-bottom:0}
 [bs-panel~=no-border]{border-bottom:0}
 [bs-panel~=outline]{border-bottom:1px solid #F0F0F0}
 [bs-panel-icon]{position:absolute;left:14px;top:30px}
@@ -304,8 +305,8 @@ button,input,select{border-radius:3px;outline:0;height:40px;padding-left:7px;pad
 }
 @media only screen and (min-width:1000px){[bs-skinny]{padding:54px 95px}
 }
+[bs-flush]{border-bottom:0}
 [bs-list]{margin-left:0;list-style:none}
-[bs-list] p,[bs-list~=inline-controls] [bs-button-group]{margin-bottom:0}
 [bs-list] [bs-button-group]{-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;margin-bottom:0}
 [bs-list] [bs-button-group] [bs-button]{height:auto;border:0;box-shadow:0 0;border-radius:0}
 [bs-list] [bs-button-group] [bs-button]:active{box-shadow:0 0 1px rgba(0,0,0,.3) inset}
