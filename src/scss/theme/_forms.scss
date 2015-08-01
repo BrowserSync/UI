@@ -61,6 +61,20 @@ select {
     }
 }
 
+[bs-textarea-input] {
+    position: relative;
+    margin-bottom: $half-spacing;
+    [bs-tag] {
+        left: -64px;
+        color: #D08989;
+    }
+}
+[bs-error~="offset"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 [bs-input-label] {
 
     @include font-size(14px);

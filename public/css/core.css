@@ -1195,6 +1195,18 @@ button, input, select {
           height: 34px;
           font-size: 14px; } }
 
+[bs-textarea-input] {
+  position: relative;
+  margin-bottom: 14px; }
+  [bs-textarea-input] [bs-tag] {
+    left: -64px;
+    color: #D08989; }
+
+[bs-error~="offset"] {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
 [bs-input-label] {
   font-size: 14px;
   font-size: 0.77778rem;

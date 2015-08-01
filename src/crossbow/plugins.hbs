@@ -43,7 +43,10 @@ plugins: ['HTML Injector']
                     <button bs-button="size-small subtle-alt">Regex</button>
                 </div>
             </div>
-            <textarea name="" id="match" cols="30" rows="5" bs-code-input></textarea>
+            <div bs-textarea-input>
+                <span bs-tag bs-error="offset">Invalid Regex</span>
+                <textarea name="" id="match" cols="30" rows="5" bs-code-input></textarea>
+            </div>
             <br/>
             <br/>
             <div bs-heading-bar>
