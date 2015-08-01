@@ -55,9 +55,12 @@
                     id="rewrite-replace"
                     cols="30"
                     rows="5"
+                    name="replace-input"
                     bs-code-input
                     ng-model="ctrl.inputs.replace.value"
+                    replace-input="ctrl.inputs.replace.type"
                     placeholder="Eg: 'skin/core.css' or /skin.core.css/g"></textarea>
+                <p bs-error ng-show="ctrl.inputs.replace.type === 'function' && !rewriteForm['replace-input'].$valid">Please enter a valid Function body</p>
             <br/>
             <div ng-class="[ctrl.state.classname]" bs-state-wrapper>
                 <div bs-button-group="">

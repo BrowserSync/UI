@@ -130,6 +130,7 @@
             }
 
             if (!$scope.rewriteForm.$valid) {
+                console.log('NOPE');
                 ctrl.showErrors = true;
                 return;
             }
@@ -208,5 +209,39 @@
             Socket.off("options:update", ctrl.updateOptions);
         });
     }
+
+    angular
+        .module("BrowserSync")
+        .directive('replaceInput', function() {
+            return {
+                require: 'ngModel',
+                scope: {
+                    replaceInput: "="
+                },
+                link: function(scope, elm, attrs, ctrl) {
+                    ctrl.$validators.inputfn = function(modelValue, viewValue) {
+                        if (ctrl.$isEmpty(modelValue)) {
+                            // consider empty models to be valid
+                            return true;
+                        }
+
+                        // String type is always valid
+                        if (scope.replaceInput === 'string') {
+                            return true;
+                        }
+
+                        try {
+                            var fn = new Function(viewValue);
+                            return true;
+                        } catch (e) {
+                            return false;
+                        }
+
+                        // it is invalid
+                        return false;
+                    };
+                }
+            };
+    });
 
 })(angular);
