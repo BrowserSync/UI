@@ -1,5 +1,6 @@
 <section>
     <div bs-panel-content>
+        <p ng-show="ctrl.previousRules">Restore previous {{ctrl.previousRules.length}} rules? <button ng-click="ctrl.restorePreviousRules()" bs-button="subtle-alt size-small">Restore</button></p>
         <p>
             <button id="create-rewrite-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.showInputs();">
                 <icon icon="circle-plus" ng-show="!ctrl.state.adding"></icon>

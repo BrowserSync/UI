@@ -164,14 +164,45 @@
             $scope.$digest();
         };
 
-        ctrl.updateRules = function (data) {
+        var Store = function (ns) {
+            var existing = window.store.get('bs', {});
+            if (!existing) {
+                window.store.set('bs', {});
+            }
+            this.ns  = ns;
+            this.get = function (path) {
+                var bs = window.store.get('bs');
+                console.log([ns].concat(path).join('.'));
+                return objectPath.get(bs, [ns].concat(path).join('.'));
+            };
+            this.set = function (path, value) {
+                var bs = window.store.get('bs');
+                if (!bs[ns]) {
+                    bs[ns] = {};
+                }
+                bs[ns][path] = value;
+                window.store.set('bs', bs);
+            }
+        };
 
+        var store = new Store(ns);
+
+        ctrl.previousRules = store.get('rules');
+
+        ctrl.restorePreviousRules = function () {
+            ctrl.rules = ctrl.previousRules;
+            ctrl.previousRules = false;
+        };
+
+        ctrl.updateRules = function (data) {
 
             ctrl.rules = data.rules;
 
             if (ctrl.nextUpdate.length) {
                 ctrl.nextUpdate.forEach(function (fn) {
                     fn(data);
+                    store.set('rules', ctrl.rules);
+                    console.log(store.get('rules'));
                 });
             }
 
