@@ -20,7 +20,21 @@
 
         socket.on("connection", function (out) {
             $rootScope.$emit("ui:connection", out);
+
             deferred.resolve(out, this);
+
+            if (window.name === '') {
+                window.name = JSON.stringify({id: socket.id});
+            } else {
+                var prev = JSON.parse(window.name);
+                console.log(prev, socket);
+                if (prev.id !== socket.id) {
+                    console.log('new session');
+                } else {
+                    console.log('page reload');
+                }
+                //console.log(JSON.parse(window.name));
+            }
         });
 
         socket.on("disconnect", function () {
@@ -28,6 +42,9 @@
         });
 
         return {
+            id: function () {
+                return socket.id;
+            },
             on: function (name, callback) {
                 socket.on(name, callback);
             },
@@ -64,6 +81,9 @@
             },
             uiEvent: function (evt) {
                 socket.emit("ui", evt);
+            },
+            newSession: function () {
+
             }
         };
     }

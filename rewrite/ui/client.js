@@ -172,7 +172,6 @@
             this.ns  = ns;
             this.get = function (path) {
                 var bs = window.store.get('bs');
-                console.log([ns].concat(path).join('.'));
                 return objectPath.get(bs, [ns].concat(path).join('.'));
             };
             this.set = function (path, value) {
@@ -202,7 +201,6 @@
                 ctrl.nextUpdate.forEach(function (fn) {
                     fn(data);
                     store.set('rules', ctrl.rules);
-                    console.log(store.get('rules'));
                 });
             }
 
