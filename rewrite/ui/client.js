@@ -41,7 +41,7 @@
         var config = ctrl.plugin.opts.config;
         var store  = Store.create(ns);
 
-        ctrl.buttonText = "Add Rewrite Rule";
+        ctrl.buttonText = "Add new";
         ctrl.nextUpdate = [];
 
         ctrl.state = {
@@ -69,7 +69,7 @@
                 ctrl.buttonText = "Cancel";
             } else {
                 ctrl.state.adding = false;
-                ctrl.buttonText = "Add Rewrite Rule";
+                ctrl.buttonText = "Add new";
             }
         };
 
@@ -90,7 +90,7 @@
         };
 
         ctrl.resetForm = function () {
-            ctrl.buttonText = "Add Rewrite Rule";
+            ctrl.buttonText = "Add new";
             ctrl.showErrors = false;
             ctrl.inputs.match.value   = "";
             ctrl.inputs.match.flags   = "";
@@ -164,10 +164,26 @@
         if (prev) {
             console.log('Previous items exist');
             if (prev[Socket.sessionId]) {
-                console.log('Previous items exist for CURRENT session');
+                //prev = prev[Socket.sessionId];
+                //console.log('Previous items exist for CURRENT session');
+                //var uniq = prev.filter(function (item) {
+                //    var matches = ctrl.rules.filter(function (rule) {
+                //        return item.id !== rule.id;
+                //    });
+                //    return !matches.length;
+                //});
+                //if (uniq.length) {
+                //    ctrl.previousRules = prev;
+                //}
             } else {
-                console.log('Previous items exist for PREVIOUS session');
-                ctrl.previousRules = prev[Object.keys(prev)[0]];
+                //console.log('Previous items exist for PREVIOUS session');
+                prev = prev[Object.keys(prev)[0]];
+                if (prev.length && ctrl.rules.length) {
+                    //console.log('BOTH');
+                    //console.log('uniq');
+                } else {
+                    ctrl.previousRules = prev;
+                }
             }
         }
 
@@ -178,13 +194,12 @@
         };
 
         ctrl.restorePreviousRules = function () {
-            ctrl.rules = ctrl.previousRules;
-            ctrl.previousRules = false;
             Socket.uiEvent({
                 namespace: ns,
                 event: 'replaceRules',
-                data: ctrl.rules
+                data: ctrl.previousRules
             });
+            ctrl.previousRules = false;
         };
 
         ctrl.updateRules = function (data) {
