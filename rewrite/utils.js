@@ -3,6 +3,7 @@ var counter = 0;
 
 utils.decorateTypes = function (item) {
 
+    console.log(item);
     var matchType   = typeof item.match   === 'string' ? 'string' : 'regex';
     var replaceType = typeof item.replace;
 
@@ -15,6 +16,7 @@ utils.decorateTypes = function (item) {
         id:          item.id,
         active:      true
     };
+
     return output;
 };
 
@@ -48,9 +50,16 @@ utils.decorateInputs = function (item) {
 };
 
 utils.addId = function (item) {
-    if (!item.id) {
-        counter += 1;
-        item.id = 'rewrite-' + counter;
-    }
+
+    var crypto = require('crypto');
+    var shasum = crypto.createHash('sha1');
+
+    ['matchInput', 'matchType', 'replaceInput', 'replaceType']
+        .forEach(function (key) {
+            shasum.update(item[key]);
+        });
+
+    item.id = shasum.digest('hex');
+
     return item;
 };

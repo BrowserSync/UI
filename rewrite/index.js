@@ -25,9 +25,9 @@ module.exports["plugin"] = function (opts, bs) {
 
     opts.rules = bs.getOption("rewriteRules")
         .toJS()
-        .map(utils.addId)
         .map(utils.decorateTypes)
-        .map(utils.decorateInputs);
+        .map(utils.decorateInputs)
+        .map(utils.addId);
 
     // Get original BS snippet
     var builtin = bs.snippetMw.opts.rules
@@ -93,6 +93,11 @@ module.exports["plugin"] = function (opts, bs) {
                 });
             });
         },
+        replaceRules: function (data) {
+            updateRules(function () {
+                return Immutable.fromJS(data);
+            });
+        },
         addRule: function (data) {
             var rule = {};
             if (data.match.type !== 'string') {
@@ -122,10 +127,12 @@ module.exports["plugin"] = function (opts, bs) {
                 }
 
                 var out = without.concat(
-                    Immutable.fromJS([rule]
-                        .map(utils.addId)
-                        .map(utils.decorateTypes)
-                        .map(utils.decorateInputs))
+                    Immutable.fromJS(
+                        [rule]
+                            .map(utils.decorateTypes)
+                            .map(utils.decorateInputs)
+                            .map(utils.addId)
+                    )
                 );
                 return out;
             });
@@ -153,4 +160,3 @@ function getFlags(input) {
  * @type {string}
  */
 module.exports["plugin:name"] = config.PLUGIN_NAME;
-

@@ -178,9 +178,13 @@
         };
 
         ctrl.restorePreviousRules = function () {
-            console.log(ctrl.previousRules);
-            // todo - loop over each rule and save back to server.
-            //ctrl.rules = ctrl.previousRules;
+            ctrl.rules = ctrl.previousRules;
+            ctrl.previousRules = false;
+            Socket.uiEvent({
+                namespace: ns,
+                event: 'replaceRules',
+                data: ctrl.rules
+            });
         };
 
         ctrl.updateRules = function (data) {
