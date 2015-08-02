@@ -50,6 +50,10 @@ gulp.task("contribs", function () {
 gulp.task("js", ["lint"], function () {
     return browserify({entries: ["./src/scripts/app.js"]})
         .bundle()
+        .on("error", function (err) {
+            console.log(err.message);
+            this.emit("end");
+        })
         .pipe(source("app.js"))
         .pipe(gulp.dest("public/js"));
 });

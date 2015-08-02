@@ -14,7 +14,7 @@
                     "uiOptions": "="
                 },
                 templateUrl: "rewrite.directive.html",
-                controller: ["$scope", "Socket", "Clients", rewriteRulesDirective],
+                controller: ["$scope", "Socket", "Store", "Clients", rewriteRulesDirective],
                 controllerAs: "ctrl"
             };
         });
@@ -23,8 +23,10 @@
      * Rewrite Rules Directive
      * @param $scope
      * @param Socket
+     * @param Store
+     * @param Clients
      */
-    function rewriteRulesDirective($scope, Socket, Clients) {
+    function rewriteRulesDirective($scope, Socket, Store, Clients) {
 
         var ctrl    = this;
         var ns      = OPT_PATH.join(":");
@@ -37,7 +39,7 @@
         ctrl.rules       = ctrl.plugin.opts.rules;
 
         var config = ctrl.plugin.opts.config;
-
+        var store  = Store.create(ns);
 
         ctrl.buttonText = "Add Rewrite Rule";
         ctrl.nextUpdate = [];
@@ -130,7 +132,6 @@
             }
 
             if (!$scope.rewriteForm.$valid) {
-                console.log('NOPE');
                 ctrl.showErrors = true;
                 return;
             }
@@ -158,39 +159,28 @@
             }, 500);
         };
 
+        var prev = store.get('previous');
+
+        if (prev) {
+            console.log('Previous items exist');
+            if (prev[Socket.sessionId]) {
+                console.log('Previous items exist for CURRENT session');
+            } else {
+                console.log('Previous items exist for PREVIOUS session');
+                ctrl.previousRules = prev[Object.keys(prev)[0]];
+            }
+        }
+
         ctrl.updateOptions = function (data) {
             ctrl.plugin.opts = data.opts;
             ctrl.rules = data.rules;
             $scope.$digest();
         };
 
-        var Store = function (ns) {
-            var existing = window.store.get('bs', {});
-            if (!existing) {
-                window.store.set('bs', {});
-            }
-            this.ns  = ns;
-            this.get = function (path) {
-                var bs = window.store.get('bs');
-                return objectPath.get(bs, [ns].concat(path).join('.'));
-            };
-            this.set = function (path, value) {
-                var bs = window.store.get('bs');
-                if (!bs[ns]) {
-                    bs[ns] = {};
-                }
-                bs[ns][path] = value;
-                window.store.set('bs', bs);
-            }
-        };
-
-        var store = new Store(ns);
-
-        ctrl.previousRules = store.get('rules');
-
         ctrl.restorePreviousRules = function () {
-            ctrl.rules = ctrl.previousRules;
-            ctrl.previousRules = false;
+            console.log(ctrl.previousRules);
+            // todo - loop over each rule and save back to server.
+            //ctrl.rules = ctrl.previousRules;
         };
 
         ctrl.updateRules = function (data) {
@@ -200,7 +190,9 @@
             if (ctrl.nextUpdate.length) {
                 ctrl.nextUpdate.forEach(function (fn) {
                     fn(data);
-                    store.set('rules', ctrl.rules);
+                    var obj = {}
+                    obj[Socket.sessionId] = ctrl.rules;
+                    store.set('previous', obj);
                 });
             }
 
@@ -298,7 +290,7 @@
                             var fn = new RegExp(viewValue, scope.flags);
                             return true;
                         } catch (e) {
-                            console.log(e);
+                            //console.log(e);
                             return false;
                         }
 

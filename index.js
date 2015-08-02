@@ -23,6 +23,7 @@ module.exports.hooks = {
  */
 module.exports["plugin"] = function (opts, bs, cb) {
     var ui = new UI(opts, bs, new Events());
+    bs.setOption("session", new Date().getTime());
     ui.cb = cb || function () { /*noop*/ };
     ui.init();
     return ui;
