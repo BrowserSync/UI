@@ -5,7 +5,7 @@ var assert      = require("chai").assert;
 var path        = require("path");
 var isMap       = require("immutable").Map.isMap;
 
-describe("Can resolve pluings", function() {
+describe("Can resolve Browsersync plugins", function() {
 
     it("can return plugins with added meta data", function(done) {
 
