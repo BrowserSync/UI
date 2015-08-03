@@ -3,6 +3,7 @@ var browserSync = require("browser-sync");
 var ui          = require("../../index");
 var assert      = require("chai").assert;
 var path        = require("path");
+var isMap       = require("immutable").Map.isMap;
 
 describe("Can resolve pluings", function() {
 
@@ -21,7 +22,7 @@ describe("Can resolve pluings", function() {
         }, function (err, bs) {
 
             assert.equal(bs.ui.bsPlugins.size, 1);
-            assert.isTrue(require("immutable").Map.isMap(bs.ui.bsPlugins.get(0).get("pkg")));
+            assert.isTrue(isMap(bs.ui.bsPlugins.get(0).get("pkg")));
             assert.isString(bs.ui.bsPlugins.get(0).get("client:js"));
 
             assert.include(bs.ui.templates, "id=\"test.directive.html");
@@ -32,6 +33,7 @@ describe("Can resolve pluings", function() {
             done();
         });
     });
+
     it("can return plugins from non-module", function(done) {
 
         browserSync.reset();
