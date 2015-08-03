@@ -1,6 +1,8 @@
 (function (angular) {
 
-    var OPT_PATH = ['shakyshane', 'rewrite-rules'];
+    var OPT_PATH    = ["shakyshane", "rewrite-rules"];
+    var NS          = OPT_PATH.join(":");
+    var PLUGIN_NAME = "Rewrite Rules";
 
     angular
         .module("BrowserSync")
@@ -18,6 +20,21 @@
                 controllerAs: "ctrl"
             };
         });
+    angular
+        .module("BrowserSync")
+        .directive("stateButton", function () {
+            return {
+                restrict: "E",
+                replace: true,
+                scope: {
+                    "fn": "&",
+                    "state": "=",
+                    "on": "@",
+                    "off": "@"
+                },
+                templateUrl: "rewrite-rules/rewrite.state-button.html"
+            };
+        });
 
     /**
      * Rewrite Rules Directive
@@ -29,19 +46,17 @@
     function rewriteRulesDirective($scope, Socket, Store, Clients) {
 
         var ctrl    = this;
-        var ns      = OPT_PATH.join(":");
 
         ctrl.plugin = $scope.options.userPlugins.filter(function (item) {
-            return item.name === "Rewrite Rules";
+            return item.name === PLUGIN_NAME;
         })[0];
 
         ctrl.plugin.opts = $scope.uiOptions[OPT_PATH[0]][OPT_PATH[1]];
         ctrl.rules       = ctrl.plugin.opts.rules;
 
         var config = ctrl.plugin.opts.config;
-        var store  = Store.create(ns);
+        var store  = Store.create(NS);
 
-        ctrl.buttonText = "Add new";
         ctrl.nextUpdate = [];
 
         ctrl.state = {
@@ -71,6 +86,14 @@
                 ctrl.state.adding = false;
                 ctrl.buttonText = "Add new";
             }
+        };
+
+        ctrl.isMatchType = function (type) {
+            return ctrl.inputs.match.type === type;
+        };
+
+        ctrl.isReplaceType = function (type) {
+            return ctrl.inputs.replace.type === type;
         };
 
         ctrl.setMatchType = function (type) {
@@ -140,7 +163,7 @@
             obj.replace = replace;
 
             Socket.uiEvent({
-                namespace: ns,
+                namespace: NS,
                 event: 'addRule',
                 data: obj
             });
@@ -155,8 +178,8 @@
                     ctrl.state.adding = false;
                     ctrl.resetForm();
                     $scope.$digest();
-                }, 1000 );
-            }, 500);
+                }, 300);
+            }, 300);
         };
 
         var prev = store.get('previous');
@@ -195,7 +218,7 @@
 
         ctrl.restorePreviousRules = function () {
             Socket.uiEvent({
-                namespace: ns,
+                namespace: NS,
                 event: 'replaceRules',
                 data: ctrl.previousRules
             });
@@ -219,27 +242,6 @@
             $scope.$digest();
         };
 
-        ctrl.removeRule = function (action, rule) {
-            Socket.uiEvent({
-                namespace: ns,
-                event: 'removeRule',
-                data: {
-                    rule: rule
-                }
-            });
-        };
-
-        ctrl.pauseRule = function (action, rule) {
-            rule.active = !rule.active;
-            Socket.uiEvent({
-                namespace: ns,
-                event: 'pauseRule',
-                data: {
-                    rule: rule
-                }
-            });
-        };
-
         Socket.on(config.EVENT_UPDATE, ctrl.updateRules);
 
         Socket.on("options:update", ctrl.updateOptions);
@@ -249,75 +251,5 @@
             Socket.off("options:update", ctrl.updateOptions);
         });
     }
-
-    angular
-        .module("BrowserSync")
-        .directive('validFn', function() {
-            return {
-                require: 'ngModel',
-                scope: {
-                    validFn: "="
-                },
-                link: function(scope, elm, attrs, ctrl) {
-                    ctrl.$validators.validFn = function(modelValue, viewValue) {
-                        if (ctrl.$isEmpty(modelValue)) {
-                            // consider empty models to be valid
-                            return true;
-                        }
-
-                        // String type is always valid
-                        if (scope.validFn === 'string') {
-                            return true;
-                        }
-
-                        try {
-                            var fn = new Function(viewValue);
-                            return true;
-                        } catch (e) {
-                            return false;
-                        }
-
-                        // it is invalid
-                        return false;
-                    };
-                }
-            };
-    });
-
-    angular
-        .module("BrowserSync")
-        .directive('validRegex', function() {
-            return {
-                require: 'ngModel',
-                scope: {
-                    validRegex: "=",
-                    flags: "="
-                },
-                link: function(scope, elm, attrs, ctrl) {
-                    ctrl.$validators.validRegex = function(modelValue, viewValue) {
-                        if (ctrl.$isEmpty(modelValue)) {
-                            // consider empty models to be valid
-                            return true;
-                        }
-
-                        // String type is always valid
-                        if (scope.validRegex === 'string') {
-                            return true;
-                        }
-
-                        try {
-                            var fn = new RegExp(viewValue, scope.flags);
-                            return true;
-                        } catch (e) {
-                            //console.log(e);
-                            return false;
-                        }
-
-                        // it is invalid
-                        return false;
-                    };
-                }
-            };
-        });
 
 })(angular);

@@ -1,0 +1,6 @@
+<button bs-button="size-small subtle-alt icon-left">
+    <icon icon="circle-plus" ng-show="!state"></icon>
+    <icon icon="bin" ng-show="state"></icon>
+    <span ng-show="state">{{on}}</span>
+    <span ng-show="!state">{{off}}</span>
+</button>

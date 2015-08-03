@@ -12,10 +12,14 @@
     "hooks": {
       "markup": "ui/rewrite.html",
       "templates": [
-        "ui/rewrite.directive.html"
+        "ui/rewrite.directive.html",
+        "ui/rewrite.list.html",
+        "ui/rewrite.state-button.html"
       ],
       "client:js": [
-        "ui/client.js"
+        "ui/client.filters.js",
+        "ui/client.js",
+        "ui/client.item.js"
       ]
     }
   }

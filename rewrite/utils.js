@@ -1,9 +1,7 @@
 var utils = exports;
-var counter = 0;
 
 utils.decorateTypes = function (item) {
 
-    console.log(item);
     var matchType   = typeof item.match   === 'string' ? 'string' : 'regex';
     var replaceType = typeof item.replace;
 
@@ -21,8 +19,11 @@ utils.decorateTypes = function (item) {
 };
 
 utils.decorateInputs = function (item) {
+
     if (item.matchType === 'regex') {
+
         item.matchInput = item.match.source;
+
         var flagnames = ['global', 'multiline', 'ignoreCase'];
         var flags = flagnames.filter(function (name) {
             return item.match[name];
@@ -31,7 +32,6 @@ utils.decorateInputs = function (item) {
             return item.charAt(0);
         })
         .join('');
-
         item.matchFlags = flags;
     }
     if (item.matchType === 'string') {
