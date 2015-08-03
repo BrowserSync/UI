@@ -37,7 +37,7 @@
                             flags="ctrl.inputs.match.flags"
                             ng-required="1"
                             ng-minlength="1"
-                            placeholder="Eg: 'skin/core.css' or /skin.core.css/g"></textarea>
+                            placeholder="Eg: 'skin/core.css'"></textarea>
                     <br/>
                 </div>
                 <div bs-heading-bar>
@@ -61,7 +61,7 @@
                             bs-code-input
                             ng-model="ctrl.inputs.replace.value"
                             valid-fn="ctrl.inputs.replace.type"
-                            placeholder="Eg: 'skin/core.css' or /skin.core.css/g"></textarea>
+                            placeholder="Eg: 'skin/core.css' or return '/assets' + arguments[0];"></textarea>
                     <br/>
                 </div>
                 <div ng-class="[ctrl.state.classname]" bs-state-wrapper>
