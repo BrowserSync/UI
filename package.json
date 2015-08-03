@@ -25,7 +25,7 @@
   },
   "scripts": {
     "backend": "gulp build && mocha --timeout 10000 test/server --recursive",
-    "e2e": "node test/client/e2e/_setup.js",
+    "e2e": "./test/pro.sh",
     "client": "karma start test/client/karma.conf.ci.js",
     "selenium": "webdriver-manager start",
     "pre-release": "npm run backend && npm run e2e",
