@@ -3,9 +3,8 @@ var browserSync = require("browser-sync");
 var ui          = require("../../index");
 var assert      = require("chai").assert;
 var path        = require("path");
-var isMap       = require("immutable").Map.isMap;
 
-describe.only("Resolving templates loaded via plugins", function() {
+describe("Resolving templates loaded via plugins", function() {
 
     it("can load a single template", function(done) {
 
@@ -20,7 +19,7 @@ describe.only("Resolving templates loaded via plugins", function() {
             open: false,
             plugins: [plugin]
         }, function (err, bs) {
-            assert.include(bs.ui.templates, "id=\"test.directive.html");
+            assert.include(bs.ui.templates, "id=\"test-bs-plugin/test.directive.html");
             assert.include(bs.ui.templates, "<h1>Test markup from Test Directive</h1>");
             assert.include(bs.ui.clientJs, "const PLUGIN_NAME = \"Test Plugin\";");
 
@@ -40,8 +39,8 @@ describe.only("Resolving templates loaded via plugins", function() {
             open: false,
             plugins: [plugin]
         }, function (err, bs) {
-            assert.include(bs.ui.templates, "id=\"test.directive.html");
-            assert.include(bs.ui.templates, "id=\"test.list.html");
+            assert.include(bs.ui.templates, "id=\"test-bs-plugin/test.directive.html");
+            assert.include(bs.ui.templates, "id=\"test-bs-plugin/test.list.html");
             assert.include(bs.ui.templates, "<h1>Test markup from Test Directive</h1>");
             assert.include(bs.ui.templates, "<h1>Test markup from Test LIST Directive</h1>");
             assert.include(bs.ui.clientJs, "const PLUGIN_NAME = \"Test Plugin\";");

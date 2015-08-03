@@ -13,7 +13,7 @@
                     "pluginOpts": "=",
                     "uiOptions": "="
                 },
-                templateUrl: "rewrite.directive.html",
+                templateUrl: "rewrite-rules/rewrite.directive.html",
                 controller: ["$scope", "Socket", "Store", "Clients", rewriteRulesDirective],
                 controllerAs: "ctrl"
             };
