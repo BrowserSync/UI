@@ -4,11 +4,16 @@ utils.decorateTypes = function (item) {
 
     var matchType   = typeof item.match   === 'string' ? 'string' : 'regex';
     var replaceType = typeof item.replace;
+    var replace;
+
+    if (replaceType === "string") {
+        replace = item.replace
+    }
 
     var output = {
         match:       item.match,
-        replace:     item.replace || item.fn,
-        paths:       item.paths   || [],
+        replace:     replace    || item.fn || "",
+        paths:       item.paths || [],
         matchType:   matchType,
         replaceType: replaceType,
         id:          item.id,
@@ -56,7 +61,7 @@ utils.addId = function (item) {
 
     ['matchInput', 'matchType', 'replaceInput', 'replaceType']
         .forEach(function (key) {
-            shasum.update(item[key]);
+            shasum.update(item[key] || "");
         });
 
     item.id = shasum.digest('hex');

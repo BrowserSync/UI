@@ -1,4 +1,4 @@
-var browserSync = require("browser-sync");
+var browserSync = require("/Users/shakyshane/code/browser-sync");
 var ui          = require("../../index");
 var assert      = require("chai").assert;
 var path        = require("path");
@@ -41,6 +41,9 @@ describe("Rules given in Browsersync configuration", function() {
                     replace: "kittie"
                 }
             );
+
+            assert.equal(bs.rewriteRules.length, 2);
+            assert.equal(bs.rewriteRules[1].id, "bs-snippet");
 
             assert.equal(rules.length, 1);
 

@@ -18,7 +18,9 @@ module.exports["plugin"] = function (opts, bs) {
 
     opts       = opts       || {};
     opts.rules = opts.rules || [];
+
     var bsRules = bs.getOption("rewriteRules");
+
     if (bsRules === false) {
         bs.setOption('rewriteRules', Immutable.List([]));
     }
@@ -100,6 +102,7 @@ module.exports["plugin"] = function (opts, bs) {
         },
         addRule: function (data) {
             var rule = {};
+
             if (data.match.type !== 'string') {
                 var flags = getFlags(data.match.flags);
                 rule.match = new RegExp(data.match.value, flags);
@@ -134,12 +137,15 @@ module.exports["plugin"] = function (opts, bs) {
                             .map(utils.addId)
                     )
                 );
+
                 return out;
             });
         }
     };
 
-    ui.listen(config.NS, methods);
+    ui.rewriteRules = methods;
+
+    ui.listen(config.NS, ui.rewriteRules);
 
     return methods;
 };
