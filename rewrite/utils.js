@@ -10,9 +10,13 @@ utils.decorateTypes = function (item) {
         replace = item.replace
     }
 
+    if (replaceType === "function") {
+        replace = item.replace || item.fn;
+    }
+
     var output = {
         match:       item.match,
-        replace:     replace    || item.fn || "",
+        replace:     replace,
         paths:       item.paths || [],
         matchType:   matchType,
         replaceType: replaceType,
