@@ -66,15 +66,15 @@
                 </div>
                 <div ng-class="[ctrl.state.classname]" bs-state-wrapper>
                     <div bs-button-group>
-                    <button id="save-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule()" ng-disabled="ctrl.state.waiting">
-                        <svg bs-svg-icon class="ng-isolate-scope"><use xlink:href="#svg-circle-ok"></use></svg>
-                        Save
-                    </button>
-                    <button id="save-rule2" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule('reload')" ng-disabled="ctrl.state.waiting">
-                        <svg bs-svg-icon class="ng-isolate-scope"><use xlink:href="#svg-circle-ok"></use></svg>
-                        Save & Reload
-                    </button>
-                        </div>
+                        <button id="save-rule" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule()" ng-disabled="ctrl.state.waiting">
+                            <svg bs-svg-icon><use xlink:href="#svg-circle-ok"></use></svg>
+                            Save
+                        </button>
+                        <button id="save-rule2" bs-button="size-small subtle-alt icon-left" ng-click="ctrl.saveRule('reload')" ng-disabled="ctrl.state.waiting">
+                            <svg bs-svg-icon><use xlink:href="#svg-circle-ok"></use></svg>
+                            Save & Reload
+                        </button>
+                    </div>
                     <div bs-state-icons>
                         <icon icon="circle-ok" bs-state="success inline"></icon>
                         <icon icon="circle-minus" bs-state="waiting inline" bs-anim="spin"></icon>
