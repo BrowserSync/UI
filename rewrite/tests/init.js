@@ -1,29 +1,26 @@
-/*jshint -W079 */
 var browserSync = require("browser-sync");
-var ui     = require("../../index");
-var assert = require("chai").assert;
-var path   = require("path");
-var isMap  = require("immutable").Map.isMap;
-var OPTPATH = ['shakyshane', 'rewrite-rules', 'opts', 'rules'];
+var ui          = require("../../index");
+var assert      = require("chai").assert;
+var path        = require("path");
+var OPTPATH     = ['shakyshane', 'rewrite-rules', 'opts', 'rules'];
+var plugin      = path.resolve(__dirname, "../");
+
 function startWithRules (rules, cb) {
     browserSync.reset();
     var bs = browserSync.create();
 
     bs.use(ui);
 
-    var plugin = {
-        module: path.resolve(__dirname, "../")
-    };
     bs.init({
         server: "test/fixtures",
         logLevel: "silent",
         rewriteRules: rules,
         open: false,
-        plugins: [plugin]
+        plugins: [{module: plugin}]
     }, cb);
 }
 
-describe("Exising rules", function() {
+describe("Rules given in Browsersync configuration", function() {
 
     it("can work with simple string replacements", function(done) {
 
@@ -34,7 +31,16 @@ describe("Exising rules", function() {
             }
         ], function (err, bs) {
 
-            var rules = bs.ui.options.getIn(OPTPATH).toJS();
+            var rules   = bs.ui.options.getIn(OPTPATH).toJS();
+            var bsRules = bs.getOption('rewriteRules').toJS();
+
+            assert.deepEqual(
+                bsRules[0],
+                {
+                    match: "shane",
+                    replace: "kittie"
+                }
+            );
 
             assert.equal(rules.length, 1);
 
@@ -56,6 +62,12 @@ describe("Exising rules", function() {
         ], function (err, bs) {
 
             var rules = bs.ui.options.getIn(OPTPATH).toJS();
+            var bsRules = bs.getOption('rewriteRules').toJS();
+
+            assert.equal(bsRules[0].match.source, 'shane');
+            assert.equal(bsRules[0].match.global, true);
+            assert.equal(bsRules[0].match.ignoreCase, false);
+            assert.equal(bsRules[0].match.multiline, false);
 
             assert.equal(rules.length, 1);
 
@@ -92,17 +104,21 @@ describe("Exising rules", function() {
     });
     it("can work with function replace", function(done) {
 
+        var fn = function () {
+            return 'kittie';
+        };
+
         startWithRules([
             {
                 match: "shane",
-                replace: function () {
-                    return 'kittie';
-                }
+                replace: fn
             }
         ], function (err, bs) {
 
             var rules = bs.ui.options.getIn(OPTPATH).toJS();
+            var bsRules = bs.getOption('rewriteRules').toJS();
 
+            assert.equal(bsRules[0].replace.toString(), fn.toString());
             assert.equal(rules.length, 1);
 
             assert.equal(rules[0].matchType,    "string");
