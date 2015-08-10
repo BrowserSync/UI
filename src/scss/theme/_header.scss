@@ -103,7 +103,9 @@ $inner-height: $header-height - $border-height;
 [bs-link~="version"] {
     color: $body-text;
     margin-left: $half-spacing/2;
-    @include font-size(14px);
+    @include font-size(20px);
+    position: relative;
+    top: 4px;
 
     &:hover, &:focus {
         color: $red;

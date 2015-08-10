@@ -584,10 +584,12 @@ hr {
 [bs-link~="version"] {
   color: #777777;
   margin-left: 7px;
-  font-size: 14px;
-  font-size: 0.77778rem; }
+  font-size: 20px;
+  font-size: 1.11111rem;
+  position: relative;
+  top: 4px; }
   [bs-link~="version"]:hover, [bs-link~="version"]:focus {
-    color: #ff4453; }
+    color: #F54747; }
 
 [bs-sidebar] {
   position: relative;
@@ -649,7 +651,7 @@ hr {
       z-index: 5;
       color: #fff; }
       [bs-section-nav] [bs-button].active [bs-svg-icon] {
-        color: #ff4453; }
+        color: #F54747; }
     [bs-section-nav] [bs-button]:hover {
       color: #fff;
       background: #363636; }
@@ -717,9 +719,9 @@ svg {
 
 .icon-word {
   width: 100%;
-  max-width: 134px;
+  max-width: 150px;
   height: 100%;
-  margin-left: 16px;
+  margin-left: 15px;
   color: #fff; }
   .icon-word svg {
     position: relative;
@@ -830,7 +832,7 @@ h6, .h6 {
   font-size: 0.77778rem; }
 
 a {
-  color: #ff4453;
+  color: #F54747;
   -webkit-transition: background 0.3s ease, color 0.3s ease;
           transition: background 0.3s ease, color 0.3s ease; }
   a:hover, a:active, a:focus {
@@ -955,11 +957,11 @@ span.sep {
   font-size: 16px;
   font-size: 0.88889rem;
   display: inline-block;
-  border: 1px solid #f60014;
+  border: 1px solid #e30c0c;
   padding: 7px 21px;
   width: auto;
   vertical-align: middle;
-  background: #ff4453;
+  background: #F54747;
   color: #fff;
   border-radius: 3px;
   text-align: center;
@@ -975,7 +977,7 @@ span.sep {
   [bs-button]:hover {
     text-decoration: none;
     color: #fff;
-    background: #ff1124; }
+    background: #f21717; }
   [bs-button]:focus {
     text-decoration: none;
     color: #fff; }
@@ -990,8 +992,8 @@ span.sep {
     [bs-button].success [bs-state~="default"] {
       opacity: 0; }
   [bs-button][disabled] {
-    border-color: #e3606b;
-    background: #e3606b;
+    border-color: #d86464;
+    background: #d86464;
     color: #F2AAAA; }
   [bs-button] [bs-svg-icon] {
     position: absolute;
@@ -1002,15 +1004,15 @@ span.sep {
 
 [bs-button~="subtle"] {
   background: #fff;
-  color: #ff4453;
+  color: #F54747;
   border-color: #e3e3e3; }
   [bs-button~="subtle"]:hover, [bs-button~="subtle"]:focus {
-    color: #ff4453;
+    color: #F54747;
     background: #F0F0F0; }
   [bs-button~="subtle"]:focus {
     background: #fff; }
   [bs-button~="subtle"]:active {
-    color: #ff4453;
+    color: #F54747;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
     background: #f7f7f7; }
   [bs-button~="subtle"][disabled] {
@@ -1423,7 +1425,7 @@ button, input, select, textarea {
       [bs-list~="inline-controls"] li:hover [bs-button] {
         background: transparent; }
         [bs-list~="inline-controls"] li:hover [bs-button]:hover {
-          color: #ff4453; }
+          color: #F54747; }
     @media only screen and (min-width: 750px) {
       [bs-list~="inline-controls"] li {
         padding: 0;
