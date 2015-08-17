@@ -88,6 +88,6 @@
     <!-- Display each existing rule -->
     <!-- -------------------------- -->
     <div bs-panel-content ng-show="ctrl.rules.length">
-        <rewrite-rule ng-repeat="(key, rule) in ctrl.rules track by rule.id" rule="rule" edit-rule="ctrl.editRule(rule)"></rewrite-rule>
+        <rewrite-rule ng-repeat="(key, rule) in ctrl.rules track by rule.id" rule="rule" index="$index" edit-rule="ctrl.editRule(rule)"></rewrite-rule>
     </div>
 </section>

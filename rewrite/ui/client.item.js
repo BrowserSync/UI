@@ -11,7 +11,8 @@
                 replace: true,
                 scope: {
                     "rule": "=",
-                    "editRule": "&"
+                    "editRule": "&",
+                    "index": "="
                 },
                 templateUrl: "rewrite-rules/rewrite.list.html",
                 controller: ["$scope", "Socket", "Store", "Clients", rewriteRuleDirective],
