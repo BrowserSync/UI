@@ -19,7 +19,7 @@ function startWithRules (rules, cb) {
     }, cb);
 }
 
-describe.only("Adding rewrite rules", function() {
+describe("Adding rewrite rules", function() {
 
     it("initial state is running, but with no rules", function(done) {
 
