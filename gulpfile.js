@@ -7,13 +7,14 @@ var sass        = require("gulp-sass");
 var autoprefix  = require("gulp-autoprefixer");
 var rename      = require("gulp-rename");
 var filter      = require("gulp-filter");
+var uglify      = require("gulp-uglify");
 var minifyCSS   = require("gulp-minify-css");
 var easysvg     = require("easy-svg");
 var browserSync = require("browser-sync");
-var browserify = require("browserify");
+var browserify  = require("browserify");
 var source      = require("vinyl-source-stream");
+var buffer      = require("vinyl-buffer");
 var crossbow    = require("crossbow");
-//var htmlInjector = require("bs-html-injector");
 
 /**
  * Lint all JS files
@@ -52,9 +53,10 @@ gulp.task("js", ["lint"], function () {
         .bundle()
         .on("error", function (err) {
             console.log(err.message);
-            this.emit("end");
         })
         .pipe(source("app.js"))
+        .pipe(buffer())
+        .pipe(uglify())
         .pipe(gulp.dest("public/js"));
 });
 
