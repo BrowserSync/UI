@@ -1,4 +1,4 @@
-var browserSync = require("/Users/shakyshane/sites/oss/browser-sync");
+var browserSync = require("/Users/shakyshane/code/browser-sync");
 var ui          = require("../../index");
 var assert      = require("chai").assert;
 var path        = require("path");

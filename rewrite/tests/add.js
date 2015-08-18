@@ -1,4 +1,4 @@
-var browserSync = require("/Users/shakyshane/sites/oss/browser-sync");
+var browserSync = require("/Users/shakyshane/code/browser-sync");
 var ui          = require("../../index");
 var assert      = require("chai").assert;
 var path        = require("path");
@@ -99,6 +99,34 @@ describe("Adding rewrite rules", function() {
 
             bs.cleanup(done);
         });
-    })
+    });
+    it("can restore rules that may be partially missing", function (done) {
+
+        startWithRules(false, function (err, bs) {
+
+            bs.ui.rewriteRules.replaceRules([
+                {
+                    matchFlags: 'gi',
+                    matchInput: 'bootstrap',
+                    match: {},
+                    active: true,
+                    replaceType: 'function',
+                    paths: [],
+                    replaceInput: 'return "Browsersync";',
+                    id: '904c5ebb657efb6df274653a3d65ade00eac61a5',
+                    matchType: 'regex'
+                }
+            ]);
+
+            var rules = bs.ui.options.getIn(OPTPATH).toJS();
+            assert.equal(rules.length, 1);
+
+            var rule = rules[0];
+
+            assert.isTrue(rule.match instanceof RegExp);
+
+            bs.cleanup(done);
+        });
+    });
 });
 

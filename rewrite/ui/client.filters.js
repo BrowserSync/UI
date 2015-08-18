@@ -21,7 +21,7 @@
                         }
 
                         try {
-                            var fn = new Function(viewValue);
+                            var fn = new Function(viewValue)();
                             return true;
                         } catch (e) {
                             return false;
