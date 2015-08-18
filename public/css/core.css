@@ -1761,7 +1761,6 @@ pre {
   margin-top: 14px;
   padding: 14px;
   border-radius: 3px;
-  box-shadow: -10px 0px 10px #F0F0F0 inset;
   border: 1px solid #ebebeb; }
   pre code {
     font-size: 12px;
@@ -1781,6 +1780,9 @@ code {
   color: #2275d7;
   font-size: 14px;
   font-size: 0.77778rem; }
+
+.cm-s-default {
+  border: 1px dashed #F0F0F0; }
 
 [bs-notify] {
   position: absolute;

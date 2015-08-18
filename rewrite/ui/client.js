@@ -232,7 +232,7 @@
             if (ctrl.nextUpdate.length) {
                 ctrl.nextUpdate.forEach(function (fn) {
                     fn(data);
-                    var obj = {}
+                    var obj = {};
                     obj[Socket.sessionId] = ctrl.rules;
                     store.set('previous', obj);
                 });

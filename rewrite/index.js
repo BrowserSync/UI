@@ -97,7 +97,18 @@ module.exports["plugin"] = function (opts, bs) {
         },
         replaceRules: function (data) {
             updateRules(function (rules) {
-                return rules.concat(Immutable.fromJS(data));
+                return rules.concat(Immutable.fromJS(data.map(function (item) {
+
+                    if (item.matchType === 'regex') {
+                        item.match = new RegExp(item.matchInput, item.matchFlags);
+                    }
+
+                    if (item.replaceType === 'function') {
+                        item.replace = new Function(item.replaceInput);
+                    }
+
+                    return item;
+                })));
             });
         },
         addRule: function (data) {
