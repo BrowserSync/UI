@@ -3,8 +3,9 @@ var browserSync = require("browser-sync");
 var ui          = require("../../index");
 var assert      = require("chai").assert;
 var path        = require("path");
+var isMap       = require("immutable").Map.isMap;
 
-describe("Can resolve pluings", function() {
+describe("Can resolve Browsersync plugins", function() {
 
     it("can return plugins with added meta data", function(done) {
 
@@ -21,17 +22,16 @@ describe("Can resolve pluings", function() {
         }, function (err, bs) {
 
             assert.equal(bs.ui.bsPlugins.size, 1);
-            assert.isTrue(require("immutable").Map.isMap(bs.ui.bsPlugins.get(0).get("pkg")));
-            assert.isString(bs.ui.bsPlugins.get(0).get("client:js"));
-
-            assert.include(bs.ui.templates, "id=\"test.directive.html");
-            assert.include(bs.ui.templates, "<h1>Test markup from Test Directive</h1>");
-            assert.include(bs.ui.clientJs, "const PLUGIN_NAME = \"Test Plugin\";");
-
+            assert.isTrue(isMap(bs.ui.bsPlugins.get(0).get("pkg")));
+            var clientJs = bs.ui.bsPlugins.get(0).get("client:js").toJS();
+            assert.equal(Object.keys(clientJs).length, 1);
+            var first = clientJs[Object.keys(clientJs)[0]];
+            assert.include(first, "const PLUGIN_NAME = \"Test Plugin\";");
             bs.cleanup();
             done();
         });
     });
+
     it("can return plugins from non-module", function(done) {
 
         browserSync.reset();
@@ -39,7 +39,6 @@ describe("Can resolve pluings", function() {
         var plugin = {
             module: {
                 plugin: function () {
-                    console.log("CALLEd");
                 },
                 "plugin:name": "Test inline plugin"
             }
@@ -97,11 +96,8 @@ describe("Can resolve pluings", function() {
         }, function (err, bs) {
             assert.equal(bs.ui.bsPlugins.size, 2);
             assert.isTrue(require("immutable").Map.isMap(bs.ui.bsPlugins.get(0).get("pkg")));
-            assert.isString(bs.ui.bsPlugins.get(0).get("client:js"));
-
-            assert.include(bs.ui.templates, "id=\"test.directive.html");
-            assert.include(bs.ui.templates, "<h1>Test markup from Test Directive</h1>");
-            assert.include(bs.ui.clientJs, "const PLUGIN_NAME = \"Test Plugin\";");
+            var clientJs = bs.ui.bsPlugins.get(0).get("client:js").toJS();
+            assert.equal(Object.keys(clientJs).length, 1);
             bs.cleanup();
             done();
         });

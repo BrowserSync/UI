@@ -54,8 +54,6 @@ describe("Network throttle page", function() {
 
         flow.execute(function () {
 
-            browser.pause();
-
             var serverList = element(by.id("throttle-server-list"));
             var listItem   = serverList.all(by.tagName("li"));
 

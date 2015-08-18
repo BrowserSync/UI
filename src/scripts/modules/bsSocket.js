@@ -16,18 +16,34 @@
 
     function SocketService ($q, $rootScope) {
 
-        var deferred = $q.defer();
+        var deferred  = $q.defer();
+        var session;
 
         socket.on("connection", function (out) {
+            session = out.session;
             $rootScope.$emit("ui:connection", out);
+
             deferred.resolve(out, this);
+
+            if (window.name === '') {
+                window.name = JSON.stringify({id: socket.id});
+            } else {
+                var prev = JSON.parse(window.name);
+                //console.log(prev, socket);
+                if (prev.id !== socket.id) {
+                    //console.log('new session');
+                } else {
+                    //console.log('page reload');
+                }
+                //console.log(JSON.parse(window.name));
+            }
         });
 
         socket.on("disconnect", function () {
             $rootScope.$emit("ui:disconnect");
         });
 
-        return {
+        var publicApi = {
             on: function (name, callback) {
                 socket.on(name, callback);
             },
@@ -64,8 +80,19 @@
             },
             uiEvent: function (evt) {
                 socket.emit("ui", evt);
+            },
+            newSession: function () {
+
             }
         };
+
+        Object.defineProperty(publicApi, 'sessionId', {
+            get: function () {
+                return session
+            }
+        });
+
+        return publicApi;
     }
 
 })(angular, window.___browserSync___.socket);
