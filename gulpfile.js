@@ -12,6 +12,9 @@ var minifyCSS   = require("gulp-minify-css");
 var easysvg     = require("easy-svg");
 var browserSync = require("browser-sync");
 var browserify  = require("browserify");
+var watchify    = require("watchify");
+var exorcist    = require("exorcist");
+watchify.args.debug = true;
 var source      = require("vinyl-source-stream");
 var buffer      = require("vinyl-buffer");
 var crossbow    = require("crossbow");
@@ -44,20 +47,29 @@ gulp.task("contribs", function () {
         .pipe(gulp.dest(""));
 });
 
-
 /**
- * Build the app.
+ * Bundle the JS
+ * @param bundler
  */
-gulp.task("js", ["lint"], function () {
-    return browserify({entries: ["./src/scripts/app.js"]})
+function bundle (bundler) {
+    return bundler
         .bundle()
         .on("error", function (err) {
             console.log(err.message);
         })
+        .pipe(exorcist("public/js/app.js.map"))
         .pipe(source("app.js"))
+        .pipe(gulp.dest("public/js"))
         .pipe(buffer())
         .pipe(uglify())
+        .pipe(rename("app.min.js"))
         .pipe(gulp.dest("public/js"));
+}
+/**
+ * Build the app.
+ */
+gulp.task("js", ["lint"], function () {
+    return bundle(browserify("./src/scripts/app.js", {debug: true}));
 });
 
 /**
@@ -163,6 +175,17 @@ gulp.task("dev-frontend", ["crossbow", "browser-sync-dev"], function () {
 
 gulp.task("build", ["sass", "js"]);
 
-gulp.task("watch-js", ["js"], function () {
-    gulp.watch(["src/scripts/**"], ["js"]);
+gulp.task("watch-js", function () {
+
+    var watcher = watchify(browserify("./src/scripts/app.js", watchify.args));
+
+    bundle(watcher);
+
+    watcher.on("update", function () {
+        bundle(watcher);
+    });
+
+    watcher.on("time", function (time) {
+        console.log("bundle", time, "ms");
+    });
 });
