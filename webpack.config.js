@@ -6,6 +6,9 @@ var config = {
     output: {
         path: __dirname + "/public",
         filename: "js/app.js"
+    },
+    watchOptions: {
+        poll: true
     }
 };
 
