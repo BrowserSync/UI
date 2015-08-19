@@ -47,15 +47,23 @@ describe("Section Navigation", function() {
     it("should render the correct amount of links", function() {
         browser.get(cpUrl);
 
+        var flow = protractor.promise.controlFlow();
         var elems = element.all(by.css("[bs-section-nav] li"));
-        expect(elems.get(0).getText()).toBe("Overview");
-        expect(elems.get(1).getText()).toBe("Sync Options");
-        expect(elems.get(2).getText()).toBe("History");
-        matchClickToTitle(elems.get(0), headerSelector);
-        matchClickToTitle(elems.get(1), headerSelector);
-        matchClickToTitle(elems.get(2), headerSelector);
 
-        elems.get(0).click(); // back to homepage
+        flow.execute(function () {
+            expect(elems.get(0).getText()).toBe("Overview");
+            expect(elems.get(1).getText()).toBe("Sync Options");
+            expect(elems.get(2).getText()).toBe("History");
+        });
+
+        flow.execute(function () {
+            elems.get(1).click();
+            expect(browser.getCurrentUrl()).toContain('sync-options');
+            elems.get(2).click();
+            expect(browser.getCurrentUrl()).toContain('history');
+            elems.get(3).click();
+            expect(browser.getCurrentUrl()).toContain('plugins');
+        });
     });
 
     it("should show the current Browsersync version in header", function() {
@@ -63,19 +71,3 @@ describe("Section Navigation", function() {
         expect(element(by.css('[bs-link="version"]')).getText()).toBe('v' + bs.options.get('version'));
     });
 });
-
-/**
- * @param item
- * @param selector
- */
-function matchClickToTitle (item, selector) {
-    item.getText().then(function (text) {
-        return item.click().then(function () {
-            element(by.css(selector))
-                .getText()
-                .then(function (texts) {
-                    assert.equal(texts, text);
-                });
-        });
-    });
-}

@@ -928,6 +928,16 @@ span.sep {
   font-family: monospace;
   color: #000; }
 
+[bs-text~="micro"] {
+  font-size: 12px;
+  font-size: 0.66667rem;
+  text-transform: uppercase;
+  color: #d6d6d6;
+  width: 60px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 5px; }
+
 [bs-color~="white"] {
   color: #fff; }
 
@@ -1135,7 +1145,7 @@ span.sep {
 /*
  * Basic Inputs
  */
-button, input, select, textarea {
+button, input, select {
   outline: none;
   vertical-align: middle;
   border-radius: 3px;
@@ -1146,6 +1156,56 @@ button, input, select, textarea {
   max-width: 100%;
   font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
   color: #000; }
+
+[bs-code-input] {
+  width: 100%;
+  border: 0;
+  border: 1px dashed #F0F0F0;
+  font-family: monospace;
+  padding: 14px; }
+  [bs-code-input]:focus {
+    color: #4A90E2; }
+
+[bs-heading-bar] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 7px; }
+  [bs-heading-bar] [bs-input-label] {
+    line-height: 36px; }
+  [bs-heading-bar] [bs-button-group] {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    margin-bottom: auto;
+    margin-top: auto; }
+    [bs-heading-bar] [bs-button-group] [bs-button] {
+      padding: 3px 5px;
+      height: 24px;
+      font-size: 10px; }
+      @media only screen and (min-width: 600px) {
+        [bs-heading-bar] [bs-button-group] [bs-button] {
+          padding: 7px 14px;
+          height: 34px;
+          font-size: 14px; } }
+
+[bs-textarea-input] {
+  position: relative;
+  margin-bottom: 14px; }
+  [bs-textarea-input] [bs-tag] {
+    left: -64px;
+    color: #D08989; }
+
+[bs-error~="offset"] {
+  position: absolute;
+  top: 0;
+  left: 0; }
 
 [bs-input-label] {
   font-size: 14px;
@@ -1379,6 +1439,10 @@ button, input, select, textarea {
   [bs-skinny] {
     padding: 54px 95px; } }
 
+[bs-flush] {
+  margin-bottom: 0;
+  border-bottom: 0; }
+
 [bs-list] {
   margin-left: 0;
   list-style: none;
@@ -1452,6 +1516,28 @@ button, input, select, textarea {
       top: 4px;
       width: 22px;
       height: 22px; }
+
+[bs-tag] {
+  position: absolute;
+  right: calc(100% + 10px);
+  text-transform: uppercase;
+  font-size: 10px;
+  background: #f1f1f1;
+  border-radius: 3px;
+  padding: 1px 3px;
+  top: 6px;
+  text-align: center; }
+  [bs-tag] span {
+    color: #bebebe;
+    display: block; }
+
+[bs-tag~="offset"] {
+  top: 44px; }
+  @media only screen and (min-width: 600px) {
+    [bs-tag~="offset"] {
+      top: 6px;
+      right: auto;
+      left: -86px; } }
 
 [bs-list~="padded-left"] li {
   padding-left: 14px; }

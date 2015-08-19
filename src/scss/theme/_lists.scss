@@ -1,5 +1,11 @@
 $controls-height: 41px;
 
+[bs-flush] {
+    margin-bottom: 0;
+    border-bottom: 0;
+
+}
+
 //
 // Generic lists
 //
@@ -122,6 +128,32 @@ $controls-height: 41px;
             width:  22px;
             height: 22px;
         }
+    }
+}
+
+[bs-tag] {
+    position: absolute;
+    right: calc(100% + 10px);
+    text-transform: uppercase;
+    font-size: 10px;
+    background: #f1f1f1;
+    border-radius: 3px;
+    padding: 1px 3px;
+    top: 6px;
+    text-align: center;
+
+    span {
+        color: darken(#f1f1f1, 20%);
+        display: block;
+    }
+}
+
+[bs-tag~="offset"] {
+    top: 44px;
+    @include media-query(min, $lap-start) {
+        top: 6px;
+        right: auto;
+        left: -86px;
     }
 }
 

@@ -7,13 +7,17 @@ var sass        = require("gulp-sass");
 var autoprefix  = require("gulp-autoprefixer");
 var rename      = require("gulp-rename");
 var filter      = require("gulp-filter");
+var uglify      = require("gulp-uglify");
 var minifyCSS   = require("gulp-minify-css");
 var easysvg     = require("easy-svg");
 var browserSync = require("browser-sync");
-var browserify = require("browserify");
+var browserify  = require("browserify");
+var watchify    = require("watchify");
+var exorcist    = require("exorcist");
+watchify.args.debug = true;
 var source      = require("vinyl-source-stream");
+var buffer      = require("vinyl-buffer");
 var crossbow    = require("crossbow");
-//var htmlInjector = require("bs-html-injector");
 
 /**
  * Lint all JS files
@@ -43,14 +47,13 @@ gulp.task("contribs", function () {
         .pipe(gulp.dest(""));
 });
 
-
 /**
  * Build the app.
  */
-gulp.task("js", ["lint"], function () {
-    return browserify({entries: ["./src/scripts/app.js"]})
-        .bundle()
-        .pipe(source("app.js"))
+gulp.task("js", function () {
+    return gulp.src('public/js/app.js')
+        .pipe(uglify())
+        .pipe(rename('app.min.js'))
         .pipe(gulp.dest("public/js"));
 });
 
@@ -156,7 +159,3 @@ gulp.task("dev-frontend", ["crossbow", "browser-sync-dev"], function () {
 });
 
 gulp.task("build", ["sass", "js"]);
-
-gulp.task("watch-js", ["js"], function () {
-    gulp.watch(["src/scripts/**"], ["js"]);
-});
