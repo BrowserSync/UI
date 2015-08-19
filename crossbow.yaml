@@ -5,6 +5,17 @@ watch:
       "src/scss/**": ["sass"]
 
 config:
+  icons:
+    input: "src/svg/*.svg"
+    output: "public/img/icons"
   sass:
     input: "src/scss/core.scss"
     output: "public/css/core.min.css"
+  crossbow:
+    input: ["src/crossbow/*.hbs","src/crossbow/components/*.hbs","src/crossbow/content/*.hbs"]
+    output: "./static"
+    config:
+      config:
+        base: "src/crossbow"
+      data:
+        site: "file:_config.yml"
