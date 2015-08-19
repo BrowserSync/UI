@@ -1,0 +1,9 @@
+watch:
+  tasks:
+    default:
+      "src/scss/**": ["sass"]
+
+config:
+  sass:
+    input: "src/scss/core.scss"
+    output: "public/css/core.min.css"

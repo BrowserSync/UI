@@ -11,12 +11,6 @@ var uglify      = require("gulp-uglify");
 var minifyCSS   = require("gulp-minify-css");
 var easysvg     = require("easy-svg");
 var browserSync = require("browser-sync");
-var browserify  = require("browserify");
-var watchify    = require("watchify");
-var exorcist    = require("exorcist");
-watchify.args.debug = true;
-var source      = require("vinyl-source-stream");
-var buffer      = require("vinyl-buffer");
 var crossbow    = require("crossbow");
 
 /**
@@ -106,20 +100,9 @@ gulp.task("sass", function () {
 });
 
 /**
- * Compile CSS
- */
-gulp.task("bs-inject", function () {
-    browserSync.reload(["core.css", "components.css"]);
-});
-
-/**
  * Compile HTML
  */
 gulp.task("crossbow", function () {
-    //crossbow.clearCache();
-    //crossbow.emitter.on("_error", function (err) {
-    //    console.log(err.message);
-    //});
     return gulp.src([
         "src/crossbow/*.hbs",
         "src/crossbow/components/*.hbs",
@@ -154,8 +137,6 @@ gulp.task("svg", function () {
 gulp.task("dev-frontend", ["crossbow", "browser-sync-dev"], function () {
     gulp.watch("src/scss/**/*.scss", ["sass"]);
     gulp.watch(["src/crossbow/**"], ["crossbow"]);
-    //gulp.watch(["src/svg/**"], ["svg", "crossbow", browserSync.reload]);
-    //gulp.watch("src/scripts/**/*.js", ["js", browserSync.reload]);
 });
 
 gulp.task("build", ["sass", "js"]);
