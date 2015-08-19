@@ -47,4 +47,5 @@ var Store = require("./modules/bsStore");
 var mainCtrl = require("./main/controller");
 var filter = require("./filters");
 var directives = require("./directives");
+
 /* jshint ignore:end */

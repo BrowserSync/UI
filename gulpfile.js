@@ -48,28 +48,13 @@ gulp.task("contribs", function () {
 });
 
 /**
- * Bundle the JS
- * @param bundler
- */
-function bundle (bundler) {
-    return bundler
-        .bundle()
-        .on("error", function (err) {
-            console.log(err.message);
-        })
-        .pipe(exorcist("public/js/app.js.map"))
-        .pipe(source("app.js"))
-        .pipe(gulp.dest("public/js"))
-        .pipe(buffer())
-        .pipe(uglify())
-        .pipe(rename("app.min.js"))
-        .pipe(gulp.dest("public/js"));
-}
-/**
  * Build the app.
  */
-gulp.task("js", ["lint"], function () {
-    return bundle(browserify("./src/scripts/app.js", {debug: true}));
+gulp.task("js", function () {
+    return gulp.src('public/js/app.js')
+        .pipe(uglify())
+        .pipe(rename('app.min.js'))
+        .pipe(gulp.dest("public/js"));
 });
 
 /**
@@ -174,18 +159,3 @@ gulp.task("dev-frontend", ["crossbow", "browser-sync-dev"], function () {
 });
 
 gulp.task("build", ["sass", "js"]);
-
-gulp.task("watch-js", function () {
-
-    var watcher = watchify(browserify("./src/scripts/app.js", watchify.args));
-
-    bundle(watcher);
-
-    watcher.on("update", function () {
-        bundle(watcher);
-    });
-
-    watcher.on("time", function (time) {
-        console.log("bundle", time, "ms");
-    });
-});
