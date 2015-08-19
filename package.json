@@ -32,7 +32,7 @@
     "nodemon": "nodemon example.server.js --watch public/js --watch lib",
     "webpack": "webpack --watch --watch-poll",
     "crossbow": "crossbow watch",
-    "watch": "parallelshell 'npm run webpack' 'npm run nodemon' 'npm run crossbow'",
+    "watch": "parallelshell 'npm run webpack' 'npm run crossbow'",
     "build": "webpack && uglifyjs public/js/app.js -o public/js/app.min.js"
   },
   "dependencies": {
@@ -52,7 +52,7 @@
     "chai": "^1.10.0",
     "compression": "^1.5.0",
     "crossbow": "^0.4.5",
-    "crossbow-cli": "^2.0.0",
+    "crossbow-cli": "^2.0.1",
     "crossbow-sass": "^2.0.0",
     "easy-svg": "^1.0.4",
     "eazy-logger": "^2.1.2",
