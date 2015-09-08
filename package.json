@@ -74,6 +74,7 @@
     "sinon": "^1.16.1",
     "store": "^1.3.17",
     "supertest": "^0.15.0",
+    "uglifyjs": "^2.4.10",
     "webpack": "^1.12.0"
   },
   "keywords": [
