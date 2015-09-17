@@ -21,15 +21,15 @@ module.exports.hooks = {
  * @param {Function} cb
  * @returns {UI}
  */
-module.exports["plugin"] = function (opts, bs, cb) {
-    var ui = new UI(opts, bs, new Events());
-    bs.setOption("session", new Date().getTime());
+module.exports["initAsync"] = function (bs, opts, cb) {
+    var ui = new UI(bs, opts, new Events());
+    //bs.setOption("session", new Date().getTime());
     ui.cb = cb || function () { /*noop*/ };
     ui.init();
     return ui;
 };
 
-module.exports["plugin:name"]       = config.defaults.pluginName;
+module.exports["plugin:name"] = config.defaults.pluginName;
 
 /**
  * @param filepath
@@ -44,5 +44,5 @@ function getPath (filepath) {
  * @returns {*}
  */
 function fileContent (filepath) {
-    return require("fs").readFileSync(getPath(filepath));
+    return require("fs").readFileSync(getPath(filepath)).toString();
 }
