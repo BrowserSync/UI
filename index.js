@@ -11,7 +11,7 @@ module.exports.hooks = {
     /**
      * Client JS is added to each connected client
      */
-    "client:js": fileContent(config.defaults.clientJs)
+    "option:clientJs": fileContent(config.defaults.clientJs)
 };
 
 /**
