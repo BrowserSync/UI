@@ -1,15 +1,21 @@
-var config = {
-    context: __dirname + '/src/scripts',
-    entry: [
-        "./app.js"
-    ],
+// webpack.config.js
+module.exports = {
+    entry: __dirname + "/src/cycle/index.js",
     output: {
-        path: __dirname + "/public",
-        filename: "js/app.js"
+        context: __dirname,
+        filename: __dirname + "/public/js/app.cycle.js"
     },
-    watchOptions: {
-        poll: true
+    devtool: 'source-map',
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                loader: 'babel',
+                query: {
+                    presets: ['es2015']
+                }
+            }
+        ]
     }
 };
-
-module.exports = config;

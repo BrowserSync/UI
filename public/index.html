@@ -9,72 +9,14 @@
     <link rel="stylesheet" href="css/core.min.css"/>
     <link href="favicon.ico" rel="shortcut icon" type="image/ico">
 </head>
-<body ng-app="BrowserSync">
+<body>
 
-    %svg%
-
-    <disconnect-elem></disconnect-elem>
-    <notify-elem></notify-elem>
-
-    <main ng-controller="MainController as app">
-
-        %header%
-
-        <section bs-container>
-
-            <section bs-sidebar>
-                <div class="loader" ng-class="{ready:true}">Loading...</div>
-                <nav bs-section-nav ng-class="{'active': app.ui.sectionMenu, ready: true}">
-                    <ul bs-list="stacked">
-                        <li ng-class="{'active': item.active}" ng-repeat="(key, item) in app.ui.menu | orderObjectBy: 'order'">
-                            <button bs-button ng-class="{'active': item.active}" ng-click="app.setActiveSection(item)">
-                                <icon icon="{{item.icon}}"></icon>
-                                {{item.title | ucfirst}}
-                            </button>
-                        </li>
-                        <li bs-action="menu-close" bs-visible="palm">
-                            <button bs-button="nav" ng-click="app.toggleMenu()"><icon icon="circle-delete"></icon> CLOSE</button>
-                        </li>
-                    </ul>
-                </nav>
-                <div bs-visible="not-palm">
-                    %footer%
-                </div>
-            </section>
-
-            <section bs-content>
-
-                %pageMarkup%
-                %templates%
-
-                <div ng-view></div>
-
-                <div bs-visible="palm">
-                    %footer%
-                </div>
-
-            </section>
-        </section>
-    </main>
-
-    <!--
-        app.js contains:
-
-        Socket.io,
-        BrowserSync connector,
-        Angular,
-        Angular Touch,
-        Angular Sanitize,
-        BrowserSync UI app code
-        BrowserSync UI Page Configuration
-        BrowserSync UI Plugin scripts
-
-    -->
+    <div id="app"></div>
 
     <script src="/js/vendor/socket.js"></script>
-    <script src="/js/app.min.js"></script>
-    <script src="/js/pages-config.js"></script>
-    <script src="/lib/client-js.js"></script>
+    <script src="/js/app.cycle.js"></script>
+    <!--<script src="/js/pages-config.js"></script>-->
+    <!--<script src="/lib/client-js.js"></script>-->
 
 </body>
 </html>

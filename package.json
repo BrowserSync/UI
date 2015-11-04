@@ -49,10 +49,16 @@
     "weinre": "^2.0.0-pre-I0Z7U9OV"
   },
   "devDependencies": {
+    "@cycle/core": "^5.0.1",
+    "@cycle/dom": "^7.1.1",
+    "@cycle/http": "^6.0.4",
     "angular": "^1.4.4",
     "angular-route": "^1.4.4",
     "angular-sanitize": "^1.4.4",
     "angular-touch": "^1.3.11",
+    "babel-core": "^6.0.16",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
     "browser-sync": "^2.8.2",
     "bs-html-injector": "^2.0.1",
     "chai": "^1.10.0",
@@ -77,11 +83,14 @@
     "pretty-js": "^0.1.8",
     "protractor": "^2.1.0",
     "request": "^2.61.0",
+    "rx": "^4.0.6",
     "sinon": "^1.16.1",
+    "socket.io-client": "^1.3.7",
     "store": "^1.3.17",
     "supertest": "^0.15.0",
     "uglifyjs": "^2.4.10",
-    "webpack": "^1.12.0"
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0"
   },
   "keywords": [
     "browser sync",

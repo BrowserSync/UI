@@ -1,8 +1,27 @@
-var bs = require('browser-sync').create();
+var fs = require('fs');
 
-bs.use(require('./'));
-
-bs.init({
-    server: 'test/fixtures',
-    open: false
-});
+var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
+    .create({
+        version: "3.0.0",
+        serveStatic: ['test/fixtures'],
+        //reloadOnRestart: true,
+        //scheme: "https",
+        //proxy: {
+        //    target: 'https://hype-for-type.static:8890',
+        //    options: {}
+        //},
+        plugins: [
+            //'./lib/proxy',
+            './index'
+        ],
+        files: [
+            "test/fixtures/*.html",
+        ],
+        externals: {
+            clientJs: '/Users/shakyshane/code/bs-client'
+        },
+    }, function (err, out) {
+        if (err) {
+            return console.log(err);
+        }
+    });
