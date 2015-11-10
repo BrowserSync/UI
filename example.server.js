@@ -1,9 +1,8 @@
 var fs = require('fs');
-
 var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
     .create({
         version: "3.0.0",
-        serveStatic: ['test/fixtures'],
+        serveStatic: ['/Users/shakyshane/code/browser-sync-core-rewrite/test/fixtures'],
         //reloadOnRestart: true,
         //scheme: "https",
         //proxy: {
@@ -11,11 +10,10 @@ var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
         //    options: {}
         //},
         plugins: [
-            //'./lib/proxy',
             './index'
         ],
         files: [
-            "test/fixtures/*.html",
+            "test/fixtures/*.html"
         ],
         externals: {
             clientJs: '/Users/shakyshane/code/bs-client'

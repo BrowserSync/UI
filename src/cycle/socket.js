@@ -1,15 +1,17 @@
 import Rx from 'rx';
+const fromEvent = Rx.Observable.fromEvent;
 
-const CLIENT_CONNECTIONS = 'ui:client:connection';
-const UI_CONNECTIONS = 'connection';
+const CLIENT_CONNECTIONS = 'ui:clients';
+const UI_CONNECTION      = 'ui:connection';
+
+export function connection () {
+    return fromEvent(socket(), UI_CONNECTION);
+}
+
+export function clients () {
+    return fromEvent(socket(), CLIENT_CONNECTIONS);
+}
 
 export function socket () {
     return window.___browserSync___.socket;
-};
-
-export let uiConnection$ = Rx.Observable.fromEvent(socket(), UI_CONNECTIONS);
-
-export let connections$  = Rx.Observable
-    .fromEvent(socket(), CLIENT_CONNECTIONS)
-    .skipUntil(uiConnection$)
-    .take(1);
+}
