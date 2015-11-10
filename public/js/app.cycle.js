@@ -46,22 +46,27 @@
 
 	'use strict';
 	
+	var _rx = __webpack_require__(2);
+	
+	var _rx2 = _interopRequireDefault(_rx);
+	
 	var _core = __webpack_require__(1);
 	
 	var _core2 = _interopRequireDefault(_core);
 	
 	var _dom = __webpack_require__(5);
 	
-	var _socket = __webpack_require__(125);
+	var _socket = __webpack_require__(120);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function main(responses) {
+	var clients$ = _rx2.default.Observable.fromEvent((0, _socket.socket)(), 'ui:clients');
 	
-	    var vtree$ = responses.clientList.map(function (users) {
-	        return (0, _dom.h)('div.shane', [(0, _dom.h)('h1', 'Connected Clients'), (0, _dom.h)('ul.clients', users.map(function (x) {
+	function main(responses) {
+	    var vtree$ = clients$.startWith([]).map(function (users) {
+	        return (0, _dom.h)('div.shane', [(0, _dom.h)('h1', 'Connected Clients (' + users.length + ')'), (0, _dom.h)('ul.clients', users.length ? users.map(function (x) {
 	            return (0, _dom.h)('p', x.id);
-	        }))]);
+	        }) : [(0, _dom.h)('p', 'non')])]);
 	    });
 	
 	    return {
@@ -70,11 +75,7 @@
 	}
 	
 	_core2.default.run(main, {
-	    DOM: (0, _dom.makeDOMDriver)('#app'),
-	    clientList: function clientList() {
-	        var clients$ = (0, _socket.clients)();
-	        return clients$.share();
-	    }
+	    DOM: (0, _dom.makeDOMDriver)('#app')
 	});
 
 /***/ },
@@ -18809,12 +18810,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

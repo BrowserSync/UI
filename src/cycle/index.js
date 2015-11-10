@@ -1,15 +1,17 @@
+import Rx from 'rx';
 import Cycle from '@cycle/core';
 import {h, makeDOMDriver} from '@cycle/dom';
-import {clients} from './socket.js';
+import {clients, socket} from './socket.js';
+
+var clients$ = Rx.Observable.fromEvent(socket(), 'ui:clients');
 
 function main(responses) {
-
-    let vtree$ = responses.clientList.map(users =>
-        h('div.shane', [
-            h('h1', 'Connected Clients'),
-            h('ul.clients', users.map(x => h('p', x.id)))
+    let vtree$ = clients$.startWith([]).map(users => {
+        return h('div.shane', [
+            h('h1', `Connected Clients (${users.length})`),
+            h('ul.clients', users.length ? users.map(x => h('p', x.id)) : [h('p', 'non')])
         ])
-    );
+    });
 
     return {
         DOM: vtree$
@@ -17,9 +19,5 @@ function main(responses) {
 }
 
 Cycle.run(main, {
-    DOM: makeDOMDriver('#app'),
-    clientList: function () {
-        let clients$ = clients();
-    	return clients$.share();
-    }
+    DOM: makeDOMDriver('#app')
 });
