@@ -1,9 +1,9 @@
 // webpack.config.js
 module.exports = {
-    entry: __dirname + "/src/cycle/index.js",
+    entry: __dirname + "/src/scripts/app.js",
     output: {
         context:  __dirname,
-        filename: __dirname + "/public/js/app.cycle.js"
+        filename: __dirname + "/public/js/app.js"
     },
     devtool: 'source-map',
     module: {
