@@ -33,7 +33,7 @@
     "webpack": "webpack --watch --watch-poll",
     "crossbow": "crossbow watch",
     "sass": "crossbow run sass",
-    "watch": "parallelshell 'npm run webpack' 'npm run crossbow' 'npm run nodemon'",
+    "start": "parallelshell 'npm run webpack' 'npm run crossbow' 'npm run nodemon'",
     "build": "webpack && uglifyjs public/js/app.js -o public/js/app.min.js"
   },
   "dependencies": {

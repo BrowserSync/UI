@@ -13,8 +13,8 @@ var bs = require('/Users/shakyshane/sites/oss/browser-sync-core')
         externals: {
             //clientJs: '/Users/shakyshane/code/bs-client',
             clientJs: '/Users/shakyshane/sites/oss/browser-sync-client/' // home imac
-        }
-
+        },
+        minify: false,
 
         //serveStatic: ['/Users/shakyshane/code/browser-sync-core-rewrite/test/fixtures'],
         //reloadOnRestart: true,

@@ -1,7 +1,9 @@
 watch:
+  bs-config:
+    snippet: "true"
   tasks:
     default:
-      "src/scss/**": ["sass"]
+      "src/scss/**": ["sass", "bs:reload:{{sass.output}}"]
 
 config:
   icons:
