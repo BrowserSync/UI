@@ -1,0 +1,19 @@
+<li>
+    <div>
+        <p>{{ctrl.browser.type.name}} ({{ctrl.browser.type.version}})</p>
+        <p>{{ctrl.browser.type.name}} ({{ctrl.browser.type.version}})</p>
+    </div>
+    <div bs-button-group>
+        <a href="#"
+           title="Sync all devices to this address."
+           bs-button="subtle-alt icon-left"
+           ng-click="ctrl.highlight(connection)"
+           ng-class="{success: url.success}">
+            <icon icon="circle-ok" bs-state="success"></icon>
+            <icon icon="syncall"   bs-state="default"></icon> Gather
+        </a>
+        <a href="#" bs-button="subtle-alt icon" bs-remove ng-click="ctrl.removeVisited(url)">
+            <icon icon="bin"></icon>
+        </a>
+    </div>
+</li>

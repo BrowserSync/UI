@@ -6,7 +6,7 @@
         </h1>
     </div>
 
-    <url-info ng-if="ctrl.urls" options="ctrl.initial.bs"></url-info>
+    <!--<url-info ng-if="ctrl.urls" options="ctrl.initial.bs"></url-info>-->
 
     <div bs-panel="full">
         <div bs-panel-content>
@@ -15,10 +15,9 @@
             </div>
             <p bs-text="lede">Current Connections</p>
             <p>Connected browsers will be listed here.</p>
-
-            <connection-list initial="ctrl.initial"></connection-list>
-
         </div>
     </div>
+
+    <connection-list initial="ctrl.initial"></connection-list>
 
 </article>

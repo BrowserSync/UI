@@ -101,7 +101,7 @@ $controls-height: 41px;
             padding-left: $half-spacing;
             display: flex;
 
-            p {
+            > * {
                 margin-bottom: 0;
                 flex: 1;
                 padding-top: 11px;

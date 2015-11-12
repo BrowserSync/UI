@@ -1,5 +1,4 @@
 watch:
-  browserSync: false
   tasks:
     default:
       "src/scss/**": ["sass"]
