@@ -33,7 +33,7 @@
     "webpack": "webpack --watch --watch-poll",
     "crossbow": "crossbow watch",
     "sass": "crossbow run sass",
-    "watch": "parallelshell 'npm run webpack' 'npm run crossbow'",
+    "watch": "parallelshell 'npm run webpack' 'npm run crossbow' 'npm run nodemon'",
     "build": "webpack && uglifyjs public/js/app.js -o public/js/app.min.js"
   },
   "dependencies": {
@@ -63,7 +63,7 @@
     "compression": "^1.5.2",
     "crossbow": "^0.4.7",
     "crossbow-cli": "^2.1.1",
-    "crossbow-sass": "^2.0.0",
+    "crossbow-sass": "2.0.2",
     "easy-svg": "^1.0.5",
     "eazy-logger": "^2.1.2",
     "gulp": "^3.9.0",

@@ -1,3 +1,3 @@
 <ul bs-list="bordered inline-controls" ng-show="ctrl.connections" id="bs-connection-list">
-    <browser browser="connection.client.browser" ng-repeat="connection in ctrl.connections track by connection.id"></browser>
+    <browser connection="connection" ng-repeat="connection in ctrl.connections track by connection.id"></browser>
 </ul>
