@@ -33,8 +33,14 @@
                     override: true
                 });
             },
-            highlight:   function (connection) {
-                Socket.emit("ui:highlight", connection);
+            highlight:   function (id) {
+                Socket.emit("ui", {
+                    namespace: "connections",
+                    event: "highlight",
+                    data: {
+                        id: id
+                    }
+                });
             }
         };
 

@@ -1,9 +1,10 @@
 var fs = require('fs');
-//var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
-var bs = require('/Users/shakyshane/sites/oss/browser-sync-core')
+var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
+//var bs = require('/Users/shakyshane/sites/oss/browser-sync-core')
     .create({
         version: "3.0.0",
-        serveStatic: ['/Users/shakyshane/sites/oss/browser-sync-core/test/fixtures'],
+        //serveStatic: ['/Users/shakyshane/sites/oss/browser-sync-core/test/fixtures'],
+        serveStatic: ['/Users/shakyshane/code/browser-sync-core-rewrite/test/fixtures'],
         plugins: [
             './index'
         ],
@@ -11,8 +12,8 @@ var bs = require('/Users/shakyshane/sites/oss/browser-sync-core')
             "test/fixtures/*.html"
         ],
         externals: {
-            //clientJs: '/Users/shakyshane/code/bs-client',
-            clientJs: '/Users/shakyshane/sites/oss/browser-sync-client/' // home imac
+            clientJs: '/Users/shakyshane/code/bs-client'
+            //clientJs: '/Users/shakyshane/sites/oss/browser-sync-client/' // home imac
         },
         minify: false,
 
