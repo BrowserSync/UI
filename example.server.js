@@ -15,8 +15,7 @@ var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
             clientJs: '/Users/shakyshane/code/bs-client'
             //clientJs: '/Users/shakyshane/sites/oss/browser-sync-client/' // home imac
         },
-        minify: false,
-
+        minify: false
         //serveStatic: ['/Users/shakyshane/code/browser-sync-core-rewrite/test/fixtures'],
         //reloadOnRestart: true,
         //scheme: "https",
@@ -28,4 +27,5 @@ var bs = require('/Users/shakyshane/code/browser-sync-core-rewrite')
         if (err) {
             return console.log(err);
         }
+        console.log(out.options.get('urls'));
     });
