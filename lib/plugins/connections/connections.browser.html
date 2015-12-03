@@ -2,7 +2,7 @@
     <div>
         <p>{{connection.browser.type.name}}
             ({{connection.browser.dimensions.width}}px x {{connection.browser.dimensions.height}}px)</p>
-        <p>{{connection.referer}}{{connection.hash}}</p>
+        <p>{{connection.location.fullUrl}}</p>
     </div>
     <div bs-button-group>
         <a href="#" bs-button="subtle-alt icon" bs-remove ng-click="ctrl.highlight(connection)">
@@ -11,8 +11,8 @@
         <a href="#"
            title="Sync all devices to this address."
            bs-button="subtle-alt icon-left"
-           ng-click="ctrl.gather(connection)"
-           ng-class="{success: url.success}">
+           ng-click="ctrl.sendAllTo(connection, $event)"
+           ng-class="{success: connection._success}">
             <icon icon="circle-ok" bs-state="success"></icon>
             <icon icon="syncall"   bs-state="default"></icon> Gather
         </a>
