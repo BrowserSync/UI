@@ -23,13 +23,17 @@ module.exports.hooks = {
  */
 module.exports["initAsync"] = function (bs, opts, cb) {
     var ui = new UI(bs, opts, new Events());
-    //bs.setOption("session", new Date().getTime());
     ui.cb = cb || function () { /*noop*/ };
     ui.init();
     return ui;
 };
 
 module.exports["plugin:name"] = config.defaults.pluginName;
+
+//module.exports["transformOptions"] = function (options) {
+//
+//    return options;
+//};
 
 /**
  * @param filepath
