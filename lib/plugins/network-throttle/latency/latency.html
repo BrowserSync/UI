@@ -1,0 +1,18 @@
+<ul bs-list="bordered inline-controls">
+    <li ng-repeat="item in ctrl.items track by $index">
+        <p>{{item.route}}</p>
+        <div bs-button-group>
+            <a href="#"
+               title="Pause this route"
+               bs-button="subtle-alt icon-left"
+               ng-click="ctrl.pause(item)"
+               ng-class="{success: item.success}">
+                <icon icon="circle-ok" bs-state="success"></icon>
+                <icon icon="circle-pause" bs-state="default" ng-show="item.active"></icon>
+                <icon icon="circle-play" bs-state="default" ng-show="!item.active"></icon>
+            </a>
+            <a href="#" bs-button="subtle-alt icon" bs-remove ng-click="ctrl.delete(item)"><icon icon="bin"></icon></a>
+        </div>
+    </li>
+</ul>
+
