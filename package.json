@@ -28,7 +28,7 @@
     "build": "webpack && uglifyjs public/js/app.js -o public/js/app.min.js"
   },
   "dependencies": {
-    "async-each-series": "^1.1.0",
+    "async-each-series": "0.1.1",
     "connect-history-api-fallback": "^1.1.0",
     "immutable": "^3.7.6",
     "stream-throttle": "^0.1.3",
