@@ -22,7 +22,7 @@
         /**
          * Default settings
          */
-        const DEFAULT_HEADING = "BrowserSync";
+        const DEFAULT_HEADING = "Browsersync";
         const DEFAULT_MESSAGE = "Disconnected";
 
         $scope._disconnected  = false;

@@ -22,8 +22,8 @@
          * Default settings
          */
         var DEFAULT_STATUS  = "info";
-        var DEFAULT_HEADING = "BrowserSync:";
-        var DEFAULT_MESSAGE = "Welcome to BrowserSync";
+        var DEFAULT_HEADING = "Browsersync:";
+        var DEFAULT_MESSAGE = "Welcome to Browsersync";
         var DEFAULT_TIMEOUT = 2000;
 
         /**
