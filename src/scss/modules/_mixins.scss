@@ -60,8 +60,8 @@
 }
 
 @mixin svg-shadow ($blur: 2px) {
-    -webkit-filter: drop-shadow( 1px 1px $blur $green-dk );
-    filter:         drop-shadow( 1px 1px $blur $green-dk );
+    //-webkit-filter: drop-shadow( 1px 1px $blur $green-dk );
+    //filter:         drop-shadow( 1px 1px $blur $green-dk );
 }
 
 @mixin subtle-button ($_color, $disabled) {

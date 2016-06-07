@@ -1,11 +1,11 @@
 var crossbow = require('crossbow');
+var vfs = require('vinyl-fs');
+var resolve = require('path').resolve;
 
-function crossbowBuild (obs, opts, ctx) {
-    ctx.vfs.src(opts.input.map(ctx.resolve))
+function crossbowBuild (opts) {
+    return vfs.src(opts.input.map(x => resolve(x)))
         .pipe(crossbow.stream(opts.config))
-        .pipe(ctx.vfs.dest(opts.output))
-        .on("end", obs.onCompleted.bind(obs))
-        .on('error', obs.onError.bind(obs));
+        .pipe(vfs.dest(opts.output));
 }
 
 module.exports.tasks = [crossbowBuild];

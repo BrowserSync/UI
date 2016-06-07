@@ -1,14 +1,14 @@
-var easysvg     = require("easy-svg");
+var easysvg = require("easy-svg");
+var vfs     = require("vinyl-fs");
 
 /**
  * Compile SVG Symbols
  */
-function icons (obs, opts, ctx) {
-    return ctx.vfs.src(opts.input)
+function icons (opts, ctx, done) {
+    return vfs.src(opts.input)
         .pipe(easysvg.stream({js: false}))
-        .on('error', obs.onError.bind(obs))
-        .pipe(ctx.vfs.dest(opts.output))
-        .on('end', obs.onCompleted.bind(obs));
+        .on('error', done)
+        .pipe(vfs.dest(opts.output))
 }
 
 module.exports.tasks = [icons];
