@@ -57,7 +57,9 @@ describe("Plugins page - with inline BrowserSync plugins", function() {
         /**
          * Not auto-disabled on page load
          */
-        expect(element(switchElement).getAttribute('class')).toNotMatch('disabled');
+        element(switchElement).getAttribute('class').then(function (attr) {
+            assert.notInclude(attr, 'disabled');
+        });
 
         /**
          * Assert that BrowserSync reports this plugin as active

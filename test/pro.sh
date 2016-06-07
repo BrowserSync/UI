@@ -16,4 +16,3 @@ do
   set -e
   ./node_modules/.bin/protractor test/client/e2e/config.js --file $file
 done
-
