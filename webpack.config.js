@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var config = {
     context: __dirname + '/src/scripts',
     entry: [
@@ -7,6 +8,14 @@ var config = {
         path: __dirname + "/public",
         filename: "js/app.js"
     },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            mangle: true
+        })
+    ],
     watchOptions: {
         poll: true
     }

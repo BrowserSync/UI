@@ -1,18 +1,69 @@
 watch:
-  browserSync: false
-  tasks:
-    default:
-      "src/scss/**": ["sass"]
+  default:
+    before:
+      - nodemon
+      - webpack-watch
+    "src/scss/**":
+      - "crossbow-sass --production"
+    "src/svg":
+      - "icons"
+    "src/crossbow":
+      - "crossbow"
 
-config:
+tasks:
+
+  pre-release:
+    description: Run server+e2e tests to ensure a safe release
+    tasks:
+      - test
+      - test/protractor.sh
+
+  build-js:
+    description: Create the Client-side Javascript bundle
+    tasks:
+      - webpack
+      - uglify
+
+  build-css:
+    description: Create the minified CSS files
+    tasks:
+      - 'crossbow-sass --production'
+
+  test:
+    description: Run the build tasks + unit tests
+    tasks:
+      - build-js
+      - mocha
+
+  nodemon: >
+     @bg nodemon example.server.js
+     -w lib
+     -w public
+     -w static
+     -e css,js,html,svg
+
+  webpack-watch: >
+     @bg webpack -w
+
+  mocha:   '@npm mocha --timeout 10000 test/server --recursive'
+  webpack: '@npm webpack'
+  uglify:  '@npm uglifyjs public/js/app.js -o public/js/app.min.js'
+
+options:
+
   icons:
     input: "src/svg/*.svg"
     output: "public/img/icons"
-  sass:
+
+  crossbow-sass:
     input: "src/scss/core.scss"
-    output: "public/css/core.min.css"
+    output: "public/css"
+
   crossbow:
-    input: ["src/crossbow/*.hbs","src/crossbow/components/*.hbs","src/crossbow/content/*.hbs"]
+    input:
+      - "src/crossbow/*.hbs"
+      - "src/crossbow/components/*.hbs"
+      - "src/crossbow/content/*.hbs"
     output: "./static"
     config:
       config:
