@@ -1029,7 +1029,7 @@ crossbow-sass@4.0.3:
     postcss-import "8.1.2"
     vinyl-fs "2.4.3"
 
-crossbow@3.6.16:
+crossbow@latest:
   version "3.6.16"
   resolved "https://registry.yarnpkg.com/crossbow/-/crossbow-3.6.16.tgz#7f910a333f902230c2846981b6eb50e91f66e408"
   dependencies:

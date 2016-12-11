@@ -18,6 +18,13 @@ tasks:
       - test
       - test/protractor.sh
 
+  build-all:
+    description: Run all build tasks
+    runMode: 'parallel'
+    tasks:
+      - build-js
+      - build-css
+
   build-js:
     description: Create the Client-side Javascript bundle
     tasks:
@@ -32,7 +39,7 @@ tasks:
   test:
     description: Run the build tasks + unit tests
     tasks:
-      - build-js
+      - build-all
       - mocha
 
   nodemon: >
