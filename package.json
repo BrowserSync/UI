@@ -41,7 +41,7 @@
     "bs-rewrite-rules": "1.0.0",
     "chai": "^3.4.1",
     "compression": "^1.6.0",
-    "crossbow": "latest",
+    "crossbow": "4.0.8",
     "crossbow-sass": "4.0.3",
     "easy-svg": "1.0.5",
     "eazy-logger": "^2.1.2",
