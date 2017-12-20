@@ -29,7 +29,6 @@ tasks:
     description: Create the Client-side Javascript bundle
     tasks:
       - webpack
-      - uglify
 
   build-css:
     description: Create the minified CSS files
@@ -54,7 +53,6 @@ tasks:
 
   mocha:   '@npm mocha --timeout 10000 test/server --recursive'
   webpack: '@npm webpack'
-  uglify:  '@npm uglifyjs public/js/app.js -o public/js/app.min.js'
 
 options:
 

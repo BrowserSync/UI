@@ -1,87 +1,86 @@
-(function (angular) {
+var angular = require('../angular');
 
-    angular
-        .module('bsNotify', [])
-        .directive("notifyElem", function () {
-            return {
-                restrict: "E",
-                scope: {},
-                template: "<div bs-notify ng-class=\"{\'active\': ui.visible}\">\n    <p class=\"notification__text\">{{ui.heading}} <span class=\"color--lime\">{{ui.message}}</span></p>\n</div>",
-                controller: ["$scope", "$rootScope", notifyController]
-            };
-        });
+angular
+    .module('bsNotify', [])
+    .directive("notifyElem", function () {
+        return {
+            restrict: "E",
+            scope: {},
+            template: "<div bs-notify ng-class=\"{\'active\': ui.visible}\">\n    <p class=\"notification__text\">{{ui.heading}} <span class=\"color--lime\">{{ui.message}}</span></p>\n</div>",
+            controller: ["$scope", "$rootScope", notifyController]
+        };
+    });
+
+/**
+ * Notify
+ * @param $scope
+ * @param $rootScope
+ */
+function notifyController($scope, $rootScope) {
 
     /**
-     * Notify
-     * @param $scope
-     * @param $rootScope
+     * Default settings
      */
-    function notifyController ($scope, $rootScope) {
+    var DEFAULT_STATUS = "info";
+    var DEFAULT_HEADING = "Browsersync:";
+    var DEFAULT_MESSAGE = "Welcome to Browsersync";
+    var DEFAULT_TIMEOUT = 2000;
+
+    /**
+     * Default state
+     * @type {{visible: boolean, status: string, heading: string, text: string}}
+     */
+    $scope.ui = {
+        status: DEFAULT_STATUS,
+        heading: DEFAULT_HEADING,
+        message: DEFAULT_MESSAGE
+    };
+
+    /**
+     * @param evt
+     * @param data
+     */
+    $scope.show = function (evt, data) {
+
+        data = data || {};
 
         /**
-         * Default settings
+         *
+         * Clear any previous timers
+         *
          */
-        var DEFAULT_STATUS  = "info";
-        var DEFAULT_HEADING = "Browsersync:";
-        var DEFAULT_MESSAGE = "Welcome to Browsersync";
-        var DEFAULT_TIMEOUT = 2000;
+        if ($scope._timer) {
+            clearTimeout($scope._timer);
+        }
 
         /**
-         * Default state
-         * @type {{visible: boolean, status: string, heading: string, text: string}}
+         *
+         * Set a reset timer
+         *
          */
-        $scope.ui = {
-            status:  DEFAULT_STATUS,
-            heading: DEFAULT_HEADING,
-            message: DEFAULT_MESSAGE
-        };
+        $scope._timer = window.setTimeout($scope.reset, data.timeout || DEFAULT_TIMEOUT);
 
         /**
-         * @param evt
-         * @param data
+         *
+         * Set UI flags
+         *
          */
-        $scope.show = function (evt, data) {
+        $scope.ui.visible = true;
+        $scope.ui.status = data.status || DEFAULT_STATUS;
+        $scope.ui.heading = data.heading || DEFAULT_HEADING;
+        $scope.ui.message = data.message || DEFAULT_HEADING;
+    };
 
-            data = data || {};
+    /**
+     * Reset the UI
+     */
+    $scope.reset = function () {
+        $scope.ui.visible = false;
+        $scope.$digest();
+    };
 
-            /**
-             *
-             * Clear any previous timers
-             *
-             */
-            if ($scope._timer) {
-                clearTimeout($scope._timer);
-            }
-
-            /**
-             *
-             * Set a reset timer
-             *
-             */
-            $scope._timer = window.setTimeout($scope.reset, data.timeout || DEFAULT_TIMEOUT);
-
-            /**
-             *
-             * Set UI flags
-             *
-             */
-            $scope.ui.visible = true;
-            $scope.ui.status  = data.status  || DEFAULT_STATUS;
-            $scope.ui.heading = data.heading || DEFAULT_HEADING;
-            $scope.ui.message = data.message || DEFAULT_HEADING;
-        };
-
-        /**
-         * Reset the UI
-         */
-        $scope.reset = function () {
-            $scope.ui.visible = false;
-            $scope.$digest();
-        };
-
-        /**
-         * Listen to events on the $rootScope
-         */
-        $rootScope.$on("notify:flash", $scope.show);
-    }
-})(angular);
+    /**
+     * Listen to events on the $rootScope
+     */
+    $rootScope.$on("notify:flash", $scope.show);
+}

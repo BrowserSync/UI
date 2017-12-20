@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var config = {
+    devtool: 'sourcemaps',
     context: __dirname + '/src/scripts',
     entry: [
         "./app.js"
